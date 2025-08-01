@@ -533,4 +533,4 @@ impl MultimodalRecommender {
 
 Multimodal fusion theory provides a solid theoretical foundation and technical support for multimodal AI. Through effective fusion methods, we can fully utilize the complementary information from different modalities to achieve more intelligent and comprehensive AI systems.
 
-**激情澎湃的 <(￣︶￣)↗[GO!] 继续构建中...** 
+**激情澎湃的 <(￣︶￣)↗[GO!] 继续构建中...**

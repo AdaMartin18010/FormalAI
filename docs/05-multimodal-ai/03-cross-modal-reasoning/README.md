@@ -561,4 +561,4 @@ impl MultimodalExplanation {
 
 Cross-modal reasoning theory provides powerful reasoning capabilities for multimodal AI, achieving more intelligent and comprehensive understanding and decision-making by integrating information from different modalities. With continuous technological development, cross-modal reasoning will play important roles in more domains.
 
-**激情澎湃的 <(￣︶￣)↗[GO!] 继续构建中...** 
+**激情澎湃的 <(￣︶￣)↗[GO!] 继续构建中...**
