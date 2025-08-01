@@ -52,11 +52,11 @@ FormalAI是一个全面的形式化人工智能知识体系，旨在梳理和整
 - [7.2 价值学习](./07-alignment-safety/02-value-learning/README.md) ✅
 - [7.3 安全机制](./07-alignment-safety/03-safety-mechanisms/README.md) ✅
 
-### 8. 涌现与复杂性 (08-emergence-complexity) ⏳
+### 8. 涌现与复杂性 (08-emergence-complexity) ✅
 
-- [8.1 涌现理论](./08-emergence-complexity/01-emergence-theory/README.md) ⏳
-- [8.2 复杂系统理论](./08-emergence-complexity/02-complex-systems/README.md) ⏳
-- [8.3 自组织理论](./08-emergence-complexity/03-self-organization/README.md) ⏳
+- [8.1 涌现理论](./08-emergence-complexity/01-emergence-theory/README.md) ✅
+- [8.2 复杂系统理论](./08-emergence-complexity/02-complex-systems/README.md) ✅
+- [8.3 自组织理论](./08-emergence-complexity/03-self-organization/README.md) ✅
 
 ### 9. 哲学与伦理 (09-philosophy-ethics) ⏳
 
@@ -166,7 +166,7 @@ FormalAI是一个全面的形式化人工智能知识体系，旨在梳理和整
 
 ## 项目状态
 
-**总体进度**: 25/40 模块已完成 (62.5%)
+**总体进度**: 28/40 模块已完成 (70%)
 
 **核心模块完成度**:
 
@@ -177,10 +177,10 @@ FormalAI是一个全面的形式化人工智能知识体系，旨在梳理和整
 
 **下一步计划**:
 
-1. 扩展涌现与复杂性系列
-2. 开发哲学与伦理系列
-3. 构建应用与工程系列
-4. 完善整体知识体系
+1. 开发哲学与伦理系列
+2. 构建应用与工程系列
+3. 完善整体知识体系
+4. 持续优化和扩展
 
 ---
 
