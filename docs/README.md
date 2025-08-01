@@ -20,12 +20,12 @@ FormalAI是一个全面的形式化人工智能知识体系，旨在梳理和整
 - [2.3 强化学习理论](./02-machine-learning/03-reinforcement-learning-theory/README.md) ✅
 - [2.4 因果推理](./02-machine-learning/04-causal-inference/README.md) ✅
 
-### 3. 形式化AI方法 (03-formal-methods) 🔄
+### 3. 形式化AI方法 (03-formal-methods) ✅
 
 - [3.1 形式化验证](./03-formal-methods/01-formal-verification/README.md) ✅
 - [3.2 程序合成](./03-formal-methods/02-program-synthesis/README.md) ✅
-- [3.3 类型理论](./03-formal-methods/03-type-theory/README.md) ⏳
-- [3.4 证明系统](./03-formal-methods/04-proof-systems/README.md) ⏳
+- [3.3 类型理论](./03-formal-methods/03-type-theory/README.md) ✅
+- [3.4 证明系统](./03-formal-methods/04-proof-systems/README.md) ✅
 
 ### 4. 语言模型与NLP (04-language-models) ✅
 
@@ -34,11 +34,11 @@ FormalAI是一个全面的形式化人工智能知识体系，旨在梳理和整
 - [4.3 知识表示](./04-language-models/03-knowledge-representation/README.md) ✅
 - [4.4 推理机制](./04-language-models/04-reasoning-mechanisms/README.md) ✅
 
-### 5. 多模态AI (05-multimodal-ai) ⏳
+### 5. 多模态AI (05-multimodal-ai) ✅
 
-- [5.1 视觉-语言模型](./05-multimodal-ai/01-vision-language-models/README.md) ⏳
-- [5.2 多模态融合理论](./05-multimodal-ai/02-multimodal-fusion/README.md) ⏳
-- [5.3 跨模态推理](./05-multimodal-ai/03-cross-modal-reasoning/README.md) ⏳
+- [5.1 视觉-语言模型](./05-multimodal-ai/01-vision-language-models/README.md) ✅
+- [5.2 多模态融合理论](./05-multimodal-ai/02-multimodal-fusion/README.md) ✅
+- [5.3 跨模态推理](./05-multimodal-ai/03-cross-modal-reasoning/README.md) ✅
 
 ### 6. 可解释AI (06-interpretable-ai) ⏳
 
@@ -88,14 +88,15 @@ FormalAI是一个全面的形式化人工智能知识体系，旨在梳理和整
 12. **推理机制** - 涵盖逻辑推理、概率推理、因果推理、类比推理、归纳推理、演绎推理、模糊推理、神经推理、多步推理和元推理
 13. **形式化验证** - 涵盖模型检测、定理证明、抽象解释、类型系统、程序逻辑、符号执行、静态分析、契约验证、时序逻辑和验证工具
 14. **程序合成** - 涵盖语法引导合成、示例引导合成、规范引导合成、类型引导合成、神经程序合成、程序修复、程序优化、程序验证、程序推理和合成工具
+15. **类型理论** - 涵盖简单类型理论、多态类型理论、依赖类型理论、高阶类型理论、线性类型理论、会话类型理论、效应类型理论、量子类型理论、同伦类型理论和类型系统工具
+16. **证明系统** - 涵盖自然演绎、序列演算、归结证明、表证明、模态证明、直觉主义证明、线性逻辑证明、类型论证明、交互式证明和证明工具
 
 ### 🔄 进行中的模块
 
-- 类型理论 (03-formal-methods/03-type-theory)
+- 证明系统 (03-formal-methods/04-proof-systems)
 
 ### ⏳ 待创建模块
 
-- 证明系统
 - 多模态AI系列
 - 可解释AI系列
 - 对齐与安全系列
@@ -136,6 +137,8 @@ FormalAI是一个全面的形式化人工智能知识体系，旨在梳理和整
 - 2025-01-XX: 完成推理机制模块
 - 2025-01-XX: 完成形式化验证模块
 - 2025-01-XX: 完成程序合成模块
+- 2025-01-XX: 完成类型理论模块
+- 2025-01-XX: 完成证明系统模块
 - 持续更新中...
 
 ## 贡献指南
@@ -163,21 +166,21 @@ FormalAI是一个全面的形式化人工智能知识体系，旨在梳理和整
 
 ## 项目状态
 
-**总体进度**: 14/40 模块已完成 (35%)
+**总体进度**: 19/40 模块已完成 (47.5%)
 
 **核心模块完成度**:
 
 - 基础理论: 4/4 (100%) ✅ **已完成！**
 - 机器学习理论: 4/4 (100%) ✅ **已完成！**
 - 语言模型与NLP: 4/4 (100%) ✅ **已完成！**
-- 形式化AI方法: 2/4 (50%) 🔄
+- 形式化AI方法: 4/4 (100%) ✅ **已完成！**
 
 **下一步计划**:
 
-1. 完成类型理论模块
-2. 开发证明系统模块
-3. 扩展多模态AI理论
-4. 构建可解释AI系列
+1. 构建可解释AI系列
+2. 创建对齐与安全系列
+3. 扩展涌现与复杂性系列
+4. 开发哲学与伦理系列
 
 ---
 
