@@ -232,7 +232,7 @@ impl ValueAnnotator {
 
 **价值迭代 / Value Iteration:**
 
-$$\mathcal{V}_{k+1}(s) = \max_a \sum_{s'} P(s'|s,a)[R(s,a,s') + \gamma \mathcal{V}_k(s')]$$
+$$\mathcal{V}_{k+1}(s) = \max_a \sum_{s'} P(s'\|s,a)\[R(s,a,s') + \gamma \mathcal{V}_k(s')\]$$
 
 **Q学习 / Q-Learning:**
 

@@ -1,965 +1,753 @@
-# 1.3 计算理论 / Computation Theory
+# 1.3 计算理论 / Computation Theory / Berechnungstheorie / Théorie du calcul
 
-## 概述 / Overview
+## 概述 / Overview / Übersicht / Aperçu
 
-计算理论研究计算的本质、能力和限制，为FormalAI提供计算复杂性和可计算性的理论基础。
+计算理论研究计算的本质、能力和限制，为FormalAI提供计算复杂性和算法分析的理论基础。
 
-Computation theory studies the nature, capabilities, and limitations of computation, providing theoretical foundations for computational complexity and computability in FormalAI.
+Computation theory studies the nature, capabilities, and limitations of computation, providing theoretical foundations for computational complexity and algorithm analysis in FormalAI.
 
-## 目录 / Table of Contents
+Die Berechnungstheorie untersucht die Natur, Fähigkeiten und Grenzen der Berechnung und liefert theoretische Grundlagen für Berechnungskomplexität und Algorithmusanalyse in FormalAI.
 
-- [1.3 计算理论 / Computation Theory](#13-计算理论--computation-theory)
-  - [概述 / Overview](#概述--overview)
-  - [目录 / Table of Contents](#目录--table-of-contents)
-  - [1. 可计算性理论 / Computability Theory](#1-可计算性理论--computability-theory)
-    - [1.1 图灵机 / Turing Machine](#11-图灵机--turing-machine)
-    - [1.2 丘奇-图灵论题 / Church-Turing Thesis](#12-丘奇-图灵论题--church-turing-thesis)
-    - [1.3 停机问题 / Halting Problem](#13-停机问题--halting-problem)
-  - [2. 计算复杂性理论 / Computational Complexity Theory](#2-计算复杂性理论--computational-complexity-theory)
-    - [2.1 时间复杂性 / Time Complexity](#21-时间复杂性--time-complexity)
-    - [2.2 空间复杂性 / Space Complexity](#22-空间复杂性--space-complexity)
-    - [2.3 P vs NP问题 / P vs NP Problem](#23-p-vs-np问题--p-vs-np-problem)
-  - [3. 自动机理论 / Automata Theory](#3-自动机理论--automata-theory)
-    - [3.1 有限自动机 / Finite Automata](#31-有限自动机--finite-automata)
-    - [3.2 下推自动机 / Pushdown Automata](#32-下推自动机--pushdown-automata)
-    - [3.3 图灵机 / Turing Machines](#33-图灵机--turing-machines)
-  - [4. 形式语言理论 / Formal Language Theory](#4-形式语言理论--formal-language-theory)
-    - [4.1 乔姆斯基层次结构 / Chomsky Hierarchy](#41-乔姆斯基层次结构--chomsky-hierarchy)
-    - [4.2 文法 / Grammars](#42-文法--grammars)
-    - [4.3 语言操作 / Language Operations](#43-语言操作--language-operations)
-  - [5. 递归论 / Recursion Theory](#5-递归论--recursion-theory)
-    - [5.1 原始递归函数 / Primitive Recursive Functions](#51-原始递归函数--primitive-recursive-functions)
-    - [5.2 一般递归函数 / General Recursive Functions](#52-一般递归函数--general-recursive-functions)
-    - [5.3 递归可枚举集 / Recursively Enumerable Sets](#53-递归可枚举集--recursively-enumerable-sets)
-  - [6. 算法分析 / Algorithm Analysis](#6-算法分析--algorithm-analysis)
-    - [6.1 渐近分析 / Asymptotic Analysis](#61-渐近分析--asymptotic-analysis)
-    - [6.2 分治算法 / Divide and Conquer](#62-分治算法--divide-and-conquer)
-    - [6.3 动态规划 / Dynamic Programming](#63-动态规划--dynamic-programming)
-  - [7. 并行计算理论 / Parallel Computation Theory](#7-并行计算理论--parallel-computation-theory)
-    - [7.1 PRAM模型 / PRAM Model](#71-pram模型--pram-model)
-    - [7.2 并行复杂性 / Parallel Complexity](#72-并行复杂性--parallel-complexity)
-    - [7.3 并行算法 / Parallel Algorithms](#73-并行算法--parallel-algorithms)
-  - [8. 量子计算理论 / Quantum Computation Theory](#8-量子计算理论--quantum-computation-theory)
-    - [8.1 量子比特 / Qubits](#81-量子比特--qubits)
-    - [8.2 量子算法 / Quantum Algorithms](#82-量子算法--quantum-algorithms)
-    - [8.3 量子复杂性 / Quantum Complexity](#83-量子复杂性--quantum-complexity)
-  - [9. 随机计算 / Randomized Computation](#9-随机计算--randomized-computation)
-    - [9.1 随机算法 / Randomized Algorithms](#91-随机算法--randomized-algorithms)
-    - [9.2 随机复杂性类 / Randomized Complexity Classes](#92-随机复杂性类--randomized-complexity-classes)
-    - [9.3 随机化技术 / Randomization Techniques](#93-随机化技术--randomization-techniques)
-  - [10. 近似算法理论 / Approximation Algorithm Theory](#10-近似算法理论--approximation-algorithm-theory)
-    - [10.1 近似比 / Approximation Ratio](#101-近似比--approximation-ratio)
-    - [10.2 近似算法 / Approximation Algorithms](#102-近似算法--approximation-algorithms)
-    - [10.3 不可近似性 / Inapproximability](#103-不可近似性--inapproximability)
-  - [代码示例 / Code Examples](#代码示例--code-examples)
+La théorie du calcul étudie la nature, les capacités et les limitations du calcul, fournissant les fondements théoriques pour la complexité computationnelle et l'analyse d'algorithmes dans FormalAI.
+
+## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
+
+### 计算 / Computation / Berechnung / Calcul
+
+**定义 / Definition / Definition / Définition:**
+
+计算是信息处理的过程，通过有限步骤将输入转换为输出。
+
+Computation is the process of information processing that transforms input to output through finite steps.
+
+Berechnung ist der Prozess der Informationsverarbeitung, der Eingaben durch endliche Schritte in Ausgaben umwandelt.
+
+Le calcul est le processus de traitement d'information qui transforme l'entrée en sortie à travers des étapes finies.
+
+**内涵 / Intension / Intension / Intension:**
+
+- 算法执行 / Algorithm execution / Algorithmusausführung / Exécution d'algorithme
+- 状态转换 / State transition / Zustandsübergang / Transition d'état
+- 资源消耗 / Resource consumption / Ressourcenverbrauch / Consommation de ressources
+
+**外延 / Extension / Extension / Extension:**
+
+- 确定性计算 / Deterministic computation / Deterministische Berechnung / Calcul déterministe
+- 非确定性计算 / Nondeterministic computation / Nichtdeterministische Berechnung / Calcul non déterministe
+- 随机计算 / Probabilistic computation / Probabilistische Berechnung / Calcul probabiliste
+- 量子计算 / Quantum computation / Quantenberechnung / Calcul quantique
+
+## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
+
+- [1.3 计算理论 / Computation Theory / Berechnungstheorie / Théorie du calcul](#13-计算理论--computation-theory--berechnungstheorie--théorie-du-calcul)
+  - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
+  - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
+    - [计算 / Computation / Berechnung / Calcul](#计算--computation--berechnung--calcul)
+  - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
+  - [1. 自动机理论 / Automata Theory / Automatentheorie / Théorie des automates](#1-自动机理论--automata-theory--automatentheorie--théorie-des-automates)
+    - [1.1 有限自动机 / Finite Automata / Endliche Automaten / Automates finis](#11-有限自动机--finite-automata--endliche-automaten--automates-finis)
+    - [1.2 下推自动机 / Pushdown Automata / Kellerautomaten / Automates à pile](#12-下推自动机--pushdown-automata--kellerautomaten--automates-à-pile)
+    - [1.3 图灵机 / Turing Machines / Turingmaschinen / Machines de Turing](#13-图灵机--turing-machines--turingmaschinen--machines-de-turing)
+  - [2. 可计算性理论 / Computability Theory / Berechenbarkeitstheorie / Théorie de la calculabilité](#2-可计算性理论--computability-theory--berechenbarkeitstheorie--théorie-de-la-calculabilité)
+    - [2.1 递归函数 / Recursive Functions / Rekursive Funktionen / Fonctions récursives](#21-递归函数--recursive-functions--rekursive-funktionen--fonctions-récursives)
+    - [2.2 停机问题 / Halting Problem / Halteproblem / Problème de l'arrêt](#22-停机问题--halting-problem--halteproblem--problème-de-larrêt)
+    - [2.3 不可判定性 / Undecidability / Unentscheidbarkeit / Indécidabilité](#23-不可判定性--undecidability--unentscheidbarkeit--indécidabilité)
+  - [3. 复杂性理论 / Complexity Theory / Komplexitätstheorie / Théorie de la complexité](#3-复杂性理论--complexity-theory--komplexitätstheorie--théorie-de-la-complexité)
+    - [3.1 P类问题 / P Class / P-Klasse / Classe P](#31-p类问题--p-class--p-klasse--classe-p)
+    - [3.2 NP类问题 / NP Class / NP-Klasse / Classe NP](#32-np类问题--np-class--np-klasse--classe-np)
+    - [3.3 NP完全问题 / NP-Complete Problems / NP-vollständige Probleme / Problèmes NP-complets](#33-np完全问题--np-complete-problems--np-vollständige-probleme--problèmes-np-complets)
+  - [4. 算法分析 / Algorithm Analysis / Algorithmusanalyse / Analyse d'algorithmes](#4-算法分析--algorithm-analysis--algorithmusanalyse--analyse-dalgorithmes)
+    - [4.1 时间复杂度 / Time Complexity / Zeitkomplexität / Complexité temporelle](#41-时间复杂度--time-complexity--zeitkomplexität--complexité-temporelle)
+    - [4.2 空间复杂度 / Space Complexity / Speicherkomplexität / Complexité spatiale](#42-空间复杂度--space-complexity--speicherkomplexität--complexité-spatiale)
+    - [4.3 渐近分析 / Asymptotic Analysis / Asymptotische Analyse / Analyse asymptotique](#43-渐近分析--asymptotic-analysis--asymptotische-analyse--analyse-asymptotique)
+  - [5. 并行计算 / Parallel Computing / Parallele Berechnung / Calcul parallèle](#5-并行计算--parallel-computing--parallele-berechnung--calcul-parallèle)
+    - [5.1 并行模型 / Parallel Models / Parallele Modelle / Modèles parallèles](#51-并行模型--parallel-models--parallele-modelle--modèles-parallèles)
+    - [5.2 并行算法 / Parallel Algorithms / Parallele Algorithmen / Algorithmes parallèles](#52-并行算法--parallel-algorithms--parallele-algorithmen--algorithmes-parallèles)
+    - [5.3 并行复杂性 / Parallel Complexity / Parallele Komplexität / Complexité parallèle](#53-并行复杂性--parallel-complexity--parallele-komplexität--complexité-parallèle)
+  - [6. 量子计算 / Quantum Computing / Quantenberechnung / Calcul quantique](#6-量子计算--quantum-computing--quantenberechnung--calcul-quantique)
+    - [6.1 量子比特 / Qubits / Qubits / Qubits](#61-量子比特--qubits--qubits--qubits)
+    - [6.2 量子门 / Quantum Gates / Quantengatter / Portes quantiques](#62-量子门--quantum-gates--quantengatter--portes-quantiques)
+    - [6.3 量子算法 / Quantum Algorithms / Quantenalgorithmen / Algorithmes quantiques](#63-量子算法--quantum-algorithms--quantenalgorithmen--algorithmes-quantiques)
+  - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
     - [Rust实现：图灵机模拟器](#rust实现图灵机模拟器)
-    - [Haskell实现：计算复杂性分析](#haskell实现计算复杂性分析)
-  - [参考文献 / References](#参考文献--references)
+    - [Haskell实现：递归函数](#haskell实现递归函数)
+  - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
 
 ---
 
-## 1. 可计算性理论 / Computability Theory
+## 1. 自动机理论 / Automata Theory / Automatentheorie / Théorie des automates
 
-### 1.1 图灵机 / Turing Machine
+### 1.1 有限自动机 / Finite Automata / Endliche Automaten / Automates finis
 
-**图灵机定义 / Turing Machine Definition:**
+**有限自动机定义 / Finite Automaton Definition:**
 
-图灵机 $M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})$ 其中：
+有限自动机是一个五元组 $M = (Q, \Sigma, \delta, q_0, F)$，其中：
 
-Turing machine $M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})$ where:
+A finite automaton is a 5-tuple $M = (Q, \Sigma, \delta, q_0, F)$ where:
 
-- $Q$ 是状态集合 / set of states
-- $\Sigma$ 是输入字母表 / input alphabet
-- $\Gamma$ 是磁带字母表 / tape alphabet
-- $\delta$ 是转移函数 / transition function
-- $q_0$ 是初始状态 / initial state
-- $q_{\text{accept}}$ 是接受状态 / accept state
-- $q_{\text{reject}}$ 是拒绝状态 / reject state
+Ein endlicher Automat ist ein 5-Tupel $M = (Q, \Sigma, \delta, q_0, F)$ wobei:
+
+Un automate fini est un 5-uplet $M = (Q, \Sigma, \delta, q_0, F)$ où:
+
+- $Q$ 是状态集合 / $Q$ is the set of states
+- $\Sigma$ 是输入字母表 / $\Sigma$ is the input alphabet
+- $\delta$ 是转移函数 / $\delta$ is the transition function
+- $q_0$ 是初始状态 / $q_0$ is the initial state
+- $F$ 是接受状态集合 / $F$ is the set of accepting states
 
 **转移函数 / Transition Function:**
 
-$$\delta: Q \times \Gamma \rightarrow Q \times \Gamma \times \{L, R\}$$
+$$\delta: Q \times \Sigma \rightarrow Q$$
+
+**扩展转移函数 / Extended Transition Function:**
+
+$$\hat{\delta}: Q \times \Sigma^* \rightarrow Q$$
+
+$$\hat{\delta}(q, \epsilon) = q$$
+$$\hat{\delta}(q, wa) = \delta(\hat{\delta}(q, w), a)$$
+
+**语言接受 / Language Acceptance:**
+
+$$L(M) = \{w \in \Sigma^* : \hat{\delta}(q_0, w) \in F\}$$
+
+### 1.2 下推自动机 / Pushdown Automata / Kellerautomaten / Automates à pile
+
+**下推自动机定义 / Pushdown Automaton Definition:**
+
+下推自动机是一个七元组 $M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$，其中：
+
+A pushdown automaton is a 7-tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$ where:
+
+Ein Kellerautomat ist ein 7-Tupel $M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$ wobei:
+
+Un automate à pile est un 7-uplet $M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$ où:
+
+- $\Gamma$ 是栈字母表 / $\Gamma$ is the stack alphabet
+- $Z_0$ 是初始栈符号 / $Z_0$ is the initial stack symbol
+
+**转移函数 / Transition Function:**
+
+$$\delta: Q \times \Sigma \times \Gamma \rightarrow 2^{Q \times \Gamma^*}$$
+
+### 1.3 图灵机 / Turing Machines / Turingmaschinen / Machines de Turing
+
+**图灵机定义 / Turing Machine Definition:**
+
+图灵机是一个七元组 $M = (Q, \Sigma, \Gamma, \delta, q_0, B, F)$，其中：
+
+A Turing machine is a 7-tuple $M = (Q, \Sigma, \Gamma, \delta, q_0, B, F)$ where:
+
+Eine Turingmaschine ist ein 7-Tupel $M = (Q, \Sigma, \Gamma, \delta, q_0, B, F)$ wobei:
+
+Une machine de Turing est un 7-uplet $M = (Q, \Sigma, \Gamma, \delta, q_0, B, F)$ où:
+
+- $\Gamma$ 是带字母表 / $\Gamma$ is the tape alphabet
+- $B$ 是空白符号 / $B$ is the blank symbol
+
+**转移函数 / Transition Function:**
+
+$$\delta: Q \times \Gamma \rightarrow Q \times \Gamma \times \{L, R, N\}$$
 
 **配置 / Configuration:**
 
-$(q, w, i)$ 其中 $q$ 是当前状态，$w$ 是磁带内容，$i$ 是读写头位置。
+$$(q, \alpha, i)$$
 
-$(q, w, i)$ where $q$ is current state, $w$ is tape content, $i$ is head position.
+其中 $q$ 是当前状态，$\alpha$ 是带内容，$i$ 是读写头位置。
 
-### 1.2 丘奇-图灵论题 / Church-Turing Thesis
+where $q$ is the current state, $\alpha$ is the tape content, $i$ is the head position.
 
-**论题陈述 / Thesis Statement:**
+wobei $q$ der aktuelle Zustand, $\alpha$ der Bandinhalt und $i$ die Kopfposition ist.
 
-任何可计算的函数都可以由图灵机计算。
+où $q$ est l'état actuel, $\alpha$ est le contenu de la bande, $i$ est la position de la tête.
 
-Any computable function can be computed by a Turing machine.
+---
 
-**等价模型 / Equivalent Models:**
+## 2. 可计算性理论 / Computability Theory / Berechenbarkeitstheorie / Théorie de la calculabilité
 
-- $\lambda$ 演算 / $\lambda$-calculus
-- 递归函数 / Recursive functions
-- 寄存器机器 / Register machines
-- 细胞自动机 / Cellular automata
+### 2.1 递归函数 / Recursive Functions / Rekursive Funktionen / Fonctions récursives
 
-### 1.3 停机问题 / Halting Problem
+**原始递归函数 / Primitive Recursive Functions:**
 
-**停机问题 / Halting Problem:**
+1. **零函数 / Zero function:** $Z(x) = 0$
+2. **后继函数 / Successor function:** $S(x) = x + 1$
+3. **投影函数 / Projection function:** $P_i^n(x_1, ..., x_n) = x_i$
+4. **复合 / Composition:** $h(x_1, ..., x_n) = f(g_1(x_1, ..., x_n), ..., g_m(x_1, ..., x_n))$
+5. **原始递归 / Primitive recursion:**
 
-给定图灵机 $M$ 和输入 $w$，判断 $M$ 在输入 $w$ 上是否停机。
+$$h(x_1, ..., x_n, 0) = f(x_1, ..., x_n)$$
+$$h(x_1, ..., x_n, y+1) = g(x_1, ..., x_n, y, h(x_1, ..., x_n, y))$$
 
-Given Turing machine $M$ and input $w$, determine whether $M$ halts on input $w$.
+**μ递归函数 / μ-Recursive Functions:**
 
-**不可判定性 / Undecidability:**
+$$\mu y[f(x_1, ..., x_n, y) = 0] = \text{least } y \text{ such that } f(x_1, ..., x_n, y) = 0$$
 
-停机问题是不可判定的。
+### 2.2 停机问题 / Halting Problem / Halteproblem / Problème de l'arrêt
 
-The halting problem is undecidable.
+**停机问题定义 / Halting Problem Definition:**
 
-**证明 / Proof:**
+停机问题是判断给定程序在给定输入下是否会停机的问题。
 
-假设存在图灵机 $H$ 解决停机问题，构造矛盾：
+The halting problem is the problem of determining whether a given program will halt on a given input.
 
-Assume Turing machine $H$ solves the halting problem, construct contradiction:
+Das Halteproblem ist das Problem zu bestimmen, ob ein gegebenes Programm bei einer gegebenen Eingabe anhält.
+
+Le problème de l'arrêt est le problème de déterminer si un programme donné s'arrête sur une entrée donnée.
+
+**形式化定义 / Formal Definition:**
+
+$$H = \{(M, w) : M \text{ halts on input } w\}$$
+
+**不可判定性证明 / Undecidability Proof:**
+
+假设存在图灵机 $H$ 判定停机问题，构造图灵机 $D$：
+
+Assume there exists a Turing machine $H$ that decides the halting problem, construct Turing machine $D$:
+
+Angenommen, es existiert eine Turingmaschine $H$, die das Halteproblem entscheidet, konstruiere Turingmaschine $D$:
+
+Supposons qu'il existe une machine de Turing $H$ qui décide le problème de l'arrêt, construisons la machine de Turing $D$:
 
 $$
-D(w) = \begin{cases}
-\text{halt} & \text{if } H(w,w) = \text{reject} \\
-\text{loop} & \text{if } H(w,w) = \text{accept}
+D(M) = \begin{cases}
+\text{halt} & \text{if } H(M, M) = \text{no} \\
+\text{loop} & \text{if } H(M, M) = \text{yes}
 \end{cases}
 $$
 
----
+矛盾：$D(D)$ 停机当且仅当 $D(D)$ 不停机。
 
-## 2. 计算复杂性理论 / Computational Complexity Theory
+Contradiction: $D(D)$ halts if and only if $D(D)$ does not halt.
 
-### 2.1 时间复杂性 / Time Complexity
+Widerspruch: $D(D)$ hält genau dann an, wenn $D(D)$ nicht anhält.
 
-**时间复杂性 / Time Complexity:**
+Contradiction: $D(D)$ s'arrête si et seulement si $D(D)$ ne s'arrête pas.
 
-$T_M(n) = \max\{t_M(w): |w| = n\}$
+### 2.3 不可判定性 / Undecidability / Unentscheidbarkeit / Indécidabilité
 
-其中 $t_M(w)$ 是图灵机 $M$ 在输入 $w$ 上的运行步数。
+**不可判定问题 / Undecidable Problems:**
 
-where $t_M(w)$ is the number of steps Turing machine $M$ takes on input $w$.
-
-**时间复杂性类 / Time Complexity Classes:**
-
-- $\text{P}$: 多项式时间可判定问题
-- $\text{NP}$: 非确定性多项式时间可判定问题
-- $\text{EXP}$: 指数时间可判定问题
-
-- $\text{P}$: Polynomial time decidable problems
-- $\text{NP}$: Nondeterministic polynomial time decidable problems
-- $\text{EXP}$: Exponential time decidable problems
-
-### 2.2 空间复杂性 / Space Complexity
-
-**空间复杂性 / Space Complexity:**
-
-$S_M(n) = \max\{s_M(w): |w| = n\}$
-
-其中 $s_M(w)$ 是图灵机 $M$ 在输入 $w$ 上使用的磁带格子数。
-
-where $s_M(w)$ is the number of tape cells used by Turing machine $M$ on input $w$.
-
-**空间复杂性类 / Space Complexity Classes:**
-
-- $\text{L}$: 对数空间可判定问题
-- $\text{PSPACE}$: 多项式空间可判定问题
-- $\text{EXPSPACE}$: 指数空间可判定问题
-
-### 2.3 P vs NP问题 / P vs NP Problem
-
-**NP完全性 / NP-Completeness:**
-
-问题 $A$ 是NP完全的，如果：
-
-Problem $A$ is NP-complete if:
-
-1. $A \in \text{NP}$
-2. 对于所有 $B \in \text{NP}$，$B \leq_p A$
-
-**NP完全问题 / NP-Complete Problems:**
-
-- SAT (布尔可满足性问题)
-- 3-SAT
-- 哈密顿路径问题
-- 旅行商问题
-
-- SAT (Boolean satisfiability problem)
-- 3-SAT
-- Hamiltonian path problem
-- Traveling salesman problem
+1. **停机问题 / Halting problem / Halteproblem / Problème de l'arrêt**
+2. **波斯特对应问题 / Post correspondence problem / Postsches Korrespondenzproblem / Problème de correspondance de Post**
+3. **希尔伯特第十问题 / Hilbert's tenth problem / Hilberts zehntes Problem / Dixième problème de Hilbert**
+4. **字问题 / Word problem / Wortproblem / Problème du mot**
 
 ---
 
-## 3. 自动机理论 / Automata Theory
+## 3. 复杂性理论 / Complexity Theory / Komplexitätstheorie / Théorie de la complexité
 
-### 3.1 有限自动机 / Finite Automata
+### 3.1 P类问题 / P Class / P-Klasse / Classe P
 
-**确定性有限自动机 / Deterministic Finite Automaton (DFA):**
+**P类定义 / P Class Definition:**
 
-$M = (Q, \Sigma, \delta, q_0, F)$ 其中：
+$$P = \{L : \exists \text{ TM } M \text{ and polynomial } p \text{ such that } M \text{ decides } L \text{ in time } O(p(n))\}$$
 
-$M = (Q, \Sigma, \delta, q_0, F)$ where:
+**P类问题示例 / P Class Examples:**
 
-- $Q$ 是状态集合 / set of states
-- $\Sigma$ 是输入字母表 / input alphabet
-- $\delta: Q \times \Sigma \rightarrow Q$ 是转移函数 / transition function
-- $q_0$ 是初始状态 / initial state
-- $F \subseteq Q$ 是接受状态集合 / set of accept states
+1. **排序问题 / Sorting problem / Sortierproblem / Problème de tri**
+2. **最短路径问题 / Shortest path problem / Kürzester-Pfad-Problem / Problème du plus court chemin**
+3. **线性规划问题 / Linear programming problem / Lineares Programmierungsproblem / Problème de programmation linéaire**
 
-**非确定性有限自动机 / Nondeterministic Finite Automaton (NFA):**
+### 3.2 NP类问题 / NP Class / NP-Klasse / Classe NP
 
-$$\delta: Q \times \Sigma \rightarrow 2^Q$$
+**NP类定义 / NP Class Definition:**
 
-**等价性 / Equivalence:**
+$$NP = \{L : \exists \text{ TM } M \text{ and polynomial } p \text{ such that } L = \{x : \exists y, |y| \leq p(|x|), M(x,y) = 1\}\}$$
 
-对于每个NFA，存在等价的DFA。
+**NP类问题示例 / NP Class Examples:**
 
-For every NFA, there exists an equivalent DFA.
+1. **旅行商问题 / Traveling salesman problem / Problem des Handlungsreisenden / Problème du voyageur de commerce**
+2. **3-SAT问题 / 3-SAT problem / 3-SAT-Problem / Problème 3-SAT**
+3. **子集和问题 / Subset sum problem / Teilsummenproblem / Problème de la somme de sous-ensemble**
 
-### 3.2 下推自动机 / Pushdown Automata
+### 3.3 NP完全问题 / NP-Complete Problems / NP-vollständige Probleme / Problèmes NP-complets
 
-**下推自动机 / Pushdown Automaton (PDA):**
+**NP完全性定义 / NP-Completeness Definition:**
 
-$M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$ 其中：
+语言 $L$ 是NP完全的，如果：
 
-$M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$ where:
+A language $L$ is NP-complete if:
 
-- $\Gamma$ 是栈字母表 / stack alphabet
-- $Z_0$ 是初始栈符号 / initial stack symbol
-- $\delta: Q \times \Sigma \times \Gamma \rightarrow 2^{Q \times \Gamma^*}$
+Eine Sprache $L$ ist NP-vollständig, wenn:
 
-**上下文无关语言 / Context-Free Languages:**
+Un langage $L$ est NP-complet si:
 
-下推自动机识别的语言类。
+1. $L \in NP$
+2. $\forall L' \in NP: L' \leq_p L$
 
-The class of languages recognized by pushdown automata.
+**库克-列文定理 / Cook-Levin Theorem:**
 
-### 3.3 图灵机 / Turing Machines
+3-SAT是NP完全的。
 
-**图灵机 / Turing Machine:**
+3-SAT is NP-complete.
 
-最强大的自动机模型，可以识别递归可枚举语言。
+3-SAT ist NP-vollständig.
 
-The most powerful automaton model, can recognize recursively enumerable languages.
-
-**丘奇-图灵论题 / Church-Turing Thesis:**
-
-任何可计算的函数都可以由图灵机计算。
-
-Any computable function can be computed by a Turing machine.
+3-SAT est NP-complet.
 
 ---
 
-## 4. 形式语言理论 / Formal Language Theory
+## 4. 算法分析 / Algorithm Analysis / Algorithmusanalyse / Analyse d'algorithmes
 
-### 4.1 乔姆斯基层次结构 / Chomsky Hierarchy
+### 4.1 时间复杂度 / Time Complexity / Zeitkomplexität / Complexité temporelle
 
-**正则语言 / Regular Languages (Type 3):**
+**大O记号 / Big O Notation:**
 
-由正则表达式或有限自动机定义。
+$$f(n) = O(g(n)) \Leftrightarrow \exists c, n_0 > 0: \forall n \geq n_0, f(n) \leq c \cdot g(n)$$
 
-Defined by regular expressions or finite automata.
+**常见时间复杂度 / Common Time Complexities:**
 
-**上下文无关语言 / Context-Free Languages (Type 2):**
+- $O(1)$: 常数时间 / Constant time / Konstante Zeit / Temps constant
+- $O(\log n)$: 对数时间 / Logarithmic time / Logarithmische Zeit / Temps logarithmique
+- $O(n)$: 线性时间 / Linear time / Lineare Zeit / Temps linéaire
+- $O(n \log n)$: 线性对数时间 / Linearithmic time / Linear-logarithmische Zeit / Temps linéarithmique
+- $O(n^2)$: 二次时间 / Quadratic time / Quadratische Zeit / Temps quadratique
+- $O(2^n)$: 指数时间 / Exponential time / Exponentielle Zeit / Temps exponentiel
 
-由上下文无关文法定义。
+### 4.2 空间复杂度 / Space Complexity / Speicherkomplexität / Complexité spatiale
 
-Defined by context-free grammars.
+**空间复杂度定义 / Space Complexity Definition:**
 
-**上下文相关语言 / Context-Sensitive Languages (Type 1):**
+算法 $A$ 的空间复杂度是 $A$ 在最坏情况下使用的额外空间量。
 
-由上下文相关文法定义。
+The space complexity of algorithm $A$ is the amount of extra space used by $A$ in the worst case.
 
-Defined by context-sensitive grammars.
+Die Speicherkomplexität des Algorithmus $A$ ist die Menge des zusätzlichen Speichers, die $A$ im schlimmsten Fall verwendet.
 
-**递归可枚举语言 / Recursively Enumerable Languages (Type 0):**
+La complexité spatiale de l'algorithme $A$ est la quantité d'espace supplémentaire utilisée par $A$ dans le pire cas.
 
-由图灵机识别。
+### 4.3 渐近分析 / Asymptotic Analysis / Asymptotische Analyse / Analyse asymptotique
 
-Recognized by Turing machines.
+**渐近记号 / Asymptotic Notations:**
 
-### 4.2 文法 / Grammars
-
-**上下文无关文法 / Context-Free Grammar:**
-
-$G = (V, \Sigma, R, S)$ 其中：
-
-$G = (V, \Sigma, R, S)$ where:
-
-- $V$ 是变元集合 / set of variables
-- $\Sigma$ 是终结符集合 / set of terminals
-- $R$ 是产生式规则集合 / set of production rules
-- $S$ 是起始符号 / start symbol
-
-**产生式规则 / Production Rules:**
-
-$A \rightarrow \alpha$ 其中 $A \in V$，$\alpha \in (V \cup \Sigma)^*$
-
-$A \rightarrow \alpha$ where $A \in V$ and $\alpha \in (V \cup \Sigma)^*$
-
-### 4.3 语言操作 / Language Operations
-
-**并集 / Union:**
-
-$L_1 \cup L_2 = \{w: w \in L_1 \text{ or } w \in L_2\}$
-
-**连接 / Concatenation:**
-
-$L_1 \circ L_2 = \{w_1w_2: w_1 \in L_1, w_2 \in L_2\}$
-
-**克林星 / Kleene Star:**
-
-$L^* = \bigcup_{i=0}^{\infty} L^i$
+1. **大O记号 / Big O:** $f(n) = O(g(n))$
+2. **大Ω记号 / Big Omega:** $f(n) = \Omega(g(n))$
+3. **大Θ记号 / Big Theta:** $f(n) = \Theta(g(n))$
+4. **小o记号 / Little o:** $f(n) = o(g(n))$
+5. **小ω记号 / Little omega:** $f(n) = \omega(g(n))$
 
 ---
 
-## 5. 递归论 / Recursion Theory
+## 5. 并行计算 / Parallel Computing / Parallele Berechnung / Calcul parallèle
 
-### 5.1 原始递归函数 / Primitive Recursive Functions
+### 5.1 并行模型 / Parallel Models / Parallele Modelle / Modèles parallèles
 
-**基本函数 / Basic Functions:**
+**PRAM模型 / PRAM Model:**
 
-- 零函数：$Z(x) = 0$
-- 后继函数：$S(x) = x + 1$
-- 投影函数：$P_i^n(x_1, \ldots, x_n) = x_i$
+PRAM (Parallel Random Access Machine) 是一个并行计算模型，包含多个处理器共享内存。
 
-- Zero function: $Z(x) = 0$
-- Successor function: $S(x) = x + 1$
-- Projection function: $P_i^n(x_1, \ldots, x_n) = x_i$
+PRAM (Parallel Random Access Machine) is a parallel computing model with multiple processors sharing memory.
 
-**组合 / Composition:**
+PRAM (Parallele Random Access Machine) ist ein paralleles Berechnungsmodell mit mehreren Prozessoren, die Speicher teilen.
 
-$f(x_1, \ldots, x_n) = g(h_1(x_1, \ldots, x_n), \ldots, h_m(x_1, \ldots, x_n))$
+PRAM (Machine à Accès Aléatoire Parallèle) est un modèle de calcul parallèle avec plusieurs processeurs partageant la mémoire.
 
-**原始递归 / Primitive Recursion:**
+**PRAM类型 / PRAM Types:**
 
-$f(0, x_2, \ldots, x_n) = g(x_2, \ldots, x_n)$
-$f(x_1 + 1, x_2, \ldots, x_n) = h(x_1, f(x_1, x_2, \ldots, x_n), x_2, \ldots, x_n)$
+1. **EREW-PRAM:** Exclusive Read, Exclusive Write
+2. **CREW-PRAM:** Concurrent Read, Exclusive Write
+3. **CRCW-PRAM:** Concurrent Read, Concurrent Write
 
-### 5.2 一般递归函数 / General Recursive Functions
+### 5.2 并行算法 / Parallel Algorithms / Parallele Algorithmen / Algorithmes parallèles
 
-**$\mu$ 算子 / $\mu$ Operator:**
+**并行归并排序 / Parallel Merge Sort:**
 
-$\mu y[f(x_1, \ldots, x_n, y) = 0] = \text{least } y \text{ such that } f(x_1, \ldots, x_n, y) = 0$
+```rust
+fn parallel_merge_sort<T: Ord + Clone + Send>(data: &[T]) -> Vec<T> {
+    if data.len() <= 1 {
+        return data.to_vec();
+    }
 
-**递归函数 / Recursive Functions:**
+    let mid = data.len() / 2;
+    let (left, right) = data.split_at(mid);
 
-包含所有原始递归函数和$\mu$算子的最小函数类。
+    let (left_sorted, right_sorted) = rayon::join(
+        || parallel_merge_sort(left),
+        || parallel_merge_sort(right)
+    );
 
-The smallest class of functions containing all primitive recursive functions and the $\mu$ operator.
+    merge(&left_sorted, &right_sorted)
+}
 
-### 5.3 递归可枚举集 / Recursively Enumerable Sets
+fn merge<T: Ord + Clone>(left: &[T], right: &[T]) -> Vec<T> {
+    let mut result = Vec::with_capacity(left.len() + right.len());
+    let mut i = 0;
+    let mut j = 0;
 
-**递归可枚举集 / Recursively Enumerable Set:**
+    while i < left.len() && j < right.len() {
+        if left[i] <= right[j] {
+            result.push(left[i].clone());
+            i += 1;
+        } else {
+            result.push(right[j].clone());
+            j += 1;
+        }
+    }
 
-集合 $A$ 是递归可枚举的，如果存在部分递归函数 $f$ 使得：
+    result.extend_from_slice(&left[i..]);
+    result.extend_from_slice(&right[j..]);
+    result
+}
+```
 
-Set $A$ is recursively enumerable if there exists a partial recursive function $f$ such that:
+### 5.3 并行复杂性 / Parallel Complexity / Parallele Komplexität / Complexité parallèle
 
-$A = \text{range}(f) = \{f(x): x \in \mathbb{N}\}$
+**并行时间复杂性 / Parallel Time Complexity:**
 
-**递归集 / Recursive Set:**
+$$T_p(n) = O(T_1(n)/p + \log p)$$
 
-集合 $A$ 是递归的，如果其特征函数是递归的。
+其中 $T_1(n)$ 是串行时间，$p$ 是处理器数量。
 
-Set $A$ is recursive if its characteristic function is recursive.
+where $T_1(n)$ is the serial time and $p$ is the number of processors.
 
----
+wobei $T_1(n)$ die serielle Zeit und $p$ die Anzahl der Prozessoren ist.
 
-## 6. 算法分析 / Algorithm Analysis
-
-### 6.1 渐近分析 / Asymptotic Analysis
-
-**大O记号 / Big-O Notation:**
-
-$f(n) = O(g(n))$ 如果存在常数 $c > 0$ 和 $n_0$ 使得：
-
-$f(n) = O(g(n))$ if there exist constants $c > 0$ and $n_0$ such that:
-
-$f(n) \leq c \cdot g(n)$ 对于所有 $n \geq n_0$
-
-for all $n \geq n_0$
-
-**常见复杂度 / Common Complexities:**
-
-- $O(1)$: 常数时间 / constant time
-- $O(\log n)$: 对数时间 / logarithmic time
-- $O(n)$: 线性时间 / linear time
-- $O(n \log n)$: 线性对数时间 / linearithmic time
-- $O(n^2)$: 二次时间 / quadratic time
-- $O(2^n)$: 指数时间 / exponential time
-
-### 6.2 分治算法 / Divide and Conquer
-
-**分治策略 / Divide and Conquer Strategy:**
-
-1. 分解：将问题分解为子问题
-2. 解决：递归解决子问题
-3. 合并：将子问题的解合并
-
-   1. Divide: decompose problem into subproblems
-   2. Conquer: recursively solve subproblems
-   3. Combine: merge solutions of subproblems
-
-**主定理 / Master Theorem:**
-
-对于递归式 $T(n) = aT(n/b) + f(n)$：
-
-For recurrence $T(n) = aT(n/b) + f(n)$:
-
-$$
-T(n) = \begin{cases}
-O(n^{\log_b a}) & \text{if } f(n) = O(n^{\log_b a - \epsilon}) \\
-O(n^{\log_b a} \log n) & \text{if } f(n) = O(n^{\log_b a}) \\
-O(f(n)) & \text{if } f(n) = \Omega(n^{\log_b a + \epsilon})
-\end{cases}
-$$
-
-### 6.3 动态规划 / Dynamic Programming
-
-**最优子结构 / Optimal Substructure:**
-
-问题的最优解包含其子问题的最优解。
-
-The optimal solution to a problem contains optimal solutions to its subproblems.
-
-**重叠子问题 / Overlapping Subproblems:**
-
-子问题被重复计算。
-
-Subproblems are computed repeatedly.
-
-**记忆化 / Memoization:**
-
-存储已计算的子问题解。
-
-Storing computed subproblem solutions.
+où $T_1(n)$ est le temps sérial et $p$ est le nombre de processeurs.
 
 ---
 
-## 7. 并行计算理论 / Parallel Computation Theory
+## 6. 量子计算 / Quantum Computing / Quantenberechnung / Calcul quantique
 
-### 7.1 PRAM模型 / PRAM Model
+### 6.1 量子比特 / Qubits / Qubits / Qubits
 
-**PRAM / Parallel Random Access Machine:**
+**量子比特定义 / Qubit Definition:**
 
-- 共享内存模型
-- 多个处理器
-- 同步执行
+量子比特是量子计算的基本单位，可以表示为：
 
-- Shared memory model
-- Multiple processors
-- Synchronous execution
+A qubit is the basic unit of quantum computing, which can be represented as:
 
-**PRAM变体 / PRAM Variants:**
+Ein Qubit ist die Grundeinheit der Quantenberechnung, die dargestellt werden kann als:
 
-- EREW: 独占读独占写
-- CREW: 并发读独占写
-- CRCW: 并发读并发写
+Un qubit est l'unité de base du calcul quantique, qui peut être représenté comme:
 
-- EREW: Exclusive read exclusive write
-- CREW: Concurrent read exclusive write
-- CRCW: Concurrent read concurrent write
+$$|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$$
 
-### 7.2 并行复杂性 / Parallel Complexity
+其中 $|\alpha|^2 + |\beta|^2 = 1$。
 
-**NC类 / NC Class:**
+where $|\alpha|^2 + |\beta|^2 = 1$.
 
-$NC = \bigcup_{i=1}^{\infty} NC^i$
+wobei $|\alpha|^2 + |\beta|^2 = 1$.
 
-其中 $NC^i$ 是使用 $O(\log^i n)$ 时间和多项式处理器的可解问题。
+où $|\alpha|^2 + |\beta|^2 = 1$.
 
-where $NC^i$ are problems solvable using $O(\log^i n)$ time and polynomial processors.
+### 6.2 量子门 / Quantum Gates / Quantengatter / Portes quantiques
 
-**P-完全性 / P-Completeness:**
+**Hadamard门 / Hadamard Gate:**
 
-问题 $A$ 是P-完全的，如果：
+$$H = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
 
-Problem $A$ is P-complete if:
+**CNOT门 / CNOT Gate:**
 
-1. $A \in P$
-2. 对于所有 $B \in P$，$B \leq_{NC} A$
+$$CNOT = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}$$
 
-### 7.3 并行算法 / Parallel Algorithms
+### 6.3 量子算法 / Quantum Algorithms / Quantenalgorithmen / Algorithmes quantiques
 
-**并行排序 / Parallel Sorting:**
+**Shor算法 / Shor's Algorithm:**
 
-- 并行归并排序
-- 并行快速排序
-- 并行基数排序
+Shor算法用于分解大整数，时间复杂度为 $O((\log n)^3)$。
 
-- Parallel merge sort
-- Parallel quicksort
-- Parallel radix sort
+Shor's algorithm is used to factor large integers with time complexity $O((\log n)^3)$.
 
-**并行图算法 / Parallel Graph Algorithms:**
+Shors Algorithmus wird verwendet, um große ganze Zahlen zu faktorisieren mit Zeitkomplexität $O((\log n)^3)$.
 
-- 并行BFS
-- 并行DFS
-- 并行最短路径
+L'algorithme de Shor est utilisé pour factoriser de grands entiers avec une complexité temporelle $O((\log n)^3)$.
 
-- Parallel BFS
-- Parallel DFS
-- Parallel shortest path
+**Grover算法 / Grover's Algorithm:**
+
+Grover算法用于非结构化搜索，提供二次加速。
+
+Grover's algorithm is used for unstructured search, providing quadratic speedup.
+
+Grovers Algorithmus wird für unstrukturierte Suche verwendet und bietet quadratische Beschleunigung.
+
+L'algorithme de Grover est utilisé pour la recherche non structurée, fournissant une accélération quadratique.
 
 ---
 
-## 8. 量子计算理论 / Quantum Computation Theory
-
-### 8.1 量子比特 / Qubits
-
-**量子比特 / Qubit:**
-
-$|\psi\rangle = \alpha|0\rangle + \beta|1\rangle$
-
-其中 $|\alpha|^2 + |\beta|^2 = 1$
-
-where $|\alpha|^2 + |\beta|^2 = 1$
-
-**量子门 / Quantum Gates:**
-
-- Hadamard门：$H = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$
-- CNOT门：$\text{CNOT} = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}$
-
-### 8.2 量子算法 / Quantum Algorithms
-
-**Deutsch-Jozsa算法 / Deutsch-Jozsa Algorithm:**
-
-判断函数是否为常数或平衡。
-
-Determine whether a function is constant or balanced.
-
-**Grover算法 / Grover Algorithm:**
-
-在无序数据库中搜索，复杂度 $O(\sqrt{N})$。
-
-Search in unordered database with complexity $O(\sqrt{N})$.
-
-**Shor算法 / Shor Algorithm:**
-
-整数分解，量子多项式时间。
-
-Integer factorization in quantum polynomial time.
-
-### 8.3 量子复杂性 / Quantum Complexity
-
-**BQP类 / BQP Class:**
-
-有界错误量子多项式时间。
-
-Bounded error quantum polynomial time.
-
-**量子优势 / Quantum Advantage:**
-
-某些问题在量子计算机上比经典计算机更高效。
-
-Some problems are more efficient on quantum computers than classical computers.
-
----
-
-## 9. 随机计算 / Randomized Computation
-
-### 9.1 随机算法 / Randomized Algorithms
-
-**Las Vegas算法 / Las Vegas Algorithm:**
-
-总是返回正确答案，运行时间随机。
-
-Always returns correct answer, running time is random.
-
-**Monte Carlo算法 / Monte Carlo Algorithm:**
-
-可能返回错误答案，运行时间确定。
-
-May return incorrect answer, running time is deterministic.
-
-### 9.2 随机复杂性类 / Randomized Complexity Classes
-
-**RP类 / RP Class:**
-
-随机多项式时间，单侧错误。
-
-Randomized polynomial time with one-sided error.
-
-**BPP类 / BPP Class:**
-
-有界错误概率多项式时间。
-
-Bounded error probability polynomial time.
-
-**ZPP类 / ZPP类:**
-
-零错误概率多项式时间。
-
-Zero error probability polynomial time.
-
-### 9.3 随机化技术 / Randomization Techniques
-
-**随机采样 / Random Sampling:**
-
-通过随机采样估计复杂函数的期望值。
-
-Estimate expected value of complex functions through random sampling.
-
-**随机游走 / Random Walks:**
-
-在图或空间中随机移动。
-
-Random movement in graphs or spaces.
-
-**概率放大 / Probability Amplification:**
-
-通过重复运行减少错误概率。
-
-Reduce error probability through repeated runs.
-
----
-
-## 10. 近似算法理论 / Approximation Algorithm Theory
-
-### 10.1 近似比 / Approximation Ratio
-
-**近似比 / Approximation Ratio:**
-
-对于最小化问题：
-
-For minimization problems:
-
-$$\rho = \frac{C_{\text{approx}}}{C_{\text{opt}}}$$
-
-对于最大化问题：
-
-For maximization problems:
-
-$$\rho = \frac{C_{\text{opt}}}{C_{\text{approx}}}$$
-
-### 10.2 近似算法 / Approximation Algorithms
-
-**贪心算法 / Greedy Algorithms:**
-
-- 集合覆盖问题
-- 顶点覆盖问题
-- 旅行商问题
-
-- Set cover problem
-- Vertex cover problem
-- Traveling salesman problem
-
-**线性规划松弛 / Linear Programming Relaxation:**
-
-将整数规划松弛为线性规划。
-
-Relax integer programming to linear programming.
-
-### 10.3 不可近似性 / Inapproximability
-
-**PCP定理 / PCP Theorem:**
-
-$\text{NP} = \text{PCP}(O(\log n), O(1))$
-
-**不可近似结果 / Inapproximability Results:**
-
-某些问题在P≠NP假设下无法有效近似。
-
-Some problems cannot be efficiently approximated under P≠NP assumption.
-
----
-
-## 代码示例 / Code Examples
+## 代码示例 / Code Examples / Codebeispiele / Exemples de code
 
 ### Rust实现：图灵机模拟器
 
 ```rust
 use std::collections::HashMap;
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+# [derive(Debug, Clone, PartialEq, Eq, Hash)]
 enum Direction {
     Left,
     Right,
     Stay,
 }
 
-#[derive(Debug, Clone)]
+# [derive(Debug, Clone)]
 struct Transition {
     next_state: String,
     write_symbol: char,
     direction: Direction,
 }
 
-#[derive(Debug, Clone)]
+# [derive(Debug)]
 struct TuringMachine {
     states: Vec<String>,
     alphabet: Vec<char>,
     tape_alphabet: Vec<char>,
     transitions: HashMap<(String, char), Transition>,
     initial_state: String,
-    accept_states: Vec<String>,
-    reject_states: Vec<String>,
+    blank_symbol: char,
+    accepting_states: Vec<String>,
+    tape: Vec<char>,
+    head_position: usize,
+    current_state: String,
 }
 
 impl TuringMachine {
-    fn new() -> Self {
+    fn new(
+        states: Vec<String>,
+        alphabet: Vec<char>,
+        tape_alphabet: Vec<char>,
+        initial_state: String,
+        blank_symbol: char,
+        accepting_states: Vec<String>,
+    ) -> Self {
         TuringMachine {
-            states: Vec::new(),
-            alphabet: Vec::new(),
-            tape_alphabet: Vec::new(),
+            states,
+            alphabet,
+            tape_alphabet,
             transitions: HashMap::new(),
-            initial_state: String::new(),
-            accept_states: Vec::new(),
-            reject_states: Vec::new(),
+            initial_state: initial_state.clone(),
+            blank_symbol,
+            accepting_states,
+            tape: vec![blank_symbol],
+            head_position: 0,
+            current_state: initial_state,
         }
     }
-    
-    fn add_transition(&mut self, current_state: &str, read_symbol: char, 
-                      next_state: &str, write_symbol: char, direction: Direction) {
-        self.transitions.insert(
-            (current_state.to_string(), read_symbol),
-            Transition {
-                next_state: next_state.to_string(),
-                write_symbol,
-                direction,
+
+    fn add_transition(&mut self, current_state: String, read_symbol: char,
+                      next_state: String, write_symbol: char, direction: Direction) {
+        self.transitions.insert((current_state, read_symbol),
+                               Transition { next_state, write_symbol, direction });
+    }
+
+    fn step(&mut self) -> bool {
+        let current_symbol = self.tape[self.head_position];
+
+        if let Some(transition) = self.transitions.get(&(self.current_state.clone(), current_symbol)) {
+            // 写入符号 / Write symbol / Symbol schreiben / Écrire le symbole
+            self.tape[self.head_position] = transition.write_symbol;
+
+            // 移动读写头 / Move head / Kopf bewegen / Déplacer la tête
+            match transition.direction {
+                Direction::Left => {
+                    if self.head_position == 0 {
+                        self.tape.insert(0, self.blank_symbol);
+                    } else {
+                        self.head_position -= 1;
+                    }
+                },
+                Direction::Right => {
+                    self.head_position += 1;
+                    if self.head_position >= self.tape.len() {
+                        self.tape.push(self.blank_symbol);
+                    }
+                },
+                Direction::Stay => {},
             }
-        );
+
+            // 更新状态 / Update state / Zustand aktualisieren / Mettre à jour l'état
+            self.current_state = transition.next_state.clone();
+            true
+        } else {
+            false
+        }
     }
-    
-    fn run(&self, input: &str) -> bool {
-        let mut tape: Vec<char> = input.chars().collect();
-        let mut head_position = 0;
-        let mut current_state = self.initial_state.clone();
-        
-        // 扩展磁带
-        while head_position >= tape.len() {
-            tape.push('_');
-        }
-        while head_position < 0 {
-            tape.insert(0, '_');
-            head_position += 1;
-        }
-        
+
+    fn run(&mut self, input: &str) -> bool {
+        // 初始化带 / Initialize tape / Band initialisieren / Initialiser la bande
+        self.tape = input.chars().collect();
+        self.tape.push(self.blank_symbol);
+        self.head_position = 0;
+        self.current_state = self.initial_state.clone();
+
+        // 运行图灵机 / Run Turing machine / Turingmaschine ausführen / Exécuter la machine de Turing
         let mut steps = 0;
-        let max_steps = 10000; // 防止无限循环
-        
+        let max_steps = 10000; // 防止无限循环 / Prevent infinite loop / Verhindere Endlosschleife / Empêcher la boucle infinie
+
         while steps < max_steps {
-            let current_symbol = tape[head_position];
-            
-            // 检查是否在接受或拒绝状态
-            if self.accept_states.contains(&current_state) {
-                return true;
+            if !self.step() {
+                break;
             }
-            if self.reject_states.contains(&current_state) {
-                return false;
-            }
-            
-            // 查找转移
-            let key = (current_state.clone(), current_symbol);
-            if let Some(transition) = self.transitions.get(&key) {
-                // 执行转移
-                tape[head_position] = transition.write_symbol;
-                current_state = transition.next_state.clone();
-                
-                match transition.direction {
-                    Direction::Left => head_position -= 1,
-                    Direction::Right => head_position += 1,
-                    Direction::Stay => {},
-                }
-                
-                // 扩展磁带
-                while head_position >= tape.len() {
-                    tape.push('_');
-                }
-                while head_position < 0 {
-                    tape.insert(0, '_');
-                    head_position += 1;
-                }
-            } else {
-                // 没有转移，停机
-                return false;
-            }
-            
             steps += 1;
         }
-        
-        false // 超过最大步数
-    }
-}
 
-fn create_palindrome_checker() -> TuringMachine {
-    let mut tm = TuringMachine::new();
-    
-    // 设置状态和字母表
-    tm.states = vec!["q0".to_string(), "q1".to_string(), "q2".to_string(), 
-                     "q3".to_string(), "q4".to_string(), "q_accept".to_string(), 
-                     "q_reject".to_string()];
-    tm.alphabet = vec!['0', '1'];
-    tm.tape_alphabet = vec!['0', '1', '_', 'X', 'Y'];
-    tm.initial_state = "q0".to_string();
-    tm.accept_states = vec!["q_accept".to_string()];
-    tm.reject_states = vec!["q_reject".to_string()];
-    
-    // 添加转移规则（简化的回文检查器）
-    tm.add_transition("q0", '0', "q1", 'X', Direction::Right);
-    tm.add_transition("q0", '1', "q2", 'Y', Direction::Right);
-    tm.add_transition("q0", '_', "q_accept", '_', Direction::Stay);
-    
-    tm.add_transition("q1", '0', "q1", '0', Direction::Right);
-    tm.add_transition("q1", '1', "q1", '1', Direction::Right);
-    tm.add_transition("q1", '_', "q3", '_', Direction::Left);
-    
-    tm.add_transition("q2", '0', "q2", '0', Direction::Right);
-    tm.add_transition("q2", '1', "q2", '1', Direction::Right);
-    tm.add_transition("q2", '_', "q4", '_', Direction::Left);
-    
-    tm.add_transition("q3", '0', "q3", '0', Direction::Left);
-    tm.add_transition("q3", '1', "q_reject", '1', Direction::Stay);
-    tm.add_transition("q3", 'X', "q0", 'X', Direction::Right);
-    
-    tm.add_transition("q4", '0', "q_reject", '0', Direction::Stay);
-    tm.add_transition("q4", '1', "q4", '1', Direction::Left);
-    tm.add_transition("q4", 'Y', "q0", 'Y', Direction::Right);
-    
-    tm
+        // 检查是否接受 / Check acceptance / Akzeptanz prüfen / Vérifier l'acceptation
+        self.accepting_states.contains(&self.current_state)
+    }
+
+    fn get_tape_content(&self) -> String {
+        self.tape.iter().collect()
+    }
 }
 
 fn main() {
-    let tm = create_palindrome_checker();
-    
-    // 测试回文检查器
-    let test_cases = vec!["", "0", "1", "00", "11", "01", "10", "000", "111", "010"];
-    
-    for test_case in test_cases {
-        let result = tm.run(test_case);
-        println!("输入: '{}', 结果: {}", test_case, result);
-    }
+    // 创建图灵机 / Create Turing machine / Turingmaschine erstellen / Créer la machine de Turing
+    let mut tm = TuringMachine::new(
+        vec!["q0".to_string(), "q1".to_string(), "q2".to_string()],
+        vec!['0', '1'],
+        vec!['0', '1', 'B'],
+        "q0".to_string(),
+        'B',
+        vec!["q2".to_string()],
+    );
+
+    // 添加转移规则 / Add transition rules / Übergangsregeln hinzufügen / Ajouter les règles de transition
+    tm.add_transition("q0".to_string(), '0', "q1".to_string(), '1', Direction::Right);
+    tm.add_transition("q0".to_string(), '1', "q0".to_string(), '1', Direction::Right);
+    tm.add_transition("q1".to_string(), '0', "q1".to_string(), '0', Direction::Right);
+    tm.add_transition("q1".to_string(), '1', "q2".to_string(), '1', Direction::Right);
+    tm.add_transition("q1".to_string(), 'B', "q2".to_string(), 'B', Direction::Stay);
+
+    // 运行图灵机 / Run Turing machine / Turingmaschine ausführen / Exécuter la machine de Turing
+    let input = "1001";
+    let result = tm.run(input);
+
+    println!("输入: {}", input);
+    println!("输出: {}", tm.get_tape_content());
+    println!("接受: {}", result);
 }
 ```
 
-### Haskell实现：计算复杂性分析
+### Haskell实现：递归函数
 
 ```haskell
-import Data.List (sort, foldl')
-import Data.Map (Map, fromList, (!))
+-- 递归函数类型 / Recursive function types / Rekursive Funktionstypen / Types de fonctions récursives
+data RecursiveFunction =
+    Zero
+  | Successor
+  | Projection Int Int
+  | Composition RecursiveFunction [RecursiveFunction]
+  | PrimitiveRecursion RecursiveFunction RecursiveFunction
+  | Minimization RecursiveFunction
+  deriving (Show)
 
--- 算法复杂度分析
-data Complexity = O1 | OLogN | ON | ONLogN | ON2 | ON3 | O2N deriving (Show, Eq)
+-- 递归函数求值 / Recursive function evaluation / Rekursive Funktionsauswertung / Évaluation de fonction récursive
+evalRecursive :: RecursiveFunction -> [Integer] -> Integer
+evalRecursive func args = case func of
+    Zero -> 0
+    Successor -> head args + 1
+    Projection i n -> args !! (i - 1)
+    Composition f gs ->
+        let gResults = map (\g -> evalRecursive g args) gs
+        in evalRecursive f gResults
+    PrimitiveRecursion f g ->
+        let x = head args
+            y = args !! 1
+            otherArgs = drop 2 args
+        in if y == 0
+           then evalRecursive f (x:otherArgs)
+           else evalRecursive g (x:(y-1):(evalRecursive (PrimitiveRecursion f g) (x:(y-1):otherArgs)):otherArgs)
+    Minimization f ->
+        let x = head args
+            otherArgs = drop 1 args
+        in findMin f x otherArgs
 
--- 算法分析结果
-data AlgorithmAnalysis = AlgorithmAnalysis {
-    name :: String,
-    timeComplexity :: Complexity,
-    spaceComplexity :: Complexity,
-    isOptimal :: Bool
-} deriving Show
+-- 寻找最小值 / Find minimum / Minimum finden / Trouver le minimum
+findMin :: RecursiveFunction -> Integer -> [Integer] -> Integer
+findMin f x args =
+    let y = 0
+    in if evalRecursive f (y:args) == 0
+       then y
+       else findMin f x args + 1
 
--- 排序算法分析
-sortingAlgorithms :: [AlgorithmAnalysis]
-sortingAlgorithms = [
-    AlgorithmAnalysis "Bubble Sort" ON2 ON False,
-    AlgorithmAnalysis "Insertion Sort" ON2 O1 False,
-    AlgorithmAnalysis "Selection Sort" ON2 O1 False,
-    AlgorithmAnalysis "Merge Sort" ONLogN ON True,
-    AlgorithmAnalysis "Quick Sort" ONLogN OLogN True,
-    AlgorithmAnalysis "Heap Sort" ONLogN O1 True,
-    AlgorithmAnalysis "Counting Sort" ON ON False,
-    AlgorithmAnalysis "Radix Sort" ON ON False
-]
+-- 基本递归函数 / Basic recursive functions / Grundlegende rekursive Funktionen / Fonctions récursives de base
+zero :: RecursiveFunction
+zero = Zero
 
--- 搜索算法分析
-searchAlgorithms :: [AlgorithmAnalysis]
-searchAlgorithms = [
-    AlgorithmAnalysis "Linear Search" ON O1 False,
-    AlgorithmAnalysis "Binary Search" OLogN O1 True,
-    AlgorithmAnalysis "Hash Table Search" O1 ON False
-]
+successor :: RecursiveFunction
+successor = Successor
 
--- 图算法分析
-graphAlgorithms :: [AlgorithmAnalysis]
-graphAlgorithms = [
-    AlgorithmAnalysis "BFS" ON ON False,
-    AlgorithmAnalysis "DFS" ON ON False,
-    AlgorithmAnalysis "Dijkstra" ON2 ON False,
-    AlgorithmAnalysis "Floyd-Warshall" ON3 ON False,
-    AlgorithmAnalysis "Prim's MST" ON2 ON False,
-    AlgorithmAnalysis "Kruskal's MST" ONLogN ON False
-]
+projection :: Int -> Int -> RecursiveFunction
+projection i n = Projection i n
 
--- 复杂度比较
-compareComplexity :: Complexity -> Complexity -> Ordering
-compareComplexity a b = case (a, b) of
-    (O1, _) -> LT
-    (OLogN, O1) -> GT
-    (OLogN, _) -> LT
-    (ON, O1) -> GT
-    (ON, OLogN) -> GT
-    (ON, _) -> LT
-    (ONLogN, O1) -> GT
-    (ONLogN, OLogN) -> GT
-    (ONLogN, ON) -> GT
-    (ONLogN, _) -> LT
-    (ON2, O1) -> GT
-    (ON2, OLogN) -> GT
-    (ON2, ON) -> GT
-    (ON2, ONLogN) -> GT
-    (ON2, _) -> LT
-    (ON3, O2N) -> LT
-    (ON3, _) -> GT
-    (O2N, _) -> GT
+-- 复合函数 / Composition function / Kompositionsfunktion / Fonction de composition
+compose :: RecursiveFunction -> [RecursiveFunction] -> RecursiveFunction
+compose f gs = Composition f gs
 
--- 最优算法筛选
-optimalAlgorithms :: [AlgorithmAnalysis] -> [AlgorithmAnalysis]
-optimalAlgorithms = filter isOptimal
+-- 原始递归 / Primitive recursion / Primitive Rekursion / Récursion primitive
+primitiveRecursion :: RecursiveFunction -> RecursiveFunction -> RecursiveFunction
+primitiveRecursion f g = PrimitiveRecursion f g
 
--- 按复杂度排序
-sortByComplexity :: [AlgorithmAnalysis] -> [AlgorithmAnalysis]
-sortByComplexity = sortBy (\a b -> compareComplexity (timeComplexity a) (timeComplexity b))
+-- μ递归 / μ-recursion / μ-Rekursion / μ-récursion
+minimization :: RecursiveFunction -> RecursiveFunction
+minimization f = Minimization f
 
--- 复杂度统计
-complexityStats :: [AlgorithmAnalysis] -> Map Complexity Int
-complexityStats algorithms = foldl' (\acc alg -> 
-    let comp = timeComplexity alg
-        count = maybe 0 id (lookup comp acc) + 1
-    in (comp, count) : delete comp acc) [] algorithms
+-- 示例函数 / Example functions / Beispielfunktionen / Fonctions d'exemple
+-- 加法函数 / Addition function / Additionsfunktion / Fonction d'addition
+addition :: RecursiveFunction
+addition = primitiveRecursion
+    (projection 1 1)  -- f(x) = x
+    (successor `compose` [projection 3 3])  -- g(x, y, z) = S(z)
 
--- 示例
+-- 乘法函数 / Multiplication function / Multiplikationsfunktion / Fonction de multiplication
+multiplication :: RecursiveFunction
+multiplication = primitiveRecursion
+    zero  -- f(x) = 0
+    (addition `compose` [projection 1 3, projection 3 3])  -- g(x, y, z) = add(x, z)
+
+-- 阶乘函数 / Factorial function / Fakultätsfunktion / Fonction factorielle
+factorial :: RecursiveFunction
+factorial = primitiveRecursion
+    (successor `compose` [zero])  -- f() = 1
+    (multiplication `compose` [successor `compose` [projection 2 2], projection 3 3])  -- g(x, y, z) = mult(S(x), z)
+
+-- 主函数 / Main function / Hauptfunktion / Fonction principale
 main :: IO ()
 main = do
-    putStrLn "排序算法分析:"
-    mapM_ print sortingAlgorithms
-    
-    putStrLn "\n最优排序算法:"
-    mapM_ print (optimalAlgorithms sortingAlgorithms)
-    
-    putStrLn "\n按复杂度排序的搜索算法:"
-    mapM_ print (sortByComplexity searchAlgorithms)
-    
-    putStrLn "\n图算法复杂度统计:"
-    let stats = complexityStats graphAlgorithms
-    mapM_ print (toList stats)
-    
-    putStrLn "\n计算理论总结:"
-    putStrLn "- P类: 多项式时间可解问题"
-    putStrLn "- NP类: 非确定性多项式时间可解问题"
-    putStrLn "- NP完全问题: 最难的NP问题"
-    putStrLn "- 可计算性: 图灵机可计算的问题"
-    putStrLn "- 不可计算问题: 停机问题等"
+    putStrLn "=== 递归函数示例 / Recursive Function Examples ==="
+
+    -- 测试加法 / Test addition / Addition testen / Tester l'addition
+    let addResult = evalRecursive addition [3, 4]
+    putStrLn $ "3 + 4 = " ++ show addResult
+
+    -- 测试乘法 / Test multiplication / Multiplikation testen / Tester la multiplication
+    let mulResult = evalRecursive multiplication [3, 4]
+    putStrLn $ "3 * 4 = " ++ show mulResult
+
+    -- 测试阶乘 / Test factorial / Fakultät testen / Tester la factorielle
+    let factResult = evalRecursive factorial [5]
+    putStrLn $ "5! = " ++ show factResult
+
+    putStrLn "\n=== 可计算性验证 / Computability Verification ==="
+
+    -- 验证原始递归函数 / Verify primitive recursive functions / Primitive rekursive Funktionen verifizieren / Vérifier les fonctions récursives primitives
+    putStrLn "所有原始递归函数都是可计算的"
+    putStrLn "All primitive recursive functions are computable"
+    putStrLn "Alle primitiv rekursiven Funktionen sind berechenbar"
+    putStrLn "Toutes les fonctions récursives primitives sont calculables"
 ```
 
 ---
 
-## 参考文献 / References
+## 参考文献 / References / Literatur / Références
 
-1. Sipser, M. (2013). *Introduction to the Theory of Computation*. Cengage Learning.
-2. Hopcroft, J. E., Motwani, R., & Ullman, J. D. (2006). *Introduction to Automata Theory, Languages, and Computation*. Pearson.
-3. Arora, S., & Barak, B. (2009). *Computational Complexity: A Modern Approach*. Cambridge University Press.
-4. Papadimitriou, C. H. (1994). *Computational Complexity*. Addison-Wesley.
-5. Rogers, H. (1987). *Theory of Recursive Functions and Effective Computability*. MIT Press.
-6. Cormen, T. H., et al. (2009). *Introduction to Algorithms*. MIT Press.
-7. Nielsen, M. A., & Chuang, I. L. (2010). *Quantum Computation and Quantum Information*. Cambridge University Press.
-8. Motwani, R., & Raghavan, P. (1995). *Randomized Algorithms*. Cambridge University Press.
-9. Vazirani, V. V. (2001). *Approximation Algorithms*. Springer.
+1. **中文 / Chinese:**
+   - 王浩 (1981). *数理逻辑*. 科学出版社.
+   - 张锦文 (1997). *集合论与连续统假设*. 科学出版社.
+   - 华罗庚 (1979). *高等数学引论*. 科学出版社.
+
+2. **English:**
+   - Sipser, M. (2012). *Introduction to the Theory of Computation*. Cengage Learning.
+   - Hopcroft, J. E., & Ullman, J. D. (1979). *Introduction to Automata Theory, Languages, and Computation*. Addison-Wesley.
+   - Papadimitriou, C. H. (1994). *Computational Complexity*. Addison-Wesley.
+
+3. **Deutsch / German:**
+   - Hopcroft, J. E., Motwani, R., & Ullman, J. D. (2001). *Einführung in die Automatentheorie, formale Sprachen und Komplexitätstheorie*. Pearson.
+   - Wegener, I. (2005). *Komplexitätstheorie*. Springer.
+   - Schöning, U. (2008). *Theoretische Informatik - kurzgefasst*. Spektrum.
+
+4. **Français / French:**
+   - Aho, A. V., Hopcroft, J. E., & Ullman, J. D. (1974). *The Design and Analysis of Computer Algorithms*. Addison-Wesley.
+   - Garey, M. R., & Johnson, D. S. (1979). *Computers and Intractability: A Guide to the Theory of NP-Completeness*. W.H. Freeman.
+   - Papadimitriou, C. H. (2003). *Computational Complexity*. Addison-Wesley.
 
 ---
 
-*本模块为FormalAI提供了坚实的计算理论基础，涵盖了从可计算性到复杂性的完整理论体系。*
+*本模块为FormalAI提供了完整的计算理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的算法设计和复杂性分析提供了严格的数学基础。*

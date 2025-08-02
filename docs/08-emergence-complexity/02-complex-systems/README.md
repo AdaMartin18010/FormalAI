@@ -1,1112 +1,977 @@
-# 复杂系统理论 / Complex Systems Theory
+# 8.2 复杂系统 / Complex Systems
 
 ## 概述 / Overview
 
-复杂系统理论研究由大量相互作用的组件组成的系统，这些系统表现出涌现性质、非线性动力学和自组织行为。本文档涵盖复杂系统的理论基础、分析方法和对AI系统的影响。
+复杂系统理论研究由大量相互作用的组件组成的系统行为，为FormalAI提供涌现和自组织现象的理论基础。
 
-Complex systems theory studies systems composed of large numbers of interacting components that exhibit emergent properties, nonlinear dynamics, and self-organizing behavior. This document covers the theoretical foundations, analytical methods, and implications for AI systems.
+Complex systems theory studies the behavior of systems composed of large numbers of interacting components, providing theoretical foundations for emergence and self-organization phenomena in FormalAI.
 
 ## 目录 / Table of Contents
 
-- [复杂系统理论 / Complex Systems Theory](#复杂系统理论--complex-systems-theory)
+- [8.2 复杂系统 / Complex Systems](#82-复杂系统--complex-systems)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
-  - [1. 复杂系统基础 / Complex Systems Foundations](#1-复杂系统基础--complex-systems-foundations)
-    - [1.1 复杂系统定义 / Complex System Definition](#11-复杂系统定义--complex-system-definition)
-    - [1.2 复杂系统特征 / Complex System Characteristics](#12-复杂系统特征--complex-system-characteristics)
-    - [1.3 复杂系统分类 / Complex System Classification](#13-复杂系统分类--complex-system-classification)
-  - [2. 涌现性质 / Emergent Properties](#2-涌现性质--emergent-properties)
-    - [2.1 涌现定义 / Emergence Definition](#21-涌现定义--emergence-definition)
-    - [2.2 涌现类型 / Types of Emergence](#22-涌现类型--types-of-emergence)
-    - [2.3 涌现检测 / Emergence Detection](#23-涌现检测--emergence-detection)
-  - [3. 非线性动力学 / Nonlinear Dynamics](#3-非线性动力学--nonlinear-dynamics)
-    - [3.1 非线性系统 / Nonlinear Systems](#31-非线性系统--nonlinear-systems)
-    - [3.2 混沌理论 / Chaos Theory](#32-混沌理论--chaos-theory)
-    - [3.3 分岔理论 / Bifurcation Theory](#33-分岔理论--bifurcation-theory)
-  - [4. 自组织 / Self-Organization](#4-自组织--self-organization)
-    - [4.1 自组织定义 / Self-Organization Definition](#41-自组织定义--self-organization-definition)
-    - [4.2 自组织机制 / Self-Organization Mechanisms](#42-自组织机制--self-organization-mechanisms)
-    - [4.3 自组织控制 / Self-Organization Control](#43-自组织控制--self-organization-control)
-  - [5. 网络科学 / Network Science](#5-网络科学--network-science)
-    - [5.1 网络结构 / Network Structure](#51-网络结构--network-structure)
-    - [5.2 网络动力学 / Network Dynamics](#52-网络动力学--network-dynamics)
-    - [5.3 网络分析 / Network Analysis](#53-网络分析--network-analysis)
-  - [6. 信息论方法 / Information-Theoretic Methods](#6-信息论方法--information-theoretic-methods)
-    - [6.1 信息熵 / Information Entropy](#61-信息熵--information-entropy)
-    - [6.2 互信息 / Mutual Information](#62-互信息--mutual-information)
-    - [6.3 信息流 / Information Flow](#63-信息流--information-flow)
-  - [7. 统计物理学方法 / Statistical Physics Methods](#7-统计物理学方法--statistical-physics-methods)
-    - [7.1 相变理论 / Phase Transition Theory](#71-相变理论--phase-transition-theory)
-    - [7.2 临界现象 / Critical Phenomena](#72-临界现象--critical-phenomena)
-    - [7.3 集体行为 / Collective Behavior](#73-集体行为--collective-behavior)
-  - [8. AI中的复杂系统 / Complex Systems in AI](#8-ai中的复杂系统--complex-systems-in-ai)
-    - [8.1 神经网络复杂性 / Neural Network Complexity](#81-神经网络复杂性--neural-network-complexity)
-    - [8.2 多智能体系统 / Multi-Agent Systems](#82-多智能体系统--multi-agent-systems)
-    - [8.3 分布式AI / Distributed AI](#83-分布式ai--distributed-ai)
+  - [1. 系统动力学 / System Dynamics](#1-系统动力学--system-dynamics)
+    - [1.1 动力学方程 / Dynamical Equations](#11-动力学方程--dynamical-equations)
+    - [1.2 稳定性分析 / Stability Analysis](#12-稳定性分析--stability-analysis)
+    - [1.3 混沌理论 / Chaos Theory](#13-混沌理论--chaos-theory)
+  - [2. 网络理论 / Network Theory](#2-网络理论--network-theory)
+    - [2.1 网络表示 / Network Representation](#21-网络表示--network-representation)
+    - [2.2 网络模型 / Network Models](#22-网络模型--network-models)
+    - [2.3 网络动力学 / Network Dynamics](#23-网络动力学--network-dynamics)
+  - [3. 自组织 / Self-Organization](#3-自组织--self-organization)
+    - [3.1 自组织原理 / Self-Organization Principles](#31-自组织原理--self-organization-principles)
+    - [3.2 模式形成 / Pattern Formation](#32-模式形成--pattern-formation)
+    - [3.3 集体行为 / Collective Behavior](#33-集体行为--collective-behavior)
+  - [4. 临界现象 / Critical Phenomena](#4-临界现象--critical-phenomena)
+    - [4.1 临界点 / Critical Points](#41-临界点--critical-points)
+    - [4.2 标度律 / Scaling Laws](#42-标度律--scaling-laws)
+    - [4.3 临界指数 / Critical Exponents](#43-临界指数--critical-exponents)
+  - [5. 相变理论 / Phase Transition Theory](#5-相变理论--phase-transition-theory)
+    - [5.1 相变类型 / Phase Transition Types](#51-相变类型--phase-transition-types)
+    - [5.2 朗道理论 / Landau Theory](#52-朗道理论--landau-theory)
+    - [5.3 重正化群 / Renormalization Group](#53-重正化群--renormalization-group)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：复杂系统模拟器](#rust实现复杂系统模拟器)
-    - [Haskell实现：涌现检测算法](#haskell实现涌现检测算法)
+    - [Rust实现：复杂系统模拟](#rust实现复杂系统模拟)
+    - [Haskell实现：复杂系统](#haskell实现复杂系统)
   - [参考文献 / References](#参考文献--references)
 
 ---
 
-## 1. 复杂系统基础 / Complex Systems Foundations
+## 1. 系统动力学 / System Dynamics
 
-### 1.1 复杂系统定义 / Complex System Definition
+### 1.1 动力学方程 / Dynamical Equations
 
-**复杂系统形式化定义 / Formal Definition of Complex System:**
-
-复杂系统可以定义为：
-
-A complex system can be defined as:
-
-$$\mathcal{CS} = \langle \mathcal{C}, \mathcal{I}, \mathcal{E}, \mathcal{D} \rangle$$
-
-其中：
-
-- $\mathcal{C}$ 是组件集合 / set of components
-- $\mathcal{I}$ 是交互关系 / interaction relations
-- $\mathcal{E}$ 是涌现性质 / emergent properties
-- $\mathcal{D}$ 是动力学规则 / dynamical rules
-
-**复杂性度量 / Complexity Measures:**
-
-$$\text{Complexity}(S) = \text{Entropy}(S) \times \text{Structure}(S) \times \text{Interactions}(S)$$
-
-### 1.2 复杂系统特征 / Complex System Characteristics
-
-**基本特征 / Basic Characteristics:**
-
-1. **涌现性 / Emergence:** $\text{Emergent\_Properties}(S)$
-2. **非线性 / Nonlinearity:** $\text{Nonlinear\_Dynamics}(S)$
-3. **自组织 / Self-Organization:** $\text{Self\_Organization}(S)$
-4. **适应性 / Adaptability:** $\text{Adaptation}(S)$
-5. **鲁棒性 / Robustness:** $\text{Robustness}(S)$
-
-**复杂系统建模 / Complex System Modeling:**
-
-```rust
-struct ComplexSystem {
-    components: Vec<Component>,
-    interactions: Vec<Interaction>,
-    dynamics: Dynamics,
-    emergent_properties: Vec<EmergentProperty>,
-}
-
-impl ComplexSystem {
-    fn new() -> Self {
-        ComplexSystem {
-            components: Vec::new(),
-            interactions: Vec::new(),
-            dynamics: Dynamics::new(),
-            emergent_properties: Vec::new(),
-        }
-    }
-    
-    fn add_component(&mut self, component: Component) {
-        self.components.push(component);
-    }
-    
-    fn add_interaction(&mut self, interaction: Interaction) {
-        self.interactions.push(interaction);
-    }
-    
-    fn evolve(&mut self, time_steps: usize) {
-        for _ in 0..time_steps {
-            self.update_dynamics();
-            self.detect_emergence();
-        }
-    }
-    
-    fn update_dynamics(&mut self) {
-        // 更新系统动力学
-        for component in &mut self.components {
-            component.update_state(&self.interactions);
-        }
-    }
-    
-    fn detect_emergence(&mut self) {
-        // 检测涌现性质
-        let emergent_properties = self.analyzer.detect_emergence(&self.components);
-        self.emergent_properties = emergent_properties;
-    }
-}
-```
-
-### 1.3 复杂系统分类 / Complex System Classification
-
-**分类标准 / Classification Criteria:**
-
-1. **规模 / Scale:** $\text{Small\_Scale} \lor \text{Large\_Scale}$
-2. **连接性 / Connectivity:** $\text{Sparse} \lor \text{Dense}$
-3. **动力学 / Dynamics:** $\text{Linear} \lor \text{Nonlinear}$
-4. **时间尺度 / Time Scale:** $\text{Fast} \lor \text{Slow}$
-
----
-
-## 2. 涌现性质 / Emergent Properties
-
-### 2.1 涌现定义 / Emergence Definition
-
-**涌现的形式化定义 / Formal Definition of Emergence:**
-
-涌现性质是系统整体具有但个体组件不具备的属性：
-
-Emergent properties are attributes that the system as a whole possesses but individual components do not:
-
-$$\mathcal{E}(S) = \exists P: P(S) \land \forall c \in \mathcal{C}: \neg P(c)$$
-
-**涌现强度 / Emergence Strength:**
-
-$$\text{Emergence\_Strength}(P, S) = \frac{\text{Novelty}(P, S)}{\text{Complexity}(S)}$$
-
-### 2.2 涌现类型 / Types of Emergence
-
-**弱涌现 / Weak Emergence:**
-
-$$\mathcal{E}_{weak}(S) = \text{Predictable}(P, S) \land \text{Reducible}(P, S)$$
-
-**强涌现 / Strong Emergence:**
-
-$$\mathcal{E}_{strong}(S) = \text{Unpredictable}(P, S) \land \text{Irreducible}(P, S)$$
-
-**涌现检测算法 / Emergence Detection Algorithm:**
-
-```rust
-struct EmergenceDetector {
-    novelty_analyzer: NoveltyAnalyzer,
-    complexity_calculator: ComplexityCalculator,
-    predictability_assessor: PredictabilityAssessor,
-}
-
-impl EmergenceDetector {
-    fn detect_emergence(&self, system: &ComplexSystem) -> Vec<EmergentProperty> {
-        let mut emergent_properties = Vec::new();
-        
-        // 检测弱涌现
-        let weak_emergence = self.detect_weak_emergence(system);
-        emergent_properties.extend(weak_emergence);
-        
-        // 检测强涌现
-        let strong_emergence = self.detect_strong_emergence(system);
-        emergent_properties.extend(strong_emergence);
-        
-        emergent_properties
-    }
-    
-    fn detect_weak_emergence(&self, system: &ComplexSystem) -> Vec<EmergentProperty> {
-        let mut weak_emergence = Vec::new();
-        
-        for property in &system.potential_properties {
-            if self.is_predictable(property, system) && self.is_reducible(property, system) {
-                weak_emergence.push(EmergentProperty {
-                    name: property.name.clone(),
-                    type_: EmergenceType::Weak,
-                    strength: self.calculate_emergence_strength(property, system),
-                });
-            }
-        }
-        
-        weak_emergence
-    }
-    
-    fn detect_strong_emergence(&self, system: &ComplexSystem) -> Vec<EmergentProperty> {
-        let mut strong_emergence = Vec::new();
-        
-        for property in &system.potential_properties {
-            if !self.is_predictable(property, system) && !self.is_reducible(property, system) {
-                strong_emergence.push(EmergentProperty {
-                    name: property.name.clone(),
-                    type_: EmergenceType::Strong,
-                    strength: self.calculate_emergence_strength(property, system),
-                });
-            }
-        }
-        
-        strong_emergence
-    }
-}
-```
-
-### 2.3 涌现检测 / Emergence Detection
-
-**涌现检测方法 / Emergence Detection Methods:**
-
-1. **统计检测 / Statistical Detection:** $\text{Statistical\_Analysis}$
-2. **信息论检测 / Information-Theoretic Detection:** $\text{Information\_Analysis}$
-3. **动力学检测 / Dynamical Detection:** $\text{Dynamical\_Analysis}$
-
----
-
-## 3. 非线性动力学 / Nonlinear Dynamics
-
-### 3.1 非线性系统 / Nonlinear Systems
-
-**非线性系统定义 / Nonlinear System Definition:**
+**常微分方程 / Ordinary Differential Equations:**
 
 $$\frac{dx}{dt} = f(x, t)$$
 
-其中 $f$ 是非线性函数。
+其中 $x$ 是状态向量，$f$ 是动力学函数。
 
-where $f$ is a nonlinear function.
+where $x$ is the state vector and $f$ is the dynamical function.
 
-**非线性特征 / Nonlinear Characteristics:**
+**偏微分方程 / Partial Differential Equations:**
 
-1. **蝴蝶效应 / Butterfly Effect:** $\text{Sensitive\_Dependence}$
-2. **吸引子 / Attractors:** $\text{Stable\_States}$
-3. **分形 / Fractals:** $\text{Self\_Similarity}$
+$$\frac{\partial u}{\partial t} = D\nabla^2 u + f(u)$$
 
-### 3.2 混沌理论 / Chaos Theory
+其中 $u$ 是场变量，$D$ 是扩散系数。
+
+where $u$ is the field variable and $D$ is the diffusion coefficient.
+
+**耦合系统 / Coupled Systems:**
+
+$$\frac{dx_i}{dt} = f_i(x_1, x_2, ..., x_n) + \sum_{j=1}^n c_{ij}g(x_i, x_j)$$
+
+其中 $c_{ij}$ 是耦合强度。
+
+where $c_{ij}$ is the coupling strength.
+
+### 1.2 稳定性分析 / Stability Analysis
+
+**线性稳定性 / Linear Stability:**
+
+$$\frac{d\delta x}{dt} = J \delta x$$
+
+其中 $J$ 是雅可比矩阵。
+
+where $J$ is the Jacobian matrix.
+
+**李雅普诺夫稳定性 / Lyapunov Stability:**
+
+$$\frac{dV}{dt} \leq 0$$
+
+其中 $V$ 是李雅普诺夫函数。
+
+where $V$ is the Lyapunov function.
+
+**分岔理论 / Bifurcation Theory:**
+
+$$\frac{dx}{dt} = f(x, \mu)$$
+
+其中 $\mu$ 是分岔参数。
+
+where $\mu$ is the bifurcation parameter.
+
+### 1.3 混沌理论 / Chaos Theory
 
 **混沌定义 / Chaos Definition:**
 
-$$\text{Chaos}(S) = \text{Sensitive\_Dependence}(S) \land \text{Topological\_Transitivity}(S) \land \text{Dense\_Periodic\_Orbits}(S)$$
+$$\text{Chaos} = \text{Sensitivity} \land \text{Transitivity} \land \text{Density}$$
 
 **李雅普诺夫指数 / Lyapunov Exponent:**
 
 $$\lambda = \lim_{t \to \infty} \frac{1}{t} \ln \left|\frac{\delta x(t)}{\delta x(0)}\right|$$
 
-**混沌检测 / Chaos Detection:**
-
-```rust
-struct ChaosDetector {
-    lyapunov_calculator: LyapunovCalculator,
-    attractor_analyzer: AttractorAnalyzer,
-    sensitivity_analyzer: SensitivityAnalyzer,
-}
-
-impl ChaosDetector {
-    fn detect_chaos(&self, system: &DynamicalSystem) -> ChaosResult {
-        let lyapunov_exponent = self.calculate_lyapunov_exponent(system);
-        let attractor_type = self.analyze_attractor(system);
-        let sensitivity = self.analyze_sensitivity(system);
-        
-        let is_chaotic = lyapunov_exponent > 0.0 && 
-                        attractor_type == AttractorType::Strange &&
-                        sensitivity > 0.5;
-        
-        ChaosResult {
-            lyapunov_exponent,
-            attractor_type,
-            sensitivity,
-            is_chaotic,
-        }
-    }
-    
-    fn calculate_lyapunov_exponent(&self, system: &DynamicalSystem) -> f32 {
-        // 计算李雅普诺夫指数
-        let mut sum = 0.0;
-        let n_steps = 1000;
-        
-        for _ in 0..n_steps {
-            let perturbation = self.generate_perturbation();
-            let evolution = system.evolve_with_perturbation(perturbation);
-            sum += (evolution.magnitude() / perturbation.magnitude()).ln();
-        }
-        
-        sum / n_steps as f32
-    }
-}
-```
-
-### 3.3 分岔理论 / Bifurcation Theory
-
-**分岔定义 / Bifurcation Definition:**
-
-$$\text{Bifurcation} = \text{Parameter\_Change} \Rightarrow \text{Qualitative\_Change}$$
-
-**分岔类型 / Bifurcation Types:**
-
-1. **鞍节点分岔 / Saddle-Node Bifurcation**
-2. **叉式分岔 / Pitchfork Bifurcation**
-3. **霍普夫分岔 / Hopf Bifurcation**
-
----
-
-## 4. 自组织 / Self-Organization
-
-### 4.1 自组织定义 / Self-Organization Definition
-
-**自组织形式化定义 / Formal Definition of Self-Organization:**
-
-$$\text{Self\_Organization}(S) = \text{Spontaneous\_Order}(S) \land \text{Local\_Interactions}(S) \land \text{No\_Central\_Control}(S)$$
-
-**自组织条件 / Self-Organization Conditions:**
-
-1. **开放性 / Openness:** $\text{Energy\_Flow}(S)$
-2. **远离平衡 / Far from Equilibrium:** $\text{Non\_Equilibrium}(S)$
-3. **非线性相互作用 / Nonlinear Interactions:** $\text{Nonlinear\_Interactions}(S)$
-
-### 4.2 自组织机制 / Self-Organization Mechanisms
-
-**自组织机制 / Self-Organization Mechanisms:**
-
-```rust
-struct SelfOrganizationAnalyzer {
-    order_parameter_analyzer: OrderParameterAnalyzer,
-    symmetry_breaker: SymmetryBreaker,
-    pattern_formation: PatternFormation,
-}
-
-impl SelfOrganizationAnalyzer {
-    fn analyze_self_organization(&self, system: &ComplexSystem) -> SelfOrganizationResult {
-        let order_parameters = self.identify_order_parameters(system);
-        let symmetry_breaking = self.analyze_symmetry_breaking(system);
-        let pattern_formation = self.analyze_pattern_formation(system);
-        
-        SelfOrganizationResult {
-            order_parameters,
-            symmetry_breaking,
-            pattern_formation,
-            self_organization_level: self.calculate_self_organization_level(system),
-        }
-    }
-    
-    fn identify_order_parameters(&self, system: &ComplexSystem) -> Vec<OrderParameter> {
-        let mut order_parameters = Vec::new();
-        
-        // 识别序参量
-        for component in &system.components {
-            if self.is_order_parameter(component, system) {
-                order_parameters.push(OrderParameter {
-                    name: component.name.clone(),
-                    value: component.get_order_value(),
-                });
-            }
-        }
-        
-        order_parameters
-    }
-}
-```
+**分形维数 / Fractal Dimension:**
 
-### 4.3 自组织控制 / Self-Organization Control
+$$D = \lim_{\epsilon \to 0} \frac{\ln N(\epsilon)}{\ln(1/\epsilon)}$$
 
-**自组织控制策略 / Self-Organization Control Strategies:**
+## 2. 网络理论 / Network Theory
 
-1. **参数控制 / Parameter Control:** $\text{Parameter\_Adjustment}$
-2. **边界条件控制 / Boundary Control:** $\text{Boundary\_Conditions}$
-3. **反馈控制 / Feedback Control:** $\text{Feedback\_Mechanism}$
+### 2.1 网络表示 / Network Representation
 
----
+**邻接矩阵 / Adjacency Matrix:**
 
-## 5. 网络科学 / Network Science
+$$
+A_{ij} = \begin{cases}
+1 & \text{if } (i,j) \in E \\
+0 & \text{otherwise}
+\end{cases}
+$$
 
-### 5.1 网络结构 / Network Structure
+**度分布 / Degree Distribution:**
 
-**网络定义 / Network Definition:**
+$$P(k) = \frac{N_k}{N}$$
 
-$$\mathcal{N} = \langle V, E \rangle$$
+其中 $N_k$ 是度为 $k$ 的节点数。
 
-其中 $V$ 是节点集合，$E$ 是边集合。
+where $N_k$ is the number of nodes with degree $k$.
 
-where $V$ is the set of nodes and $E$ is the set of edges.
+**聚类系数 / Clustering Coefficient:**
 
-**网络特征 / Network Characteristics:**
+$$C_i = \frac{2E_i}{k_i(k_i-1)}$$
 
-1. **度分布 / Degree Distribution:** $P(k)$
-2. **聚类系数 / Clustering Coefficient:** $C$
-3. **平均路径长度 / Average Path Length:** $L$
+其中 $E_i$ 是节点 $i$ 的邻居间的边数。
 
-**网络分析 / Network Analysis:**
+where $E_i$ is the number of edges between neighbors of node $i$.
 
-```rust
-struct NetworkAnalyzer {
-    degree_analyzer: DegreeAnalyzer,
-    clustering_analyzer: ClusteringAnalyzer,
-    path_analyzer: PathAnalyzer,
-}
+### 2.2 网络模型 / Network Models
 
-impl NetworkAnalyzer {
-    fn analyze_network(&self, network: &Network) -> NetworkAnalysis {
-        let degree_distribution = self.analyze_degree_distribution(network);
-        let clustering_coefficient = self.calculate_clustering_coefficient(network);
-        let average_path_length = self.calculate_average_path_length(network);
-        let centrality_measures = self.calculate_centrality_measures(network);
-        
-        NetworkAnalysis {
-            degree_distribution,
-            clustering_coefficient,
-            average_path_length,
-            centrality_measures,
-            network_type: self.classify_network(network),
-        }
-    }
-    
-    fn analyze_degree_distribution(&self, network: &Network) -> DegreeDistribution {
-        let mut degree_counts = HashMap::new();
-        
-        for node in &network.nodes {
-            let degree = network.get_degree(node);
-            *degree_counts.entry(degree).or_insert(0) += 1;
-        }
-        
-        DegreeDistribution {
-            counts: degree_counts,
-            average_degree: network.get_average_degree(),
-            max_degree: network.get_max_degree(),
-        }
-    }
-}
-```
+**随机网络 / Random Networks:**
 
-### 5.2 网络动力学 / Network Dynamics
+$$P(G) = \prod_{i<j} p^{A_{ij}}(1-p)^{1-A_{ij}}$$
 
-**网络动力学 / Network Dynamics:**
+**小世界网络 / Small-World Networks:**
 
-$$\frac{dx_i}{dt} = f(x_i) + \sum_{j \in \mathcal{N}_i} g(x_i, x_j)$$
+$$\text{Small-World} = \text{High Clustering} \land \text{Short Paths}$$
 
-其中 $\mathcal{N}_i$ 是节点 $i$ 的邻居集合。
+**无标度网络 / Scale-Free Networks:**
 
-where $\mathcal{N}_i$ is the set of neighbors of node $i$.
+$$P(k) \sim k^{-\gamma}$$
 
-### 5.3 网络分析 / Network Analysis
+其中 $\gamma$ 是幂律指数。
 
-**网络分析工具 / Network Analysis Tools:**
+where $\gamma$ is the power-law exponent.
 
-1. **中心性分析 / Centrality Analysis:** $\text{Degree\_Centrality}, \text{Betweenness\_Centrality}$
-2. **社区检测 / Community Detection:** $\text{Modularity\_Optimization}$
-3. **网络演化 / Network Evolution:** $\text{Preferential\_Attachment}$
+### 2.3 网络动力学 / Network Dynamics
 
----
+**同步 / Synchronization:**
 
-## 6. 信息论方法 / Information-Theoretic Methods
+$$\frac{d\theta_i}{dt} = \omega_i + K \sum_{j=1}^N A_{ij} \sin(\theta_j - \theta_i)$$
 
-### 6.1 信息熵 / Information Entropy
+**传播动力学 / Spreading Dynamics:**
 
-**信息熵定义 / Information Entropy Definition:**
+$$\frac{dI_i}{dt} = \beta S_i \sum_{j=1}^N A_{ij} I_j - \gamma I_i$$
 
-$$H(X) = -\sum_{i} p_i \log p_i$$
+**意见动力学 / Opinion Dynamics:**
 
-**系统熵 / System Entropy:**
+$$\frac{dx_i}{dt} = \sum_{j=1}^N A_{ij} (x_j - x_i)$$
 
-$$H(S) = -\sum_{s \in \mathcal{S}} P(s) \log P(s)$$
+## 3. 自组织 / Self-Organization
 
-### 6.2 互信息 / Mutual Information
+### 3.1 自组织原理 / Self-Organization Principles
 
-**互信息定义 / Mutual Information Definition:**
+**自组织定义 / Self-Organization Definition:**
 
-$$I(X; Y) = H(X) + H(Y) - H(X, Y)$$
+$$\text{Self-Organization} = \text{Local Interactions} \land \text{Global Order}$$
 
-**信息整合 / Information Integration:**
+**涌现性质 / Emergent Properties:**
 
-$$\Phi(S) = \min_{\text{partitions}} I(S; S')$$
+$$\text{Emergence} = \text{Collective Behavior} \land \text{Individual Simplicity}$$
 
-### 6.3 信息流 / Information Flow
+**反馈机制 / Feedback Mechanisms:**
 
-**信息流分析 / Information Flow Analysis:**
+$$\frac{dx}{dt} = f(x) + g(x) \cdot x$$
 
-```rust
-struct InformationFlowAnalyzer {
-    entropy_calculator: EntropyCalculator,
-    mutual_information_calculator: MutualInformationCalculator,
-    information_flow_tracker: InformationFlowTracker,
-}
+### 3.2 模式形成 / Pattern Formation
 
-impl InformationFlowAnalyzer {
-    fn analyze_information_flow(&self, system: &ComplexSystem) -> InformationFlowAnalysis {
-        let system_entropy = self.calculate_system_entropy(system);
-        let mutual_information = self.calculate_mutual_information(system);
-        let information_flow = self.track_information_flow(system);
-        
-        InformationFlowAnalysis {
-            system_entropy,
-            mutual_information,
-            information_flow,
-            complexity: self.calculate_complexity(system),
-        }
-    }
-}
-```
+**图灵模式 / Turing Patterns:**
 
----
+$$\frac{\partial u}{\partial t} = D_u \nabla^2 u + f(u,v)$$
+$$\frac{\partial v}{\partial t} = D_v \nabla^2 v + g(u,v)$$
 
-## 7. 统计物理学方法 / Statistical Physics Methods
+**螺旋波 / Spiral Waves:**
 
-### 7.1 相变理论 / Phase Transition Theory
+$$\frac{\partial u}{\partial t} = \nabla^2 u + f(u)$$
 
-**相变定义 / Phase Transition Definition:**
+**斑图 / Spots:**
 
-$$\text{Phase\_Transition} = \text{Order\_Parameter\_Change} \land \text{Critical\_Phenomena}$$
+$$\text{Pattern} = \text{Localized Structures} \land \text{Regular Spacing}$$
 
-**临界点 / Critical Point:**
+### 3.3 集体行为 / Collective Behavior
 
-$$\text{Critical\_Point} = \text{Scale\_Invariance} \land \text{Power\_Law\_Behavior}$$
+**群体同步 / Collective Synchronization:**
 
-### 7.2 临界现象 / Critical Phenomena
+$$\text{Sync} = \text{Phase Locking} \land \text{Frequency Locking}$$
 
-**临界指数 / Critical Exponents:**
+**群体智能 / Collective Intelligence:**
+
+$$\text{Intelligence} = \text{Local Rules} \land \text{Global Optimization}$$
+
+**群体决策 / Collective Decision Making:**
+
+$$\text{Decision} = \text{Individual Preferences} \land \text{Group Consensus}$$
+
+## 4. 临界现象 / Critical Phenomena
+
+### 4.1 临界点 / Critical Points
+
+**临界点定义 / Critical Point Definition:**
+
+$$\text{Critical Point} = \text{Scale Invariance} \land \text{Power Law}$$
+
+**序参量 / Order Parameter:**
+
+$$\phi = \langle \text{Local Order} \rangle$$
+
+**相关长度 / Correlation Length:**
 
 $$\xi \sim |T - T_c|^{-\nu}$$
 
-其中 $\xi$ 是关联长度，$T_c$ 是临界温度。
+### 4.2 标度律 / Scaling Laws
 
-where $\xi$ is the correlation length and $T_c$ is the critical temperature.
+**幂律分布 / Power Law Distribution:**
 
-### 7.3 集体行为 / Collective Behavior
+$$P(x) \sim x^{-\alpha}$$
 
-**集体行为 / Collective Behavior:**
+**有限尺寸标度 / Finite Size Scaling:**
 
-$$\text{Collective\_Behavior} = \text{Synchronization} \lor \text{Swarming} \lor \text{Flocking}$$
+$$\phi(L) = L^{-\beta/\nu} f(L/\xi)$$
 
----
+**普适性 / Universality:**
 
-## 8. AI中的复杂系统 / Complex Systems in AI
+$$\text{Universality} = \text{Same Exponents} \land \text{Different Systems}$$
 
-### 8.1 神经网络复杂性 / Neural Network Complexity
+### 4.3 临界指数 / Critical Exponents
 
-**神经网络作为复杂系统 / Neural Networks as Complex Systems:**
+**临界指数定义 / Critical Exponent Definition:**
 
-$$\text{NN\_Complexity} = \text{Nonlinear\_Activation} \land \text{Distributed\_Computation} \land \text{Emergent\_Properties}$$
+$$\alpha, \beta, \gamma, \delta, \nu, \eta$$
 
-**神经网络涌现 / Neural Network Emergence:**
+**标度关系 / Scaling Relations:**
 
-```rust
-struct NeuralNetworkComplexity {
-    layer_analyzer: LayerAnalyzer,
-    connectivity_analyzer: ConnectivityAnalyzer,
-    emergence_detector: EmergenceDetector,
-}
+$$2 - \alpha = 2\beta + \gamma = \beta(\delta + 1)$$
 
-impl NeuralNetworkComplexity {
-    fn analyze_complexity(&self, network: &NeuralNetwork) -> ComplexityAnalysis {
-        let layer_complexity = self.analyze_layer_complexity(network);
-        let connectivity_complexity = self.analyze_connectivity_complexity(network);
-        let emergent_properties = self.detect_emergent_properties(network);
-        
-        ComplexityAnalysis {
-            layer_complexity,
-            connectivity_complexity,
-            emergent_properties,
-            overall_complexity: self.calculate_overall_complexity(network),
-        }
-    }
-}
-```
+**维数关系 / Dimensional Relations:**
 
-### 8.2 多智能体系统 / Multi-Agent Systems
+$$d\nu = 2 - \alpha$$
 
-**多智能体系统 / Multi-Agent Systems:**
+## 5. 相变理论 / Phase Transition Theory
 
-$$\text{MAS} = \langle \mathcal{A}, \mathcal{I}, \mathcal{E} \rangle$$
+### 5.1 相变类型 / Phase Transition Types
 
-其中 $\mathcal{A}$ 是智能体集合，$\mathcal{I}$ 是交互关系，$\mathcal{E}$ 是环境。
+**一级相变 / First-Order Phase Transition:**
 
-where $\mathcal{A}$ is the set of agents, $\mathcal{I}$ is the interaction relations, and $\mathcal{E}$ is the environment.
+$$\Delta S \neq 0, \Delta V \neq 0$$
 
-### 8.3 分布式AI / Distributed AI
+**二级相变 / Second-Order Phase Transition:**
 
-**分布式AI复杂性 / Distributed AI Complexity:**
+$$\Delta S = 0, \Delta V = 0, \text{but } \frac{\partial S}{\partial T} \to \infty$$
 
-$$\text{Distributed\_AI\_Complexity} = \text{Communication\_Overhead} \land \text{Coordination\_Complexity} \land \text{Emergent\_Intelligence}$$
+**连续相变 / Continuous Phase Transition:**
 
----
+$$\text{Continuous} = \text{No Latent Heat} \land \text{Continuous Order Parameter}$$
+
+### 5.2 朗道理论 / Landau Theory
+
+**朗道自由能 / Landau Free Energy:**
+
+$$F = F_0 + a(T-T_c)\phi^2 + b\phi^4$$
+
+**序参量方程 / Order Parameter Equation:**
+
+$$\frac{\partial F}{\partial \phi} = 2a(T-T_c)\phi + 4b\phi^3 = 0$$
+
+**临界指数 / Critical Exponents:**
+
+$$\beta = \frac{1}{2}, \gamma = 1, \delta = 3$$
+
+### 5.3 重正化群 / Renormalization Group
+
+**重正化变换 / Renormalization Transformation:**
+
+$$K' = R(K)$$
+
+其中 $K$ 是耦合常数。
+
+where $K$ is the coupling constant.
+
+**不动点 / Fixed Points:**
+
+$$K^* = R(K^*)$$
+
+**标度不变性 / Scale Invariance:**
+
+$$\text{Scale Invariance} = \text{Fixed Point} \land \text{Power Law}$$
 
 ## 代码示例 / Code Examples
 
-### Rust实现：复杂系统模拟器
+### Rust实现：复杂系统模拟
 
 ```rust
 use std::collections::HashMap;
-use rand::Rng;
+use std::f64::consts::PI;
 
-#[derive(Debug, Clone)]
+// 复杂系统模拟器
 struct ComplexSystemSimulator {
-    components: Vec<Component>,
-    interactions: Vec<Interaction>,
-    time_step: f32,
-    emergence_detector: EmergenceDetector,
+    agents: Vec<Agent>,
+    network: Network,
+    parameters: SystemParameters,
 }
 
 impl ComplexSystemSimulator {
-    fn new() -> Self {
-        ComplexSystemSimulator {
-            components: Vec::new(),
-            interactions: Vec::new(),
-            time_step: 0.01,
-            emergence_detector: EmergenceDetector::new(),
+    fn new(num_agents: usize, parameters: SystemParameters) -> Self {
+        Self {
+            agents: (0..num_agents).map(|i| Agent::new(i)).collect(),
+            network: Network::new(num_agents),
+            parameters,
         }
     }
-    
-    fn add_component(&mut self, component: Component) {
-        self.components.push(component);
-    }
-    
-    fn add_interaction(&mut self, interaction: Interaction) {
-        self.interactions.push(interaction);
-    }
-    
-    fn simulate(&mut self, duration: f32) -> SimulationResult {
-        let mut time = 0.0;
-        let mut emergent_properties = Vec::new();
-        let mut system_states = Vec::new();
-        
-        while time < duration {
-            // 更新组件状态
-            self.update_components();
-            
-            // 应用交互
-            self.apply_interactions();
-            
-            // 检测涌现性质
-            let current_emergence = self.emergence_detector.detect(&self.components);
-            emergent_properties.push(current_emergence);
-            
-            // 记录系统状态
-            system_states.push(self.get_system_state());
-            
-            time += self.time_step;
+
+    // 系统动力学演化
+    fn evolve(&mut self, time_steps: usize) -> Vec<SystemState> {
+        let mut states = Vec::new();
+
+        for step in 0..time_steps {
+            let state = self.get_current_state();
+            states.push(state);
+
+            self.update_system();
         }
-        
-        SimulationResult {
-            duration,
-            emergent_properties,
-            system_states,
-            final_complexity: self.calculate_complexity(),
+
+        states
+    }
+
+    // 更新系统
+    fn update_system(&mut self) {
+        // 更新每个智能体
+        for i in 0..self.agents.len() {
+            let neighbors = self.network.get_neighbors(i);
+            let neighbor_states: Vec<f64> = neighbors.iter()
+                .map(|&j| self.agents[j].state)
+                .collect();
+
+            self.agents[i].update_state(&neighbor_states, &self.parameters);
+        }
+
+        // 更新网络结构（可选）
+        if self.parameters.network_evolution {
+            self.network.evolve(&self.agents);
         }
     }
-    
-    fn update_components(&mut self) {
-        for component in &mut self.components {
-            component.update_state(self.time_step);
-        }
-    }
-    
-    fn apply_interactions(&mut self) {
-        for interaction in &self.interactions {
-            interaction.apply(&mut self.components);
-        }
-    }
-    
-    fn get_system_state(&self) -> SystemState {
+
+    // 获取当前状态
+    fn get_current_state(&self) -> SystemState {
+        let agent_states: Vec<f64> = self.agents.iter()
+            .map(|agent| agent.state)
+            .collect();
+
+        let order_parameter = self.calculate_order_parameter(&agent_states);
+        let correlation_length = self.calculate_correlation_length(&agent_states);
+
         SystemState {
-            component_states: self.components.iter().map(|c| c.get_state()).collect(),
-            time: 0.0, // 实际时间需要从外部传入
+            agent_states,
+            order_parameter,
+            correlation_length,
+            network_density: self.network.get_density(),
         }
     }
-    
-    fn calculate_complexity(&self) -> f32 {
-        let entropy = self.calculate_entropy();
-        let structure = self.calculate_structure();
-        let interactions = self.calculate_interactions();
-        
-        entropy * structure * interactions
+
+    // 计算序参量
+    fn calculate_order_parameter(&self, states: &[f64]) -> f64 {
+        let mean_state = states.iter().sum::<f64>() / states.len() as f64;
+        let variance = states.iter()
+            .map(|s| (s - mean_state).powi(2))
+            .sum::<f64>() / states.len() as f64;
+
+        variance.sqrt()
     }
-    
-    fn calculate_entropy(&self) -> f32 {
-        // 计算系统熵
-        let states = self.components.iter().map(|c| c.get_state()).collect::<Vec<_>>();
-        let mut state_counts = HashMap::new();
-        
-        for state in states {
-            *state_counts.entry(state).or_insert(0) += 1;
-        }
-        
-        let total = state_counts.values().sum::<i32>() as f32;
-        let mut entropy = 0.0;
-        
-        for count in state_counts.values() {
-            let probability = *count as f32 / total;
-            if probability > 0.0 {
-                entropy -= probability * probability.ln();
+
+    // 计算相关长度
+    fn calculate_correlation_length(&self, states: &[f64]) -> f64 {
+        let mut total_correlation = 0.0;
+        let mut count = 0;
+
+        for i in 0..states.len() {
+            for j in (i+1)..states.len() {
+                let distance = self.network.get_distance(i, j);
+                if distance > 0.0 {
+                    let correlation = (states[i] - states[j]).abs();
+                    total_correlation += correlation / distance;
+                    count += 1;
+                }
             }
         }
-        
-        entropy
-    }
-    
-    fn calculate_structure(&self) -> f32 {
-        // 计算结构复杂度
-        self.interactions.len() as f32 / self.components.len() as f32
-    }
-    
-    fn calculate_interactions(&self) -> f32 {
-        // 计算交互复杂度
-        let mut interaction_strength = 0.0;
-        
-        for interaction in &self.interactions {
-            interaction_strength += interaction.get_strength();
+
+        if count > 0 {
+            total_correlation / count as f64
+        } else {
+            0.0
         }
-        
-        interaction_strength / self.interactions.len() as f32
     }
 }
 
-#[derive(Debug)]
-struct Component {
-    id: String,
-    state: f32,
-    parameters: HashMap<String, f32>,
+// 智能体
+struct Agent {
+    id: usize,
+    state: f64,
+    velocity: f64,
 }
 
-impl Component {
-    fn new(id: String) -> Self {
-        Component {
+impl Agent {
+    fn new(id: usize) -> Self {
+        Self {
             id,
-            state: 0.0,
-            parameters: HashMap::new(),
+            state: rand::random::<f64>() * 2.0 * PI,
+            velocity: 0.0,
         }
     }
-    
-    fn update_state(&mut self, dt: f32) {
-        // 简单的状态更新规则
-        let noise = rand::thread_rng().gen_range(-0.1..0.1);
-        self.state += noise * dt;
-        
-        // 保持状态在合理范围内
-        self.state = self.state.max(-1.0).min(1.0);
-    }
-    
-    fn get_state(&self) -> f32 {
-        self.state
-    }
-    
-    fn set_parameter(&mut self, key: String, value: f32) {
-        self.parameters.insert(key, value);
+
+    // 更新状态
+    fn update_state(&mut self, neighbor_states: &[f64], parameters: &SystemParameters) {
+        if neighbor_states.is_empty() {
+            return;
+        }
+
+        // Kuramoto模型
+        let coupling = parameters.coupling_strength;
+        let natural_frequency = parameters.natural_frequency;
+
+        let interaction_term = neighbor_states.iter()
+            .map(|&neighbor_state| (neighbor_state - self.state).sin())
+            .sum::<f64>() / neighbor_states.len() as f64;
+
+        self.velocity = natural_frequency + coupling * interaction_term;
+        self.state += self.velocity * parameters.time_step;
+
+        // 保持状态在[0, 2π]范围内
+        self.state = self.state.rem_euclid(2.0 * PI);
     }
 }
 
-#[derive(Debug)]
-struct Interaction {
-    source_id: String,
-    target_id: String,
-    strength: f32,
-    interaction_type: InteractionType,
+// 网络
+struct Network {
+    adjacency_matrix: Vec<Vec<bool>>,
+    num_nodes: usize,
 }
 
-impl Interaction {
-    fn new(source_id: String, target_id: String, strength: f32, interaction_type: InteractionType) -> Self {
-        Interaction {
-            source_id,
-            target_id,
-            strength,
-            interaction_type,
+impl Network {
+    fn new(num_nodes: usize) -> Self {
+        let mut adjacency_matrix = vec![vec![false; num_nodes]; num_nodes];
+
+        // 创建随机网络
+        for i in 0..num_nodes {
+            for j in (i+1)..num_nodes {
+                if rand::random::<f64>() < 0.1 { // 连接概率
+                    adjacency_matrix[i][j] = true;
+                    adjacency_matrix[j][i] = true;
+                }
+            }
+        }
+
+        Self {
+            adjacency_matrix,
+            num_nodes,
         }
     }
-    
-    fn apply(&self, components: &mut Vec<Component>) {
-        if let (Some(source), Some(target)) = (
-            components.iter_mut().find(|c| c.id == self.source_id),
-            components.iter_mut().find(|c| c.id == self.target_id)
-        ) {
-            match self.interaction_type {
-                InteractionType::Linear => {
-                    target.state += self.strength * source.state;
-                },
-                InteractionType::Nonlinear => {
-                    target.state += self.strength * source.state * source.state.abs();
-                },
-                InteractionType::Oscillatory => {
-                    target.state += self.strength * source.state.sin();
-                },
+
+    // 获取邻居
+    fn get_neighbors(&self, node: usize) -> Vec<usize> {
+        (0..self.num_nodes)
+            .filter(|&j| self.adjacency_matrix[node][j])
+            .collect()
+    }
+
+    // 获取距离
+    fn get_distance(&self, node1: usize, node2: usize) -> f64 {
+        if node1 == node2 {
+            return 0.0;
+        }
+
+        if self.adjacency_matrix[node1][node2] {
+            return 1.0;
+        }
+
+        // 简化的距离计算
+        let mut visited = vec![false; self.num_nodes];
+        let mut queue = std::collections::VecDeque::new();
+        queue.push_back((node1, 0));
+        visited[node1] = true;
+
+        while let Some((current, distance)) = queue.pop_front() {
+            if current == node2 {
+                return distance as f64;
+            }
+
+            for neighbor in self.get_neighbors(current) {
+                if !visited[neighbor] {
+                    visited[neighbor] = true;
+                    queue.push_back((neighbor, distance + 1));
+                }
+            }
+        }
+
+        f64::INFINITY
+    }
+
+    // 获取网络密度
+    fn get_density(&self) -> f64 {
+        let mut edge_count = 0;
+        for i in 0..self.num_nodes {
+            for j in (i+1)..self.num_nodes {
+                if self.adjacency_matrix[i][j] {
+                    edge_count += 1;
+                }
+            }
+        }
+
+        edge_count as f64 / (self.num_nodes * (self.num_nodes - 1) / 2) as f64
+    }
+
+    // 网络演化
+    fn evolve(&mut self, agents: &[Agent]) {
+        // 简化的网络演化：基于智能体状态的相似性
+        for i in 0..self.num_nodes {
+            for j in (i+1)..self.num_nodes {
+                let similarity = (agents[i].state - agents[j].state).abs();
+                let connection_probability = (-similarity).exp();
+
+                if rand::random::<f64>() < connection_probability * 0.1 {
+                    self.adjacency_matrix[i][j] = true;
+                    self.adjacency_matrix[j][i] = true;
+                } else if rand::random::<f64>() < 0.01 {
+                    self.adjacency_matrix[i][j] = false;
+                    self.adjacency_matrix[j][i] = false;
+                }
             }
         }
     }
-    
-    fn get_strength(&self) -> f32 {
-        self.strength
-    }
 }
 
-#[derive(Debug)]
-enum InteractionType {
-    Linear,
-    Nonlinear,
-    Oscillatory,
+// 系统参数
+struct SystemParameters {
+    coupling_strength: f64,
+    natural_frequency: f64,
+    time_step: f64,
+    network_evolution: bool,
 }
 
-#[derive(Debug)]
-struct EmergenceDetector {
-    threshold: f32,
-}
-
-impl EmergenceDetector {
-    fn new() -> Self {
-        EmergenceDetector {
-            threshold: 0.5,
-        }
-    }
-    
-    fn detect(&self, components: &[Component]) -> Vec<EmergentProperty> {
-        let mut emergent_properties = Vec::new();
-        
-        // 检测同步性
-        if self.detect_synchronization(components) {
-            emergent_properties.push(EmergentProperty {
-                name: "Synchronization".to_string(),
-                type_: EmergenceType::Weak,
-                strength: 0.8,
-            });
-        }
-        
-        // 检测模式形成
-        if self.detect_pattern_formation(components) {
-            emergent_properties.push(EmergentProperty {
-                name: "Pattern Formation".to_string(),
-                type_: EmergenceType::Strong,
-                strength: 0.9,
-            });
-        }
-        
-        emergent_properties
-    }
-    
-    fn detect_synchronization(&self, components: &[Component]) -> bool {
-        let states: Vec<f32> = components.iter().map(|c| c.get_state()).collect();
-        let mean_state = states.iter().sum::<f32>() / states.len() as f32;
-        let variance = states.iter().map(|s| (s - mean_state).powi(2)).sum::<f32>() / states.len() as f32;
-        
-        variance < self.threshold
-    }
-    
-    fn detect_pattern_formation(&self, components: &[Component]) -> bool {
-        // 简化的模式检测
-        let states: Vec<f32> = components.iter().map(|c| c.get_state()).collect();
-        let positive_count = states.iter().filter(|&&s| s > 0.0).count();
-        let negative_count = states.iter().filter(|&&s| s < 0.0).count();
-        
-        // 检查是否形成明显的正负分布模式
-        (positive_count as f32 / states.len() as f32 - 0.5).abs() > 0.3
-    }
-}
-
-#[derive(Debug)]
-struct EmergentProperty {
-    name: String,
-    type_: EmergenceType,
-    strength: f32,
-}
-
-#[derive(Debug)]
-enum EmergenceType {
-    Weak,
-    Strong,
-}
-
-#[derive(Debug)]
-struct SimulationResult {
-    duration: f32,
-    emergent_properties: Vec<Vec<EmergentProperty>>,
-    system_states: Vec<SystemState>,
-    final_complexity: f32,
-}
-
-#[derive(Debug)]
+// 系统状态
+# [derive(Debug)]
 struct SystemState {
-    component_states: Vec<f32>,
-    time: f32,
+    agent_states: Vec<f64>,
+    order_parameter: f64,
+    correlation_length: f64,
+    network_density: f64,
+}
+
+// 临界现象分析器
+struct CriticalPhenomenaAnalyzer {
+    data: Vec<SystemState>,
+}
+
+impl CriticalPhenomenaAnalyzer {
+    fn new(data: Vec<SystemState>) -> Self {
+        Self { data }
+    }
+
+    // 分析临界现象
+    fn analyze_critical_phenomena(&self) -> CriticalAnalysis {
+        let order_parameters: Vec<f64> = self.data.iter()
+            .map(|state| state.order_parameter)
+            .collect();
+
+        let correlation_lengths: Vec<f64> = self.data.iter()
+            .map(|state| state.correlation_length)
+            .collect();
+
+        CriticalAnalysis {
+            power_law_exponent: self.calculate_power_law_exponent(&order_parameters),
+            correlation_exponent: self.calculate_correlation_exponent(&correlation_lengths),
+            critical_point: self.detect_critical_point(&order_parameters),
+        }
+    }
+
+    // 计算幂律指数
+    fn calculate_power_law_exponent(&self, data: &[f64]) -> f64 {
+        // 简化的幂律拟合
+        let log_data: Vec<f64> = data.iter()
+            .filter(|&&x| x > 0.0)
+            .map(|x| x.ln())
+            .collect();
+
+        if log_data.len() < 2 {
+            return 0.0;
+        }
+
+        let mean_log = log_data.iter().sum::<f64>() / log_data.len() as f64;
+        let variance = log_data.iter()
+            .map(|x| (x - mean_log).powi(2))
+            .sum::<f64>() / log_data.len() as f64;
+
+        -mean_log / variance.max(1e-6)
+    }
+
+    // 计算相关指数
+    fn calculate_correlation_exponent(&self, data: &[f64]) -> f64 {
+        // 简化的相关指数计算
+        if data.len() < 2 {
+            return 0.0;
+        }
+
+        let mean = data.iter().sum::<f64>() / data.len() as f64;
+        let variance = data.iter()
+            .map(|x| (x - mean).powi(2))
+            .sum::<f64>() / data.len() as f64;
+
+        variance.sqrt()
+    }
+
+    // 检测临界点
+    fn detect_critical_point(&self, data: &[f64]) -> Option<usize> {
+        if data.len() < 3 {
+            return None;
+        }
+
+        // 寻找最大变化率
+        let mut max_change = 0.0;
+        let mut critical_point = 0;
+
+        for i in 1..data.len() {
+            let change = (data[i] - data[i-1]).abs();
+            if change > max_change {
+                max_change = change;
+                critical_point = i;
+            }
+        }
+
+        Some(critical_point)
+    }
+}
+
+// 临界分析结果
+# [derive(Debug)]
+struct CriticalAnalysis {
+    power_law_exponent: f64,
+    correlation_exponent: f64,
+    critical_point: Option<usize>,
+}
+
+// 随机数生成
+mod rand {
+    pub fn random<T>() -> T where T: std::default::Default {
+        T::default()
+    }
 }
 
 fn main() {
-    let mut simulator = ComplexSystemSimulator::new();
-    
-    // 添加组件
-    for i in 0..10 {
-        let mut component = Component::new(format!("component_{}", i));
-        component.set_parameter("coupling_strength".to_string(), 0.1);
-        simulator.add_component(component);
-    }
-    
-    // 添加交互
-    for i in 0..9 {
-        let interaction = Interaction::new(
-            format!("component_{}", i),
-            format!("component_{}", i + 1),
-            0.1,
-            InteractionType::Nonlinear,
-        );
-        simulator.add_interaction(interaction);
-    }
-    
+    println!("=== 复杂系统模拟 ===");
+
+    // 创建系统参数
+    let parameters = SystemParameters {
+        coupling_strength: 0.5,
+        natural_frequency: 1.0,
+        time_step: 0.01,
+        network_evolution: true,
+    };
+
+    // 创建复杂系统模拟器
+    let mut simulator = ComplexSystemSimulator::new(100, parameters);
+
     // 运行模拟
-    let result = simulator.simulate(10.0);
-    println!("模拟结果: {:?}", result);
-    println!("最终复杂度: {}", result.final_complexity);
+    let states = simulator.evolve(1000);
+    println!("模拟完成，生成了 {} 个状态", states.len());
+
+    // 分析临界现象
+    let analyzer = CriticalPhenomenaAnalyzer::new(states);
+    let analysis = analyzer.analyze_critical_phenomena();
+    println!("临界分析结果: {:?}", analysis);
+
+    // 显示最终状态
+    if let Some(final_state) = states.last() {
+        println!("最终序参量: {:.4}", final_state.order_parameter);
+        println!("最终相关长度: {:.4}", final_state.correlation_length);
+        println!("最终网络密度: {:.4}", final_state.network_density);
+    }
 }
 ```
 
-### Haskell实现：涌现检测算法
+### Haskell实现：复杂系统
 
 ```haskell
+-- 复杂系统模块
+module ComplexSystems where
+
+import Data.List (foldl', sum)
+import Data.Vector (Vector)
+import qualified Data.Vector as V
+import System.Random (Random, random, randomR)
+
 -- 复杂系统模拟器
 data ComplexSystemSimulator = ComplexSystemSimulator {
-    components :: [Component],
-    interactions :: [Interaction],
+    agents :: [Agent],
+    network :: Network,
+    parameters :: SystemParameters
+} deriving (Show)
+
+-- 智能体
+data Agent = Agent {
+    agentId :: Int,
+    agentState :: Double,
+    agentVelocity :: Double
+} deriving (Show)
+
+-- 网络
+data Network = Network {
+    adjacencyMatrix :: [[Bool]],
+    numNodes :: Int
+} deriving (Show)
+
+-- 系统参数
+data SystemParameters = SystemParameters {
+    couplingStrength :: Double,
+    naturalFrequency :: Double,
     timeStep :: Double,
-    emergenceDetector :: EmergenceDetector
+    networkEvolution :: Bool
 } deriving (Show)
 
-data Component = Component {
-    componentId :: String,
-    state :: Double,
-    parameters :: Map String Double
-} deriving (Show)
-
-data Interaction = Interaction {
-    sourceId :: String,
-    targetId :: String,
-    strength :: Double,
-    interactionType :: InteractionType
-} deriving (Show)
-
-data InteractionType = Linear | Nonlinear | Oscillatory deriving (Show)
-
-data EmergenceDetector = EmergenceDetector {
-    threshold :: Double
-} deriving (Show)
-
-data EmergentProperty = EmergentProperty {
-    propertyName :: String,
-    propertyType :: EmergenceType,
-    strength :: Double
-} deriving (Show)
-
-data EmergenceType = Weak | Strong deriving (Show)
-
-data SimulationResult = SimulationResult {
-    duration :: Double,
-    emergentProperties :: [[EmergentProperty]],
-    systemStates :: [SystemState],
-    finalComplexity :: Double
-} deriving (Show)
-
+-- 系统状态
 data SystemState = SystemState {
-    componentStates :: [Double],
-    time :: Double
+    agentStates :: [Double],
+    orderParameter :: Double,
+    correlationLength :: Double,
+    networkDensity :: Double
 } deriving (Show)
 
--- 模拟复杂系统
-simulate :: ComplexSystemSimulator -> Double -> SimulationResult
-simulate simulator duration = 
-    let timeSteps = [0, timeStep simulator .. duration]
-        (finalComponents, emergentProps, states) = foldl simulateStep 
-            (components simulator, [], []) timeSteps
-        finalComplexity = calculateComplexity finalComponents (interactions simulator)
-    in SimulationResult {
-        duration = duration,
-        emergentProperties = reverse emergentProps,
-        systemStates = reverse states,
-        finalComplexity = finalComplexity
-    }
+-- 创建新的复杂系统模拟器
+newComplexSystemSimulator :: Int -> SystemParameters -> ComplexSystemSimulator
+newComplexSystemSimulator numAgents parameters = ComplexSystemSimulator {
+    agents = map (\i -> newAgent i) [0..numAgents-1],
+    network = newNetwork numAgents,
+    parameters = parameters
+}
 
-simulateStep :: ([Component], [[EmergentProperty]], [SystemState]) -> Double -> 
-               ([Component], [[EmergentProperty]], [SystemState])
-simulateStep (comps, props, states) time = 
-    let updatedComps = updateComponents comps (timeStep simulator)
-        updatedComps' = applyInteractions updatedComps (interactions simulator)
-        emergentProps = detectEmergence (emergenceDetector simulator) updatedComps'
-        systemState = SystemState (map state updatedComps') time
-    in (updatedComps', emergentProps : props, systemState : states)
+-- 创建新智能体
+newAgent :: Int -> Agent
+newAgent id = Agent {
+    agentId = id,
+    agentState = randomValue 0 (2 * pi),
+    agentVelocity = 0.0
+}
+  where
+    randomValue min max = min + (max - min) * 0.5 -- 简化的随机数
 
-updateComponents :: [Component] -> Double -> [Component]
-updateComponents components dt = 
-    map (\comp -> comp { state = updateState (state comp) dt }) components
+-- 创建新网络
+newNetwork :: Int -> Network
+newNetwork numNodes = Network {
+    adjacencyMatrix = createAdjacencyMatrix numNodes,
+    numNodes = numNodes
+}
+  where
+    createAdjacencyMatrix n =
+        [[if i == j then False else randomConnection | j <- [0..n-1]] | i <- [0..n-1]]
 
-updateState :: Double -> Double -> Double
-updateState currentState dt = 
-    let noise = randomRIO (-0.1, 0.1)
-        newState = currentState + noise * dt
-    in max (-1.0) (min 1.0 newState)
+    randomConnection = 0.1 > 0.05 -- 简化的随机连接
 
-applyInteractions :: [Component] -> [Interaction] -> [Component]
-applyInteractions components interactions = 
-    foldl applyInteraction components interactions
+-- 系统演化
+evolve :: ComplexSystemSimulator -> Int -> [SystemState]
+evolve simulator timeSteps =
+    take timeSteps (iterate updateSystem simulator)
+    >>= (\s -> [getCurrentState s])
 
-applyInteraction :: [Component] -> Interaction -> [Component]
-applyInteraction components interaction = 
-    let source = find (\c -> componentId c == sourceId interaction) components
-        target = find (\c -> componentId c == targetId interaction) components
-    in case (source, target) of
-        (Just s, Just t) -> 
-            let updatedTarget = t { state = applyInteractionType (state s) (state t) interaction }
-            in map (\c -> if componentId c == targetId interaction then updatedTarget else c) components
-        _ -> components
+-- 更新系统
+updateSystem :: ComplexSystemSimulator -> ComplexSystemSimulator
+updateSystem simulator = simulator {
+    agents = map (\agent -> updateAgent agent simulator) (agents simulator)
+}
 
-applyInteractionType :: Double -> Double -> Interaction -> Double
-applyInteractionType sourceState targetState interaction = 
-    case interactionType interaction of
-        Linear -> targetState + strength interaction * sourceState
-        Nonlinear -> targetState + strength interaction * sourceState * abs sourceState
-        Oscillatory -> targetState + strength interaction * sin sourceState
+-- 更新智能体
+updateAgent :: Agent -> ComplexSystemSimulator -> Agent
+updateAgent agent simulator =
+    let neighbors = getNeighbors (agentId agent) (network simulator)
+        neighborStates = map (\i -> agentState (agents simulator !! i)) neighbors
+    in updateAgentState agent neighborStates (parameters simulator)
 
-detectEmergence :: EmergenceDetector -> [Component] -> [EmergentProperty]
-detectEmergence detector components = 
-    let emergentProps = []
-        emergentProps' = if detectSynchronization detector components
-                         then EmergentProperty "Synchronization" Weak 0.8 : emergentProps
-                         else emergentProps
-        emergentProps'' = if detectPatternFormation detector components
-                          then EmergentProperty "Pattern Formation" Strong 0.9 : emergentProps'
-                          else emergentProps'
-    in emergentProps''
+-- 更新智能体状态
+updateAgentState :: Agent -> [Double] -> SystemParameters -> Agent
+updateAgentState agent neighborStates params =
+    if null neighborStates
+        then agent
+        else agent {
+            agentState = newState,
+            agentVelocity = newVelocity
+        }
+  where
+    coupling = couplingStrength params
+    naturalFreq = naturalFrequency params
+    dt = timeStep params
 
-detectSynchronization :: EmergenceDetector -> [Component] -> Bool
-detectSynchronization detector components = 
-    let states = map state components
-        meanState = sum states / fromIntegral (length states)
+    interactionTerm = sum (map (\neighborState ->
+        sin (neighborState - agentState agent)) neighborStates) / fromIntegral (length neighborStates)
+
+    newVelocity = naturalFreq + coupling * interactionTerm
+    newState = (agentState agent + newVelocity * dt) `mod'` (2 * pi)
+
+-- 获取邻居
+getNeighbors :: Int -> Network -> [Int]
+getNeighbors node network =
+    [j | j <- [0..numNodes network-1],
+     j /= node && (adjacencyMatrix network !! node !! j)]
+
+-- 获取当前状态
+getCurrentState :: ComplexSystemSimulator -> SystemState
+getCurrentState simulator = SystemState {
+    agentStates = map agentState (agents simulator),
+    orderParameter = calculateOrderParameter (map agentState (agents simulator)),
+    correlationLength = calculateCorrelationLength simulator,
+    networkDensity = calculateNetworkDensity (network simulator)
+}
+
+-- 计算序参量
+calculateOrderParameter :: [Double] -> Double
+calculateOrderParameter states =
+    let meanState = sum states / fromIntegral (length states)
         variance = sum (map (\s -> (s - meanState) ^ 2) states) / fromIntegral (length states)
-    in variance < threshold detector
+    in sqrt variance
 
-detectPatternFormation :: EmergenceDetector -> [Component] -> Bool
-detectPatternFormation detector components = 
-    let states = map state components
-        positiveCount = length (filter (> 0.0) states)
-        totalCount = length states
-        positiveRatio = fromIntegral positiveCount / fromIntegral totalCount
-    in abs (positiveRatio - 0.5) > 0.3
+-- 计算相关长度
+calculateCorrelationLength :: ComplexSystemSimulator -> Double
+calculateCorrelationLength simulator =
+    let states = map agentState (agents simulator)
+        correlations = [(i, j, correlation states i j) |
+            i <- [0..length states-1],
+            j <- [i+1..length states-1]]
+        validCorrelations = filter (\(_, _, corr) -> corr > 0) correlations
+    in if null validCorrelations
+        then 0.0
+        else sum (map (\(_, _, corr) -> corr) validCorrelations) / fromIntegral (length validCorrelations)
+  where
+    correlation states i j = abs (states !! i - states !! j)
 
-calculateComplexity :: [Component] -> [Interaction] -> Double
-calculateComplexity components interactions = 
-    let entropy = calculateEntropy components
-        structure = calculateStructure components interactions
-        interactions' = calculateInteractions interactions
-    in entropy * structure * interactions'
+-- 计算网络密度
+calculateNetworkDensity :: Network -> Double
+calculateNetworkDensity network =
+    let edgeCount = sum (map (\row -> length (filter id row)) (adjacencyMatrix network))
+        totalPossibleEdges = numNodes network * (numNodes network - 1) `div` 2
+    in fromIntegral edgeCount / fromIntegral totalPossibleEdges
 
-calculateEntropy :: [Component] -> Double
-calculateEntropy components = 
-    let states = map state components
-        stateCounts = foldl (\acc state -> Map.insertWith (+) state 1 acc) Map.empty states
-        total = fromIntegral (sum (Map.elems stateCounts))
-        probabilities = map (\count -> fromIntegral count / total) (Map.elems stateCounts)
-    in -sum (map (\p -> if p > 0 then p * log p else 0) probabilities)
+-- 临界现象分析器
+data CriticalPhenomenaAnalyzer = CriticalPhenomenaAnalyzer {
+    analysisData :: [SystemState]
+} deriving (Show)
 
-calculateStructure :: [Component] -> [Interaction] -> Double
-calculateStructure components interactions = 
-    fromIntegral (length interactions) / fromIntegral (length components)
+-- 创建分析器
+newCriticalPhenomenaAnalyzer :: [SystemState] -> CriticalPhenomenaAnalyzer
+newCriticalPhenomenaAnalyzer data_ = CriticalPhenomenaAnalyzer { analysisData = data_ }
 
-calculateInteractions :: [Interaction] -> Double
-calculateInteractions interactions = 
-    let totalStrength = sum (map strength interactions)
-    in totalStrength / fromIntegral (length interactions)
+-- 分析临界现象
+analyzeCriticalPhenomena :: CriticalPhenomenaAnalyzer -> CriticalAnalysis
+analyzeCriticalPhenomena analyzer = CriticalAnalysis {
+    powerLawExponent = calculatePowerLawExponent orderParameters,
+    correlationExponent = calculateCorrelationExponent correlationLengths,
+    criticalPoint = detectCriticalPoint orderParameters
+}
+  where
+    orderParameters = map orderParameter (analysisData analyzer)
+    correlationLengths = map correlationLength (analysisData analyzer)
 
--- 主函数
+-- 计算幂律指数
+calculatePowerLawExponent :: [Double] -> Double
+calculatePowerLawExponent data_ =
+    let logData = map log (filter (> 0) data_)
+    in if length logData < 2
+        then 0.0
+        else -mean logData / max 1e-6 (variance logData)
+  where
+    mean xs = sum xs / fromIntegral (length xs)
+    variance xs = sum (map (\x -> (x - mean xs) ^ 2) xs) / fromIntegral (length xs)
+
+-- 计算相关指数
+calculateCorrelationExponent :: [Double] -> Double
+calculateCorrelationExponent data_ =
+    if length data_ < 2
+        then 0.0
+        else sqrt (variance data_)
+  where
+    variance xs = sum (map (\x -> (x - mean xs) ^ 2) xs) / fromIntegral (length xs)
+    mean xs = sum xs / fromIntegral (length xs)
+
+-- 检测临界点
+detectCriticalPoint :: [Double] -> Maybe Int
+detectCriticalPoint data_ =
+    if length data_ < 3
+        then Nothing
+        else Just criticalPoint
+  where
+    changes = zipWith (\x y -> abs (x - y)) (tail data_) data_
+    (criticalPoint, _) = maximum (zip [0..] changes)
+
+-- 临界分析结果
+data CriticalAnalysis = CriticalAnalysis {
+    powerLawExponent :: Double,
+    correlationExponent :: Double,
+    criticalPoint :: Maybe Int
+} deriving (Show)
+
+-- 辅助函数
+mod' :: Double -> Double -> Double
+mod' x y = x - y * fromIntegral (floor (x / y))
+
+sin :: Double -> Double
+sin x = x - x^3/6 + x^5/120 -- 简化的sin函数
+
+log :: Double -> Double
+log x = if x <= 0 then 0 else x - 1 -- 简化的log函数
+
+-- 示例使用
 main :: IO ()
 main = do
-    let simulator = ComplexSystemSimulator {
-        components = map (\i -> Component ("component_" ++ show i) 0.0 Map.empty) [0..9],
-        interactions = map (\i -> Interaction ("component_" ++ show i) ("component_" ++ show (i+1)) 0.1 Nonlinear) [0..8],
-        timeStep = 0.01,
-        emergenceDetector = EmergenceDetector 0.5
-    }
-    
-    let result = simulate simulator 10.0
-    putStrLn $ "模拟结果: " ++ show result
-    putStrLn $ "最终复杂度: " ++ show (finalComplexity result)
-```
+    putStrLn "=== 复杂系统模拟 ==="
 
----
+    -- 创建系统参数
+    let parameters = SystemParameters {
+        couplingStrength = 0.5,
+        naturalFrequency = 1.0,
+        timeStep = 0.01,
+        networkEvolution = True
+    }
+
+    -- 创建复杂系统模拟器
+    let simulator = newComplexSystemSimulator 100 parameters
+
+    -- 运行模拟
+    let states = evolve simulator 1000
+    putStrLn $ "模拟完成，生成了 " ++ show (length states) ++ " 个状态"
+
+    -- 分析临界现象
+    let analyzer = newCriticalPhenomenaAnalyzer states
+    let analysis = analyzeCriticalPhenomena analyzer
+    putStrLn $ "临界分析结果: " ++ show analysis
+
+    -- 显示最终状态
+    case last states of
+        Just finalState -> do
+            putStrLn $ "最终序参量: " ++ show (orderParameter finalState)
+            putStrLn $ "最终相关长度: " ++ show (correlationLength finalState)
+            putStrLn $ "最终网络密度: " ++ show (networkDensity finalState)
+        Nothing -> putStrLn "没有状态数据"
+```
 
 ## 参考文献 / References
 
-1. Holland, J. H. (1995). *Hidden Order: How Adaptation Builds Complexity*. Basic Books.
-2. Kauffman, S. A. (1993). *The Origins of Order: Self-Organization and Selection in Evolution*. Oxford University Press.
-3. Barabási, A.-L. (2016). *Network Science*. Cambridge University Press.
-4. Strogatz, S. H. (2018). *Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering*. CRC Press.
-5. Bak, P. (1996). *How Nature Works: The Science of Self-Organized Criticality*. Copernicus.
-6. Mitchell, M. (2009). *Complexity: A Guided Tour*. Oxford University Press.
-7. Newman, M. E. J. (2010). *Networks: An Introduction*. Oxford University Press.
-8. Prokopenko, M., Boschetti, F., & Ryan, A. J. (2009). An information-theoretic primer on complexity, self-organization, and emergence. *Complexity*, 15(1), 11-28.
+1. Strogatz, S. H. (2001). Nonlinear dynamics and chaos: With applications to physics, biology, chemistry, and engineering. Westview Press.
+2. Newman, M. E. (2010). Networks: An introduction. Oxford University Press.
+3. Barabási, A. L. (2016). Network science. Cambridge University Press.
+4. Kuramoto, Y. (1975). Self-entrainment of a population of coupled non-linear oscillators. International Symposium on Mathematical Problems in Theoretical Physics.
+5. Bak, P. (1996). How nature works: The science of self-organized criticality. Springer.
+6. Kauffman, S. A. (1993). The origins of order: Self-organization and selection in evolution. Oxford University Press.
+7. Haken, H. (1983). Synergetics: An introduction. Springer.
+8. Nicolis, G., & Prigogine, I. (1977). Self-organization in nonequilibrium systems. Wiley.
+9. Stanley, H. E. (1971). Introduction to phase transitions and critical phenomena. Oxford University Press.
+10. Goldenfeld, N. (1992). Lectures on phase transitions and the renormalization group. CRC Press.
 
 ---
 
-*本模块为FormalAI提供了复杂系统理论基础，为理解AI系统的涌现性质和复杂行为提供了重要的理论框架。*
+*复杂系统理论为FormalAI提供了涌现和自组织现象的理论基础，为理解AI系统的集体行为和智能涌现提供了重要框架。*
+
+*Complex systems theory provides theoretical foundations for emergence and self-organization phenomena in FormalAI, offering important frameworks for understanding collective behavior and intelligent emergence in AI systems.*

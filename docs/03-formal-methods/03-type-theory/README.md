@@ -31,9 +31,13 @@ Type theory studies the mathematical foundations of type systems, providing theo
     - [5.1 类型安全定义 / Type Safety Definition](#51-类型安全定义--type-safety-definition)
     - [5.2 类型安全证明 / Type Safety Proof](#52-类型安全证明--type-safety-proof)
     - [5.3 类型安全应用 / Type Safety Applications](#53-类型安全应用--type-safety-applications)
+  - [6. 类型系统实现 / Type System Implementation](#6-类型系统实现--type-system-implementation)
+    - [6.1 类型检查器 / Type Checker](#61-类型检查器--type-checker)
+    - [6.2 类型推导器 / Type Inferrer](#62-类型推导器--type-inferrer)
+    - [6.3 类型统一器 / Type Unifier](#63-类型统一器--type-unifier)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：类型系统](#rust实现类型系统)
-    - [Haskell实现：类型系统](#haskell实现类型系统)
+    - [Rust实现：类型系统 / Rust Implementation: Type System](#rust实现类型系统--rust-implementation-type-system)
+    - [Haskell实现：类型系统 / Haskell Implementation: Type System](#haskell实现类型系统--haskell-implementation-type-system)
   - [参考文献 / References](#参考文献--references)
 
 ---
@@ -100,15 +104,23 @@ $$\Sigma x:A.B(x)$$
 
 其中 $B(x)$ 是依赖于 $x:A$ 的类型。
 
+**依赖类型语法 / Dependent Type Syntax:**
+
+$$\tau ::= \text{Set} \mid \text{Prop} \mid \Pi x:\tau_1.\tau_2 \mid \Sigma x:\tau_1.\tau_2 \mid \text{Id}_A(a, b)$$
+
 ### 2.2 类型族 / Type Families
 
 **类型族定义 / Type Family Definition:**
 
-$$B : A \rightarrow \text{Type}$$
+$$F : A \rightarrow \text{Type}$$
 
 **类型族实例 / Type Family Instances:**
 
-$$B(a) : \text{Type} \quad \text{for } a:A$$
+$$F(a) : \text{Type} \quad \text{for } a : A$$
+
+**类型族依赖 / Type Family Dependencies:**
+
+$$\text{Family}(A, B) = \Pi x:A.B(x)$$
 
 ### 2.3 依赖类型推导 / Dependent Type Inference
 
@@ -118,11 +130,11 @@ $$\Gamma ::= \emptyset \mid \Gamma, x:A \mid \Gamma, x:A, y:B(x)$$
 
 **依赖类型推导规则 / Dependent Type Inference Rules:**
 
-$$\frac{\Gamma \vdash A:\text{Type} \quad \Gamma, x:A \vdash B(x):\text{Type}}{\Gamma \vdash \Pi x:A.B(x):\text{Type}} \quad (\text{$\Pi$-Form})$$
+$$\frac{\Gamma \vdash A:\text{Set} \quad \Gamma, x:A \vdash B(x):\text{Set}}{\Gamma \vdash \Pi x:A.B(x):\text{Set}} \quad (\text{Pi})$$
 
-$$\frac{\Gamma, x:A \vdash t:B(x)}{\Gamma \vdash \lambda x:A.t:\Pi x:A.B(x)} \quad (\text{$\Pi$-Intro})$$
+$$\frac{\Gamma \vdash A:\text{Set} \quad \Gamma, x:A \vdash B(x):\text{Set}}{\Gamma \vdash \Sigma x:A.B(x):\text{Set}} \quad (\text{Sigma})$$
 
-$$\frac{\Gamma \vdash f:\Pi x:A.B(x) \quad \Gamma \vdash a:A}{\Gamma \vdash f(a):B(a)} \quad (\text{$\Pi$-Elim})$$
+$$\frac{\Gamma \vdash a:A \quad \Gamma \vdash b:A}{\Gamma \vdash \text{Id}_A(a, b):\text{Prop}} \quad (\text{Id})$$
 
 ## 3. 同伦类型理论 / Homotopy Type Theory
 
@@ -130,39 +142,41 @@ $$\frac{\Gamma \vdash f:\Pi x:A.B(x) \quad \Gamma \vdash a:A}{\Gamma \vdash f(a)
 
 **身份类型定义 / Identity Type Definition:**
 
-$$\text{Id}_A(a,b)$$
+$$\text{Id}_A : A \rightarrow A \rightarrow \text{Type}$$
 
-表示 $a$ 和 $b$ 在类型 $A$ 中的相等性。
+**身份类型构造器 / Identity Type Constructor:**
 
-**身份类型构造 / Identity Type Construction:**
+$$\text{refl}_A : \Pi x:A.\text{Id}_A(x, x)$$
 
-$$\frac{\Gamma \vdash a:A}{\Gamma \vdash \text{refl}_a:\text{Id}_A(a,a)} \quad (\text{Id-Intro})$$
+**身份类型消除器 / Identity Type Eliminator:**
 
-**身份类型消除 / Identity Type Elimination:**
-
-$$\frac{\Gamma, x:A, y:A, p:\text{Id}_A(x,y) \vdash C(x,y,p):\text{Type}}{\Gamma \vdash J:\Pi x:A.C(x,x,\text{refl}_x)} \quad (\text{Id-Elim})$$
+$$\text{J} : \Pi C:\Pi x,y:A.\text{Id}_A(x,y) \rightarrow \text{Type}.(\Pi x:A.C(x,x,\text{refl}_A(x))) \rightarrow \Pi x,y:A.\Pi p:\text{Id}_A(x,y).C(x,y,p)$$
 
 ### 3.2 高阶类型 / Higher-Order Types
 
-**宇宙 / Universe:**
+**高阶身份类型 / Higher-Order Identity Types:**
 
-$$\mathcal{U}_0 : \mathcal{U}_1 : \mathcal{U}_2 : ...$$
+$$\text{Id}_{\text{Id}_A(x,y)}(p, q)$$
 
-**归纳类型 / Inductive Types:**
+**类型等价 / Type Equivalence:**
 
-$$\text{data } A = c_1 \mid c_2 \mid ... \mid c_n$$
+$$A \simeq B = \Sigma f:A \rightarrow B.\Sigma g:B \rightarrow A.(\Pi x:A.\text{Id}_A(g(f(x)), x)) \times (\Pi y:B.\text{Id}_B(f(g(y)), y))$$
+
+**类型同构 / Type Isomorphism:**
+
+$$A \cong B = \Sigma f:A \rightarrow B.\Sigma g:B \rightarrow A.(\Pi x:A.\text{Id}_A(g(f(x)), x)) \times (\Pi y:B.\text{Id}_B(f(g(y)), y))$$
 
 ### 3.3 同伦等价 / Homotopy Equivalence
 
 **同伦等价定义 / Homotopy Equivalence Definition:**
 
-$$A \simeq B = \Sigma f:A \rightarrow B. \Sigma g:B \rightarrow A. \text{isEquiv}(f)$$
+$$f \sim g = \Pi x:A.\text{Id}_B(f(x), g(x))$$
 
 **同伦等价性质 / Homotopy Equivalence Properties:**
 
-- 自反性 / Reflexivity: $A \simeq A$
-- 对称性 / Symmetry: $A \simeq B \Rightarrow B \simeq A$
-- 传递性 / Transitivity: $A \simeq B \land B \simeq C \Rightarrow A \simeq C$
+- **自反性 / Reflexivity:** $f \sim f$
+- **对称性 / Symmetry:** $f \sim g \Rightarrow g \sim f$
+- **传递性 / Transitivity:** $f \sim g \land g \sim h \Rightarrow f \sim h$
 
 ## 4. 类型系统设计 / Type System Design
 
@@ -170,43 +184,43 @@ $$A \simeq B = \Sigma f:A \rightarrow B. \Sigma g:B \rightarrow A. \text{isEquiv
 
 **静态类型系统 / Static Type Systems:**
 
-- 编译时类型检查 / Compile-time type checking
-- 类型安全保证 / Type safety guarantees
-- 性能优化 / Performance optimization
+$$\text{Static}(T) = \text{CompileTime}(T) \land \text{TypeCheck}(T)$$
 
 **动态类型系统 / Dynamic Type Systems:**
 
-- 运行时类型检查 / Runtime type checking
-- 类型错误处理 / Type error handling
-- 灵活性 / Flexibility
+$$\text{Dynamic}(T) = \text{Runtime}(T) \land \text{TypeCheck}(T)$$
+
+**混合类型系统 / Hybrid Type Systems:**
+
+$$\text{Hybrid}(T) = \text{Static}(T) \lor \text{Dynamic}(T)$$
 
 ### 4.2 类型系统特性 / Type System Features
 
+**类型安全 / Type Safety:**
+
+$$\text{TypeSafe}(T) = \forall t:T.\text{WellTyped}(t) \Rightarrow \text{NoRuntimeError}(t)$$
+
 **类型推断 / Type Inference:**
 
-$$\text{infer}(\Gamma, t) = \tau$$
+$$\text{TypeInference}(T) = \forall t:T.\exists \tau:\text{Type}.\text{TypeOf}(t) = \tau$$
 
-**类型擦除 / Type Erasure:**
+**类型抽象 / Type Abstraction:**
 
-$$\text{erase}(t) = t'$$
-
-**类型重构 / Type Reconstruction:**
-
-$$\text{reconstruct}(\Gamma, t') = t$$
+$$\text{TypeAbstraction}(T) = \forall \alpha:\text{TypeVar}.\text{Abstract}(\alpha)$$
 
 ### 4.3 高级类型特性 / Advanced Type Features
 
-**多态性 / Polymorphism:**
+**多态类型 / Polymorphic Types:**
 
-$$\forall \alpha. \tau$$
+$$\forall \alpha.\tau(\alpha)$$
 
 **存在类型 / Existential Types:**
 
-$$\exists \alpha. \tau$$
+$$\exists \alpha.\tau(\alpha)$$
 
-**高阶类型 / Higher-Order Types:**
+**递归类型 / Recursive Types:**
 
-$$(\tau_1 \rightarrow \tau_2) \rightarrow \tau_3$$
+$$\mu \alpha.\tau(\alpha)$$
 
 ## 5. 类型安全 / Type Safety
 
@@ -214,636 +228,930 @@ $$(\tau_1 \rightarrow \tau_2) \rightarrow \tau_3$$
 
 **类型安全 / Type Safety:**
 
-如果 $\vdash t:\tau$，那么 $t$ 不会产生类型错误。
+$$\text{TypeSafe}(M) = \forall t:\text{Term}.\text{WellTyped}(t) \Rightarrow \text{Progress}(t) \land \text{Preservation}(t)$$
 
-If $\vdash t:\tau$, then $t$ will not produce type errors.
+**进展性 / Progress:**
 
-**进展定理 / Progress Theorem:**
+$$\text{Progress}(t) = \text{Value}(t) \lor \exists t'.\text{Step}(t, t')$$
 
-如果 $\vdash t:\tau$，那么要么 $t$ 是值，要么 $t \rightarrow t'$。
+**保持性 / Preservation:**
 
-If $\vdash t:\tau$, then either $t$ is a value or $t \rightarrow t'$.
-
-**保持定理 / Preservation Theorem:**
-
-如果 $\vdash t:\tau$ 且 $t \rightarrow t'$，那么 $\vdash t':\tau$。
-
-If $\vdash t:\tau$ and $t \rightarrow t'$, then $\vdash t':\tau$.
+$$\text{Preservation}(t) = \text{Step}(t, t') \Rightarrow \text{TypeOf}(t) = \text{TypeOf}(t')$$
 
 ### 5.2 类型安全证明 / Type Safety Proof
 
-**类型安全证明结构 / Type Safety Proof Structure:**
+**类型安全定理 / Type Safety Theorem:**
 
-1. **进展定理证明 / Progress Theorem Proof**
-2. **保持定理证明 / Preservation Theorem Proof**
-3. **类型安全推论 / Type Safety Corollary**
+$$\text{Theorem: } \text{TypeSafe}(M)$$
 
-**进展定理证明 / Progress Theorem Proof:**
+**证明策略 / Proof Strategy:**
 
-通过归纳法证明所有良类型项要么是值，要么可以求值。
+1. **进展性证明 / Progress Proof:**
+   $$\forall t:\text{Term}.\text{WellTyped}(t) \Rightarrow \text{Value}(t) \lor \exists t'.\text{Step}(t, t')$$
 
-By induction, prove that all well-typed terms are either values or can be evaluated.
-
-**保持定理证明 / Preservation Theorem Proof:**
-
-通过归纳法证明求值保持类型。
-
-By induction, prove that evaluation preserves types.
+2. **保持性证明 / Preservation Proof:**
+   $$\forall t,t':\text{Term}.\text{WellTyped}(t) \land \text{Step}(t, t') \Rightarrow \text{WellTyped}(t')$$
 
 ### 5.3 类型安全应用 / Type Safety Applications
 
 **内存安全 / Memory Safety:**
 
-类型系统可以防止内存访问错误。
-
-Type systems can prevent memory access errors.
+$$\text{MemorySafe}(P) = \forall \text{addr}.\text{ValidAccess}(P, \text{addr})$$
 
 **并发安全 / Concurrency Safety:**
 
-类型系统可以防止数据竞争。
+$$\text{ConcurrencySafe}(P) = \forall \text{thread}_1, \text{thread}_2.\text{NoRaceCondition}(\text{thread}_1, \text{thread}_2)$$
 
-Type systems can prevent data races.
+**资源安全 / Resource Safety:**
 
-**信息安全 / Information Security:**
+$$\text{ResourceSafe}(P) = \forall \text{resource}.\text{ProperAllocation}(P, \text{resource}) \land \text{ProperDeallocation}(P, \text{resource})$$
 
-类型系统可以实施信息流控制。
+## 6. 类型系统实现 / Type System Implementation
 
-Type systems can enforce information flow control.
+### 6.1 类型检查器 / Type Checker
 
-## 代码示例 / Code Examples
-
-### Rust实现：类型系统
+**类型检查算法 / Type Checking Algorithm:**
 
 ```rust
-use std::collections::HashMap;
-
-// 类型定义
-#[derive(Clone, Debug, PartialEq)]
-enum Type {
-    Bool,
-    Int,
-    Float,
-    Function(Box<Type>, Box<Type>),
-    Product(Box<Type>, Box<Type>),
-    Sum(Box<Type>, Box<Type>),
-    ForAll(String, Box<Type>),
-    Exists(String, Box<Type>),
-    Var(String),
-}
-
-// 项定义
-#[derive(Clone, Debug)]
-enum Term {
-    Variable(String),
-    Boolean(bool),
-    Integer(i32),
-    Float(f64),
-    Lambda(String, Box<Term>),
-    Application(Box<Term>, Box<Term>),
-    Pair(Box<Term>, Box<Term>),
-    First(Box<Term>),
-    Second(Box<Term>),
-    Left(Box<Term>),
-    Right(Box<Term>),
-    Case(Box<Term>, String, Box<Term>, String, Box<Term>),
-    TypeLambda(String, Box<Term>),
-    TypeApplication(Box<Term>, Type),
-}
-
-// 类型环境
-type TypeEnv = HashMap<String, Type>;
-
-// 类型检查器
-struct TypeChecker {
-    environment: TypeEnv,
-}
-
-impl TypeChecker {
-    fn new() -> Self {
-        Self {
-            environment: HashMap::new(),
+fn type_check(env: &TypeEnvironment, term: &Term) -> Result<Type, TypeError> {
+    match term {
+        Term::Var(x) => env.get(x).ok_or(TypeError::UnboundVariable),
+        Term::Abs(x, t, body) => {
+            let param_type = t.clone();
+            let new_env = env.extend(x, param_type);
+            let body_type = type_check(&new_env, body)?;
+            Ok(Type::Arrow(param_type, Box::new(body_type)))
         }
-    }
-    
-    // 类型检查
-    fn type_check(&mut self, term: &Term) -> Result<Type, String> {
-        match term {
-            Term::Variable(name) => {
-                self.environment.get(name)
-                    .cloned()
-                    .ok_or_else(|| format!("Undefined variable: {}", name))
-            }
-            
-            Term::Boolean(_) => Ok(Type::Bool),
-            
-            Term::Integer(_) => Ok(Type::Int),
-            
-            Term::Float(_) => Ok(Type::Float),
-            
-            Term::Lambda(param, body) => {
-                // 为参数分配一个类型变量
-                let param_type = Type::Var(format!("T_{}", param));
-                let old_env = self.environment.clone();
-                self.environment.insert(param.clone(), param_type.clone());
-                
-                let body_type = self.type_check(body)?;
-                let function_type = Type::Function(Box::new(param_type), Box::new(body_type));
-                
-                self.environment = old_env;
-                Ok(function_type)
-            }
-            
-            Term::Application(func, arg) => {
-                let func_type = self.type_check(func)?;
-                let arg_type = self.type_check(arg)?;
-                
-                match func_type {
-                    Type::Function(input_type, output_type) => {
-                        if self.unify(&input_type, &arg_type) {
-                            Ok(*output_type)
-                        } else {
-                            Err(format!("Type mismatch: expected {:?}, got {:?}", input_type, arg_type))
-                        }
+        Term::App(f, arg) => {
+            let func_type = type_check(env, f)?;
+            let arg_type = type_check(env, arg)?;
+            match func_type {
+                Type::Arrow(param_type, return_type) => {
+                    if param_type == arg_type {
+                        Ok(*return_type)
+                    } else {
+                        Err(TypeError::TypeMismatch)
                     }
-                    _ => Err("Not a function".to_string())
                 }
-            }
-            
-            Term::Pair(first, second) => {
-                let first_type = self.type_check(first)?;
-                let second_type = self.type_check(second)?;
-                Ok(Type::Product(Box::new(first_type), Box::new(second_type)))
-            }
-            
-            Term::First(pair) => {
-                let pair_type = self.type_check(pair)?;
-                match pair_type {
-                    Type::Product(first_type, _) => Ok(*first_type),
-                    _ => Err("Not a product type".to_string())
-                }
-            }
-            
-            Term::Second(pair) => {
-                let pair_type = self.type_check(pair)?;
-                match pair_type {
-                    Type::Product(_, second_type) => Ok(*second_type),
-                    _ => Err("Not a product type".to_string())
-                }
-            }
-            
-            Term::Left(value) => {
-                let value_type = self.type_check(value)?;
-                // 为右类型分配一个类型变量
-                let right_type = Type::Var("T_right".to_string());
-                Ok(Type::Sum(Box::new(value_type), Box::new(right_type)))
-            }
-            
-            Term::Right(value) => {
-                let value_type = self.type_check(value)?;
-                // 为左类型分配一个类型变量
-                let left_type = Type::Var("T_left".to_string());
-                Ok(Type::Sum(Box::new(left_type), Box::new(value_type)))
-            }
-            
-            Term::Case(scrutinee, left_var, left_body, right_var, right_body) => {
-                let scrutinee_type = self.type_check(scrutinee)?;
-                match scrutinee_type {
-                    Type::Sum(left_type, right_type) => {
-                        // 检查左分支
-                        let old_env = self.environment.clone();
-                        self.environment.insert(left_var.clone(), *left_type);
-                        let left_result = self.type_check(left_body)?;
-                        self.environment = old_env.clone();
-                        
-                        // 检查右分支
-                        self.environment.insert(right_var.clone(), *right_type);
-                        let right_result = self.type_check(right_body)?;
-                        self.environment = old_env;
-                        
-                        if self.unify(&left_result, &right_result) {
-                            Ok(left_result)
-                        } else {
-                            Err("Case branches have different types".to_string())
-                        }
-                    }
-                    _ => Err("Not a sum type".to_string())
-                }
-            }
-            
-            Term::TypeLambda(param, body) => {
-                let old_env = self.environment.clone();
-                self.environment.insert(param.clone(), Type::Var(param.clone()));
-                
-                let body_type = self.type_check(body)?;
-                let forall_type = Type::ForAll(param, Box::new(body_type));
-                
-                self.environment = old_env;
-                Ok(forall_type)
-            }
-            
-            Term::TypeApplication(term, type_arg) => {
-                let term_type = self.type_check(term)?;
-                match term_type {
-                    Type::ForAll(param, body_type) => {
-                        // 替换类型变量
-                        self.substitute_type(&body_type, &param, &type_arg)
-                    }
-                    _ => Err("Not a polymorphic type".to_string())
-                }
+                _ => Err(TypeError::NotAFunction)
             }
         }
-    }
-    
-    // 类型统一
-    fn unify(&self, t1: &Type, t2: &Type) -> bool {
-        match (t1, t2) {
-            (Type::Bool, Type::Bool) => true,
-            (Type::Int, Type::Int) => true,
-            (Type::Float, Type::Float) => true,
-            (Type::Function(a1, b1), Type::Function(a2, b2)) => {
-                self.unify(a1, a2) && self.unify(b1, b2)
-            }
-            (Type::Product(a1, b1), Type::Product(a2, b2)) => {
-                self.unify(a1, a2) && self.unify(b1, b2)
-            }
-            (Type::Sum(a1, b1), Type::Sum(a2, b2)) => {
-                self.unify(a1, a2) && self.unify(b1, b2)
-            }
-            (Type::Var(_), _) => true, // 类型变量可以统一为任何类型
-            (_, Type::Var(_)) => true,
-            _ => false,
-        }
-    }
-    
-    // 类型替换
-    fn substitute_type(&self, body_type: &Type, param: &str, type_arg: &Type) -> Result<Type, String> {
-        match body_type {
-            Type::Var(name) if name == param => Ok(type_arg.clone()),
-            Type::Var(name) => Ok(Type::Var(name.clone())),
-            Type::Bool => Ok(Type::Bool),
-            Type::Int => Ok(Type::Int),
-            Type::Float => Ok(Type::Float),
-            Type::Function(a, b) => {
-                let new_a = self.substitute_type(a, param, type_arg)?;
-                let new_b = self.substitute_type(b, param, type_arg)?;
-                Ok(Type::Function(Box::new(new_a), Box::new(new_b)))
-            }
-            Type::Product(a, b) => {
-                let new_a = self.substitute_type(a, param, type_arg)?;
-                let new_b = self.substitute_type(b, param, type_arg)?;
-                Ok(Type::Product(Box::new(new_a), Box::new(new_b)))
-            }
-            Type::Sum(a, b) => {
-                let new_a = self.substitute_type(a, param, type_arg)?;
-                let new_b = self.substitute_type(b, param, type_arg)?;
-                Ok(Type::Sum(Box::new(new_a), Box::new(new_b)))
-            }
-            Type::ForAll(name, body) => {
-                if name == param {
-                    Ok(Type::ForAll(name.clone(), body.clone()))
-                } else {
-                    let new_body = self.substitute_type(body, param, type_arg)?;
-                    Ok(Type::ForAll(name.clone(), Box::new(new_body)))
-                }
-            }
-            Type::Exists(name, body) => {
-                if name == param {
-                    Ok(Type::Exists(name.clone(), body.clone()))
-                } else {
-                    let new_body = self.substitute_type(body, param, type_arg)?;
-                    Ok(Type::Exists(name.clone(), Box::new(new_body)))
-                }
+        Term::Bool(_) => Ok(Type::Bool),
+        Term::Int(_) => Ok(Type::Int),
+        Term::Add(l, r) => {
+            let left_type = type_check(env, l)?;
+            let right_type = type_check(env, r)?;
+            if left_type == Type::Int && right_type == Type::Int {
+                Ok(Type::Int)
+            } else {
+                Err(TypeError::TypeMismatch)
             }
         }
-    }
-}
-
-// 依赖类型系统
-struct DependentTypeChecker {
-    environment: TypeEnv,
-    type_families: HashMap<String, Box<dyn Fn(&[Term]) -> Type>>,
-}
-
-impl DependentTypeChecker {
-    fn new() -> Self {
-        Self {
-            environment: HashMap::new(),
-            type_families: HashMap::new(),
-        }
-    }
-    
-    // 依赖类型检查
-    fn check_dependent_type(&mut self, term: &Term) -> Result<Type, String> {
-        // 简化的依赖类型检查
-        // 实际实现需要更复杂的类型系统
-        match term {
-            Term::Variable(name) => {
-                self.environment.get(name)
-                    .cloned()
-                    .ok_or_else(|| format!("Undefined variable: {}", name))
-            }
-            _ => Err("Dependent type checking not implemented".to_string())
-        }
-    }
-}
-
-fn main() {
-    println!("=== 类型理论示例 ===");
-    
-    // 创建类型检查器
-    let mut checker = TypeChecker::new();
-    
-    // 1. 简单类型检查
-    let simple_term = Term::Integer(42);
-    match checker.type_check(&simple_term) {
-        Ok(typ) => println!("简单类型检查: {:?} : {:?}", simple_term, typ),
-        Err(e) => println!("类型错误: {}", e),
-    }
-    
-    // 2. 函数类型检查
-    let lambda_term = Term::Lambda(
-        "x".to_string(),
-        Box::new(Term::Variable("x".to_string()))
-    );
-    match checker.type_check(&lambda_term) {
-        Ok(typ) => println!("函数类型检查: {:?} : {:?}", lambda_term, typ),
-        Err(e) => println!("类型错误: {}", e),
-    }
-    
-    // 3. 应用类型检查
-    let app_term = Term::Application(
-        Box::new(lambda_term),
-        Box::new(Term::Integer(42))
-    );
-    match checker.type_check(&app_term) {
-        Ok(typ) => println!("应用类型检查: {:?} : {:?}", app_term, typ),
-        Err(e) => println!("类型错误: {}", e),
-    }
-    
-    // 4. 积类型检查
-    let pair_term = Term::Pair(
-        Box::new(Term::Integer(1)),
-        Box::new(Term::Boolean(true))
-    );
-    match checker.type_check(&pair_term) {
-        Ok(typ) => println!("积类型检查: {:?} : {:?}", pair_term, typ),
-        Err(e) => println!("类型错误: {}", e),
-    }
-    
-    // 5. 多态类型检查
-    let poly_term = Term::TypeLambda(
-        "T".to_string(),
-        Box::new(Term::Lambda(
-            "x".to_string(),
-            Box::new(Term::Variable("x".to_string()))
-        ))
-    );
-    match checker.type_check(&poly_term) {
-        Ok(typ) => println!("多态类型检查: {:?} : {:?}", poly_term, typ),
-        Err(e) => println!("类型错误: {}", e),
     }
 }
 ```
 
-### Haskell实现：类型系统
+### 6.2 类型推导器 / Type Inferrer
+
+**类型推导算法 / Type Inference Algorithm:**
+
+```rust
+fn type_infer(env: &TypeEnvironment, term: &Term) -> Result<(Type, Substitution), TypeError> {
+    match term {
+        Term::Var(x) => {
+            let var_type = env.get(x).ok_or(TypeError::UnboundVariable)?;
+            Ok((var_type.clone(), Substitution::empty()))
+        }
+        Term::Abs(x, _, body) => {
+            let param_type = Type::Var(format!("α_{}", x)));
+            let new_env = env.extend(x, param_type.clone());
+            let (body_type, subst) = type_infer(&new_env, body)?;
+            let arrow_type = Type::Arrow(Box::new(param_type), Box::new(body_type));
+            Ok((arrow_type, subst))
+        }
+        Term::App(f, arg) => {
+            let (func_type, subst1) = type_infer(env, f)?;
+            let (arg_type, subst2) = type_infer(env, arg)?;
+            let return_type = Type::Var("β".to_string());
+            let arrow_type = Type::Arrow(Box::new(arg_type), Box::new(return_type.clone()));
+            let subst3 = unify(checker, func_type, arrow_type)?;
+            let final_subst = subst1.compose(subst2).compose(subst3);
+            Ok((return_type, final_subst))
+        }
+        Term::Bool(_) => Ok((Type::Bool, Substitution::empty())),
+        Term::Int(_) => Ok((Type::Int, Substitution::empty())),
+        Term::Add(l, r) => {
+            let (left_type, subst1) = type_infer(env, l)?;
+            let (right_type, subst2) = type_infer(env, r)?;
+            let subst3 = unify(checker, left_type, Type::Int)?;
+            let subst4 = unify(checker, right_type, Type::Int)?;
+            let final_subst = subst1.compose(subst2).compose(subst3).compose(subst4);
+            Ok((Type::Int, final_subst))
+        }
+    }
+}
+```
+
+### 6.3 类型统一器 / Type Unifier
+
+**类型统一算法 / Type Unification Algorithm:**
+
+```rust
+fn unify(t1: Type, t2: Type) -> Result<Substitution, TypeError> {
+    match (t1, t2) {
+        (Type::Var(x), Type::Var(y)) if x == y => Ok(Substitution::empty()),
+        (Type::Var(x), t) | (t, Type::Var(x)) => {
+            if occurs_in(x, &t) {
+                Err(TypeError::OccursCheck)
+            } else {
+                Ok(Substitution::single(x, t))
+            }
+        }
+        (Type::Arrow(a1, r1), Type::Arrow(a2, r2)) => {
+            let subst1 = unify(a1, a2)?;
+            let subst2 = unify(r1.apply(&subst1), r2.apply(&subst1))?;
+            Ok(subst1.compose(subst2))
+        }
+        (Type::Bool, Type::Bool) | (Type::Int, Type::Int) => Ok(Substitution::empty()),
+        _ => Err(TypeError::UnificationFailure)
+    }
+}
+```
+
+## 代码示例 / Code Examples
+
+### Rust实现：类型系统 / Rust Implementation: Type System
+
+```rust
+use std::collections::HashMap;
+
+/// 类型 / Type
+#[derive(Clone, Debug, PartialEq)]
+pub enum Type {
+    Bool,
+    Int,
+    Var(String),
+    Arrow(Box<Type>, Box<Type>),
+    Product(Box<Type>, Box<Type>),
+    Sum(Box<Type>, Box<Type>),
+    ForAll(String, Box<Type>),
+    Exists(String, Box<Type>),
+    Rec(String, Box<Type>),
+}
+
+/// 项 / Term
+#[derive(Clone, Debug)]
+pub enum Term {
+    Var(String),
+    Abs(String, Type, Box<Term>),
+    App(Box<Term>, Box<Term>),
+    Bool(bool),
+    Int(i32),
+    Add(Box<Term>, Box<Term>),
+    Pair(Box<Term>, Box<Term>),
+    Fst(Box<Term>),
+    Snd(Box<Term>),
+    Inl(Box<Term>, Type),
+    Inr(Box<Term>, Type),
+    Case(Box<Term>, String, Box<Term>, String, Box<Term>),
+    Pack(Type, Box<Term>, Box<Type>),
+    Unpack(String, String, Box<Term>, Box<Term>),
+    Fold(Box<Term>, Box<Type>),
+    Unfold(Box<Term>),
+}
+
+/// 类型环境 / Type Environment
+pub struct TypeEnvironment {
+    bindings: HashMap<String, Type>,
+}
+
+impl TypeEnvironment {
+    pub fn new() -> Self {
+        Self {
+            bindings: HashMap::new(),
+        }
+    }
+    
+    pub fn extend(&self, name: &str, ty: Type) -> Self {
+        let mut new_env = self.clone();
+        new_env.bindings.insert(name.to_string(), ty);
+        new_env
+    }
+    
+    pub fn get(&self, name: &str) -> Option<&Type> {
+        self.bindings.get(name)
+    }
+}
+
+/// 类型错误 / Type Error
+#[derive(Debug)]
+pub enum TypeError {
+    UnboundVariable,
+    TypeMismatch,
+    NotAFunction,
+    UnificationFailure,
+    OccursCheck,
+}
+
+/// 类型检查器 / Type Checker
+pub struct TypeChecker {
+    type_vars: HashMap<String, Type>,
+}
+
+impl TypeChecker {
+    pub fn new() -> Self {
+        Self {
+            type_vars: HashMap::new(),
+        }
+    }
+    
+    /// 类型检查 / Type Check
+    pub fn type_check(&self, env: &TypeEnvironment, term: &Term) -> Result<Type, TypeError> {
+        match term {
+            Term::Var(x) => {
+                env.get(x).ok_or(TypeError::UnboundVariable)
+            }
+            Term::Abs(x, t, body) => {
+                let new_env = env.extend(x, t.clone());
+                let body_type = self.type_check(&new_env, body)?;
+                Ok(Type::Arrow(Box::new(t.clone()), Box::new(body_type)))
+            }
+            Term::App(f, arg) => {
+                let func_type = self.type_check(env, f)?;
+                let arg_type = self.type_check(env, arg)?;
+                
+                match func_type {
+                    Type::Arrow(param_type, return_type) => {
+                        if *param_type == arg_type {
+                            Ok(*return_type)
+                        } else {
+                            Err(TypeError::TypeMismatch)
+                        }
+                    }
+                    _ => Err(TypeError::NotAFunction)
+                }
+            }
+            Term::Bool(_) => Ok(Type::Bool),
+            Term::Int(_) => Ok(Type::Int),
+            Term::Add(l, r) => {
+                let left_type = self.type_check(env, l)?;
+                let right_type = self.type_check(env, r)?;
+                
+                if left_type == Type::Int && right_type == Type::Int {
+                    Ok(Type::Int)
+                } else {
+                    Err(TypeError::TypeMismatch)
+                }
+            }
+            Term::Pair(l, r) => {
+                let left_type = self.type_check(env, l)?;
+                let right_type = self.type_check(env, r)?;
+                Ok(Type::Product(Box::new(left_type), Box::new(right_type)))
+            }
+            Term::Fst(p) => {
+                let pair_type = self.type_check(env, p)?;
+                match pair_type {
+                    Type::Product(left_type, _) => Ok(*left_type),
+                    _ => Err(TypeError::TypeMismatch)
+                }
+            }
+            Term::Snd(p) => {
+                let pair_type = self.type_check(env, p)?;
+                match pair_type {
+                    Type::Product(_, right_type) => Ok(*right_type),
+                    _ => Err(TypeError::TypeMismatch)
+                }
+            }
+            Term::Inl(t, ty) => {
+                let term_type = self.type_check(env, t)?;
+                if term_type == *ty {
+                    Ok(Type::Sum(Box::new(ty.clone()), Box::new(Type::Var("_".to_string()))))
+                } else {
+                    Err(TypeError::TypeMismatch)
+                }
+            }
+            Term::Inr(t, ty) => {
+                let term_type = self.type_check(env, t)?;
+                if term_type == *ty {
+                    Ok(Type::Sum(Box::new(Type::Var("_".to_string())), Box::new(ty.clone())))
+                } else {
+                    Err(TypeError::TypeMismatch)
+                }
+            }
+            Term::Case(t, x1, e1, x2, e2) => {
+                let sum_type = self.type_check(env, t)?;
+                match sum_type {
+                    Type::Sum(left_type, right_type) => {
+                        let env1 = env.extend(x1, *left_type);
+                        let env2 = env.extend(x2, *right_type);
+                        let type1 = self.type_check(&env1, e1)?;
+                        let type2 = self.type_check(&env2, e2)?;
+                        
+                        if type1 == type2 {
+                            Ok(type1)
+                        } else {
+                            Err(TypeError::TypeMismatch)
+                        }
+                    }
+                    _ => Err(TypeError::TypeMismatch)
+                }
+            }
+            Term::Pack(ty, term, exist_type) => {
+                let term_type = self.type_check(env, term)?;
+                if term_type == *ty {
+                    Ok(Type::Exists("α".to_string(), Box::new(exist_type.clone())))
+                } else {
+                    Err(TypeError::TypeMismatch)
+                }
+            }
+            Term::Unpack(alpha, x, pack, body) => {
+                let pack_type = self.type_check(env, pack)?;
+                match pack_type {
+                    Type::Exists(var, exist_type) => {
+                        let new_env = env.extend(x, exist_type.clone());
+                        let body_type = self.type_check(&new_env, body)?;
+                        Ok(body_type)
+                    }
+                    _ => Err(TypeError::TypeMismatch)
+                }
+            }
+            Term::Fold(term, rec_type) => {
+                let term_type = self.type_check(env, term)?;
+                match rec_type {
+                    Type::Rec(var, body) => {
+                        let unfolded_type = body.substitute(var, rec_type);
+                        if term_type == unfolded_type {
+                            Ok(rec_type.clone())
+                        } else {
+                            Err(TypeError::TypeMismatch)
+                        }
+                    }
+                    _ => Err(TypeError::TypeMismatch)
+                }
+            }
+            Term::Unfold(term) => {
+                let rec_type = self.type_check(env, term)?;
+                match rec_type {
+                    Type::Rec(var, body) => {
+                        let unfolded_type = body.substitute(var, &rec_type);
+                        Ok(unfolded_type)
+                    }
+                    _ => Err(TypeError::TypeMismatch)
+                }
+            }
+        }
+    }
+    
+    /// 类型推导 / Type Inference
+    pub fn type_infer(&self, env: &TypeEnvironment, term: &Term) -> Result<(Type, Substitution), TypeError> {
+        match term {
+            Term::Var(x) => {
+                let var_type = env.get(x).ok_or(TypeError::UnboundVariable)?;
+                Ok((var_type.clone(), Substitution::empty()))
+            }
+            Term::Abs(x, _, body) => {
+                let param_type = Type::Var(format!("α_{}", x)));
+                let new_env = env.extend(x, param_type.clone());
+                let (body_type, subst) = self.type_infer(&new_env, body)?;
+                let arrow_type = Type::Arrow(Box::new(param_type), Box::new(body_type));
+                Ok((arrow_type, subst))
+            }
+            Term::App(f, arg) => {
+                let (func_type, subst1) = self.type_infer(env, f)?;
+                let (arg_type, subst2) = self.type_infer(env, arg)?;
+                let return_type = Type::Var("β".to_string());
+                let arrow_type = Type::Arrow(Box::new(arg_type), Box::new(return_type.clone()));
+                let subst3 = self.unify(checker, func_type, arrow_type)?;
+                let final_subst = subst1.compose(subst2).compose(subst3);
+                Ok((return_type, final_subst))
+            }
+            Term::Bool(_) => Ok((Type::Bool, Substitution::empty())),
+            Term::Int(_) => Ok((Type::Int, Substitution::empty())),
+            Term::Add(l, r) => {
+                let (left_type, subst1) = self.type_infer(env, l)?;
+                let (right_type, subst2) = self.type_infer(env, r)?;
+                let subst3 = self.unify(checker, left_type, Type::Int)?;
+                let subst4 = self.unify(checker, right_type, Type::Int)?;
+                let final_subst = subst1.compose(subst2).compose(subst3).compose(subst4);
+                Ok((Type::Int, final_subst))
+            }
+            _ => Err(TypeError::TypeMismatch)
+        }
+    }
+    
+    /// 类型统一 / Type Unification
+    fn unify(&self, t1: Type, t2: Type) -> Result<Substitution, TypeError> {
+        match (t1, t2) {
+            (Type::Var(x), Type::Var(y)) if x == y => Ok(Substitution::empty()),
+            (Type::Var(x), t) | (t, Type::Var(x)) => {
+                if self.occurs_in(&x, &t) {
+                    Err(TypeError::OccursCheck)
+                } else {
+                    Ok(Substitution::single(x, t))
+                }
+            }
+            (Type::Arrow(a1, r1), Type::Arrow(a2, r2)) => {
+                let subst1 = self.unify(*a1, *a2)?;
+                let subst2 = self.unify(r1.apply(&subst1), r2.apply(&subst1))?;
+                Ok(subst1.compose(subst2))
+            }
+            (Type::Bool, Type::Bool) | (Type::Int, Type::Int) => Ok(Substitution::empty()),
+            _ => Err(TypeError::UnificationFailure)
+        }
+    }
+    
+    /// 出现检查 / Occurs Check
+    fn occurs_in(&self, var: &str, ty: &Type) -> bool {
+        match ty {
+            Type::Var(x) => x == var,
+            Type::Arrow(a, r) => self.occurs_in(var, a) || self.occurs_in(var, r),
+            Type::Product(l, r) => self.occurs_in(var, l) || self.occurs_in(var, r),
+            Type::Sum(l, r) => self.occurs_in(var, l) || self.occurs_in(var, r),
+            Type::ForAll(_, body) | Type::Exists(_, body) | Type::Rec(_, body) => {
+                self.occurs_in(var, body)
+            }
+            _ => false
+        }
+    }
+}
+
+/// 替换 / Substitution
+#[derive(Clone)]
+pub struct Substitution {
+    mappings: HashMap<String, Type>,
+}
+
+impl Substitution {
+    pub fn empty() -> Self {
+        Self {
+            mappings: HashMap::new(),
+        }
+    }
+    
+    pub fn single(var: String, ty: Type) -> Self {
+        let mut mappings = HashMap::new();
+        mappings.insert(var, ty);
+        Self { mappings }
+    }
+    
+    pub fn compose(&self, other: Substitution) -> Substitution {
+        let mut new_mappings = self.mappings.clone();
+        for (var, ty) in other.mappings {
+            new_mappings.insert(var, ty);
+        }
+        Substitution { mappings: new_mappings }
+    }
+    
+    pub fn apply(&self, ty: &Type) -> Type {
+        match ty {
+            Type::Var(x) => self.mappings.get(x).cloned().unwrap_or(ty.clone()),
+            Type::Arrow(a, r) => Type::Arrow(
+                Box::new(self.apply(a)),
+                Box::new(self.apply(r))
+            ),
+            Type::Product(l, r) => Type::Product(
+                Box::new(self.apply(l)),
+                Box::new(self.apply(r))
+            ),
+            Type::Sum(l, r) => Type::Sum(
+                Box::new(self.apply(l)),
+                Box::new(self.apply(r))
+            ),
+            Type::ForAll(var, body) => Type::ForAll(
+                var.clone(),
+                Box::new(self.apply(body))
+            ),
+            Type::Exists(var, body) => Type::Exists(
+                var.clone(),
+                Box::new(self.apply(body))
+            ),
+            Type::Rec(var, body) => Type::Rec(
+                var.clone(),
+                Box::new(self.apply(body))
+            ),
+            _ => ty.clone()
+        }
+    }
+}
+
+impl Type {
+    pub fn substitute(&self, var: &str, replacement: &Type) -> Type {
+        match self {
+            Type::Var(x) if x == var => replacement.clone(),
+            Type::Var(_) => self.clone(),
+            Type::Arrow(a, r) => Type::Arrow(
+                Box::new(a.substitute(var, replacement)),
+                Box::new(r.substitute(var, replacement))
+            ),
+            Type::Product(l, r) => Type::Product(
+                Box::new(l.substitute(var, replacement)),
+                Box::new(r.substitute(var, replacement))
+            ),
+            Type::Sum(l, r) => Type::Sum(
+                Box::new(l.substitute(var, replacement)),
+                Box::new(r.substitute(var, replacement))
+            ),
+            Type::ForAll(v, body) if v != var => Type::ForAll(
+                v.clone(),
+                Box::new(body.substitute(var, replacement))
+            ),
+            Type::Exists(v, body) if v != var => Type::Exists(
+                v.clone(),
+                Box::new(body.substitute(var, replacement))
+            ),
+            Type::Rec(v, body) if v != var => Type::Rec(
+                v.clone(),
+                Box::new(body.substitute(var, replacement))
+            ),
+            _ => self.clone()
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    
+    #[test]
+    fn test_type_checking() {
+        let checker = TypeChecker::new();
+        let env = TypeEnvironment::new();
+        
+        // 测试基本类型 / Test basic types
+        let bool_term = Term::Bool(true);
+        let result = checker.type_check(&env, &bool_term);
+        assert!(result.is_ok());
+        assert_eq!(result.unwrap(), Type::Bool);
+        
+        let int_term = Term::Int(42);
+        let result = checker.type_check(&env, &int_term);
+        assert!(result.is_ok());
+        assert_eq!(result.unwrap(), Type::Int);
+        
+        // 测试函数类型 / Test function types
+        let abs_term = Term::Abs("x".to_string(), Type::Int, Box::new(Term::Var("x".to_string())));
+        let result = checker.type_check(&env, &abs_term);
+        assert!(result.is_ok());
+        assert_eq!(result.unwrap(), Type::Arrow(Box::new(Type::Int), Box::new(Type::Int)));
+    }
+    
+    #[test]
+    fn test_type_inference() {
+        let checker = TypeChecker::new();
+        let env = TypeEnvironment::new();
+        
+        // 测试类型推导 / Test type inference
+        let abs_term = Term::Abs("x".to_string(), Type::Int, Box::new(Term::Var("x".to_string())));
+        let result = checker.type_infer(&env, &abs_term);
+        assert!(result.is_ok());
+        
+        let (inferred_type, _) = result.unwrap();
+        assert_eq!(inferred_type, Type::Arrow(Box::new(Type::Int), Box::new(Type::Int)));
+    }
+    
+    #[test]
+    fn test_type_unification() {
+        let checker = TypeChecker::new();
+        
+        // 测试类型统一 / Test type unification
+        let t1 = Type::Arrow(Box::new(Type::Var("α".to_string())), Box::new(Type::Int));
+        let t2 = Type::Arrow(Box::new(Type::Int), Box::new(Type::Var("β".to_string())));
+        
+        let result = checker.unify(t1, t2);
+        assert!(result.is_ok());
+    }
+}
+```
+
+### Haskell实现：类型系统 / Haskell Implementation: Type System
 
 ```haskell
--- 类型理论模块
+-- 类型理论模块 / Type Theory Module
 module TypeTheory where
 
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Maybe (fromMaybe)
+import Control.Monad.State
 
--- 类型定义
-data Type = TBool
-          | TInt
-          | TFloat
-          | TFun Type Type
-          | TProduct Type Type
-          | TSum Type Type
-          | TForAll String Type
-          | TExists String Type
-          | TVar String
-    deriving (Show, Eq)
+-- 类型 / Type
+data Type = TBool | TInt | TVar String | TArrow Type Type | TProduct Type Type | TSum Type Type | TForAll String Type | TExists String Type | TRec String Type deriving (Show, Eq)
 
--- 项定义
-data Term = Variable String
-          | Boolean Bool
-          | Integer Int
-          | Float Double
-          | Lambda String Term
-          | Application Term Term
-          | Pair Term Term
-          | First Term
-          | Second Term
-          | Left Term
-          | Right Term
-          | Case Term String Term String Term
-          | TypeLambda String Term
-          | TypeApplication Term Type
-    deriving (Show, Eq)
+-- 项 / Term
+data Term = Var String | Abs String Type Term | App Term Term | Bool Bool | Int Int | Add Term Term | Pair Term Term | Fst Term | Snd Term | Inl Term Type | Inr Term Type | Case Term String Term String Term | Pack Type Term Type | Unpack String String Term Term | Fold Term Type | Unfold Term deriving (Show)
 
--- 类型环境
-type TypeEnv = Map String Type
+-- 类型环境 / Type Environment
+type TypeEnvironment = Map String Type
 
--- 类型检查器
+-- 替换 / Substitution
+type Substitution = Map String Type
+
+-- 类型错误 / Type Error
+data TypeError = UnboundVariable | TypeMismatch | NotAFunction | UnificationFailure | OccursCheck deriving (Show)
+
+-- 类型检查器 / Type Checker
 data TypeChecker = TypeChecker
-    { environment :: TypeEnv
+    { typeVars :: Map String Type
     } deriving (Show)
 
--- 创建新的类型检查器
-newTypeChecker :: TypeChecker
-newTypeChecker = TypeChecker Map.empty
+-- 创建类型检查器 / Create Type Checker
+createTypeChecker :: TypeChecker
+createTypeChecker = TypeChecker Map.empty
 
--- 类型检查
-typeCheck :: TypeChecker -> Term -> Either String Type
-typeCheck checker term = case term of
-    Variable name -> 
-        case Map.lookup name (environment checker) of
-            Just typ -> Right typ
-            Nothing -> Left $ "Undefined variable: " ++ name
-    
-    Boolean _ -> Right TBool
-    
-    Integer _ -> Right TInt
-    
-    Float _ -> Right TFloat
-    
-    Lambda param body -> do
-        let paramType = TVar $ "T_" ++ param
-        let newEnv = Map.insert param paramType (environment checker)
-        let newChecker = checker { environment = newEnv }
-        bodyType <- typeCheck newChecker body
-        Right $ TFun paramType bodyType
-    
-    Application func arg -> do
-        funcType <- typeCheck checker func
-        argType <- typeCheck checker arg
-        case funcType of
-            TFun inputType outputType -> 
-                if unify inputType argType 
-                    then Right outputType 
-                    else Left $ "Type mismatch: expected " ++ show inputType ++ ", got " ++ show argType
-            _ -> Left "Not a function"
-    
-    Pair first second -> do
-        firstType <- typeCheck checker first
-        secondType <- typeCheck checker second
-        Right $ TProduct firstType secondType
-    
-    First pair -> do
-        pairType <- typeCheck checker pair
-        case pairType of
-            TProduct firstType _ -> Right firstType
-            _ -> Left "Not a product type"
-    
-    Second pair -> do
-        pairType <- typeCheck checker pair
-        case pairType of
-            TProduct _ secondType -> Right secondType
-            _ -> Left "Not a product type"
-    
-    Left value -> do
-        valueType <- typeCheck checker value
-        let rightType = TVar "T_right"
-        Right $ TSum valueType rightType
-    
-    Right value -> do
-        valueType <- typeCheck checker value
-        let leftType = TVar "T_left"
-        Right $ TSum leftType valueType
-    
-    Case scrutinee leftVar leftBody rightVar rightBody -> do
-        scrutineeType <- typeCheck checker scrutinee
-        case scrutineeType of
-            TSum leftType rightType -> do
-                -- 检查左分支
-                let leftEnv = Map.insert leftVar leftType (environment checker)
-                let leftChecker = checker { environment = leftEnv }
-                leftResult <- typeCheck leftChecker leftBody
-                
-                -- 检查右分支
-                let rightEnv = Map.insert rightVar rightType (environment checker)
-                let rightChecker = checker { environment = rightEnv }
-                rightResult <- typeCheck rightChecker rightBody
-                
-                if unify leftResult rightResult 
-                    then Right leftResult 
-                    else Left "Case branches have different types"
-            _ -> Left "Not a sum type"
-    
-    TypeLambda param body -> do
-        let paramType = TVar param
-        let newEnv = Map.insert param paramType (environment checker)
-        let newChecker = checker { environment = newEnv }
-        bodyType <- typeCheck newChecker body
-        Right $ TForAll param bodyType
-    
-    TypeApplication term typeArg -> do
-        termType <- typeCheck checker term
-        case termType of
-            TForAll param bodyType -> 
-                substituteType bodyType param typeArg
-            _ -> Left "Not a polymorphic type"
+-- 类型检查 / Type Check
+typeCheck :: TypeChecker -> TypeEnvironment -> Term -> Either TypeError Type
+typeCheck checker env term = 
+    case term of
+        Var x -> 
+            case Map.lookup x env of
+                Just t -> Right t
+                Nothing -> Left UnboundVariable
+        
+        Abs x t body -> 
+            let newEnv = Map.insert x t env
+                bodyType = typeCheck checker newEnv body
+            in case bodyType of
+                Right bt -> Right (TArrow t bt)
+                Left err -> Left err
+        
+        App f arg -> 
+            let funcType = typeCheck checker env f
+                argType = typeCheck checker env arg
+            in case (funcType, argType) of
+                (Right (TArrow paramType returnType), Right argT) ->
+                    if paramType == argT 
+                        then Right returnType
+                        else Left TypeMismatch
+                (Right _, Right _) -> Left NotAFunction
+                (Left err, _) -> Left err
+                (_, Left err) -> Left err
+        
+        Bool _ -> Right TBool
+        Int _ -> Right TInt
+        
+        Add l r -> 
+            let leftType = typeCheck checker env l
+                rightType = typeCheck checker env r
+            in case (leftType, rightType) of
+                (Right TInt, Right TInt) -> Right TInt
+                _ -> Left TypeMismatch
+        
+        Pair l r -> 
+            let leftType = typeCheck checker env l
+                rightType = typeCheck checker env r
+            in case (leftType, rightType) of
+                (Right lt, Right rt) -> Right (TProduct lt rt)
+                (Left err, _) -> Left err
+                (_, Left err) -> Left err
+        
+        Fst p -> 
+            let pairType = typeCheck checker env p
+            in case pairType of
+                Right (TProduct leftType _) -> Right leftType
+                Right _ -> Left TypeMismatch
+                Left err -> Left err
+        
+        Snd p -> 
+            let pairType = typeCheck checker env p
+            in case pairType of
+                Right (TProduct _ rightType) -> Right rightType
+                Right _ -> Left TypeMismatch
+                Left err -> Left err
+        
+        Inl t ty -> 
+            let termType = typeCheck checker env t
+            in case termType of
+                Right tt -> 
+                    if tt == ty 
+                        then Right (TSum ty (TVar "_"))
+                        else Left TypeMismatch
+                Left err -> Left err
+        
+        Inr t ty -> 
+            let termType = typeCheck checker env t
+            in case termType of
+                Right tt -> 
+                    if tt == ty 
+                        then Right (TSum (TVar "_") ty)
+                        else Left TypeMismatch
+                Left err -> Left err
+        
+        Case t x1 e1 x2 e2 -> 
+            let sumType = typeCheck checker env t
+            in case sumType of
+                Right (TSum leftType rightType) -> 
+                    let env1 = Map.insert x1 leftType env
+                        env2 = Map.insert x2 rightType env
+                        type1 = typeCheck checker env1 e1
+                        type2 = typeCheck checker env2 e2
+                    in case (type1, type2) of
+                        (Right t1, Right t2) -> 
+                            if t1 == t2 
+                                then Right t1
+                                else Left TypeMismatch
+                        (Left err, _) -> Left err
+                        (_, Left err) -> Left err
+                Right _ -> Left TypeMismatch
+                Left err -> Left err
+        
+        Pack ty term existType -> 
+            let termType = typeCheck checker env term
+            in case termType of
+                Right tt -> 
+                    if tt == ty 
+                        then Right (TExists "α" existType)
+                        else Left TypeMismatch
+                Left err -> Left err
+        
+        Unpack alpha x pack body -> 
+            let packType = typeCheck checker env pack
+            in case packType of
+                Right (TExists var existType) -> 
+                    let newEnv = Map.insert x existType env
+                        bodyType = typeCheck checker newEnv body
+                    in bodyType
+                Right _ -> Left TypeMismatch
+                Left err -> Left err
+        
+        Fold term recType -> 
+            let termType = typeCheck checker env term
+            in case (termType, recType) of
+                (Right tt, TRec var body) -> 
+                    let unfoldedType = substitute var recType body
+                    in if tt == unfoldedType 
+                        then Right recType
+                        else Left TypeMismatch
+                _ -> Left TypeMismatch
+        
+        Unfold term -> 
+            let recType = typeCheck checker env term
+            in case recType of
+                Right (TRec var body) -> 
+                    let unfoldedType = substitute var recType body
+                    in Right unfoldedType
+                Right _ -> Left TypeMismatch
+                Left err -> Left err
 
--- 类型统一
-unify :: Type -> Type -> Bool
-unify TBool TBool = True
-unify TInt TInt = True
-unify TFloat TFloat = True
-unify (TFun a1 b1) (TFun a2 b2) = unify a1 a2 && unify b1 b2
-unify (TProduct a1 b1) (TProduct a2 b2) = unify a1 a2 && unify b1 b2
-unify (TSum a1 b1) (TSum a2 b2) = unify a1 a2 && unify b1 b2
-unify (TVar _) _ = True  -- 类型变量可以统一为任何类型
-unify _ (TVar _) = True
-unify _ _ = False
+-- 类型推导 / Type Inference
+typeInfer :: TypeChecker -> TypeEnvironment -> Term -> Either TypeError (Type, Substitution)
+typeInfer checker env term = 
+    case term of
+        Var x -> 
+            case Map.lookup x env of
+                Just t -> Right (t, Map.empty)
+                Nothing -> Left UnboundVariable
+        
+        Abs x _ body -> 
+            let paramType = TVar ("α_" ++ x)
+                newEnv = Map.insert x paramType env
+                (bodyType, subst) = typeInfer checker newEnv body
+            in case (bodyType, subst) of
+                (Right bt, Right s) -> Right (TArrow paramType bt, s)
+                (Left err, _) -> Left err
+                (_, Left err) -> Left err
+        
+        App f arg -> 
+            let (funcType, subst1) = typeInfer checker env f
+                (argType, subst2) = typeInfer checker env arg
+            in case (funcType, argType) of
+                (Right ft, Right at) -> 
+                    let returnType = TVar "β"
+                        arrowType = TArrow at returnType
+                        subst3 = unify checker ft arrowType
+                    in case (subst1, subst2, subst3) of
+                        (Right s1, Right s2, Right s3) -> 
+                            let finalSubst = compose s1 (compose s2 s3)
+                            in Right (returnType, finalSubst)
+                        (Left err, _, _) -> Left err
+                        (_, Left err, _) -> Left err
+                        (_, _, Left err) -> Left err
+                (Left err, _) -> Left err
+                (_, Left err) -> Left err
+        
+        Bool _ -> Right (TBool, Map.empty)
+        Int _ -> Right (TInt, Map.empty)
+        
+        Add l r -> 
+            let (leftType, subst1) = typeInfer checker env l
+                (rightType, subst2) = typeInfer checker env r
+            in case (leftType, rightType) of
+                (Right lt, Right rt) -> 
+                    let subst3 = unify checker lt TInt
+                        subst4 = unify checker rt TInt
+                    in case (subst1, subst2, subst3, subst4) of
+                        (Right s1, Right s2, Right s3, Right s4) -> 
+                            let finalSubst = compose s1 (compose s2 (compose s3 s4))
+                            in Right (TInt, finalSubst)
+                        (Left err, _, _, _) -> Left err
+                        (_, Left err, _, _) -> Left err
+                        (_, _, Left err, _) -> Left err
+                        (_, _, _, Left err) -> Left err
+                (Left err, _) -> Left err
+                (_, Left err) -> Left err
+        
+        _ -> Left TypeMismatch
 
--- 类型替换
-substituteType :: Type -> String -> Type -> Either String Type
-substituteType (TVar name) param typeArg
-    | name == param = Right typeArg
-    | otherwise = Right $ TVar name
-substituteType TBool _ _ = Right TBool
-substituteType TInt _ _ = Right TInt
-substituteType TFloat _ _ = Right TFloat
-substituteType (TFun a b) param typeArg = do
-    newA <- substituteType a param typeArg
-    newB <- substituteType b param typeArg
-    Right $ TFun newA newB
-substituteType (TProduct a b) param typeArg = do
-    newA <- substituteType a param typeArg
-    newB <- substituteType b param typeArg
-    Right $ TProduct newA newB
-substituteType (TSum a b) param typeArg = do
-    newA <- substituteType a param typeArg
-    newB <- substituteType b param typeArg
-    Right $ TSum newA newB
-substituteType (TForAll name body) param typeArg
-    | name == param = Right $ TForAll name body
-    | otherwise = do
-        newBody <- substituteType body param typeArg
-        Right $ TForAll name newBody
-substituteType (TExists name body) param typeArg
-    | name == param = Right $ TExists name body
-    | otherwise = do
-        newBody <- substituteType body param typeArg
-        Right $ TExists name newBody
+-- 类型统一 / Type Unification
+unify :: TypeChecker -> Type -> Type -> Either TypeError Substitution
+unify checker t1 t2 = 
+    case (t1, t2) of
+        (TVar x, TVar y) | x == y -> Right Map.empty
+        (TVar x, t) | not (occursIn checker x t) -> Right (Map.singleton x t)
+        (t, TVar x) | not (occursIn checker x t) -> Right (Map.singleton x t)
+        (TArrow a1 r1, TArrow a2 r2) -> 
+            let subst1 = unify checker a1 a2
+                subst2 = unify checker (applySubst r1 subst1) (applySubst r2 subst1)
+            in case (subst1, subst2) of
+                (Right s1, Right s2) -> Right (compose s1 s2)
+                (Left err, _) -> Left err
+                (_, Left err) -> Left err
+        (TBool, TBool) | (TInt, TInt) -> Right Map.empty
+        _ -> Left UnificationFailure
 
--- 依赖类型检查器
-data DependentTypeChecker = DependentTypeChecker
-    { depEnvironment :: TypeEnv
-    , typeFamilies :: Map String (Type -> Type)
-    } deriving (Show)
+-- 出现检查 / Occurs Check
+occursIn :: TypeChecker -> String -> Type -> Bool
+occursIn checker var ty = 
+    case ty of
+        TVar x -> x == var
+        TArrow a r -> occursIn checker var a || occursIn checker var r
+        TProduct l r -> occursIn checker var l || occursIn checker var r
+        TSum l r -> occursIn checker var l || occursIn checker var r
+        TForAll _ body | TExists _ body | TRec _ body -> occursIn checker var body
+        _ -> False
 
-newDependentTypeChecker :: DependentTypeChecker
-newDependentTypeChecker = DependentTypeChecker Map.empty Map.empty
+-- 应用替换 / Apply Substitution
+applySubst :: Type -> Substitution -> Type
+applySubst ty subst = 
+    case ty of
+        TVar x -> Map.findWithDefault ty x subst
+        TArrow a r -> TArrow (applySubst a subst) (applySubst r subst)
+        TProduct l r -> TProduct (applySubst l subst) (applySubst r subst)
+        TSum l r -> TSum (applySubst l subst) (applySubst r subst)
+        TForAll var body -> TForAll var (applySubst body subst)
+        TExists var body -> TExists var (applySubst body subst)
+        TRec var body -> TRec var (applySubst body subst)
+        _ -> ty
 
--- 依赖类型检查
-checkDependentType :: DependentTypeChecker -> Term -> Either String Type
-checkDependentType checker term = case term of
-    Variable name -> 
-        case Map.lookup name (depEnvironment checker) of
-            Just typ -> Right typ
-            Nothing -> Left $ "Undefined variable: " ++ name
-    _ -> Left "Dependent type checking not implemented"
+-- 组合替换 / Compose Substitutions
+compose :: Substitution -> Substitution -> Substitution
+compose s1 s2 = Map.union s1 s2
 
--- 示例使用
-main :: IO ()
-main = do
-    putStrLn "=== 类型理论示例 ==="
+-- 类型替换 / Type Substitution
+substitute :: String -> Type -> Type -> Type
+substitute var replacement ty = 
+    case ty of
+        TVar x | x == var -> replacement
+        TVar _ -> ty
+        TArrow a r -> TArrow (substitute var replacement a) (substitute var replacement r)
+        TProduct l r -> TProduct (substitute var replacement l) (substitute var replacement r)
+        TSum l r -> TSum (substitute var replacement l) (substitute var replacement r)
+        TForAll v body | v /= var -> TForAll v (substitute var replacement body)
+        TExists v body | v /= var -> TExists v (substitute var replacement body)
+        TRec v body | v /= var -> TRec v (substitute var replacement body)
+        _ -> ty
+
+-- 测试函数 / Test Functions
+testTypeChecking :: IO ()
+testTypeChecking = do
+    let checker = createTypeChecker
+        env = Map.empty
     
-    let checker = newTypeChecker
+    -- 测试基本类型 / Test basic types
+    let boolTerm = Bool True
+        result = typeCheck checker env boolTerm
+    putStrLn "基本类型测试:"
+    putStrLn $ "Bool类型检查: " ++ show result
     
-    -- 1. 简单类型检查
-    let simpleTerm = Integer 42
-    case typeCheck checker simpleTerm of
-        Right typ -> putStrLn $ "简单类型检查: " ++ show simpleTerm ++ " : " ++ show typ
-        Left err -> putStrLn $ "类型错误: " ++ err
+    let intTerm = Int 42
+        result = typeCheck checker env intTerm
+    putStrLn $ "Int类型检查: " ++ show result
     
-    -- 2. 函数类型检查
-    let lambdaTerm = Lambda "x" (Variable "x")
-    case typeCheck checker lambdaTerm of
-        Right typ -> putStrLn $ "函数类型检查: " ++ show lambdaTerm ++ " : " ++ show typ
-        Left err -> putStrLn $ "类型错误: " ++ err
+    -- 测试函数类型 / Test function types
+    let absTerm = Abs "x" TInt (Var "x")
+        result = typeCheck checker env absTerm
+    putStrLn $ "函数类型检查: " ++ show result
+
+testTypeInference :: IO ()
+testTypeInference = do
+    let checker = createTypeChecker
+        env = Map.empty
     
-    -- 3. 应用类型检查
-    let appTerm = Application lambdaTerm (Integer 42)
-    case typeCheck checker appTerm of
-        Right typ -> putStrLn $ "应用类型检查: " ++ show appTerm ++ " : " ++ show typ
-        Left err -> putStrLn $ "类型错误: " ++ err
+    -- 测试类型推导 / Test type inference
+    let absTerm = Abs "x" TInt (Var "x")
+        result = typeInfer checker env absTerm
+    putStrLn "类型推导测试:"
+    putStrLn $ "函数类型推导: " ++ show result
+
+testTypeUnification :: IO ()
+testTypeUnification = do
+    let checker = createTypeChecker
     
-    -- 4. 积类型检查
-    let pairTerm = Pair (Integer 1) (Boolean True)
-    case typeCheck checker pairTerm of
-        Right typ -> putStrLn $ "积类型检查: " ++ show pairTerm ++ " : " ++ show typ
-        Left err -> putStrLn $ "类型错误: " ++ err
-    
-    -- 5. 多态类型检查
-    let polyTerm = TypeLambda "T" (Lambda "x" (Variable "x"))
-    case typeCheck checker polyTerm of
-        Right typ -> putStrLn $ "多态类型检查: " ++ show polyTerm ++ " : " ++ show typ
-        Left err -> putStrLn $ "类型错误: " ++ err
+    -- 测试类型统一 / Test type unification
+    let t1 = TArrow (TVar "α") TInt
+        t2 = TArrow TInt (TVar "β")
+        result = unify checker t1 t2
+    putStrLn "类型统一测试:"
+    putStrLn $ "类型统一结果: " ++ show result
 ```
 
 ## 参考文献 / References

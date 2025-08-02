@@ -31,9 +31,17 @@ Reasoning mechanisms study how to derive new knowledge from existing knowledge, 
     - [5.1 反事实定义 / Counterfactual Definition](#51-反事实定义--counterfactual-definition)
     - [5.2 反事实计算 / Counterfactual Computation](#52-反事实计算--counterfactual-computation)
     - [5.3 反事实推理算法 / Counterfactual Reasoning Algorithm](#53-反事实推理算法--counterfactual-reasoning-algorithm)
+  - [6. 混合推理 / Hybrid Reasoning](#6-混合推理--hybrid-reasoning)
+    - [6.1 神经符号推理 / Neural-Symbolic Reasoning](#61-神经符号推理--neural-symbolic-reasoning)
+    - [6.2 多模态推理 / Multimodal Reasoning](#62-多模态推理--multimodal-reasoning)
+    - [6.3 动态推理 / Dynamic Reasoning](#63-动态推理--dynamic-reasoning)
+  - [7. 推理评估 / Reasoning Evaluation](#7-推理评估--reasoning-evaluation)
+    - [7.1 推理质量评估 / Reasoning Quality Assessment](#71-推理质量评估--reasoning-quality-assessment)
+    - [7.2 推理效率评估 / Reasoning Efficiency Assessment](#72-推理效率评估--reasoning-efficiency-assessment)
+    - [7.3 推理鲁棒性评估 / Reasoning Robustness Assessment](#73-推理鲁棒性评估--reasoning-robustness-assessment)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：推理机制](#rust实现推理机制)
-    - [Haskell实现：推理机制](#haskell实现推理机制)
+    - [Rust实现：推理机制 / Rust Implementation: Reasoning Mechanisms](#rust实现推理机制--rust-implementation-reasoning-mechanisms)
+    - [Haskell实现：推理机制 / Haskell Implementation: Reasoning Mechanisms](#haskell实现推理机制--haskell-implementation-reasoning-mechanisms)
   - [参考文献 / References](#参考文献--references)
 
 ---
@@ -99,19 +107,27 @@ $$P(X_1, X_2, ..., X_n) = \prod_{i=1}^n P(X_i|\text{Parents}(X_i))$$
 
 **马尔可夫链 / Markov Chain:**
 
-$$P(X_{t+1}|X_t, X_{t-1}, ..., X_1) = P(X_{t+1}|X_t)$$
+$$P(X_{t+1} = x_{t+1} | X_t = x_t, X_{t-1} = x_{t-1}, ..., X_0 = x_0) = P(X_{t+1} = x_{t+1} | X_t = x_t)$$
 
-**隐马尔可夫模型 / Hidden Markov Model:**
+**马尔可夫性质 / Markov Property:**
 
-$$P(O_1, O_2, ..., O_T) = \sum_{S_1, S_2, ..., S_T} P(O_1, O_2, ..., O_T, S_1, S_2, ..., S_T)$$
+$$P(X_{t+1} | X_0, X_1, ..., X_t) = P(X_{t+1} | X_t)$$
+
+**转移概率矩阵 / Transition Probability Matrix:**
+
+$$P_{ij} = P(X_{t+1} = j | X_t = i)$$
 
 ### 2.3 概率图模型推理 / Probabilistic Graphical Model Reasoning
 
-**变量消除 / Variable Elimination:**
+**联合概率分布 / Joint Probability Distribution:**
 
-$$P(X) = \sum_{Y_1, Y_2, ..., Y_n} P(X, Y_1, Y_2, ..., Y_n)$$
+$$P(X_1, X_2, ..., X_n) = \prod_{i=1}^n P(X_i | \text{Parents}(X_i))$$
 
-**信念传播 / Belief Propagation:**
+**条件独立性 / Conditional Independence:**
+
+$$X \perp Y | Z \iff P(X, Y | Z) = P(X | Z)P(Y | Z)$$
+
+**消息传递算法 / Message Passing Algorithm:**
 
 $$\mu_{i \rightarrow j}(x_j) = \sum_{x_i} \psi_{ij}(x_i, x_j) \prod_{k \in N(i) \setminus j} \mu_{k \rightarrow i}(x_i)$$
 
@@ -123,33 +139,51 @@ $$\mu_{i \rightarrow j}(x_j) = \sum_{x_i} \psi_{ij}(x_i, x_j) \prod_{k \in N(i) 
 
 $$G = (V, E)$$
 
-其中 $V$ 是变量集合，$E$ 是因果边集合。
+其中：
+
+- $V$ 是变量集合
+- $E$ 是有向边集合，表示因果关系
 
 **因果马尔可夫条件 / Causal Markov Condition:**
 
-$$P(X_1, X_2, ..., X_n) = \prod_{i=1}^n P(X_i|\text{Parents}(X_i))$$
+$$X \perp Y | \text{Parents}(X) \cup \text{Descendants}(X)^c$$
+
+**因果充分性 / Causal Sufficiency:**
+
+对于所有变量对 $(X, Y)$，存在共同原因 $Z$ 使得 $X \perp Y | Z$。
 
 ### 3.2 因果效应 / Causal Effects
 
 **平均因果效应 / Average Causal Effect:**
 
-$$\text{ACE} = E[Y(1)] - E[Y(0)]$$
+$$\text{ACE}(X \rightarrow Y) = E[Y | \text{do}(X = 1)] - E[Y | \text{do}(X = 0)]$$
 
-其中 $Y(1)$ 和 $Y(0)$ 是潜在结果。
+**反事实表达式 / Counterfactual Expression:**
 
-**条件因果效应 / Conditional Causal Effect:**
+$$Y_{X=x}(u) = f_Y(x, \text{PA}_Y, u)$$
 
-$$\text{CACE} = E[Y(1)|Z=z] - E[Y(0)|Z=z]$$
+其中：
+
+- $Y_{X=x}(u)$ 是在干预 $X = x$ 下的反事实结果
+- $f_Y$ 是结构方程
+- $\text{PA}_Y$ 是 $Y$ 的父节点
+- $u$ 是外生变量
 
 ### 3.3 因果发现 / Causal Discovery
 
-**独立性测试 / Independence Testing:**
+**PC算法 / PC Algorithm:**
 
-$$X \perp Y | Z \Leftrightarrow P(X, Y|Z) = P(X|Z)P(Y|Z)$$
+1. **骨架识别 / Skeleton Identification:**
+   - 从完全图开始
+   - 使用条件独立性测试删除边
 
-**因果结构学习 / Causal Structure Learning:**
+2. **方向识别 / Orientation Identification:**
+   - 识别v-结构
+   - 应用方向规则
 
-$$\text{score}(G) = \sum_{i=1}^n \log P(X_i|\text{Parents}(X_i))$$
+**GES算法 / GES Algorithm:**
+
+$$\text{Score}(G) = \sum_{i=1}^n \text{Score}(X_i, \text{Parents}_G(X_i))$$
 
 ## 4. 类比推理 / Analogical Reasoning
 
@@ -157,813 +191,835 @@ $$\text{score}(G) = \sum_{i=1}^n \log P(X_i|\text{Parents}(X_i))$$
 
 **类比结构 / Analogical Structure:**
 
-$$\text{Source} \xrightarrow{\text{mapping}} \text{Target}$$
+$$\text{Analogy}: S \rightarrow T$$
 
-**结构映射理论 / Structure Mapping Theory:**
+其中：
 
-$$\text{analogy}(S, T) = \text{structural\_similarity}(S, T)$$
+- $S$ 是源域
+- $T$ 是目标域
+
+**映射函数 / Mapping Function:**
+
+$$M: S \rightarrow T$$
+
+满足：
+
+- **一致性 / Consistency:** $M(a) = M(b) \implies a = b$
+- **单调性 / Monotonicity:** $R_S(a, b) \implies R_T(M(a), M(b))$
 
 ### 4.2 类比相似性 / Analogical Similarity
 
-**表面相似性 / Surface Similarity:**
-
-$$\text{surface\_sim}(S, T) = \sum_{i} w_i \cdot \text{attribute\_sim}(S_i, T_i)$$
-
 **结构相似性 / Structural Similarity:**
 
-$$\text{structural\_sim}(S, T) = \frac{|\text{common\_relations}(S, T)|}{|\text{all\_relations}(S, T)|}$$
+$$\text{sim}_S(S, T) = \frac{|\text{Common Relations}|}{|\text{Total Relations}|}$$
+
+**属性相似性 / Attribute Similarity:**
+
+$$\text{sim}_A(S, T) = \frac{1}{|A|} \sum_{a \in A} \text{sim}(a_S, a_T)$$
+
+**综合相似性 / Combined Similarity:**
+
+$$\text{sim}(S, T) = \alpha \cdot \text{sim}_S(S, T) + (1-\alpha) \cdot \text{sim}_A(S, T)$$
 
 ### 4.3 类比推理算法 / Analogical Reasoning Algorithm
 
-**类比检索 / Analogical Retrieval:**
+**结构映射理论 / Structure Mapping Theory:**
 
-$$\text{retrieve}(query) = \arg\max_{case} \text{similarity}(query, case)$$
+1. **访问 / Access:** 检索相关类比
+2. **映射 / Mapping:** 建立对应关系
+3. **推断 / Inference:** 生成新知识
+4. **学习 / Learning:** 更新知识库
 
-**类比映射 / Analogical Mapping:**
+**类比推理过程 / Analogical Reasoning Process:**
 
-$$\text{map}(source, target) = \arg\max_{mapping} \text{structural\_consistency}(mapping)$$
-
-**类比验证 / Analogical Verification:**
-
-$$\text{verify}(mapping) = \text{structural\_consistency}(mapping) \land \text{semantic\_consistency}(mapping)$$
+$$\text{Inference}(S, T) = \text{Map}(S, T) \circ \text{Transfer}(S, T) \circ \text{Adapt}(S, T)$$
 
 ## 5. 反事实推理 / Counterfactual Reasoning
 
 ### 5.1 反事实定义 / Counterfactual Definition
 
-**反事实陈述 / Counterfactual Statement:**
+**反事实语句 / Counterfactual Statement:**
 
-$$\text{If } A \text{ had been } X, \text{ then } B \text{ would have been } Y$$
-
-**潜在结果框架 / Potential Outcomes Framework:**
-
-$$Y_i(1) - Y_i(0)$$
-
-其中 $Y_i(1)$ 是处理后的结果，$Y_i(0)$ 是未处理的结果。
-
-### 5.2 反事实计算 / Counterfactual Computation
+$$\text{If } A \text{ had been the case, then } B \text{ would have been the case}$$
 
 **反事实概率 / Counterfactual Probability:**
 
-$$P(Y_{A=a} = y|E = e)$$
+$$P(Y_{X=x} = y | E = e)$$
 
-其中 $Y_{A=a}$ 表示在 $A=a$ 条件下的潜在结果。
+其中：
 
-**反事实效应 / Counterfactual Effect:**
+- $Y_{X=x}$ 是反事实变量
+- $E = e$ 是观察到的证据
 
-$$\text{CFE} = E[Y_{A=1}|A=0] - E[Y_{A=0}|A=0]$$
+### 5.2 反事实计算 / Counterfactual Computation
+
+**反事实计算步骤 / Counterfactual Computation Steps:**
+
+1. **外推 / Abduction:** 推断外生变量 $U = u$
+2. **干预 / Action:** 设置 $X = x$
+3. **预测 / Prediction:** 计算 $Y_{X=x}(u)$
+
+**反事实公式 / Counterfactual Formula:**
+
+$$P(Y_{X=x} = y | E = e) = \sum_u P(Y_{X=x}(u) = y) \cdot P(U = u | E = e)$$
 
 ### 5.3 反事实推理算法 / Counterfactual Reasoning Algorithm
 
-**反事实生成 / Counterfactual Generation:**
+**反事实推理框架 / Counterfactual Reasoning Framework:**
 
-$$\text{generate\_counterfactual}(x, target) = \arg\min_{x'} d(x, x') \text{ s.t. } f(x') = target$$
+```python
+def counterfactual_reasoning(model, evidence, intervention, query):
+    # 步骤1: 外推
+    u_distribution = abduct(model, evidence)
+    
+    # 步骤2: 干预
+    intervened_model = intervene(model, intervention)
+    
+    # 步骤3: 预测
+    result = predict(intervened_model, u_distribution, query)
+    
+    return result
+```
 
-**反事实解释 / Counterfactual Explanation:**
+**反事实解释 / Counterfactual Explanations:**
 
-$$\text{explain}(x, y) = \{\text{counterfactual}_1, \text{counterfactual}_2, ..., \text{counterfactual}_n\}$$
+$$\text{CF}(x, x') = \arg\min_{x'} \text{distance}(x, x') \text{ s.t. } f(x') \neq f(x)$$
+
+## 6. 混合推理 / Hybrid Reasoning
+
+### 6.1 神经符号推理 / Neural-Symbolic Reasoning
+
+**符号-神经接口 / Symbolic-Neural Interface:**
+
+$$\text{Reasoning} = \text{Symbolic}(f_{\text{neural}}(x))$$
+
+**神经逻辑编程 / Neural Logic Programming:**
+
+$$P(\text{Conclusion}) = \sigma(\sum_{i=1}^n w_i \cdot \text{premise}_i)$$
+
+### 6.2 多模态推理 / Multimodal Reasoning
+
+**跨模态推理 / Cross-Modal Reasoning:**
+
+$$\text{Reasoning}(M_1, M_2) = f_{\text{fusion}}(\text{Reasoning}(M_1), \text{Reasoning}(M_2))$$
+
+**模态对齐 / Modal Alignment:**
+
+$$\text{Alignment}(M_1, M_2) = \text{sim}(\text{embedding}(M_1), \text{embedding}(M_2))$$
+
+### 6.3 动态推理 / Dynamic Reasoning
+
+**时序推理 / Temporal Reasoning:**
+
+$$P(X_{t+1} | X_1, X_2, ..., X_t) = f_{\text{reasoning}}(X_1, X_2, ..., X_t)$$
+
+**自适应推理 / Adaptive Reasoning:**
+
+$$\text{Reasoning}_{\text{adaptive}} = \text{Reasoning}_{\text{base}} + \alpha \cdot \text{Feedback}$$
+
+## 7. 推理评估 / Reasoning Evaluation
+
+### 7.1 推理质量评估 / Reasoning Quality Assessment
+
+**准确性 / Accuracy:**
+
+$$\text{Accuracy} = \frac{\text{Correct Inferences}}{\text{Total Inferences}}$$
+
+**一致性 / Consistency:**
+
+$$\text{Consistency} = 1 - \frac{\text{Contradictions}}{\text{Total Pairs}}$$
+
+**完整性 / Completeness:**
+
+$$\text{Completeness} = \frac{\text{Derived Conclusions}}{\text{Expected Conclusions}}$$
+
+### 7.2 推理效率评估 / Reasoning Efficiency Assessment
+
+**时间复杂度 / Time Complexity:**
+
+$$T(n) = O(f(n))$$
+
+**空间复杂度 / Space Complexity:**
+
+$$S(n) = O(g(n))$$
+
+**推理速度 / Reasoning Speed:**
+
+$$\text{Speed} = \frac{\text{Inferences}}{\text{Time}}$$
+
+### 7.3 推理鲁棒性评估 / Reasoning Robustness Assessment
+
+**对抗鲁棒性 / Adversarial Robustness:**
+
+$$\text{Robustness} = \min_{\delta \in \Delta} \text{Accuracy}(f(x + \delta))$$
+
+**分布偏移鲁棒性 / Distribution Shift Robustness:**
+
+$$\text{Robustness} = \mathbb{E}_{x \sim P_{\text{test}}} [\text{Correct}(f(x))]$$
 
 ## 代码示例 / Code Examples
 
-### Rust实现：推理机制
+### Rust实现：推理机制 / Rust Implementation: Reasoning Mechanisms
 
 ```rust
-use std::collections::{HashMap, HashSet};
-use std::f64;
+use std::collections::HashMap;
+use std::f64::consts::PI;
 
-// 逻辑推理系统
-struct LogicalReasoner {
-    knowledge_base: HashSet<String>,
-    rules: Vec<LogicalRule>,
+/// 推理机制 / Reasoning Mechanisms
+pub struct ReasoningEngine {
+    knowledge_base: HashMap<String, f64>,
+    causal_graph: HashMap<String, Vec<String>>,
+    inference_rules: Vec<InferenceRule>,
 }
 
-struct LogicalRule {
+/// 推理规则 / Inference Rule
+pub struct InferenceRule {
     premises: Vec<String>,
     conclusion: String,
+    confidence: f64,
 }
 
-impl LogicalReasoner {
-    fn new() -> Self {
+impl ReasoningEngine {
+    pub fn new() -> Self {
         Self {
-            knowledge_base: HashSet::new(),
-            rules: Vec::new(),
+            knowledge_base: HashMap::new(),
+            causal_graph: HashMap::new(),
+            inference_rules: Vec::new(),
         }
     }
     
-    // 添加知识
-    fn add_knowledge(&mut self, fact: String) {
-        self.knowledge_base.insert(fact);
-    }
-    
-    // 添加规则
-    fn add_rule(&mut self, rule: LogicalRule) {
-        self.rules.push(rule);
-    }
-    
-    // 演绎推理
-    fn deductive_reasoning(&mut self) -> Vec<String> {
-        let mut new_facts = Vec::new();
-        let mut changed = true;
-        
-        while changed {
-            changed = false;
-            for rule in &self.rules {
-                if self.can_apply_rule(rule) {
-                    if !self.knowledge_base.contains(&rule.conclusion) {
-                        self.knowledge_base.insert(rule.conclusion.clone());
-                        new_facts.push(rule.conclusion.clone());
-                        changed = true;
-                    }
-                }
+    /// 演绎推理 / Deductive Reasoning
+    pub fn deductive_reasoning(&self, premises: &[String]) -> Option<String> {
+        for rule in &self.inference_rules {
+            if self.match_premises(premises, &rule.premises) {
+                return Some(rule.conclusion.clone());
             }
         }
-        new_facts
+        None
     }
     
-    // 检查规则是否可应用
-    fn can_apply_rule(&self, rule: &LogicalRule) -> bool {
-        rule.premises.iter().all(|premise| self.knowledge_base.contains(premise))
-    }
-    
-    // 归纳推理
-    fn inductive_reasoning(&self, examples: &[String], pattern: &str) -> String {
-        let positive_count = examples.iter()
-            .filter(|example| example.contains(pattern))
-            .count();
+    /// 贝叶斯推理 / Bayesian Reasoning
+    pub fn bayesian_reasoning(&self, hypothesis: &str, evidence: &str) -> f64 {
+        let prior = self.knowledge_base.get(hypothesis).unwrap_or(&0.5);
+        let likelihood = self.get_likelihood(hypothesis, evidence);
+        let evidence_prob = self.get_evidence_probability(evidence);
         
-        let confidence = positive_count as f64 / examples.len() as f64;
-        
-        if confidence > 0.8 {
-            format!("forall x. {}", pattern)
-        } else {
-            "insufficient_evidence".to_string()
-        }
-    }
-    
-    // 溯因推理
-    fn abductive_reasoning(&self, observation: &str) -> Vec<String> {
-        let mut explanations = Vec::new();
-        
-        for rule in &self.rules {
-            if rule.conclusion == observation {
-                explanations.push(format!("If {} then {}", 
-                    rule.premises.join(" and "), rule.conclusion));
-            }
-        }
-        
-        explanations
-    }
-}
-
-// 概率推理系统
-struct ProbabilisticReasoner {
-    probabilities: HashMap<String, f64>,
-    conditional_probs: HashMap<(String, String), f64>,
-}
-
-impl ProbabilisticReasoner {
-    fn new() -> Self {
-        Self {
-            probabilities: HashMap::new(),
-            conditional_probs: HashMap::new(),
-        }
-    }
-    
-    // 贝叶斯推理
-    fn bayesian_reasoning(&self, hypothesis: &str, evidence: &str) -> f64 {
-        let prior = self.probabilities.get(hypothesis).unwrap_or(&0.5);
-        let likelihood = self.conditional_probs.get(&(evidence.to_string(), hypothesis.to_string()))
-            .unwrap_or(&0.5);
-        let evidence_prob = self.probabilities.get(evidence).unwrap_or(&0.5);
-        
-        if *evidence_prob > 0.0 {
+        if evidence_prob > 0.0 {
             (likelihood * prior) / evidence_prob
         } else {
             0.0
         }
     }
     
-    // 马尔可夫推理
-    fn markov_reasoning(&self, states: &[String]) -> f64 {
-        if states.len() < 2 {
-            return 1.0;
-        }
-        
-        let mut probability = self.probabilities.get(&states[0]).unwrap_or(&0.5);
-        
-        for i in 1..states.len() {
-            let transition_prob = self.conditional_probs.get(&(states[i].clone(), states[i-1].clone()))
-                .unwrap_or(&0.5);
-            probability *= transition_prob;
-        }
-        
-        *probability
-    }
-    
-    // 变量消除
-    fn variable_elimination(&self, variables: &[String], evidence: &HashMap<String, String>) -> f64 {
-        let mut joint_prob = 1.0;
-        
-        for var in variables {
-            if let Some(value) = evidence.get(var) {
-                let prob = self.probabilities.get(&format!("{}={}", var, value))
-                    .unwrap_or(&0.5);
-                joint_prob *= prob;
+    /// 因果推理 / Causal Reasoning
+    pub fn causal_reasoning(&self, cause: &str, effect: &str) -> f64 {
+        if let Some(parents) = self.causal_graph.get(effect) {
+            if parents.contains(&cause.to_string()) {
+                self.calculate_causal_effect(cause, effect)
+            } else {
+                0.0
             }
-        }
-        
-        joint_prob
-    }
-}
-
-// 因果推理系统
-struct CausalReasoner {
-    causal_graph: HashMap<String, Vec<String>>,
-    causal_effects: HashMap<(String, String), f64>,
-}
-
-impl CausalReasoner {
-    fn new() -> Self {
-        Self {
-            causal_graph: HashMap::new(),
-            causal_effects: HashMap::new(),
-        }
-    }
-    
-    // 添加因果关系
-    fn add_causal_relation(&mut self, cause: String, effect: String, effect_size: f64) {
-        self.causal_graph.entry(cause.clone())
-            .or_insert_with(Vec::new)
-            .push(effect.clone());
-        self.causal_effects.insert((cause, effect), effect_size);
-    }
-    
-    // 因果效应计算
-    fn causal_effect(&self, cause: &str, effect: &str) -> f64 {
-        *self.causal_effects.get(&(cause.to_string(), effect.to_string()))
-            .unwrap_or(&0.0)
-    }
-    
-    // 因果发现
-    fn causal_discovery(&self, data: &HashMap<String, Vec<f64>>) -> HashMap<(String, String), f64> {
-        let mut discovered_effects = HashMap::new();
-        
-        for (var1, values1) in data {
-            for (var2, values2) in data {
-                if var1 != var2 {
-                    let correlation = self.calculate_correlation(values1, values2);
-                    if correlation.abs() > 0.3 {
-                        discovered_effects.insert((var1.clone(), var2.clone()), correlation);
-                    }
-                }
-            }
-        }
-        
-        discovered_effects
-    }
-    
-    // 计算相关系数
-    fn calculate_correlation(&self, x: &[f64], y: &[f64]) -> f64 {
-        if x.len() != y.len() || x.is_empty() {
-            return 0.0;
-        }
-        
-        let n = x.len() as f64;
-        let mean_x = x.iter().sum::<f64>() / n;
-        let mean_y = y.iter().sum::<f64>() / n;
-        
-        let numerator = x.iter().zip(y.iter())
-            .map(|(xi, yi)| (xi - mean_x) * (yi - mean_y))
-            .sum::<f64>();
-        
-        let denominator_x = x.iter().map(|xi| (xi - mean_x).powi(2)).sum::<f64>();
-        let denominator_y = y.iter().map(|yi| (yi - mean_y).powi(2)).sum::<f64>();
-        
-        if denominator_x > 0.0 && denominator_y > 0.0 {
-            numerator / (denominator_x * denominator_y).sqrt()
         } else {
             0.0
         }
     }
-}
-
-// 类比推理系统
-struct AnalogicalReasoner {
-    cases: Vec<Case>,
-}
-
-struct Case {
-    source: HashMap<String, String>,
-    target: HashMap<String, String>,
-    mapping: HashMap<String, String>,
-    similarity: f64,
-}
-
-impl AnalogicalReasoner {
-    fn new() -> Self {
-        Self {
-            cases: Vec::new(),
+    
+    /// 类比推理 / Analogical Reasoning
+    pub fn analogical_reasoning(&self, source: &str, target: &str) -> f64 {
+        let structural_similarity = self.calculate_structural_similarity(source, target);
+        let attribute_similarity = self.calculate_attribute_similarity(source, target);
+        
+        0.7 * structural_similarity + 0.3 * attribute_similarity
+    }
+    
+    /// 反事实推理 / Counterfactual Reasoning
+    pub fn counterfactual_reasoning(&self, fact: &str, counterfactual: &str) -> f64 {
+        let u_distribution = self.abduct(fact);
+        let intervened_model = self.intervene(counterfactual);
+        self.predict(intervened_model, u_distribution)
+    }
+    
+    /// 匹配前提 / Match Premises
+    fn match_premises(&self, actual: &[String], expected: &[String]) -> bool {
+        if actual.len() != expected.len() {
+            return false;
+        }
+        
+        for (a, e) in actual.iter().zip(expected.iter()) {
+            if !self.knowledge_base.contains_key(a) || 
+               self.knowledge_base.get(a).unwrap() < 0.5 {
+                return false;
+            }
+        }
+        true
+    }
+    
+    /// 获取似然 / Get Likelihood
+    fn get_likelihood(&self, hypothesis: &str, evidence: &str) -> f64 {
+        // 简化的似然计算 / Simplified likelihood calculation
+        match (hypothesis, evidence) {
+            ("下雨", "湿地面") => 0.8,
+            ("晴天", "湿地面") => 0.1,
+            _ => 0.5
         }
     }
     
-    // 添加类比案例
-    fn add_case(&mut self, source: HashMap<String, String>, 
-                target: HashMap<String, String>, mapping: HashMap<String, String>) {
-        let similarity = self.calculate_similarity(&source, &target);
-        let case = Case {
-            source,
-            target,
-            mapping,
-            similarity,
+    /// 获取证据概率 / Get Evidence Probability
+    fn get_evidence_probability(&self, evidence: &str) -> f64 {
+        self.knowledge_base.get(evidence).unwrap_or(&0.5).clone()
+    }
+    
+    /// 计算因果效应 / Calculate Causal Effect
+    fn calculate_causal_effect(&self, cause: &str, effect: &str) -> f64 {
+        // 简化的因果效应计算 / Simplified causal effect calculation
+        match (cause, effect) {
+            ("吸烟", "肺癌") => 0.3,
+            ("运动", "健康") => 0.7,
+            _ => 0.1
+        }
+    }
+    
+    /// 计算结构相似性 / Calculate Structural Similarity
+    fn calculate_structural_similarity(&self, source: &str, target: &str) -> f64 {
+        // 简化的结构相似性计算 / Simplified structural similarity calculation
+        if source == target {
+            1.0
+        } else if source.contains("动物") && target.contains("动物") {
+            0.8
+        } else {
+            0.3
+        }
+    }
+    
+    /// 计算属性相似性 / Calculate Attribute Similarity
+    fn calculate_attribute_similarity(&self, source: &str, target: &str) -> f64 {
+        // 简化的属性相似性计算 / Simplified attribute similarity calculation
+        let source_attrs = self.get_attributes(source);
+        let target_attrs = self.get_attributes(target);
+        
+        let common = source_attrs.intersection(&target_attrs).count();
+        let total = source_attrs.union(&target_attrs).count();
+        
+        if total > 0 {
+            common as f64 / total as f64
+        } else {
+            0.0
+        }
+    }
+    
+    /// 获取属性 / Get Attributes
+    fn get_attributes(&self, concept: &str) -> std::collections::HashSet<String> {
+        // 简化的属性获取 / Simplified attribute retrieval
+        match concept {
+            "猫" => vec!["哺乳动物", "四条腿", "有毛"].into_iter().collect(),
+            "狗" => vec!["哺乳动物", "四条腿", "有毛"].into_iter().collect(),
+            _ => std::collections::HashSet::new()
+        }
+    }
+    
+    /// 外推 / Abduct
+    fn abduct(&self, fact: &str) -> f64 {
+        // 简化的外推过程 / Simplified abduction process
+        self.knowledge_base.get(fact).unwrap_or(&0.5).clone()
+    }
+    
+    /// 干预 / Intervene
+    fn intervene(&self, counterfactual: &str) -> f64 {
+        // 简化的干预过程 / Simplified intervention process
+        match counterfactual {
+            "如果下雨" => 0.8,
+            "如果晴天" => 0.2,
+            _ => 0.5
+        }
+    }
+    
+    /// 预测 / Predict
+    fn predict(&self, intervened_model: f64, u_distribution: f64) -> f64 {
+        // 简化的预测过程 / Simplified prediction process
+        intervened_model * u_distribution
+    }
+}
+
+/// 概率推理 / Probabilistic Reasoning
+pub struct ProbabilisticReasoner {
+    bayesian_network: HashMap<String, HashMap<String, f64>>,
+    markov_chain: Vec<Vec<f64>>,
+}
+
+impl ProbabilisticReasoner {
+    pub fn new() -> Self {
+        Self {
+            bayesian_network: HashMap::new(),
+            markov_chain: Vec::new(),
+        }
+    }
+    
+    /// 贝叶斯网络推理 / Bayesian Network Reasoning
+    pub fn bayesian_network_inference(&self, query: &str, evidence: &HashMap<String, bool>) -> f64 {
+        // 简化的贝叶斯网络推理 / Simplified Bayesian network inference
+        let mut probability = 1.0;
+        
+        for (variable, value) in evidence {
+            if let Some(conditional_probs) = self.bayesian_network.get(variable) {
+                if let Some(prob) = conditional_probs.get(&value.to_string()) {
+                    probability *= prob;
+                }
+            }
+        }
+        
+        probability
+    }
+    
+    /// 马尔可夫链推理 / Markov Chain Reasoning
+    pub fn markov_chain_inference(&self, initial_state: usize, steps: usize) -> Vec<f64> {
+        let mut current_state = vec![0.0; self.markov_chain.len()];
+        current_state[initial_state] = 1.0;
+        
+        for _ in 0..steps {
+            current_state = self.multiply_matrix_vector(&self.markov_chain, &current_state);
+        }
+        
+        current_state
+    }
+    
+    /// 矩阵向量乘法 / Matrix-Vector Multiplication
+    fn multiply_matrix_vector(&self, matrix: &[Vec<f64>], vector: &[f64]) -> Vec<f64> {
+        let mut result = vec![0.0; vector.len()];
+        
+        for i in 0..matrix.len() {
+            for j in 0..matrix[i].len() {
+                result[i] += matrix[i][j] * vector[j];
+            }
+        }
+        
+        result
+    }
+}
+
+/// 逻辑推理 / Logical Reasoning
+pub struct LogicalReasoner {
+    knowledge_base: Vec<LogicalSentence>,
+    inference_rules: Vec<LogicalRule>,
+}
+
+/// 逻辑句子 / Logical Sentence
+pub struct LogicalSentence {
+    predicate: String,
+    arguments: Vec<String>,
+    truth_value: bool,
+}
+
+/// 逻辑规则 / Logical Rule
+pub struct LogicalRule {
+    premises: Vec<LogicalSentence>,
+    conclusion: LogicalSentence,
+}
+
+impl LogicalReasoner {
+    pub fn new() -> Self {
+        Self {
+            knowledge_base: Vec::new(),
+            inference_rules: Vec::new(),
+        }
+    }
+    
+    /// 演绎推理 / Deductive Reasoning
+    pub fn deductive_reasoning(&self, premises: &[LogicalSentence]) -> Option<LogicalSentence> {
+        for rule in &self.inference_rules {
+            if self.match_rule_premises(premises, &rule.premises) {
+                return Some(rule.conclusion.clone());
+            }
+        }
+        None
+    }
+    
+    /// 归纳推理 / Inductive Reasoning
+    pub fn inductive_reasoning(&self, examples: &[LogicalSentence]) -> LogicalSentence {
+        // 简化的归纳推理 / Simplified inductive reasoning
+        let positive_examples = examples.iter().filter(|e| e.truth_value).count();
+        let total_examples = examples.len();
+        
+        let confidence = if total_examples > 0 {
+            positive_examples as f64 / total_examples as f64
+        } else {
+            0.0
         };
-        self.cases.push(case);
-    }
-    
-    // 类比检索
-    fn analogical_retrieval(&self, query: &HashMap<String, String>) -> Option<&Case> {
-        self.cases.iter()
-            .max_by(|a, b| a.similarity.partial_cmp(&b.similarity).unwrap())
-    }
-    
-    // 类比映射
-    fn analogical_mapping(&self, source: &HashMap<String, String>, 
-                         target: &HashMap<String, String>) -> HashMap<String, String> {
-        let mut mapping = HashMap::new();
         
-        for (source_key, source_value) in source {
-            for (target_key, target_value) in target {
-                if source_value == target_value {
-                    mapping.insert(source_key.clone(), target_key.clone());
-                }
+        LogicalSentence {
+            predicate: "generalized".to_string(),
+            arguments: vec!["pattern".to_string()],
+            truth_value: confidence > 0.5,
+        }
+    }
+    
+    /// 溯因推理 / Abductive Reasoning
+    pub fn abductive_reasoning(&self, observation: &LogicalSentence) -> Vec<LogicalSentence> {
+        // 简化的溯因推理 / Simplified abductive reasoning
+        let mut hypotheses = Vec::new();
+        
+        for sentence in &self.knowledge_base {
+            if self.can_explain(sentence, observation) {
+                hypotheses.push(sentence.clone());
             }
         }
         
-        mapping
+        hypotheses
     }
     
-    // 计算相似性
-    fn calculate_similarity(&self, case1: &HashMap<String, String>, 
-                           case2: &HashMap<String, String>) -> f64 {
-        let common_attributes: HashSet<_> = case1.keys()
-            .intersection(case2.keys())
-            .collect();
-        
-        let all_attributes: HashSet<_> = case1.keys()
-            .union(case2.keys())
-            .collect();
-        
-        if all_attributes.is_empty() {
-            return 0.0;
+    /// 匹配规则前提 / Match Rule Premises
+    fn match_rule_premises(&self, actual: &[LogicalSentence], expected: &[LogicalSentence]) -> bool {
+        if actual.len() != expected.len() {
+            return false;
         }
         
-        let mut similarity = 0.0;
-        for attr in &common_attributes {
-            if case1.get(*attr) == case2.get(*attr) {
-                similarity += 1.0;
+        for (a, e) in actual.iter().zip(expected.iter()) {
+            if a.predicate != e.predicate || a.arguments != e.arguments {
+                return false;
             }
         }
-        
-        similarity / all_attributes.len() as f64
+        true
+    }
+    
+    /// 能否解释 / Can Explain
+    fn can_explain(&self, hypothesis: &LogicalSentence, observation: &LogicalSentence) -> bool {
+        // 简化的解释检查 / Simplified explanation check
+        hypothesis.predicate == observation.predicate && hypothesis.truth_value
     }
 }
 
-// 反事实推理系统
-struct CounterfactualReasoner {
-    causal_model: CausalReasoner,
-    factual_data: HashMap<String, f64>,
-}
-
-impl CounterfactualReasoner {
-    fn new(causal_model: CausalReasoner) -> Self {
-        Self {
-            causal_model,
-            factual_data: HashMap::new(),
-        }
-    }
+#[cfg(test)]
+mod tests {
+    use super::*;
     
-    // 设置事实数据
-    fn set_factual_data(&mut self, data: HashMap<String, f64>) {
-        self.factual_data = data;
-    }
-    
-    // 反事实推理
-    fn counterfactual_reasoning(&self, intervention: &str, value: f64) -> HashMap<String, f64> {
-        let mut counterfactual_data = self.factual_data.clone();
-        counterfactual_data.insert(intervention.to_string(), value);
+    #[test]
+    fn test_reasoning_engine() {
+        let mut engine = ReasoningEngine::new();
         
-        // 传播因果效应
-        for (cause, effects) in &self.causal_model.causal_graph {
-            if let Some(cause_value) = counterfactual_data.get(cause) {
-                for effect in effects {
-                    let effect_size = self.causal_model.causal_effect(cause, effect);
-                    let current_effect_value = counterfactual_data.get(effect).unwrap_or(&0.0);
-                    let new_effect_value = current_effect_value + effect_size * cause_value;
-                    counterfactual_data.insert(effect.clone(), new_effect_value);
-                }
-            }
-        }
+        // 测试演绎推理 / Test deductive reasoning
+        let premises = vec!["A".to_string(), "A implies B".to_string()];
+        let conclusion = engine.deductive_reasoning(&premises);
+        assert!(conclusion.is_some());
         
-        counterfactual_data
+        // 测试贝叶斯推理 / Test Bayesian reasoning
+        let probability = engine.bayesian_reasoning("下雨", "湿地面");
+        assert!(probability >= 0.0 && probability <= 1.0);
+        
+        // 测试类比推理 / Test analogical reasoning
+        let similarity = engine.analogical_reasoning("猫", "狗");
+        assert!(similarity >= 0.0 && similarity <= 1.0);
     }
     
-    // 反事实解释
-    fn counterfactual_explanation(&self, target: &str, target_value: f64) -> Vec<String> {
-        let mut explanations = Vec::new();
+    #[test]
+    fn test_probabilistic_reasoner() {
+        let reasoner = ProbabilisticReasoner::new();
         
-        for (variable, current_value) in &self.factual_data {
-            if variable != target {
-                let mut counterfactual_data = self.factual_data.clone();
-                counterfactual_data.insert(variable.clone(), *current_value + 1.0);
-                
-                let new_target_value = self.counterfactual_reasoning(variable, *current_value + 1.0)
-                    .get(target)
-                    .unwrap_or(&0.0);
-                
-                if (new_target_value - target_value).abs() > 0.1 {
-                    explanations.push(format!("If {} had been {} instead of {}, then {} would have been {}",
-                        variable, current_value + 1.0, current_value, target, new_target_value));
-                }
-            }
-        }
-        
-        explanations
-    }
-}
-
-fn main() {
-    println!("=== 推理机制示例 ===");
-    
-    // 1. 逻辑推理
-    let mut logical_reasoner = LogicalReasoner::new();
-    
-    // 添加知识
-    logical_reasoner.add_knowledge("bird(tweety)".to_string());
-    logical_reasoner.add_knowledge("bird(x) -> can_fly(x)".to_string());
-    
-    // 添加规则
-    let rule = LogicalRule {
-        premises: vec!["bird(tweety)".to_string()],
-        conclusion: "can_fly(tweety)".to_string(),
-    };
-    logical_reasoner.add_rule(rule);
-    
-    // 演绎推理
-    let new_facts = logical_reasoner.deductive_reasoning();
-    println!("演绎推理结果: {:?}", new_facts);
-    
-    // 归纳推理
-    let examples = vec![
-        "swan(1) -> white(1)".to_string(),
-        "swan(2) -> white(2)".to_string(),
-        "swan(3) -> white(3)".to_string(),
-    ];
-    let pattern = "swan(x) -> white(x)";
-    let inductive_result = logical_reasoner.inductive_reasoning(&examples, pattern);
-    println!("归纳推理结果: {}", inductive_result);
-    
-    // 2. 概率推理
-    let mut prob_reasoner = ProbabilisticReasoner::new();
-    prob_reasoner.probabilities.insert("rain".to_string(), 0.3);
-    prob_reasoner.conditional_probs.insert(("wet_grass".to_string(), "rain".to_string()), 0.8);
-    prob_reasoner.probabilities.insert("wet_grass".to_string(), 0.4);
-    
-    let bayesian_result = prob_reasoner.bayesian_reasoning("rain", "wet_grass");
-    println!("贝叶斯推理结果: {:.4}", bayesian_result);
-    
-    // 3. 因果推理
-    let mut causal_reasoner = CausalReasoner::new();
-    causal_reasoner.add_causal_relation("smoking".to_string(), "cancer".to_string(), 0.3);
-    causal_reasoner.add_causal_relation("exercise".to_string(), "health".to_string(), 0.5);
-    
-    let causal_effect = causal_reasoner.causal_effect("smoking", "cancer");
-    println!("因果效应: {:.4}", causal_effect);
-    
-    // 4. 类比推理
-    let mut analogical_reasoner = AnalogicalReasoner::new();
-    
-    let mut source = HashMap::new();
-    source.insert("shape".to_string(), "round".to_string());
-    source.insert("color".to_string(), "red".to_string());
-    
-    let mut target = HashMap::new();
-    target.insert("shape".to_string(), "round".to_string());
-    target.insert("color".to_string(), "blue".to_string());
-    
-    let mapping = HashMap::new();
-    analogical_reasoner.add_case(source, target, mapping);
-    
-    let mut query = HashMap::new();
-    query.insert("shape".to_string(), "round".to_string());
-    
-    if let Some(retrieved_case) = analogical_reasoner.analogical_retrieval(&query) {
-        println!("类比检索结果: 相似度 {:.4}", retrieved_case.similarity);
+        // 测试马尔可夫链推理 / Test Markov chain inference
+        let probabilities = reasoner.markov_chain_inference(0, 5);
+        assert_eq!(probabilities.len(), 0); // 空链的情况
     }
     
-    // 5. 反事实推理
-    let counterfactual_reasoner = CounterfactualReasoner::new(causal_reasoner);
-    
-    let mut factual_data = HashMap::new();
-    factual_data.insert("income".to_string(), 50000.0);
-    factual_data.insert("education".to_string(), 12.0);
-    factual_data.insert("happiness".to_string(), 7.0);
-    
-    let counterfactual_data = counterfactual_reasoner.counterfactual_reasoning("income", 60000.0);
-    println!("反事实推理结果: {:?}", counterfactual_data);
+    #[test]
+    fn test_logical_reasoner() {
+        let reasoner = LogicalReasoner::new();
+        
+        // 测试归纳推理 / Test inductive reasoning
+        let examples = vec![
+            LogicalSentence { predicate: "bird".to_string(), arguments: vec!["sparrow".to_string()], truth_value: true },
+            LogicalSentence { predicate: "bird".to_string(), arguments: vec!["eagle".to_string()], truth_value: true },
+        ];
+        
+        let generalization = reasoner.inductive_reasoning(&examples);
+        assert!(generalization.truth_value);
+    }
 }
 ```
 
-### Haskell实现：推理机制
+### Haskell实现：推理机制 / Haskell Implementation: Reasoning Mechanisms
 
 ```haskell
--- 推理机制模块
+-- 推理机制模块 / Reasoning Mechanisms Module
 module ReasoningMechanisms where
 
 import Data.Map (Map)
 import qualified Data.Map as Map
-import Data.Set (Set)
-import qualified Data.Set as Set
-import Data.Maybe (fromMaybe)
+import Data.List (find, filter)
+import Control.Monad.State
 
--- 逻辑推理系统
+-- 推理类型 / Reasoning Types
+data ReasoningType = Deductive | Inductive | Abductive | Bayesian | Causal | Analogical deriving (Eq, Show)
+
+-- 逻辑句子 / Logical Sentence
+data LogicalSentence = LogicalSentence
+    { predicate :: String
+    , arguments :: [String]
+    , truthValue :: Bool
+    } deriving (Show, Eq)
+
+-- 推理规则 / Inference Rule
+data InferenceRule = InferenceRule
+    { premises :: [LogicalSentence]
+    , conclusion :: LogicalSentence
+    , confidence :: Double
+    } deriving (Show)
+
+-- 贝叶斯网络 / Bayesian Network
+data BayesianNetwork = BayesianNetwork
+    { nodes :: Map String [String]
+    , conditionalProbs :: Map String (Map String Double)
+    } deriving (Show)
+
+-- 因果图 / Causal Graph
+data CausalGraph = CausalGraph
+    { variables :: [String]
+    , edges :: [(String, String)]
+    , structuralEquations :: Map String String
+    } deriving (Show)
+
+-- 推理引擎 / Reasoning Engine
+data ReasoningEngine = ReasoningEngine
+    { knowledgeBase :: Map String Double
+    , inferenceRules :: [InferenceRule]
+    , bayesianNetwork :: BayesianNetwork
+    , causalGraph :: CausalGraph
+    } deriving (Show)
+
+-- 推理类 / Reasoning Class
+class Reasoning a where
+    reason :: a -> String -> [String] -> Maybe String
+    evaluate :: a -> String -> Double
+
+-- 逻辑推理器 / Logical Reasoner
 data LogicalReasoner = LogicalReasoner
-    { knowledgeBase :: Set String
-    , rules :: [LogicalRule]
+    { sentences :: [LogicalSentence]
+    , rules :: [InferenceRule]
     } deriving (Show)
 
-data LogicalRule = LogicalRule
-    { premises :: [String]
-    , conclusion :: String
+instance Reasoning LogicalReasoner where
+    reason lr query premises = 
+        let matchingRules = filter (\rule -> matchPremises premises (premises rule)) (rules lr)
+        in case matchingRules of
+            [] -> Nothing
+            (rule:_) -> Just (predicate (conclusion rule))
+    
+    evaluate lr sentence = 
+        let matchingSentences = filter (\s -> predicate s == sentence) (sentences lr)
+        in case matchingSentences of
+            [] -> 0.5
+            (s:_) -> if truthValue s then 1.0 else 0.0
+
+-- 贝叶斯推理器 / Bayesian Reasoner
+data BayesianReasoner = BayesianReasoner
+    { network :: BayesianNetwork
+    , priors :: Map String Double
     } deriving (Show)
 
--- 概率推理系统
-data ProbabilisticReasoner = ProbabilisticReasoner
-    { probabilities :: Map String Double
-    , conditionalProbs :: Map (String, String) Double
-    } deriving (Show)
+instance Reasoning BayesianReasoner where
+    reason br query evidence = 
+        let probability = bayesianInference br query evidence
+        in if probability > 0.5 then Just query else Nothing
+    
+    evaluate br hypothesis = 
+        Map.findWithDefault 0.5 hypothesis (priors br)
 
--- 因果推理系统
+-- 因果推理器 / Causal Reasoner
 data CausalReasoner = CausalReasoner
-    { causalGraph :: Map String [String]
-    , causalEffects :: Map (String, String) Double
+    { graph :: CausalGraph
+    , interventions :: Map String Double
     } deriving (Show)
 
--- 类比推理系统
-data AnalogicalReasoner = AnalogicalReasoner
-    { cases :: [Case]
-    } deriving (Show)
+instance Reasoning CausalReasoner where
+    reason cr query evidence = 
+        let causalEffect = calculateCausalEffect cr query evidence
+        in if causalEffect > 0.1 then Just query else Nothing
+    
+    evaluate cr variable = 
+        Map.findWithDefault 0.0 variable (interventions cr)
 
-data Case = Case
-    { source :: Map String String
-    , target :: Map String String
-    , mapping :: Map String String
-    , similarity :: Double
-    } deriving (Show)
+-- 演绎推理 / Deductive Reasoning
+deductiveReasoning :: [InferenceRule] -> [LogicalSentence] -> Maybe LogicalSentence
+deductiveReasoning rules premises = 
+    let matchingRules = filter (\rule -> matchPremises premises (premises rule)) rules
+    in case matchingRules of
+        [] -> Nothing
+        (rule:_) -> Just (conclusion rule)
 
--- 反事实推理系统
-data CounterfactualReasoner = CounterfactualReasoner
-    { causalModel :: CausalReasoner
-    , factualData :: Map String Double
-    } deriving (Show)
-
--- 创建新的逻辑推理器
-newLogicalReasoner :: LogicalReasoner
-newLogicalReasoner = LogicalReasoner Set.empty []
-
--- 添加知识
-addKnowledge :: LogicalReasoner -> String -> LogicalReasoner
-addKnowledge reasoner fact = reasoner
-    { knowledgeBase = Set.insert fact (knowledgeBase reasoner)
-    }
-
--- 添加规则
-addRule :: LogicalReasoner -> LogicalRule -> LogicalReasoner
-addRule reasoner rule = reasoner
-    { rules = rule : rules reasoner
-    }
-
--- 演绎推理
-deductiveReasoning :: LogicalReasoner -> [String]
-deductiveReasoning reasoner = 
-    let newFacts = applyRules reasoner
-    in if null newFacts 
-        then [] 
-        else newFacts ++ deductiveReasoning (foldr addKnowledge reasoner newFacts)
-  where
-    applyRules r = [conclusion rule | rule <- rules r, canApplyRule r rule]
-    canApplyRule r rule = all (`Set.member` knowledgeBase r) (premises rule)
-
--- 归纳推理
-inductiveReasoning :: [String] -> String -> String
-inductiveReasoning examples pattern = 
-    let positiveCount = length $ filter (contains pattern) examples
-        confidence = fromIntegral positiveCount / fromIntegral (length examples)
-    in if confidence > 0.8 
-        then "forall x. " ++ pattern 
-        else "insufficient_evidence"
-  where
-    contains pattern example = pattern `isInfixOf` example
-
--- 溯因推理
-abductiveReasoning :: LogicalReasoner -> String -> [String]
-abductiveReasoning reasoner observation = 
-    [formatExplanation rule | rule <- rules reasoner, conclusion rule == observation]
-  where
-    formatExplanation rule = 
-        "If " ++ unwords (premises rule) ++ " then " ++ conclusion rule
-
--- 创建新的概率推理器
-newProbabilisticReasoner :: ProbabilisticReasoner
-newProbabilisticReasoner = ProbabilisticReasoner Map.empty Map.empty
-
--- 贝叶斯推理
-bayesianReasoning :: ProbabilisticReasoner -> String -> String -> Double
-bayesianReasoning reasoner hypothesis evidence = 
-    let prior = Map.findWithDefault 0.5 hypothesis (probabilities reasoner)
-        likelihood = Map.findWithDefault 0.5 (evidence, hypothesis) (conditionalProbs reasoner)
-        evidenceProb = Map.findWithDefault 0.5 evidence (probabilities reasoner)
-    in if evidenceProb > 0 
-        then (likelihood * prior) / evidenceProb 
-        else 0
-
--- 马尔可夫推理
-markovReasoning :: ProbabilisticReasoner -> [String] -> Double
-markovReasoning reasoner states = 
-    case states of
-        [] -> 1.0
-        [state] -> Map.findWithDefault 0.5 state (probabilities reasoner)
-        (state:rest) -> 
-            let priorProb = Map.findWithDefault 0.5 state (probabilities reasoner)
-                transitionProb = Map.findWithDefault 0.5 (head rest, state) (conditionalProbs reasoner)
-            in priorProb * transitionProb * markovReasoning reasoner rest
-
--- 创建新的因果推理器
-newCausalReasoner :: CausalReasoner
-newCausalReasoner = CausalReasoner Map.empty Map.empty
-
--- 添加因果关系
-addCausalRelation :: CausalReasoner -> String -> String -> Double -> CausalReasoner
-addCausalRelation reasoner cause effect effectSize = reasoner
-    { causalGraph = Map.insertWith (++) cause [effect] (causalGraph reasoner)
-    , causalEffects = Map.insert (cause, effect) effectSize (causalEffects reasoner)
-    }
-
--- 因果效应
-causalEffect :: CausalReasoner -> String -> String -> Double
-causalEffect reasoner cause effect = 
-    Map.findWithDefault 0.0 (cause, effect) (causalEffects reasoner)
-
--- 因果发现
-causalDiscovery :: CausalReasoner -> Map String [Double] -> Map (String, String) Double
-causalDiscovery reasoner data_ = 
-    Map.fromList [(var1, var2, correlation) | 
-        (var1, values1) <- Map.toList data_,
-        (var2, values2) <- Map.toList data_,
-        var1 /= var2,
-        let correlation = calculateCorrelation values1 values2,
-        abs correlation > 0.3]
-  where
-    calculateCorrelation x y = 
-        if length x /= length y || null x 
-            then 0.0 
-            else correlation
-      where
-        n = fromIntegral $ length x
-        meanX = sum x / n
-        meanY = sum y / n
-        numerator = sum [(xi - meanX) * (yi - meanY) | (xi, yi) <- zip x y]
-        denominatorX = sum [(xi - meanX)^2 | xi <- x]
-        denominatorY = sum [(yi - meanY)^2 | yi <- y]
-        correlation = if denominatorX > 0 && denominatorY > 0 
-            then numerator / sqrt (denominatorX * denominatorY) 
+-- 归纳推理 / Inductive Reasoning
+inductiveReasoning :: [LogicalSentence] -> LogicalSentence
+inductiveReasoning examples = 
+    let positiveExamples = length $ filter truthValue examples
+        totalExamples = length examples
+        confidence = if totalExamples > 0 
+            then fromIntegral positiveExamples / fromIntegral totalExamples
             else 0.0
+    in LogicalSentence "generalized" ["pattern"] (confidence > 0.5)
 
--- 创建新的类比推理器
-newAnalogicalReasoner :: AnalogicalReasoner
-newAnalogicalReasoner = AnalogicalReasoner []
+-- 溯因推理 / Abductive Reasoning
+abductiveReasoning :: [LogicalSentence] -> LogicalSentence -> [LogicalSentence]
+abductiveReasoning knowledgeBase observation = 
+    filter (\sentence -> canExplain sentence observation) knowledgeBase
 
--- 添加类比案例
-addCase :: AnalogicalReasoner -> Map String String -> Map String String -> Map String String -> AnalogicalReasoner
-addCase reasoner source target mapping = reasoner
-    { cases = Case source target mapping similarity : cases reasoner
-    }
-  where
-    similarity = calculateSimilarity source target
+-- 贝叶斯推理 / Bayesian Reasoning
+bayesianInference :: BayesianReasoner -> String -> Map String Bool -> Double
+bayesianInference reasoner hypothesis evidence = 
+    let prior = Map.findWithDefault 0.5 hypothesis (priors reasoner)
+        likelihood = calculateLikelihood reasoner hypothesis evidence
+        evidenceProb = calculateEvidenceProbability reasoner evidence
+    in if evidenceProb > 0 
+        then (likelihood * prior) / evidenceProb
+        else 0.0
 
--- 类比检索
-analogicalRetrieval :: AnalogicalReasoner -> Map String String -> Maybe Case
-analogicalRetrieval reasoner query = 
-    if null (cases reasoner) 
-        then Nothing 
-        else Just $ maximumBy (comparing similarity) (cases reasoner)
+-- 因果推理 / Causal Reasoning
+causalReasoning :: CausalReasoner -> String -> String -> Double
+causalReasoning reasoner cause effect = 
+    let graph = causalGraph reasoner
+        isCausal = any (\(c, e) -> c == cause && e == effect) (edges graph)
+    in if isCausal 
+        then calculateCausalEffect reasoner cause effect
+        else 0.0
 
--- 类比映射
-analogicalMapping :: Map String String -> Map String String -> Map String String
-analogicalMapping source target = 
-    Map.fromList [(sourceKey, targetKey) | 
-        (sourceKey, sourceValue) <- Map.toList source,
-        (targetKey, targetValue) <- Map.toList target,
-        sourceValue == targetValue]
+-- 类比推理 / Analogical Reasoning
+analogicalReasoning :: String -> String -> Double
+analogicalReasoning source target = 
+    let structuralSimilarity = calculateStructuralSimilarity source target
+        attributeSimilarity = calculateAttributeSimilarity source target
+    in 0.7 * structuralSimilarity + 0.3 * attributeSimilarity
 
--- 计算相似性
-calculateSimilarity :: Map String String -> Map String String -> Double
-calculateSimilarity case1 case2 = 
-    let commonAttributes = Set.intersection 
-            (Set.fromList $ Map.keys case1) 
-            (Set.fromList $ Map.keys case2)
-        allAttributes = Set.union 
-            (Set.fromList $ Map.keys case1) 
-            (Set.fromList $ Map.keys case2)
-        matchingAttributes = length [attr | attr <- Set.toList commonAttributes,
-            Map.lookup attr case1 == Map.lookup attr case2]
-    in if Set.null allAttributes 
-        then 0.0 
-        else fromIntegral matchingAttributes / fromIntegral (Set.size allAttributes)
+-- 反事实推理 / Counterfactual Reasoning
+counterfactualReasoning :: CausalReasoner -> String -> String -> Double
+counterfactualReasoning reasoner fact counterfactual = 
+    let uDistribution = abduct reasoner fact
+        intervenedModel = intervene reasoner counterfactual
+    in predict reasoner intervenedModel uDistribution
 
--- 创建新的反事实推理器
-newCounterfactualReasoner :: CausalReasoner -> CounterfactualReasoner
-newCounterfactualReasoner causalModel = CounterfactualReasoner causalModel Map.empty
+-- 辅助函数 / Helper Functions
 
--- 设置事实数据
-setFactualData :: CounterfactualReasoner -> Map String Double -> CounterfactualReasoner
-setFactualData reasoner data_ = reasoner { factualData = data_ }
+-- 匹配前提 / Match Premises
+matchPremises :: [LogicalSentence] -> [LogicalSentence] -> Bool
+matchPremises actual expected = 
+    length actual == length expected && 
+    all (\(a, e) -> predicate a == predicate e && arguments a == arguments e) 
+        (zip actual expected)
 
--- 反事实推理
-counterfactualReasoning :: CounterfactualReasoner -> String -> Double -> Map String Double
-counterfactualReasoning reasoner intervention value = 
-    let initialData = Map.insert intervention value (factualData reasoner)
-    in propagateEffects (causalModel reasoner) initialData
-  where
-    propagateEffects causalModel data_ = 
-        foldr propagateEffect data_ (Map.toList $ causalGraph causalModel)
-    
-    propagateEffect (cause, effects) data_ = 
-        case Map.lookup cause data_ of
-            Just causeValue -> 
-                foldr (\effect acc -> 
-                    let effectSize = causalEffect causalModel cause effect
-                        currentEffectValue = Map.findWithDefault 0.0 effect acc
-                        newEffectValue = currentEffectValue + effectSize * causeValue
-                    in Map.insert effect newEffectValue acc) 
-                    data_ effects
-            Nothing -> data_
+-- 能否解释 / Can Explain
+canExplain :: LogicalSentence -> LogicalSentence -> Bool
+canExplain hypothesis observation = 
+    predicate hypothesis == predicate observation && truthValue hypothesis
 
--- 示例使用
-main :: IO ()
-main = do
-    putStrLn "=== 推理机制示例 ==="
+-- 计算似然 / Calculate Likelihood
+calculateLikelihood :: BayesianReasoner -> String -> Map String Bool -> Double
+calculateLikelihood reasoner hypothesis evidence = 
+    -- 简化的似然计算 / Simplified likelihood calculation
+    case (hypothesis, Map.toList evidence) of
+        ("下雨", [("湿地面", True)]) -> 0.8
+        ("晴天", [("湿地面", True)]) -> 0.1
+        _ -> 0.5
+
+-- 计算证据概率 / Calculate Evidence Probability
+calculateEvidenceProbability :: BayesianReasoner -> Map String Bool -> Double
+calculateEvidenceProbability reasoner evidence = 
+    -- 简化的证据概率计算 / Simplified evidence probability calculation
+    0.5
+
+-- 计算因果效应 / Calculate Causal Effect
+calculateCausalEffect :: CausalReasoner -> String -> String -> Double
+calculateCausalEffect reasoner cause effect = 
+    -- 简化的因果效应计算 / Simplified causal effect calculation
+    case (cause, effect) of
+        ("吸烟", "肺癌") -> 0.3
+        ("运动", "健康") -> 0.7
+        _ -> 0.1
+
+-- 计算结构相似性 / Calculate Structural Similarity
+calculateStructuralSimilarity :: String -> String -> Double
+calculateStructuralSimilarity source target = 
+    if source == target 
+        then 1.0
+    else if "动物" `elem` words source && "动物" `elem` words target
+        then 0.8
+    else 0.3
+
+-- 计算属性相似性 / Calculate Attribute Similarity
+calculateAttributeSimilarity :: String -> String -> Double
+calculateAttributeSimilarity source target = 
+    let sourceAttrs = getAttributes source
+        targetAttrs = getAttributes target
+        common = length $ sourceAttrs `intersect` targetAttrs
+        total = length $ sourceAttrs `union` targetAttrs
+    in if total > 0 
+        then fromIntegral common / fromIntegral total
+        else 0.0
+
+-- 获取属性 / Get Attributes
+getAttributes :: String -> [String]
+getAttributes concept = case concept of
+    "猫" -> ["哺乳动物", "四条腿", "有毛"]
+    "狗" -> ["哺乳动物", "四条腿", "有毛"]
+    _ -> []
+
+-- 外推 / Abduct
+abduct :: CausalReasoner -> String -> Double
+abduct reasoner fact = 
+    -- 简化的外推过程 / Simplified abduction process
+    0.5
+
+-- 干预 / Intervene
+intervene :: CausalReasoner -> String -> Double
+intervene reasoner counterfactual = 
+    -- 简化的干预过程 / Simplified intervention process
+    case counterfactual of
+        "如果下雨" -> 0.8
+        "如果晴天" -> 0.2
+        _ -> 0.5
+
+-- 预测 / Predict
+predict :: CausalReasoner -> Double -> Double -> Double
+predict reasoner intervenedModel uDistribution = 
+    -- 简化的预测过程 / Simplified prediction process
+    intervenedModel * uDistribution
+
+-- 集合操作 / Set Operations
+intersect :: Eq a => [a] -> [a] -> [a]
+intersect xs ys = [x | x <- xs, x `elem` ys]
+
+union :: Eq a => [a] -> [a] -> [a]
+union xs ys = xs ++ [y | y <- ys, y `notElem` xs]
+
+-- 测试函数 / Test Functions
+testLogicalReasoning :: IO ()
+testLogicalReasoning = do
+    let lr = LogicalReasoner [] []
+        examples = [
+            LogicalSentence "bird" ["sparrow"] True,
+            LogicalSentence "bird" ["eagle"] True
+        ]
+        generalization = inductiveReasoning examples
     
-    -- 1. 逻辑推理
-    let initialReasoner = newLogicalReasoner
-    let reasoner1 = addKnowledge initialReasoner "bird(tweety)"
-    let reasoner2 = addKnowledge reasoner1 "bird(x) -> can_fly(x)"
+    putStrLn "逻辑推理测试:"
+    putStrLn $ "归纳推理结果: " ++ show generalization
+
+testBayesianReasoning :: IO ()
+testBayesianReasoning = do
+    let br = BayesianReasoner (BayesianNetwork Map.empty Map.empty) Map.empty
+        evidence = Map.fromList [("湿地面", True)]
+        probability = bayesianInference br "下雨" evidence
     
-    let rule = LogicalRule ["bird(tweety)"] "can_fly(tweety)"
-    let reasoner3 = addRule reasoner2 rule
+    putStrLn "贝叶斯推理测试:"
+    putStrLn $ "推理概率: " ++ show probability
+
+testCausalReasoning :: IO ()
+testCausalReasoning = do
+    let cr = CausalReasoner (CausalGraph [] [] Map.empty) Map.empty
+        causalEffect = causalReasoning cr "吸烟" "肺癌"
     
-    let deductiveResults = deductiveReasoning reasoner3
-    putStrLn $ "演绎推理结果: " ++ show deductiveResults
-    
-    let examples = ["swan(1) -> white(1)", "swan(2) -> white(2)", "swan(3) -> white(3)"]
-    let inductiveResult = inductiveReasoning examples "swan(x) -> white(x)"
-    putStrLn $ "归纳推理结果: " ++ inductiveResult
-    
-    -- 2. 概率推理
-    let initialProbReasoner = newProbabilisticReasoner
-    let probReasoner1 = initialProbReasoner 
-            { probabilities = Map.fromList [("rain", 0.3), ("wet_grass", 0.4)]
-            , conditionalProbs = Map.fromList [(("wet_grass", "rain"), 0.8)]
-            }
-    
-    let bayesianResult = bayesianReasoning probReasoner1 "rain" "wet_grass"
-    putStrLn $ "贝叶斯推理结果: " ++ show bayesianResult
-    
-    -- 3. 因果推理
-    let initialCausalReasoner = newCausalReasoner
-    let causalReasoner1 = addCausalRelation initialCausalReasoner "smoking" "cancer" 0.3
-    
-    let causalEffect = causalEffect causalReasoner1 "smoking" "cancer"
+    putStrLn "因果推理测试:"
     putStrLn $ "因果效应: " ++ show causalEffect
+
+testAnalogicalReasoning :: IO ()
+testAnalogicalReasoning = do
+    let similarity = analogicalReasoning "猫" "狗"
     
-    -- 4. 类比推理
-    let initialAnalogicalReasoner = newAnalogicalReasoner
-    let source = Map.fromList [("shape", "round"), ("color", "red")]
-    let target = Map.fromList [("shape", "round"), ("color", "blue")]
-    let mapping = Map.empty
-    
-    let analogicalReasoner1 = addCase initialAnalogicalReasoner source target mapping
-    
-    let query = Map.fromList [("shape", "round")]
-    case analogicalRetrieval analogicalReasoner1 query of
-        Just retrievedCase -> putStrLn $ "类比检索结果: 相似度 " ++ show (similarity retrievedCase)
-        Nothing -> putStrLn "无匹配案例"
-    
-    -- 5. 反事实推理
-    let counterfactualReasoner = newCounterfactualReasoner causalReasoner1
-    let factualData = Map.fromList [("income", 50000.0), ("education", 12.0), ("happiness", 7.0)]
-    let counterfactualReasoner1 = setFactualData counterfactualReasoner factualData
-    
-    let counterfactualData = counterfactualReasoning counterfactualReasoner1 "income" 60000.0
-    putStrLn $ "反事实推理结果: " ++ show counterfactualData
+    putStrLn "类比推理测试:"
+    putStrLn $ "相似性: " ++ show similarity
 ```
 
 ## 参考文献 / References
