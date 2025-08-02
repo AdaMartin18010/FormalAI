@@ -2,337 +2,385 @@
 
 ## 概述 / Overview
 
-深度学习理论旨在理解深度神经网络的表达能力、优化性质和泛化能力，为现代AI系统提供理论基础。
+深度学习理论研究神经网络的理论性质、表达能力、优化理论和泛化能力，为现代AI系统提供数学基础。
 
-Deep learning theory aims to understand the expressive power, optimization properties, and generalization capabilities of deep neural networks, providing theoretical foundations for modern AI systems.
+Deep learning theory studies the theoretical properties, expressive power, optimization theory, and generalization capabilities of neural networks, providing mathematical foundations for modern AI systems.
 
 ## 目录 / Table of Contents
 
 - [2.2 深度学习理论 / Deep Learning Theory](#22-深度学习理论--deep-learning-theory)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
-  - [1. 神经网络表达能力 / Neural Network Expressiveness](#1-神经网络表达能力--neural-network-expressiveness)
+  - [1. 神经网络表达能力 / Neural Network Expressive Power](#1-神经网络表达能力--neural-network-expressive-power)
     - [1.1 通用逼近定理 / Universal Approximation Theorem](#11-通用逼近定理--universal-approximation-theorem)
-    - [1.2 深度表达能力 / Deep Expressiveness](#12-深度表达能力--deep-expressiveness)
-    - [1.3 组合函数 / Compositional Functions](#13-组合函数--compositional-functions)
+    - [1.2 深度优势 / Depth Advantage](#12-深度优势--depth-advantage)
+    - [1.3 宽度-深度权衡 / Width-Depth Trade-off](#13-宽度-深度权衡--width-depth-trade-off)
   - [2. 优化理论 / Optimization Theory](#2-优化理论--optimization-theory)
-    - [2.1 非凸优化 / Non-convex Optimization](#21-非凸优化--non-convex-optimization)
-    - [2.2 梯度下降收敛 / Gradient Descent Convergence](#22-梯度下降收敛--gradient-descent-convergence)
-    - [2.3 随机梯度下降 / Stochastic Gradient Descent](#23-随机梯度下降--stochastic-gradient-descent)
-  - [3. 梯度流理论 / Gradient Flow Theory](#3-梯度流理论--gradient-flow-theory)
-    - [3.1 连续时间梯度流 / Continuous-Time Gradient Flow](#31-连续时间梯度流--continuous-time-gradient-flow)
-    - [3.2 线性化分析 / Linearization Analysis](#32-线性化分析--linearization-analysis)
-    - [3.3 鞍点逃离 / Saddle Point Escape](#33-鞍点逃离--saddle-point-escape)
-  - [4. 宽度与深度权衡 / Width-Depth Trade-offs](#4-宽度与深度权衡--width-depth-trade-offs)
-    - [4.1 参数效率 / Parameter Efficiency](#41-参数效率--parameter-efficiency)
-    - [4.2 最优架构 / Optimal Architecture](#42-最优架构--optimal-architecture)
-    - [4.3 架构搜索 / Architecture Search](#43-架构搜索--architecture-search)
-  - [5. 过参数化理论 / Overparameterization Theory](#5-过参数化理论--overparameterization-theory)
-    - [5.1 过参数化定义 / Overparameterization Definition](#51-过参数化定义--overparameterization-definition)
-    - [5.2 隐式正则化 / Implicit Regularization](#52-隐式正则化--implicit-regularization)
-    - [5.3 双下降现象 / Double Descent Phenomenon](#53-双下降现象--double-descent-phenomenon)
-  - [6. 双下降现象 / Double Descent](#6-双下降现象--double-descent)
-    - [6.1 经典统计学习 / Classical Statistical Learning](#61-经典统计学习--classical-statistical-learning)
-    - [6.2 现代双下降 / Modern Double Descent](#62-现代双下降--modern-double-descent)
-    - [6.3 实验观察 / Experimental Observations](#63-实验观察--experimental-observations)
+    - [2.1 梯度下降收敛性 / Gradient Descent Convergence](#21-梯度下降收敛性--gradient-descent-convergence)
+    - [2.2 随机梯度下降 / Stochastic Gradient Descent](#22-随机梯度下降--stochastic-gradient-descent)
+    - [2.3 自适应优化器 / Adaptive Optimizers](#23-自适应优化器--adaptive-optimizers)
+  - [3. 损失景观 / Loss Landscape](#3-损失景观--loss-landscape)
+    - [3.1 局部最小值 / Local Minima](#31-局部最小值--local-minima)
+    - [3.2 鞍点 / Saddle Points](#32-鞍点--saddle-points)
+    - [3.3 平坦最小值 / Flat Minima](#33-平坦最小值--flat-minima)
+  - [4. 初始化理论 / Initialization Theory](#4-初始化理论--initialization-theory)
+    - [4.1 Xavier初始化 / Xavier Initialization](#41-xavier初始化--xavier-initialization)
+    - [4.2 He初始化 / He Initialization](#42-he初始化--he-initialization)
+    - [4.3 正交初始化 / Orthogonal Initialization](#43-正交初始化--orthogonal-initialization)
+  - [5. 正则化理论 / Regularization Theory](#5-正则化理论--regularization-theory)
+    - [5.1 权重衰减 / Weight Decay](#51-权重衰减--weight-decay)
+    - [5.2 Dropout理论 / Dropout Theory](#52-dropout理论--dropout-theory)
+    - [5.3 批归一化 / Batch Normalization](#53-批归一化--batch-normalization)
+  - [6. 残差网络理论 / Residual Network Theory](#6-残差网络理论--residual-network-theory)
+    - [6.1 残差连接 / Residual Connections](#61-残差连接--residual-connections)
+    - [6.2 梯度流 / Gradient Flow](#62-梯度流--gradient-flow)
+    - [6.3 特征复用 / Feature Reuse](#63-特征复用--feature-reuse)
   - [7. 注意力机制理论 / Attention Mechanism Theory](#7-注意力机制理论--attention-mechanism-theory)
     - [7.1 自注意力 / Self-Attention](#71-自注意力--self-attention)
-    - [7.2 表达能力 / Expressive Power](#72-表达能力--expressive-power)
-    - [7.3 理论分析 / Theoretical Analysis](#73-理论分析--theoretical-analysis)
+    - [7.2 多头注意力 / Multi-Head Attention](#72-多头注意力--multi-head-attention)
+    - [7.3 位置编码 / Positional Encoding](#73-位置编码--positional-encoding)
   - [8. 图神经网络理论 / Graph Neural Network Theory](#8-图神经网络理论--graph-neural-network-theory)
     - [8.1 消息传递 / Message Passing](#81-消息传递--message-passing)
-    - [8.2 表达能力 / Expressive Power](#82-表达能力--expressive-power)
-    - [8.3 理论保证 / Theoretical Guarantees](#83-理论保证--theoretical-guarantees)
-  - [9. 生成模型理论 / Generative Model Theory](#9-生成模型理论--generative-model-theory)
-    - [9.1 生成对抗网络 / Generative Adversarial Networks](#91-生成对抗网络--generative-adversarial-networks)
-    - [9.2 变分自编码器 / Variational Autoencoders](#92-变分自编码器--variational-autoencoders)
-    - [9.3 扩散模型 / Diffusion Models](#93-扩散模型--diffusion-models)
-  - [10. 神经切线核 / Neural Tangent Kernel](#10-神经切线核--neural-tangent-kernel)
-    - [10.1 NTK定义 / NTK Definition](#101-ntk定义--ntk-definition)
-    - [10.2 线性化动力学 / Linearized Dynamics](#102-线性化动力学--linearized-dynamics)
-    - [10.3 理论应用 / Theoretical Applications](#103-理论应用--theoretical-applications)
+    - [8.2 图卷积 / Graph Convolution](#82-图卷积--graph-convolution)
+    - [8.3 图注意力 / Graph Attention](#83-图注意力--graph-attention)
+  - [9. 生成对抗网络理论 / Generative Adversarial Network Theory](#9-生成对抗网络理论--generative-adversarial-network-theory)
+    - [9.1 纳什均衡 / Nash Equilibrium](#91-纳什均衡--nash-equilibrium)
+    - [9.2 模式崩塌 / Mode Collapse](#92-模式崩塌--mode-collapse)
+    - [9.3 梯度消失 / Gradient Vanishing](#93-梯度消失--gradient-vanishing)
+  - [10. 强化学习理论 / Reinforcement Learning Theory](#10-强化学习理论--reinforcement-learning-theory)
+    - [10.1 策略梯度 / Policy Gradient](#101-策略梯度--policy-gradient)
+    - [10.2 价值函数逼近 / Value Function Approximation](#102-价值函数逼近--value-function-approximation)
+    - [10.3 Actor-Critic方法 / Actor-Critic Methods](#103-actor-critic方法--actor-critic-methods)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：神经网络表达能力分析](#rust实现神经网络表达能力分析)
-    - [Haskell实现：梯度流分析](#haskell实现梯度流分析)
+    - [Rust实现：神经网络前向传播](#rust实现神经网络前向传播)
+    - [Haskell实现：梯度下降优化](#haskell实现梯度下降优化)
   - [参考文献 / References](#参考文献--references)
 
 ---
 
-## 1. 神经网络表达能力 / Neural Network Expressiveness
+## 1. 神经网络表达能力 / Neural Network Expressive Power
 
 ### 1.1 通用逼近定理 / Universal Approximation Theorem
 
 **Cybenko定理 / Cybenko's Theorem:**
 
-对于任何连续函数 $f: [0,1]^n \rightarrow \mathbb{R}$ 和 $\epsilon > 0$，存在单隐层神经网络 $g$ 使得：
+设 $\sigma$ 是连续sigmoidal函数，则对于任意连续函数 $f: [0,1]^n \rightarrow \mathbb{R}$ 和 $\epsilon > 0$，存在单隐层神经网络 $N$ 使得：
 
-For any continuous function $f: [0,1]^n \rightarrow \mathbb{R}$ and $\epsilon > 0$, there exists a single-hidden-layer neural network $g$ such that:
+Let $\sigma$ be a continuous sigmoidal function, then for any continuous function $f: [0,1]^n \rightarrow \mathbb{R}$ and $\epsilon > 0$, there exists a single-hidden-layer neural network $N$ such that:
 
-$$\sup_{x \in [0,1]^n} |f(x) - g(x)| < \epsilon$$
+$$\sup_{x \in [0,1]^n} |f(x) - N(x)| < \epsilon$$
 
-**证明思路 / Proof Sketch:**
+**形式化定义 / Formal Definition:**
 
-使用Stone-Weierstrass定理和sigmoid函数的性质。
+$$N(x) = \sum_{i=1}^N \alpha_i \sigma(w_i^T x + b_i)$$
 
-Using Stone-Weierstrass theorem and properties of sigmoid functions.
+其中 $\alpha_i, b_i \in \mathbb{R}$，$w_i \in \mathbb{R}^n$。
 
-### 1.2 深度表达能力 / Deep Expressiveness
+where $\alpha_i, b_i \in \mathbb{R}$ and $w_i \in \mathbb{R}^n$.
 
-**深度优势 / Depth Advantage:**
+### 1.2 深度优势 / Depth Advantage
 
-存在函数族需要指数级宽度的浅层网络，但深层网络只需要多项式宽度。
+**Telgarsky定理 / Telgarsky's Theorem:**
 
-There exist function families that require exponential width for shallow networks but only polynomial width for deep networks.
+存在函数族，深度网络需要指数级更少的参数来达到相同的逼近精度。
 
-**定理 / Theorem:**
+There exist function families where deep networks require exponentially fewer parameters to achieve the same approximation accuracy.
 
-对于某些函数 $f$，如果浅层网络需要 $\Omega(2^n)$ 个神经元，那么深层网络只需要 $O(n)$ 个神经元。
+**形式化表述 / Formal Statement:**
 
-For some functions $f$, if shallow networks require $\Omega(2^n)$ neurons, then deep networks only need $O(n)$ neurons.
+对于某些函数 $f$，如果浅层网络需要 $\Omega(2^n)$ 个参数，则深度网络只需要 $O(n)$ 个参数。
 
-### 1.3 组合函数 / Compositional Functions
+For some functions $f$, if shallow networks require $\Omega(2^n)$ parameters, then deep networks only need $O(n)$ parameters.
 
-**组合结构 / Compositional Structure:**
+### 1.3 宽度-深度权衡 / Width-Depth Trade-off
 
-$$f(x) = h_1(h_2(\ldots h_k(x) \ldots))$$
+**宽度定理 / Width Theorem:**
 
-其中每个 $h_i$ 是简单函数。
+对于任意连续函数，存在宽度为 $O(n)$ 的浅层网络可以逼近。
 
-where each $h_i$ is a simple function.
+For any continuous function, there exists a shallow network with width $O(n)$ that can approximate it.
 
-**深度网络优势 / Deep Network Advantage:**
+**深度定理 / Depth Theorem:**
 
-深度网络天然适合表示组合函数，而浅层网络需要指数级参数。
+对于某些函数族，深度网络比浅层网络更有效。
 
-Deep networks naturally represent compositional functions, while shallow networks require exponential parameters.
+For some function families, deep networks are more efficient than shallow networks.
 
 ---
 
 ## 2. 优化理论 / Optimization Theory
 
-### 2.1 非凸优化 / Non-convex Optimization
+### 2.1 梯度下降收敛性 / Gradient Descent Convergence
 
-**损失景观 / Loss Landscape:**
+**凸优化收敛 / Convex Optimization Convergence:**
 
-$$\mathcal{L}(\theta) = \frac{1}{n} \sum_{i=1}^n \ell(f_\theta(x_i), y_i)$$
+对于凸函数 $f$，梯度下降以 $O(1/t)$ 速率收敛：
 
-**局部最小值 / Local Minima:**
+For convex function $f$, gradient descent converges at rate $O(1/t)$:
 
-$\theta^*$ 是局部最小值，如果存在邻域 $B(\theta^*, \epsilon)$ 使得：
+$$f(x_t) - f(x^*) \leq \frac{L\|x_0 - x^*\|^2}{2t}$$
 
-$\theta^*$ is a local minimum if there exists neighborhood $B(\theta^*, \epsilon)$ such that:
+其中 $L$ 是Lipschitz常数。
 
-$$\mathcal{L}(\theta^*) \leq \mathcal{L}(\theta) \text{ for all } \theta \in B(\theta^*, \epsilon)$$
+where $L$ is the Lipschitz constant.
 
-### 2.2 梯度下降收敛 / Gradient Descent Convergence
+**强凸函数收敛 / Strongly Convex Function Convergence:**
 
-**梯度下降 / Gradient Descent:**
+对于强凸函数，收敛速率为 $O((1-\mu/L)^t)$：
 
-$$\theta_{t+1} = \theta_t - \eta \nabla \mathcal{L}(\theta_t)$$
+For strongly convex functions, convergence rate is $O((1-\mu/L)^t)$:
 
-**收敛定理 / Convergence Theorem:**
+$$f(x_t) - f(x^*) \leq (1-\mu/L)^t (f(x_0) - f(x^*))$$
 
-对于L-Lipschitz梯度函数：
+### 2.2 随机梯度下降 / Stochastic Gradient Descent
 
-For L-Lipschitz gradient functions:
+**SGD收敛 / SGD Convergence:**
 
-$$\mathcal{L}(\theta_T) - \mathcal{L}(\theta^*) \leq \frac{\|\theta_0 - \theta^*\|^2}{2\eta T} + \frac{\eta L^2}{2}$$
+对于凸函数，SGD以 $O(1/\sqrt{t})$ 速率收敛：
 
-### 2.3 随机梯度下降 / Stochastic Gradient Descent
+For convex functions, SGD converges at rate $O(1/\sqrt{t})$:
 
-**SGD更新 / SGD Update:**
+$$\mathbb{E}[f(\bar{x}_t)] - f(x^*) \leq \frac{G\|x_0 - x^*\|}{\sqrt{t}}$$
 
-$$\theta_{t+1} = \theta_t - \eta \nabla \mathcal{L}_i(\theta_t)$$
+其中 $G$ 是梯度范数上界。
 
-其中 $\mathcal{L}_i$ 是第 $i$ 个样本的损失。
+where $G$ is the upper bound on gradient norm.
 
-where $\mathcal{L}_i$ is the loss of the $i$-th sample.
+**方差减少 / Variance Reduction:**
 
-**收敛率 / Convergence Rate:**
+SVRG算法以 $O(1/t)$ 速率收敛：
 
-$$\mathbb{E}[\mathcal{L}(\theta_T) - \mathcal{L}(\theta^*)] \leq O\left(\frac{1}{\sqrt{T}}\right)$$
+SVRG algorithm converges at rate $O(1/t)$:
 
----
+$$\mathbb{E}[f(x_t)] - f(x^*) \leq \frac{4L\|x_0 - x^*\|^2}{t}$$
 
-## 3. 梯度流理论 / Gradient Flow Theory
+### 2.3 自适应优化器 / Adaptive Optimizers
 
-### 3.1 连续时间梯度流 / Continuous-Time Gradient Flow
+**Adam算法 / Adam Algorithm:**
 
-**梯度流 / Gradient Flow:**
+$$m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t$$
+$$v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2$$
+$$x_t = x_{t-1} - \frac{\alpha}{\sqrt{v_t} + \epsilon} m_t$$
 
-$$\frac{d\theta(t)}{dt} = -\nabla \mathcal{L}(\theta(t))$$
+**收敛性分析 / Convergence Analysis:**
 
-**能量衰减 / Energy Decay:**
+对于凸函数，Adam以 $O(1/\sqrt{t})$ 速率收敛。
 
-$$\frac{d}{dt} \mathcal{L}(\theta(t)) = -\|\nabla \mathcal{L}(\theta(t))\|^2 \leq 0$$
-
-### 3.2 线性化分析 / Linearization Analysis
-
-**泰勒展开 / Taylor Expansion:**
-
-$$\mathcal{L}(\theta + \delta) \approx \mathcal{L}(\theta) + \nabla \mathcal{L}(\theta)^T \delta + \frac{1}{2} \delta^T H(\theta) \delta$$
-
-其中 $H(\theta)$ 是Hessian矩阵。
-
-where $H(\theta)$ is the Hessian matrix.
-
-**局部收敛 / Local Convergence:**
-
-如果 $H(\theta^*)$ 是正定的，那么梯度流局部收敛到 $\theta^*$。
-
-If $H(\theta^*)$ is positive definite, then gradient flow locally converges to $\theta^*$.
-
-### 3.3 鞍点逃离 / Saddle Point Escape
-
-**鞍点 / Saddle Point:**
-
-$\theta$ 是鞍点，如果 $\nabla \mathcal{L}(\theta) = 0$ 但 $H(\theta)$ 有负特征值。
-
-$\theta$ is a saddle point if $\nabla \mathcal{L}(\theta) = 0$ but $H(\theta)$ has negative eigenvalues.
-
-**逃离定理 / Escape Theorem:**
-
-在适当条件下，梯度下降可以逃离鞍点。
-
-Under appropriate conditions, gradient descent can escape saddle points.
+For convex functions, Adam converges at rate $O(1/\sqrt{t})$.
 
 ---
 
-## 4. 宽度与深度权衡 / Width-Depth Trade-offs
+## 3. 损失景观 / Loss Landscape
 
-### 4.1 参数效率 / Parameter Efficiency
+### 3.1 局部最小值 / Local Minima
 
-**参数数量 / Parameter Count:**
+**局部最小值定义 / Local Minimum Definition:**
 
-对于宽度 $w$ 和深度 $d$ 的网络：
+点 $x^*$ 是局部最小值，如果存在邻域 $N(x^*)$ 使得：
 
-For network with width $w$ and depth $d$:
+Point $x^*$ is a local minimum if there exists neighborhood $N(x^*)$ such that:
 
-$$\text{Parameters} = O(w^2 d)$$
+$$f(x^*) \leq f(x) \quad \forall x \in N(x^*)$$
 
-**表达能力 / Expressive Power:**
+**局部最小值密度 / Local Minimum Density:**
 
-深度增加表达能力，但可能增加优化难度。
+对于随机初始化的神经网络，局部最小值数量随网络大小指数增长。
 
-Depth increases expressive power but may increase optimization difficulty.
+For randomly initialized neural networks, the number of local minima grows exponentially with network size.
 
-### 4.2 最优架构 / Optimal Architecture
+### 3.2 鞍点 / Saddle Points
 
-**理论指导 / Theoretical Guidance:**
+**鞍点定义 / Saddle Point Definition:**
 
-- 浅层网络：适合简单函数
-- 深层网络：适合组合函数
-- 残差连接：缓解梯度消失
+点 $x^*$ 是鞍点，如果 $\nabla f(x^*) = 0$ 且 Hessian矩阵 $H(x^*)$ 有正负特征值。
 
-- Shallow networks: suitable for simple functions
-- Deep networks: suitable for compositional functions
-- Residual connections: alleviate gradient vanishing
+Point $x^*$ is a saddle point if $\nabla f(x^*) = 0$ and Hessian matrix $H(x^*)$ has both positive and negative eigenvalues.
 
-### 4.3 架构搜索 / Architecture Search
+**鞍点逃离 / Saddle Point Escaping:**
 
-**神经架构搜索 / Neural Architecture Search:**
+二阶方法可以快速逃离鞍点：
 
-$$\mathcal{A}^* = \arg\min_{\mathcal{A}} \mathbb{E}_{\theta \sim p(\theta|\mathcal{A})}[\mathcal{L}(\theta)]$$
+Second-order methods can quickly escape saddle points:
 
-**可微分搜索 / Differentiable Search:**
+$$x_{t+1} = x_t - \eta H^{-1}(x_t) \nabla f(x_t)$$
 
-使用连续松弛将离散搜索空间转换为连续空间。
+### 3.3 平坦最小值 / Flat Minima
 
-Using continuous relaxation to convert discrete search space to continuous space.
+**平坦最小值定义 / Flat Minimum Definition:**
 
----
+平坦最小值具有小的Hessian特征值，对应更好的泛化能力。
 
-## 5. 过参数化理论 / Overparameterization Theory
+Flat minima have small Hessian eigenvalues, corresponding to better generalization.
 
-### 5.1 过参数化定义 / Overparameterization Definition
+**泛化界 / Generalization Bounds:**
 
-**过参数化 / Overparameterization:**
+$$\mathbb{E}[L(f)] \leq \hat{L}(f) + O\left(\sqrt{\frac{\text{tr}(H)}{n}}\right)$$
 
-当参数数量 $p$ 远大于样本数量 $n$ 时，网络是过参数化的。
+其中 $H$ 是损失函数的Hessian矩阵。
 
-When parameter count $p$ is much larger than sample count $n$, the network is overparameterized.
-
-**插值 / Interpolation:**
-
-过参数化网络可以完美拟合训练数据。
-
-Overparameterized networks can perfectly fit training data.
-
-### 5.2 隐式正则化 / Implicit Regularization
-
-**梯度下降正则化 / Gradient Descent Regularization:**
-
-梯度下降倾向于找到最小范数解。
-
-Gradient descent tends to find minimum norm solutions.
-
-**定理 / Theorem:**
-
-对于线性模型，梯度下降收敛到最小范数解。
-
-For linear models, gradient descent converges to minimum norm solution.
-
-### 5.3 双下降现象 / Double Descent Phenomenon
-
-**经典U形曲线 / Classical U-shaped Curve:**
-
-当 $p < n$ 时，泛化误差随参数增加而减少。
-
-When $p < n$, generalization error decreases with parameter increase.
-
-**现代双下降 / Modern Double Descent:**
-
-当 $p > n$ 时，泛化误差可能再次下降。
-
-When $p > n$, generalization error may decrease again.
+where $H$ is the Hessian matrix of the loss function.
 
 ---
 
-## 6. 双下降现象 / Double Descent
+## 4. 初始化理论 / Initialization Theory
 
-### 6.1 经典统计学习 / Classical Statistical Learning
+### 4.1 Xavier初始化 / Xavier Initialization
 
-**偏差-方差权衡 / Bias-Variance Trade-off:**
+**Xavier初始化 / Xavier Initialization:**
 
-$$\text{Generalization Error} = \text{Bias}^2 + \text{Variance} + \text{Noise}$$
+对于第 $l$ 层，权重方差为：
 
-**经典U形曲线 / Classical U-shaped Curve:**
+For layer $l$, weight variance is:
 
-- 欠拟合：高偏差，低方差
-- 过拟合：低偏差，高方差
+$$\text{Var}(W^l) = \frac{2}{n_{l-1} + n_l}$$
 
-- Underfitting: high bias, low variance
-- Overfitting: low bias, high variance
+其中 $n_l$ 是第 $l$ 层的神经元数量。
 
-### 6.2 现代双下降 / Modern Double Descent
+where $n_l$ is the number of neurons in layer $l$.
 
-**过参数化区域 / Overparameterized Regime:**
+**理论依据 / Theoretical Basis:**
 
-当 $p \gg n$ 时，可能出现第二个下降。
+保持每层输入输出的方差相等：
 
-When $p \gg n$, a second descent may occur.
+Maintain equal variance of input and output for each layer:
+
+$$\text{Var}(y^l) = \text{Var}(y^{l-1})$$
+
+### 4.2 He初始化 / He Initialization
+
+**He初始化 / He Initialization:**
+
+对于ReLU激活函数：
+
+For ReLU activation function:
+
+$$\text{Var}(W^l) = \frac{2}{n_{l-1}}$$
+
+**理论依据 / Theoretical Basis:**
+
+考虑ReLU的零化效应：
+
+Consider the zeroing effect of ReLU:
+
+$$\text{Var}(y^l) = \frac{1}{2} \text{Var}(y^{l-1})$$
+
+### 4.3 正交初始化 / Orthogonal Initialization
+
+**正交初始化 / Orthogonal Initialization:**
+
+$$W = U \Sigma V^T$$
+
+其中 $U, V$ 是正交矩阵，$\Sigma$ 是奇异值矩阵。
+
+where $U, V$ are orthogonal matrices and $\Sigma$ is the singular value matrix.
+
+**优势 / Advantages:**
+
+- 保持梯度范数
+- 避免梯度消失/爆炸
+- 提高训练稳定性
+
+- Maintain gradient norm
+- Avoid gradient vanishing/explosion
+- Improve training stability
+
+---
+
+## 5. 正则化理论 / Regularization Theory
+
+### 5.1 权重衰减 / Weight Decay
+
+**L2正则化 / L2 Regularization:**
+
+$$\mathcal{L}_{\text{reg}} = \mathcal{L} + \frac{\lambda}{2} \sum_{i,j} W_{i,j}^2$$
+
+**梯度更新 / Gradient Update:**
+
+$$\frac{\partial \mathcal{L}_{\text{reg}}}{\partial W} = \frac{\partial \mathcal{L}}{\partial W} + \lambda W$$
+
+**理论效果 / Theoretical Effect:**
+
+权重衰减等价于在每次更新时缩小权重：
+
+Weight decay is equivalent to shrinking weights at each update:
+
+$$W_{t+1} = (1-\lambda) W_t - \eta \nabla \mathcal{L}(W_t)$$
+
+### 5.2 Dropout理论 / Dropout Theory
+
+**Dropout机制 / Dropout Mechanism:**
+
+训练时以概率 $p$ 随机置零神经元：
+
+During training, randomly zero neurons with probability $p$:
+
+$$y = \frac{1}{1-p} \cdot \text{mask} \odot x$$
 
 **理论解释 / Theoretical Explanation:**
 
-- 插值解的唯一性
-- 隐式正则化效应
-- 模型复杂度与数据复杂度匹配
+Dropout等价于集成学习：
 
-- Uniqueness of interpolation solutions
-- Implicit regularization effects
-- Model complexity matching data complexity
+Dropout is equivalent to ensemble learning:
 
-### 6.3 实验观察 / Experimental Observations
+$$\mathbb{E}[f(x)] = \frac{1}{2^n} \sum_{m \in \{0,1\}^n} f_m(x)$$
 
-**双下降曲线 / Double Descent Curve:**
+### 5.3 批归一化 / Batch Normalization
 
-1. 经典区域：$p < n$，U形曲线
-2. 插值阈值：$p \approx n$，峰值
-3. 过参数化区域：$p > n$，再次下降
+**批归一化公式 / Batch Normalization Formula:**
 
-   1. Classical regime: $p < n$, U-shaped curve
-   2. Interpolation threshold: $p \approx n$, peak
-   3. Overparameterized regime: $p > n$, second descent
+$$\text{BN}(x) = \gamma \frac{x - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}} + \beta$$
+
+其中 $\mu_B, \sigma_B^2$ 是批次统计量。
+
+where $\mu_B, \sigma_B^2$ are batch statistics.
+
+**理论优势 / Theoretical Advantages:**
+
+- 减少内部协变量偏移
+- 允许更大的学习率
+- 提高训练稳定性
+
+- Reduce internal covariate shift
+- Allow larger learning rates
+- Improve training stability
+
+---
+
+## 6. 残差网络理论 / Residual Network Theory
+
+### 6.1 残差连接 / Residual Connections
+
+**残差块 / Residual Block:**
+
+$$y = F(x, W) + x$$
+
+其中 $F(x, W)$ 是残差函数。
+
+where $F(x, W)$ is the residual function.
+
+**梯度流 / Gradient Flow:**
+
+$$\frac{\partial \mathcal{L}}{\partial x} = \frac{\partial \mathcal{L}}{\partial y} \cdot \left(\frac{\partial F}{\partial x} + I\right)$$
+
+### 6.2 梯度流 / Gradient Flow
+
+**梯度消失缓解 / Gradient Vanishing Mitigation:**
+
+残差连接提供了恒等映射的捷径：
+
+Residual connections provide shortcuts for identity mapping:
+
+$$\frac{\partial \mathcal{L}}{\partial x_l} = \frac{\partial \mathcal{L}}{\partial x_L} \cdot \prod_{i=l}^{L-1} \left(\frac{\partial F_i}{\partial x_i} + I\right)$$
+
+### 6.3 特征复用 / Feature Reuse
+
+**特征复用机制 / Feature Reuse Mechanism:**
+
+浅层特征可以直接传递到深层：
+
+Shallow features can be directly passed to deep layers:
+
+$$x_L = x_0 + \sum_{i=1}^L F_i(x_{i-1})$$
 
 ---
 
@@ -340,7 +388,7 @@ When $p \gg n$, a second descent may occur.
 
 ### 7.1 自注意力 / Self-Attention
 
-**注意力函数 / Attention Function:**
+**注意力公式 / Attention Formula:**
 
 $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
 
@@ -348,42 +396,42 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)
 
 where $Q, K, V$ are query, key, value matrices respectively.
 
+**理论分析 / Theoretical Analysis:**
+
+注意力权重表示token间的相关性：
+
+Attention weights represent token correlations:
+
+$$a_{ij} = \frac{\exp(q_i^T k_j / \sqrt{d_k})}{\sum_l \exp(q_i^T k_l / \sqrt{d_k})}$$
+
+### 7.2 多头注意力 / Multi-Head Attention
+
 **多头注意力 / Multi-Head Attention:**
 
 $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h)W^O$$
 
-其中 $\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$。
+其中每个头为：
 
-where $\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$.
+where each head is:
 
-### 7.2 表达能力 / Expressive Power
+$$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
 
-**通用逼近 / Universal Approximation:**
+### 7.3 位置编码 / Positional Encoding
 
-自注意力可以逼近任何序列到序列的函数。
+**正弦位置编码 / Sinusoidal Positional Encoding:**
 
-Self-attention can approximate any sequence-to-sequence function.
+$$PE_{(pos, 2i)} = \sin(pos / 10000^{2i/d})$$
+$$PE_{(pos, 2i+1)} = \cos(pos / 10000^{2i/d})$$
 
-**位置编码 / Positional Encoding:**
+**理论性质 / Theoretical Properties:**
 
-$$\text{PE}_{pos, 2i} = \sin(pos/10000^{2i/d})$$
-$$\text{PE}_{pos, 2i+1} = \cos(pos/10000^{2i/d})$$
+- 可以处理任意长度的序列
+- 具有相对位置信息
+- 可以外推到更长序列
 
-### 7.3 理论分析 / Theoretical Analysis
-
-**长距离依赖 / Long-Range Dependencies:**
-
-自注意力可以捕获任意距离的依赖关系。
-
-Self-attention can capture dependencies at arbitrary distances.
-
-**计算复杂度 / Computational Complexity:**
-
-$$O(n^2 d)$$
-
-其中 $n$ 是序列长度，$d$ 是特征维度。
-
-where $n$ is sequence length and $d$ is feature dimension.
+- Can handle sequences of arbitrary length
+- Has relative position information
+- Can extrapolate to longer sequences
 
 ---
 
@@ -391,181 +439,216 @@ where $n$ is sequence length and $d$ is feature dimension.
 
 ### 8.1 消息传递 / Message Passing
 
-**图卷积 / Graph Convolution:**
+**消息传递框架 / Message Passing Framework:**
 
-$$h_v^{(l+1)} = \sigma\left(W^{(l)} \sum_{u \in \mathcal{N}(v)} \frac{h_u^{(l)}}{\sqrt{|\mathcal{N}(v)||\mathcal{N}(u)|}}\right)$$
+$$h_v^{(l+1)} = \text{UPDATE}^{(l)}\left(h_v^{(l)}, \text{AGGREGATE}^{(l)}\left(\{h_u^{(l)} : u \in \mathcal{N}(v)\}\right)\right)$$
 
 其中 $\mathcal{N}(v)$ 是节点 $v$ 的邻居。
 
-where $\mathcal{N}(v)$ are neighbors of node $v$.
+where $\mathcal{N}(v)$ are the neighbors of node $v$.
+
+### 8.2 图卷积 / Graph Convolution
+
+**图卷积公式 / Graph Convolution Formula:**
+
+$$H^{(l+1)} = \sigma\left(\tilde{D}^{-\frac{1}{2}} \tilde{A} \tilde{D}^{-\frac{1}{2}} H^{(l)} W^{(l)}\right)$$
+
+其中 $\tilde{A} = A + I$ 是带自环的邻接矩阵。
+
+where $\tilde{A} = A + I$ is the adjacency matrix with self-loops.
+
+### 8.3 图注意力 / Graph Attention
 
 **图注意力 / Graph Attention:**
 
-$$\alpha_{ij} = \frac{\exp(\text{LeakyReLU}(a^T[Wh_i \| Wh_j]))}{\sum_{k \in \mathcal{N}(i)} \exp(\text{LeakyReLU}(a^T[Wh_i \| Wh_k]))}$$
-
-### 8.2 表达能力 / Expressive Power
-
-**Weisfeiler-Lehman测试 / Weisfeiler-Lehman Test:**
-
-GNN的表达能力受WL测试限制。
-
-GNN expressive power is limited by WL test.
-
-**图同构 / Graph Isomorphism:**
-
-GNN无法区分WL测试无法区分的图。
-
-GNN cannot distinguish graphs that WL test cannot distinguish.
-
-### 8.3 理论保证 / Theoretical Guarantees
-
-**收敛性 / Convergence:**
-
-在适当条件下，消息传递算法收敛。
-
-Under appropriate conditions, message passing algorithms converge.
-
-**稳定性 / Stability:**
-
-图结构扰动对GNN输出的影响有理论界。
-
-Theoretical bounds on the effect of graph structure perturbations on GNN outputs.
+$$\alpha_{ij} = \frac{\exp(\text{LeakyReLU}(a^T[Wh_i \| Wh_j]))}{\sum_{k \in \mathcal{N}_i} \exp(\text{LeakyReLU}(a^T[Wh_i \| Wh_k]))}$$
 
 ---
 
-## 9. 生成模型理论 / Generative Model Theory
+## 9. 生成对抗网络理论 / Generative Adversarial Network Theory
 
-### 9.1 生成对抗网络 / Generative Adversarial Networks
+### 9.1 纳什均衡 / Nash Equilibrium
 
-**GAN目标 / GAN Objective:**
+**GAN目标函数 / GAN Objective:**
 
 $$\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}}[\log D(x)] + \mathbb{E}_{z \sim p_z}[\log(1-D(G(z)))]$$
 
 **纳什均衡 / Nash Equilibrium:**
 
-$(G^*, D^*)$ 是纳什均衡，如果：
+在纳什均衡点，生成器和判别器都无法通过单方面改变策略来改善性能。
 
-$(G^*, D^*)$ is a Nash equilibrium if:
+At Nash equilibrium, neither generator nor discriminator can improve performance by unilaterally changing strategy.
 
-$$V(D^*, G^*) \leq V(D^*, G) \text{ for all } G$$
-$$V(D^*, G^*) \geq V(D, G^*) \text{ for all } D$$
+### 9.2 模式崩塌 / Mode Collapse
 
-### 9.2 变分自编码器 / Variational Autoencoders
+**模式崩塌定义 / Mode Collapse Definition:**
 
-**ELBO目标 / ELBO Objective:**
+生成器只生成数据分布的一部分模式：
 
-$$\mathcal{L}(\theta, \phi) = \mathbb{E}_{q_\phi(z|x)}[\log p_\theta(x|z)] - D_{KL}(q_\phi(z|x) \| p(z))$$
+Generator only generates a subset of data distribution modes:
 
-**重参数化技巧 / Reparameterization Trick:**
+$$p_g(x) \neq p_{\text{data}}(x)$$
 
-$$z = \mu + \sigma \odot \epsilon$$
+**理论分析 / Theoretical Analysis:**
 
-其中 $\epsilon \sim \mathcal{N}(0, I)$。
+模式崩塌源于判别器的过度自信：
 
-where $\epsilon \sim \mathcal{N}(0, I)$.
+Mode collapse stems from discriminator overconfidence:
 
-### 9.3 扩散模型 / Diffusion Models
+$$D(x) \rightarrow 1 \quad \forall x$$
 
-**前向过程 / Forward Process:**
+### 9.3 梯度消失 / Gradient Vanishing
 
-$$q(x_t|x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t}x_0, (1-\bar{\alpha}_t)I)$$
+**梯度消失问题 / Gradient Vanishing Problem:**
 
-**反向过程 / Reverse Process:**
+当判别器过于强大时，生成器梯度消失：
 
-$$p_\theta(x_{t-1}|x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))$$
+When discriminator is too strong, generator gradient vanishes:
+
+$$\nabla_G V(D, G) \rightarrow 0$$
+
+**解决方案 / Solutions:**
+
+- Wasserstein GAN
+- Gradient penalty
+- Spectral normalization
 
 ---
 
-## 10. 神经切线核 / Neural Tangent Kernel
+## 10. 强化学习理论 / Reinforcement Learning Theory
 
-### 10.1 NTK定义 / NTK Definition
+### 10.1 策略梯度 / Policy Gradient
 
-**神经切线核 / Neural Tangent Kernel:**
+**策略梯度定理 / Policy Gradient Theorem:**
 
-$$K(x, x') = \mathbb{E}_{\theta \sim p(\theta)}[\nabla_\theta f_\theta(x)^T \nabla_\theta f_\theta(x')]$$
+$$\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta}[\nabla_\theta \log \pi_\theta(\tau) R(\tau)]$$
 
-**无限宽度极限 / Infinite Width Limit:**
+其中 $\tau$ 是轨迹，$R(\tau)$ 是回报。
 
-当网络宽度趋于无穷时，NTK收敛到确定性核。
+where $\tau$ is trajectory and $R(\tau)$ is reward.
 
-When network width tends to infinity, NTK converges to a deterministic kernel.
+**REINFORCE算法 / REINFORCE Algorithm:**
 
-### 10.2 线性化动力学 / Linearized Dynamics
+$$\theta_{t+1} = \theta_t + \alpha \nabla_\theta \log \pi_\theta(a_t|s_t) R_t$$
 
-**线性化网络 / Linearized Network:**
+### 10.2 价值函数逼近 / Value Function Approximation
 
-$$f_{\text{lin}}(x) = f_{\theta_0}(x) + \nabla_\theta f_{\theta_0}(x)^T(\theta - \theta_0)$$
+**价值函数 / Value Function:**
 
-**梯度流 / Gradient Flow:**
+$$V^\pi(s) = \mathbb{E}_\pi\left[\sum_{t=0}^{\infty} \gamma^t r_t | s_0 = s\right]$$
 
-$$\frac{d\theta}{dt} = -\eta \nabla_\theta \mathcal{L}(\theta)$$
+**Q函数 / Q-Function:**
 
-### 10.3 理论应用 / Theoretical Applications
+$$Q^\pi(s, a) = \mathbb{E}_\pi\left[\sum_{t=0}^{\infty} \gamma^t r_t | s_0 = s, a_0 = a\right]$$
 
-**收敛性 / Convergence:**
+### 10.3 Actor-Critic方法 / Actor-Critic Methods
 
-在NTK条件下，梯度下降收敛到全局最优。
+**Actor-Critic框架 / Actor-Critic Framework:**
 
-Under NTK conditions, gradient descent converges to global optimum.
+$$\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}[\nabla_\theta \log \pi_\theta(a|s) A^\pi(s, a)]$$
 
-**泛化界 / Generalization Bounds:**
+其中优势函数为：
 
-使用NTK可以推导出新的泛化界。
+where advantage function is:
 
-Using NTK can derive new generalization bounds.
+$$A^\pi(s, a) = Q^\pi(s, a) - V^\pi(s)$$
 
 ---
 
 ## 代码示例 / Code Examples
 
-### Rust实现：神经网络表达能力分析
+### Rust实现：神经网络前向传播
 
 ```rust
 use std::collections::HashMap;
 
 #[derive(Debug, Clone)]
+struct Layer {
+    weights: Vec<Vec<f64>>,
+    biases: Vec<f64>,
+    activation: Activation,
+}
+
+#[derive(Debug, Clone)]
+enum Activation {
+    ReLU,
+    Sigmoid,
+    Tanh,
+    Linear,
+}
+
+impl Layer {
+    fn new(input_size: usize, output_size: usize, activation: Activation) -> Self {
+        let mut rng = rand::thread_rng();
+        let weights: Vec<Vec<f64>> = (0..output_size)
+            .map(|_| {
+                (0..input_size)
+                    .map(|_| rng.gen_range(-1.0..1.0) * (2.0 / input_size as f64).sqrt())
+                    .collect()
+            })
+            .collect();
+        
+        let biases: Vec<f64> = (0..output_size)
+            .map(|_| rng.gen_range(-0.1..0.1))
+            .collect();
+        
+        Layer {
+            weights,
+            biases,
+            activation,
+        }
+    }
+    
+    fn forward(&self, input: &[f64]) -> Vec<f64> {
+        let mut output = vec![0.0; self.weights.len()];
+        
+        for (i, (weights, bias)) in self.weights.iter().zip(&self.biases).enumerate() {
+            let sum: f64 = weights.iter().zip(input).map(|(w, x)| w * x).sum();
+            output[i] = self.activation.apply(sum + bias);
+        }
+        
+        output
+    }
+}
+
+impl Activation {
+    fn apply(&self, x: f64) -> f64 {
+        match self {
+            Activation::ReLU => x.max(0.0),
+            Activation::Sigmoid => 1.0 / (1.0 + (-x).exp()),
+            Activation::Tanh => x.tanh(),
+            Activation::Linear => x,
+        }
+    }
+    
+    fn derivative(&self, x: f64) -> f64 {
+        match self {
+            Activation::ReLU => if x > 0.0 { 1.0 } else { 0.0 },
+            Activation::Sigmoid => {
+                let s = self.apply(x);
+                s * (1.0 - s)
+            },
+            Activation::Tanh => 1.0 - x.tanh().powi(2),
+            Activation::Linear => 1.0,
+        }
+    }
+}
+
+#[derive(Debug)]
 struct NeuralNetwork {
     layers: Vec<Layer>,
 }
 
-#[derive(Debug, Clone)]
-struct Layer {
-    weights: Vec<Vec<f64>>,
-    biases: Vec<f64>,
-    activation: ActivationFunction,
-}
-
-#[derive(Debug, Clone)]
-enum ActivationFunction {
-    Sigmoid,
-    ReLU,
-    Tanh,
-}
-
 impl NeuralNetwork {
-    fn new(architecture: Vec<usize>) -> Self {
+    fn new(layer_sizes: Vec<usize>, activations: Vec<Activation>) -> Self {
         let mut layers = Vec::new();
         
-        for i in 0..architecture.len() - 1 {
-            let input_size = architecture[i];
-            let output_size = architecture[i + 1];
-            
-            // 随机初始化权重
-            let mut weights = vec![vec![0.0; input_size]; output_size];
-            let mut biases = vec![0.0; output_size];
-            
-            for j in 0..output_size {
-                for k in 0..input_size {
-                    weights[j][k] = (rand::random::<f64>() - 0.5) * 2.0;
-                }
-                biases[j] = (rand::random::<f64>() - 0.5) * 2.0;
-            }
-            
-            layers.push(Layer {
-                weights,
-                biases,
-                activation: ActivationFunction::ReLU,
-            });
+        for i in 0..layer_sizes.len() - 1 {
+            layers.push(Layer::new(
+                layer_sizes[i],
+                layer_sizes[i + 1],
+                activations[i].clone(),
+            ));
         }
         
         NeuralNetwork { layers }
@@ -575,154 +658,230 @@ impl NeuralNetwork {
         let mut current = input.to_vec();
         
         for layer in &self.layers {
-            let mut next = vec![0.0; layer.biases.len()];
-            
-            for (i, bias) in layer.biases.iter().enumerate() {
-                let mut sum = *bias;
-                for (j, weight) in layer.weights[i].iter().enumerate() {
-                    sum += weight * current[j];
-                }
-                next[i] = layer.activation.apply(sum);
-            }
-            
-            current = next;
+            current = layer.forward(&current);
         }
         
         current
     }
     
-    fn count_parameters(&self) -> usize {
-        let mut count = 0;
+    fn backward(&self, input: &[f64], target: &[f64]) -> Vec<Vec<Vec<f64>>> {
+        // 前向传播
+        let mut activations = vec![input.to_vec()];
+        let mut z_values = Vec::new();
+        
         for layer in &self.layers {
-            count += layer.weights.iter().map(|w| w.len()).sum::<usize>();
-            count += layer.biases.len();
+            let z: Vec<f64> = layer.weights.iter().zip(&layer.biases).map(|(weights, bias)| {
+                weights.iter().zip(&activations.last().unwrap()).map(|(w, x)| w * x).sum::<f64>() + bias
+            }).collect();
+            z_values.push(z.clone());
+            
+            let activation: Vec<f64> = z.iter().map(|&z_val| layer.activation.apply(z_val)).collect();
+            activations.push(activation);
         }
-        count
-    }
-    
-    fn expressiveness_analysis(&self) -> HashMap<String, f64> {
-        let mut analysis = HashMap::new();
         
-        // 计算网络容量
-        let total_params = self.count_parameters();
-        let total_neurons: usize = self.layers.iter().map(|l| l.biases.len()).sum();
+        // 反向传播
+        let mut gradients = Vec::new();
+        let mut delta = activations.last().unwrap().iter().zip(target).map(|(a, t)| a - t).collect::<Vec<f64>>();
         
-        analysis.insert("total_parameters".to_string(), total_params as f64);
-        analysis.insert("total_neurons".to_string(), total_neurons as f64);
-        analysis.insert("depth".to_string(), self.layers.len() as f64);
-        
-        // 计算表达能力指标
-        let capacity = total_params as f64;
-        let depth_factor = self.layers.len() as f64;
-        let expressiveness = capacity * depth_factor.log2();
-        
-        analysis.insert("expressiveness_score".to_string(), expressiveness);
-        
-        analysis
-    }
-}
-
-impl ActivationFunction {
-    fn apply(&self, x: f64) -> f64 {
-        match self {
-            ActivationFunction::Sigmoid => 1.0 / (1.0 + (-x).exp()),
-            ActivationFunction::ReLU => x.max(0.0),
-            ActivationFunction::Tanh => x.tanh(),
+        for (layer_idx, layer) in self.layers.iter().enumerate().rev() {
+            let mut layer_gradients = Vec::new();
+            
+            for (neuron_idx, (weights, bias)) in layer.weights.iter().zip(&layer.biases).enumerate() {
+                let mut weight_gradients = Vec::new();
+                
+                for (input_idx, input_val) in activations[layer_idx].iter().enumerate() {
+                    weight_gradients.push(delta[neuron_idx] * input_val);
+                }
+                
+                layer_gradients.push(weight_gradients);
+            }
+            
+            gradients.push(layer_gradients);
+            
+            if layer_idx > 0 {
+                let mut new_delta = vec![0.0; activations[layer_idx].len()];
+                
+                for (input_idx, _) in activations[layer_idx].iter().enumerate() {
+                    for (neuron_idx, weights) in layer.weights.iter().enumerate() {
+                        new_delta[input_idx] += delta[neuron_idx] * weights[input_idx] * 
+                            layer.activation.derivative(z_values[layer_idx - 1][input_idx]);
+                    }
+                }
+                delta = new_delta;
+            }
         }
+        
+        gradients.reverse();
+        gradients
     }
-}
-
-fn universal_approximation_test() {
-    // 测试通用逼近定理
-    let network = NeuralNetwork::new(vec![1, 10, 10, 1]);
-    
-    // 目标函数：sin(x)
-    let test_points: Vec<f64> = (0..100).map(|i| i as f64 * 0.1).collect();
-    let target_values: Vec<f64> = test_points.iter().map(|x| x.sin()).collect();
-    
-    println!("通用逼近定理测试:");
-    println!("网络架构: {:?}", vec![1, 10, 10, 1]);
-    println!("参数数量: {}", network.count_parameters());
-    
-    let analysis = network.expressiveness_analysis();
-    println!("表达能力分析: {:?}", analysis);
 }
 
 fn main() {
-    universal_approximation_test();
+    // 创建神经网络：2输入 -> 3隐藏 -> 1输出
+    let network = NeuralNetwork::new(
+        vec![2, 3, 1],
+        vec![Activation::ReLU, Activation::Sigmoid],
+    );
+    
+    // 测试前向传播
+    let input = vec![0.5, 0.3];
+    let output = network.forward(&input);
+    
+    println!("输入: {:?}", input);
+    println!("输出: {:?}", output);
+    
+    // 测试反向传播
+    let target = vec![0.8];
+    let gradients = network.backward(&input, &target);
+    
+    println!("梯度数量: {}", gradients.len());
 }
 ```
 
-### Haskell实现：梯度流分析
+### Haskell实现：梯度下降优化
 
 ```haskell
-import Data.Vector (Vector, fromList, (!))
-import qualified Data.Vector as V
-import Numeric.LinearAlgebra
+import Data.List (foldl')
+import System.Random
 
--- 神经网络参数
-type Parameters = Vector Double
-type Gradient = Vector Double
+-- 神经网络类型定义
+data Layer = Layer {
+    weights :: [[Double]],
+    biases :: [Double],
+    activation :: Activation
+} deriving Show
+
+data Activation = ReLU | Sigmoid | Tanh | Linear deriving Show
+
+data NeuralNetwork = NeuralNetwork {
+    layers :: [Layer]
+} deriving Show
+
+-- 激活函数
+applyActivation :: Activation -> Double -> Double
+applyActivation ReLU x = max 0 x
+applyActivation Sigmoid x = 1 / (1 + exp (-x))
+applyActivation Tanh x = tanh x
+applyActivation Linear x = x
+
+applyActivationDerivative :: Activation -> Double -> Double
+applyActivationDerivative ReLU x = if x > 0 then 1 else 0
+applyActivationDerivative Sigmoid x = let s = applyActivation Sigmoid x in s * (1 - s)
+applyActivationDerivative Tanh x = 1 - (tanh x) ^ 2
+applyActivationDerivative Linear _ = 1
+
+-- 前向传播
+forward :: NeuralNetwork -> [Double] -> [Double]
+forward network input = foldl' (\acc layer -> forwardLayer layer acc) input (layers network)
+
+forwardLayer :: Layer -> [Double] -> [Double]
+forwardLayer layer input = map (\i -> applyActivation (activation layer) (sum (zipWith (*) (weights layer !! i) input) + biases layer !! i)) [0..length (weights layer) - 1]
 
 -- 损失函数
-lossFunction :: Parameters -> Double
-lossFunction theta = sum $ V.map (\x -> x^2) theta
+mseLoss :: [Double] -> [Double] -> Double
+mseLoss predicted target = sum (zipWith (\p t -> (p - t) ^ 2) predicted target) / fromIntegral (length predicted)
 
--- 梯度计算
-gradient :: Parameters -> Gradient
-gradient theta = V.map (*2) theta
+-- 梯度下降优化
+gradientDescent :: NeuralNetwork -> [Double] -> [Double] -> Double -> NeuralNetwork
+gradientDescent network input target learningRate = 
+    let gradients = computeGradients network input target
+        updatedLayers = zipWith (updateLayer learningRate) (layers network) gradients
+    in network { layers = updatedLayers }
 
--- 梯度流
-gradientFlow :: Parameters -> Double -> Int -> [Parameters]
-gradientFlow theta0 stepSize steps = iterate update theta0
-where
-    update theta = V.zipWith (-) theta (V.map (*stepSize) (gradient theta))
+-- 计算梯度
+computeGradients :: NeuralNetwork -> [Double] -> [Double] -> [[[Double]]]
+computeGradients network input target = 
+    let (activations, zValues) = forwardPass network input
+        delta = zipWith (-) (last activations) target
+    in backwardPass network activations zValues delta
 
--- 能量衰减分析
-energyDecay :: Parameters -> Double -> Int -> [Double]
-energyDecay theta0 stepSize steps = 
-    map lossFunction (gradientFlow theta0 stepSize steps)
+-- 前向传播（保存中间值）
+forwardPass :: NeuralNetwork -> [Double] -> ([[Double]], [[Double]])
+forwardPass network input = 
+    let layers_list = layers network
+        (activations, zValues) = foldl' (\(acts, zs) layer -> 
+            let z = zipWith (\weights bias -> sum (zipWith (*) weights (last acts)) + bias) (weights layer) (biases layer)
+                activation = map (applyActivation (activation layer)) z
+            in (acts ++ [activation], zs ++ [z])) ([input], []) layers_list
+    in (activations, zValues)
 
--- 收敛性分析
-convergenceAnalysis :: Parameters -> Double -> Int -> (Double, Double)
-convergenceAnalysis theta0 stepSize steps = 
-    let energies = energyDecay theta0 stepSize steps
-        initialEnergy = head energies
-        finalEnergy = last energies
-        convergenceRate = (initialEnergy - finalEnergy) / fromIntegral steps
-    in (finalEnergy, convergenceRate)
+-- 反向传播
+backwardPass :: NeuralNetwork -> [[Double]] -> [[Double]] -> [Double] -> [[[Double]]]
+backwardPass network activations zValues initialDelta = 
+    let layers_list = reverse (layers network)
+        (_, gradients) = foldl' (\(delta, grads) (layer, layerIdx) -> 
+            let layerGradients = computeLayerGradients layer (activations !! layerIdx) delta
+                newDelta = if layerIdx > 0 then computeNewDelta layer (activations !! (layerIdx - 1)) delta (zValues !! (layerIdx - 1)) else []
+            in (newDelta, grads ++ [layerGradients])) (initialDelta, []) (zip layers_list [length layers_list - 1, length layers_list - 2..0])
+    in reverse gradients
 
--- 线性化分析
-linearizationAnalysis :: Parameters -> Parameters -> Double
-linearizationAnalysis theta delta = 
-    let grad = gradient theta
-        hessian = 2 * identity (V.length theta)  -- 对于二次损失
-        firstOrder = V.sum $ V.zipWith (*) grad delta
-        secondOrder = 0.5 * (delta `mult` hessian) `dot` delta
-    in lossFunction theta + firstOrder + secondOrder
+-- 计算层梯度
+computeLayerGradients :: Layer -> [Double] -> [Double] -> [[Double]]
+computeLayerGradients layer activation delta = 
+    map (\neuronIdx -> 
+        map (\inputIdx -> delta !! neuronIdx * (activation !! inputIdx)) [0..length activation - 1]
+    ) [0..length (weights layer) - 1]
 
--- 示例
+-- 计算新的delta
+computeNewDelta :: Layer -> [Double] -> [Double] -> [Double] -> [Double]
+computeNewDelta layer prevActivation delta prevZ = 
+    map (\inputIdx -> 
+        sum (zipWith (\neuronIdx weight -> 
+            delta !! neuronIdx * weight * applyActivationDerivative (activation layer) (prevZ !! inputIdx)
+        ) [0..length (weights layer) - 1] (map (!! inputIdx) (weights layer)))
+    ) [0..length prevActivation - 1]
+
+-- 更新层参数
+updateLayer :: Double -> Layer -> [[Double]] -> Layer
+updateLayer learningRate layer gradients = 
+    let updatedWeights = zipWith (\weights gradient -> 
+            zipWith (\w g -> w - learningRate * g) weights gradient
+        ) (weights layer) gradients
+    in layer { weights = updatedWeights }
+
+-- 训练函数
+train :: NeuralNetwork -> [[Double]] -> [[Double]] -> Double -> Int -> NeuralNetwork
+train network inputs targets learningRate epochs = 
+    foldl' (\net epoch -> 
+        foldl' (\acc (input, target) -> gradientDescent acc input target learningRate) net (zip inputs targets)
+    ) network [1..epochs]
+
+-- 创建简单网络
+createNetwork :: NeuralNetwork
+createNetwork = NeuralNetwork {
+    layers = [
+        Layer {
+            weights = [[0.1, 0.2], [0.3, 0.4], [0.5, 0.6]],
+            biases = [0.1, 0.2, 0.3],
+            activation = ReLU
+        },
+        Layer {
+            weights = [[0.1, 0.2, 0.3]],
+            biases = [0.1],
+            activation = Sigmoid
+        }
+    ]
+}
+
+-- 主函数
 main :: IO ()
 main = do
-    let theta0 = fromList [1.0, 2.0, 3.0]
-    let stepSize = 0.01
-    let steps = 100
+    let network = createNetwork
+        inputs = [[0.1, 0.2], [0.3, 0.4], [0.5, 0.6]]
+        targets = [[0.8], [0.9], [0.7]]
+        learningRate = 0.01
+        epochs = 1000
     
-    let (finalEnergy, convergenceRate) = convergenceAnalysis theta0 stepSize steps
+    let trainedNetwork = train network inputs targets learningRate epochs
     
-    putStrLn "梯度流分析:"
-    putStrLn $ "初始参数: " ++ show theta0
-    putStrLn $ "最终能量: " ++ show finalEnergy
-    putStrLn $ "收敛率: " ++ show convergenceRate
+    putStrLn "训练后的网络:"
+    print trainedNetwork
     
-    -- 线性化验证
-    let delta = fromList [0.1, 0.1, 0.1]
-    let exact = lossFunction (V.zipWith (+) theta0 delta)
-    let linearized = linearizationAnalysis theta0 delta
-    
-    putStrLn $ "精确值: " ++ show exact
-    putStrLn $ "线性化近似: " ++ show linearized
-    putStrLn $ "相对误差: " ++ show (abs (exact - linearized) / exact)
+    putStrLn "\n预测结果:"
+    mapM_ (\input -> do
+        let output = forward trainedNetwork input
+        putStrLn $ "输入: " ++ show input ++ " -> 输出: " ++ show output
+    ) inputs
 ```
 
 ---
@@ -730,15 +889,13 @@ main = do
 ## 参考文献 / References
 
 1. Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press.
-2. Telgarsky, M. (2016). Benefits of depth in neural networks. *COLT*.
-3. Du, S. S., et al. (2019). Gradient descent finds global minima of deep neural networks. *ICML*.
-4. Belkin, M., et al. (2019). Reconciling modern machine learning and the bias-variance trade-off. *PNAS*.
-5. Vaswani, A., et al. (2017). Attention is all you need. *NIPS*.
-6. Xu, K., et al. (2019). How powerful are graph neural networks? *ICLR*.
-7. Goodfellow, I., et al. (2014). Generative adversarial nets. *NIPS*.
-8. Kingma, D. P., & Welling, M. (2014). Auto-encoding variational bayes. *ICLR*.
-9. Jacot, A., et al. (2018). Neural tangent kernel: Convergence and generalization in neural networks. *NIPS*.
+2. LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. *Nature*, 521(7553), 436-444.
+3. He, K., et al. (2016). Deep residual learning for image recognition. *CVPR*.
+4. Vaswani, A., et al. (2017). Attention is all you need. *NIPS*.
+5. Kipf, T. N., & Welling, M. (2017). Semi-supervised classification with graph convolutional networks. *ICLR*.
+6. Goodfellow, I., et al. (2014). Generative adversarial nets. *NIPS*.
+7. Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction*. MIT Press.
 
 ---
 
-*本模块为FormalAI提供了深入的深度学习理论基础，为理解现代AI系统的核心机制提供了数学工具。*
+*本模块为FormalAI提供了深度学习的理论基础，涵盖了从表达能力到优化理论的各个方面，为现代AI系统的设计和分析提供了数学工具。*

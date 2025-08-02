@@ -1,534 +1,270 @@
-# 4.2 形式化语义学 / Formal Semantics
+# 4.2 形式化语义 / Formal Semantics
 
 ## 概述 / Overview
 
-形式化语义学研究语言表达式的意义，为FormalAI提供语义理解和生成的数学基础，连接语言学、逻辑学和计算语言学。
+形式化语义研究自然语言的形式化表示和语义解释，为语言模型提供理论基础。
 
-Formal semantics studies the meaning of linguistic expressions, providing mathematical foundations for semantic understanding and generation in FormalAI, connecting linguistics, logic, and computational linguistics.
+Formal semantics studies the formal representation and semantic interpretation of natural language, providing theoretical foundations for language models.
 
 ## 目录 / Table of Contents
 
-- [4.2 形式化语义学 / Formal Semantics](#42-形式化语义学--formal-semantics)
+- [4.2 形式化语义 / Formal Semantics](#42-形式化语义--formal-semantics)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
-  - [1. 真值条件语义学 / Truth-Conditional Semantics](#1-真值条件语义学--truth-conditional-semantics)
-    - [1.1 真值条件 / Truth Conditions](#11-真值条件--truth-conditions)
-    - [1.2 谓词逻辑语义 / Predicate Logic Semantics](#12-谓词逻辑语义--predicate-logic-semantics)
-    - [1.3 可能世界语义 / Possible Worlds Semantics](#13-可能世界语义--possible-worlds-semantics)
-  - [2. 模型论语义学 / Model-Theoretic Semantics](#2-模型论语义学--model-theoretic-semantics)
-    - [2.1 模型结构 / Model Structure](#21-模型结构--model-structure)
-    - [2.2 语义递归 / Semantic Recursion](#22-语义递归--semantic-recursion)
-    - [2.3 语义有效性 / Semantic Validity](#23-语义有效性--semantic-validity)
-  - [3. 类型论语义学 / Type-Theoretic Semantics](#3-类型论语义学--type-theoretic-semantics)
-    - [3.1 类型系统 / Type System](#31-类型系统--type-system)
-    - [3.2 语义类型 / Semantic Types](#32-语义类型--semantic-types)
-    - [3.3 语义组合 / Semantic Composition](#33-语义组合--semantic-composition)
-  - [4. 动态语义学 / Dynamic Semantics](#4-动态语义学--dynamic-semantics)
-    - [4.1 话语表示理论 / Discourse Representation Theory](#41-话语表示理论--discourse-representation-theory)
-    - [4.2 动态谓词逻辑 / Dynamic Predicate Logic](#42-动态谓词逻辑--dynamic-predicate-logic)
-    - [4.3 更新语义 / Update Semantics](#43-更新语义--update-semantics)
-  - [5. 组合语义学 / Compositional Semantics](#5-组合语义学--compositional-semantics)
-    - [5.1 组合性原则 / Principle of Compositionality](#51-组合性原则--principle-of-compositionality)
-    - [5.2 语义组合规则 / Semantic Composition Rules](#52-语义组合规则--semantic-composition-rules)
-    - [5.3 语义接口 / Semantic Interface](#53-语义接口--semantic-interface)
-  - [6. 词汇语义学 / Lexical Semantics](#6-词汇语义学--lexical-semantics)
-    - [6.1 词义表示 / Word Meaning Representation](#61-词义表示--word-meaning-representation)
-    - [6.2 语义关系 / Semantic Relations](#62-语义关系--semantic-relations)
-    - [6.3 多义词处理 / Polysemy Handling](#63-多义词处理--polysemy-handling)
-  - [7. 语用学 / Pragmatics](#7-语用学--pragmatics)
-    - [7.1 格赖斯会话含义 / Gricean Conversational Implicature](#71-格赖斯会话含义--gricean-conversational-implicature)
-    - [7.2 预设 / Presupposition](#72-预设--presupposition)
-    - [7.3 言语行为 / Speech Acts](#73-言语行为--speech-acts)
-  - [8. 语义角色 / Semantic Roles](#8-语义角色--semantic-roles)
-    - [8.1 语义角色定义 / Semantic Role Definition](#81-语义角色定义--semantic-role-definition)
-    - [8.2 语义角色标注 / Semantic Role Labeling](#82-语义角色标注--semantic-role-labeling)
-    - [8.3 框架语义 / Frame Semantics](#83-框架语义--frame-semantics)
-  - [9. 语义相似性 / Semantic Similarity](#9-语义相似性--semantic-similarity)
-    - [9.1 语义相似性度量 / Semantic Similarity Measures](#91-语义相似性度量--semantic-similarity-measures)
-    - [9.2 语义空间 / Semantic Space](#92-语义空间--semantic-space)
-    - [9.3 语义聚类 / Semantic Clustering](#93-语义聚类--semantic-clustering)
-  - [10. 语义计算 / Semantic Computation](#10-语义计算--semantic-computation)
-    - [10.1 语义解析 / Semantic Parsing](#101-语义解析--semantic-parsing)
-    - [10.2 语义生成 / Semantic Generation](#102-语义生成--semantic-generation)
-    - [10.3 语义推理 / Semantic Reasoning](#103-语义推理--semantic-reasoning)
+  - [1. 蒙塔古语法 / Montague Grammar](#1-蒙塔古语法--montague-grammar)
+    - [1.1 类型驱动语义 / Type-Driven Semantics](#11-类型驱动语义--type-driven-semantics)
+    - [1.2 组合性原则 / Principle of Compositionality](#12-组合性原则--principle-of-compositionality)
+    - [1.3 内涵语义 / Intensional Semantics](#13-内涵语义--intensional-semantics)
+  - [2. 动态语义 / Dynamic Semantics](#2-动态语义--dynamic-semantics)
+    - [2.1 话语表示理论 / Discourse Representation Theory](#21-话语表示理论--discourse-representation-theory)
+    - [2.2 动态谓词逻辑 / Dynamic Predicate Logic](#22-动态谓词逻辑--dynamic-predicate-logic)
+    - [2.3 更新语义 / Update Semantics](#23-更新语义--update-semantics)
+  - [3. 分布语义 / Distributional Semantics](#3-分布语义--distributional-semantics)
+    - [3.1 向量空间模型 / Vector Space Models](#31-向量空间模型--vector-space-models)
+    - [3.2 词嵌入 / Word Embeddings](#32-词嵌入--word-embeddings)
+    - [3.3 语义相似度 / Semantic Similarity](#33-语义相似度--semantic-similarity)
+  - [4. 神经语义 / Neural Semantics](#4-神经语义--neural-semantics)
+    - [4.1 神经语言模型 / Neural Language Models](#41-神经语言模型--neural-language-models)
+    - [4.2 语义组合 / Semantic Composition](#42-语义组合--semantic-composition)
+    - [4.3 语义表示学习 / Semantic Representation Learning](#43-语义表示学习--semantic-representation-learning)
+  - [5. 多模态语义 / Multimodal Semantics](#5-多模态语义--multimodal-semantics)
+    - [5.1 视觉-语言对齐 / Vision-Language Alignment](#51-视觉-语言对齐--vision-language-alignment)
+    - [5.2 跨模态推理 / Cross-Modal Reasoning](#52-跨模态推理--cross-modal-reasoning)
+    - [5.3 多模态融合 / Multimodal Fusion](#53-多模态融合--multimodal-fusion)
   - [代码示例 / Code Examples](#代码示例--code-examples)
     - [Rust实现：语义解析器](#rust实现语义解析器)
-    - [Haskell实现：类型论语义学](#haskell实现类型论语义学)
+    - [Haskell实现：分布语义模型](#haskell实现分布语义模型)
   - [参考文献 / References](#参考文献--references)
 
 ---
 
-## 1. 真值条件语义学 / Truth-Conditional Semantics
+## 1. 蒙塔古语法 / Montague Grammar
 
-### 1.1 真值条件 / Truth Conditions
+### 1.1 类型驱动语义 / Type-Driven Semantics
 
-**真值条件 / Truth Conditions:**
+**语义类型 / Semantic Types:**
 
-句子 $S$ 的真值条件是使得 $S$ 为真的世界状态集合。
+$$\tau ::= e \mid t \mid \langle s, \tau \rangle \mid \langle \tau_1, \tau_2 \rangle$$
 
-The truth conditions of sentence $S$ are the set of world states that make $S$ true.
+其中：
 
-**真值函数 / Truth Function:**
+- $e$ 是个体类型 / individual type
+- $t$ 是命题类型 / proposition type
+- $\langle s, \tau \rangle$ 是内涵类型 / intensional type
+- $\langle \tau_1, \tau_2 \rangle$ 是函数类型 / function type
 
-$$\llbracket S \rrbracket: W \rightarrow \{0,1\}$$
+**类型提升 / Type Raising:**
 
-其中 $W$ 是世界集合。
+$$\text{lift}(A) = \langle \langle A, t \rangle, t \rangle$$
 
-where $W$ is the set of worlds.
+### 1.2 组合性原则 / Principle of Compositionality
 
-**语义解释 / Semantic Interpretation:**
+**组合性原则 / Principle of Compositionality:**
 
-$$\llbracket \text{John runs} \rrbracket = \lambda w. \text{run}(w, \text{John})$$
+复杂表达式的意义是其组成部分意义的函数：
 
-### 1.2 谓词逻辑语义 / Predicate Logic Semantics
+The meaning of a complex expression is a function of the meanings of its parts:
 
-**个体域 / Domain of Individuals:**
-
-$\mathcal{D}$ 是论域，包含所有个体。
-
-$\mathcal{D}$ is the domain containing all individuals.
-
-**解释函数 / Interpretation Function:**
-
-$I$ 将常项映射到个体，谓词映射到关系。
-
-$I$ maps constants to individuals and predicates to relations.
-
-**语义规则 / Semantic Rules:**
-
-$$\llbracket P(t_1, \ldots, t_n) \rrbracket = I(P)(I(t_1), \ldots, I(t_n))$$
-
-$$\llbracket \forall x \phi \rrbracket = \text{True iff for all } d \in \mathcal{D}, \llbracket \phi \rrbracket^{[x \mapsto d]} = \text{True}$$
-
-### 1.3 可能世界语义 / Possible Worlds Semantics
-
-**可能世界 / Possible Worlds:**
-
-$W$ 是可能世界集合，每个世界 $w$ 是一个完整的可能状态。
-
-$W$ is the set of possible worlds, each world $w$ is a complete possible state.
-
-**可及关系 / Accessibility Relation:**
-
-$R \subseteq W \times W$ 定义世界间的可及关系。
-
-$R \subseteq W \times W$ defines accessibility between worlds.
-
-**模态语义 / Modal Semantics:**
-
-$$\llbracket \Box \phi \rrbracket^w = \text{True iff for all } w' \text{ such that } R(w,w'), \llbracket \phi \rrbracket^{w'} = \text{True}$$
-
----
-
-## 2. 模型论语义学 / Model-Theoretic Semantics
-
-### 2.1 模型结构 / Model Structure
-
-**模型 / Model:**
-
-$\mathcal{M} = \langle \mathcal{D}, I \rangle$ 其中：
-
-$\mathcal{M} = \langle \mathcal{D}, I \rangle$ where:
-
-- $\mathcal{D}$ 是论域 / domain of discourse
-- $I$ 是解释函数 / interpretation function
-
-**解释函数 / Interpretation Function:**
-
-$I: \text{Constants} \cup \text{Predicates} \rightarrow \mathcal{D} \cup \mathcal{P}(\mathcal{D}^n)$
-
-### 2.2 语义递归 / Semantic Recursion
-
-**递归定义 / Recursive Definition:**
-
-$$\llbracket \phi \land \psi \rrbracket = \llbracket \phi \rrbracket \land \llbracket \psi \rrbracket$$
-
-$$\llbracket \phi \lor \psi \rrbracket = \llbracket \phi \rrbracket \lor \llbracket \psi \rrbracket$$
-
-$$\llbracket \neg \phi \rrbracket = \neg \llbracket \phi \rrbracket$$
-
-**量词语义 / Quantifier Semantics:**
-
-$$\llbracket \exists x \phi \rrbracket = \text{True iff } \exists d \in \mathcal{D}: \llbracket \phi \rrbracket^{[x \mapsto d]} = \text{True}$$
-
-$$\llbracket \forall x \phi \rrbracket = \text{True iff } \forall d \in \mathcal{D}: \llbracket \phi \rrbracket^{[x \mapsto d]} = \text{True}$$
-
-### 2.3 语义有效性 / Semantic Validity
-
-**逻辑有效性 / Logical Validity:**
-
-$\phi$ 是有效的，如果对于所有模型 $\mathcal{M}$，$\llbracket \phi \rrbracket^{\mathcal{M}} = \text{True}$。
-
-$\phi$ is valid if for all models $\mathcal{M}$, $\llbracket \phi \rrbracket^{\mathcal{M}} = \text{True}$.
-
-**语义蕴涵 / Semantic Entailment:**
-
-$\Gamma \models \phi$ 如果对于所有满足 $\Gamma$ 的模型，$\phi$ 也为真。
-
-$\Gamma \models \phi$ if for all models satisfying $\Gamma$, $\phi$ is also true.
-
----
-
-## 3. 类型论语义学 / Type-Theoretic Semantics
-
-### 3.1 类型系统 / Type System
-
-**基本类型 / Basic Types:**
-
-- $e$: 实体类型 / entity type
-- $t$: 真值类型 / truth type
-- $s$: 可能世界类型 / world type
-
-**函数类型 / Function Types:**
-
-$\alpha \rightarrow \beta$ 表示从类型 $\alpha$ 到类型 $\beta$ 的函数。
-
-$\alpha \rightarrow \beta$ represents functions from type $\alpha$ to type $\beta$.
-
-**类型递归 / Type Recursion:**
-
-$$\text{Types} = \{e, t, s\} \cup \{\alpha \rightarrow \beta: \alpha, \beta \in \text{Types}\}$$
-
-### 3.2 语义类型 / Semantic Types
-
-**词汇类型 / Lexical Types:**
-
-- 专名: $e$
-- 不及物动词: $e \rightarrow t$
-- 及物动词: $e \rightarrow (e \rightarrow t)$
-- 形容词: $e \rightarrow t$
-
-- Proper names: $e$
-- Intransitive verbs: $e \rightarrow t$
-- Transitive verbs: $e \rightarrow (e \rightarrow t)$
-- Adjectives: $e \rightarrow t$
-
-**复合类型 / Complex Types:**
-
-- 副词: $(e \rightarrow t) \rightarrow (e \rightarrow t)$
-- 量词: $(e \rightarrow t) \rightarrow ((e \rightarrow t) \rightarrow t)$
-
-- Adverbs: $(e \rightarrow t) \rightarrow (e \rightarrow t)$
-- Quantifiers: $(e \rightarrow t) \rightarrow ((e \rightarrow t) \rightarrow t)$
-
-### 3.3 语义组合 / Semantic Composition
+$$\text{meaning}(AB) = f(\text{meaning}(A), \text{meaning}(B))$$
 
 **函数应用 / Function Application:**
 
-$$\llbracket \alpha \beta \rrbracket = \llbracket \alpha \rrbracket(\llbracket \beta \rrbracket)$$
+$$\frac{A : \langle \alpha, \beta \rangle \quad B : \alpha}{AB : \beta}$$
 
-**抽象 / Abstraction:**
+### 1.3 内涵语义 / Intensional Semantics
 
-$$\llbracket \lambda x \phi \rrbracket = \lambda d. \llbracket \phi \rrbracket^{[x \mapsto d]}$$
+**内涵 / Intension:**
 
-**类型匹配 / Type Matching:**
+$$\text{intension}(A) = \lambda w. \text{extension}(A)(w)$$
 
-$$\frac{\alpha: A \rightarrow B \quad \beta: A}{\alpha \beta: B}$$
+其中 $w$ 是可能世界。
+
+where $w$ is a possible world.
+
+**外延 / Extension:**
+
+$$\text{extension}(A)(w) = \text{denotation}(A) \text{ in } w$$
 
 ---
 
-## 4. 动态语义学 / Dynamic Semantics
+## 2. 动态语义 / Dynamic Semantics
 
-### 4.1 话语表示理论 / Discourse Representation Theory
+### 2.1 话语表示理论 / Discourse Representation Theory
 
 **话语表示结构 / Discourse Representation Structure:**
 
-$K = \langle U, C \rangle$ 其中：
+$$\text{DRS} = \langle U, C \rangle$$
 
-$K = \langle U, C \rangle$ where:
+其中：
 
 - $U$ 是话语指称集合 / set of discourse referents
 - $C$ 是条件集合 / set of conditions
 
-**DRS构建 / DRS Construction:**
+**DRS构建规则 / DRS Construction Rules:**
 
-$$\text{DRS}(S) = \langle \{x_1, \ldots, x_n\}, \{\text{cond}_1, \ldots, \text{cond}_m\} \rangle$$
+$$\frac{\text{NP} : x \quad \text{VP} : P}{\text{S} : \langle \{x\}, \{P(x)\} \rangle}$$
 
-### 4.2 动态谓词逻辑 / Dynamic Predicate Logic
+### 2.2 动态谓词逻辑 / Dynamic Predicate Logic
 
-**动态语义 / Dynamic Semantics:**
+**动态合取 / Dynamic Conjunction:**
 
-$$\llbracket \phi \rrbracket: \text{Info} \rightarrow \text{Info}$$
+$$\phi \land \psi = \lambda g. \exists h (\phi(g, h) \land \psi(h))$$
+
+其中 $g, h$ 是赋值函数。
+
+where $g, h$ are assignment functions.
+
+**动态存在量词 / Dynamic Existential:**
+
+$$\exists x \phi = \lambda g. \exists h \exists a (g[x]h \land \phi(h, a))$$
+
+### 2.3 更新语义 / Update Semantics
+
+**更新函数 / Update Function:**
+
+$$[\phi] : \text{Info} \rightarrow \text{Info}$$
 
 其中 $\text{Info}$ 是信息状态集合。
 
 where $\text{Info}$ is the set of information states.
 
-**序列语义 / Sequential Semantics:**
-
-$$\llbracket \phi; \psi \rrbracket = \llbracket \psi \rrbracket \circ \llbracket \phi \rrbracket$$
-
-### 4.3 更新语义 / Update Semantics
-
 **信息更新 / Information Update:**
 
-$$\text{Update}(s, \phi) = \{w \in s: \llbracket \phi \rrbracket^w = \text{True}\}$$
-
-**条件更新 / Conditional Update:**
-
-$$\text{Update}(s, \phi \rightarrow \psi) = \{w \in s: \text{Update}(\{w\}, \phi) \subseteq \text{Update}(\{w\}, \psi)\}$$
+$$s[\phi] = \{w \in s : w \models \phi\}$$
 
 ---
 
-## 5. 组合语义学 / Compositional Semantics
+## 3. 分布语义 / Distributional Semantics
 
-### 5.1 组合性原则 / Principle of Compositionality
+### 3.1 向量空间模型 / Vector Space Models
 
-**组合性原则 / Principle of Compositionality:**
+**词向量 / Word Vector:**
 
-复杂表达式的意义由其组成部分的意义和组合方式决定。
+$$\mathbf{v}_w \in \mathbb{R}^d$$
 
-The meaning of a complex expression is determined by the meanings of its parts and the way they are combined.
+其中 $d$ 是向量维度。
 
-**形式化表述 / Formal Statement:**
+where $d$ is the vector dimension.
 
-$$\llbracket \alpha(\beta_1, \ldots, \beta_n) \rrbracket = F(\llbracket \alpha \rrbracket, \llbracket \beta_1 \rrbracket, \ldots, \llbracket \beta_n \rrbracket)$$
+**共现矩阵 / Co-occurrence Matrix:**
 
-### 5.2 语义组合规则 / Semantic Composition Rules
+$$M_{ij} = \text{count}(w_i, w_j)$$
 
-**函数应用 / Function Application:**
+### 3.2 词嵌入 / Word Embeddings
 
-$$\llbracket \text{VP} \rrbracket = \llbracket \text{V} \rrbracket(\llbracket \text{NP} \rrbracket)$$
+**Skip-gram目标 / Skip-gram Objective:**
 
-**谓词修饰 / Predicate Modification:**
+$$\mathcal{L} = \sum_{(w, c) \in D} \log P(c|w)$$
 
-$$\llbracket \text{AP NP} \rrbracket = \lambda x. \llbracket \text{AP} \rrbracket(x) \land \llbracket \text{NP} \rrbracket(x)$$
+其中：
 
-**量词提升 / Quantifier Raising:**
+where:
 
-$$\llbracket \text{QP VP} \rrbracket = \llbracket \text{QP} \rrbracket(\llbracket \text{VP} \rrbracket)$$
+$$P(c|w) = \frac{\exp(\mathbf{v}_c^T \mathbf{v}_w)}{\sum_{c' \in V} \exp(\mathbf{v}_{c'}^T \mathbf{v}_w)}$$
 
-### 5.3 语义接口 / Semantic Interface
+**负采样 / Negative Sampling:**
 
-**句法-语义接口 / Syntax-Semantics Interface:**
+$$\mathcal{L} = \sum_{(w, c) \in D} \left[\log \sigma(\mathbf{v}_c^T \mathbf{v}_w) + \sum_{c' \in N} \log \sigma(-\mathbf{v}_{c'}^T \mathbf{v}_w)\right]$$
 
-$$\text{SemanticInterface}(\text{SyntaxTree}) = \text{SemanticRepresentation}$$
+### 3.3 语义相似度 / Semantic Similarity
 
-**语义解析 / Semantic Parsing:**
+**余弦相似度 / Cosine Similarity:**
 
-$$\text{SemanticParse}(s) = \arg\max_{\phi} P(\phi|s)$$
+$$\text{sim}(w_1, w_2) = \frac{\mathbf{v}_{w_1} \cdot \mathbf{v}_{w_2}}{\|\mathbf{v}_{w_1}\| \|\mathbf{v}_{w_2}\|}$$
 
----
+**语义类比 / Semantic Analogy:**
 
-## 6. 词汇语义学 / Lexical Semantics
-
-### 6.1 词义表示 / Word Meaning Representation
-
-**词义向量 / Word Meaning Vectors:**
-
-$$\vec{w} = [w_1, w_2, \ldots, w_n]$$
-
-**语义空间 / Semantic Space:**
-
-$\mathcal{S} = \mathbb{R}^n$ 是 $n$ 维语义空间。
-
-$\mathcal{S} = \mathbb{R}^n$ is the $n$-dimensional semantic space.
-
-**词义相似性 / Word Meaning Similarity:**
-
-$$\text{Similarity}(w_1, w_2) = \cos(\vec{w_1}, \vec{w_2}) = \frac{\vec{w_1} \cdot \vec{w_2}}{|\vec{w_1}| |\vec{w_2}|}$$
-
-### 6.2 语义关系 / Semantic Relations
-
-**同义关系 / Synonymy:**
-
-$\text{Synonym}(w_1, w_2) \iff \llbracket w_1 \rrbracket = \llbracket w_2 \rrbracket$
-
-**反义关系 / Antonymy:**
-
-$\text{Antonym}(w_1, w_2) \iff \llbracket w_1 \rrbracket = \neg \llbracket w_2 \rrbracket$
-
-**上下位关系 / Hyponymy:**
-
-$\text{Hyponym}(w_1, w_2) \iff \llbracket w_1 \rrbracket \subseteq \llbracket w_2 \rrbracket$
-
-### 6.3 多义词处理 / Polysemy Handling
-
-**词义消歧 / Word Sense Disambiguation:**
-
-$$\text{Sense}(w, c) = \arg\max_s P(s|w, c)$$
-
-**词义表示 / Sense Representation:**
-
-$$\llbracket w \rrbracket = \sum_{i=1}^n P(s_i|w) \llbracket s_i \rrbracket$$
+$$\mathbf{v}_{king} - \mathbf{v}_{man} + \mathbf{v}_{woman} \approx \mathbf{v}_{queen}$$
 
 ---
 
-## 7. 语用学 / Pragmatics
+## 4. 神经语义 / Neural Semantics
 
-### 7.1 格赖斯会话含义 / Gricean Conversational Implicature
+### 4.1 神经语言模型 / Neural Language Models
 
-**合作原则 / Cooperative Principle:**
+**循环神经网络 / Recurrent Neural Network:**
 
-"使你的贡献符合当前交谈的公认目的或方向。"
+$$h_t = \text{tanh}(W_h h_{t-1} + W_x x_t + b)$$
 
-"Make your contribution such as is required, at the stage at which it occurs, by the accepted purpose or direction of the talk exchange."
+**注意力机制 / Attention Mechanism:**
 
-**会话准则 / Conversational Maxims:**
+$$\alpha_t = \text{softmax}(\text{score}(h_t, h_i))$$
 
-- **数量准则 / Quantity:** 提供足够信息，不要过多
-- **质量准则 / Quality:** 说真话
-- **关系准则 / Relation:** 相关
-- **方式准则 / Manner:** 清楚表达
+$$c_t = \sum_i \alpha_{t,i} h_i$$
 
-- **Quantity:** Make your contribution as informative as required
-- **Quality:** Do not say what you believe to be false
-- **Relation:** Be relevant
-- **Manner:** Be perspicuous
+### 4.2 语义组合 / Semantic Composition
 
-### 7.2 预设 / Presupposition
+**递归神经网络 / Recursive Neural Network:**
 
-**预设定义 / Presupposition Definition:**
+$$h = f(W_1 h_l + W_2 h_r + b)$$
 
-$\phi$ 预设 $\psi$，如果 $\phi$ 为真或为假都要求 $\psi$ 为真。
+其中 $h_l, h_r$ 是左右子节点的表示。
 
-$\phi$ presupposes $\psi$ if $\phi$ requires $\psi$ to be true whether $\phi$ is true or false.
+where $h_l, h_r$ are representations of left and right children.
 
-**预设投射 / Presupposition Projection:**
+**树LSTM / Tree LSTM:**
 
-$$\text{Presup}(\neg \phi) = \text{Presup}(\phi)$$
+$$i_t = \sigma(W_i x_t + U_i h_{t-1} + b_i)$$
+$$f_t = \sigma(W_f x_t + U_f h_{t-1} + b_f)$$
+$$o_t = \sigma(W_o x_t + U_o h_{t-1} + b_o)$$
+$$c_t = f_t \odot c_{t-1} + i_t \odot \text{tanh}(W_c x_t + U_c h_{t-1} + b_c)$$
+$$h_t = o_t \odot \text{tanh}(c_t)$$
 
-$$\text{Presup}(\phi \land \psi) = \text{Presup}(\phi) \cup \text{Presup}(\psi)$$
+### 4.3 语义表示学习 / Semantic Representation Learning
 
-### 7.3 言语行为 / Speech Acts
+**BERT表示 / BERT Representation:**
 
-**言语行为分类 / Speech Act Classification:**
+$$\text{BERT}(x) = \text{Transformer}(\text{Embed}(x) + \text{PE}(x))$$
 
-- **断言 / Assertives:** 陈述事实
-- **指令 / Directives:** 请求行动
-- **承诺 / Commissives:** 承诺行动
-- **表达 / Expressives:** 表达态度
-- **宣告 / Declarations:** 改变状态
+其中 $\text{PE}$ 是位置编码。
 
-- **Assertives:** state facts
-- **Directives:** request actions
-- **Commissives:** commit to actions
-- **Expressives:** express attitudes
-- **Declarations:** change states
-
----
-
-## 8. 语义角色 / Semantic Roles
-
-### 8.1 语义角色定义 / Semantic Role Definition
-
-**语义角色 / Semantic Roles:**
-
-- **施事 / Agent:** 执行动作的实体
-- **受事 / Patient:** 承受动作的实体
-- **工具 / Instrument:** 执行动作的工具
-- **目标 / Goal:** 动作的目标
-- **来源 / Source:** 动作的来源
-- **时间 / Time:** 动作发生的时间
-- **地点 / Location:** 动作发生的地点
-
-- **Agent:** entity performing the action
-- **Patient:** entity affected by the action
-- **Instrument:** tool used in the action
-- **Goal:** target of the action
-- **Source:** origin of the action
-- **Time:** time of the action
-- **Location:** location of the action
-
-### 8.2 语义角色标注 / Semantic Role Labeling
+where $\text{PE}$ is positional encoding.
 
 **语义角色标注 / Semantic Role Labeling:**
 
-$$\text{SRL}(s) = \{(w_i, r_i): w_i \in s, r_i \in \text{Roles}\}$$
-
-**角色识别 / Role Identification:**
-
-$$\text{Role}(w, v) = \arg\max_r P(r|w, v, s)$$
-
-### 8.3 框架语义 / Frame Semantics
-
-**语义框架 / Semantic Frame:**
-
-$F = \langle \text{Frame}, \text{FrameElements}, \text{Relations} \rangle$
-
-**框架元素 / Frame Elements:**
-
-$$\text{FrameElements}(f) = \{e_1, e_2, \ldots, e_n\}$$
+$$P(\text{role}_i | \text{context}) = \text{softmax}(W \text{BERT}(\text{context})_i)$$
 
 ---
 
-## 9. 语义相似性 / Semantic Similarity
+## 5. 多模态语义 / Multimodal Semantics
 
-### 9.1 语义相似性度量 / Semantic Similarity Measures
+### 5.1 视觉-语言对齐 / Vision-Language Alignment
 
-**余弦相似性 / Cosine Similarity:**
+**跨模态注意力 / Cross-Modal Attention:**
 
-$$\text{Sim}_{\cos}(v_1, v_2) = \frac{v_1 \cdot v_2}{|v_1| |v_2|}$$
+$$\alpha_{ij} = \frac{\exp(\text{score}(v_i, l_j))}{\sum_k \exp(\text{score}(v_i, l_k))}$$
 
-**欧几里得距离 / Euclidean Distance:**
+其中 $v_i$ 是视觉特征，$l_j$ 是语言特征。
 
-$$\text{Sim}_{\text{euclidean}}(v_1, v_2) = \frac{1}{1 + |v_1 - v_2|}$$
+where $v_i$ are visual features and $l_j$ are language features.
 
-**曼哈顿距离 / Manhattan Distance:**
+**对比学习 / Contrastive Learning:**
 
-$$\text{Sim}_{\text{manhattan}}(v_1, v_2) = \frac{1}{1 + \sum_i |v_{1i} - v_{2i}|}$$
+$$\mathcal{L} = -\log \frac{\exp(\text{sim}(v, l)/\tau)}{\sum_{l' \in N} \exp(\text{sim}(v, l')/\tau)}$$
 
-### 9.2 语义空间 / Semantic Space
+### 5.2 跨模态推理 / Cross-Modal Reasoning
 
-**潜在语义分析 / Latent Semantic Analysis:**
+**视觉问答 / Visual Question Answering:**
 
-$$\text{LSA}(D) = U \Sigma V^T$$
+$$P(a|q, v) = \text{softmax}(W[\text{BERT}(q); \text{Vision}(v)])$$
 
-其中 $D$ 是文档-词矩阵。
+**图像描述生成 / Image Captioning:**
 
-where $D$ is the document-term matrix.
+$$P(c|v) = \prod_{i=1}^n P(w_i|w_{<i}, v)$$
 
-**词嵌入 / Word Embeddings:**
+### 5.3 多模态融合 / Multimodal Fusion
 
-$$\text{Embedding}(w) = \text{NeuralNetwork}(\text{Context}(w))$$
+**早期融合 / Early Fusion:**
 
-### 9.3 语义聚类 / Semantic Clustering
+$$f_{\text{early}} = \text{MLP}([\text{vision}; \text{language}])$$
 
-**层次聚类 / Hierarchical Clustering:**
+**晚期融合 / Late Fusion:**
 
-$$\text{Cluster}(S) = \text{HierarchicalClustering}(\text{SimilarityMatrix}(S))$$
+$$f_{\text{late}} = \alpha \cdot f_{\text{vision}} + (1-\alpha) \cdot f_{\text{language}}$$
 
-**K-means聚类 / K-means Clustering:**
+**注意力融合 / Attention Fusion:**
 
-$$\text{Cluster}(S) = \text{KMeans}(S, k)$$
-
----
-
-## 10. 语义计算 / Semantic Computation
-
-### 10.1 语义解析 / Semantic Parsing
-
-**语义解析 / Semantic Parsing:**
-
-$$\text{SemanticParse}(s) = \arg\max_{\phi} P(\phi|s)$$
-
-**语法引导解析 / Grammar-Guided Parsing:**
-
-$$\text{Parse}(s) = \text{CFGParse}(s) \rightarrow \text{SemanticParse}$$
-
-### 10.2 语义生成 / Semantic Generation
-
-**语义到文本生成 / Semantic-to-Text Generation:**
-
-$$\text{Generate}(s) = \arg\max_{t} P(t|s)$$
-
-**语义控制生成 / Semantically Controlled Generation:**
-
-$$\text{Generate}(s, \text{constraints}) = \arg\max_{t} P(t|s, \text{constraints})$$
-
-### 10.3 语义推理 / Semantic Reasoning
-
-**语义蕴涵 / Semantic Entailment:**
-
-$$\text{Entails}(h, p) = \text{True iff } h \models p$$
-
-**语义矛盾 / Semantic Contradiction:**
-
-$$\text{Contradicts}(s_1, s_2) = \text{True iff } s_1 \models \neg s_2$$
-
-**语义中立 / Semantic Neutrality:**
-
-$$\text{Neutral}(s_1, s_2) = \text{True iff } s_1 \not\models s_2 \land s_1 \not\models \neg s_2$$
+$$f_{\text{attention}} = \sum_i \alpha_i \cdot f_i$$
 
 ---
 
@@ -541,27 +277,27 @@ use std::collections::HashMap;
 
 #[derive(Debug, Clone)]
 enum SemanticType {
-    Entity,
-    Truth,
-    World,
+    Individual,
+    Proposition,
     Function(Box<SemanticType>, Box<SemanticType>),
+    Intensional(Box<SemanticType>),
 }
 
 #[derive(Debug, Clone)]
 enum SemanticValue {
-    Entity(String),
-    Truth(bool),
-    World(String),
+    Individual(String),
+    Proposition(bool),
     Function(Box<dyn Fn(SemanticValue) -> SemanticValue>),
+    Intensional(Box<dyn Fn(String) -> SemanticValue>),
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug)]
 struct SemanticParser {
     lexicon: HashMap<String, SemanticType>,
     composition_rules: Vec<CompositionRule>,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug)]
 struct CompositionRule {
     name: String,
     input_types: Vec<SemanticType>,
@@ -576,7 +312,7 @@ impl SemanticParser {
             composition_rules: Vec::new(),
         };
         
-        // 初始化词汇
+        // 初始化词汇表
         parser.initialize_lexicon();
         parser.initialize_composition_rules();
         
@@ -584,18 +320,24 @@ impl SemanticParser {
     }
     
     fn initialize_lexicon(&mut self) {
-        // 专名
-        self.lexicon.insert("John".to_string(), SemanticType::Entity);
-        self.lexicon.insert("Mary".to_string(), SemanticType::Entity);
+        // 名词
+        self.lexicon.insert("John".to_string(), SemanticType::Individual);
+        self.lexicon.insert("Mary".to_string(), SemanticType::Individual);
         
         // 不及物动词
-        self.lexicon.insert("runs".to_string(), 
-            SemanticType::Function(Box::new(SemanticType::Entity), Box::new(SemanticType::Truth)));
+        self.lexicon.insert("sleeps".to_string(), 
+            SemanticType::Function(Box::new(SemanticType::Individual), Box::new(SemanticType::Proposition)));
         
         // 及物动词
-        self.lexicon.insert("loves".to_string(),
-            SemanticType::Function(Box::new(SemanticType::Entity), 
-                Box::new(SemanticType::Function(Box::new(SemanticType::Entity), Box::new(SemanticType::Truth)))));
+        self.lexicon.insert("loves".to_string(), 
+            SemanticType::Function(
+                Box::new(SemanticType::Individual),
+                Box::new(SemanticType::Function(Box::new(SemanticType::Individual), Box::new(SemanticType::Proposition)))
+            ));
+        
+        // 形容词
+        self.lexicon.insert("tall".to_string(), 
+            SemanticType::Function(Box::new(SemanticType::Individual), Box::new(SemanticType::Proposition)));
     }
     
     fn initialize_composition_rules(&mut self) {
@@ -603,15 +345,16 @@ impl SemanticParser {
         let function_application = CompositionRule {
             name: "Function Application".to_string(),
             input_types: vec![
-                SemanticType::Function(Box::new(SemanticType::Entity), Box::new(SemanticType::Truth)),
-                SemanticType::Entity
+                SemanticType::Function(Box::new(SemanticType::Individual), Box::new(SemanticType::Proposition)),
+                SemanticType::Individual
             ],
-            output_type: SemanticType::Truth,
+            output_type: SemanticType::Proposition,
             function: Box::new(|args| {
-                if let (SemanticValue::Function(f), SemanticValue::Entity(e)) = (&args[0], &args[1]) {
-                    f(SemanticValue::Entity(e.clone()))
+                if args.len() == 2 {
+                    // 简化的语义计算
+                    SemanticValue::Proposition(true)
                 } else {
-                    SemanticValue::Truth(false)
+                    SemanticValue::Proposition(false)
                 }
             }),
         };
@@ -619,207 +362,420 @@ impl SemanticParser {
         self.composition_rules.push(function_application);
     }
     
-    fn parse(&self, sentence: &str) -> Option<SemanticValue> {
-        let words: Vec<&str> = sentence.split_whitespace().collect();
-        
-        // 简化的语义解析
-        match words.as_slice() {
-            ["John", "runs"] => {
-                let john = SemanticValue::Entity("John".to_string());
-                let runs = SemanticValue::Function(Box::new(|_| SemanticValue::Truth(true)));
-                Some(runs(john))
-            },
-            ["John", "loves", "Mary"] => {
-                let john = SemanticValue::Entity("John".to_string());
-                let mary = SemanticValue::Entity("Mary".to_string());
-                let loves = SemanticValue::Function(Box::new(|x| {
-                    SemanticValue::Function(Box::new(|y| SemanticValue::Truth(true)))
-                }));
-                Some(loves(john))
-            },
-            _ => None,
+    fn parse(&self, tokens: &[String]) -> Option<SemanticValue> {
+        if tokens.len() == 0 {
+            return None;
         }
+        
+        if tokens.len() == 1 {
+            // 单个词的情况
+            return self.lexicon.get(&tokens[0]).map(|_| {
+                SemanticValue::Individual(tokens[0].clone())
+            });
+        }
+        
+        // 尝试不同的组合方式
+        for i in 1..tokens.len() {
+            let left_tokens = &tokens[..i];
+            let right_tokens = &tokens[i..];
+            
+            if let (Some(left_sem), Some(right_sem)) = (self.parse(left_tokens), self.parse(right_tokens)) {
+                // 尝试应用组合规则
+                if let Some(result) = self.apply_composition_rules(&left_sem, &right_sem) {
+                    return Some(result);
+                }
+            }
+        }
+        
+        None
     }
     
-    fn semantic_composition(&self, left: SemanticValue, right: SemanticValue) -> Option<SemanticValue> {
-        // 应用组合规则
+    fn apply_composition_rules(&self, left: &SemanticValue, right: &SemanticValue) -> Option<SemanticValue> {
         for rule in &self.composition_rules {
-            if self.matches_rule(&left, &right, rule) {
-                return Some((rule.function)(vec![left, right]));
+            if rule.input_types.len() == 2 {
+                // 简化的类型检查
+                if self.type_check(left, &rule.input_types[0]) && 
+                   self.type_check(right, &rule.input_types[1]) {
+                    return Some((rule.function)(vec![left.clone(), right.clone()]));
+                }
             }
         }
         None
     }
     
-    fn matches_rule(&self, left: &SemanticValue, right: &SemanticValue, rule: &CompositionRule) -> bool {
-        // 简化的类型匹配
-        true
+    fn type_check(&self, value: &SemanticValue, expected_type: &SemanticType) -> bool {
+        match (value, expected_type) {
+            (SemanticValue::Individual(_), SemanticType::Individual) => true,
+            (SemanticValue::Proposition(_), SemanticType::Proposition) => true,
+            _ => false, // 简化版本
+        }
+    }
+    
+    fn evaluate_sentence(&self, sentence: &str) -> Option<bool> {
+        let tokens: Vec<String> = sentence.split_whitespace().map(|s| s.to_string()).collect();
+        
+        if let Some(semantic_value) = self.parse(&tokens) {
+            match semantic_value {
+                SemanticValue::Proposition(b) => Some(b),
+                _ => None,
+            }
+        } else {
+            None
+        }
+    }
+}
+
+// 分布语义模型
+#[derive(Debug)]
+struct DistributionalSemantics {
+    word_vectors: HashMap<String, Vec<f64>>,
+    vocabulary: Vec<String>,
+    vector_dim: usize,
+}
+
+impl DistributionalSemantics {
+    fn new(dim: usize) -> Self {
+        DistributionalSemantics {
+            word_vectors: HashMap::new(),
+            vocabulary: Vec::new(),
+            vector_dim: dim,
+        }
+    }
+    
+    fn add_word(&mut self, word: &str, vector: Vec<f64>) {
+        if vector.len() == self.vector_dim {
+            self.word_vectors.insert(word.to_string(), vector);
+            if !self.vocabulary.contains(&word.to_string()) {
+                self.vocabulary.push(word.to_string());
+            }
+        }
+    }
+    
+    fn get_vector(&self, word: &str) -> Option<&Vec<f64>> {
+        self.word_vectors.get(word)
+    }
+    
+    fn cosine_similarity(&self, word1: &str, word2: &str) -> Option<f64> {
+        if let (Some(v1), Some(v2)) = (self.get_vector(word1), self.get_vector(word2)) {
+            let dot_product: f64 = v1.iter().zip(v2.iter()).map(|(a, b)| a * b).sum();
+            let norm1: f64 = v1.iter().map(|x| x * x).sum::<f64>().sqrt();
+            let norm2: f64 = v2.iter().map(|x| x * x).sum::<f64>().sqrt();
+            
+            if norm1 > 0.0 && norm2 > 0.0 {
+                Some(dot_product / (norm1 * norm2))
+            } else {
+                Some(0.0)
+            }
+        } else {
+            None
+        }
+    }
+    
+    fn find_similar_words(&self, word: &str, top_k: usize) -> Vec<(String, f64)> {
+        let mut similarities = Vec::new();
+        
+        for vocab_word in &self.vocabulary {
+            if vocab_word != word {
+                if let Some(sim) = self.cosine_similarity(word, vocab_word) {
+                    similarities.push((vocab_word.clone(), sim));
+                }
+            }
+        }
+        
+        similarities.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
+        similarities.truncate(top_k);
+        similarities
+    }
+    
+    fn analogy(&self, a: &str, b: &str, c: &str) -> Option<String> {
+        if let (Some(va), Some(vb), Some(vc)) = (self.get_vector(a), self.get_vector(b), self.get_vector(c)) {
+            let target_vector: Vec<f64> = va.iter().zip(vb.iter()).zip(vc.iter())
+                .map(|((a_val, b_val), c_val)| c_val + (b_val - a_val))
+                .collect();
+            
+            let mut best_word = None;
+            let mut best_similarity = -1.0;
+            
+            for word in &self.vocabulary {
+                if word != a && word != b && word != c {
+                    if let Some(word_vec) = self.get_vector(word) {
+                        let similarity = self.cosine_similarity_vectors(&target_vector, word_vec);
+                        if similarity > best_similarity {
+                            best_similarity = similarity;
+                            best_word = Some(word.clone());
+                        }
+                    }
+                }
+            }
+            
+            best_word
+        } else {
+            None
+        }
+    }
+    
+    fn cosine_similarity_vectors(&self, v1: &[f64], v2: &[f64]) -> f64 {
+        let dot_product: f64 = v1.iter().zip(v2.iter()).map(|(a, b)| a * b).sum();
+        let norm1: f64 = v1.iter().map(|x| x * x).sum::<f64>().sqrt();
+        let norm2: f64 = v2.iter().map(|x| x * x).sum::<f64>().sqrt();
+        
+        if norm1 > 0.0 && norm2 > 0.0 {
+            dot_product / (norm1 * norm2)
+        } else {
+            0.0
+        }
     }
 }
 
 fn main() {
-    let parser = SemanticParser::new();
+    // 测试语义解析器
+    let mut parser = SemanticParser::new();
     
-    // 测试语义解析
-    let sentences = vec!["John runs", "John loves Mary"];
+    let sentences = vec![
+        "John sleeps".to_string(),
+        "Mary loves John".to_string(),
+    ];
     
+    println!("语义解析结果:");
     for sentence in sentences {
-        if let Some(semantic_value) = parser.parse(sentence) {
-            println!("句子: '{}' -> 语义: {:?}", sentence, semantic_value);
-        } else {
-            println!("句子: '{}' -> 无法解析", sentence);
+        match parser.evaluate_sentence(&sentence) {
+            Some(result) => println!("'{}' -> {}", sentence, result),
+            None => println!("'{}' -> 无法解析", sentence),
         }
+    }
+    
+    // 测试分布语义模型
+    let mut ds = DistributionalSemantics::new(3);
+    
+    // 添加一些示例词向量
+    ds.add_word("king", vec![1.0, 0.0, 0.0]);
+    ds.add_word("queen", vec![0.0, 1.0, 0.0]);
+    ds.add_word("man", vec![0.5, 0.0, 0.5]);
+    ds.add_word("woman", vec![0.0, 0.5, 0.5]);
+    
+    println!("\n分布语义结果:");
+    
+    // 计算相似度
+    if let Some(sim) = ds.cosine_similarity("king", "queen") {
+        println!("king 和 queen 的相似度: {:.3}", sim);
+    }
+    
+    // 查找相似词
+    let similar = ds.find_similar_words("king", 3);
+    println!("与 king 最相似的词:");
+    for (word, sim) in similar {
+        println!("  {}: {:.3}", word, sim);
+    }
+    
+    // 类比推理
+    if let Some(result) = ds.analogy("man", "king", "woman") {
+        println!("man : king :: woman : {}", result);
     }
 }
 ```
 
-### Haskell实现：类型论语义学
+### Haskell实现：分布语义模型
 
 ```haskell
-import Data.Map (Map, fromList, (!))
-import Data.Maybe (fromJust)
+import Data.List (foldl', sortBy)
+import Data.Map (Map)
+import qualified Data.Map as Map
+import Data.Vector (Vector, fromList, (!), length)
+import qualified Data.Vector as V
 
--- 语义类型
-data SemanticType = Entity | Truth | World | Function SemanticType SemanticType deriving (Show, Eq)
+-- 词向量类型
+type WordVector = Vector Double
+type Vocabulary = [String]
+type WordVectors = Map String WordVector
 
--- 语义值
-data SemanticValue = 
-    EntityVal String
-    | TruthVal Bool
-    | WorldVal String
-    | FunctionVal (SemanticValue -> SemanticValue)
-    deriving Show
+-- 分布语义模型
+data DistributionalModel = DistributionalModel {
+    wordVectors :: WordVectors,
+    vocabulary :: Vocabulary,
+    vectorDim :: Int
+} deriving Show
 
--- 语义环境
-type SemanticEnvironment = Map String SemanticValue
-
--- 语义解释器
-data SemanticInterpreter = SemanticInterpreter {
-    lexicon :: Map String SemanticType,
-    denotations :: Map String SemanticValue
+-- 创建模型
+createModel :: Int -> DistributionalModel
+createModel dim = DistributionalModel {
+    wordVectors = Map.empty,
+    vocabulary = [],
+    vectorDim = dim
 }
 
--- 创建语义解释器
-createInterpreter :: SemanticInterpreter
-createInterpreter = SemanticInterpreter {
-    lexicon = fromList [
-        ("John", Entity),
-        ("Mary", Entity),
-        ("runs", Function Entity Truth),
-        ("loves", Function Entity (Function Entity Truth))
-    ],
-    denotations = fromList [
-        ("John", EntityVal "John"),
-        ("Mary", EntityVal "Mary"),
-        ("runs", FunctionVal (\x -> TruthVal True)),
-        ("loves", FunctionVal (\x -> FunctionVal (\y -> TruthVal True)))
-    ]
-}
+-- 添加词向量
+addWordVector :: DistributionalModel -> String -> WordVector -> DistributionalModel
+addWordVector model word vector
+    | V.length vector == vectorDim model = model {
+        wordVectors = Map.insert word vector (wordVectors model),
+        vocabulary = if word `elem` vocabulary model 
+                    then vocabulary model 
+                    else word : vocabulary model
+    }
+    | otherwise = model
 
--- 语义解释函数
-interpret :: SemanticInterpreter -> String -> Maybe SemanticValue
-interpret interpreter word = denotations interpreter ! word
+-- 获取词向量
+getWordVector :: DistributionalModel -> String -> Maybe WordVector
+getWordVector model word = Map.lookup word (wordVectors model)
 
--- 函数应用
-applyFunction :: SemanticValue -> SemanticValue -> SemanticValue
-applyFunction (FunctionVal f) arg = f arg
-applyFunction _ _ = error "Not a function"
+-- 向量运算
+dotProduct :: WordVector -> WordVector -> Double
+dotProduct v1 v2 = V.sum $ V.zipWith (*) v1 v2
+
+vectorNorm :: WordVector -> Double
+vectorNorm v = sqrt $ V.sum $ V.map (^2) v
+
+cosineSimilarity :: WordVector -> WordVector -> Double
+cosineSimilarity v1 v2 =
+    let dot = dotProduct v1 v2
+        norm1 = vectorNorm v1
+        norm2 = vectorNorm v2
+    in if norm1 > 0 && norm2 > 0 
+       then dot / (norm1 * norm2)
+       else 0.0
+
+-- 计算两个词的相似度
+wordSimilarity :: DistributionalModel -> String -> String -> Maybe Double
+wordSimilarity model word1 word2 = do
+    v1 <- getWordVector model word1
+    v2 <- getWordVector model word2
+    return $ cosineSimilarity v1 v2
+
+-- 查找相似词
+findSimilarWords :: DistributionalModel -> String -> Int -> [(String, Double)]
+findSimilarWords model word topK =
+    let similarities = [(w, sim) | w <- vocabulary model, w /= word,
+                                  Just sim <- [wordSimilarity model word w]]
+        sorted = sortBy (\a b -> compare (snd b) (snd a)) similarities
+    in take topK sorted
+
+-- 向量加减
+vectorAdd :: WordVector -> WordVector -> WordVector
+vectorAdd v1 v2 = V.zipWith (+) v1 v2
+
+vectorSubtract :: WordVector -> WordVector -> WordVector
+vectorSubtract v1 v2 = V.zipWith (-) v1 v2
+
+-- 类比推理
+analogy :: DistributionalModel -> String -> String -> String -> Maybe String
+analogy model a b c = do
+    va <- getWordVector model a
+    vb <- getWordVector model b
+    vc <- getWordVector model c
+    
+    let targetVector = vectorAdd vc (vectorSubtract vb va)
+        candidates = [(w, sim) | w <- vocabulary model, w /= a, w /= b, w /= c,
+                                Just vw <- [getWordVector model w],
+                                let sim = cosineSimilarity targetVector vw]
+        sorted = sortBy (\x y -> compare (snd y) (snd x)) candidates
+    
+    case sorted of
+        ((word, _):_) -> Just word
+        [] -> Nothing
+
+-- 语义聚类
+semanticClustering :: DistributionalModel -> [String] -> [[String]]
+semanticClustering model words =
+    let similarities = [(w1, w2, sim) | w1 <- words, w2 <- words, w1 < w2,
+                                       Just sim <- [wordSimilarity model w1 w2]]
+        threshold = 0.7  -- 相似度阈值
+        similarPairs = [(w1, w2) | (w1, w2, sim) <- similarities, sim > threshold]
+    in clusterWords words similarPairs
+  where
+    clusterWords :: [String] -> [(String, String)] -> [[String]]
+    clusterWords [] _ = []
+    clusterWords (w:ws) pairs =
+        let cluster = w : [w2 | (w1, w2) <- pairs, w1 == w]
+            remaining = [w' | w' <- ws, w' `notElem` cluster]
+        in cluster : clusterWords remaining pairs
+
+-- 语义空间可视化（简化版）
+semanticSpace :: DistributionalModel -> [(String, Double, Double)]
+semanticSpace model =
+    let referenceWords = take 2 (vocabulary model)
+        (ref1, ref2) = case referenceWords of
+            (w1:w2:_) -> (w1, w2)
+            _ -> ("", "")
+    in [(word, x, y) | word <- vocabulary model,
+                       Just v <- [getWordVector model word],
+                       Just v1 <- [getWordVector model ref1],
+                       Just v2 <- [getWordVector model ref2],
+                       let x = cosineSimilarity v v1,
+                       let y = cosineSimilarity v v2]
 
 -- 语义组合
-semanticComposition :: SemanticInterpreter -> [String] -> Maybe SemanticValue
-semanticComposition interpreter words = 
-    case words of
-        ["John", "runs"] -> 
-            let john = interpret interpreter "John"
-                runs = interpret interpreter "runs"
-            in case (john, runs) of
-                (Just j, Just r) -> Just (applyFunction r j)
-                _ -> Nothing
-        ["John", "loves", "Mary"] ->
-            let john = interpret interpreter "John"
-                loves = interpret interpreter "loves"
-                mary = interpret interpreter "Mary"
-            in case (john, loves, mary) of
-                (Just j, Just l, Just m) -> 
-                    let lovesJohn = applyFunction l j
-                    in Just (applyFunction lovesJohn m)
-                _ -> Nothing
-        _ -> Nothing
+semanticComposition :: DistributionalModel -> String -> String -> Maybe WordVector
+semanticComposition model word1 word2 = do
+    v1 <- getWordVector model word1
+    v2 <- getWordVector model word2
+    -- 简单的加法组合
+    return $ vectorAdd v1 v2
 
--- 类型检查
-typeCheck :: SemanticInterpreter -> String -> SemanticType -> Bool
-typeCheck interpreter word expectedType = 
-    case lexicon interpreter ! word of
-        actualType -> actualType == expectedType
+-- 语义相似度矩阵
+similarityMatrix :: DistributionalModel -> [String] -> [[Double]]
+similarityMatrix model words =
+    [[fromMaybe 0.0 (wordSimilarity model w1 w2) | w2 <- words] | w1 <- words]
 
--- 语义相似性
-semanticSimilarity :: SemanticValue -> SemanticValue -> Double
-semanticSimilarity (EntityVal e1) (EntityVal e2) = 
-    if e1 == e2 then 1.0 else 0.0
-semanticSimilarity (TruthVal t1) (TruthVal t2) = 
-    if t1 == t2 then 1.0 else 0.0
-semanticSimilarity _ _ = 0.0
-
--- 语义推理
-semanticEntailment :: SemanticValue -> SemanticValue -> Bool
-semanticEntailment premise conclusion = 
-    case (premise, conclusion) of
-        (TruthVal True, TruthVal True) -> True
-        (TruthVal False, _) -> True
-        _ -> False
-
--- 示例
+-- 主函数
 main :: IO ()
 main = do
-    let interpreter = createInterpreter
+    let model = createModel 3
+        
+        -- 添加示例词向量
+        model1 = addWordVector model "king" (fromList [1.0, 0.0, 0.0])
+        model2 = addWordVector model1 "queen" (fromList [0.0, 1.0, 0.0])
+        model3 = addWordVector model2 "man" (fromList [0.5, 0.0, 0.5])
+        model4 = addWordVector model3 "woman" (fromList [0.0, 0.5, 0.5])
+        model5 = addWordVector model4 "prince" (fromList [0.8, 0.2, 0.0])
+        model6 = addWordVector model5 "princess" (fromList [0.2, 0.8, 0.0])
+        
+        finalModel = model6
     
-    putStrLn "语义解释示例:"
+    putStrLn "分布语义模型示例:"
     
-    -- 测试词汇解释
-    putStrLn $ "John -> " ++ show (interpret interpreter "John")
-    putStrLn $ "runs -> " ++ show (interpret interpreter "runs")
+    -- 计算相似度
+    putStrLn "\n词相似度:"
+    mapM_ (\pair -> do
+        let (w1, w2) = pair
+        case wordSimilarity finalModel w1 w2 of
+            Just sim -> putStrLn $ w1 ++ " 和 " ++ w2 ++ " 的相似度: " ++ show sim
+            Nothing -> putStrLn $ "无法计算 " ++ w1 ++ " 和 " ++ w2 ++ " 的相似度"
+    ) [("king", "queen"), ("man", "woman"), ("king", "man")]
     
-    -- 测试语义组合
-    putStrLn $ "\n语义组合:"
-    putStrLn $ "John runs -> " ++ show (semanticComposition interpreter ["John", "runs"])
-    putStrLn $ "John loves Mary -> " ++ show (semanticComposition interpreter ["John", "loves", "Mary"])
+    -- 查找相似词
+    putStrLn "\n与 'king' 最相似的词:"
+    let similar = findSimilarWords finalModel "king" 3
+    mapM_ (\(word, sim) -> putStrLn $ "  " ++ word ++ ": " ++ show sim) similar
     
-    -- 测试类型检查
-    putStrLn $ "\n类型检查:"
-    putStrLn $ "John is Entity: " ++ show (typeCheck interpreter "John" Entity)
-    putStrLn $ "runs is Function Entity Truth: " ++ show (typeCheck interpreter "runs" (Function Entity Truth))
+    -- 类比推理
+    putStrLn "\n类比推理:"
+    case analogy finalModel "man" "king" "woman" of
+        Just result -> putStrLn $ "man : king :: woman : " ++ result
+        Nothing -> putStrLn "无法进行类比推理"
     
-    -- 测试语义相似性
-    let john1 = EntityVal "John"
-    let john2 = EntityVal "John"
-    let mary = EntityVal "Mary"
+    case analogy finalModel "prince" "king" "princess" of
+        Just result -> putStrLn $ "prince : king :: princess : " ++ result
+        Nothing -> putStrLn "无法进行类比推理"
     
-    putStrLn $ "\n语义相似性:"
-    putStrLn $ "John ~ John: " ++ show (semanticSimilarity john1 john2)
-    putStrLn $ "John ~ Mary: " ++ show (semanticSimilarity john1 mary)
+    -- 语义聚类
+    putStrLn "\n语义聚类:"
+    let clusters = semanticClustering finalModel (vocabulary finalModel)
+    mapM_ (\cluster -> putStrLn $ "聚类: " ++ show cluster) clusters
     
-    putStrLn $ "\n形式化语义学总结:"
-    putStrLn "- 真值条件语义学: 研究句子的真值条件"
-    putStrLn "- 模型论语义学: 使用模型解释语义"
-    putStrLn "- 类型论语义学: 基于类型系统的语义理论"
-    putStrLn "- 动态语义学: 处理话语的动态特性"
-    putStrLn "- 组合语义学: 复杂表达式的语义组合"
+    putStrLn "\n分布语义模型演示完成！"
 ```
 
 ---
 
 ## 参考文献 / References
 
-1. Heim, I., & Kratzer, A. (1998). *Semantics in Generative Grammar*. Blackwell.
-2. Montague, R. (1973). The proper treatment of quantification in ordinary English. *Formal Philosophy*.
-3. Kamp, H., & Reyle, U. (1993). *From Discourse to Logic*. Kluwer.
-4. Partee, B. H. (1995). *Quantification in Natural Language*. Kluwer.
-5. Grice, H. P. (1975). Logic and conversation. *Syntax and Semantics*.
-6. Fillmore, C. J. (1982). Frame semantics. *Linguistics in the Morning Calm*.
-7. Landauer, T. K., & Dumais, S. T. (1997). A solution to Plato's problem. *Psychological Review*.
-8. Mikolov, T., et al. (2013). Efficient estimation of word representations in vector space. *ICLR*.
-9. Devlin, J., et al. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. *NAACL*.
+1. Montague, R. (1973). The proper treatment of quantification in ordinary English. *Approaches to Natural Language*.
+2. Kamp, H., & Reyle, U. (1993). *From Discourse to Logic*. Kluwer.
+3. Heim, I., & Kratzer, A. (1998). *Semantics in Generative Grammar*. Blackwell.
+4. Mikolov, T., et al. (2013). Efficient estimation of word representations in vector space. *ICLR*.
+5. Devlin, J., et al. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. *NAACL*.
+6. Radford, A., et al. (2021). Learning transferable visual models from natural language supervision. *ICML*.
 
 ---
 
-*本模块为FormalAI提供了全面的形式化语义学理论基础，涵盖了从真值条件到语义计算的完整语义理论体系。*
+*本模块为FormalAI提供了形式化语义的理论基础，涵盖了从蒙塔古语法到神经语义的各个方面，为语言模型的语义理解提供了数学工具。*

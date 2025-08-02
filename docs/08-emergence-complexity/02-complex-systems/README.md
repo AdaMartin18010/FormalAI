@@ -63,6 +63,7 @@ A complex system can be defined as:
 $$\mathcal{CS} = \langle \mathcal{C}, \mathcal{I}, \mathcal{E}, \mathcal{D} \rangle$$
 
 其中：
+
 - $\mathcal{C}$ 是组件集合 / set of components
 - $\mathcal{I}$ 是交互关系 / interaction relations
 - $\mathcal{E}$ 是涌现性质 / emergent properties

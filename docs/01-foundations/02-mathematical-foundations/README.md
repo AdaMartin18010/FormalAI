@@ -2,9 +2,9 @@
 
 ## 概述 / Overview
 
-数学基础为FormalAI提供严格的数学工具和理论框架，包括集合论、代数、分析、拓扑等核心数学分支。
+数学基础为FormalAI提供严格的数学工具和理论框架，涵盖集合论、代数、拓扑学、微分几何、概率论、统计学、信息论和优化理论等核心领域。
 
-Mathematical foundations provide rigorous mathematical tools and theoretical frameworks for FormalAI, including set theory, algebra, analysis, topology, and other core mathematical branches.
+Mathematical foundations provide rigorous mathematical tools and theoretical frameworks for FormalAI, covering core areas such as set theory, algebra, topology, differential geometry, probability theory, statistics, information theory, and optimization theory.
 
 ## 目录 / Table of Contents
 
@@ -13,45 +13,39 @@ Mathematical foundations provide rigorous mathematical tools and theoretical fra
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 集合论 / Set Theory](#1-集合论--set-theory)
     - [1.1 基本概念 / Basic Concepts](#11-基本概念--basic-concepts)
-    - [1.2 集合运算 / Set Operations](#12-集合运算--set-operations)
-    - [1.3 关系与函数 / Relations and Functions](#13-关系与函数--relations-and-functions)
-    - [1.4 基数 / Cardinality](#14-基数--cardinality)
-  - [2. 抽象代数 / Abstract Algebra](#2-抽象代数--abstract-algebra)
+    - [1.2 关系与函数 / Relations and Functions](#12-关系与函数--relations-and-functions)
+    - [1.3 基数与序数 / Cardinals and Ordinals](#13-基数与序数--cardinals-and-ordinals)
+  - [2. 代数 / Algebra](#2-代数--algebra)
     - [2.1 群论 / Group Theory](#21-群论--group-theory)
     - [2.2 环论 / Ring Theory](#22-环论--ring-theory)
-    - [2.3 模论 / Module Theory](#23-模论--module-theory)
-  - [3. 线性代数 / Linear Algebra](#3-线性代数--linear-algebra)
-    - [3.1 向量空间 / Vector Spaces](#31-向量空间--vector-spaces)
-    - [3.2 线性变换 / Linear Transformations](#32-线性变换--linear-transformations)
-    - [3.3 特征值与特征向量 / Eigenvalues and Eigenvectors](#33-特征值与特征向量--eigenvalues-and-eigenvectors)
-  - [4. 泛函分析 / Functional Analysis](#4-泛函分析--functional-analysis)
-    - [4.1 度量空间 / Metric Spaces](#41-度量空间--metric-spaces)
-    - [4.2 巴拿赫空间 / Banach Spaces](#42-巴拿赫空间--banach-spaces)
-    - [4.3 希尔伯特空间 / Hilbert Spaces](#43-希尔伯特空间--hilbert-spaces)
-  - [5. 拓扑学 / Topology](#5-拓扑学--topology)
-    - [5.1 拓扑空间 / Topological Spaces](#51-拓扑空间--topological-spaces)
-    - [5.2 连续性与连通性 / Continuity and Connectedness](#52-连续性与连通性--continuity-and-connectedness)
-  - [6. 测度论 / Measure Theory](#6-测度论--measure-theory)
-    - [6.1 σ-代数 / σ-Algebra](#61-σ-代数--σ-algebra)
-    - [6.2 测度 / Measure](#62-测度--measure)
-    - [6.3 积分 / Integration](#63-积分--integration)
-  - [7. 概率论 / Probability Theory](#7-概率论--probability-theory)
-    - [7.1 概率空间 / Probability Space](#71-概率空间--probability-space)
-    - [7.2 随机变量 / Random Variables](#72-随机变量--random-variables)
-    - [7.3 条件概率 / Conditional Probability](#73-条件概率--conditional-probability)
-  - [8. 信息论 / Information Theory](#8-信息论--information-theory)
-    - [8.1 熵 / Entropy](#81-熵--entropy)
-    - [8.2 互信息 / Mutual Information](#82-互信息--mutual-information)
-  - [9. 优化理论 / Optimization Theory](#9-优化理论--optimization-theory)
-    - [9.1 凸优化 / Convex Optimization](#91-凸优化--convex-optimization)
-    - [9.2 拉格朗日乘数法 / Lagrange Multipliers](#92-拉格朗日乘数法--lagrange-multipliers)
-  - [10. 范畴论 / Category Theory](#10-范畴论--category-theory)
-    - [10.1 基本概念 / Basic Concepts](#101-基本概念--basic-concepts)
-    - [10.2 自然变换 / Natural Transformations](#102-自然变换--natural-transformations)
-    - [10.3 极限与余极限 / Limits and Colimits](#103-极限与余极限--limits-and-colimits)
+    - [2.3 线性代数 / Linear Algebra](#23-线性代数--linear-algebra)
+  - [3. 拓扑学 / Topology](#3-拓扑学--topology)
+    - [3.1 点集拓扑 / Point-Set Topology](#31-点集拓扑--point-set-topology)
+    - [3.2 代数拓扑 / Algebraic Topology](#32-代数拓扑--algebraic-topology)
+    - [3.3 微分拓扑 / Differential Topology](#33-微分拓扑--differential-topology)
+  - [4. 微分几何 / Differential Geometry](#4-微分几何--differential-geometry)
+    - [4.1 流形 / Manifolds](#41-流形--manifolds)
+    - [4.2 切丛与余切丛 / Tangent and Cotangent Bundles](#42-切丛与余切丛--tangent-and-cotangent-bundles)
+    - [4.3 黎曼几何 / Riemannian Geometry](#43-黎曼几何--riemannian-geometry)
+  - [5. 概率论 / Probability Theory](#5-概率论--probability-theory)
+    - [5.1 概率空间 / Probability Spaces](#51-概率空间--probability-spaces)
+    - [5.2 随机变量 / Random Variables](#52-随机变量--random-variables)
+    - [5.3 随机过程 / Stochastic Processes](#53-随机过程--stochastic-processes)
+  - [6. 统计学 / Statistics](#6-统计学--statistics)
+    - [6.1 描述统计 / Descriptive Statistics](#61-描述统计--descriptive-statistics)
+    - [6.2 推断统计 / Inferential Statistics](#62-推断统计--inferential-statistics)
+    - [6.3 贝叶斯统计 / Bayesian Statistics](#63-贝叶斯统计--bayesian-statistics)
+  - [7. 信息论 / Information Theory](#7-信息论--information-theory)
+    - [7.1 熵与信息 / Entropy and Information](#71-熵与信息--entropy-and-information)
+    - [7.2 信道容量 / Channel Capacity](#72-信道容量--channel-capacity)
+    - [7.3 编码理论 / Coding Theory](#73-编码理论--coding-theory)
+  - [8. 优化理论 / Optimization Theory](#8-优化理论--optimization-theory)
+    - [8.1 凸优化 / Convex Optimization](#81-凸优化--convex-optimization)
+    - [8.2 非凸优化 / Non-Convex Optimization](#82-非凸优化--non-convex-optimization)
+    - [8.3 随机优化 / Stochastic Optimization](#83-随机优化--stochastic-optimization)
   - [代码示例 / Code Examples](#代码示例--code-examples)
     - [Rust实现：线性代数库](#rust实现线性代数库)
-    - [Haskell实现：概率论基础](#haskell实现概率论基础)
+    - [Haskell实现：概率分布](#haskell实现概率分布)
   - [参考文献 / References](#参考文献--references)
 
 ---
@@ -62,551 +56,451 @@ Mathematical foundations provide rigorous mathematical tools and theoretical fra
 
 **集合 / Set:**
 
-集合是不同对象的无序聚集。
+集合是不同对象的无序集合：
 
-A set is an unordered collection of distinct objects.
+A set is an unordered collection of distinct objects:
 
-**形式化定义 / Formal Definition:**
+$$A = \{x : P(x)\}$$
 
-$$A = \{x \mid P(x)\}$$
+其中 $P(x)$ 是谓词。
 
-其中 $P(x)$ 是谓词，表示对象 $x$ 满足的性质。
+where $P(x)$ is a predicate.
 
-where $P(x)$ is a predicate representing the property that object $x$ satisfies.
+**集合运算 / Set Operations:**
 
-### 1.2 集合运算 / Set Operations
+- **并集 / Union:** $A \cup B = \{x : x \in A \lor x \in B\}$
+- **交集 / Intersection:** $A \cap B = \{x : x \in A \land x \in B\}$
+- **差集 / Difference:** $A \setminus B = \{x : x \in A \land x \notin B\}$
+- **补集 / Complement:** $A^c = \{x : x \notin A\}$
 
-**并集 / Union:**
+**幂集 / Power Set:**
 
-$$A \cup B = \{x \mid x \in A \text{ or } x \in B\}$$
+$$\mathcal{P}(A) = \{B : B \subseteq A\}$$
 
-**交集 / Intersection:**
+### 1.2 关系与函数 / Relations and Functions
 
-$$A \cap B = \{x \mid x \in A \text{ and } x \in B\}$$
+**关系 / Relation:**
 
-**差集 / Difference:**
+$R \subseteq A \times B$ 是从 $A$ 到 $B$ 的关系。
 
-$$A \setminus B = \{x \mid x \in A \text{ and } x \notin B\}$$
+$R \subseteq A \times B$ is a relation from $A$ to $B$.
 
-**补集 / Complement:**
+**等价关系 / Equivalence Relation:**
 
-$$A^c = \{x \mid x \notin A\}$$
+关系 $R$ 是等价关系，如果：
 
-### 1.3 关系与函数 / Relations and Functions
+Relation $R$ is an equivalence relation if:
 
-**二元关系 / Binary Relation:**
-
-$R \subseteq A \times B$ 是集合 $A$ 到集合 $B$ 的二元关系。
-
-$R \subseteq A \times B$ is a binary relation from set $A$ to set $B$.
+1. **自反性 / Reflexivity:** $\forall x, xRx$
+2. **对称性 / Symmetry:** $\forall x, y, xRy \Rightarrow yRx$
+3. **传递性 / Transitivity:** $\forall x, y, z, xRy \land yRz \Rightarrow xRz$
 
 **函数 / Function:**
 
-函数 $f: A \rightarrow B$ 是满足以下条件的二元关系：
+函数 $f: A \rightarrow B$ 是满足以下条件的关系：
 
-A function $f: A \rightarrow B$ is a binary relation satisfying:
+Function $f: A \rightarrow B$ is a relation satisfying:
 
-1. $\forall a \in A, \exists b \in B: (a,b) \in f$
-2. $(a,b_1) \in f \land (a,b_2) \in f \Rightarrow b_1 = b_2$
+$$\forall x \in A, \exists! y \in B, (x, y) \in f$$
 
-**单射 / Injective:**
+### 1.3 基数与序数 / Cardinals and Ordinals
 
-$$\forall a_1, a_2 \in A: f(a_1) = f(a_2) \Rightarrow a_1 = a_2$$
+**基数 / Cardinal:**
 
-**满射 / Surjective:**
+集合 $A$ 的基数 $|A|$ 是其元素的数量。
 
-$$\forall b \in B, \exists a \in A: f(a) = b$$
-
-**双射 / Bijective:**
-
-函数既是单射又是满射。
-
-A function that is both injective and surjective.
-
-### 1.4 基数 / Cardinality
-
-**等势 / Equinumerous:**
-
-两个集合 $A$ 和 $B$ 等势，如果存在双射 $f: A \rightarrow B$。
-
-Two sets $A$ and $B$ are equinumerous if there exists a bijection $f: A \rightarrow B$.
-
-**基数 / Cardinality:**
-
-集合 $A$ 的基数 $|A|$ 是与其等势的所有集合的等价类。
-
-The cardinality $|A|$ of set $A$ is the equivalence class of all sets equinumerous to it.
+The cardinality $|A|$ of set $A$ is the number of its elements.
 
 **可数集 / Countable Set:**
 
 集合 $A$ 是可数的，如果 $|A| \leq |\mathbb{N}|$。
 
-A set $A$ is countable if $|A| \leq |\mathbb{N}|$.
+Set $A$ is countable if $|A| \leq |\mathbb{N}|$.
+
+**连续统假设 / Continuum Hypothesis:**
+
+$$|\mathbb{R}| = 2^{|\mathbb{N}|} = \aleph_1$$
 
 ---
 
-## 2. 抽象代数 / Abstract Algebra
+## 2. 代数 / Algebra
 
 ### 2.1 群论 / Group Theory
 
 **群 / Group:**
 
-群 $(G, \cdot)$ 是一个集合 $G$ 和二元运算 $\cdot$，满足：
+群 $(G, \cdot)$ 是满足以下条件的集合和运算：
 
-A group $(G, \cdot)$ is a set $G$ with a binary operation $\cdot$ satisfying:
+Group $(G, \cdot)$ is a set and operation satisfying:
 
-1. **结合律 / Associativity:** $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
-2. **单位元 / Identity:** $\exists e \in G: \forall a \in G, e \cdot a = a \cdot e = a$
-3. **逆元 / Inverse:** $\forall a \in G, \exists a^{-1} \in G: a \cdot a^{-1} = a^{-1} \cdot a = e$
+1. **封闭性 / Closure:** $\forall a, b \in G, a \cdot b \in G$
+2. **结合律 / Associativity:** $\forall a, b, c \in G, (a \cdot b) \cdot c = a \cdot (b \cdot c)$
+3. **单位元 / Identity:** $\exists e \in G, \forall a \in G, e \cdot a = a \cdot e = a$
+4. **逆元 / Inverse:** $\forall a \in G, \exists a^{-1} \in G, a \cdot a^{-1} = a^{-1} \cdot a = e$
 
 **子群 / Subgroup:**
 
-$H \subseteq G$ 是 $G$ 的子群，如果 $H$ 在运算 $\cdot$ 下构成群。
+$H \subseteq G$ 是子群，如果 $(H, \cdot)$ 是群。
 
-$H \subseteq G$ is a subgroup of $G$ if $H$ forms a group under the operation $\cdot$.
+$H \subseteq G$ is a subgroup if $(H, \cdot)$ is a group.
 
-**正规子群 / Normal Subgroup:**
+**同态 / Homomorphism:**
 
-$N \trianglelefteq G$ 如果 $\forall g \in G, gNg^{-1} = N$。
+函数 $\phi: G \rightarrow H$ 是同态，如果：
 
-$N \trianglelefteq G$ if $\forall g \in G, gNg^{-1} = N$.
+Function $\phi: G \rightarrow H$ is a homomorphism if:
+
+$$\forall a, b \in G, \phi(a \cdot b) = \phi(a) \cdot \phi(b)$$
 
 ### 2.2 环论 / Ring Theory
 
 **环 / Ring:**
 
-环 $(R, +, \cdot)$ 是一个集合 $R$ 和两个二元运算 $+$ 和 $\cdot$，满足：
+环 $(R, +, \cdot)$ 是满足以下条件的集合和运算：
 
-A ring $(R, +, \cdot)$ is a set $R$ with two binary operations $+$ and $\cdot$ satisfying:
+Ring $(R, +, \cdot)$ is a set and operations satisfying:
 
-1. $(R, +)$ 是阿贝尔群 / $(R, +)$ is an abelian group
-2. **乘法结合律 / Multiplicative Associativity:** $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
-3. **分配律 / Distributivity:** $a \cdot (b + c) = a \cdot b + a \cdot c$ 和 $(a + b) \cdot c = a \cdot c + b \cdot c$
+1. $(R, +)$ 是阿贝尔群
+2. $(R, \cdot)$ 是幺半群
+3. **分配律 / Distributivity:** $\forall a, b, c \in R, a \cdot (b + c) = a \cdot b + a \cdot c$
 
-**域 / Field:**
+**理想 / Ideal:**
 
-域是交换环，其中非零元素都有乘法逆元。
+$I \subseteq R$ 是理想，如果：
 
-A field is a commutative ring where every nonzero element has a multiplicative inverse.
+$I \subseteq R$ is an ideal if:
 
-### 2.3 模论 / Module Theory
+1. $(I, +)$ 是子群
+2. $\forall r \in R, \forall i \in I, r \cdot i, i \cdot r \in I$
 
-**左模 / Left Module:**
-
-$R$-模 $M$ 是阿贝尔群 $(M, +)$ 和标量乘法 $R \times M \rightarrow M$，满足：
-
-An $R$-module $M$ is an abelian group $(M, +)$ with scalar multiplication $R \times M \rightarrow M$ satisfying:
-
-1. $(r + s)m = rm + sm$
-2. $r(m + n) = rm + rn$
-3. $(rs)m = r(sm)$
-4. $1m = m$
-
----
-
-## 3. 线性代数 / Linear Algebra
-
-### 3.1 向量空间 / Vector Spaces
+### 2.3 线性代数 / Linear Algebra
 
 **向量空间 / Vector Space:**
 
-向量空间 $V$ 是域 $\mathbb{F}$ 上的阿贝尔群，配备标量乘法 $\mathbb{F} \times V \rightarrow V$。
+向量空间 $V$ 是满足以下条件的集合：
 
-A vector space $V$ is an abelian group over a field $\mathbb{F}$ equipped with scalar multiplication $\mathbb{F} \times V \rightarrow V$.
+Vector space $V$ is a set satisfying:
 
-**线性无关 / Linear Independence:**
-
-向量组 $\{v_1, \ldots, v_n\}$ 线性无关，如果：
-
-A set of vectors $\{v_1, \ldots, v_n\}$ is linearly independent if:
-
-$$\sum_{i=1}^n c_i v_i = 0 \Rightarrow c_i = 0 \text{ for all } i$$
-
-**基 / Basis:**
-
-向量空间 $V$ 的基是线性无关的生成集。
-
-A basis of vector space $V$ is a linearly independent spanning set.
-
-**维度 / Dimension:**
-
-向量空间的维度是其基的基数。
-
-The dimension of a vector space is the cardinality of its basis.
-
-### 3.2 线性变换 / Linear Transformations
+1. $(V, +)$ 是阿贝尔群
+2. **标量乘法 / Scalar Multiplication:** $\forall \alpha \in \mathbb{F}, \forall v \in V, \alpha v \in V$
+3. **分配律 / Distributivity:** $\forall \alpha, \beta \in \mathbb{F}, \forall v \in V, (\alpha + \beta)v = \alpha v + \beta v$
 
 **线性变换 / Linear Transformation:**
 
-$T: V \rightarrow W$ 是线性变换，如果：
+函数 $T: V \rightarrow W$ 是线性的，如果：
 
-$T: V \rightarrow W$ is a linear transformation if:
+Function $T: V \rightarrow W$ is linear if:
 
-1. $T(v_1 + v_2) = T(v_1) + T(v_2)$
-2. $T(cv) = cT(v)$
+$$\forall v_1, v_2 \in V, \forall \alpha \in \mathbb{F}, T(\alpha v_1 + v_2) = \alpha T(v_1) + T(v_2)$$
 
-**核 / Kernel:**
+**特征值与特征向量 / Eigenvalues and Eigenvectors:**
 
-$$\ker(T) = \{v \in V \mid T(v) = 0\}$$
+$$\text{Av} = \lambda v$$
 
-**像 / Image:**
+其中 $\lambda$ 是特征值，$v$ 是特征向量。
 
-$$\text{im}(T) = \{T(v) \mid v \in V\}$$
-
-**秩-零化度定理 / Rank-Nullity Theorem:**
-
-$$\dim(V) = \dim(\ker(T)) + \dim(\text{im}(T))$$
-
-### 3.3 特征值与特征向量 / Eigenvalues and Eigenvectors
-
-**特征值 / Eigenvalue:**
-
-$\lambda$ 是 $T$ 的特征值，如果存在非零向量 $v$ 使得：
-
-$\lambda$ is an eigenvalue of $T$ if there exists a nonzero vector $v$ such that:
-
-$$T(v) = \lambda v$$
-
-**特征向量 / Eigenvector:**
-
-满足上述条件的向量 $v$ 是特征向量。
-
-The vector $v$ satisfying the above condition is an eigenvector.
-
-**特征多项式 / Characteristic Polynomial:**
-
-$$p_T(\lambda) = \det(T - \lambda I)$$
+where $\lambda$ is eigenvalue and $v$ is eigenvector.
 
 ---
 
-## 4. 泛函分析 / Functional Analysis
+## 3. 拓扑学 / Topology
 
-### 4.1 度量空间 / Metric Spaces
+### 3.1 点集拓扑 / Point-Set Topology
 
-**度量 / Metric:**
+**拓扑空间 / Topological Space:**
 
-度量 $d: X \times X \rightarrow \mathbb{R}$ 满足：
+拓扑空间 $(X, \tau)$ 是集合 $X$ 和拓扑 $\tau$。
 
-A metric $d: X \times X \rightarrow \mathbb{R}$ satisfies:
-
-1. $d(x,y) \geq 0$ 且 $d(x,y) = 0 \Leftrightarrow x = y$
-2. $d(x,y) = d(y,x)$
-3. $d(x,z) \leq d(x,y) + d(y,z)$ (三角不等式)
-
-**收敛 / Convergence:**
-
-序列 $(x_n)$ 收敛到 $x$，如果：
-
-A sequence $(x_n)$ converges to $x$ if:
-
-$$\lim_{n \rightarrow \infty} d(x_n, x) = 0$$
-
-**完备性 / Completeness:**
-
-度量空间是完备的，如果每个柯西序列都收敛。
-
-A metric space is complete if every Cauchy sequence converges.
-
-### 4.2 巴拿赫空间 / Banach Spaces
-
-**范数 / Norm:**
-
-范数 $\|\cdot\|: V \rightarrow \mathbb{R}$ 满足：
-
-A norm $\|\cdot\|: V \rightarrow \mathbb{R}$ satisfies:
-
-1. $\|x\| \geq 0$ 且 $\|x\| = 0 \Leftrightarrow x = 0$
-2. $\|\alpha x\| = |\alpha| \|x\|$
-3. $\|x + y\| \leq \|x\| + \|y\|$
-
-**巴拿赫空间 / Banach Space:**
-
-完备的赋范向量空间。
-
-A complete normed vector space.
-
-### 4.3 希尔伯特空间 / Hilbert Spaces
-
-**内积 / Inner Product:**
-
-内积 $\langle \cdot, \cdot \rangle: H \times H \rightarrow \mathbb{C}$ 满足：
-
-An inner product $\langle \cdot, \cdot \rangle: H \times H \rightarrow \mathbb{C}$ satisfies:
-
-1. $\langle x, y \rangle = \overline{\langle y, x \rangle}$
-2. $\langle \alpha x + \beta y, z \rangle = \alpha \langle x, z \rangle + \beta \langle y, z \rangle$
-3. $\langle x, x \rangle \geq 0$ 且 $\langle x, x \rangle = 0 \Leftrightarrow x = 0$
-
-**希尔伯特空间 / Hilbert Space:**
-
-完备的内积空间。
-
-A complete inner product space.
-
-**正交性 / Orthogonality:**
-
-$x \perp y$ 如果 $\langle x, y \rangle = 0$。
-
-$x \perp y$ if $\langle x, y \rangle = 0$.
-
----
-
-## 5. 拓扑学 / Topology
-
-### 5.1 拓扑空间 / Topological Spaces
-
-**拓扑 / Topology:**
-
-集合 $X$ 上的拓扑 $\tau$ 是 $X$ 的子集族，满足：
-
-A topology $\tau$ on a set $X$ is a family of subsets of $X$ satisfying:
-
-1. $\emptyset, X \in \tau$
-2. 任意并集属于 $\tau$ / arbitrary unions belong to $\tau$
-3. 有限交集属于 $\tau$ / finite intersections belong to $\tau$
+Topological space $(X, \tau)$ is a set $X$ and topology $\tau$.
 
 **开集 / Open Set:**
 
-$U \subseteq X$ 是开集，如果 $U \in \tau$。
+集合 $U \subseteq X$ 是开集，如果 $U \in \tau$。
 
-$U \subseteq X$ is open if $U \in \tau$.
-
-**闭集 / Closed Set:**
-
-$F \subseteq X$ 是闭集，如果 $X \setminus F$ 是开集。
-
-$F \subseteq X$ is closed if $X \setminus F$ is open.
-
-### 5.2 连续性与连通性 / Continuity and Connectedness
+Set $U \subseteq X$ is open if $U \in \tau$.
 
 **连续函数 / Continuous Function:**
 
-$f: X \rightarrow Y$ 连续，如果 $f^{-1}(U)$ 对每个开集 $U$ 都是开集。
+函数 $f: X \rightarrow Y$ 是连续的，如果：
 
-$f: X \rightarrow Y$ is continuous if $f^{-1}(U)$ is open for every open set $U$.
+Function $f: X \rightarrow Y$ is continuous if:
 
-**连通性 / Connectedness:**
+$$\forall U \in \tau_Y, f^{-1}(U) \in \tau_X$$
 
-拓扑空间 $X$ 连通，如果它不能表示为两个非空开集的不交并。
+### 3.2 代数拓扑 / Algebraic Topology
 
-A topological space $X$ is connected if it cannot be written as the disjoint union of two nonempty open sets.
+**同伦 / Homotopy:**
 
-**紧致性 / Compactness:**
+函数 $f, g: X \rightarrow Y$ 是同伦的，如果存在连续函数：
 
-拓扑空间 $X$ 紧致，如果每个开覆盖都有有限子覆盖。
+Functions $f, g: X \rightarrow Y$ are homotopic if there exists continuous function:
 
-A topological space $X$ is compact if every open cover has a finite subcover.
+$$H: X \times [0,1] \rightarrow Y$$
 
----
+使得 $H(x,0) = f(x)$ 和 $H(x,1) = g(x)$。
 
-## 6. 测度论 / Measure Theory
+such that $H(x,0) = f(x)$ and $H(x,1) = g(x)$.
 
-### 6.1 σ-代数 / σ-Algebra
+**基本群 / Fundamental Group:**
 
-**σ-代数 / σ-Algebra:**
+$$\pi_1(X, x_0) = \{\text{homotopy classes of loops at } x_0\}$$
 
-集合 $X$ 上的 σ-代数 $\mathcal{A}$ 是 $X$ 的子集族，满足：
+### 3.3 微分拓扑 / Differential Topology
 
-A σ-algebra $\mathcal{A}$ on a set $X$ is a family of subsets of $X$ satisfying:
+**微分流形 / Differentiable Manifold:**
 
-1. $X \in \mathcal{A}$
-2. $A \in \mathcal{A} \Rightarrow A^c \in \mathcal{A}$
-3. $A_n \in \mathcal{A} \Rightarrow \bigcup_{n=1}^{\infty} A_n \in \mathcal{A}$
+微分流形是局部同胚于 $\mathbb{R}^n$ 的拓扑空间。
 
-### 6.2 测度 / Measure
+Differentiable manifold is a topological space locally homeomorphic to $\mathbb{R}^n$.
 
-**测度 / Measure:**
+**切空间 / Tangent Space:**
 
-测度 $\mu: \mathcal{A} \rightarrow [0, \infty]$ 满足：
-
-A measure $\mu: \mathcal{A} \rightarrow [0, \infty]$ satisfies:
-
-1. $\mu(\emptyset) = 0$
-2. $\mu(\bigcup_{n=1}^{\infty} A_n) = \sum_{n=1}^{\infty} \mu(A_n)$ (σ-可加性)
-
-**勒贝格测度 / Lebesgue Measure:**
-
-$\mathbb{R}^n$ 上的标准测度。
-
-The standard measure on $\mathbb{R}^n$.
-
-### 6.3 积分 / Integration
-
-**勒贝格积分 / Lebesgue Integral:**
-
-$$\int_X f \, d\mu = \lim_{n \rightarrow \infty} \int_X f_n \, d\mu$$
-
-其中 $(f_n)$ 是简单函数的递增序列。
-
-where $(f_n)$ is an increasing sequence of simple functions.
+$$T_p M = \{\text{derivations at } p\}$$
 
 ---
 
-## 7. 概率论 / Probability Theory
+## 4. 微分几何 / Differential Geometry
 
-### 7.1 概率空间 / Probability Space
+### 4.1 流形 / Manifolds
+
+**流形 / Manifold:**
+
+$n$ 维流形是局部同胚于 $\mathbb{R}^n$ 的拓扑空间。
+
+$n$-dimensional manifold is a topological space locally homeomorphic to $\mathbb{R}^n$.
+
+**坐标图 / Coordinate Chart:**
+
+$$(U, \phi): U \subseteq M \rightarrow \mathbb{R}^n$$
+
+**光滑函数 / Smooth Function:**
+
+函数 $f: M \rightarrow \mathbb{R}$ 是光滑的，如果：
+
+Function $f: M \rightarrow \mathbb{R}$ is smooth if:
+
+$$f \circ \phi^{-1}: \mathbb{R}^n \rightarrow \mathbb{R} \text{ is smooth}$$
+
+### 4.2 切丛与余切丛 / Tangent and Cotangent Bundles
+
+**切丛 / Tangent Bundle:**
+
+$$TM = \bigcup_{p \in M} T_p M$$
+
+**余切丛 / Cotangent Bundle:**
+
+$$T^*M = \bigcup_{p \in M} T_p^* M$$
+
+**微分形式 / Differential Form:**
+
+$$\omega = \sum_{i_1 < \cdots < i_k} a_{i_1 \cdots i_k} dx^{i_1} \wedge \cdots \wedge dx^{i_k}$$
+
+### 4.3 黎曼几何 / Riemannian Geometry
+
+**黎曼度量 / Riemannian Metric:**
+
+$$g: T_p M \times T_p M \rightarrow \mathbb{R}$$
+
+**测地线 / Geodesic:**
+
+$$\nabla_{\dot{\gamma}} \dot{\gamma} = 0$$
+
+**曲率 / Curvature:**
+
+$$R(X,Y)Z = \nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z$$
+
+---
+
+## 5. 概率论 / Probability Theory
+
+### 5.1 概率空间 / Probability Spaces
 
 **概率空间 / Probability Space:**
 
-$(\Omega, \mathcal{F}, P)$ 其中：
+概率空间 $(\Omega, \mathcal{F}, P)$ 包含：
 
-- $\Omega$ 是样本空间 / sample space
-- $\mathcal{F}$ 是事件 σ-代数 / event σ-algebra
-- $P$ 是概率测度 / probability measure
+Probability space $(\Omega, \mathcal{F}, P)$ contains:
+
+- $\Omega$: 样本空间 / sample space
+- $\mathcal{F}$: $\sigma$-代数 / $\sigma$-algebra
+- $P$: 概率测度 / probability measure
 
 **概率测度 / Probability Measure:**
 
-$P: \mathcal{F} \rightarrow [0,1]$ 满足：
+$$P: \mathcal{F} \rightarrow [0,1]$$
 
-$P: \mathcal{F} \rightarrow [0,1]$ satisfies:
+满足：
+
+satisfying:
 
 1. $P(\Omega) = 1$
-2. $P(\bigcup_{n=1}^{\infty} A_n) = \sum_{n=1}^{\infty} P(A_n)$ (对互斥事件)
+2. $P(\bigcup_{i=1}^{\infty} A_i) = \sum_{i=1}^{\infty} P(A_i)$ (可数可加性)
 
-### 7.2 随机变量 / Random Variables
+### 5.2 随机变量 / Random Variables
 
 **随机变量 / Random Variable:**
 
-$X: \Omega \rightarrow \mathbb{R}$ 是随机变量，如果 $X^{-1}(B) \in \mathcal{F}$ 对所有博雷尔集 $B$。
+$$X: \Omega \rightarrow \mathbb{R}$$
 
-$X: \Omega \rightarrow \mathbb{R}$ is a random variable if $X^{-1}(B) \in \mathcal{F}$ for all Borel sets $B$.
+**分布函数 / Distribution Function:**
+
+$$F_X(x) = P(X \leq x)$$
 
 **期望 / Expectation:**
 
-$$E[X] = \int_{\Omega} X \, dP$$
+$$\mathbb{E}[X] = \int_{\Omega} X(\omega) dP(\omega)$$
 
 **方差 / Variance:**
 
-$$\text{Var}(X) = E[(X - E[X])^2]$$
+$$\text{Var}(X) = \mathbb{E}[(X - \mathbb{E}[X])^2]$$
 
-### 7.3 条件概率 / Conditional Probability
+### 5.3 随机过程 / Stochastic Processes
 
-**条件概率 / Conditional Probability:**
+**随机过程 / Stochastic Process:**
 
-$$P(A \mid B) = \frac{P(A \cap B)}{P(B)}$$
+$$\{X_t : t \in T\}$$
 
-**贝叶斯定理 / Bayes' Theorem:**
+**马尔可夫性质 / Markov Property:**
 
-$$P(A \mid B) = \frac{P(B \mid A) P(A)}{P(B)}$$
+$$P(X_{t+1} | X_t, X_{t-1}, \ldots) = P(X_{t+1} | X_t)$$
+
+**布朗运动 / Brownian Motion:**
+
+$$W_t - W_s \sim \mathcal{N}(0, t-s)$$
 
 ---
 
-## 8. 信息论 / Information Theory
+## 6. 统计学 / Statistics
 
-### 8.1 熵 / Entropy
+### 6.1 描述统计 / Descriptive Statistics
+
+**样本均值 / Sample Mean:**
+
+$$\bar{x} = \frac{1}{n} \sum_{i=1}^n x_i$$
+
+**样本方差 / Sample Variance:**
+
+$$s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2$$
+
+**样本相关系数 / Sample Correlation:**
+
+$$r = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2} \sqrt{\sum_{i=1}^n (y_i - \bar{y})^2}}$$
+
+### 6.2 推断统计 / Inferential Statistics
+
+**置信区间 / Confidence Interval:**
+
+$$P(\theta \in [L, U]) = 1 - \alpha$$
+
+**假设检验 / Hypothesis Testing:**
+
+$$H_0: \theta = \theta_0 \quad \text{vs} \quad H_1: \theta \neq \theta_0$$
+
+**p值 / p-value:**
+
+$$p = P(T \geq t_{\text{obs}} | H_0)$$
+
+### 6.3 贝叶斯统计 / Bayesian Statistics
+
+**贝叶斯定理 / Bayes' Theorem:**
+
+$$P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}$$
+
+**后验分布 / Posterior Distribution:**
+
+$$P(\theta | D) \propto P(D | \theta) P(\theta)$$
+
+**最大后验估计 / Maximum A Posteriori:**
+
+$$\hat{\theta}_{\text{MAP}} = \arg\max_{\theta} P(\theta | D)$$
+
+---
+
+## 7. 信息论 / Information Theory
+
+### 7.1 熵与信息 / Entropy and Information
 
 **香农熵 / Shannon Entropy:**
 
 $$H(X) = -\sum_{i=1}^n p_i \log p_i$$
 
-其中 $p_i$ 是随机变量 $X$ 取第 $i$ 个值的概率。
-
-where $p_i$ is the probability that random variable $X$ takes the $i$-th value.
-
-**联合熵 / Joint Entropy:**
-
-$$H(X,Y) = -\sum_{i,j} p_{ij} \log p_{ij}$$
-
 **条件熵 / Conditional Entropy:**
 
-$$H(X \mid Y) = H(X,Y) - H(Y)$$
-
-### 8.2 互信息 / Mutual Information
+$$H(X|Y) = -\sum_{i,j} p_{ij} \log p_{i|j}$$
 
 **互信息 / Mutual Information:**
 
-$$I(X;Y) = H(X) - H(X \mid Y) = H(Y) - H(Y \mid X)$$
+$$I(X;Y) = H(X) - H(X|Y)$$
 
-**相对熵 / Relative Entropy (KL散度):**
+### 7.2 信道容量 / Channel Capacity
 
-$$D_{KL}(P \parallel Q) = \sum_i p_i \log \frac{p_i}{q_i}$$
+**信道容量 / Channel Capacity:**
+
+$$C = \max_{p(x)} I(X;Y)$$
+
+**噪声信道定理 / Noisy Channel Theorem:**
+
+对于任何 $\epsilon > 0$，存在编码方案使得：
+
+For any $\epsilon > 0$, there exists coding scheme such that:
+
+$$R < C - \epsilon \Rightarrow P_e < \epsilon$$
+
+### 7.3 编码理论 / Coding Theory
+
+**线性码 / Linear Code:**
+
+$$C = \{c \in \mathbb{F}_q^n : c = mG\}$$
+
+其中 $G$ 是生成矩阵。
+
+where $G$ is generator matrix.
+
+**汉明距离 / Hamming Distance:**
+
+$$d_H(x,y) = |\{i : x_i \neq y_i\}|$$
 
 ---
 
-## 9. 优化理论 / Optimization Theory
+## 8. 优化理论 / Optimization Theory
 
-### 9.1 凸优化 / Convex Optimization
-
-**凸集 / Convex Set:**
-
-集合 $C$ 是凸的，如果：
-
-A set $C$ is convex if:
-
-$$\lambda x + (1-\lambda) y \in C \text{ for all } x,y \in C, \lambda \in [0,1]$$
+### 8.1 凸优化 / Convex Optimization
 
 **凸函数 / Convex Function:**
 
-函数 $f$ 是凸的，如果：
+$$f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y)$$
 
-A function $f$ is convex if:
+**凸优化问题 / Convex Optimization Problem:**
 
-$$f(\lambda x + (1-\lambda) y) \leq \lambda f(x) + (1-\lambda) f(y)$$
-
-### 9.2 拉格朗日乘数法 / Lagrange Multipliers
-
-**拉格朗日函数 / Lagrangian:**
-
-$$L(x, \lambda) = f(x) + \sum_{i=1}^m \lambda_i g_i(x)$$
+$$\min_{x \in \mathcal{X}} f(x) \quad \text{s.t.} \quad g_i(x) \leq 0, h_j(x) = 0$$
 
 **KKT条件 / KKT Conditions:**
 
-对于优化问题 $\min f(x)$ s.t. $g_i(x) \leq 0$：
+$$\nabla f(x^*) + \sum_i \lambda_i \nabla g_i(x^*) + \sum_j \mu_j \nabla h_j(x^*) = 0$$
 
-For optimization problem $\min f(x)$ s.t. $g_i(x) \leq 0$:
+### 8.2 非凸优化 / Non-Convex Optimization
 
-1. $\nabla f(x) + \sum_{i=1}^m \lambda_i \nabla g_i(x) = 0$
-2. $\lambda_i g_i(x) = 0$ (互补松弛性)
-3. $\lambda_i \geq 0$
+**局部最优 / Local Optimum:**
 
----
+$$\exists \epsilon > 0, \forall x \in B(x^*, \epsilon), f(x^*) \leq f(x)$$
 
-## 10. 范畴论 / Category Theory
+**梯度下降 / Gradient Descent:**
 
-### 10.1 基本概念 / Basic Concepts
+$$x_{t+1} = x_t - \alpha \nabla f(x_t)$$
 
-**范畴 / Category:**
+**随机梯度下降 / Stochastic Gradient Descent:**
 
-范畴 $\mathcal{C}$ 包含：
+$$x_{t+1} = x_t - \alpha \nabla f(x_t, \xi_t)$$
 
-A category $\mathcal{C}$ consists of:
+### 8.3 随机优化 / Stochastic Optimization
 
-1. 对象集合 / a collection of objects
-2. 态射集合 / a collection of morphisms
-3. 复合运算 / composition operation
-4. 单位态射 / identity morphisms
+**随机优化问题 / Stochastic Optimization Problem:**
 
-**函子 / Functor:**
+$$\min_{x} \mathbb{E}[f(x, \xi)]$$
 
-函子 $F: \mathcal{C} \rightarrow \mathcal{D}$ 将对象和态射映射到目标范畴。
+**样本平均近似 / Sample Average Approximation:**
 
-A functor $F: \mathcal{C} \rightarrow \mathcal{D}$ maps objects and morphisms to the target category.
-
-### 10.2 自然变换 / Natural Transformations
-
-**自然变换 / Natural Transformation:**
-
-自然变换 $\eta: F \rightarrow G$ 是态射族 $\{\eta_A: F(A) \rightarrow G(A)\}$，满足：
-
-A natural transformation $\eta: F \rightarrow G$ is a family of morphisms $\{\eta_A: F(A) \rightarrow G(A)\}$ satisfying:
-
-$$G(f) \circ \eta_A = \eta_B \circ F(f)$$
-
-### 10.3 极限与余极限 / Limits and Colimits
-
-**极限 / Limit:**
-
-对象 $L$ 和自然变换 $\pi: \Delta L \rightarrow F$ 构成 $F$ 的极限，如果：
-
-Object $L$ and natural transformation $\pi: \Delta L \rightarrow F$ form a limit of $F$ if:
-
-$$\text{Hom}(X, L) \cong \text{Cone}(X, F)$$
-
-**余极限 / Colimit:**
-
-对象 $C$ 和自然变换 $\iota: F \rightarrow \Delta C$ 构成 $F$ 的余极限。
-
-Object $C$ and natural transformation $\iota: F \rightarrow \Delta C$ form a colimit of $F$.
+$$\min_{x} \frac{1}{N} \sum_{i=1}^N f(x, \xi_i)$$
 
 ---
 
@@ -615,236 +509,570 @@ Object $C$ and natural transformation $\iota: F \rightarrow \Delta C$ form a col
 ### Rust实现：线性代数库
 
 ```rust
-use std::ops::{Add, Mul, Sub};
+use std::ops::{Add, Sub, Mul, Div};
 
 #[derive(Debug, Clone)]
-struct Vector<T> {
-    data: Vec<T>,
+struct Vector {
+    data: Vec<f64>,
 }
 
-impl<T: Copy + Add<Output = T> + Sub<Output = T> + Mul<Output = T> + Default> Vector<T> {
-    fn new(data: Vec<T>) -> Self {
+impl Vector {
+    fn new(data: Vec<f64>) -> Self {
         Vector { data }
     }
     
-    fn dot_product(&self, other: &Vector<T>) -> Option<T> {
-        if self.data.len() != other.data.len() {
-            return None;
-        }
-        
-        let mut result = T::default();
-        for (a, b) in self.data.iter().zip(other.data.iter()) {
-            result = result + *a * *b;
-        }
-        Some(result)
+    fn zeros(n: usize) -> Self {
+        Vector { data: vec![0.0; n] }
     }
     
-    fn norm(&self) -> f64 
-    where T: Into<f64> {
-        let sum_squares: f64 = self.data.iter()
-            .map(|&x| x.into().powi(2))
-            .sum();
-        sum_squares.sqrt()
+    fn ones(n: usize) -> Self {
+        Vector { data: vec![1.0; n] }
+    }
+    
+    fn dot(&self, other: &Vector) -> f64 {
+        if self.data.len() != other.data.len() {
+            panic!("Vector dimensions must match");
+        }
+        
+        self.data.iter()
+            .zip(other.data.iter())
+            .map(|(a, b)| a * b)
+            .sum()
+    }
+    
+    fn norm(&self) -> f64 {
+        self.dot(self).sqrt()
+    }
+    
+    fn normalize(&self) -> Vector {
+        let norm = self.norm();
+        if norm == 0.0 {
+            return self.clone();
+        }
+        Vector {
+            data: self.data.iter().map(|x| x / norm).collect()
+        }
+    }
+}
+
+impl Add for Vector {
+    type Output = Vector;
+    
+    fn add(self, other: Vector) -> Vector {
+        if self.data.len() != other.data.len() {
+            panic!("Vector dimensions must match");
+        }
+        
+        Vector {
+            data: self.data.iter()
+                .zip(other.data.iter())
+                .map(|(a, b)| a + b)
+                .collect()
+        }
+    }
+}
+
+impl Sub for Vector {
+    type Output = Vector;
+    
+    fn sub(self, other: Vector) -> Vector {
+        if self.data.len() != other.data.len() {
+            panic!("Vector dimensions must match");
+        }
+        
+        Vector {
+            data: self.data.iter()
+                .zip(other.data.iter())
+                .map(|(a, b)| a - b)
+                .collect()
+        }
+    }
+}
+
+impl Mul<f64> for Vector {
+    type Output = Vector;
+    
+    fn mul(self, scalar: f64) -> Vector {
+        Vector {
+            data: self.data.iter().map(|x| x * scalar).collect()
+        }
     }
 }
 
 #[derive(Debug, Clone)]
-struct Matrix<T> {
-    data: Vec<Vec<T>>,
+struct Matrix {
+    data: Vec<Vec<f64>>,
     rows: usize,
     cols: usize,
 }
 
-impl<T: Copy + Add<Output = T> + Mul<Output = T> + Default> Matrix<T> {
-    fn new(data: Vec<Vec<T>>) -> Option<Self> {
-        if data.is_empty() || data[0].is_empty() {
-            return None;
-        }
-        
+impl Matrix {
+    fn new(data: Vec<Vec<f64>>) -> Self {
         let rows = data.len();
-        let cols = data[0].len();
+        let cols = if rows > 0 { data[0].len() } else { 0 };
         
         // 检查所有行长度一致
-        if data.iter().any(|row| row.len() != cols) {
-            return None;
-        }
-        
-        Some(Matrix { data, rows, cols })
-    }
-    
-    fn multiply(&self, other: &Matrix<T>) -> Option<Matrix<T>> {
-        if self.cols != other.rows {
-            return None;
-        }
-        
-        let mut result = vec![vec![T::default(); other.cols]; self.rows];
-        
-        for i in 0..self.rows {
-            for j in 0..other.cols {
-                for k in 0..self.cols {
-                    result[i][j] = result[i][j] + self.data[i][k] * other.data[k][j];
-                }
+        for row in &data {
+            if row.len() != cols {
+                panic!("All rows must have the same length");
             }
         }
         
-        Matrix::new(result)
+        Matrix { data, rows, cols }
     }
     
-    fn determinant(&self) -> Option<T> 
-    where T: Into<f64> + From<f64> {
+    fn zeros(rows: usize, cols: usize) -> Self {
+        Matrix {
+            data: vec![vec![0.0; cols]; rows],
+            rows,
+            cols,
+        }
+    }
+    
+    fn identity(n: usize) -> Self {
+        let mut data = vec![vec![0.0; n]; n];
+        for i in 0..n {
+            data[i][i] = 1.0;
+        }
+        Matrix { data, rows: n, cols: n }
+    }
+    
+    fn get(&self, i: usize, j: usize) -> f64 {
+        if i >= self.rows || j >= self.cols {
+            panic!("Index out of bounds");
+        }
+        self.data[i][j]
+    }
+    
+    fn set(&mut self, i: usize, j: usize, value: f64) {
+        if i >= self.rows || j >= self.cols {
+            panic!("Index out of bounds");
+        }
+        self.data[i][j] = value;
+    }
+    
+    fn transpose(&self) -> Matrix {
+        let mut transposed = vec![vec![0.0; self.rows]; self.cols];
+        
+        for i in 0..self.rows {
+            for j in 0..self.cols {
+                transposed[j][i] = self.data[i][j];
+            }
+        }
+        
+        Matrix {
+            data: transposed,
+            rows: self.cols,
+            cols: self.rows,
+        }
+    }
+    
+    fn determinant(&self) -> f64 {
+        if self.rows != self.cols {
+            panic!("Determinant only defined for square matrices");
+        }
+        
+        if self.rows == 1 {
+            return self.data[0][0];
+        }
+        
+        if self.rows == 2 {
+            return self.data[0][0] * self.data[1][1] - self.data[0][1] * self.data[1][0];
+        }
+        
+        // 递归计算行列式
+        let mut det = 0.0;
+        for j in 0..self.cols {
+            let minor = self.minor(0, j);
+            det += self.data[0][j] * minor.determinant() * if j % 2 == 0 { 1.0 } else { -1.0 };
+        }
+        
+        det
+    }
+    
+    fn minor(&self, row: usize, col: usize) -> Matrix {
+        let mut minor_data = Vec::new();
+        
+        for i in 0..self.rows {
+            if i == row { continue; }
+            let mut row_data = Vec::new();
+            for j in 0..self.cols {
+                if j == col { continue; }
+                row_data.push(self.data[i][j]);
+            }
+            minor_data.push(row_data);
+        }
+        
+        Matrix::new(minor_data)
+    }
+    
+    fn inverse(&self) -> Option<Matrix> {
         if self.rows != self.cols {
             return None;
         }
         
-        // 简化的行列式计算（仅适用于2x2和3x3矩阵）
-        match self.rows {
-            2 => {
-                let a = self.data[0][0];
-                let b = self.data[0][1];
-                let c = self.data[1][0];
-                let d = self.data[1][1];
-                Some(a * d - b * c)
-            },
-            3 => {
-                // 3x3行列式计算
-                let a = self.data[0][0];
-                let b = self.data[0][1];
-                let c = self.data[0][2];
-                let d = self.data[1][0];
-                let e = self.data[1][1];
-                let f = self.data[1][2];
-                let g = self.data[2][0];
-                let h = self.data[2][1];
-                let i = self.data[2][2];
-                
-                Some(a * (e * i - f * h) - b * (d * i - f * g) + c * (d * h - e * g))
-            },
-            _ => None, // 更高维度的行列式计算需要更复杂的算法
+        let det = self.determinant();
+        if det == 0.0 {
+            return None;
         }
+        
+        let mut adjoint = Matrix::zeros(self.rows, self.cols);
+        
+        for i in 0..self.rows {
+            for j in 0..self.cols {
+                let minor = self.minor(i, j);
+                let cofactor = minor.determinant() * if (i + j) % 2 == 0 { 1.0 } else { -1.0 };
+                adjoint.set(j, i, cofactor / det);
+            }
+        }
+        
+        Some(adjoint)
     }
 }
 
+impl Mul for Matrix {
+    type Output = Matrix;
+    
+    fn mul(self, other: Matrix) -> Matrix {
+        if self.cols != other.rows {
+            panic!("Matrix dimensions incompatible for multiplication");
+        }
+        
+        let mut result = Matrix::zeros(self.rows, other.cols);
+        
+        for i in 0..self.rows {
+            for j in 0..other.cols {
+                let mut sum = 0.0;
+                for k in 0..self.cols {
+                    sum += self.data[i][k] * other.data[k][j];
+                }
+                result.set(i, j, sum);
+            }
+        }
+        
+        result
+    }
+}
+
+// 特征值计算（简化版）
+impl Matrix {
+    fn eigenvalues(&self) -> Vec<f64> {
+        if self.rows != self.cols {
+            panic!("Eigenvalues only defined for square matrices");
+        }
+        
+        // 简化的幂迭代方法
+        let mut eigenvalues = Vec::new();
+        let mut matrix = self.clone();
+        
+        for _ in 0..self.rows {
+            // 使用幂迭代找到最大特征值
+            let mut vector = Vector::ones(self.rows);
+            
+            for _ in 0..100 {
+                let new_vector = matrix_vector_multiply(&matrix, &vector);
+                let norm = new_vector.norm();
+                if norm == 0.0 { break; }
+                vector = new_vector.normalize();
+            }
+            
+            let eigenvalue = matrix_vector_multiply(&matrix, &vector).dot(&vector);
+            eigenvalues.push(eigenvalue);
+            
+            // 从矩阵中减去这个特征值的影响（简化）
+            // 在实际实现中，这里应该使用更复杂的算法
+        }
+        
+        eigenvalues
+    }
+}
+
+fn matrix_vector_multiply(matrix: &Matrix, vector: &Vector) -> Vector {
+    if matrix.cols != vector.data.len() {
+        panic!("Matrix and vector dimensions incompatible");
+    }
+    
+    let mut result = vec![0.0; matrix.rows];
+    
+    for i in 0..matrix.rows {
+        for j in 0..matrix.cols {
+            result[i] += matrix.data[i][j] * vector.data[j];
+        }
+    }
+    
+    Vector { data: result }
+}
+
 fn main() {
-    // 向量示例
+    // 测试向量运算
     let v1 = Vector::new(vec![1.0, 2.0, 3.0]);
     let v2 = Vector::new(vec![4.0, 5.0, 6.0]);
     
-    println!("向量点积: {:?}", v1.dot_product(&v2));
-    println!("向量范数: {}", v1.norm());
+    println!("v1: {:?}", v1);
+    println!("v2: {:?}", v2);
+    println!("v1 + v2: {:?}", v1.clone() + v2.clone());
+    println!("v1 · v2: {}", v1.dot(&v2));
+    println!("||v1||: {}", v1.norm());
     
-    // 矩阵示例
+    // 测试矩阵运算
     let m1 = Matrix::new(vec![
         vec![1.0, 2.0],
         vec![3.0, 4.0]
-    ]).unwrap();
+    ]);
     
     let m2 = Matrix::new(vec![
         vec![5.0, 6.0],
         vec![7.0, 8.0]
-    ]).unwrap();
+    ]);
     
-    println!("矩阵乘法: {:?}", m1.multiply(&m2));
-    println!("矩阵行列式: {:?}", m1.determinant());
+    println!("\nm1: {:?}", m1);
+    println!("m2: {:?}", m2);
+    println!("m1 * m2: {:?}", m1.clone() * m2.clone());
+    println!("det(m1): {}", m1.determinant());
+    
+    if let Some(inverse) = m1.inverse() {
+        println!("m1^(-1): {:?}", inverse);
+    }
+    
+    // 测试特征值
+    let eigenvalues = m1.eigenvalues();
+    println!("Eigenvalues of m1: {:?}", eigenvalues);
+    
+    println!("\n线性代数库演示完成！");
 }
 ```
 
-### Haskell实现：概率论基础
+### Haskell实现：概率分布
 
 ```haskell
 import Data.List (foldl')
 import System.Random
 
--- 概率分布
-data Probability = Probability { prob :: Double } deriving Show
+-- 概率分布类型
+data ProbabilityDistribution a = ProbabilityDistribution {
+    samples :: [a],
+    weights :: [Double]
+} deriving Show
 
-instance Num Probability where
-    (Probability p1) + (Probability p2) = Probability (p1 + p2)
-    (Probability p1) * (Probability p2) = Probability (p1 * p2)
-    abs (Probability p) = Probability (abs p)
-    signum (Probability p) = Probability (signum p)
-    fromInteger n = Probability (fromInteger n)
-    negate (Probability p) = Probability (negate p)
-
--- 随机变量
-data RandomVariable a = RV { 
-    outcomes :: [(a, Probability)],
-    expectation :: Double,
+-- 连续分布类型
+data ContinuousDistribution = ContinuousDistribution {
+    pdf :: Double -> Double,  -- 概率密度函数
+    cdf :: Double -> Double,  -- 累积分布函数
+    mean :: Double,
     variance :: Double
 } deriving Show
 
--- 创建随机变量
-createRV :: [(a, Double)] -> RandomVariable a
-createRV outcomes = RV {
-    outcomes = map (\(x, p) -> (x, Probability p)) outcomes,
-    expectation = sum [x * p | (x, p) <- outcomes],
-    variance = sum [(x - expectation) ^ 2 * p | (x, p) <- outcomes]
+-- 离散分布类型
+data DiscreteDistribution = DiscreteDistribution {
+    pmf :: Int -> Double,     -- 概率质量函数
+    support :: [Int],         -- 支撑集
+    discreteMean :: Double,
+    discreteVariance :: Double
+} deriving Show
+
+-- 创建均匀分布
+uniformDistribution :: Double -> Double -> ContinuousDistribution
+uniformDistribution a b = ContinuousDistribution {
+    pdf = \x -> if x >= a && x <= b then 1.0 / (b - a) else 0.0,
+    cdf = \x -> if x < a then 0.0 else if x > b then 1.0 else (x - a) / (b - a),
+    mean = (a + b) / 2.0,
+    variance = (b - a) ^ 2 / 12.0
 }
-where
-    expectation = sum [x * p | (x, p) <- outcomes]
 
--- 伯努利分布
-bernoulli :: Double -> RandomVariable Bool
-bernoulli p = createRV [(True, p), (False, 1 - p)]
+-- 创建正态分布
+normalDistribution :: Double -> Double -> ContinuousDistribution
+normalDistribution mu sigma = ContinuousDistribution {
+    pdf = \x -> (1.0 / (sigma * sqrt (2 * pi))) * exp (-((x - mu) ^ 2) / (2 * sigma ^ 2)),
+    cdf = \x -> 0.5 * (1.0 + erf ((x - mu) / (sigma * sqrt 2))),
+    mean = mu,
+    variance = sigma ^ 2
+}
+  where
+    erf :: Double -> Double
+    erf x = 2.0 / sqrt pi * integrate (\t -> exp (-t ^ 2)) 0 x
 
--- 二项分布
-binomial :: Int -> Double -> RandomVariable Int
-binomial n p = createRV [(k, prob) | k <- [0..n]]
-where
-    prob = fromIntegral (choose n k) * p^k * (1-p)^(n-k)
-    choose n k = product [n-k+1..n] `div` product [1..k]
+-- 数值积分
+integrate :: (Double -> Double) -> Double -> Double -> Double
+integrate f a b =
+    let n = 1000
+        h = (b - a) / fromIntegral n
+        xs = [a + fromIntegral i * h | i <- [0..n]]
+    in h * sum [f x | x <- xs] - h * (f a + f b) / 2.0
 
--- 正态分布近似
-normalApprox :: Double -> Double -> RandomVariable Double
-normalApprox mu sigma = createRV [(x, density x) | x <- [-3*sigma..3*sigma]]
-where
-    density x = exp (-((x - mu)^2) / (2 * sigma^2)) / (sigma * sqrt (2 * pi))
+-- 创建泊松分布
+poissonDistribution :: Double -> DiscreteDistribution
+poissonDistribution lambda = DiscreteDistribution {
+    pmf = \k -> if k < 0 then 0.0 else (lambda ^ k * exp (-lambda)) / fromIntegral (factorial k),
+    support = [0..],
+    discreteMean = lambda,
+    discreteVariance = lambda
+}
+  where
+    factorial :: Int -> Int
+    factorial 0 = 1
+    factorial n = n * factorial (n - 1)
 
--- 条件概率
-conditionalProb :: Eq a => RandomVariable a -> a -> a -> Double
-conditionalProb rv a b = case lookup a (outcomes rv) of
-    Just (Probability p_a) -> case lookup b (outcomes rv) of
-        Just (Probability p_b) -> prob (Probability p_a * Probability p_b) / prob p_b
-        Nothing -> 0
-    Nothing -> 0
+-- 创建二项分布
+binomialDistribution :: Int -> Double -> DiscreteDistribution
+binomialDistribution n p = DiscreteDistribution {
+    pmf = \k -> if k < 0 || k > n then 0.0 
+                else fromIntegral (choose n k) * p ^ k * (1 - p) ^ (n - k),
+    support = [0..n],
+    discreteMean = fromIntegral n * p,
+    discreteVariance = fromIntegral n * p * (1 - p)
+}
+  where
+    choose :: Int -> Int -> Int
+    choose n k = factorial n `div` (factorial k * factorial (n - k))
 
--- 信息熵
-entropy :: RandomVariable a -> Double
-entropy rv = -sum [p * logBase 2 p | (_, Probability p) <- outcomes rv, p > 0]
+-- 随机采样
+sampleFromDistribution :: ProbabilityDistribution a -> IO a
+sampleFromDistribution dist = do
+    let totalWeight = sum (weights dist)
+        normalizedWeights = map (/ totalWeight) (weights dist)
+        cumulativeWeights = scanl1 (+) normalizedWeights
+    
+    random <- randomRIO (0.0, 1.0)
+    
+    let index = findIndex random cumulativeWeights
+    return $ samples dist !! index
+  where
+    findIndex :: Double -> [Double] -> Int
+    findIndex r weights = 
+        case dropWhile (< r) (zip [0..] weights) of
+            ((i, _):_) -> i
+            [] -> length weights - 1
 
--- 互信息
-mutualInformation :: (Eq a, Eq b) => RandomVariable (a, b) -> RandomVariable a -> RandomVariable b -> Double
-mutualInformation joint_rv rv_x rv_y = entropy rv_x + entropy rv_y - entropy joint_rv
+-- 蒙特卡洛积分
+monteCarloIntegral :: (Double -> Double) -> Double -> Double -> Int -> IO Double
+monteCarloIntegral f a b n = do
+    samples <- replicateM n (randomRIO (a, b))
+    let values = map f samples
+        integral = (b - a) * sum values / fromIntegral n
+    return integral
 
--- 示例
+-- 期望值计算
+expectation :: (a -> Double) -> ProbabilityDistribution a -> Double
+expectation f dist =
+    let weightedSum = sum [f x * w | (x, w) <- zip (samples dist) (weights dist)]
+        totalWeight = sum (weights dist)
+    in weightedSum / totalWeight
+
+-- 方差计算
+variance :: (a -> Double) -> ProbabilityDistribution a -> Double
+variance f dist =
+    let mu = expectation f dist
+        squaredDiff = expectation (\x -> (f x - mu) ^ 2) dist
+    in squaredDiff
+
+-- 协方差计算
+covariance :: (a -> Double) -> (a -> Double) -> ProbabilityDistribution a -> Double
+covariance f g dist =
+    let mu_f = expectation f dist
+        mu_g = expectation g dist
+        crossProduct = expectation (\x -> (f x - mu_f) * (g x - mu_g)) dist
+    in crossProduct
+
+-- 贝叶斯更新
+bayesianUpdate :: ProbabilityDistribution Double -> (Double -> Double) -> ProbabilityDistribution Double
+bayesianUpdate prior likelihood =
+    let newWeights = zipWith (*) (weights prior) (map likelihood (samples prior))
+        totalWeight = sum newWeights
+        normalizedWeights = map (/ totalWeight) newWeights
+    in ProbabilityDistribution (samples prior) normalizedWeights
+
+-- 马尔可夫链蒙特卡洛 (MCMC)
+mcmc :: (Double -> Double) -> Double -> Int -> IO [Double]
+mcmc targetDistribution initialValue n = do
+    let step current = do
+            proposal <- randomRIO (current - 1.0, current + 1.0)
+            acceptanceRatio <- randomRIO (0.0, 1.0)
+            
+            let ratio = targetDistribution proposal / targetDistribution current
+            if acceptanceRatio < min 1.0 ratio
+                then return proposal
+                else return current
+    
+    foldM (\chain _ -> do
+        newValue <- step (last chain)
+        return $ chain ++ [newValue]
+    ) [initialValue] [1..n]
+
+-- 信息论函数
+entropy :: ProbabilityDistribution a -> Double
+entropy dist =
+    let normalizedWeights = map (/ sum (weights dist)) (weights dist)
+        logWeights = map (\w -> if w > 0 then -w * log w else 0.0) normalizedWeights
+    in sum logWeights
+
+klDivergence :: ProbabilityDistribution a -> ProbabilityDistribution a -> Double
+klDivergence p q =
+    let normalizedP = map (/ sum (weights p)) (weights p)
+        normalizedQ = map (/ sum (weights q)) (weights q)
+        klTerms = zipWith (\pi qi -> if pi > 0 && qi > 0 then pi * log (pi / qi) else 0.0) normalizedP normalizedQ
+    in sum klTerms
+
+-- 主函数
 main :: IO ()
 main = do
-    let coin = bernoulli 0.5
-    let dice = createRV [(i, 1/6) | i <- [1..6]]
+    putStrLn "概率论与统计学演示"
     
-    putStrLn "伯努利分布 (p=0.5):"
-    print coin
+    -- 创建概率分布
+    let uniform = uniformDistribution 0.0 1.0
+        normal = normalDistribution 0.0 1.0
+        poisson = poissonDistribution 3.0
+        binomial = binomialDistribution 10 0.5
     
-    putStrLn "\n六面骰子分布:"
-    print dice
+    putStrLn "\n连续分布:"
+    putStrLn $ "均匀分布均值: " ++ show (mean uniform)
+    putStrLn $ "均匀分布方差: " ++ show (variance uniform)
+    putStrLn $ "正态分布均值: " ++ show (mean normal)
+    putStrLn $ "正态分布方差: " ++ show (variance normal)
     
-    putStrLn $ "\n硬币熵: " ++ show (entropy coin)
-    putStrLn $ "骰子熵: " ++ show (entropy dice)
+    putStrLn "\n离散分布:"
+    putStrLn $ "泊松分布均值: " ++ show (discreteMean poisson)
+    putStrLn $ "泊松分布方差: " ++ show (discreteVariance poisson)
+    putStrLn $ "二项分布均值: " ++ show (discreteMean binomial)
+    putStrLn $ "二项分布方差: " ++ show (discreteVariance binomial)
+    
+    -- 蒙特卡洛积分
+    let f x = x ^ 2  -- 积分 x^2 from 0 to 1
+    integral <- monteCarloIntegral f 0.0 1.0 10000
+    putStrLn $ "\n蒙特卡洛积分 ∫x²dx from 0 to 1: " ++ show integral
+    putStrLn $ "理论值: 1/3 ≈ " ++ show (1.0 / 3.0)
+    
+    -- 创建离散概率分布
+    let dist = ProbabilityDistribution [1, 2, 3, 4, 5] [0.1, 0.2, 0.3, 0.2, 0.2]
+    
+    putStrLn "\n离散分布:"
+    putStrLn $ "分布: " ++ show dist
+    putStrLn $ "熵: " ++ show (entropy dist)
+    
+    -- 贝叶斯更新示例
+    let prior = ProbabilityDistribution [0.1, 0.3, 0.5, 0.7, 0.9] [1.0, 1.0, 1.0, 1.0, 1.0]
+        likelihood x = if x > 0.5 then 0.8 else 0.2
+        posterior = bayesianUpdate prior likelihood
+    
+    putStrLn "\n贝叶斯更新:"
+    putStrLn $ "先验: " ++ show (weights prior)
+    putStrLn $ "后验: " ++ show (weights posterior)
+    
+    putStrLn "\n概率论与统计学演示完成！"
 ```
 
 ---
 
 ## 参考文献 / References
 
-1. Rudin, W. (1976). *Principles of Mathematical Analysis*. McGraw-Hill.
-2. Axler, S. (2015). *Linear Algebra Done Right*. Springer.
-3. Conway, J. B. (1990). *A Course in Functional Analysis*. Springer.
-4. Munkres, J. R. (2000). *Topology*. Prentice Hall.
-5. Folland, G. B. (1999). *Real Analysis: Modern Techniques and Their Applications*. Wiley.
-6. Billingsley, P. (1995). *Probability and Measure*. Wiley.
+1. Halmos, P. R. (1974). *Naive Set Theory*. Springer.
+2. Dummit, D. S., & Foote, R. M. (2004). *Abstract Algebra*. Wiley.
+3. Munkres, J. R. (2000). *Topology*. Prentice Hall.
+4. Do Carmo, M. P. (1992). *Riemannian Geometry*. Birkhäuser.
+5. Billingsley, P. (1995). *Probability and Measure*. Wiley.
+6. Casella, G., & Berger, R. L. (2002). *Statistical Inference*. Duxbury.
 7. Cover, T. M., & Thomas, J. A. (2006). *Elements of Information Theory*. Wiley.
 8. Boyd, S., & Vandenberghe, L. (2004). *Convex Optimization*. Cambridge University Press.
-9. Mac Lane, S. (1998). *Categories for the Working Mathematician*. Springer.
 
 ---
 
-*本模块为FormalAI提供了全面的数学基础，涵盖了从基础集合论到现代范畴论的完整数学工具集。*
+*本模块为FormalAI提供了坚实的数学基础，涵盖了从集合论到优化理论的各个方面，为AI系统的设计和分析提供了数学工具。*

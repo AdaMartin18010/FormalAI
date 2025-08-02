@@ -2,943 +2,1011 @@
 
 ## 概述 / Overview
 
-知识表示研究如何在计算机中表示和操作知识，为FormalAI提供知识存储、推理和管理的理论基础。
+知识表示研究如何在计算机中表示和组织知识，为FormalAI提供结构化和语义化的知识管理理论基础。
 
-Knowledge representation studies how to represent and manipulate knowledge in computers, providing theoretical foundations for knowledge storage, reasoning, and management in FormalAI.
+Knowledge representation studies how to represent and organize knowledge in computers, providing theoretical foundations for structured and semantic knowledge management in FormalAI.
 
 ## 目录 / Table of Contents
 
 - [4.3 知识表示 / Knowledge Representation](#43-知识表示--knowledge-representation)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
-  - [1. 逻辑表示 / Logical Representation](#1-逻辑表示--logical-representation)
-    - [1.1 一阶逻辑表示 / First-Order Logic Representation](#11-一阶逻辑表示--first-order-logic-representation)
-    - [1.2 描述逻辑 / Description Logic](#12-描述逻辑--description-logic)
-    - [1.3 模态逻辑表示 / Modal Logic Representation](#13-模态逻辑表示--modal-logic-representation)
-  - [2. 语义网络 / Semantic Networks](#2-语义网络--semantic-networks)
-    - [2.1 语义网络定义 / Semantic Network Definition](#21-语义网络定义--semantic-network-definition)
-    - [2.2 继承网络 / Inheritance Networks](#22-继承网络--inheritance-networks)
-    - [2.3 激活扩散 / Spreading Activation](#23-激活扩散--spreading-activation)
-  - [3. 框架理论 / Frame Theory](#3-框架理论--frame-theory)
-    - [3.1 框架定义 / Frame Definition](#31-框架定义--frame-definition)
-    - [3.2 框架继承 / Frame Inheritance](#32-框架继承--frame-inheritance)
-    - [3.3 框架匹配 / Frame Matching](#33-框架匹配--frame-matching)
+  - [1. 语义网络 / Semantic Networks](#1-语义网络--semantic-networks)
+  - [2. 框架理论 / Frame Theory](#2-框架理论--frame-theory)
+  - [3. 描述逻辑 / Description Logic](#3-描述逻辑--description-logic)
   - [4. 本体论 / Ontology](#4-本体论--ontology)
-    - [4.1 本体定义 / Ontology Definition](#41-本体定义--ontology-definition)
-    - [4.2 本体语言 / Ontology Languages](#42-本体语言--ontology-languages)
-    - [4.3 本体对齐 / Ontology Alignment](#43-本体对齐--ontology-alignment)
-  - [5. 知识图谱 / Knowledge Graphs](#5-知识图谱--knowledge-graphs)
-    - [5.1 知识图谱定义 / Knowledge Graph Definition](#51-知识图谱定义--knowledge-graph-definition)
-    - [5.2 知识图谱嵌入 / Knowledge Graph Embedding](#52-知识图谱嵌入--knowledge-graph-embedding)
-    - [5.3 知识图谱推理 / Knowledge Graph Reasoning](#53-知识图谱推理--knowledge-graph-reasoning)
-  - [6. 向量表示 / Vector Representation](#6-向量表示--vector-representation)
-    - [6.1 词向量 / Word Vectors](#61-词向量--word-vectors)
-    - [6.2 句子向量 / Sentence Vectors](#62-句子向量--sentence-vectors)
-    - [6.3 文档向量 / Document Vectors](#63-文档向量--document-vectors)
-  - [7. 分布式表示 / Distributed Representation](#7-分布式表示--distributed-representation)
-    - [7.1 分布式语义 / Distributed Semantics](#71-分布式语义--distributed-semantics)
-    - [7.2 神经语言模型 / Neural Language Models](#72-神经语言模型--neural-language-models)
-    - [7.3 预训练语言模型 / Pre-trained Language Models](#73-预训练语言模型--pre-trained-language-models)
-  - [8. 神经符号表示 / Neural-Symbolic Representation](#8-神经符号表示--neural-symbolic-representation)
-    - [8.1 神经符号集成 / Neural-Symbolic Integration](#81-神经符号集成--neural-symbolic-integration)
-    - [8.2 神经逻辑编程 / Neural Logic Programming](#82-神经逻辑编程--neural-logic-programming)
-    - [8.3 可微分逻辑 / Differentiable Logic](#83-可微分逻辑--differentiable-logic)
-  - [9. 知识融合 / Knowledge Fusion](#9-知识融合--knowledge-fusion)
-    - [9.1 多源知识融合 / Multi-Source Knowledge Fusion](#91-多源知识融合--multi-source-knowledge-fusion)
-    - [9.2 知识对齐 / Knowledge Alignment](#92-知识对齐--knowledge-alignment)
-    - [9.3 知识更新 / Knowledge Update](#93-知识更新--knowledge-update)
-  - [10. 知识演化 / Knowledge Evolution](#10-知识演化--knowledge-evolution)
-    - [10.1 知识变化 / Knowledge Change](#101-知识变化--knowledge-change)
-    - [10.2 知识适应 / Knowledge Adaptation](#102-知识适应--knowledge-adaptation)
-    - [10.3 知识涌现 / Knowledge Emergence](#103-知识涌现--knowledge-emergence)
+  - [5. 知识图谱 / Knowledge Graph](#5-知识图谱--knowledge-graph)
+  - [6. 神经知识表示 / Neural Knowledge Representation](#6-神经知识表示--neural-knowledge-representation)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：知识图谱](#rust实现知识图谱)
-    - [Haskell实现：本体论](#haskell实现本体论)
   - [参考文献 / References](#参考文献--references)
 
 ---
 
-## 1. 逻辑表示 / Logical Representation
+## 1. 语义网络 / Semantic Networks
 
-### 1.1 一阶逻辑表示 / First-Order Logic Representation
+### 1.1 语义网络定义 / Semantic Network Definition
 
-**一阶逻辑 / First-Order Logic:**
+**语义网络结构 / Semantic Network Structure:**
 
-$$\mathcal{L} = \langle \mathcal{C}, \mathcal{F}, \mathcal{P}, \mathcal{V} \rangle$$
-
-其中：
-
-- $\mathcal{C}$ 是常项集合
-- $\mathcal{F}$ 是函数符号集合
-- $\mathcal{P}$ 是谓词符号集合
-- $\mathcal{V}$ 是变项集合
-
-where:
-
-- $\mathcal{C}$ is the set of constants
-- $\mathcal{F}$ is the set of function symbols
-- $\mathcal{P}$ is the set of predicate symbols
-- $\mathcal{V}$ is the set of variables
-
-**知识表示 / Knowledge Representation:**
-
-$$\text{Knowledge} = \{\phi_1, \phi_2, \ldots, \phi_n\}$$
-
-其中 $\phi_i$ 是一阶逻辑公式。
-
-where $\phi_i$ are first-order logic formulas.
-
-### 1.2 描述逻辑 / Description Logic
-
-**概念 / Concepts:**
-
-$C, D ::= A | \top | \bot | C \sqcap D | C \sqcup D | \neg C | \exists R.C | \forall R.C$
+$$G = (V, E, L)$$
 
 其中：
-
-- $A$ 是原子概念
-- $\top$ 是顶层概念
-- $\bot$ 是底层概念
-- $R$ 是角色
-
-where:
-
-- $A$ is atomic concept
-- $\top$ is top concept
-- $\bot$ is bottom concept
-- $R$ is role
-
-**TBox / TBox:**
-
-$$\mathcal{T} = \{C \sqsubseteq D, C \equiv D\}$$
-
-**ABox / ABox:**
-
-$$\mathcal{A} = \{C(a), R(a,b)\}$$
-
-### 1.3 模态逻辑表示 / Modal Logic Representation
-
-**模态逻辑 / Modal Logic:**
-
-$$\mathcal{M} = \langle W, R, V \rangle$$
-
-其中：
-
-- $W$ 是可能世界集合
-- $R$ 是可及关系
-- $V$ 是赋值函数
-
-where:
-
-- $W$ is the set of possible worlds
-- $R$ is the accessibility relation
-- $V$ is the valuation function
-
-**模态公式 / Modal Formulas:**
-
-$$\phi ::= p | \neg \phi | \phi \land \psi | \phi \lor \psi | \Box \phi | \Diamond \phi$$
-
----
-
-## 2. 语义网络 / Semantic Networks
-
-### 2.1 语义网络定义 / Semantic Network Definition
-
-**语义网络 / Semantic Network:**
-
-$G = \langle V, E, L \rangle$ 其中：
-
-$G = \langle V, E, L \rangle$ where:
-
 - $V$ 是节点集合（概念）
 - $E$ 是边集合（关系）
 - $L$ 是标签函数
 
-- $V$ is the set of nodes (concepts)
-- $E$ is the set of edges (relations)
-- $L$ is the labeling function
+**节点类型 / Node Types:**
 
-**网络结构 / Network Structure:**
+- **概念节点 / Concept Nodes:** 表示实体或概念
+- **实例节点 / Instance Nodes:** 表示具体实例
+- **属性节点 / Property Nodes:** 表示属性或特征
 
-$$\text{Network} = \{(c_1, r, c_2): c_1, c_2 \in V, r \in E\}$$
+### 1.2 关系类型 / Relation Types
 
-### 2.2 继承网络 / Inheritance Networks
+**层次关系 / Hierarchical Relations:**
 
-**继承关系 / Inheritance Relations:**
+- **is-a:** 类属关系
+- **part-of:** 部分关系
+- **instance-of:** 实例关系
 
-$$\text{Inherit}(A, B) \Rightarrow \text{Properties}(A) \subseteq \text{Properties}(B)$$
+**语义关系 / Semantic Relations:**
 
-**多重继承 / Multiple Inheritance:**
+- **synonym:** 同义关系
+- **antonym:** 反义关系
+- **meronym:** 整体-部分关系
+- **holonym:** 部分-整体关系
 
-$$\text{Inherit}(C, A) \land \text{Inherit}(C, B) \Rightarrow \text{Properties}(C) = \text{Properties}(A) \cap \text{Properties}(B)$$
+### 1.3 语义网络推理 / Semantic Network Reasoning
 
-**继承冲突 / Inheritance Conflicts:**
+**继承推理 / Inheritance Reasoning:**
 
-$$\text{Conflict}(A, B) = \text{Properties}(A) \cap \text{Properties}(B) = \emptyset$$
+$$\frac{A \text{ is-a } B \quad B \text{ has-property } P}{A \text{ has-property } P}$$
 
-### 2.3 激活扩散 / Spreading Activation
+**传递推理 / Transitive Reasoning:**
 
-**激活函数 / Activation Function:**
+$$\frac{A \text{ R } B \quad B \text{ R } C}{A \text{ R } C}$$
 
-$$A_i(t+1) = \alpha A_i(t) + \sum_{j \in N(i)} w_{ij} A_j(t)$$
+**相似性推理 / Similarity Reasoning:**
 
-其中：
+$$\text{sim}(A, B) = \frac{|\text{common\_properties}(A, B)|}{|\text{all\_properties}(A, B)|}$$
 
-- $A_i(t)$ 是节点 $i$ 在时间 $t$ 的激活值
-- $w_{ij}$ 是连接权重
-- $\alpha$ 是衰减因子
+## 2. 框架理论 / Frame Theory
 
-where:
+### 2.1 框架定义 / Frame Definition
 
-- $A_i(t)$ is the activation of node $i$ at time $t$
-- $w_{ij}$ is the connection weight
-- $\alpha$ is the decay factor
+**框架结构 / Frame Structure:**
 
----
+$$\text{Frame} = \begin{pmatrix}
+\text{name} & \text{FrameName} \\
+\text{slots} & \text{Slot}_1, \text{Slot}_2, ..., \text{Slot}_n \\
+\text{defaults} & \text{Default}_1, \text{Default}_2, ..., \text{Default}_n \\
+\text{constraints} & \text{Constraint}_1, \text{Constraint}_2, ..., \text{Constraint}_n
+\end{pmatrix}$$
 
-## 3. 框架理论 / Frame Theory
+**槽位定义 / Slot Definition:**
 
-### 3.1 框架定义 / Frame Definition
+$$\text{Slot} = \begin{pmatrix}
+\text{name} & \text{SlotName} \\
+\text{type} & \text{DataType} \\
+\text{value} & \text{Value} \\
+\text{facet} & \text{Facet}_1, \text{Facet}_2, ..., \text{Facet}_n
+\end{pmatrix}$$
 
-**框架 / Frame:**
+### 2.2 框架层次 / Frame Hierarchy
 
-$F = \langle \text{Name}, \text{Slots}, \text{Values}, \text{Defaults} \rangle$
+**框架继承 / Frame Inheritance:**
 
-其中：
-
-- $\text{Name}$ 是框架名称
-- $\text{Slots}$ 是槽位集合
-- $\text{Values}$ 是值集合
-- $\text{Defaults}$ 是默认值集合
-
-where:
-
-- $\text{Name}$ is the frame name
-- $\text{Slots}$ is the set of slots
-- $\text{Values}$ is the set of values
-- $\text{Defaults}$ is the set of default values
-
-**槽位 / Slots:**
-
-$$\text{Slot} = \langle \text{Name}, \text{Type}, \text{Value}, \text{Constraints} \rangle$$
-
-### 3.2 框架继承 / Frame Inheritance
-
-**继承层次 / Inheritance Hierarchy:**
-
-$$\text{Inherit}(F_1, F_2) \Rightarrow \text{Slots}(F_1) \subseteq \text{Slots}(F_2)$$
+$$\text{ChildFrame} \text{ is-a } \text{ParentFrame}$$
 
 **槽位继承 / Slot Inheritance:**
 
-$$\text{InheritSlot}(F_1, F_2, s) \Rightarrow \text{Value}(F_1, s) = \text{Value}(F_2, s)$$
+$$\frac{\text{ChildFrame} \text{ is-a } \text{ParentFrame} \quad \text{ParentFrame.slot} = v}{\text{ChildFrame.slot} = v}$$
 
-**默认值继承 / Default Value Inheritance:**
+### 2.3 框架匹配 / Frame Matching
 
-$$\text{InheritDefault}(F_1, F_2, s) \Rightarrow \text{Default}(F_1, s) = \text{Default}(F_2, s)$$
+**匹配度计算 / Match Degree Calculation:**
 
-### 3.3 框架匹配 / Frame Matching
+$$\text{match}(F_1, F_2) = \sum_{i} w_i \cdot \text{sim}(\text{slot}_i(F_1), \text{slot}_i(F_2))$$
 
-**匹配函数 / Matching Function:**
+**激活传播 / Activation Spreading:**
 
-$$\text{Match}(F_1, F_2) = \sum_{s \in \text{CommonSlots}(F_1, F_2)} \text{Similarity}(\text{Value}(F_1, s), \text{Value}(F_2, s))$$
+$$A_i(t+1) = \alpha A_i(t) + \beta \sum_{j} w_{ij} A_j(t)$$
 
-**相似性计算 / Similarity Computation:**
+## 3. 描述逻辑 / Description Logic
 
-$$
-\text{Similarity}(v_1, v_2) = \begin{cases}
-1 & \text{if } v_1 = v_2 \\
-0.5 & \text{if } \text{Type}(v_1) = \text{Type}(v_2) \\
-0 & \text{otherwise}
-\end{cases}
-$$
+### 3.1 描述逻辑语法 / Description Logic Syntax
 
----
+**概念构造器 / Concept Constructors:**
+
+- **原子概念 / Atomic Concepts:** $A, B, C$
+- **顶概念 / Top Concept:** $\top$
+- **底概念 / Bottom Concept:** $\bot$
+- **否定 / Negation:** $\neg C$
+- **合取 / Conjunction:** $C \sqcap D$
+- **析取 / Disjunction:** $C \sqcup D$
+- **存在量词 / Existential Quantifier:** $\exists R.C$
+- **全称量词 / Universal Quantifier:** $\forall R.C$
+
+### 3.2 描述逻辑语义 / Description Logic Semantics
+
+**解释函数 / Interpretation Function:**
+
+$$\mathcal{I} = (\Delta^\mathcal{I}, \cdot^\mathcal{I})$$
+
+其中：
+- $\Delta^\mathcal{I}$ 是解释域
+- $\cdot^\mathcal{I}$ 是解释函数
+
+**语义定义 / Semantic Definition:**
+
+- $A^\mathcal{I} \subseteq \Delta^\mathcal{I}$
+- $(\neg C)^\mathcal{I} = \Delta^\mathcal{I} \setminus C^\mathcal{I}$
+- $(C \sqcap D)^\mathcal{I} = C^\mathcal{I} \cap D^\mathcal{I}$
+- $(C \sqcup D)^\mathcal{I} = C^\mathcal{I} \cup D^\mathcal{I}$
+- $(\exists R.C)^\mathcal{I} = \{x \mid \exists y. (x,y) \in R^\mathcal{I} \land y \in C^\mathcal{I}\}$
+
+### 3.3 推理服务 / Reasoning Services
+
+**概念包含 / Concept Subsumption:**
+
+$$C \sqsubseteq D \text{ iff } C^\mathcal{I} \subseteq D^\mathcal{I}$$
+
+**概念等价 / Concept Equivalence:**
+
+$$C \equiv D \text{ iff } C^\mathcal{I} = D^\mathcal{I}$$
+
+**概念满足 / Concept Satisfiability:**
+
+$$\text{SAT}(C) \text{ iff } C^\mathcal{I} \neq \emptyset$$
 
 ## 4. 本体论 / Ontology
 
 ### 4.1 本体定义 / Ontology Definition
 
-**本体 / Ontology:**
+**本体结构 / Ontology Structure:**
 
-$\mathcal{O} = \langle \mathcal{C}, \mathcal{R}, \mathcal{I}, \mathcal{A} \rangle$
+$$\mathcal{O} = (C, R, I, A)$$
 
 其中：
-
-- $\mathcal{C}$ 是概念集合
-- $\mathcal{R}$ 是关系集合
-- $\mathcal{I}$ 是实例集合
-- $\mathcal{A}$ 是公理集合
-
-where:
-
-- $\mathcal{C}$ is the set of concepts
-- $\mathcal{R}$ is the set of relations
-- $\mathcal{I}$ is the set of instances
-- $\mathcal{A}$ is the set of axioms
+- $C$ 是概念集合
+- $R$ 是关系集合
+- $I$ 是实例集合
+- $A$ 是公理集合
 
 **本体层次 / Ontology Hierarchy:**
 
-$$\text{Hierarchy}(\mathcal{O}) = \langle \mathcal{C}, \sqsubseteq \rangle$$
-
-其中 $\sqsubseteq$ 是概念包含关系。
-
-where $\sqsubseteq$ is the concept inclusion relation.
+$$\text{Upper Ontology} \rightarrow \text{Domain Ontology} \rightarrow \text{Application Ontology}$$
 
 ### 4.2 本体语言 / Ontology Languages
 
-**OWL / Web Ontology Language:**
+**OWL语言 / OWL Language:**
 
-$$\text{OWL} = \{\text{Classes}, \text{Properties}, \text{Individuals}, \text{Restrictions}\}$$
+$$\text{Class} \sqsubseteq \text{Thing}$$
+$$\text{ObjectProperty} \sqsubseteq \text{Property}$$
+$$\text{DataProperty} \sqsubseteq \text{Property}$$
 
-**RDF / Resource Description Framework:**
+**RDF语言 / RDF Language:**
 
-$$\text{RDF} = \{\text{Subjects}, \text{Predicates}, \text{Objects}\}$$
+$$(\text{subject}, \text{predicate}, \text{object})$$
 
-**SPARQL / SPARQL Protocol and RDF Query Language:**
+### 4.3 本体工程 / Ontology Engineering
 
-$$\text{SPARQL} = \{\text{SELECT}, \text{WHERE}, \text{FILTER}, \text{OPTIONAL}\}$$
+**本体构建 / Ontology Construction:**
 
-### 4.3 本体对齐 / Ontology Alignment
+1. **需求分析 / Requirements Analysis**
+2. **概念提取 / Concept Extraction**
+3. **关系定义 / Relation Definition**
+4. **公理构建 / Axiom Construction**
+5. **验证测试 / Validation Testing**
 
-**对齐关系 / Alignment Relations:**
+**本体评估 / Ontology Evaluation:**
 
-$$\text{Alignment} = \{\text{Equivalence}, \text{Subsumption}, \text{Disjointness}, \text{Overlap}\}$$
+$$\text{Quality}(O) = \alpha \cdot \text{Completeness}(O) + \beta \cdot \text{Consistency}(O) + \gamma \cdot \text{Clarity}(O)$$
 
-**对齐函数 / Alignment Function:**
-
-$$\text{Align}(\mathcal{O}_1, \mathcal{O}_2) = \{(c_1, c_2, r): c_1 \in \mathcal{C}_1, c_2 \in \mathcal{C}_2, r \in \text{Alignment}\}$$
-
-**相似性度量 / Similarity Measures:**
-
-$$\text{Similarity}(c_1, c_2) = \alpha \text{NameSim}(c_1, c_2) + \beta \text{StructSim}(c_1, c_2) + \gamma \text{InstSim}(c_1, c_2)$$
-
----
-
-## 5. 知识图谱 / Knowledge Graphs
+## 5. 知识图谱 / Knowledge Graph
 
 ### 5.1 知识图谱定义 / Knowledge Graph Definition
 
-**知识图谱 / Knowledge Graph:**
+**图谱结构 / Graph Structure:**
 
-$KG = \langle V, E, L \rangle$ 其中：
+$$KG = (E, R, T)$$
 
-$KG = \langle V, E, L \rangle$ where:
+其中：
+- $E$ 是实体集合
+- $R$ 是关系集合
+- $T$ 是三元组集合
 
-- $V$ 是实体集合
-- $E$ 是关系集合
-- $L$ 是标签函数
+**三元组表示 / Triple Representation:**
 
-- $V$ is the set of entities
-- $E$ is the set of relations
-- $L$ is the labeling function
+$$(h, r, t) \in E \times R \times E$$
 
-**三元组 / Triples:**
-
-$$\text{Triple} = \{(h, r, t): h, t \in V, r \in E\}$$
+其中 $h$ 是头实体，$r$ 是关系，$t$ 是尾实体。
 
 ### 5.2 知识图谱嵌入 / Knowledge Graph Embedding
 
 **TransE模型 / TransE Model:**
 
-$$\text{Score}(h, r, t) = \|\mathbf{h} + \mathbf{r} - \mathbf{t}\|$$
+$$\mathbf{h} + \mathbf{r} \approx \mathbf{t}$$
 
-**RotatE模型 / RotatE Model:**
+**DistMult模型 / DistMult Model:**
 
-$$\text{Score}(h, r, t) = \|\mathbf{h} \circ \mathbf{r} - \mathbf{t}\|$$
-
-其中 $\circ$ 是逐元素乘法。
-
-where $\circ$ is element-wise multiplication.
+$$\text{score}(h, r, t) = \sum_i \mathbf{h}_i \cdot \mathbf{r}_i \cdot \mathbf{t}_i$$
 
 **ComplEx模型 / ComplEx Model:**
 
-$$\text{Score}(h, r, t) = \text{Re}(\langle \mathbf{h}, \mathbf{r}, \overline{\mathbf{t}} \rangle)$$
+$$\text{score}(h, r, t) = \text{Re}(\sum_i \mathbf{h}_i \cdot \mathbf{r}_i \cdot \bar{\mathbf{t}}_i)$$
 
 ### 5.3 知识图谱推理 / Knowledge Graph Reasoning
 
 **链接预测 / Link Prediction:**
 
-$$P(r|h, t) = \frac{\exp(\text{Score}(h, r, t))}{\sum_{r'} \exp(\text{Score}(h, r', t))}$$
+$$P(t|h, r) = \frac{\exp(\text{score}(h, r, t))}{\sum_{t'} \exp(\text{score}(h, r, t'))}$$
 
-**实体链接 / Entity Linking:**
+**路径推理 / Path Reasoning:**
 
-$$\text{Link}(m, e) = \arg\max_e P(e|m, c)$$
+$$\text{path}(e_1, e_n) = e_1 \xrightarrow{r_1} e_2 \xrightarrow{r_2} ... \xrightarrow{r_{n-1}} e_n$$
 
-其中 $m$ 是提及，$e$ 是实体，$c$ 是上下文。
+**规则学习 / Rule Learning:**
 
-where $m$ is mention, $e$ is entity, $c$ is context.
+$$\text{Rule}: h \xrightarrow{r_1} ? \xrightarrow{r_2} t \Rightarrow h \xrightarrow{r_3} t$$
 
----
+## 6. 神经知识表示 / Neural Knowledge Representation
 
-## 6. 向量表示 / Vector Representation
+### 6.1 神经嵌入 / Neural Embeddings
 
-### 6.1 词向量 / Word Vectors
+**实体嵌入 / Entity Embeddings:**
 
-**词嵌入 / Word Embeddings:**
+$$\mathbf{e}_i = f_\theta(x_i)$$
 
-$$\mathbf{w} = [w_1, w_2, \ldots, w_d] \in \mathbb{R}^d$$
+其中 $f_\theta$ 是神经网络，$x_i$ 是实体特征。
 
-**Skip-gram模型 / Skip-gram Model:**
+**关系嵌入 / Relation Embeddings:**
 
-$$P(w_{t+j}|w_t) = \frac{\exp(\mathbf{v}_{w_{t+j}}^T \mathbf{u}_{w_t})}{\sum_{w \in V} \exp(\mathbf{v}_w^T \mathbf{u}_{w_t})}$$
+$$\mathbf{r}_i = g_\phi(y_i)$$
 
-**CBOW模型 / CBOW Model:**
+其中 $g_\phi$ 是神经网络，$y_i$ 是关系特征。
 
-$$P(w_t|w_{t-c}, \ldots, w_{t+c}) = \frac{\exp(\mathbf{v}_{w_t}^T \mathbf{u}_{w_{t-c:t+c}})}{\sum_{w \in V} \exp(\mathbf{v}_w^T \mathbf{u}_{w_{t-c:t+c}})}$$
+### 6.2 神经知识图谱 / Neural Knowledge Graph
 
-### 6.2 句子向量 / Sentence Vectors
+**图神经网络 / Graph Neural Networks:**
 
-**平均池化 / Average Pooling:**
+$$\mathbf{h}_i^{(l+1)} = \sigma\left(\mathbf{W}^{(l)} \sum_{j \in \mathcal{N}(i)} \mathbf{h}_j^{(l)}\right)$$
 
-$$\mathbf{s} = \frac{1}{n} \sum_{i=1}^n \mathbf{w}_i$$
+**注意力机制 / Attention Mechanism:**
 
-**最大池化 / Max Pooling:**
+$$\alpha_{ij} = \frac{\exp(\text{LeakyReLU}(\mathbf{a}^T[\mathbf{W}\mathbf{h}_i \| \mathbf{W}\mathbf{h}_j]))}{\sum_{k \in \mathcal{N}(i)} \exp(\text{LeakyReLU}(\mathbf{a}^T[\mathbf{W}\mathbf{h}_i \| \mathbf{W}\mathbf{h}_k]))}$$
 
-$$\mathbf{s}_j = \max_{i=1}^n w_{ij}$$
+### 6.3 神经推理 / Neural Reasoning
 
-**注意力池化 / Attention Pooling:**
+**神经逻辑编程 / Neural Logic Programming:**
 
-$$\mathbf{s} = \sum_{i=1}^n \alpha_i \mathbf{w}_i$$
+$$P(y|x) = \sum_{z} P(y|z) P(z|x)$$
 
-其中 $\alpha_i = \text{softmax}(\mathbf{w}_i^T \mathbf{q})$。
+**神经符号推理 / Neural Symbolic Reasoning:**
 
-where $\alpha_i = \text{softmax}(\mathbf{w}_i^T \mathbf{q})$.
-
-### 6.3 文档向量 / Document Vectors
-
-**Doc2Vec模型 / Doc2Vec Model:**
-
-$$\mathbf{d} = \text{ParagraphVector}(\text{document})$$
-
-**主题模型 / Topic Models:**
-
-$$\mathbf{d} = \sum_{k=1}^K \theta_k \mathbf{t}_k$$
-
-其中 $\theta_k$ 是主题权重，$\mathbf{t}_k$ 是主题向量。
-
-where $\theta_k$ is topic weight and $\mathbf{t}_k$ is topic vector.
-
----
-
-## 7. 分布式表示 / Distributed Representation
-
-### 7.1 分布式语义 / Distributed Semantics
-
-**分布式假设 / Distributed Hypothesis:**
-
-语义相似的词在向量空间中距离较近。
-
-Semantically similar words are close in vector space.
-
-**语义相似性 / Semantic Similarity:**
-
-$$\text{Similarity}(w_1, w_2) = \cos(\mathbf{w}_1, \mathbf{w}_2) = \frac{\mathbf{w}_1 \cdot \mathbf{w}_2}{|\mathbf{w}_1| |\mathbf{w}_2|}$$
-
-**语义类比 / Semantic Analogy:**
-
-$$\mathbf{w}_{\text{king}} - \mathbf{w}_{\text{man}} + \mathbf{w}_{\text{woman}} \approx \mathbf{w}_{\text{queen}}$$
-
-### 7.2 神经语言模型 / Neural Language Models
-
-**循环神经网络 / Recurrent Neural Networks:**
-
-$$\mathbf{h}_t = \tanh(\mathbf{W}_h \mathbf{h}_{t-1} + \mathbf{W}_x \mathbf{x}_t + \mathbf{b})$$
-
-**长短期记忆网络 / Long Short-Term Memory:**
-
-$$\mathbf{f}_t = \sigma(\mathbf{W}_f [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_f)$$
-$$\mathbf{i}_t = \sigma(\mathbf{W}_i [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_i)$$
-$$\mathbf{o}_t = \sigma(\mathbf{W}_o [\mathbf{h}_{t-1}, \mathbf{x}_t] + \mathbf{b}_o)$$
-
-### 7.3 预训练语言模型 / Pre-trained Language Models
-
-**BERT模型 / BERT Model:**
-
-$$\text{BERT}(s) = \text{Transformer}(\text{Embedding}(s) + \text{PositionalEncoding}(s))$$
-
-**GPT模型 / GPT Model:**
-
-$$\text{GPT}(s) = \text{TransformerDecoder}(\text{Embedding}(s))$$
-
----
-
-## 8. 神经符号表示 / Neural-Symbolic Representation
-
-### 8.1 神经符号集成 / Neural-Symbolic Integration
-
-**符号-神经接口 / Symbolic-Neural Interface:**
-
-$$\text{Interface} = \{\text{SymbolicToNeural}, \text{NeuralToSymbolic}\}$$
-
-**符号表示 / Symbolic Representation:**
-
-$$\text{Symbolic}(x) = \text{Parse}(\text{Neural}(x))$$
-
-**神经表示 / Neural Representation:**
-
-$$\text{Neural}(x) = \text{Embed}(\text{Symbolic}(x))$$
-
-### 8.2 神经逻辑编程 / Neural Logic Programming
-
-**神经谓词 / Neural Predicates:**
-
-$$P_{\text{neural}}(x) = \sigma(\mathbf{W} \mathbf{x} + \mathbf{b})$$
-
-**逻辑规则 / Logical Rules:**
-
-$$\text{Rule} = \text{Head} \leftarrow \text{Body}$$
-
-**神经规则 / Neural Rules:**
-
-$$\text{NeuralRule} = \text{NeuralHead} \leftarrow \text{NeuralBody}$$
-
-### 8.3 可微分逻辑 / Differentiable Logic
-
-**可微分推理 / Differentiable Reasoning:**
-
-$$\frac{\partial \text{Conclusion}}{\partial \text{Preconditions}} = \text{ChainRule}(\text{LogicRules})$$
-
-**软逻辑 / Soft Logic:**
-
-$$\text{SoftAnd}(p, q) = p \cdot q$$
-$$\text{SoftOr}(p, q) = 1 - (1-p)(1-q)$$
-$$\text{SoftNot}(p) = 1-p$$
-
----
-
-## 9. 知识融合 / Knowledge Fusion
-
-### 9.1 多源知识融合 / Multi-Source Knowledge Fusion
-
-**融合函数 / Fusion Function:**
-
-$$\text{Fuse}(\mathcal{K}_1, \mathcal{K}_2, \ldots, \mathcal{K}_n) = \text{Integrate}(\text{Align}(\mathcal{K}_1, \mathcal{K}_2), \ldots, \text{Align}(\mathcal{K}_{n-1}, \mathcal{K}_n))$$
-
-**冲突解决 / Conflict Resolution:**
-
-$$\text{Resolve}(\text{Conflict}) = \text{WeightedVote}(\text{Sources})$$
-
-**一致性检查 / Consistency Check:**
-
-$$\text{Consistent}(\mathcal{K}) = \forall \phi, \psi \in \mathcal{K}: \phi \not\models \neg \psi$$
-
-### 9.2 知识对齐 / Knowledge Alignment
-
-**实体对齐 / Entity Alignment:**
-
-$$\text{AlignEntities}(E_1, E_2) = \{(e_1, e_2): \text{Similarity}(e_1, e_2) > \theta\}$$
-
-**关系对齐 / Relation Alignment:**
-
-$$\text{AlignRelations}(R_1, R_2) = \{(r_1, r_2): \text{Similarity}(r_1, r_2) > \theta\}$$
-
-**概念对齐 / Concept Alignment:**
-
-$$\text{AlignConcepts}(C_1, C_2) = \{(c_1, c_2): \text{Similarity}(c_1, c_2) > \theta\}$$
-
-### 9.3 知识更新 / Knowledge Update
-
-**增量更新 / Incremental Update:**
-
-$$\mathcal{K}_{t+1} = \mathcal{K}_t \cup \Delta \mathcal{K}_t$$
-
-**版本控制 / Version Control:**
-
-$$\text{Version}(\mathcal{K}) = \langle \text{Timestamp}, \text{Changes}, \text{Author} \rangle$$
-
-**回滚机制 / Rollback Mechanism:**
-
-$$\text{Rollback}(\mathcal{K}, v) = \mathcal{K}_v$$
-
----
-
-## 10. 知识演化 / Knowledge Evolution
-
-### 10.1 知识变化 / Knowledge Change
-
-**知识增长 / Knowledge Growth:**
-
-$$\frac{d\mathcal{K}}{dt} = \alpha \text{Discovery} + \beta \text{Inference} + \gamma \text{Learning}$$
-
-**知识衰减 / Knowledge Decay:**
-
-$$\mathcal{K}(t) = \mathcal{K}_0 e^{-\lambda t}$$
-
-**知识传播 / Knowledge Diffusion:**
-
-$$\frac{\partial \mathcal{K}}{\partial t} = D \nabla^2 \mathcal{K}$$
-
-### 10.2 知识适应 / Knowledge Adaptation
-
-**自适应机制 / Adaptive Mechanism:**
-
-$$\text{Adapt}(\mathcal{K}, \text{Environment}) = \mathcal{K} + \Delta \mathcal{K}$$
-
-**学习率调整 / Learning Rate Adjustment:**
-
-$$\eta(t) = \eta_0 e^{-\alpha t}$$
-
-**知识迁移 / Knowledge Transfer:**
-
-$$\text{Transfer}(\mathcal{K}_s, \mathcal{K}_t) = \text{Map}(\mathcal{K}_s) \rightarrow \mathcal{K}_t$$
-
-### 10.3 知识涌现 / Knowledge Emergence
-
-**涌现模式 / Emergent Patterns:**
-
-$$\text{Emergent}(\mathcal{K}) = \text{Pattern}(\mathcal{K}) - \text{Expected}(\mathcal{K})$$
-
-**自组织 / Self-Organization:**
-
-$$\frac{d\mathcal{K}}{dt} = F(\mathcal{K}) + \text{Noise}$$
-
-**临界点 / Critical Points:**
-
-$$\text{Critical}(\mathcal{K}) = \{\mathcal{K}: \frac{d^2\mathcal{K}}{dt^2} = 0\}$$
-
----
+$$\text{Reasoning}(x) = \text{Symbolic}(\text{Neural}(x))$$
 
 ## 代码示例 / Code Examples
 
-### Rust实现：知识图谱
+### Rust实现：知识表示系统
 
 ```rust
 use std::collections::{HashMap, HashSet};
+use std::fmt;
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+// 实体定义
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 struct Entity {
     id: String,
     name: String,
+    entity_type: String,
     properties: HashMap<String, String>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+// 关系定义
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
 struct Relation {
     id: String,
     name: String,
-    source_type: String,
-    target_type: String,
+    domain: String,
+    range: String,
+    properties: HashMap<String, String>,
 }
 
-#[derive(Debug, Clone)]
+// 三元组定义
+#[derive(Clone, Debug)]
 struct Triple {
     head: Entity,
     relation: Relation,
     tail: Entity,
 }
 
-#[derive(Debug, Clone)]
-struct KnowledgeGraph {
+// 语义网络
+struct SemanticNetwork {
     entities: HashMap<String, Entity>,
     relations: HashMap<String, Relation>,
     triples: Vec<Triple>,
+    graph: HashMap<String, HashMap<String, Vec<String>>>,
 }
 
-impl KnowledgeGraph {
+impl SemanticNetwork {
     fn new() -> Self {
-        KnowledgeGraph {
+        Self {
             entities: HashMap::new(),
             relations: HashMap::new(),
             triples: Vec::new(),
+            graph: HashMap::new(),
         }
     }
     
+    // 添加实体
     fn add_entity(&mut self, entity: Entity) {
         self.entities.insert(entity.id.clone(), entity);
     }
     
+    // 添加关系
     fn add_relation(&mut self, relation: Relation) {
         self.relations.insert(relation.id.clone(), relation);
     }
     
+    // 添加三元组
     fn add_triple(&mut self, triple: Triple) {
-        self.triples.push(triple);
+        self.triples.push(triple.clone());
+        
+        // 更新图结构
+        let head_id = triple.head.id.clone();
+        let tail_id = triple.tail.id.clone();
+        let relation_id = triple.relation.id.clone();
+        
+        self.graph.entry(head_id.clone())
+            .or_insert_with(HashMap::new)
+            .entry(relation_id.clone())
+            .or_insert_with(Vec::new)
+            .push(tail_id.clone());
     }
     
-    fn get_entity(&self, id: &str) -> Option<&Entity> {
-        self.entities.get(id)
+    // 继承推理
+    fn inheritance_reasoning(&self, entity_id: &str, property: &str) -> Option<String> {
+        if let Some(entity) = self.entities.get(entity_id) {
+            // 检查直接属性
+            if let Some(value) = entity.properties.get(property) {
+                return Some(value.clone());
+            }
+            
+            // 检查继承属性
+            if let Some(is_a_relations) = self.graph.get(entity_id) {
+                for (relation_id, target_ids) in is_a_relations {
+                    if relation_id == "is-a" {
+                        for target_id in target_ids {
+                            if let Some(inherited_value) = self.inheritance_reasoning(target_id, property) {
+                                return Some(inherited_value);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        None
     }
     
-    fn get_related_entities(&self, entity_id: &str, relation_name: &str) -> Vec<&Entity> {
-        self.triples.iter()
-            .filter(|t| t.head.id == entity_id && t.relation.name == relation_name)
-            .map(|t| &t.tail)
-            .collect()
+    // 相似性推理
+    fn similarity_reasoning(&self, entity1_id: &str, entity2_id: &str) -> f64 {
+        if let (Some(entity1), Some(entity2)) = (self.entities.get(entity1_id), self.entities.get(entity2_id)) {
+            let common_properties: HashSet<_> = entity1.properties.keys()
+                .intersection(&entity2.properties.keys())
+                .collect();
+            
+            let all_properties: HashSet<_> = entity1.properties.keys()
+                .union(&entity2.properties.keys())
+                .collect();
+            
+            if all_properties.is_empty() {
+                return 0.0;
+            }
+            
+            common_properties.len() as f64 / all_properties.len() as f64
+        } else {
+            0.0
+        }
     }
     
-    fn find_path(&self, start: &str, end: &str, max_depth: usize) -> Option<Vec<String>> {
-        if start == end {
-            return Some(vec![start.to_string()]);
+    // 路径推理
+    fn path_reasoning(&self, start_id: &str, end_id: &str, max_depth: usize) -> Vec<Vec<String>> {
+        let mut paths = Vec::new();
+        let mut visited = HashSet::new();
+        
+        self.dfs_path(start_id, end_id, &mut Vec::new(), &mut paths, &mut visited, max_depth);
+        paths
+    }
+    
+    fn dfs_path(&self, current_id: &str, end_id: &str, current_path: &mut Vec<String>, 
+                paths: &mut Vec<Vec<String>>, visited: &mut HashSet<String>, max_depth: usize) {
+        if current_path.len() > max_depth {
+            return;
         }
         
-        if max_depth == 0 {
-            return None;
+        if current_id == end_id {
+            paths.push(current_path.clone());
+            return;
         }
         
-        for triple in &self.triples {
-            if triple.head.id == start {
-                if let Some(mut path) = self.find_path(&triple.tail.id, end, max_depth - 1) {
-                    path.insert(0, start.to_string());
-                    return Some(path);
+        if visited.contains(current_id) {
+            return;
+        }
+        
+        visited.insert(current_id.to_string());
+        current_path.push(current_id.to_string());
+        
+        if let Some(neighbors) = self.graph.get(current_id) {
+            for (relation_id, target_ids) in neighbors {
+                for target_id in target_ids {
+                    self.dfs_path(target_id, end_id, current_path, paths, visited, max_depth);
                 }
             }
         }
         
-        None
-    }
-    
-    fn query(&self, query: &str) -> Vec<&Triple> {
-        // 简化的查询实现
-        self.triples.iter()
-            .filter(|t| {
-                t.head.name.contains(query) || 
-                t.tail.name.contains(query) || 
-                t.relation.name.contains(query)
-            })
-            .collect()
-    }
-    
-    fn get_statistics(&self) -> HashMap<String, usize> {
-        let mut stats = HashMap::new();
-        stats.insert("entities".to_string(), self.entities.len());
-        stats.insert("relations".to_string(), self.relations.len());
-        stats.insert("triples".to_string(), self.triples.len());
-        stats
+        current_path.pop();
+        visited.remove(current_id);
     }
 }
 
-fn create_sample_knowledge_graph() -> KnowledgeGraph {
-    let mut kg = KnowledgeGraph::new();
+// 框架系统
+struct Frame {
+    name: String,
+    slots: HashMap<String, Slot>,
+    parent: Option<String>,
+    children: Vec<String>,
+}
+
+struct Slot {
+    name: String,
+    slot_type: String,
+    value: Option<String>,
+    default_value: Option<String>,
+    constraints: Vec<String>,
+}
+
+struct FrameSystem {
+    frames: HashMap<String, Frame>,
+}
+
+impl FrameSystem {
+    fn new() -> Self {
+        Self {
+            frames: HashMap::new(),
+        }
+    }
     
-    // 添加实体
-    let alice = Entity {
-        id: "e1".to_string(),
-        name: "Alice".to_string(),
-        properties: HashMap::new(),
-    };
+    // 添加框架
+    fn add_frame(&mut self, frame: Frame) {
+        self.frames.insert(frame.name.clone(), frame);
+    }
     
-    let bob = Entity {
-        id: "e2".to_string(),
-        name: "Bob".to_string(),
-        properties: HashMap::new(),
-    };
+    // 框架匹配
+    fn frame_matching(&self, frame1_name: &str, frame2_name: &str) -> f64 {
+        if let (Some(frame1), Some(frame2)) = (self.frames.get(frame1_name), self.frames.get(frame2_name)) {
+            let mut total_similarity = 0.0;
+            let mut slot_count = 0;
+            
+            for (slot_name, slot1) in &frame1.slots {
+                if let Some(slot2) = frame2.slots.get(slot_name) {
+                    let similarity = self.slot_similarity(slot1, slot2);
+                    total_similarity += similarity;
+                    slot_count += 1;
+                }
+            }
+            
+            if slot_count > 0 {
+                total_similarity / slot_count as f64
+            } else {
+                0.0
+            }
+        } else {
+            0.0
+        }
+    }
     
-    let loves = Relation {
-        id: "r1".to_string(),
-        name: "loves".to_string(),
-        source_type: "Person".to_string(),
-        target_type: "Person".to_string(),
-    };
+    // 槽位相似性
+    fn slot_similarity(&self, slot1: &Slot, slot2: &Slot) -> f64 {
+        let mut similarity = 0.0;
+        
+        // 类型相似性
+        if slot1.slot_type == slot2.slot_type {
+            similarity += 0.5;
+        }
+        
+        // 值相似性
+        if let (Some(val1), Some(val2)) = (&slot1.value, &slot2.value) {
+            if val1 == val2 {
+                similarity += 0.5;
+            }
+        }
+        
+        similarity
+    }
     
-    kg.add_entity(alice.clone());
-    kg.add_entity(bob.clone());
-    kg.add_relation(loves.clone());
+    // 框架继承
+    fn frame_inheritance(&self, child_name: &str, property: &str) -> Option<String> {
+        if let Some(child_frame) = self.frames.get(child_name) {
+            // 检查直接属性
+            if let Some(slot) = child_frame.slots.get(property) {
+                if let Some(value) = &slot.value {
+                    return Some(value.clone());
+                }
+            }
+            
+            // 检查父框架
+            if let Some(parent_name) = &child_frame.parent {
+                return self.frame_inheritance(parent_name, property);
+            }
+        }
+        None
+    }
+}
+
+// 知识图谱嵌入
+struct KnowledgeGraphEmbedding {
+    entity_embeddings: HashMap<String, Vec<f64>>,
+    relation_embeddings: HashMap<String, Vec<f64>>,
+    embedding_dim: usize,
+}
+
+impl KnowledgeGraphEmbedding {
+    fn new(embedding_dim: usize) -> Self {
+        Self {
+            entity_embeddings: HashMap::new(),
+            relation_embeddings: HashMap::new(),
+            embedding_dim,
+        }
+    }
     
-    // 添加三元组
-    kg.add_triple(Triple {
-        head: alice,
-        relation: loves,
-        tail: bob,
-    });
+    // TransE模型
+    fn transe_score(&self, head_id: &str, relation_id: &str, tail_id: &str) -> f64 {
+        if let (Some(head_emb), Some(rel_emb), Some(tail_emb)) = 
+            (self.entity_embeddings.get(head_id), 
+             self.relation_embeddings.get(relation_id),
+             self.entity_embeddings.get(tail_id)) {
+            
+            let mut score = 0.0;
+            for i in 0..self.embedding_dim {
+                score += (head_emb[i] + rel_emb[i] - tail_emb[i]).powi(2);
+            }
+            -score.sqrt()
+        } else {
+            f64::NEG_INFINITY
+        }
+    }
     
-    kg
+    // DistMult模型
+    fn distmult_score(&self, head_id: &str, relation_id: &str, tail_id: &str) -> f64 {
+        if let (Some(head_emb), Some(rel_emb), Some(tail_emb)) = 
+            (self.entity_embeddings.get(head_id), 
+             self.relation_embeddings.get(relation_id),
+             self.entity_embeddings.get(tail_id)) {
+            
+            let mut score = 0.0;
+            for i in 0..self.embedding_dim {
+                score += head_emb[i] * rel_emb[i] * tail_emb[i];
+            }
+            score
+        } else {
+            f64::NEG_INFINITY
+        }
+    }
+    
+    // 链接预测
+    fn link_prediction(&self, head_id: &str, relation_id: &str, candidates: &[String]) -> Vec<(String, f64)> {
+        let mut scores = Vec::new();
+        
+        for candidate in candidates {
+            let score = self.transe_score(head_id, relation_id, candidate);
+            scores.push((candidate.clone(), score));
+        }
+        
+        scores.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
+        scores
+    }
 }
 
 fn main() {
-    let kg = create_sample_knowledge_graph();
+    println!("=== 知识表示系统示例 ===");
     
-    println!("知识图谱统计:");
-    for (key, value) in kg.get_statistics() {
-        println!("{}: {}", key, value);
+    // 1. 语义网络
+    let mut semantic_net = SemanticNetwork::new();
+    
+    // 添加实体
+    let person_entity = Entity {
+        id: "person".to_string(),
+        name: "Person".to_string(),
+        entity_type: "Class".to_string(),
+        properties: HashMap::new(),
+    };
+    
+    let student_entity = Entity {
+        id: "student".to_string(),
+        name: "Student".to_string(),
+        entity_type: "Class".to_string(),
+        properties: HashMap::new(),
+    };
+    
+    let john_entity = Entity {
+        id: "john".to_string(),
+        name: "John".to_string(),
+        entity_type: "Instance".to_string(),
+        properties: HashMap::new(),
+    };
+    
+    semantic_net.add_entity(person_entity);
+    semantic_net.add_entity(student_entity);
+    semantic_net.add_entity(john_entity);
+    
+    // 添加关系
+    let is_a_relation = Relation {
+        id: "is-a".to_string(),
+        name: "is-a".to_string(),
+        domain: "Instance".to_string(),
+        range: "Class".to_string(),
+        properties: HashMap::new(),
+    };
+    
+    semantic_net.add_relation(is_a_relation.clone());
+    
+    // 添加三元组
+    let triple = Triple {
+        head: student_entity.clone(),
+        relation: is_a_relation.clone(),
+        tail: person_entity.clone(),
+    };
+    
+    semantic_net.add_triple(triple);
+    
+    // 推理
+    if let Some(inherited) = semantic_net.inheritance_reasoning("student", "has-property") {
+        println!("继承推理结果: {}", inherited);
     }
     
-    // 查询示例
-    let results = kg.query("Alice");
-    println!("\n查询 'Alice' 的结果:");
-    for triple in results {
-        println!("{:?} {} {:?}", triple.head.name, triple.relation.name, triple.tail.name);
-    }
+    let similarity = semantic_net.similarity_reasoning("person", "student");
+    println!("相似性推理结果: {:.2}", similarity);
     
-    // 路径查找示例
-    if let Some(path) = kg.find_path("e1", "e2", 3) {
-        println!("\n从 Alice 到 Bob 的路径: {:?}", path);
-    }
+    // 2. 框架系统
+    let mut frame_system = FrameSystem::new();
+    
+    let vehicle_frame = Frame {
+        name: "Vehicle".to_string(),
+        slots: HashMap::new(),
+        parent: None,
+        children: vec!["Car".to_string()],
+    };
+    
+    let car_frame = Frame {
+        name: "Car".to_string(),
+        slots: HashMap::new(),
+        parent: Some("Vehicle".to_string()),
+        children: Vec::new(),
+    };
+    
+    frame_system.add_frame(vehicle_frame);
+    frame_system.add_frame(car_frame);
+    
+    let matching_score = frame_system.frame_matching("Car", "Vehicle");
+    println!("框架匹配分数: {:.2}", matching_score);
+    
+    // 3. 知识图谱嵌入
+    let mut kg_embedding = KnowledgeGraphEmbedding::new(10);
+    
+    // 初始化嵌入（实际应用中需要训练）
+    kg_embedding.entity_embeddings.insert("head".to_string(), vec![0.1; 10]);
+    kg_embedding.relation_embeddings.insert("relation".to_string(), vec![0.2; 10]);
+    kg_embedding.entity_embeddings.insert("tail".to_string(), vec![0.3; 10]);
+    
+    let transe_score = kg_embedding.transe_score("head", "relation", "tail");
+    println!("TransE分数: {:.4}", transe_score);
+    
+    let distmult_score = kg_embedding.distmult_score("head", "relation", "tail");
+    println!("DistMult分数: {:.4}", distmult_score);
 }
 ```
 
-### Haskell实现：本体论
+### Haskell实现：知识表示
 
 ```haskell
-import Data.Map (Map, fromList, (!))
-import Data.Set (Set, fromList, union, intersection)
-import Data.Maybe (fromJust)
+-- 知识表示模块
+module KnowledgeRepresentation where
 
--- 本体概念
-data Concept = Concept {
-    conceptName :: String,
-    superConcepts :: Set String,
-    properties :: Map String String
-} deriving Show
+import Data.Map (Map)
+import qualified Data.Map as Map
+import Data.Set (Set)
+import qualified Data.Set as Set
+import Data.Maybe (fromMaybe)
 
--- 本体关系
-data Relation = Relation {
-    relationName :: String,
-    domain :: String,
-    range :: String,
-    properties :: Map String String
-} deriving Show
+-- 实体定义
+data Entity = Entity
+    { entityId :: String
+    , entityName :: String
+    , entityType :: String
+    , properties :: Map String String
+    } deriving (Show, Eq, Ord)
 
--- 本体实例
-data Instance = Instance {
-    instanceName :: String,
-    concept :: String,
-    properties :: Map String String
-} deriving Show
+-- 关系定义
+data Relation = Relation
+    { relationId :: String
+    , relationName :: String
+    , domain :: String
+    , range :: String
+    , relationProperties :: Map String String
+    } deriving (Show, Eq, Ord)
 
--- 本体
-data Ontology = Ontology {
-    concepts :: Map String Concept,
-    relations :: Map String Relation,
-    instances :: Map String Instance,
-    axioms :: [String]
-} deriving Show
+-- 三元组定义
+data Triple = Triple
+    { head :: Entity
+    , relation :: Relation
+    , tail :: Entity
+    } deriving (Show, Eq)
 
--- 创建本体
-createOntology :: Ontology
-createOntology = Ontology {
-    concepts = fromList [
-        ("Person", Concept "Person" (fromList []) (fromList [("hasName", "String")])),
-        ("Student", Concept "Student" (fromList ["Person"]) (fromList [("hasStudentId", "String")])),
-        ("Teacher", Concept "Teacher" (fromList ["Person"]) (fromList [("hasDepartment", "String")]))
-    ],
-    relations = fromList [
-        ("teaches", Relation "teaches" "Teacher" "Student" (fromList [])),
-        ("enrolledIn", Relation "enrolledIn" "Student" "Course" (fromList []))
-    ],
-    instances = fromList [
-        ("alice", Instance "alice" "Student" (fromList [("hasName", "Alice"), ("hasStudentId", "S001")])),
-        ("bob", Instance "bob" "Teacher" (fromList [("hasName", "Bob"), ("hasDepartment", "CS")]))
-    ],
-    axioms = [
-        "Student ⊑ Person",
-        "Teacher ⊑ Person",
-        "Student ⊓ Teacher = ⊥"
-    ]
-}
+-- 语义网络
+data SemanticNetwork = SemanticNetwork
+    { entities :: Map String Entity
+    , relations :: Map String Relation
+    , triples :: [Triple]
+    , graph :: Map String (Map String [String])
+    } deriving (Show)
 
--- 概念层次
-conceptHierarchy :: Ontology -> Map String (Set String)
-conceptHierarchy ontology = 
-    let conceptMap = concepts ontology
-    in fromList [(name, superConcepts concept) | (name, concept) <- conceptMap]
+-- 框架定义
+data Frame = Frame
+    { frameName :: String
+    , slots :: Map String Slot
+    , parent :: Maybe String
+    , children :: [String]
+    } deriving (Show)
 
--- 实例分类
-classifyInstance :: Ontology -> Instance -> [String]
-classifyInstance ontology instance_ = 
-    let conceptName = concept instance_
-        conceptMap = concepts ontology
-        directConcept = conceptName
-        superConcepts = getSuperConcepts ontology directConcept
-    in directConcept : superConcepts
+data Slot = Slot
+    { slotName :: String
+    , slotType :: String
+    , slotValue :: Maybe String
+    , defaultValue :: Maybe String
+    , constraints :: [String]
+    } deriving (Show)
 
--- 获取超概念
-getSuperConcepts :: Ontology -> String -> [String]
-getSuperConcepts ontology conceptName = 
-    let conceptMap = concepts ontology
-        concept = conceptMap ! conceptName
-        directSupers = superConcepts concept
-        indirectSupers = concatMap (getSuperConcepts ontology) directSupers
-    in directSupers ++ indirectSupers
+-- 框架系统
+data FrameSystem = FrameSystem
+    { frames :: Map String Frame
+    } deriving (Show)
 
--- 概念包含检查
-isSubConceptOf :: Ontology -> String -> String -> Bool
-isSubConceptOf ontology subConcept superConcept = 
-    let allSupers = getSuperConcepts ontology subConcept
-    in superConcept `elem` allSupers
+-- 知识图谱嵌入
+data KnowledgeGraphEmbedding = KnowledgeGraphEmbedding
+    { entityEmbeddings :: Map String [Double]
+    , relationEmbeddings :: Map String [Double]
+    , embeddingDim :: Int
+    } deriving (Show)
 
--- 实例查询
-queryInstances :: Ontology -> String -> [Instance]
-queryInstances ontology conceptName = 
-    let instanceMap = instances ontology
-        allInstances = [instance | (_, instance) <- instanceMap]
-    in filter (\instance -> conceptName `elem` classifyInstance ontology instance) allInstances
+-- 创建新的语义网络
+newSemanticNetwork :: SemanticNetwork
+newSemanticNetwork = SemanticNetwork Map.empty Map.empty [] Map.empty
 
--- 关系查询
-queryRelations :: Ontology -> String -> String -> [String]
-queryRelations ontology sourceType targetType = 
-    let relationMap = relations ontology
-        allRelations = [relation | (_, relation) <- relationMap]
-    in [relationName relation | relation <- allRelations, 
-        domain relation == sourceType && range relation == targetType]
+-- 添加实体
+addEntity :: SemanticNetwork -> Entity -> SemanticNetwork
+addEntity network entity = network
+    { entities = Map.insert (entityId entity) entity (entities network)
+    }
 
--- 本体一致性检查
-checkConsistency :: Ontology -> Bool
-checkConsistency ontology = 
-    let axioms = axioms ontology
-        -- 简化的 consistency 检查
-        hasConflicts = any (\axiom -> axiom == "⊥") axioms
-    in not hasConflicts
+-- 添加关系
+addRelation :: SemanticNetwork -> Relation -> SemanticNetwork
+addRelation network relation = network
+    { relations = Map.insert (relationId relation) relation (relations network)
+    }
 
--- 本体对齐
-alignOntologies :: Ontology -> Ontology -> Map String String
-alignOntologies onto1 onto2 = 
-    let concepts1 = concepts onto1
-        concepts2 = concepts onto2
-        -- 简化的对齐算法
-        alignments = [(name1, name2) | (name1, _) <- concepts1, 
-                                      (name2, _) <- concepts2, 
-                                      name1 == name2]
-    in fromList alignments
+-- 添加三元组
+addTriple :: SemanticNetwork -> Triple -> SemanticNetwork
+addTriple network triple = network
+    { triples = triple : triples network
+    , graph = updateGraph (graph network) triple
+    }
+  where
+    updateGraph g t = 
+        let headId = entityId (head t)
+            tailId = entityId (tail t)
+            relationId = relationId (relation t)
+            currentNeighbors = Map.findWithDefault Map.empty headId g
+            currentRelations = Map.findWithDefault [] relationId currentNeighbors
+            newRelations = Map.insert relationId (tailId : currentRelations) currentNeighbors
+        in Map.insert headId newRelations g
 
--- 示例
+-- 继承推理
+inheritanceReasoning :: SemanticNetwork -> String -> String -> Maybe String
+inheritanceReasoning network entityId property = 
+    case Map.lookup entityId (entities network) of
+        Just entity -> 
+            case Map.lookup property (properties entity) of
+                Just value -> Just value
+                Nothing -> checkInheritance network entityId property
+        Nothing -> Nothing
+  where
+    checkInheritance net eId prop = 
+        case Map.lookup eId (graph net) of
+            Just neighbors -> 
+                case Map.lookup "is-a" neighbors of
+                    Just targetIds -> 
+                        foldr (\targetId acc -> 
+                            case acc of
+                                Just _ -> acc
+                                Nothing -> inheritanceReasoning net targetId prop) 
+                            Nothing targetIds
+                    Nothing -> Nothing
+            Nothing -> Nothing
+
+-- 相似性推理
+similarityReasoning :: SemanticNetwork -> String -> String -> Double
+similarityReasoning network entity1Id entity2Id = 
+    case (Map.lookup entity1Id (entities network), Map.lookup entity2Id (entities network)) of
+        (Just entity1, Just entity2) -> 
+            let commonProps = Set.intersection 
+                    (Set.fromList $ Map.keys $ properties entity1)
+                    (Set.fromList $ Map.keys $ properties entity2)
+                allProps = Set.union 
+                    (Set.fromList $ Map.keys $ properties entity1)
+                    (Set.fromList $ Map.keys $ properties entity2)
+            in if Set.null allProps 
+                then 0.0 
+                else fromIntegral (Set.size commonProps) / fromIntegral (Set.size allProps)
+        _ -> 0.0
+
+-- 路径推理
+pathReasoning :: SemanticNetwork -> String -> String -> Int -> [[String]]
+pathReasoning network startId endId maxDepth = 
+    dfsPath network startId endId [] [] Set.empty maxDepth
+  where
+    dfsPath net current end currentPath paths visited depth
+        | length currentPath > depth = paths
+        | current == end = paths ++ [reverse currentPath]
+        | Set.member current visited = paths
+        | otherwise = 
+            let newVisited = Set.insert current visited
+                newPath = current : currentPath
+                neighbors = getNeighbors net current
+                newPaths = foldr (\neighbor acc -> 
+                    dfsPath net neighbor end newPath acc newVisited depth) 
+                    paths neighbors
+            in dfsPath net current end currentPath newPaths visited depth
+    
+    getNeighbors net nodeId = 
+        case Map.lookup nodeId (graph net) of
+            Just neighbors -> concat $ Map.elems neighbors
+            Nothing -> []
+
+-- 创建新的框架系统
+newFrameSystem :: FrameSystem
+newFrameSystem = FrameSystem Map.empty
+
+-- 添加框架
+addFrame :: FrameSystem -> Frame -> FrameSystem
+addFrame system frame = system
+    { frames = Map.insert (frameName frame) frame (frames system)
+    }
+
+-- 框架匹配
+frameMatching :: FrameSystem -> String -> String -> Double
+frameMatching system frame1Name frame2Name = 
+    case (Map.lookup frame1Name (frames system), Map.lookup frame2Name (frames system)) of
+        (Just frame1, Just frame2) -> 
+            let slotPairs = Map.intersectionWith (,) (slots frame1) (slots frame2)
+                similarities = map (uncurry slotSimilarity) $ Map.toList slotPairs
+            in if null similarities 
+                then 0.0 
+                else sum similarities / fromIntegral (length similarities)
+        _ -> 0.0
+  where
+    slotSimilarity slot1 slot2 = 
+        let typeSim = if slotType slot1 == slotType slot2 then 0.5 else 0.0
+            valueSim = case (slotValue slot1, slotValue slot2) of
+                (Just v1, Just v2) -> if v1 == v2 then 0.5 else 0.0
+                _ -> 0.0
+        in typeSim + valueSim
+
+-- 框架继承
+frameInheritance :: FrameSystem -> String -> String -> Maybe String
+frameInheritance system childName property = 
+    case Map.lookup childName (frames system) of
+        Just childFrame -> 
+            case Map.lookup property (slots childFrame) of
+                Just slot -> slotValue slot
+                Nothing -> 
+                    case parent childFrame of
+                        Just parentName -> frameInheritance system parentName property
+                        Nothing -> Nothing
+        Nothing -> Nothing
+
+-- 创建新的知识图谱嵌入
+newKnowledgeGraphEmbedding :: Int -> KnowledgeGraphEmbedding
+newKnowledgeGraphEmbedding dim = KnowledgeGraphEmbedding Map.empty Map.empty dim
+
+-- TransE模型
+transeScore :: KnowledgeGraphEmbedding -> String -> String -> String -> Double
+transeScore embedding headId relationId tailId = 
+    case (Map.lookup headId (entityEmbeddings embedding), 
+          Map.lookup relationId (relationEmbeddings embedding),
+          Map.lookup tailId (entityEmbeddings embedding)) of
+        (Just headEmb, Just relEmb, Just tailEmb) -> 
+            let score = sum $ zipWith3 (\h r t -> (h + r - t)^2) headEmb relEmb tailEmb
+            in -sqrt score
+        _ -> negate infinity
+
+-- DistMult模型
+distmultScore :: KnowledgeGraphEmbedding -> String -> String -> String -> Double
+distmultScore embedding headId relationId tailId = 
+    case (Map.lookup headId (entityEmbeddings embedding), 
+          Map.lookup relationId (relationEmbeddings embedding),
+          Map.lookup tailId (entityEmbeddings embedding)) of
+        (Just headEmb, Just relEmb, Just tailEmb) -> 
+            sum $ zipWith3 (\h r t -> h * r * t) headEmb relEmb tailEmb
+        _ -> 0.0
+
+-- 示例使用
 main :: IO ()
 main = do
-    let ontology = createOntology
+    putStrLn "=== 知识表示系统示例 ==="
     
-    putStrLn "本体概念层次:"
-    mapM_ (\(name, supers) -> 
-        putStrLn $ name ++ " -> " ++ show supers) (conceptHierarchy ontology)
+    -- 1. 语义网络
+    let initialNetwork = newSemanticNetwork
     
-    putStrLn "\n实例分类:"
-    let alice = instances ontology ! "alice"
-    putStrLn $ "Alice 的分类: " ++ show (classifyInstance ontology alice)
+    let personEntity = Entity "person" "Person" "Class" Map.empty
+    let studentEntity = Entity "student" "Student" "Class" Map.empty
+    let johnEntity = Entity "john" "John" "Instance" Map.empty
     
-    putStrLn "\n概念包含检查:"
-    putStrLn $ "Student ⊑ Person: " ++ show (isSubConceptOf ontology "Student" "Person")
+    let network1 = addEntity initialNetwork personEntity
+    let network2 = addEntity network1 studentEntity
+    let network3 = addEntity network2 johnEntity
     
-    putStrLn "\n实例查询:"
-    let students = queryInstances ontology "Student"
-    putStrLn $ "学生实例: " ++ show (map instanceName students)
+    let isARelation = Relation "is-a" "is-a" "Instance" "Class" Map.empty
+    let network4 = addRelation network3 isARelation
     
-    putStrLn "\n关系查询:"
-    let teacherStudentRels = queryRelations ontology "Teacher" "Student"
-    putStrLn $ "教师-学生关系: " ++ show teacherStudentRels
+    let triple = Triple studentEntity isARelation personEntity
+    let finalNetwork = addTriple network4 triple
     
-    putStrLn "\n本体一致性:"
-    putStrLn $ "一致性检查: " ++ show (checkConsistency ontology)
+    -- 推理
+    case inheritanceReasoning finalNetwork "student" "has-property" of
+        Just inherited -> putStrLn $ "继承推理结果: " ++ inherited
+        Nothing -> putStrLn "无继承属性"
     
-    putStrLn "\n知识表示总结:"
-    putStrLn "- 逻辑表示: 使用形式化逻辑表示知识"
-    putStrLn "- 语义网络: 基于图结构的知识表示"
-    putStrLn "- 本体论: 形式化的概念层次和关系"
-    putStrLn "- 知识图谱: 实体-关系-实体三元组"
-    putStrLn "- 向量表示: 分布式语义表示"
+    let similarity = similarityReasoning finalNetwork "person" "student"
+    putStrLn $ "相似性推理结果: " ++ show similarity
+    
+    -- 2. 框架系统
+    let initialSystem = newFrameSystem
+    
+    let vehicleFrame = Frame "Vehicle" Map.empty Nothing ["Car"]
+    let carFrame = Frame "Car" Map.empty (Just "Vehicle") []
+    
+    let system1 = addFrame initialSystem vehicleFrame
+    let system2 = addFrame system1 carFrame
+    
+    let matchingScore = frameMatching system2 "Car" "Vehicle"
+    putStrLn $ "框架匹配分数: " ++ show matchingScore
+    
+    -- 3. 知识图谱嵌入
+    let embedding = newKnowledgeGraphEmbedding 10
+    
+    let transeScore = transeScore embedding "head" "relation" "tail"
+    putStrLn $ "TransE分数: " ++ show transeScore
+    
+    let distmultScore = distmultScore embedding "head" "relation" "tail"
+    putStrLn $ "DistMult分数: " ++ show distmultScore
 ```
-
----
 
 ## 参考文献 / References
 
-1. Brachman, R. J., & Levesque, H. J. (2004). *Knowledge Representation and Reasoning*. Morgan Kaufmann.
-2. Sowa, J. F. (2000). *Knowledge Representation: Logical, Philosophical, and Computational Foundations*. Brooks/Cole.
-3. Baader, F., et al. (2003). *The Description Logic Handbook: Theory, Implementation, and Applications*. Cambridge University Press.
-4. Quillian, M. R. (1968). Semantic memory. *Semantic Information Processing*. MIT Press.
-5. Minsky, M. (1974). A framework for representing knowledge. *MIT AI Laboratory Memo*.
-6. Gruber, T. R. (1993). A translation approach to portable ontology specifications. *Knowledge Acquisition*.
-7. Bollacker, K., et al. (2008). Freebase: a collaboratively created graph database for structuring human knowledge. *SIGMOD*.
-8. Mikolov, T., et al. (2013). Efficient estimation of word representations in vector space. *ICLR*.
-9. Devlin, J., et al. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. *NAACL*.
+1. Sowa, J. F. (1991). Principles of semantic networks: Explorations in the representation of knowledge. Morgan Kaufmann.
+2. Minsky, M. (1975). A framework for representing knowledge. The Psychology of Computer Vision.
+3. Baader, F., et al. (2003). The description logic handbook: Theory, implementation, and applications. Cambridge University Press.
+4. Gruber, T. R. (1993). A translation approach to portable ontology specifications. Knowledge Acquisition.
+5. Bollacker, K., et al. (2008). Freebase: A collaboratively created graph database for structuring human knowledge. SIGMOD.
+6. Bordes, A., et al. (2013). Translating embeddings for modeling multi-relational data. NeurIPS.
+7. Yang, B., et al. (2015). Embedding entities and relations for learning and inference in knowledge bases. ICLR.
+8. Trouillon, T., et al. (2016). Complex embeddings for simple link prediction. ICML.
+9. Dettmers, T., et al. (2018). Convolutional 2D knowledge graph embeddings. AAAI.
+10. Vashishth, S., et al. (2020). Composition-based multi-relational graph convolutional networks. ICLR.
 
 ---
 
-*本模块为FormalAI提供了全面的知识表示理论基础，涵盖了从逻辑表示到知识演化的完整知识表示理论体系。*
+*知识表示为FormalAI提供了结构化和语义化的知识管理能力，是实现智能推理和知识发现的重要理论基础。*
+
+*Knowledge representation provides structured and semantic knowledge management capabilities for FormalAI, serving as important theoretical foundations for intelligent reasoning and knowledge discovery.*

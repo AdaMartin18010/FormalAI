@@ -1,56 +1,36 @@
-# 2.4 因果推理 / Causal Inference
+# 2.4 因果推理理论 / Causal Inference Theory
 
 ## 概述 / Overview
 
-因果推理理论研究如何从观察数据中识别和估计因果关系，为FormalAI提供因果发现和干预分析的数学基础。
+因果推理理论研究如何从观察数据中识别和估计因果关系，为AI系统的决策和干预提供理论基础。
 
-Causal inference theory studies how to identify and estimate causal relationships from observational data, providing mathematical foundations for causal discovery and intervention analysis in FormalAI.
+Causal inference theory studies how to identify and estimate causal relationships from observational data, providing theoretical foundations for decision-making and intervention in AI systems.
 
 ## 目录 / Table of Contents
 
-- [2.4 因果推理 / Causal Inference](#24-因果推理--causal-inference)
+- [2.4 因果推理理论 / Causal Inference Theory](#24-因果推理理论--causal-inference-theory)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
-  - [1. 因果图模型 / Causal Graph Models](#1-因果图模型--causal-graph-models)
+  - [1. 因果图模型 / Causal Graphical Models](#1-因果图模型--causal-graphical-models)
     - [1.1 有向无环图 / Directed Acyclic Graphs](#11-有向无环图--directed-acyclic-graphs)
-    - [1.2 路径分析 / Path Analysis](#12-路径分析--path-analysis)
-    - [1.3 因果贝叶斯网络 / Causal Bayesian Networks](#13-因果贝叶斯网络--causal-bayesian-networks)
+    - [1.2 因果马尔可夫条件 / Causal Markov Condition](#12-因果马尔可夫条件--causal-markov-condition)
+    - [1.3 因果忠实性 / Causal Faithfulness](#13-因果忠实性--causal-faithfulness)
   - [2. 结构因果模型 / Structural Causal Models](#2-结构因果模型--structural-causal-models)
-    - [2.1 SCM定义 / SCM Definition](#21-scm定义--scm-definition)
-    - [2.2 干预 / Interventions](#22-干预--interventions)
-    - [2.3 前门准则 / Front-Door Criterion](#23-前门准则--front-door-criterion)
+    - [2.1 结构方程 / Structural Equations](#21-结构方程--structural-equations)
+    - [2.2 反事实推理 / Counterfactual Reasoning](#22-反事实推理--counterfactual-reasoning)
+    - [2.3 因果层次 / Causal Hierarchy](#23-因果层次--causal-hierarchy)
   - [3. 因果发现 / Causal Discovery](#3-因果发现--causal-discovery)
-    - [3.1 约束型方法 / Constraint-Based Methods](#31-约束型方法--constraint-based-methods)
-    - [3.2 评分型方法 / Score-Based Methods](#32-评分型方法--score-based-methods)
-    - [3.3 函数型方法 / Functional Methods](#33-函数型方法--functional-methods)
+    - [3.1 PC算法 / PC Algorithm](#31-pc算法--pc-algorithm)
+    - [3.2 GES算法 / GES Algorithm](#32-ges算法--ges-algorithm)
+    - [3.3 约束学习 / Constraint-Based Learning](#33-约束学习--constraint-based-learning)
   - [4. 因果效应估计 / Causal Effect Estimation](#4-因果效应估计--causal-effect-estimation)
     - [4.1 平均因果效应 / Average Causal Effect](#41-平均因果效应--average-causal-effect)
     - [4.2 倾向得分 / Propensity Score](#42-倾向得分--propensity-score)
     - [4.3 工具变量 / Instrumental Variables](#43-工具变量--instrumental-variables)
-  - [5. 反事实推理 / Counterfactual Reasoning](#5-反事实推理--counterfactual-reasoning)
-    - [5.1 反事实定义 / Counterfactual Definition](#51-反事实定义--counterfactual-definition)
-    - [5.2 反事实计算 / Counterfactual Computation](#52-反事实计算--counterfactual-computation)
-    - [5.3 反事实公平性 / Counterfactual Fairness](#53-反事实公平性--counterfactual-fairness)
-  - [6. 因果强化学习 / Causal Reinforcement Learning](#6-因果强化学习--causal-reinforcement-learning)
-    - [6.1 因果MDP / Causal MDP](#61-因果mdp--causal-mdp)
-    - [6.2 因果探索 / Causal Exploration](#62-因果探索--causal-exploration)
-    - [6.3 因果策略梯度 / Causal Policy Gradient](#63-因果策略梯度--causal-policy-gradient)
-  - [7. 因果机器学习 / Causal Machine Learning](#7-因果机器学习--causal-machine-learning)
-    - [7.1 因果表示学习 / Causal Representation Learning](#71-因果表示学习--causal-representation-learning)
-    - [7.2 因果迁移学习 / Causal Transfer Learning](#72-因果迁移学习--causal-transfer-learning)
-    - [7.3 因果生成模型 / Causal Generative Models](#73-因果生成模型--causal-generative-models)
-  - [8. 因果公平性 / Causal Fairness](#8-因果公平性--causal-fairness)
-    - [8.1 因果公平性定义 / Causal Fairness Definitions](#81-因果公平性定义--causal-fairness-definitions)
-    - [8.2 因果去偏见 / Causal Debiasing](#82-因果去偏见--causal-debiasing)
-    - [8.3 因果公平性评估 / Causal Fairness Evaluation](#83-因果公平性评估--causal-fairness-evaluation)
-  - [9. 因果解释性 / Causal Interpretability](#9-因果解释性--causal-interpretability)
-    - [9.1 因果解释 / Causal Explanations](#91-因果解释--causal-explanations)
-    - [9.2 因果注意力 / Causal Attention](#92-因果注意力--causal-attention)
-    - [9.3 因果可解释性 / Causal Interpretability](#93-因果可解释性--causal-interpretability)
-  - [10. 因果元学习 / Causal Meta-Learning](#10-因果元学习--causal-meta-learning)
-    - [10.1 因果元学习 / Causal Meta-Learning](#101-因果元学习--causal-meta-learning)
-    - [10.2 因果少样本学习 / Causal Few-Shot Learning](#102-因果少样本学习--causal-few-shot-learning)
-    - [10.3 因果迁移学习 / Causal Transfer Learning](#103-因果迁移学习--causal-transfer-learning)
+  - [5. 因果机器学习 / Causal Machine Learning](#5-因果机器学习--causal-machine-learning)
+    - [5.1 因果森林 / Causal Forests](#51-因果森林--causal-forests)
+    - [5.2 因果神经网络 / Causal Neural Networks](#52-因果神经网络--causal-neural-networks)
+    - [5.3 因果强化学习 / Causal Reinforcement Learning](#53-因果强化学习--causal-reinforcement-learning)
   - [代码示例 / Code Examples](#代码示例--code-examples)
     - [Rust实现：因果发现算法](#rust实现因果发现算法)
     - [Haskell实现：因果效应估计](#haskell实现因果效应估计)
@@ -58,171 +38,143 @@ Causal inference theory studies how to identify and estimate causal relationship
 
 ---
 
-## 1. 因果图模型 / Causal Graph Models
+## 1. 因果图模型 / Causal Graphical Models
 
 ### 1.1 有向无环图 / Directed Acyclic Graphs
 
 **因果图 / Causal Graph:**
 
-$G = (V, E)$ 其中 $V$ 是节点集合，$E$ 是有向边集合。
+因果图 $G = (V, E)$ 是一个有向无环图，其中：
 
-$G = (V, E)$ where $V$ is the set of nodes and $E$ is the set of directed edges.
+Causal graph $G = (V, E)$ is a directed acyclic graph where:
 
-**马尔可夫性质 / Markov Property:**
+- $V$ 是变量集合 / set of variables
+- $E$ 是有向边集合 / set of directed edges
 
-给定父节点，节点与其非后代节点条件独立。
+**父节点 / Parents:**
 
-Given parents, a node is conditionally independent of its non-descendants.
+$$\text{Pa}(X) = \{Y : Y \rightarrow X \in E\}$$
 
-**因果马尔可夫假设 / Causal Markov Assumption:**
+**子节点 / Children:**
 
-$$P(X_1, \ldots, X_n) = \prod_{i=1}^n P(X_i | \text{Pa}(X_i))$$
+$$\text{Ch}(X) = \{Y : X \rightarrow Y \in E\}$$
 
-其中 $\text{Pa}(X_i)$ 是 $X_i$ 的父节点集合。
+### 1.2 因果马尔可夫条件 / Causal Markov Condition
 
-where $\text{Pa}(X_i)$ is the set of parents of $X_i$.
+**因果马尔可夫条件 / Causal Markov Condition:**
 
-### 1.2 路径分析 / Path Analysis
+给定其父节点，每个变量独立于其非后代：
 
-**d-分离 / d-Separation:**
+Given its parents, each variable is independent of its non-descendants:
 
-路径 $p$ 在节点集 $Z$ 下被d-分离，如果：
+$$X \perp\!\!\!\perp \text{NonDesc}(X) | \text{Pa}(X)$$
 
-Path $p$ is d-separated by node set $Z$ if:
+**全局马尔可夫条件 / Global Markov Condition:**
 
-1. 路径包含链式结构 $A \rightarrow C \rightarrow B$ 且 $C \in Z$
-2. 路径包含叉式结构 $A \leftarrow C \rightarrow B$ 且 $C \in Z$
-3. 路径包含对撞结构 $A \rightarrow C \leftarrow B$ 且 $C \notin Z$ 且 $\text{Desc}(C) \cap Z = \emptyset$
+如果 $X$ 和 $Y$ 被 $Z$ d-分离，则 $X \perp\!\!\!\perp Y | Z$。
 
-**全局马尔可夫性质 / Global Markov Property:**
+If $X$ and $Y$ are d-separated by $Z$, then $X \perp\!\!\!\perp Y | Z$.
 
-如果 $A$ 和 $B$ 在 $Z$ 下d-分离，那么 $A \perp\!\!\!\perp B | Z$。
+### 1.3 因果忠实性 / Causal Faithfulness
 
-If $A$ and $B$ are d-separated by $Z$, then $A \perp\!\!\!\perp B | Z$.
+**因果忠实性 / Causal Faithfulness:**
 
-### 1.3 因果贝叶斯网络 / Causal Bayesian Networks
+图中的独立性关系完全由d-分离决定：
 
-**因果贝叶斯网络 / Causal Bayesian Network:**
+Independence relations in the graph are completely determined by d-separation:
 
-$B = (G, \Theta)$ 其中：
-
-$B = (G, \Theta)$ where:
-
-- $G$ 是因果图
-- $\Theta$ 是条件概率参数
-
-**参数化 / Parameterization:**
-
-$$\theta_{ijk} = P(X_i = k | \text{Pa}(X_i) = j)$$
+$$X \perp\!\!\!\perp Y | Z \Leftrightarrow \text{d-sep}(X, Y | Z)$$
 
 ---
 
 ## 2. 结构因果模型 / Structural Causal Models
 
-### 2.1 SCM定义 / SCM Definition
-
-**结构因果模型 / Structural Causal Model:**
-
-$M = (U, V, F, P(U))$ 其中：
-
-$M = (U, V, F, P(U))$ where:
-
-- $U$ 是外生变量集合 / set of exogenous variables
-- $V$ 是内生变量集合 / set of endogenous variables
-- $F$ 是结构函数集合 / set of structural functions
-- $P(U)$ 是外生变量分布 / distribution of exogenous variables
+### 2.1 结构方程 / Structural Equations
 
 **结构方程 / Structural Equations:**
 
 $$X_i = f_i(\text{Pa}(X_i), U_i)$$
 
-### 2.2 干预 / Interventions
+其中 $U_i$ 是外生变量。
+
+where $U_i$ are exogenous variables.
+
+**递归性 / Recursiveness:**
+
+$$X_i = f_i(X_1, \ldots, X_{i-1}, U_i)$$
+
+### 2.2 反事实推理 / Counterfactual Reasoning
+
+**反事实 / Counterfactual:**
+
+$$Y_{X=x}(u) = Y(f_1(u), \ldots, f_{X=x}(u), \ldots, f_n(u))$$
+
+其中 $f_{X=x}$ 是将 $X$ 设置为 $x$ 的干预函数。
+
+where $f_{X=x}$ is the intervention function setting $X$ to $x$.
 
 **do-演算 / do-Calculus:**
 
-$do(X = x)$ 表示将变量 $X$ 设置为值 $x$。
+$$P(Y | do(X=x)) = \sum_z P(Y | X=x, Z=z) P(Z=z)$$
 
-$do(X = x)$ means setting variable $X$ to value $x$.
+### 2.3 因果层次 / Causal Hierarchy
 
-**干预分布 / Interventional Distribution:**
+**关联层 / Association Layer:**
 
-$$P(Y | do(X = x)) = \sum_z P(Y | X = x, Z = z) P(Z = z)$$
+$$P(Y | X)$$
 
-**后门准则 / Backdoor Criterion:**
+**干预层 / Intervention Layer:**
 
-如果 $Z$ 满足后门准则，那么：
+$$P(Y | do(X))$$
 
-If $Z$ satisfies the backdoor criterion, then:
+**反事实层 / Counterfactual Layer:**
 
-$$P(Y | do(X = x)) = \sum_z P(Y | X = x, Z = z) P(Z = z)$$
-
-### 2.3 前门准则 / Front-Door Criterion
-
-**前门路径 / Front-Door Path:**
-
-$X \rightarrow M \rightarrow Y$ 其中 $M$ 是中介变量。
-
-$X \rightarrow M \rightarrow Y$ where $M$ is a mediator.
-
-**前门调整 / Front-Door Adjustment:**
-
-$$P(Y | do(X = x)) = \sum_m P(M = m | X = x) \sum_{x'} P(Y | X = x', M = m) P(X = x')$$
+$$P(Y_{X=x} | X=x', Y=y')$$
 
 ---
 
 ## 3. 因果发现 / Causal Discovery
 
-### 3.1 约束型方法 / Constraint-Based Methods
+### 3.1 PC算法 / PC Algorithm
 
-**PC算法 / PC Algorithm:**
+**PC算法步骤 / PC Algorithm Steps:**
 
-1. 从完全无向图开始
-2. 基于条件独立性测试删除边
-3. 定向对撞结构
-4. 应用定向规则
+1. **骨架学习 / Skeleton Learning:**
+   - 从完全无向图开始
+   - 通过独立性测试删除边
 
-   1. Start with complete undirected graph
-   2. Remove edges based on conditional independence tests
-   3. Orient colliders
-   4. Apply orientation rules
+2. **方向学习 / Orientation Learning:**
+   - 使用v-结构规则
+   - 应用方向传播规则
 
-**SGS算法 / SGS Algorithm:**
+**独立性测试 / Independence Test:**
 
-PC算法的变体，使用不同的搜索策略。
+$$\text{Test}(X \perp\!\!\!\perp Y | Z)$$
 
-Variant of PC algorithm with different search strategy.
+### 3.2 GES算法 / GES Algorithm
 
-### 3.2 评分型方法 / Score-Based Methods
+**GES算法 / GES Algorithm:**
 
-**贝叶斯信息准则 / Bayesian Information Criterion:**
+1. **前向阶段 / Forward Phase:**
+   - 从空图开始
+   - 贪婪添加边
 
-$$\text{BIC}(G) = \log P(D | G) - \frac{d}{2} \log n$$
+2. **后向阶段 / Backward Phase:**
+   - 贪婪删除边
 
-其中 $d$ 是参数数量，$n$ 是样本数量。
+**评分函数 / Scoring Function:**
 
-where $d$ is the number of parameters and $n$ is the sample size.
+$$S(G, D) = \log P(D | G) - \text{penalty}(G)$$
 
-**结构搜索 / Structure Search:**
+### 3.3 约束学习 / Constraint-Based Learning
 
-$$\hat{G} = \arg\max_G \text{BIC}(G)$$
+**约束学习 / Constraint-Based Learning:**
 
-### 3.3 函数型方法 / Functional Methods
+基于独立性约束学习因果结构：
 
-**ANM算法 / Additive Noise Model:**
+Learn causal structure based on independence constraints:
 
-$$Y = f(X) + N_Y$$
-
-其中 $N_Y \perp\!\!\!\perp X$。
-
-where $N_Y \perp\!\!\!\perp X$.
-
-**LiNGAM算法 / Linear Non-Gaussian Additive Model:**
-
-$$X_i = \sum_{j \in \text{Pa}(i)} b_{ij} X_j + N_i$$
-
-其中 $N_i$ 是非高斯噪声。
-
-where $N_i$ is non-Gaussian noise.
+$$\mathcal{I} = \{(X, Y, Z) : X \perp\!\!\!\perp Y | Z\}$$
 
 ---
 
@@ -232,262 +184,88 @@ where $N_i$ is non-Gaussian noise.
 
 **平均因果效应 / Average Causal Effect:**
 
-$$\text{ACE} = \mathbb{E}[Y | do(X = 1)] - \mathbb{E}[Y | do(X = 0)]$$
+$$\text{ACE} = \mathbb{E}[Y_{X=1}] - \mathbb{E}[Y_{X=0}]$$
 
-**条件平均因果效应 / Conditional Average Causal Effect:**
+**识别条件 / Identification Conditions:**
 
-$$\text{CACE} = \mathbb{E}[Y | do(X = 1), Z = z] - \mathbb{E}[Y | do(X = 0), Z = z]$$
+1. 无混淆假设 / No Confounding Assumption
+2. 正概率假设 / Positivity Assumption
+3. 稳定单元值假设 / Stable Unit Treatment Value Assumption
 
 ### 4.2 倾向得分 / Propensity Score
 
 **倾向得分 / Propensity Score:**
 
-$$e(X) = P(T = 1 | X)$$
+$$e(X) = P(T=1 | X)$$
 
-**倾向得分匹配 / Propensity Score Matching:**
+**倾向得分定理 / Propensity Score Theorem:**
 
-$$\text{ACE} = \mathbb{E}_{e(X)}[\mathbb{E}[Y | T = 1, e(X)] - \mathbb{E}[Y | T = 0, e(X)]]$$
+$$T \perp\!\!\!\perp X | e(X)$$
 
-**倾向得分加权 / Propensity Score Weighting:**
+**逆概率加权 / Inverse Probability Weighting:**
 
 $$\text{ACE} = \mathbb{E}\left[\frac{TY}{e(X)}\right] - \mathbb{E}\left[\frac{(1-T)Y}{1-e(X)}\right]$$
 
 ### 4.3 工具变量 / Instrumental Variables
 
-**工具变量 / Instrumental Variable:**
+**工具变量 / Instrumental Variables:**
 
-$Z$ 是工具变量，如果：
+变量 $Z$ 是 $X$ 对 $Y$ 的工具变量，如果：
 
-$Z$ is an instrumental variable if:
+Variable $Z$ is an instrumental variable for $X$ on $Y$ if:
 
 1. $Z \rightarrow X$ (相关性)
-2. $Z \perp\!\!\!\perp Y | X, U$ (排他性)
-3. $Z \perp\!\!\!\perp U$ (独立性)
+2. $Z \perp\!\!\!\perp Y | X$ (排他性)
+3. $Z \perp\!\!\!\perp U$ (外生性)
 
 **两阶段最小二乘 / Two-Stage Least Squares:**
 
 $$\hat{X} = \hat{\alpha}_0 + \hat{\alpha}_1 Z$$
-$$\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 \hat{X}$$
+$$Y = \hat{\beta}_0 + \hat{\beta}_1 \hat{X}$$
 
 ---
 
-## 5. 反事实推理 / Counterfactual Reasoning
+## 5. 因果机器学习 / Causal Machine Learning
 
-### 5.1 反事实定义 / Counterfactual Definition
+### 5.1 因果森林 / Causal Forests
 
-**反事实 / Counterfactual:**
+**因果森林 / Causal Forests:**
 
-"如果 $X$ 是 $x$ 而不是 $x'$，那么 $Y$ 会是 $y$"。
+$$\hat{\tau}(x) = \frac{1}{|\{i : X_i \in L(x)\}|} \sum_{i : X_i \in L(x)} \tau_i$$
 
-"If $X$ were $x$ instead of $x'$, then $Y$ would be $y$".
+其中 $L(x)$ 是包含 $x$ 的叶子节点。
 
-**反事实查询 / Counterfactual Query:**
+where $L(x)$ is the leaf containing $x$.
 
-$$P(Y_{X=x} = y | X = x', Y = y')$$
+**诚实估计 / Honest Estimation:**
 
-### 5.2 反事实计算 / Counterfactual Computation
+使用不同样本进行分割和估计：
 
-**三步法 / Three-Step Method:**
+Use different samples for splitting and estimation.
 
-1. **外推 / Extrapolation:** 估计外生变量 $U$
-2. **干预 / Intervention:** 设置 $X = x$
-3. **预测 / Prediction:** 计算 $Y$
+### 5.2 因果神经网络 / Causal Neural Networks
 
-**反事实分布 / Counterfactual Distribution:**
+**因果神经网络 / Causal Neural Networks:**
 
-$$P(Y_{X=x} | X = x', Y = y') = \int P(Y_{X=x} | U) P(U | X = x', Y = y') dU$$
+$$f_\theta(x, t) = \mu_\theta(x) + \tau_\theta(x) \cdot t$$
 
-### 5.3 反事实公平性 / Counterfactual Fairness
+其中 $t$ 是处理指示符。
 
-**反事实公平性 / Counterfactual Fairness:**
+where $t$ is the treatment indicator.
 
-$$\mathbb{E}[Y_{X=x} | A = a] = \mathbb{E}[Y_{X=x} | A = a']$$
+**因果正则化 / Causal Regularization:**
 
-其中 $A$ 是敏感属性。
+$$\mathcal{L} = \mathcal{L}_{\text{pred}} + \lambda \mathcal{L}_{\text{causal}}$$
 
-where $A$ is the sensitive attribute.
+### 5.3 因果强化学习 / Causal Reinforcement Learning
 
----
+**因果强化学习 / Causal Reinforcement Learning:**
 
-## 6. 因果强化学习 / Causal Reinforcement Learning
+使用因果模型指导探索：
 
-### 6.1 因果MDP / Causal MDP
+Use causal models to guide exploration:
 
-**因果MDP / Causal MDP:**
-
-$M = (S, A, P, R, \gamma, C)$ 其中 $C$ 是因果图。
-
-$M = (S, A, P, R, \gamma, C)$ where $C$ is the causal graph.
-
-**因果转移函数 / Causal Transition Function:**
-
-$$P(s' | s, a) = \prod_{i=1}^n P(s_i' | \text{Pa}(s_i'))$$
-
-### 6.2 因果探索 / Causal Exploration
-
-**因果UCB / Causal UCB:**
-
-$$\text{UCB}(s, a) = \hat{Q}(s, a) + \sqrt{\frac{\log t}{N(s, a)}} + \text{CausalBonus}(s, a)$$
-
-**因果奖励塑造 / Causal Reward Shaping:**
-
-$$R'(s, a) = R(s, a) + \gamma \Phi(s') - \Phi(s)$$
-
-其中 $\Phi$ 是因果势函数。
-
-where $\Phi$ is the causal potential function.
-
-### 6.3 因果策略梯度 / Causal Policy Gradient
-
-**因果策略梯度 / Causal Policy Gradient:**
-
-$$\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}[\nabla_\theta \log \pi_\theta(a|s) Q^\pi(s,a) \text{CausalWeight}(s,a)]$$
-
-**因果权重 / Causal Weight:**
-
-$$\text{CausalWeight}(s,a) = \frac{P(a | \text{Pa}(a))}{P(a | s)}$$
-
----
-
-## 7. 因果机器学习 / Causal Machine Learning
-
-### 7.1 因果表示学习 / Causal Representation Learning
-
-**因果不变性 / Causal Invariance:**
-
-$$P(Y | \text{Pa}(Y)) = P(Y | \text{Pa}(Y), E)$$
-
-其中 $E$ 是环境变量。
-
-where $E$ is the environment variable.
-
-**因果表示 / Causal Representation:**
-
-$$Z = f(X) \text{ s.t. } Z \text{ satisfies causal invariance}$$
-
-### 7.2 因果迁移学习 / Causal Transfer Learning
-
-**因果迁移 / Causal Transfer:**
-
-$$\text{Transfer}(S, T) = \mathbb{E}_{x \sim P_T(x)}[f_S(x)]$$
-
-其中 $f_S$ 是在源域 $S$ 上学习的因果模型。
-
-where $f_S$ is the causal model learned on source domain $S$.
-
-**因果域适应 / Causal Domain Adaptation:**
-
-$$\min_f \mathcal{L}_{\text{source}}(f) + \lambda \mathcal{L}_{\text{causal}}(f)$$
-
-### 7.3 因果生成模型 / Causal Generative Models
-
-**因果GAN / Causal GAN:**
-
-$$\min_G \max_D V(D, G) + \lambda \mathcal{L}_{\text{causal}}(G)$$
-
-**因果VAE / Causal VAE:**
-
-$$\mathcal{L} = \mathcal{L}_{\text{recon}} + \mathcal{L}_{\text{KL}} + \mathcal{L}_{\text{causal}}$$
-
----
-
-## 8. 因果公平性 / Causal Fairness
-
-### 8.1 因果公平性定义 / Causal Fairness Definitions
-
-**反事实公平性 / Counterfactual Fairness:**
-
-$$\mathbb{E}[Y_{X=x} | A = a] = \mathbb{E}[Y_{X=x} | A = a']$$
-
-**路径特定公平性 / Path-Specific Fairness:**
-
-$$\mathbb{E}[Y_{X=x, \pi} | A = a] = \mathbb{E}[Y_{X=x, \pi} | A = a']$$
-
-其中 $\pi$ 是特定路径。
-
-where $\pi$ is a specific path.
-
-### 8.2 因果去偏见 / Causal Debiasing
-
-**因果去偏见 / Causal Debiasing:**
-
-$$\min_f \mathcal{L}_{\text{pred}}(f) + \lambda \mathcal{L}_{\text{fair}}(f)$$
-
-**反事实数据增强 / Counterfactual Data Augmentation:**
-
-$$D_{\text{aug}} = D \cup \{(x_{a \rightarrow a'}, y)\}$$
-
-### 8.3 因果公平性评估 / Causal Fairness Evaluation
-
-**因果公平性指标 / Causal Fairness Metrics:**
-
-- 反事实公平性 / Counterfactual fairness
-- 路径特定公平性 / Path-specific fairness
-- 因果影响 / Causal influence
-
----
-
-## 9. 因果解释性 / Causal Interpretability
-
-### 9.1 因果解释 / Causal Explanations
-
-**因果解释 / Causal Explanation:**
-
-$$\text{Explanation}(x, y) = \{\text{Path}_1, \text{Path}_2, \ldots, \text{Path}_k\}$$
-
-其中 $\text{Path}_i$ 是因果路径。
-
-where $\text{Path}_i$ is a causal path.
-
-**SHAP因果解释 / SHAP Causal Explanation:**
-
-$$\phi_i = \sum_{S \subseteq N \setminus \{i\}} \frac{|S|!(|N|-|S|-1)!}{|N|!} [f(S \cup \{i\}) - f(S)]$$
-
-### 9.2 因果注意力 / Causal Attention
-
-**因果注意力 / Causal Attention:**
-
-$$\alpha_{ij} = \frac{\exp(\text{CausalScore}(i,j))}{\sum_k \exp(\text{CausalScore}(i,k))}$$
-
-**因果分数 / Causal Score:**
-
-$$\text{CausalScore}(i,j) = \text{Attention}(i,j) \cdot \text{CausalWeight}(i,j)$$
-
-### 9.3 因果可解释性 / Causal Interpretability
-
-**因果可解释性 / Causal Interpretability:**
-
-$$\text{Interpretability}(f) = \mathbb{E}_{x \sim P(x)}[\text{CausalExplanation}(f, x)]$$
-
----
-
-## 10. 因果元学习 / Causal Meta-Learning
-
-### 10.1 因果元学习 / Causal Meta-Learning
-
-**因果元学习 / Causal Meta-Learning:**
-
-$$\min_\theta \mathbb{E}_{\mathcal{T} \sim p(\mathcal{T})}[\mathcal{L}_{\text{causal}}(\theta, \mathcal{T})]$$
-
-**因果快速适应 / Causal Fast Adaptation:**
-
-$$\theta' = \theta - \alpha \nabla_\theta \mathcal{L}_{\text{causal}}(\theta, \mathcal{T})$$
-
-### 10.2 因果少样本学习 / Causal Few-Shot Learning
-
-**因果原型网络 / Causal Prototype Network:**
-
-$$c_k = \frac{1}{|S_k|} \sum_{(x_i, y_i) \in S_k} f_\phi(x_i)$$
-
-**因果匹配网络 / Causal Matching Network:**
-
-$$P(y | x, S) = \sum_{i=1}^k a(x, x_i) y_i$$
-
-### 10.3 因果迁移学习 / Causal Transfer Learning
-
-**因果迁移 / Causal Transfer:**
-
-$$\mathcal{L}_{\text{transfer}} = \mathcal{L}_{\text{source}} + \lambda \mathcal{L}_{\text{causal}} + \mu \mathcal{L}_{\text{target}}$$
+$$\pi(a|s) = \pi_{\text{base}}(a|s) + \pi_{\text{causal}}(a|s)$$
 
 ---
 
@@ -497,48 +275,57 @@ $$\mathcal{L}_{\text{transfer}} = \mathcal{L}_{\text{source}} + \lambda \mathcal
 
 ```rust
 use std::collections::{HashMap, HashSet};
-use ndarray::{Array2, Array1};
+use rand::Rng;
 
 #[derive(Debug, Clone)]
 struct CausalGraph {
     nodes: Vec<String>,
     edges: HashMap<(String, String), bool>,
-    adjacency_matrix: Array2<bool>,
+    adj_matrix: Vec<Vec<bool>>,
 }
 
 impl CausalGraph {
     fn new(nodes: Vec<String>) -> Self {
         let n = nodes.len();
+        let mut edges = HashMap::new();
+        let adj_matrix = vec![vec![false; n]; n];
+        
         CausalGraph {
             nodes,
-            edges: HashMap::new(),
-            adjacency_matrix: Array2::from_elem((n, n), false),
+            edges,
+            adj_matrix,
         }
     }
     
     fn add_edge(&mut self, from: &str, to: &str) {
-        let from_idx = self.nodes.iter().position(|x| x == from).unwrap();
-        let to_idx = self.nodes.iter().position(|x| x == to).unwrap();
+        let from_idx = self.get_node_index(from);
+        let to_idx = self.get_node_index(to);
         
-        self.edges.insert((from.to_string(), to.to_string()), true);
-        self.adjacency_matrix[[from_idx, to_idx]] = true;
+        if from_idx.is_some() && to_idx.is_some() {
+            let from_idx = from_idx.unwrap();
+            let to_idx = to_idx.unwrap();
+            
+            self.edges.insert((from.to_string(), to.to_string()), true);
+            self.adj_matrix[from_idx][to_idx] = true;
+        }
     }
     
-    fn remove_edge(&mut self, from: &str, to: &str) {
-        let from_idx = self.nodes.iter().position(|x| x == from).unwrap();
-        let to_idx = self.nodes.iter().position(|x| x == to).unwrap();
-        
-        self.edges.remove(&(from.to_string(), to.to_string()));
-        self.adjacency_matrix[[from_idx, to_idx]] = false;
+    fn get_node_index(&self, node: &str) -> Option<usize> {
+        self.nodes.iter().position(|n| n == node)
     }
     
     fn get_parents(&self, node: &str) -> Vec<String> {
-        let node_idx = self.nodes.iter().position(|x| x == node).unwrap();
+        let node_idx = self.get_node_index(node);
+        if node_idx.is_none() {
+            return Vec::new();
+        }
+        
+        let node_idx = node_idx.unwrap();
         let mut parents = Vec::new();
         
-        for (i, parent) in self.nodes.iter().enumerate() {
-            if self.adjacency_matrix[[i, node_idx]] {
-                parents.push(parent.clone());
+        for (i, _) in self.nodes.iter().enumerate() {
+            if self.adj_matrix[i][node_idx] {
+                parents.push(self.nodes[i].clone());
             }
         }
         
@@ -546,12 +333,17 @@ impl CausalGraph {
     }
     
     fn get_children(&self, node: &str) -> Vec<String> {
-        let node_idx = self.nodes.iter().position(|x| x == node).unwrap();
+        let node_idx = self.get_node_index(node);
+        if node_idx.is_none() {
+            return Vec::new();
+        }
+        
+        let node_idx = node_idx.unwrap();
         let mut children = Vec::new();
         
-        for (i, child) in self.nodes.iter().enumerate() {
-            if self.adjacency_matrix[[node_idx, i]] {
-                children.push(child.clone());
+        for (i, _) in self.nodes.iter().enumerate() {
+            if self.adj_matrix[node_idx][i] {
+                children.push(self.nodes[i].clone());
             }
         }
         
@@ -560,142 +352,159 @@ impl CausalGraph {
     
     fn is_d_separated(&self, x: &str, y: &str, z: &[String]) -> bool {
         // 简化的d-分离检查
-        let x_parents = self.get_parents(x);
-        let y_parents = self.get_parents(y);
+        // 检查是否存在从x到y的路径，该路径在给定z时被阻塞
+        let x_idx = self.get_node_index(x);
+        let y_idx = self.get_node_index(y);
         
-        // 检查是否有共同父节点在Z中
-        for parent in &x_parents {
-            if z.contains(parent) && y_parents.contains(parent) {
-                return true;
+        if x_idx.is_none() || y_idx.is_none() {
+            return true;
+        }
+        
+        let x_idx = x_idx.unwrap();
+        let y_idx = y_idx.unwrap();
+        
+        // 检查直接连接
+        if self.adj_matrix[x_idx][y_idx] || self.adj_matrix[y_idx][x_idx] {
+            // 如果z包含中间节点，则路径被阻塞
+            return z.contains(&x.to_string()) || z.contains(&y.to_string());
+        }
+        
+        // 检查间接路径（简化版本）
+        for (i, _) in self.nodes.iter().enumerate() {
+            if i != x_idx && i != y_idx {
+                if (self.adj_matrix[x_idx][i] && self.adj_matrix[i][y_idx]) ||
+                   (self.adj_matrix[y_idx][i] && self.adj_matrix[i][x_idx]) {
+                    // 如果z包含中间节点，则路径被阻塞
+                    return z.contains(&self.nodes[i]);
+                }
             }
         }
         
-        false
+        true
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug)]
 struct PCAlgorithm {
-    data: Array2<f64>,
-    alpha: f64,
+    graph: CausalGraph,
+    independence_tests: HashMap<(String, String, Vec<String>), bool>,
 }
 
 impl PCAlgorithm {
-    fn new(data: Array2<f64>, alpha: f64) -> Self {
-        PCAlgorithm { data, alpha }
+    fn new(nodes: Vec<String>) -> Self {
+        let graph = CausalGraph::new(nodes);
+        let independence_tests = HashMap::new();
+        
+        PCAlgorithm {
+            graph,
+            independence_tests,
+        }
     }
     
-    fn independence_test(&self, x: usize, y: usize, z: &[usize]) -> bool {
-        // 简化的独立性测试（卡方检验）
-        let n = self.data.shape()[0];
-        let mut contingency = Array2::zeros((2, 2));
+    fn run(&mut self, data: &[Vec<f64>]) {
+        // 步骤1：学习骨架（无向图）
+        self.learn_skeleton(data);
         
-        for i in 0..n {
-            let x_val = if self.data[[i, x]] > 0.0 { 1 } else { 0 };
-            let y_val = if self.data[[i, y]] > 0.0 { 1 } else { 0 };
-            contingency[[x_val, y_val]] += 1.0;
-        }
-        
-        // 计算卡方统计量
-        let total = contingency.sum();
-        let expected = Array2::zeros((2, 2));
-        for i in 0..2 {
-            for j in 0..2 {
-                expected[[i, j]] = contingency.row(i).sum() * contingency.column(j).sum() / total;
-            }
-        }
-        
-        let chi_square = ((contingency - &expected).mapv(|x| x * x) / &expected).sum();
-        chi_square < 3.841 // 0.05显著性水平
+        // 步骤2：学习方向
+        self.orient_edges();
     }
     
-    fn run(&self) -> CausalGraph {
-        let n_vars = self.data.shape()[1];
-        let mut graph = CausalGraph::new(
-            (0..n_vars).map(|i| format!("X{}", i)).collect()
-        );
+    fn learn_skeleton(&mut self, data: &[Vec<f64>]) {
+        let n_nodes = self.graph.nodes.len();
         
-        // 步骤1: 从完全无向图开始
-        for i in 0..n_vars {
-            for j in (i+1)..n_vars {
-                graph.add_edge(&format!("X{}", i), &format!("X{}", j));
-                graph.add_edge(&format!("X{}", j), &format!("X{}", i));
-            }
-        }
-        
-        // 步骤2: 基于独立性测试删除边
-        let mut l = 0;
-        while l < n_vars {
-            for i in 0..n_vars {
-                for j in (i+1)..n_vars {
-                    let neighbors_i: Vec<usize> = (0..n_vars)
-                        .filter(|&k| k != i && k != j && graph.edges.contains_key(&(format!("X{}", i), format!("X{}", k))))
-                        .collect();
-                    
-                    if neighbors_i.len() >= l {
-                        for subset in self.combinations(&neighbors_i, l) {
-                            if self.independence_test(i, j, &subset) {
-                                graph.remove_edge(&format!("X{}", i), &format!("X{}", j));
-                                graph.remove_edge(&format!("X{}", j), &format!("X{}", i));
-                                break;
-                            }
-                        }
-                    }
+        // 从完全图开始
+        for i in 0..n_nodes {
+            for j in 0..n_nodes {
+                if i != j {
+                    self.graph.add_edge(&self.graph.nodes[i], &self.graph.nodes[j]);
                 }
             }
-            l += 1;
         }
         
-        graph
-    }
-    
-    fn combinations(&self, items: &[usize], k: usize) -> Vec<Vec<usize>> {
-        if k == 0 {
-            return vec![vec![]];
-        }
-        if items.is_empty() {
-            return vec![];
-        }
-        
-        let mut result = Vec::new();
-        for i in 0..=items.len()-k {
-            let mut combo = vec![items[i]];
-            for sub_combo in self.combinations(&items[i+1..], k-1) {
-                combo.extend(sub_combo);
-                result.push(combo.clone());
-                combo.truncate(1);
+        // 逐步删除边
+        for i in 0..n_nodes {
+            for j in (i+1)..n_nodes {
+                if self.test_independence(&self.graph.nodes[i], &self.graph.nodes[j], &[], data) {
+                    // 删除边
+                    self.graph.edges.remove(&(self.graph.nodes[i].clone(), self.graph.nodes[j].clone()));
+                    self.graph.edges.remove(&(self.graph.nodes[j].clone(), self.graph.nodes[i].clone()));
+                    self.graph.adj_matrix[i][j] = false;
+                    self.graph.adj_matrix[j][i] = false;
+                }
             }
         }
-        result
+    }
+    
+    fn test_independence(&mut self, x: &str, y: &str, z: &[String], data: &[Vec<f64>]) -> bool {
+        // 简化的独立性测试（基于相关系数）
+        let x_idx = self.graph.get_node_index(x);
+        let y_idx = self.graph.get_node_index(y);
+        
+        if x_idx.is_none() || y_idx.is_none() {
+            return true;
+        }
+        
+        let x_idx = x_idx.unwrap();
+        let y_idx = y_idx.unwrap();
+        
+        // 计算相关系数
+        let correlation = self.calculate_correlation(data, x_idx, y_idx);
+        
+        // 如果相关系数接近0，则认为独立
+        correlation.abs() < 0.1
+    }
+    
+    fn calculate_correlation(&self, data: &[Vec<f64>], x_idx: usize, y_idx: usize) -> f64 {
+        let n = data.len() as f64;
+        
+        let x_mean: f64 = data.iter().map(|row| row[x_idx]).sum::<f64>() / n;
+        let y_mean: f64 = data.iter().map(|row| row[y_idx]).sum::<f64>() / n;
+        
+        let numerator: f64 = data.iter()
+            .map(|row| (row[x_idx] - x_mean) * (row[y_idx] - y_mean))
+            .sum();
+        
+        let x_var: f64 = data.iter().map(|row| (row[x_idx] - x_mean).powi(2)).sum();
+        let y_var: f64 = data.iter().map(|row| (row[y_idx] - y_mean).powi(2)).sum();
+        
+        let denominator = (x_var * y_var).sqrt();
+        
+        if denominator == 0.0 {
+            0.0
+        } else {
+            numerator / denominator
+        }
+    }
+    
+    fn orient_edges(&mut self) {
+        // 简化的方向学习
+        // 在实际应用中，这里会使用更复杂的规则
+        println!("Orienting edges...");
     }
 }
 
 fn main() {
+    // 创建示例数据
+    let nodes = vec!["X".to_string(), "Y".to_string(), "Z".to_string()];
+    let mut pc = PCAlgorithm::new(nodes);
+    
     // 生成示例数据
-    let n_samples = 1000;
-    let n_vars = 4;
-    let mut data = Array2::zeros((n_samples, n_vars));
+    let mut rng = rand::thread_rng();
+    let mut data = Vec::new();
     
-    // 模拟因果结构: X0 -> X1 -> X3, X0 -> X2 -> X3
-    for i in 0..n_samples {
-        let x0 = rand::random::<f64>();
-        let x1 = x0 + 0.5 * rand::random::<f64>();
-        let x2 = x0 + 0.3 * rand::random::<f64>();
-        let x3 = x1 + x2 + 0.2 * rand::random::<f64>();
-        
-        data[[i, 0]] = x0;
-        data[[i, 1]] = x1;
-        data[[i, 2]] = x2;
-        data[[i, 3]] = x3;
+    for _ in 0..100 {
+        let x = rng.gen::<f64>();
+        let z = x + rng.gen::<f64>() * 0.1;
+        let y = z + rng.gen::<f64>() * 0.1;
+        data.push(vec![x, y, z]);
     }
     
-    let pc = PCAlgorithm::new(data, 0.05);
-    let causal_graph = pc.run();
+    // 运行PC算法
+    pc.run(&data);
     
-    println!("发现的因果图:");
-    for edge in causal_graph.edges.keys() {
-        println!("{} -> {}", edge.0, edge.1);
-    }
+    println!("PC Algorithm completed!");
+    println!("Graph nodes: {:?}", pc.graph.nodes);
+    println!("Graph edges: {:?}", pc.graph.edges);
 }
 ```
 
@@ -703,177 +512,203 @@ fn main() {
 
 ```haskell
 import Data.List (foldl')
-import Numeric.LinearAlgebra
+import Data.Map (Map)
+import qualified Data.Map as Map
+import System.Random
 
--- 因果效应估计
-data CausalEffect = CausalEffect {
-    treatment :: String,
-    outcome :: String,
-    effect :: Double,
-    confidence :: Double
+-- 数据结构
+data Treatment = Control | Treatment deriving (Show, Eq)
+data Observation = Observation {
+    covariates :: [Double],
+    treatment :: Treatment,
+    outcome :: Double
 } deriving Show
 
--- 倾向得分匹配
-propensityScoreMatching :: Matrix Double -> Vector Double -> Vector Double -> CausalEffect
-propensityScoreMatching covariates treatment outcome = 
-    let -- 估计倾向得分
-        propensityScores = estimatePropensityScore covariates treatment
-        
-        -- 匹配处理组和对照组
-        matchedPairs = matchOnPropensityScore propensityScores treatment outcome
-        
-        -- 计算平均因果效应
-        effect = calculateATE matchedPairs
-        
-        -- 计算置信区间
-        confidence = calculateConfidence matchedPairs
-    in CausalEffect "treatment" "outcome" effect confidence
+data CausalEffect = CausalEffect {
+    ate :: Double,  -- Average Treatment Effect
+    att :: Double,  -- Average Treatment Effect on Treated
+    atc :: Double   -- Average Treatment Effect on Control
+} deriving Show
 
--- 估计倾向得分
-estimatePropensityScore :: Matrix Double -> Vector Double -> Vector Double
-estimatePropensityScore covariates treatment = 
-    let -- 逻辑回归估计
-        n = rows covariates
-        ones = konst 1.0 n
-        designMatrix = fromColumns [ones, covariates]
-        
-        -- 最大似然估计
-        coefficients = logisticRegression designMatrix treatment
-        
-        -- 计算倾向得分
-        linearPredictor = designMatrix `mult` coefficients
-        propensityScores = mapVector sigmoid linearPredictor
-    in propensityScores
+-- 倾向得分模型
+data PropensityModel = PropensityModel {
+    coefficients :: [Double],
+    intercept :: Double
+} deriving Show
 
--- 逻辑回归
-logisticRegression :: Matrix Double -> Vector Double -> Vector Double
-logisticRegression x y = 
-    let -- 迭代重加权最小二乘
-        n = rows x
-        p = cols x
-        beta = konst 0.0 p
-        
-        -- 牛顿-拉夫森迭代
-        finalBeta = newtonRaphson x y beta
-    in finalBeta
+-- 创建倾向得分模型
+createPropensityModel :: [Double] -> PropensityModel
+createPropensityModel coeffs = PropensityModel {
+    coefficients = coeffs,
+    intercept = -0.5  -- 默认截距
+}
 
--- 牛顿-拉夫森迭代
-newtonRaphson :: Matrix Double -> Vector Double -> Vector Double -> Vector Double
-newtonRaphson x y beta = 
-    let maxIter = 100
-        tolerance = 1e-6
-    in iterate newtonStep beta !! maxIter
-where
-    newtonStep beta = 
-        let -- 计算预测概率
-            linearPredictor = x `mult` beta
-            probabilities = mapVector sigmoid linearPredictor
-            
-            -- 计算梯度
-            gradient = x `mult` (y - probabilities)
-            
-            -- 计算Hessian
-            weights = mapVector (\p -> p * (1 - p)) probabilities
-            hessian = x `mult` (asColumn weights * x)
-            
-            -- 更新参数
-            hessianInv = inv hessian
-            step = hessianInv `mult` gradient
-        in beta + step
+-- 计算倾向得分
+calculatePropensityScore :: PropensityModel -> [Double] -> Double
+calculatePropensityScore model covariates =
+    let linear = intercept model + sum (zipWith (*) (coefficients model) covariates)
+    in 1.0 / (1.0 + exp (-linear))
 
--- Sigmoid函数
-sigmoid :: Double -> Double
-sigmoid x = 1.0 / (1.0 + exp (-x))
-
--- 匹配函数
-matchOnPropensityScore :: Vector Double -> Vector Double -> Vector Double -> [(Double, Double)]
-matchOnPropensityScore propensityScores treatment outcome = 
-    let -- 分离处理组和对照组
-        treatedIndices = findIndices (> 0.5) treatment
-        controlIndices = findIndices (<= 0.5) treatment
+-- 估计倾向得分模型
+estimatePropensityModel :: [Observation] -> PropensityModel
+estimatePropensityModel observations =
+    let n = length observations
+        treated = filter (\obs -> treatment obs == Treatment) observations
+        control = filter (\obs -> treatment obs == Control) observations
         
-        treatedScores = subVector propensityScores treatedIndices
-        controlScores = subVector propensityScores controlIndices
-        treatedOutcomes = subVector outcome treatedIndices
-        controlOutcomes = subVector outcome controlIndices
+        -- 简化的逻辑回归估计
+        -- 在实际应用中，这里会使用更复杂的优化算法
+        avgTreated = map mean (transpose (map covariates treated))
+        avgControl = map mean (map covariates control)
         
-        -- 最近邻匹配
-        matches = zipWith (\i j -> (treatedOutcomes ! i, controlOutcomes ! j)) 
-                         [0..] (nearestNeighborMatching treatedScores controlScores)
-    in matches
-
--- 最近邻匹配
-nearestNeighborMatching :: Vector Double -> Vector Double -> [Int]
-nearestNeighborMatching treatedScores controlScores = 
-    let nTreated = dim treatedScores
-        nControl = dim controlScores
-        distances = matrix nTreated nControl $ \(i, j) -> 
-            abs (treatedScores ! i - controlScores ! j)
-        
-        -- 贪心匹配
-        matches = greedyMatching distances
-    in matches
-
--- 贪心匹配
-greedyMatching :: Matrix Double -> [Int]
-greedyMatching distances = 
-    let n = rows distances
-        m = cols distances
-        used = replicate m False
-        
-        findMatches i used
-            | i >= n = []
-            | otherwise = 
-                let bestMatch = findBestMatch i used
-                    newUsed = take bestMatch used ++ [True] ++ drop (bestMatch + 1) used
-                in bestMatch : findMatches (i + 1) newUsed
-    in findMatches 0 used
-where
-    findBestMatch i used = 
-        let available = [j | j <- [0..m-1], not (used !! j)]
-            distances_i = [distances ! (i, j) | j <- available]
-            minIndex = argmin distances_i
-        in available !! minIndex
+        coeffs = zipWith (-) avgTreated avgControl
+    in createPropensityModel coeffs
+  where
+    mean xs = sum xs / fromIntegral (length xs)
+    transpose = foldr (zipWith (:)) (repeat [])
 
 -- 计算平均因果效应
-calculateATE :: [(Double, Double)] -> Double
-calculateATE matches = 
-    let differences = map (\(y1, y0) -> y1 - y0) matches
-    in sum differences / fromIntegral (length differences)
+calculateATE :: [Observation] -> Double
+calculateATE observations =
+    let treated = filter (\obs -> treatment obs == Treatment) observations
+        control = filter (\obs -> treatment obs == Control) observations
+        
+        treatedOutcomes = map outcome treated
+        controlOutcomes = map outcome control
+        
+        avgTreated = sum treatedOutcomes / fromIntegral (length treatedOutcomes)
+        avgControl = sum controlOutcomes / fromIntegral (length controlOutcomes)
+    in avgTreated - avgControl
 
--- 计算置信区间
-calculateConfidence :: [(Double, Double)] -> Double
-calculateConfidence matches = 
-    let differences = map (\(y1, y0) -> y1 - y0) matches
-        mean = sum differences / fromIntegral (length differences)
-        variance = sum (map (\d -> (d - mean) ^ 2) differences) / fromIntegral (length differences - 1)
-        stdError = sqrt (variance / fromIntegral (length differences))
-    in 1.96 * stdError -- 95%置信区间
+-- 使用倾向得分估计因果效应
+estimateCausalEffectWithPropensity :: [Observation] -> CausalEffect
+estimateCausalEffectWithPropensity observations =
+    let propensityModel = estimatePropensityModel observations
+        
+        -- 计算每个观测的倾向得分
+        observationsWithScore = map (\obs -> 
+            (obs, calculatePropensityScore propensityModel (covariates obs))) observations
+        
+        -- 逆概率加权估计
+        (weightedTreated, totalTreatedWeight) = foldl' 
+            (\(sum, weight) (obs, score) -> 
+                if treatment obs == Treatment
+                then (sum + outcome obs / score, weight + 1.0 / score)
+                else (sum, weight))
+            (0.0, 0.0) observationsWithScore
+        
+        (weightedControl, totalControlWeight) = foldl' 
+            (\(sum, weight) (obs, score) -> 
+                if treatment obs == Control
+                then (sum + outcome obs / (1.0 - score), weight + 1.0 / (1.0 - score))
+                else (sum, weight))
+            (0.0, 0.0) observationsWithScore
+        
+        ate = (weightedTreated / totalTreatedWeight) - (weightedControl / totalControlWeight)
+        
+        -- 简化的ATT和ATC计算
+        att = ate  -- 简化假设
+        atc = ate  -- 简化假设
+    in CausalEffect { ate = ate, att = att, atc = atc }
 
--- 示例
+-- 匹配估计
+matchingEstimate :: [Observation] -> Double
+matchingEstimate observations =
+    let treated = filter (\obs -> treatment obs == Treatment) observations
+        control = filter (\obs -> treatment obs == Control) observations
+        
+        -- 简化的最近邻匹配
+        matchEffects = map (\treatedObs -> 
+            let distances = map (\controlObs -> 
+                    euclideanDistance (covariates treatedObs) (covariates controlObs)) control
+                minDistance = minimum distances
+                matchedControl = control !! (fromJust (elemIndex minDistance distances))
+            in outcome treatedObs - outcome matchedControl) treated
+        
+        avgEffect = sum matchEffects / fromIntegral (length matchEffects)
+    in avgEffect
+  where
+    euclideanDistance xs ys = sqrt (sum (zipWith (\x y -> (x - y) ^ 2) xs ys))
+    fromJust (Just x) = x
+    fromJust Nothing = error "No match found"
+
+-- 工具变量估计
+instrumentalVariableEstimate :: [Observation] -> [Double] -> Double
+instrumentalVariableEstimate observations instruments =
+    let -- 第一阶段：回归X对Z
+        xValues = map (\obs -> head (covariates obs)) observations  -- 假设第一个协变量是X
+        stage1Slope = calculateSlope instruments xValues
+        
+        -- 第二阶段：回归Y对预测的X
+        yValues = map outcome observations
+        predictedX = map (* stage1Slope) instruments
+        stage2Slope = calculateSlope predictedX yValues
+    in stage2Slope
+  where
+    calculateSlope xs ys =
+        let n = fromIntegral (length xs)
+            sumX = sum xs
+            sumY = sum ys
+            sumXY = sum (zipWith (*) xs ys)
+            sumXX = sum (map (^ 2) xs)
+            numerator = n * sumXY - sumX * sumY
+            denominator = n * sumXX - sumX ^ 2
+        in if denominator == 0 then 0 else numerator / denominator
+
+-- 生成示例数据
+generateObservationalData :: Int -> IO [Observation]
+generateObservationalData n = do
+    gen <- getStdGen
+    let (observations, _) = foldl' 
+            (\(obs, g) i -> 
+                let (g1, g2) = split g
+                    (x, g3) = randomR (-1.0, 1.0) g1
+                    (z, g4) = randomR (-1.0, 1.0) g2
+                    (u, g5) = randomR (-0.5, 0.5) g3
+                    
+                    -- 生成处理分配（基于协变量）
+                    propensity = 1.0 / (1.0 + exp (-(x + z)))
+                    (treatmentRandom, g6) = randomR (0.0, 1.0) g4
+                    treatment = if treatmentRandom < propensity then Treatment else Control
+                    
+                    -- 生成结果
+                    outcome = x + 2.0 * z + (if treatment == Treatment then 1.5 else 0.0) + u
+                    
+                    observation = Observation {
+                        covariates = [x, z],
+                        treatment = treatment,
+                        outcome = outcome
+                    }
+                in (obs ++ [observation], g5)) 
+            ([], gen) [1..n]
+    return observations
+
+-- 主函数
 main :: IO ()
 main = do
-    -- 生成模拟数据
-    let n = 1000
-        covariates = matrix n 3 $ \(i, j) -> 
-            case j of
-                0 -> 1.0  -- 截距
-                1 -> fromIntegral (i `mod` 2)  -- 二元变量
-                2 -> fromIntegral (i `mod` 3) / 2.0  -- 连续变量
-                _ -> 0.0
-        
-        -- 生成处理变量
-        treatment = vector $ take n $ cycle [1.0, 0.0, 1.0, 0.0]
-        
-        -- 生成结果变量
-        outcome = vector $ take n $ cycle [1.2, 0.8, 1.5, 0.6]
+    putStrLn "生成观测数据..."
+    observations <- generateObservationalData 1000
     
-    let causalEffect = propensityScoreMatching covariates treatment outcome
+    putStrLn "计算因果效应..."
     
-    putStrLn "因果效应估计结果:"
-    print causalEffect
-    putStrLn $ "平均因果效应: " ++ show (effect causalEffect)
-    putStrLn $ "95%置信区间: ±" ++ show (confidence causalEffect)
+    -- 简单ATE
+    let simpleATE = calculateATE observations
+    putStrLn $ "简单ATE: " ++ show simpleATE
+    
+    -- 倾向得分估计
+    let propensityATE = ate (estimateCausalEffectWithPropensity observations)
+    putStrLn $ "倾向得分ATE: " ++ show propensityATE
+    
+    -- 匹配估计
+    let matchingATE = matchingEstimate observations
+    putStrLn $ "匹配ATE: " ++ show matchingATE
+    
+    -- 工具变量估计（使用第一个协变量作为工具）
+    let instruments = map (\obs -> head (covariates obs)) observations
+    let ivATE = instrumentalVariableEstimate observations instruments
+    putStrLn $ "工具变量ATE: " ++ show ivATE
+    
+    putStrLn "\n因果效应估计完成！"
 ```
 
 ---
@@ -882,13 +717,11 @@ main = do
 
 1. Pearl, J. (2009). *Causality: Models, Reasoning, and Inference*. Cambridge University Press.
 2. Spirtes, P., Glymour, C., & Scheines, R. (2000). *Causation, Prediction, and Search*. MIT Press.
-3. Peters, J., Janzing, D., & Schölkopf, B. (2017). *Elements of Causal Inference*. MIT Press.
-4. Hernán, M. A., & Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall.
-5. Imbens, G. W., & Rubin, D. B. (2015). *Causal Inference in Statistics, Social, and Biomedical Sciences*. Cambridge University Press.
-6. Kusner, M. J., et al. (2017). Counterfactual fairness. *NIPS*.
-7. Zhang, J., & Bareinboim, E. (2018). Fairness in decision-making—the causal explanation formula. *AAAI*.
-8. Schölkopf, B. (2019). Causality for machine learning. *arXiv*.
+3. Imbens, G. W., & Rubin, D. B. (2015). *Causal Inference in Statistics, Social, and Biomedical Sciences*. Cambridge University Press.
+4. Hernán, M. A., & Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall/CRC.
+5. Athey, S., & Imbens, G. (2016). Recursive partitioning for heterogeneous causal effects. *PNAS*.
+6. Wager, S., & Athey, S. (2018). Estimation and inference of heterogeneous treatment effects using random forests. *JASA*.
 
 ---
 
-*本模块为FormalAI提供了全面的因果推理理论基础，涵盖了从因果发现到因果机器学习的完整理论体系。*
+*本模块为FormalAI提供了因果推理的理论基础，涵盖了从因果图模型到因果机器学习的各个方面，为AI系统的决策和干预提供了数学工具。*

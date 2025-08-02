@@ -2,9 +2,9 @@
 
 ## 概述 / Overview
 
-类型理论研究类型系统的基础理论，为FormalAI提供类型安全、程序验证和形式化推理的理论基础。
+类型理论研究类型系统的数学基础，为FormalAI提供类型安全和程序正确性的理论基础。
 
-Type theory studies the foundational theory of type systems, providing theoretical foundations for type safety, program verification, and formal reasoning in FormalAI.
+Type theory studies the mathematical foundations of type systems, providing theoretical foundations for type safety and program correctness in FormalAI.
 
 ## 目录 / Table of Contents
 
@@ -12,873 +12,855 @@ Type theory studies the foundational theory of type systems, providing theoretic
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 简单类型理论 / Simple Type Theory](#1-简单类型理论--simple-type-theory)
-    - [1.1 简单类型系统 / Simple Type System](#11-简单类型系统--simple-type-system)
-    - [1.2 类型检查 / Type Checking](#12-类型检查--type-checking)
-    - [1.3 类型安全 / Type Safety](#13-类型安全--type-safety)
-  - [2. 多态类型理论 / Polymorphic Type Theory](#2-多态类型理论--polymorphic-type-theory)
-    - [2.1 多态类型系统 / Polymorphic Type System](#21-多态类型系统--polymorphic-type-system)
-    - [2.2 系统F / System F](#22-系统f--system-f)
-    - [2.3 Hindley-Milner类型系统 / Hindley-Milner Type System](#23-hindley-milner类型系统--hindley-milner-type-system)
-  - [3. 依赖类型理论 / Dependent Type Theory](#3-依赖类型理论--dependent-type-theory)
-    - [3.1 依赖类型系统 / Dependent Type System](#31-依赖类型系统--dependent-type-system)
-    - [3.2 构造演算 / Calculus of Constructions](#32-构造演算--calculus-of-constructions)
-    - [3.3 马丁-洛夫类型理论 / Martin-Löf Type Theory](#33-马丁-洛夫类型理论--martin-löf-type-theory)
-  - [4. 高阶类型理论 / Higher-Order Type Theory](#4-高阶类型理论--higher-order-type-theory)
-    - [4.1 高阶类型系统 / Higher-Order Type System](#41-高阶类型系统--higher-order-type-system)
-    - [4.2 高阶多态 / Higher-Order Polymorphism](#42-高阶多态--higher-order-polymorphism)
-    - [4.3 高阶类型推断 / Higher-Order Type Inference](#43-高阶类型推断--higher-order-type-inference)
-  - [5. 线性类型理论 / Linear Type Theory](#5-线性类型理论--linear-type-theory)
-    - [5.1 线性类型系统 / Linear Type System](#51-线性类型系统--linear-type-system)
-    - [5.2 线性逻辑 / Linear Logic](#52-线性逻辑--linear-logic)
-    - [5.3 线性类型应用 / Linear Type Applications](#53-线性类型应用--linear-type-applications)
-  - [6. 会话类型理论 / Session Type Theory](#6-会话类型理论--session-type-theory)
-    - [6.1 会话类型系统 / Session Type System](#61-会话类型系统--session-type-system)
-    - [6.2 会话类型推断 / Session Type Inference](#62-会话类型推断--session-type-inference)
-    - [6.3 会话类型应用 / Session Type Applications](#63-会话类型应用--session-type-applications)
-  - [7. 效应类型理论 / Effect Type Theory](#7-效应类型理论--effect-type-theory)
-    - [7.1 效应类型系统 / Effect Type System](#71-效应类型系统--effect-type-system)
-    - [7.2 效应推断 / Effect Inference](#72-效应推断--effect-inference)
-    - [7.3 效应类型应用 / Effect Type Applications](#73-效应类型应用--effect-type-applications)
-  - [8. 量子类型理论 / Quantum Type Theory](#8-量子类型理论--quantum-type-theory)
-    - [8.1 量子类型系统 / Quantum Type System](#81-量子类型系统--quantum-type-system)
-    - [8.2 量子效应 / Quantum Effects](#82-量子效应--quantum-effects)
-    - [8.3 量子类型应用 / Quantum Type Applications](#83-量子类型应用--quantum-type-applications)
-  - [9. 同伦类型理论 / Homotopy Type Theory](#9-同伦类型理论--homotopy-type-theory)
-    - [9.1 同伦类型系统 / Homotopy Type System](#91-同伦类型系统--homotopy-type-system)
-    - [9.2 同伦类型规则 / Homotopy Type Rules](#92-同伦类型规则--homotopy-type-rules)
-    - [9.3 同伦类型应用 / Homotopy Type Applications](#93-同伦类型应用--homotopy-type-applications)
-  - [10. 类型系统工具 / Type System Tools](#10-类型系统工具--type-system-tools)
-    - [10.1 类型检查器 / Type Checkers](#101-类型检查器--type-checkers)
-    - [10.2 类型系统工具 / Type System Tools](#102-类型系统工具--type-system-tools)
-    - [10.3 类型系统应用 / Type System Applications](#103-类型系统应用--type-system-applications)
+    - [1.1 类型语法 / Type Syntax](#11-类型语法--type-syntax)
+    - [1.2 类型推导 / Type Inference](#12-类型推导--type-inference)
+    - [1.3 类型检查 / Type Checking](#13-类型检查--type-checking)
+  - [2. 依赖类型理论 / Dependent Type Theory](#2-依赖类型理论--dependent-type-theory)
+    - [2.1 依赖类型 / Dependent Types](#21-依赖类型--dependent-types)
+    - [2.2 类型族 / Type Families](#22-类型族--type-families)
+    - [2.3 依赖类型推导 / Dependent Type Inference](#23-依赖类型推导--dependent-type-inference)
+  - [3. 同伦类型理论 / Homotopy Type Theory](#3-同伦类型理论--homotopy-type-theory)
+    - [3.1 身份类型 / Identity Types](#31-身份类型--identity-types)
+    - [3.2 高阶类型 / Higher-Order Types](#32-高阶类型--higher-order-types)
+    - [3.3 同伦等价 / Homotopy Equivalence](#33-同伦等价--homotopy-equivalence)
+  - [4. 类型系统设计 / Type System Design](#4-类型系统设计--type-system-design)
+    - [4.1 类型系统分类 / Type System Classification](#41-类型系统分类--type-system-classification)
+    - [4.2 类型系统特性 / Type System Features](#42-类型系统特性--type-system-features)
+    - [4.3 高级类型特性 / Advanced Type Features](#43-高级类型特性--advanced-type-features)
+  - [5. 类型安全 / Type Safety](#5-类型安全--type-safety)
+    - [5.1 类型安全定义 / Type Safety Definition](#51-类型安全定义--type-safety-definition)
+    - [5.2 类型安全证明 / Type Safety Proof](#52-类型安全证明--type-safety-proof)
+    - [5.3 类型安全应用 / Type Safety Applications](#53-类型安全应用--type-safety-applications)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：类型检查器](#rust实现类型检查器)
-    - [Haskell实现：依赖类型系统](#haskell实现依赖类型系统)
+    - [Rust实现：类型系统](#rust实现类型系统)
+    - [Haskell实现：类型系统](#haskell实现类型系统)
   - [参考文献 / References](#参考文献--references)
 
 ---
 
 ## 1. 简单类型理论 / Simple Type Theory
 
-### 1.1 简单类型系统 / Simple Type System
+### 1.1 类型语法 / Type Syntax
 
-**简单类型 / Simple Types:**
+**类型表达式 / Type Expressions:**
 
-$$\tau ::= \text{bool} | \text{int} | \tau_1 \rightarrow \tau_2$$
+$$\tau ::= \text{Bool} \mid \text{Int} \mid \tau_1 \rightarrow \tau_2 \mid \tau_1 \times \tau_2$$
 
-其中：
+**项语法 / Term Syntax:**
 
-- $\text{bool}$ 是布尔类型
-- $\text{int}$ 是整数类型
-- $\tau_1 \rightarrow \tau_2$ 是函数类型
+$$t ::= x \mid \lambda x:\tau.t \mid t_1 t_2 \mid \text{true} \mid \text{false} \mid n \mid t_1 + t_2$$
 
-where:
+### 1.2 类型推导 / Type Inference
 
-- $\text{bool}$ is the boolean type
-- $\text{int}$ is the integer type
-- $\tau_1 \rightarrow \tau_2$ is the function type
+**类型环境 / Type Environment:**
 
-**类型规则 / Type Rules:**
+$$\Gamma ::= \emptyset \mid \Gamma, x:\tau$$
 
-$$\frac{\Gamma \vdash e_1 : \tau_1 \rightarrow \tau_2 \quad \Gamma \vdash e_2 : \tau_1}{\Gamma \vdash e_1 e_2 : \tau_2}$$
+**类型推导规则 / Type Inference Rules:**
 
-$$\frac{\Gamma, x : \tau_1 \vdash e : \tau_2}{\Gamma \vdash \lambda x : \tau_1. e : \tau_1 \rightarrow \tau_2}$$
+$$\frac{x:\tau \in \Gamma}{\Gamma \vdash x:\tau} \quad (\text{Var})$$
 
-### 1.2 类型检查 / Type Checking
+$$\frac{\Gamma, x:\tau_1 \vdash t:\tau_2}{\Gamma \vdash \lambda x:\tau_1.t:\tau_1 \rightarrow \tau_2} \quad (\text{Abs})$$
+
+$$\frac{\Gamma \vdash t_1:\tau_1 \rightarrow \tau_2 \quad \Gamma \vdash t_2:\tau_1}{\Gamma \vdash t_1 t_2:\tau_2} \quad (\text{App})$$
+
+### 1.3 类型检查 / Type Checking
 
 **类型检查算法 / Type Checking Algorithm:**
 
-$$\text{TypeCheck}(\Gamma, e) = \text{Infer}(\Gamma, e)$$
-
-**类型推断 / Type Inference:**
-
 $$
-\text{Infer}(\Gamma, e) = \begin{cases}
-\text{bool} & \text{if } e = \text{true} \text{ or } e = \text{false} \\
-\text{int} & \text{if } e = n \\
-\tau_1 \rightarrow \tau_2 & \text{if } e = \lambda x : \tau_1. e_2
+\text{typeOf}(\Gamma, t) = \begin{cases}
+\tau & \text{if } \Gamma \vdash t:\tau \\
+\text{error} & \text{otherwise}
 \end{cases}
 $$
 
-### 1.3 类型安全 / Type Safety
+**类型统一 / Type Unification:**
 
-**类型安全 / Type Safety:**
+$$
+\text{unify}(\tau_1, \tau_2) = \begin{cases}
+\sigma & \text{if } \tau_1\sigma = \tau_2\sigma \\
+\text{fail} & \text{otherwise}
+\end{cases}
+$$
 
-$$\text{TypeSafe}(e) = \text{TypeCheck}(\emptyset, e) \neq \text{Error}$$
+## 2. 依赖类型理论 / Dependent Type Theory
 
-**进展定理 / Progress Theorem:**
+### 2.1 依赖类型 / Dependent Types
 
-如果 $\vdash e : \tau$，那么 $e$ 是一个值或者存在 $e'$ 使得 $e \rightarrow e'$。
+**依赖函数类型 / Dependent Function Type:**
 
-If $\vdash e : \tau$, then $e$ is a value or there exists $e'$ such that $e \rightarrow e'$.
+$$\Pi x:A.B(x)$$
 
----
+其中 $B(x)$ 是依赖于 $x:A$ 的类型。
 
-## 2. 多态类型理论 / Polymorphic Type Theory
+**依赖积类型 / Dependent Product Type:**
 
-### 2.1 多态类型系统 / Polymorphic Type System
+$$\Sigma x:A.B(x)$$
 
-**多态类型 / Polymorphic Types:**
+其中 $B(x)$ 是依赖于 $x:A$ 的类型。
 
-$$\tau ::= \alpha | \text{bool} | \text{int} | \tau_1 \rightarrow \tau_2 | \forall \alpha. \tau$$
+### 2.2 类型族 / Type Families
 
-其中 $\alpha$ 是类型变量。
+**类型族定义 / Type Family Definition:**
 
-where $\alpha$ is a type variable.
+$$B : A \rightarrow \text{Type}$$
 
-**类型概括 / Type Generalization:**
+**类型族实例 / Type Family Instances:**
 
-$$\frac{\Gamma \vdash e : \tau \quad \alpha \notin \text{FTV}(\Gamma)}{\Gamma \vdash e : \forall \alpha. \tau}$$
+$$B(a) : \text{Type} \quad \text{for } a:A$$
 
-**类型实例化 / Type Instantiation:**
+### 2.3 依赖类型推导 / Dependent Type Inference
 
-$$\frac{\Gamma \vdash e : \forall \alpha. \tau}{\Gamma \vdash e : \tau[\alpha := \tau']}$$
+**依赖类型环境 / Dependent Type Environment:**
 
-### 2.2 系统F / System F
+$$\Gamma ::= \emptyset \mid \Gamma, x:A \mid \Gamma, x:A, y:B(x)$$
 
-**系统F语法 / System F Syntax:**
+**依赖类型推导规则 / Dependent Type Inference Rules:**
 
-$$\tau ::= \alpha | \text{bool} | \text{int} | \tau_1 \rightarrow \tau_2 | \forall \alpha. \tau$$
+$$\frac{\Gamma \vdash A:\text{Type} \quad \Gamma, x:A \vdash B(x):\text{Type}}{\Gamma \vdash \Pi x:A.B(x):\text{Type}} \quad (\text{$\Pi$-Form})$$
 
-**类型抽象 / Type Abstraction:**
+$$\frac{\Gamma, x:A \vdash t:B(x)}{\Gamma \vdash \lambda x:A.t:\Pi x:A.B(x)} \quad (\text{$\Pi$-Intro})$$
 
-$$\frac{\Gamma \vdash e : \tau \quad \alpha \notin \text{FTV}(\Gamma)}{\Gamma \vdash \Lambda \alpha. e : \forall \alpha. \tau}$$
+$$\frac{\Gamma \vdash f:\Pi x:A.B(x) \quad \Gamma \vdash a:A}{\Gamma \vdash f(a):B(a)} \quad (\text{$\Pi$-Elim})$$
 
-**类型应用 / Type Application:**
+## 3. 同伦类型理论 / Homotopy Type Theory
 
-$$\frac{\Gamma \vdash e : \forall \alpha. \tau}{\Gamma \vdash e[\tau'] : \tau[\alpha := \tau']}$$
+### 3.1 身份类型 / Identity Types
 
-### 2.3 Hindley-Milner类型系统 / Hindley-Milner Type System
+**身份类型定义 / Identity Type Definition:**
 
-**Hindley-Milner类型 / Hindley-Milner Types:**
+$$\text{Id}_A(a,b)$$
 
-$$\tau ::= \alpha | \text{bool} | \text{int} | \tau_1 \rightarrow \tau_2$$
+表示 $a$ 和 $b$ 在类型 $A$ 中的相等性。
 
-**统一算法 / Unification Algorithm:**
+**身份类型构造 / Identity Type Construction:**
 
-$$\text{Unify}(\tau_1, \tau_2) = \text{Substitution}$$
+$$\frac{\Gamma \vdash a:A}{\Gamma \vdash \text{refl}_a:\text{Id}_A(a,a)} \quad (\text{Id-Intro})$$
+
+**身份类型消除 / Identity Type Elimination:**
+
+$$\frac{\Gamma, x:A, y:A, p:\text{Id}_A(x,y) \vdash C(x,y,p):\text{Type}}{\Gamma \vdash J:\Pi x:A.C(x,x,\text{refl}_x)} \quad (\text{Id-Elim})$$
+
+### 3.2 高阶类型 / Higher-Order Types
+
+**宇宙 / Universe:**
+
+$$\mathcal{U}_0 : \mathcal{U}_1 : \mathcal{U}_2 : ...$$
+
+**归纳类型 / Inductive Types:**
+
+$$\text{data } A = c_1 \mid c_2 \mid ... \mid c_n$$
+
+### 3.3 同伦等价 / Homotopy Equivalence
+
+**同伦等价定义 / Homotopy Equivalence Definition:**
+
+$$A \simeq B = \Sigma f:A \rightarrow B. \Sigma g:B \rightarrow A. \text{isEquiv}(f)$$
+
+**同伦等价性质 / Homotopy Equivalence Properties:**
+
+- 自反性 / Reflexivity: $A \simeq A$
+- 对称性 / Symmetry: $A \simeq B \Rightarrow B \simeq A$
+- 传递性 / Transitivity: $A \simeq B \land B \simeq C \Rightarrow A \simeq C$
+
+## 4. 类型系统设计 / Type System Design
+
+### 4.1 类型系统分类 / Type System Classification
+
+**静态类型系统 / Static Type Systems:**
+
+- 编译时类型检查 / Compile-time type checking
+- 类型安全保证 / Type safety guarantees
+- 性能优化 / Performance optimization
+
+**动态类型系统 / Dynamic Type Systems:**
+
+- 运行时类型检查 / Runtime type checking
+- 类型错误处理 / Type error handling
+- 灵活性 / Flexibility
+
+### 4.2 类型系统特性 / Type System Features
 
 **类型推断 / Type Inference:**
 
-$$\text{Infer}(\Gamma, e) = \text{Unify}(\text{Constraints}(e))$$
+$$\text{infer}(\Gamma, t) = \tau$$
 
----
+**类型擦除 / Type Erasure:**
 
-## 3. 依赖类型理论 / Dependent Type Theory
+$$\text{erase}(t) = t'$$
 
-### 3.1 依赖类型系统 / Dependent Type System
+**类型重构 / Type Reconstruction:**
 
-**依赖类型 / Dependent Types:**
+$$\text{reconstruct}(\Gamma, t') = t$$
 
-$$\tau ::= \text{bool} | \text{int} | \Pi x : \tau_1. \tau_2 | \Sigma x : \tau_1. \tau_2$$
+### 4.3 高级类型特性 / Advanced Type Features
 
-其中：
+**多态性 / Polymorphism:**
 
-- $\Pi x : \tau_1. \tau_2$ 是依赖函数类型
-- $\Sigma x : \tau_1. \tau_2$ 是依赖对类型
-
-where:
-
-- $\Pi x : \tau_1. \tau_2$ is the dependent function type
-- $\Sigma x : \tau_1. \tau_2$ is the dependent pair type
-
-**类型依赖 / Type Dependencies:**
-
-$$\frac{\Gamma \vdash e_1 : \tau_1 \quad \Gamma, x : \tau_1 \vdash e_2 : \tau_2}{\Gamma \vdash \lambda x : \tau_1. e_2 : \Pi x : \tau_1. \tau_2}$$
-
-### 3.2 构造演算 / Calculus of Constructions
-
-**构造演算 / Calculus of Constructions:**
-
-$$\tau ::= \text{Prop} | \text{Set} | \text{Type} | \Pi x : \tau_1. \tau_2$$
-
-**类型层次 / Type Hierarchy:**
-
-$$\text{Prop} : \text{Set} : \text{Type} : \text{Type}$$
-
-**命题作为类型 / Propositions as Types:**
-
-$$\text{Prop} \cong \text{Type}$$
-
-### 3.3 马丁-洛夫类型理论 / Martin-Löf Type Theory
-
-**马丁-洛夫类型 / Martin-Löf Types:**
-
-$$\tau ::= \text{bool} | \text{int} | \Pi x : \tau_1. \tau_2 | \Sigma x : \tau_1. \tau_2 | \text{Id}_A(a, b)$$
-
-**恒等类型 / Identity Type:**
-
-$$\text{Id}_A(a, b) = \{p : a =_A b\}$$
-
-**类型形成规则 / Type Formation Rules:**
-
-$$\frac{\Gamma \vdash A : \text{Set} \quad \Gamma \vdash a : A \quad \Gamma \vdash b : A}{\Gamma \vdash \text{Id}_A(a, b) : \text{Set}}$$
-
----
-
-## 4. 高阶类型理论 / Higher-Order Type Theory
-
-### 4.1 高阶类型系统 / Higher-Order Type System
-
-**高阶类型 / Higher-Order Types:**
-
-$$\tau ::= \alpha | \text{bool} | \text{int} | \tau_1 \rightarrow \tau_2 | \forall \alpha. \tau | \exists \alpha. \tau$$
+$$\forall \alpha. \tau$$
 
 **存在类型 / Existential Types:**
 
-$$\frac{\Gamma \vdash e : \tau[\alpha := \tau']}{\Gamma \vdash \text{pack } \tau', e \text{ as } \exists \alpha. \tau : \exists \alpha. \tau}$$
+$$\exists \alpha. \tau$$
 
-**类型抽象 / Type Abstraction:**
+**高阶类型 / Higher-Order Types:**
 
-$$\frac{\Gamma \vdash e : \exists \alpha. \tau \quad \Gamma, \alpha, x : \tau \vdash e' : \tau'}{\Gamma \vdash \text{unpack } e \text{ as } \alpha, x \text{ in } e' : \tau'}$$
+$$(\tau_1 \rightarrow \tau_2) \rightarrow \tau_3$$
 
-### 4.2 高阶多态 / Higher-Order Polymorphism
+## 5. 类型安全 / Type Safety
 
-**高阶多态类型 / Higher-Order Polymorphic Types:**
+### 5.1 类型安全定义 / Type Safety Definition
 
-$$\tau ::= \alpha | \text{bool} | \text{int} | \tau_1 \rightarrow \tau_2 | \forall \alpha. \tau | \tau_1 \rightarrow \tau_2$$
+**类型安全 / Type Safety:**
 
-**类型构造函数 / Type Constructors:**
+如果 $\vdash t:\tau$，那么 $t$ 不会产生类型错误。
 
-$$\kappa ::= * | \kappa_1 \rightarrow \kappa_2$$
+If $\vdash t:\tau$, then $t$ will not produce type errors.
 
-其中 $*$ 是类型种类。
+**进展定理 / Progress Theorem:**
 
-where $*$ is the type kind.
+如果 $\vdash t:\tau$，那么要么 $t$ 是值，要么 $t \rightarrow t'$。
 
-### 4.3 高阶类型推断 / Higher-Order Type Inference
+If $\vdash t:\tau$, then either $t$ is a value or $t \rightarrow t'$.
 
-**高阶类型推断 / Higher-Order Type Inference:**
+**保持定理 / Preservation Theorem:**
 
-$$\text{Infer}(\Gamma, e) = \text{Unify}(\text{Constraints}(e))$$
+如果 $\vdash t:\tau$ 且 $t \rightarrow t'$，那么 $\vdash t':\tau$。
 
-**种类推断 / Kind Inference:**
+If $\vdash t:\tau$ and $t \rightarrow t'$, then $\vdash t':\tau$.
 
-$$\text{KindInfer}(\tau) = \text{Kind}(\tau)$$
+### 5.2 类型安全证明 / Type Safety Proof
 
----
+**类型安全证明结构 / Type Safety Proof Structure:**
 
-## 5. 线性类型理论 / Linear Type Theory
+1. **进展定理证明 / Progress Theorem Proof**
+2. **保持定理证明 / Preservation Theorem Proof**
+3. **类型安全推论 / Type Safety Corollary**
 
-### 5.1 线性类型系统 / Linear Type System
+**进展定理证明 / Progress Theorem Proof:**
 
-**线性类型 / Linear Types:**
+通过归纳法证明所有良类型项要么是值，要么可以求值。
 
-$$\tau ::= \text{bool} | \text{int} | \tau_1 \multimap \tau_2 | \tau_1 \otimes \tau_2 | \tau_1 \oplus \tau_2$$
+By induction, prove that all well-typed terms are either values or can be evaluated.
 
-其中：
+**保持定理证明 / Preservation Theorem Proof:**
 
-- $\multimap$ 是线性函数类型
-- $\otimes$ 是张量积类型
-- $\oplus$ 是直和类型
+通过归纳法证明求值保持类型。
 
-where:
+By induction, prove that evaluation preserves types.
 
-- $\multimap$ is the linear function type
-- $\otimes$ is the tensor product type
-- $\oplus$ is the direct sum type
-
-**线性函数 / Linear Functions:**
-
-$$\frac{\Gamma, x : \tau_1 \vdash e : \tau_2}{\Gamma \vdash \lambda x : \tau_1. e : \tau_1 \multimap \tau_2}$$
-
-### 5.2 线性逻辑 / Linear Logic
-
-**线性逻辑连接词 / Linear Logic Connectives:**
-
-$$\text{Multiplicative: } \otimes, \multimap$$
-$$\text{Additive: } \oplus, \&$$
-$$\text{Exponential: } !, ?$$
-
-**线性逻辑规则 / Linear Logic Rules:**
-
-$$\frac{\Gamma, A \vdash B}{\Gamma \vdash A \multimap B}$$
-
-$$\frac{\Gamma \vdash A \multimap B \quad \Delta \vdash A}{\Gamma, \Delta \vdash B}$$
-
-### 5.3 线性类型应用 / Linear Type Applications
-
-**资源管理 / Resource Management:**
-
-$$\text{Resource}(e) = \text{LinearUsage}(e)$$
+### 5.3 类型安全应用 / Type Safety Applications
 
 **内存安全 / Memory Safety:**
 
-$$\text{MemorySafe}(e) = \text{LinearCheck}(e)$$
+类型系统可以防止内存访问错误。
 
----
-
-## 6. 会话类型理论 / Session Type Theory
-
-### 6.1 会话类型系统 / Session Type System
-
-**会话类型 / Session Types:**
-
-$$S ::= \text{end} | ?\tau.S | !\tau.S | S_1 \oplus S_2 | S_1 \& S_2$$
-
-其中：
-
-- $\text{end}$ 是结束类型
-- $?\tau.S$ 是接收类型
-- $!\tau.S$ 是发送类型
-
-where:
-
-- $\text{end}$ is the end type
-- $?\tau.S$ is the receive type
-- $!\tau.S$ is the send type
-
-**会话类型规则 / Session Type Rules:**
-
-$$\frac{\Gamma, x : \tau, y : S \vdash e : \text{unit}}{\Gamma \vdash \text{receive } x : \tau \text{ in } e : S}$$
-
-### 6.2 会话类型推断 / Session Type Inference
-
-**会话类型推断 / Session Type Inference:**
-
-$$\text{SessionInfer}(\Gamma, e) = \text{SessionType}(e)$$
-
-**会话类型检查 / Session Type Checking:**
-
-$$\text{SessionCheck}(\Gamma, e, S) = \text{Check}(\text{SessionType}(e) = S)$$
-
-### 6.3 会话类型应用 / Session Type Applications
-
-**通信协议 / Communication Protocols:**
-
-$$\text{Protocol}(S) = \text{Communication}(S)$$
+Type systems can prevent memory access errors.
 
 **并发安全 / Concurrency Safety:**
 
-$$\text{ConcurrencySafe}(e) = \text{SessionCheck}(e)$$
+类型系统可以防止数据竞争。
 
----
+Type systems can prevent data races.
 
-## 7. 效应类型理论 / Effect Type Theory
+**信息安全 / Information Security:**
 
-### 7.1 效应类型系统 / Effect Type System
+类型系统可以实施信息流控制。
 
-**效应类型 / Effect Types:**
-
-$$\tau ::= \text{bool} | \text{int} | \tau_1 \rightarrow^E \tau_2$$
-
-其中 $E$ 是效应集合。
-
-where $E$ is the set of effects.
-
-**效应类型规则 / Effect Type Rules:**
-
-$$\frac{\Gamma \vdash e_1 : \tau_1 \rightarrow^{E_1} \tau_2 \quad \Gamma \vdash e_2 : \tau_1}{\Gamma \vdash e_1 e_2 : \tau_2^{E_1 \cup E_2}}$$
-
-### 7.2 效应推断 / Effect Inference
-
-**效应推断 / Effect Inference:**
-
-$$\text{EffectInfer}(\Gamma, e) = \text{Effects}(e)$$
-
-**效应子类型 / Effect Subtyping:**
-
-$$\frac{E_1 \subseteq E_2}{\tau^E_1 \leq \tau^E_2}$$
-
-### 7.3 效应类型应用 / Effect Type Applications
-
-**异常处理 / Exception Handling:**
-
-$$\text{Exception}(e) = \text{EffectCheck}(e, \{\text{exception}\})$$
-
-**状态管理 / State Management:**
-
-$$\text{State}(e) = \text{EffectCheck}(e, \{\text{read}, \text{write}\})$$
-
----
-
-## 8. 量子类型理论 / Quantum Type Theory
-
-### 8.1 量子类型系统 / Quantum Type System
-
-**量子类型 / Quantum Types:**
-
-$$\tau ::= \text{qubit} | \text{bool} | \text{int} | \tau_1 \rightarrow \tau_2 | \text{Super}(\tau)$$
-
-其中：
-
-- $\text{qubit}$ 是量子比特类型
-- $\text{Super}(\tau)$ 是叠加类型
-
-where:
-
-- $\text{qubit}$ is the qubit type
-- $\text{Super}(\tau)$ is the superposition type
-
-**量子类型规则 / Quantum Type Rules:**
-
-$$\frac{\Gamma \vdash e : \text{qubit}}{\Gamma \vdash \text{measure } e : \text{bool}}$$
-
-### 8.2 量子效应 / Quantum Effects
-
-**量子效应 / Quantum Effects:**
-
-$$\text{QuantumEffects} = \{\text{superposition}, \text{entanglement}, \text{measurement}\}$$
-
-**量子类型检查 / Quantum Type Checking:**
-
-$$\text{QuantumCheck}(\Gamma, e) = \text{QuantumSafe}(e)$$
-
-### 8.3 量子类型应用 / Quantum Type Applications
-
-**量子算法 / Quantum Algorithms:**
-
-$$\text{QuantumAlgorithm}(e) = \text{QuantumCheck}(e)$$
-
-**量子安全 / Quantum Safety:**
-
-$$\text{QuantumSafe}(e) = \text{QuantumCheck}(e)$$
-
----
-
-## 9. 同伦类型理论 / Homotopy Type Theory
-
-### 9.1 同伦类型系统 / Homotopy Type System
-
-**同伦类型 / Homotopy Types:**
-
-$$\tau ::= \text{bool} | \text{int} | \Pi x : \tau_1. \tau_2 | \Sigma x : \tau_1. \tau_2 | \text{Id}_A(a, b)$$
-
-**恒等类型 / Identity Type:**
-
-$$\text{Id}_A(a, b) = \{p : a =_A b\}$$
-
-**路径类型 / Path Type:**
-
-$$\text{Path}_A(a, b) = \text{Id}_A(a, b)$$
-
-### 9.2 同伦类型规则 / Homotopy Type Rules
-
-**恒等类型规则 / Identity Type Rules:**
-
-$$\frac{\Gamma \vdash A : \text{Type} \quad \Gamma \vdash a : A \quad \Gamma \vdash b : A}{\Gamma \vdash \text{Id}_A(a, b) : \text{Type}}$$
-
-**路径类型规则 / Path Type Rules:**
-
-$$\frac{\Gamma \vdash a : A}{\Gamma \vdash \text{refl}_a : \text{Id}_A(a, a)}$$
-
-### 9.3 同伦类型应用 / Homotopy Type Applications
-
-**数学形式化 / Mathematical Formalization:**
-
-$$\text{MathematicalFormalization}(e) = \text{HomotopyCheck}(e)$$
-
-**证明助手 / Proof Assistants:**
-
-$$\text{ProofAssistant}(e) = \text{HomotopyCheck}(e)$$
-
----
-
-## 10. 类型系统工具 / Type System Tools
-
-### 10.1 类型检查器 / Type Checkers
-
-**类型检查器 / Type Checkers:**
-
-$$\text{TypeCheckers} = \{\text{GHC}, \text{OCaml}, \text{Rust}\}$$
-
-**类型推断器 / Type Inferrers:**
-
-$$\text{TypeInferrers} = \{\text{Hindley-Milner}, \text{Damas-Milner}\}$$
-
-### 10.2 类型系统工具 / Type System Tools
-
-**类型系统工具 / Type System Tools:**
-
-$$\text{TypeSystemTools} = \{\text{Coq}, \text{Agda}, \text{Idris}\}$$
-
-**证明助手 / Proof Assistants:**
-
-$$\text{ProofAssistants} = \{\text{Coq}, \text{Agda}, \text{Lean}\}$$
-
-### 10.3 类型系统应用 / Type System Applications
-
-**类型系统应用 / Type System Applications:**
-
-$$\text{TypeSystemApplications} = \{\text{ProgramVerification}, \text{TypeSafety}, \text{FormalProofs}\}$$
-
----
+Type systems can enforce information flow control.
 
 ## 代码示例 / Code Examples
 
-### Rust实现：类型检查器
+### Rust实现：类型系统
 
 ```rust
 use std::collections::HashMap;
 
-# [derive(Debug, Clone, PartialEq, Eq, Hash)]
+// 类型定义
+#[derive(Clone, Debug, PartialEq)]
 enum Type {
     Bool,
     Int,
+    Float,
     Function(Box<Type>, Box<Type>),
-    TypeVar(String),
+    Product(Box<Type>, Box<Type>),
+    Sum(Box<Type>, Box<Type>),
     ForAll(String, Box<Type>),
-}
-
-# [derive(Debug, Clone)]
-enum Expression {
+    Exists(String, Box<Type>),
     Var(String),
-    Bool(bool),
-    Int(i32),
-    Lambda(String, Type, Box<Expression>),
-    Apply(Box<Expression>, Box<Expression>),
-    TypeAbs(String, Box<Expression>),
-    TypeApp(Box<Expression>, Type),
 }
 
-# [derive(Debug, Clone)]
-struct TypeEnvironment {
-    variables: HashMap<String, Type>,
-    type_variables: HashMap<String, Type>,
+// 项定义
+#[derive(Clone, Debug)]
+enum Term {
+    Variable(String),
+    Boolean(bool),
+    Integer(i32),
+    Float(f64),
+    Lambda(String, Box<Term>),
+    Application(Box<Term>, Box<Term>),
+    Pair(Box<Term>, Box<Term>),
+    First(Box<Term>),
+    Second(Box<Term>),
+    Left(Box<Term>),
+    Right(Box<Term>),
+    Case(Box<Term>, String, Box<Term>, String, Box<Term>),
+    TypeLambda(String, Box<Term>),
+    TypeApplication(Box<Term>, Type),
 }
 
-impl TypeEnvironment {
-    fn new() -> Self {
-        TypeEnvironment {
-            variables: HashMap::new(),
-            type_variables: HashMap::new(),
-        }
-    }
+// 类型环境
+type TypeEnv = HashMap<String, Type>;
 
-    fn extend(&self, name: String, ty: Type) -> TypeEnvironment {
-        let mut new_env = self.clone();
-        new_env.variables.insert(name, ty);
-        new_env
-    }
-
-    fn lookup(&self, name: &str) -> Option<Type> {
-        self.variables.get(name).cloned()
-    }
-}
-
+// 类型检查器
 struct TypeChecker {
-    environment: TypeEnvironment,
+    environment: TypeEnv,
 }
 
 impl TypeChecker {
     fn new() -> Self {
-        TypeChecker {
-            environment: TypeEnvironment::new(),
+        Self {
+            environment: HashMap::new(),
         }
     }
-
-    fn type_check(&self, expr: &Expression) -> Result<Type, String> {
-        match expr {
-            Expression::Var(name) => {
-                self.environment.lookup(name)
+    
+    // 类型检查
+    fn type_check(&mut self, term: &Term) -> Result<Type, String> {
+        match term {
+            Term::Variable(name) => {
+                self.environment.get(name)
+                    .cloned()
                     .ok_or_else(|| format!("Undefined variable: {}", name))
             }
-            Expression::Bool(_) => Ok(Type::Bool),
-            Expression::Int(_) => Ok(Type::Int),
-            Expression::Lambda(param, param_type, body) => {
-                let new_env = self.environment.extend(param.clone(), param_type.clone());
-                let body_type = TypeChecker { environment: new_env }.type_check(body)?;
-                Ok(Type::Function(Box::new(param_type.clone()), Box::new(body_type)))
+            
+            Term::Boolean(_) => Ok(Type::Bool),
+            
+            Term::Integer(_) => Ok(Type::Int),
+            
+            Term::Float(_) => Ok(Type::Float),
+            
+            Term::Lambda(param, body) => {
+                // 为参数分配一个类型变量
+                let param_type = Type::Var(format!("T_{}", param));
+                let old_env = self.environment.clone();
+                self.environment.insert(param.clone(), param_type.clone());
+                
+                let body_type = self.type_check(body)?;
+                let function_type = Type::Function(Box::new(param_type), Box::new(body_type));
+                
+                self.environment = old_env;
+                Ok(function_type)
             }
-            Expression::Apply(func, arg) => {
+            
+            Term::Application(func, arg) => {
                 let func_type = self.type_check(func)?;
                 let arg_type = self.type_check(arg)?;
-
+                
                 match func_type {
                     Type::Function(input_type, output_type) => {
-                        if *input_type == arg_type {
+                        if self.unify(&input_type, &arg_type) {
                             Ok(*output_type)
                         } else {
                             Err(format!("Type mismatch: expected {:?}, got {:?}", input_type, arg_type))
                         }
                     }
-                    _ => Err("Not a function".to_string()),
+                    _ => Err("Not a function".to_string())
                 }
             }
-            Expression::TypeAbs(type_param, body) => {
-                let new_env = self.environment.extend(type_param.clone(), Type::TypeVar(type_param.clone()));
-                let body_type = TypeChecker { environment: new_env }.type_check(body)?;
-                Ok(Type::ForAll(type_param.clone(), Box::new(body_type)))
+            
+            Term::Pair(first, second) => {
+                let first_type = self.type_check(first)?;
+                let second_type = self.type_check(second)?;
+                Ok(Type::Product(Box::new(first_type), Box::new(second_type)))
             }
-            Expression::TypeApp(expr, type_arg) => {
-                let expr_type = self.type_check(expr)?;
-
-                match expr_type {
-                    Type::ForAll(param, body_type) => {
-                        let substituted = self.substitute_type(&body_type, &param, type_arg);
-                        Ok(substituted)
+            
+            Term::First(pair) => {
+                let pair_type = self.type_check(pair)?;
+                match pair_type {
+                    Type::Product(first_type, _) => Ok(*first_type),
+                    _ => Err("Not a product type".to_string())
+                }
+            }
+            
+            Term::Second(pair) => {
+                let pair_type = self.type_check(pair)?;
+                match pair_type {
+                    Type::Product(_, second_type) => Ok(*second_type),
+                    _ => Err("Not a product type".to_string())
+                }
+            }
+            
+            Term::Left(value) => {
+                let value_type = self.type_check(value)?;
+                // 为右类型分配一个类型变量
+                let right_type = Type::Var("T_right".to_string());
+                Ok(Type::Sum(Box::new(value_type), Box::new(right_type)))
+            }
+            
+            Term::Right(value) => {
+                let value_type = self.type_check(value)?;
+                // 为左类型分配一个类型变量
+                let left_type = Type::Var("T_left".to_string());
+                Ok(Type::Sum(Box::new(left_type), Box::new(value_type)))
+            }
+            
+            Term::Case(scrutinee, left_var, left_body, right_var, right_body) => {
+                let scrutinee_type = self.type_check(scrutinee)?;
+                match scrutinee_type {
+                    Type::Sum(left_type, right_type) => {
+                        // 检查左分支
+                        let old_env = self.environment.clone();
+                        self.environment.insert(left_var.clone(), *left_type);
+                        let left_result = self.type_check(left_body)?;
+                        self.environment = old_env.clone();
+                        
+                        // 检查右分支
+                        self.environment.insert(right_var.clone(), *right_type);
+                        let right_result = self.type_check(right_body)?;
+                        self.environment = old_env;
+                        
+                        if self.unify(&left_result, &right_result) {
+                            Ok(left_result)
+                        } else {
+                            Err("Case branches have different types".to_string())
+                        }
                     }
-                    _ => Err("Not a polymorphic function".to_string()),
+                    _ => Err("Not a sum type".to_string())
+                }
+            }
+            
+            Term::TypeLambda(param, body) => {
+                let old_env = self.environment.clone();
+                self.environment.insert(param.clone(), Type::Var(param.clone()));
+                
+                let body_type = self.type_check(body)?;
+                let forall_type = Type::ForAll(param, Box::new(body_type));
+                
+                self.environment = old_env;
+                Ok(forall_type)
+            }
+            
+            Term::TypeApplication(term, type_arg) => {
+                let term_type = self.type_check(term)?;
+                match term_type {
+                    Type::ForAll(param, body_type) => {
+                        // 替换类型变量
+                        self.substitute_type(&body_type, &param, &type_arg)
+                    }
+                    _ => Err("Not a polymorphic type".to_string())
                 }
             }
         }
     }
-
-    fn substitute_type(&self, body_type: &Type, param: &str, type_arg: &Type) -> Type {
+    
+    // 类型统一
+    fn unify(&self, t1: &Type, t2: &Type) -> bool {
+        match (t1, t2) {
+            (Type::Bool, Type::Bool) => true,
+            (Type::Int, Type::Int) => true,
+            (Type::Float, Type::Float) => true,
+            (Type::Function(a1, b1), Type::Function(a2, b2)) => {
+                self.unify(a1, a2) && self.unify(b1, b2)
+            }
+            (Type::Product(a1, b1), Type::Product(a2, b2)) => {
+                self.unify(a1, a2) && self.unify(b1, b2)
+            }
+            (Type::Sum(a1, b1), Type::Sum(a2, b2)) => {
+                self.unify(a1, a2) && self.unify(b1, b2)
+            }
+            (Type::Var(_), _) => true, // 类型变量可以统一为任何类型
+            (_, Type::Var(_)) => true,
+            _ => false,
+        }
+    }
+    
+    // 类型替换
+    fn substitute_type(&self, body_type: &Type, param: &str, type_arg: &Type) -> Result<Type, String> {
         match body_type {
-            Type::Bool => Type::Bool,
-            Type::Int => Type::Int,
-            Type::Function(input, output) => {
-                Type::Function(
-                    Box::new(self.substitute_type(input, param, type_arg)),
-                    Box::new(self.substitute_type(output, param, type_arg))
-                )
+            Type::Var(name) if name == param => Ok(type_arg.clone()),
+            Type::Var(name) => Ok(Type::Var(name.clone())),
+            Type::Bool => Ok(Type::Bool),
+            Type::Int => Ok(Type::Int),
+            Type::Float => Ok(Type::Float),
+            Type::Function(a, b) => {
+                let new_a = self.substitute_type(a, param, type_arg)?;
+                let new_b = self.substitute_type(b, param, type_arg)?;
+                Ok(Type::Function(Box::new(new_a), Box::new(new_b)))
             }
-            Type::TypeVar(name) => {
+            Type::Product(a, b) => {
+                let new_a = self.substitute_type(a, param, type_arg)?;
+                let new_b = self.substitute_type(b, param, type_arg)?;
+                Ok(Type::Product(Box::new(new_a), Box::new(new_b)))
+            }
+            Type::Sum(a, b) => {
+                let new_a = self.substitute_type(a, param, type_arg)?;
+                let new_b = self.substitute_type(b, param, type_arg)?;
+                Ok(Type::Sum(Box::new(new_a), Box::new(new_b)))
+            }
+            Type::ForAll(name, body) => {
                 if name == param {
-                    type_arg.clone()
+                    Ok(Type::ForAll(name.clone(), body.clone()))
                 } else {
-                    Type::TypeVar(name.clone())
+                    let new_body = self.substitute_type(body, param, type_arg)?;
+                    Ok(Type::ForAll(name.clone(), Box::new(new_body)))
                 }
             }
-            Type::ForAll(type_param, body) => {
-                if type_param == param {
-                    Type::ForAll(type_param.clone(), body.clone())
+            Type::Exists(name, body) => {
+                if name == param {
+                    Ok(Type::Exists(name.clone(), body.clone()))
                 } else {
-                    Type::ForAll(type_param.clone(), Box::new(self.substitute_type(body, param, type_arg)))
+                    let new_body = self.substitute_type(body, param, type_arg)?;
+                    Ok(Type::Exists(name.clone(), Box::new(new_body)))
                 }
             }
-        }
-    }
-
-    fn infer_type(&self, expr: &Expression) -> Result<Type, String> {
-        // 简化的类型推断
-        self.type_check(expr)
-    }
-
-    fn unify_types(&self, type1: &Type, type2: &Type) -> Result<HashMap<String, Type>, String> {
-        match (type1, type2) {
-            (Type::Bool, Type::Bool) | (Type::Int, Type::Int) => Ok(HashMap::new()),
-            (Type::Function(input1, output1), Type::Function(input2, output2)) => {
-                let mut substitution = self.unify_types(input1, input2)?;
-                let output_substitution = self.unify_types(output1, output2)?;
-                // 合并替换
-                for (k, v) in output_substitution {
-                    substitution.insert(k, v);
-                }
-                Ok(substitution)
-            }
-            (Type::TypeVar(name), other) | (other, Type::TypeVar(name)) => {
-                let mut substitution = HashMap::new();
-                substitution.insert(name.clone(), other.clone());
-                Ok(substitution)
-            }
-            _ => Err("Cannot unify types".to_string()),
         }
     }
 }
 
-fn create_sample_expression() -> Expression {
-    // 创建一个简单的lambda表达式: λx:int. x + 1
-    Expression::Lambda(
-        "x".to_string(),
-        Type::Int,
-        Box::new(Expression::Int(1)) // 简化版本
-    )
+// 依赖类型系统
+struct DependentTypeChecker {
+    environment: TypeEnv,
+    type_families: HashMap<String, Box<dyn Fn(&[Term]) -> Type>>,
+}
+
+impl DependentTypeChecker {
+    fn new() -> Self {
+        Self {
+            environment: HashMap::new(),
+            type_families: HashMap::new(),
+        }
+    }
+    
+    // 依赖类型检查
+    fn check_dependent_type(&mut self, term: &Term) -> Result<Type, String> {
+        // 简化的依赖类型检查
+        // 实际实现需要更复杂的类型系统
+        match term {
+            Term::Variable(name) => {
+                self.environment.get(name)
+                    .cloned()
+                    .ok_or_else(|| format!("Undefined variable: {}", name))
+            }
+            _ => Err("Dependent type checking not implemented".to_string())
+        }
+    }
 }
 
 fn main() {
-    let checker = TypeChecker::new();
-
-    // 测试类型检查
-    let expr = create_sample_expression();
-    match checker.type_check(&expr) {
-        Ok(ty) => println!("类型检查成功: {:?}", ty),
-        Err(e) => println!("类型检查失败: {}", e),
+    println!("=== 类型理论示例 ===");
+    
+    // 创建类型检查器
+    let mut checker = TypeChecker::new();
+    
+    // 1. 简单类型检查
+    let simple_term = Term::Integer(42);
+    match checker.type_check(&simple_term) {
+        Ok(typ) => println!("简单类型检查: {:?} : {:?}", simple_term, typ),
+        Err(e) => println!("类型错误: {}", e),
     }
-
-    // 测试类型推断
-    match checker.infer_type(&expr) {
-        Ok(ty) => println!("类型推断结果: {:?}", ty),
-        Err(e) => println!("类型推断失败: {}", e),
+    
+    // 2. 函数类型检查
+    let lambda_term = Term::Lambda(
+        "x".to_string(),
+        Box::new(Term::Variable("x".to_string()))
+    );
+    match checker.type_check(&lambda_term) {
+        Ok(typ) => println!("函数类型检查: {:?} : {:?}", lambda_term, typ),
+        Err(e) => println!("类型错误: {}", e),
     }
-
-    // 测试类型统一
-    let type1 = Type::Function(Box::new(Type::Int), Box::new(Type::Bool));
-    let type2 = Type::Function(Box::new(Type::Int), Box::new(Type::Bool));
-
-    match checker.unify_types(&type1, &type2) {
-        Ok(substitution) => println!("类型统一成功: {:?}", substitution),
-        Err(e) => println!("类型统一失败: {}", e),
+    
+    // 3. 应用类型检查
+    let app_term = Term::Application(
+        Box::new(lambda_term),
+        Box::new(Term::Integer(42))
+    );
+    match checker.type_check(&app_term) {
+        Ok(typ) => println!("应用类型检查: {:?} : {:?}", app_term, typ),
+        Err(e) => println!("类型错误: {}", e),
+    }
+    
+    // 4. 积类型检查
+    let pair_term = Term::Pair(
+        Box::new(Term::Integer(1)),
+        Box::new(Term::Boolean(true))
+    );
+    match checker.type_check(&pair_term) {
+        Ok(typ) => println!("积类型检查: {:?} : {:?}", pair_term, typ),
+        Err(e) => println!("类型错误: {}", e),
+    }
+    
+    // 5. 多态类型检查
+    let poly_term = Term::TypeLambda(
+        "T".to_string(),
+        Box::new(Term::Lambda(
+            "x".to_string(),
+            Box::new(Term::Variable("x".to_string()))
+        ))
+    );
+    match checker.type_check(&poly_term) {
+        Ok(typ) => println!("多态类型检查: {:?} : {:?}", poly_term, typ),
+        Err(e) => println!("类型错误: {}", e),
     }
 }
 ```
 
-### Haskell实现：依赖类型系统
+### Haskell实现：类型系统
 
 ```haskell
-import Data.Map (Map, fromList, (!))
-import Data.Maybe (fromJust)
+-- 类型理论模块
+module TypeTheory where
 
--- 依赖类型定义
-data DependentType =
-    DBool |
-    DInt |
-    DPi String DependentType DependentType | -- 依赖函数类型
-    DSigma String DependentType DependentType | -- 依赖对类型
-    DId DependentType Expr Expr | -- 恒等类型
-    DType
+import Data.Map (Map)
+import qualified Data.Map as Map
+import Data.Maybe (fromMaybe)
+
+-- 类型定义
+data Type = TBool
+          | TInt
+          | TFloat
+          | TFun Type Type
+          | TProduct Type Type
+          | TSum Type Type
+          | TForAll String Type
+          | TExists String Type
+          | TVar String
     deriving (Show, Eq)
 
--- 表达式定义
-data Expr =
-    DVar String |
-    DBool Bool |
-    DInt Int |
-    DLam String DependentType Expr | -- lambda表达式
-    DApp Expr Expr | -- 函数应用
-    DPair Expr Expr | -- 对构造
-    DProj1 Expr | -- 第一投影
-    DProj2 Expr | -- 第二投影
-    DRefl Expr | -- 反射
-    DSubst Expr Expr Expr -- 替换
-    deriving Show
+-- 项定义
+data Term = Variable String
+          | Boolean Bool
+          | Integer Int
+          | Float Double
+          | Lambda String Term
+          | Application Term Term
+          | Pair Term Term
+          | First Term
+          | Second Term
+          | Left Term
+          | Right Term
+          | Case Term String Term String Term
+          | TypeLambda String Term
+          | TypeApplication Term Type
+    deriving (Show, Eq)
 
 -- 类型环境
-type DTypeEnv = Map String DependentType
+type TypeEnv = Map String Type
 
--- 依赖类型检查器
-data DependentTypeChecker = DependentTypeChecker {
-    -- 简化的类型检查器
-}
+-- 类型检查器
+data TypeChecker = TypeChecker
+    { environment :: TypeEnv
+    } deriving (Show)
 
--- 依赖类型检查
-dependentTypeCheck :: DTypeEnv -> Expr -> Maybe DependentType
-dependentTypeCheck env (DVar x) = lookup x env
-dependentTypeCheck _ (DBool _) = Just DBool
-dependentTypeCheck _ (DInt _) = Just DInt
-dependentTypeCheck env (DLam x t e) =
-    let newEnv = fromList ((x, t) : [(k, v) | (k, v) <- toList env])
-    in case dependentTypeCheck newEnv e of
-        Just t' -> Just (DPi x t t')
-        Nothing -> Nothing
-dependentTypeCheck env (DApp e1 e2) =
-    case dependentTypeCheck env e1 of
-        Just (DPi x t1 t2) ->
-            case dependentTypeCheck env e2 of
-                Just t2' | t2' == t1 -> Just (substitute x e2 t2)
-                _ -> Nothing
-        _ -> Nothing
-dependentTypeCheck env (DPair e1 e2) =
-    case (dependentTypeCheck env e1, dependentTypeCheck env e2) of
-        (Just t1, Just t2) -> Just (DSigma "x" t1 t2)
-        _ -> Nothing
-dependentTypeCheck env (DProj1 e) =
-    case dependentTypeCheck env e of
-        Just (DSigma x t1 t2) -> Just t1
-        _ -> Nothing
-dependentTypeCheck env (DProj2 e) =
-    case dependentTypeCheck env e of
-        Just (DSigma x t1 t2) -> Just (substitute x (DProj1 e) t2)
-        _ -> Nothing
-dependentTypeCheck env (DRefl e) =
-    case dependentTypeCheck env e of
-        Just t -> Just (DId t e e)
-        Nothing -> Nothing
-dependentTypeCheck env (DSubst e1 e2 e3) =
-    case (dependentTypeCheck env e1, dependentTypeCheck env e2, dependentTypeCheck env e3) of
-        (Just (DId t a b), Just p, Just e) -> Just e
-        _ -> Nothing
+-- 创建新的类型检查器
+newTypeChecker :: TypeChecker
+newTypeChecker = TypeChecker Map.empty
+
+-- 类型检查
+typeCheck :: TypeChecker -> Term -> Either String Type
+typeCheck checker term = case term of
+    Variable name -> 
+        case Map.lookup name (environment checker) of
+            Just typ -> Right typ
+            Nothing -> Left $ "Undefined variable: " ++ name
+    
+    Boolean _ -> Right TBool
+    
+    Integer _ -> Right TInt
+    
+    Float _ -> Right TFloat
+    
+    Lambda param body -> do
+        let paramType = TVar $ "T_" ++ param
+        let newEnv = Map.insert param paramType (environment checker)
+        let newChecker = checker { environment = newEnv }
+        bodyType <- typeCheck newChecker body
+        Right $ TFun paramType bodyType
+    
+    Application func arg -> do
+        funcType <- typeCheck checker func
+        argType <- typeCheck checker arg
+        case funcType of
+            TFun inputType outputType -> 
+                if unify inputType argType 
+                    then Right outputType 
+                    else Left $ "Type mismatch: expected " ++ show inputType ++ ", got " ++ show argType
+            _ -> Left "Not a function"
+    
+    Pair first second -> do
+        firstType <- typeCheck checker first
+        secondType <- typeCheck checker second
+        Right $ TProduct firstType secondType
+    
+    First pair -> do
+        pairType <- typeCheck checker pair
+        case pairType of
+            TProduct firstType _ -> Right firstType
+            _ -> Left "Not a product type"
+    
+    Second pair -> do
+        pairType <- typeCheck checker pair
+        case pairType of
+            TProduct _ secondType -> Right secondType
+            _ -> Left "Not a product type"
+    
+    Left value -> do
+        valueType <- typeCheck checker value
+        let rightType = TVar "T_right"
+        Right $ TSum valueType rightType
+    
+    Right value -> do
+        valueType <- typeCheck checker value
+        let leftType = TVar "T_left"
+        Right $ TSum leftType valueType
+    
+    Case scrutinee leftVar leftBody rightVar rightBody -> do
+        scrutineeType <- typeCheck checker scrutinee
+        case scrutineeType of
+            TSum leftType rightType -> do
+                -- 检查左分支
+                let leftEnv = Map.insert leftVar leftType (environment checker)
+                let leftChecker = checker { environment = leftEnv }
+                leftResult <- typeCheck leftChecker leftBody
+                
+                -- 检查右分支
+                let rightEnv = Map.insert rightVar rightType (environment checker)
+                let rightChecker = checker { environment = rightEnv }
+                rightResult <- typeCheck rightChecker rightBody
+                
+                if unify leftResult rightResult 
+                    then Right leftResult 
+                    else Left "Case branches have different types"
+            _ -> Left "Not a sum type"
+    
+    TypeLambda param body -> do
+        let paramType = TVar param
+        let newEnv = Map.insert param paramType (environment checker)
+        let newChecker = checker { environment = newEnv }
+        bodyType <- typeCheck newChecker body
+        Right $ TForAll param bodyType
+    
+    TypeApplication term typeArg -> do
+        termType <- typeCheck checker term
+        case termType of
+            TForAll param bodyType -> 
+                substituteType bodyType param typeArg
+            _ -> Left "Not a polymorphic type"
+
+-- 类型统一
+unify :: Type -> Type -> Bool
+unify TBool TBool = True
+unify TInt TInt = True
+unify TFloat TFloat = True
+unify (TFun a1 b1) (TFun a2 b2) = unify a1 a2 && unify b1 b2
+unify (TProduct a1 b1) (TProduct a2 b2) = unify a1 a2 && unify b1 b2
+unify (TSum a1 b1) (TSum a2 b2) = unify a1 a2 && unify b1 b2
+unify (TVar _) _ = True  -- 类型变量可以统一为任何类型
+unify _ (TVar _) = True
+unify _ _ = False
 
 -- 类型替换
-substitute :: String -> Expr -> DependentType -> DependentType
-substitute x e DBool = DBool
-substitute x e DInt = DInt
-substitute x e (DPi y t1 t2) =
-    if x == y
-    then DPi y t1 t2
-    else DPi y t1 (substitute x e t2)
-substitute x e (DSigma y t1 t2) =
-    if x == y
-    then DSigma y t1 t2
-    else DSigma y t1 (substitute x e t2)
-substitute x e (DId t a b) = DId t a b
-substitute x e DType = DType
+substituteType :: Type -> String -> Type -> Either String Type
+substituteType (TVar name) param typeArg
+    | name == param = Right typeArg
+    | otherwise = Right $ TVar name
+substituteType TBool _ _ = Right TBool
+substituteType TInt _ _ = Right TInt
+substituteType TFloat _ _ = Right TFloat
+substituteType (TFun a b) param typeArg = do
+    newA <- substituteType a param typeArg
+    newB <- substituteType b param typeArg
+    Right $ TFun newA newB
+substituteType (TProduct a b) param typeArg = do
+    newA <- substituteType a param typeArg
+    newB <- substituteType b param typeArg
+    Right $ TProduct newA newB
+substituteType (TSum a b) param typeArg = do
+    newA <- substituteType a param typeArg
+    newB <- substituteType b param typeArg
+    Right $ TSum newA newB
+substituteType (TForAll name body) param typeArg
+    | name == param = Right $ TForAll name body
+    | otherwise = do
+        newBody <- substituteType body param typeArg
+        Right $ TForAll name newBody
+substituteType (TExists name body) param typeArg
+    | name == param = Right $ TExists name body
+    | otherwise = do
+        newBody <- substituteType body param typeArg
+        Right $ TExists name newBody
 
--- 马丁-洛夫类型理论
-martinLofTypeTheory :: Expr -> Maybe DependentType
-martinLofTypeTheory e = dependentTypeCheck emptyEnv e
-  where
-    emptyEnv = fromList []
+-- 依赖类型检查器
+data DependentTypeChecker = DependentTypeChecker
+    { depEnvironment :: TypeEnv
+    , typeFamilies :: Map String (Type -> Type)
+    } deriving (Show)
 
--- 同伦类型理论
-homotopyTypeTheory :: Expr -> Maybe DependentType
-homotopyTypeTheory e =
-    case martinLofTypeTheory e of
-        Just t -> Just t
-        Nothing -> Nothing
+newDependentTypeChecker :: DependentTypeChecker
+newDependentTypeChecker = DependentTypeChecker Map.empty Map.empty
 
--- 类型推断
-typeInference :: Expr -> Maybe DependentType
-typeInference e = dependentTypeCheck emptyEnv e
-  where
-    emptyEnv = fromList []
+-- 依赖类型检查
+checkDependentType :: DependentTypeChecker -> Term -> Either String Type
+checkDependentType checker term = case term of
+    Variable name -> 
+        case Map.lookup name (depEnvironment checker) of
+            Just typ -> Right typ
+            Nothing -> Left $ "Undefined variable: " ++ name
+    _ -> Left "Dependent type checking not implemented"
 
--- 类型安全检查
-typeSafety :: Expr -> Bool
-typeSafety e =
-    case typeInference e of
-        Just _ -> True
-        Nothing -> False
-
--- 示例
+-- 示例使用
 main :: IO ()
 main = do
-    putStrLn "依赖类型系统示例:"
-
-    -- 简单的lambda表达式
-    let simpleLambda = DLam "x" DInt (DVar "x")
-
-    case dependentTypeCheck emptyEnv simpleLambda of
-        Just t -> putStrLn $ "简单lambda表达式类型: " ++ show t
-        Nothing -> putStrLn "类型检查失败"
-
-    -- 依赖函数类型
-    let dependentLambda = DLam "x" DInt (DLam "y" DInt (DVar "x"))
-
-    case dependentTypeCheck emptyEnv dependentLambda of
-        Just t -> putStrLn $ "依赖lambda表达式类型: " ++ show t
-        Nothing -> putStrLn "类型检查失败"
-
-    -- 恒等类型
-    let identity = DRefl (DInt 5)
-
-    case dependentTypeCheck emptyEnv identity of
-        Just t -> putStrLn $ "恒等类型: " ++ show t
-        Nothing -> putStrLn "类型检查失败"
-
-    -- 类型安全检查
-    let safeExpr = DInt 42
-    putStrLn $ "类型安全检查: " ++ show (typeSafety safeExpr)
-
-    putStrLn "\n类型理论总结:"
-    putStrLn "- 简单类型理论: 基础的类型系统"
-    putStrLn "- 多态类型理论: 支持类型参数化"
-    putStrLn "- 依赖类型理论: 类型可以依赖值"
-    putStrLn "- 高阶类型理论: 支持高阶类型"
-    putStrLn "- 线性类型理论: 资源管理类型系统"
-    putStrLn "- 会话类型理论: 通信协议类型系统"
-    putStrLn "- 效应类型理论: 副作用类型系统"
-    putStrLn "- 量子类型理论: 量子计算类型系统"
-    putStrLn "- 同伦类型理论: 数学形式化类型系统"
-    putStrLn "- 类型系统工具: 类型检查和推断工具"
-  where
-    emptyEnv = fromList []
+    putStrLn "=== 类型理论示例 ==="
+    
+    let checker = newTypeChecker
+    
+    -- 1. 简单类型检查
+    let simpleTerm = Integer 42
+    case typeCheck checker simpleTerm of
+        Right typ -> putStrLn $ "简单类型检查: " ++ show simpleTerm ++ " : " ++ show typ
+        Left err -> putStrLn $ "类型错误: " ++ err
+    
+    -- 2. 函数类型检查
+    let lambdaTerm = Lambda "x" (Variable "x")
+    case typeCheck checker lambdaTerm of
+        Right typ -> putStrLn $ "函数类型检查: " ++ show lambdaTerm ++ " : " ++ show typ
+        Left err -> putStrLn $ "类型错误: " ++ err
+    
+    -- 3. 应用类型检查
+    let appTerm = Application lambdaTerm (Integer 42)
+    case typeCheck checker appTerm of
+        Right typ -> putStrLn $ "应用类型检查: " ++ show appTerm ++ " : " ++ show typ
+        Left err -> putStrLn $ "类型错误: " ++ err
+    
+    -- 4. 积类型检查
+    let pairTerm = Pair (Integer 1) (Boolean True)
+    case typeCheck checker pairTerm of
+        Right typ -> putStrLn $ "积类型检查: " ++ show pairTerm ++ " : " ++ show typ
+        Left err -> putStrLn $ "类型错误: " ++ err
+    
+    -- 5. 多态类型检查
+    let polyTerm = TypeLambda "T" (Lambda "x" (Variable "x"))
+    case typeCheck checker polyTerm of
+        Right typ -> putStrLn $ "多态类型检查: " ++ show polyTerm ++ " : " ++ show typ
+        Left err -> putStrLn $ "类型错误: " ++ err
 ```
-
----
 
 ## 参考文献 / References
 
-1. Pierce, B. C. (2002). *Types and Programming Languages*. MIT Press.
-2. Girard, J. Y., et al. (1989). *Proofs and Types*. Cambridge University Press.
-3. Martin-Löf, P. (1984). *Intuitionistic Type Theory*. Bibliopolis.
-4. Wadler, P. (2015). *Propositions as Types*. CACM.
-5. Voevodsky, V. (2014). *Univalent Foundations and the Large Scale Agenda*. IAS.
-6. Milner, R. (1978). A theory of type polymorphism in programming. *JCSS*.
-7. Reynolds, J. C. (1974). Towards a theory of type structure. *Programming Symposium*.
-8. Girard, J. Y. (1987). Linear logic. *TCS*.
+1. Pierce, B. C. (2002). Types and programming languages. MIT Press.
+2. Martin-Löf, P. (1984). Intuitionistic type theory. Bibliopolis.
+3. The Univalent Foundations Program. (2013). Homotopy type theory: Univalent foundations of mathematics. Institute for Advanced Study.
+4. Girard, J. Y., et al. (1989). Proofs and types. Cambridge University Press.
+5. Reynolds, J. C. (1974). Towards a theory of type structure. Programming Symposium.
+6. Cardelli, L., & Wegner, P. (1985). On understanding types, data abstraction, and polymorphism. ACM Computing Surveys.
+7. Harper, R. (2016). Practical foundations for programming languages. Cambridge University Press.
+8. Pierce, B. C., & Turner, D. N. (2000). Local type inference. ACM Transactions on Programming Languages and Systems.
+9. Milner, R. (1978). A theory of type polymorphism in programming. Journal of Computer and System Sciences.
+10. Hindley, J. R. (1969). The principal type-scheme of an object in combinatory logic. Transactions of the American Mathematical Society.
 
 ---
 
-*本模块为FormalAI提供了全面的类型理论基础，涵盖了从简单类型理论到同伦类型理论的完整类型理论体系。*
+*类型理论为FormalAI提供了类型安全和程序正确性的理论基础，是现代编程语言和形式化方法的重要基础。*
+
+*Type theory provides theoretical foundations for type safety and program correctness in FormalAI, serving as important foundations for modern programming languages and formal methods.*

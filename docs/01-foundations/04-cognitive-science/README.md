@@ -1,839 +1,898 @@
-# 1.4 认知科学基础 / Cognitive Science Foundations
+# 1.4 认知科学 / Cognitive Science
 
 ## 概述 / Overview
 
-认知科学基础为FormalAI提供人类认知的理论基础，研究感知、学习、记忆、推理等认知过程，为AI系统设计提供认知启发。
+认知科学研究人类智能的认知过程，为FormalAI提供认知建模和智能系统设计的理论基础。
 
-Cognitive science foundations provide theoretical basis for human cognition in FormalAI, studying cognitive processes such as perception, learning, memory, and reasoning, offering cognitive inspiration for AI system design.
+Cognitive science studies human cognitive processes, providing theoretical foundations for cognitive modeling and intelligent system design in FormalAI.
 
 ## 目录 / Table of Contents
 
-- [1.4 认知科学基础 / Cognitive Science Foundations](#14-认知科学基础--cognitive-science-foundations)
+- [1.4 认知科学 / Cognitive Science](#14-认知科学--cognitive-science)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
-  - [1. 感知与注意 / Perception and Attention](#1-感知与注意--perception-and-attention)
-    - [1.1 视觉感知 / Visual Perception](#11-视觉感知--visual-perception)
-    - [1.2 注意机制 / Attention Mechanisms](#12-注意机制--attention-mechanisms)
-    - [1.3 多模态感知 / Multimodal Perception](#13-多模态感知--multimodal-perception)
-  - [2. 学习与记忆 / Learning and Memory](#2-学习与记忆--learning-and-memory)
+  - [1. 认知架构 / Cognitive Architecture](#1-认知架构--cognitive-architecture)
+    - [1.1 ACT-R架构 / ACT-R Architecture](#11-act-r架构--act-r-architecture)
+    - [1.2 SOAR架构 / SOAR Architecture](#12-soar架构--soar-architecture)
+    - [1.3 CLARION架构 / CLARION Architecture](#13-clarion架构--clarion-architecture)
+  - [2. 记忆模型 / Memory Models](#2-记忆模型--memory-models)
     - [2.1 工作记忆 / Working Memory](#21-工作记忆--working-memory)
-    - [2.2 长时记忆 / Long-Term Memory](#22-长时记忆--long-term-memory)
-    - [2.3 学习理论 / Learning Theories](#23-学习理论--learning-theories)
-  - [3. 语言认知 / Language Cognition](#3-语言认知--language-cognition)
-    - [3.1 语言理解 / Language Comprehension](#31-语言理解--language-comprehension)
-    - [3.2 语言产生 / Language Production](#32-语言产生--language-production)
-    - [3.3 语言习得 / Language Acquisition](#33-语言习得--language-acquisition)
-  - [4. 推理与决策 / Reasoning and Decision Making](#4-推理与决策--reasoning-and-decision-making)
-    - [4.1 演绎推理 / Deductive Reasoning](#41-演绎推理--deductive-reasoning)
-    - [4.2 归纳推理 / Inductive Reasoning](#42-归纳推理--inductive-reasoning)
-    - [4.3 决策理论 / Decision Theory](#43-决策理论--decision-theory)
-  - [5. 意识与元认知 / Consciousness and Metacognition](#5-意识与元认知--consciousness-and-metacognition)
-    - [5.1 意识理论 / Consciousness Theories](#51-意识理论--consciousness-theories)
-    - [5.2 元认知 / Metacognition](#52-元认知--metacognition)
-    - [5.3 自我意识 / Self-Awareness](#53-自我意识--self-awareness)
-  - [6. 认知发展 / Cognitive Development](#6-认知发展--cognitive-development)
-    - [6.1 皮亚杰理论 / Piaget's Theory](#61-皮亚杰理论--piagets-theory)
-    - [6.2 维果茨基理论 / Vygotsky's Theory](#62-维果茨基理论--vygotskys-theory)
-    - [6.3 认知负荷理论 / Cognitive Load Theory](#63-认知负荷理论--cognitive-load-theory)
-  - [7. 认知神经科学 / Cognitive Neuroscience](#7-认知神经科学--cognitive-neuroscience)
-    - [7.1 神经编码 / Neural Coding](#71-神经编码--neural-coding)
-    - [7.2 神经可塑性 / Neural Plasticity](#72-神经可塑性--neural-plasticity)
-    - [7.3 脑网络 / Brain Networks](#73-脑网络--brain-networks)
-  - [8. 认知建模 / Cognitive Modeling](#8-认知建模--cognitive-modeling)
-    - [8.1 符号认知模型 / Symbolic Cognitive Models](#81-符号认知模型--symbolic-cognitive-models)
-    - [8.2 连接主义模型 / Connectionist Models](#82-连接主义模型--connectionist-models)
-    - [8.3 混合模型 / Hybrid Models](#83-混合模型--hybrid-models)
-  - [9. 认知架构 / Cognitive Architecture](#9-认知架构--cognitive-architecture)
-    - [9.1 ACT-R架构 / ACT-R Architecture](#91-act-r架构--act-r-architecture)
-    - [9.2 SOAR架构 / SOAR Architecture](#92-soar架构--soar-architecture)
-    - [9.3 CLARION架构 / CLARION Architecture](#93-clarion架构--clarion-architecture)
-  - [10. 认知计算 / Cognitive Computing](#10-认知计算--cognitive-computing)
-    - [10.1 认知系统 / Cognitive Systems](#101-认知系统--cognitive-systems)
-    - [10.2 认知增强 / Cognitive Enhancement](#102-认知增强--cognitive-enhancement)
-    - [10.3 认知伦理 / Cognitive Ethics](#103-认知伦理--cognitive-ethics)
+    - [2.2 长期记忆 / Long-Term Memory](#22-长期记忆--long-term-memory)
+    - [2.3 记忆编码 / Memory Encoding](#23-记忆编码--memory-encoding)
+  - [3. 注意力机制 / Attention Mechanisms](#3-注意力机制--attention-mechanisms)
+    - [3.1 选择性注意力 / Selective Attention](#31-选择性注意力--selective-attention)
+    - [3.2 分配性注意力 / Divided Attention](#32-分配性注意力--divided-attention)
+    - [3.3 注意力控制 / Attention Control](#33-注意力控制--attention-control)
+  - [4. 学习理论 / Learning Theory](#4-学习理论--learning-theory)
+    - [4.1 经典条件反射 / Classical Conditioning](#41-经典条件反射--classical-conditioning)
+    - [4.2 操作条件反射 / Operant Conditioning](#42-操作条件反射--operant-conditioning)
+    - [4.3 观察学习 / Observational Learning](#43-观察学习--observational-learning)
+  - [5. 决策理论 / Decision Theory](#5-决策理论--decision-theory)
+    - [5.1 期望效用理论 / Expected Utility Theory](#51-期望效用理论--expected-utility-theory)
+    - [5.2 前景理论 / Prospect Theory](#52-前景理论--prospect-theory)
+    - [5.3 启发式决策 / Heuristic Decision Making](#53-启发式决策--heuristic-decision-making)
+  - [6. 语言认知 / Language Cognition](#6-语言认知--language-cognition)
+    - [6.1 语言习得 / Language Acquisition](#61-语言习得--language-acquisition)
+    - [6.2 语言理解 / Language Comprehension](#62-语言理解--language-comprehension)
+    - [6.3 语言产生 / Language Production](#63-语言产生--language-production)
+  - [7. 视觉认知 / Visual Cognition](#7-视觉认知--visual-cognition)
+    - [7.1 视觉感知 / Visual Perception](#71-视觉感知--visual-perception)
+    - [7.2 物体识别 / Object Recognition](#72-物体识别--object-recognition)
+    - [7.3 空间认知 / Spatial Cognition](#73-空间认知--spatial-cognition)
+  - [8. 情感认知 / Emotional Cognition](#8-情感认知--emotional-cognition)
+    - [8.1 情感理论 / Emotion Theory](#81-情感理论--emotion-theory)
+    - [8.2 情感调节 / Emotion Regulation](#82-情感调节--emotion-regulation)
+    - [8.3 情感与决策 / Emotion and Decision Making](#83-情感与决策--emotion-and-decision-making)
+  - [9. 元认知 / Metacognition](#9-元认知--metacognition)
+    - [9.1 元认知监控 / Metacognitive Monitoring](#91-元认知监控--metacognitive-monitoring)
+    - [9.2 元认知控制 / Metacognitive Control](#92-元认知控制--metacognitive-control)
+    - [9.3 自我调节学习 / Self-Regulated Learning](#93-自我调节学习--self-regulated-learning)
+  - [10. 社会认知 / Social Cognition](#10-社会认知--social-cognition)
+    - [10.1 心理理论 / Theory of Mind](#101-心理理论--theory-of-mind)
+    - [10.2 社会学习 / Social Learning](#102-社会学习--social-learning)
+    - [10.3 群体认知 / Group Cognition](#103-群体认知--group-cognition)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：工作记忆模型](#rust实现工作记忆模型)
-    - [Haskell实现：认知发展模型](#haskell实现认知发展模型)
+    - [Rust实现：认知架构模拟器](#rust实现认知架构模拟器)
+    - [Haskell实现：记忆模型](#haskell实现记忆模型)
   - [参考文献 / References](#参考文献--references)
 
 ---
 
-## 1. 感知与注意 / Perception and Attention
+## 1. 认知架构 / Cognitive Architecture
 
-### 1.1 视觉感知 / Visual Perception
+### 1.1 ACT-R架构 / ACT-R Architecture
 
-**视觉信息处理 / Visual Information Processing:**
+**ACT-R定义 / ACT-R Definition:**
 
-视觉系统将光信号转换为神经信号，经过多级处理形成感知。
+ACT-R (Adaptive Control of Thought-Rational) 是一个认知架构，包含：
 
-The visual system converts light signals to neural signals, processed through multiple levels to form perception.
+ACT-R (Adaptive Control of Thought-Rational) is a cognitive architecture containing:
 
-**特征检测 / Feature Detection:**
+- **声明性记忆 / Declarative Memory:** 存储事实和知识
+- **程序性记忆 / Procedural Memory:** 存储产生式规则
+- **工作记忆 / Working Memory:** 当前激活的信息
+- **感知-运动模块 / Perceptual-Motor Modules:** 与外部环境交互
 
-$$\text{Response}(x,y) = \sum_{i,j} I(x+i, y+j) \cdot W(i,j)$$
+**产生式规则 / Production Rules:**
 
-其中 $I$ 是输入图像，$W$ 是检测滤波器。
+$$IF \text{ condition } THEN \text{ action}$$
 
-where $I$ is the input image and $W$ is the detection filter.
+**激活计算 / Activation Calculation:**
 
-**格式塔原则 / Gestalt Principles:**
+$$A_i = B_i + \sum_j W_j S_{ji} + \sum_k W_k S_{ki}$$
 
-- 接近性 / Proximity
-- 相似性 / Similarity
-- 连续性 / Continuity
-- 闭合性 / Closure
-- 对称性 / Symmetry
+其中：
 
-### 1.2 注意机制 / Attention Mechanisms
+- $A_i$ 是节点 $i$ 的激活
+- $B_i$ 是基础激活
+- $W_j$ 是上下文权重
+- $S_{ji}$ 是关联强度
 
-**选择性注意 / Selective Attention:**
+### 1.2 SOAR架构 / SOAR Architecture
 
-$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+**SOAR组件 / SOAR Components:**
 
-**注意焦点 / Attentional Focus:**
+1. **长期记忆 / Long-Term Memory:**
+   - 语义记忆 / Semantic memory
+   - 程序性记忆 / Procedural memory
+   - 情节记忆 / Episodic memory
 
-$$F(x) = \sum_{i=1}^n \alpha_i f_i(x)$$
+2. **工作记忆 / Working Memory:**
+   - 当前目标 / Current goals
+   - 问题空间 / Problem spaces
+   - 操作符 / Operators
 
-其中 $\alpha_i$ 是注意权重。
+3. **决策周期 / Decision Cycle:**
+   - 输入阶段 / Input phase
+   - 提议阶段 / Propose phase
+   - 应用阶段 / Apply phase
+   - 输出阶段 / Output phase
 
-where $\alpha_i$ are attention weights.
+### 1.3 CLARION架构 / CLARION Architecture
 
-**注意资源 / Attentional Resources:**
+**CLARION层次 / CLARION Levels:**
 
-$$\text{Capacity} = \sum_{i=1}^n \text{Resource}_i$$
+1. **显式层 / Explicit Layer:**
+   - 符号表示 / Symbolic representations
+   - 规则学习 / Rule learning
 
-### 1.3 多模态感知 / Multimodal Perception
+2. **隐式层 / Implicit Layer:**
+   - 分布式表示 / Distributed representations
+   - 模式学习 / Pattern learning
 
-**感知融合 / Perceptual Fusion:**
+**学习机制 / Learning Mechanisms:**
 
-$$P_{\text{fused}} = \sum_{i=1}^n w_i P_i$$
+$$\Delta w_{ij} = \alpha \delta_i x_j$$
 
-其中 $P_i$ 是第 $i$ 个模态的感知，$w_i$ 是权重。
+其中 $\alpha$ 是学习率，$\delta_i$ 是误差信号。
 
-where $P_i$ is perception from modality $i$ and $w_i$ are weights.
-
-**跨模态学习 / Cross-Modal Learning:**
-
-$$\mathcal{L}_{\text{cross}} = \|f_v(v) - f_a(a)\|_2$$
-
-其中 $f_v$ 和 $f_a$ 是视觉和听觉特征提取器。
-
-where $f_v$ and $f_a$ are visual and auditory feature extractors.
-
----
-
-## 2. 学习与记忆 / Learning and Memory
+## 2. 记忆模型 / Memory Models
 
 ### 2.1 工作记忆 / Working Memory
 
-**工作记忆模型 / Working Memory Model:**
+**工作记忆容量 / Working Memory Capacity:**
 
-$$M_{\text{working}} = \{M_{\text{phonological}}, M_{\text{visuospatial}}, M_{\text{central}}\}$$
+根据Cowan的理论，工作记忆容量约为4±1个项目：
 
-**记忆容量 / Memory Capacity:**
+According to Cowan's theory, working memory capacity is approximately 4±1 items:
 
-$$\text{Capacity} = 7 \pm 2 \text{ chunks}$$
+$$C = 4 \pm 1$$
 
-**记忆衰减 / Memory Decay:**
+**注意力焦点 / Focus of Attention:**
 
-$$M(t) = M_0 e^{-\lambda t}$$
+$$F = \{i_1, i_2, ..., i_k\}$$
 
-其中 $\lambda$ 是衰减率。
+其中 $k \leq C$。
 
-where $\lambda$ is the decay rate.
+### 2.2 长期记忆 / Long-Term Memory
 
-### 2.2 长时记忆 / Long-Term Memory
+**记忆强度 / Memory Strength:**
 
-**语义记忆 / Semantic Memory:**
+$$S(t) = S_0 e^{-\lambda t} + \sum_i S_i e^{-\lambda_i (t-t_i)}$$
 
-$$S(x) = \sum_{i=1}^n w_i \text{Feature}_i(x)$$
+其中：
 
-**情景记忆 / Episodic Memory:**
+- $S_0$ 是初始强度
+- $\lambda$ 是衰减率
+- $S_i$ 是复习强度
+- $t_i$ 是复习时间
 
-$$E(t) = \{(s_t, a_t, r_t, s_{t+1})\}_{t=1}^T$$
+**检索概率 / Retrieval Probability:**
 
-**记忆巩固 / Memory Consolidation:**
+$$P(R|S) = \frac{S}{S + \theta}$$
 
-$$\frac{dM}{dt} = \alpha \text{Rehearsal} - \beta M$$
+其中 $\theta$ 是阈值参数。
 
-### 2.3 学习理论 / Learning Theories
+### 2.3 记忆编码 / Memory Encoding
 
-**经典条件反射 / Classical Conditioning:**
+**编码深度 / Encoding Depth:**
 
-$$P(\text{CR}) = \alpha \text{CS} \cdot \text{US}$$
+$$D = \sum_i w_i f_i$$
 
-**操作条件反射 / Operant Conditioning:**
+其中 $w_i$ 是权重，$f_i$ 是编码特征。
 
-$$P(a) = \frac{e^{\beta Q(s,a)}}{\sum_{a'} e^{\beta Q(s,a')}}$$
+## 3. 注意力机制 / Attention Mechanisms
 
-**观察学习 / Observational Learning:**
+### 3.1 选择性注意力 / Selective Attention
 
-$$L_{\text{obs}} = \mathbb{E}_{(s,a,r)}[\|Q(s,a) - r\|^2]$$
+**注意力权重 / Attention Weights:**
 
----
+$$w_i = \frac{\exp(e_i)}{\sum_j \exp(e_j)}$$
 
-## 3. 语言认知 / Language Cognition
+其中 $e_i$ 是注意力分数：
 
-### 3.1 语言理解 / Language Comprehension
+$$e_i = f(Q, K_i)$$
 
-**句法分析 / Syntactic Parsing:**
+**注意力计算 / Attention Computation:**
 
-$$\text{Parse}(s) = \arg\max_T P(T|s)$$
+$$A = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
 
-其中 $T$ 是句法树。
+### 3.2 分配性注意力 / Divided Attention
 
-where $T$ is the syntactic tree.
+**注意力分配 / Attention Allocation:**
 
-**语义理解 / Semantic Understanding:**
+$$\sum_i w_i = 1$$
 
-$$\text{Semantic}(w) = \sum_{i=1}^n \alpha_i \text{Context}_i(w)$$
+**性能函数 / Performance Function:**
 
-**语用推理 / Pragmatic Inference:**
+$$P = \sum_i w_i P_i$$
 
-$$P(\text{meaning}|s, \text{context}) = \frac{P(s|\text{meaning}) P(\text{meaning}|\text{context})}{P(s|\text{context})}$$
+其中 $P_i$ 是任务 $i$ 的性能。
 
-### 3.2 语言产生 / Language Production
+### 3.3 注意力控制 / Attention Control
 
-**概念化 / Conceptualization:**
+**执行控制 / Executive Control:**
 
-$$C = \text{Conceptualizer}(\text{Intent})$$
+$$C = \alpha \cdot \text{Top-down} + \beta \cdot \text{Bottom-up}$$
 
-**公式化 / Formulation:**
+其中 $\alpha$ 和 $\beta$ 是控制权重。
 
-$$F = \text{Formulator}(C)$$
+## 4. 学习理论 / Learning Theory
 
-**发音 / Articulation:**
+### 4.1 经典条件反射 / Classical Conditioning
 
-$$A = \text{Articulator}(F)$$
+**巴甫洛夫条件反射 / Pavlovian Conditioning:**
 
-### 3.3 语言习得 / Language Acquisition
+$$CS \rightarrow US \rightarrow UR$$
 
-**词汇习得 / Vocabulary Acquisition:**
+**条件反射强度 / Conditioning Strength:**
 
-$$\frac{dV}{dt} = \alpha \text{Exposure} \cdot \text{Attention}$$
+$$V_{CS} = \alpha \beta (\lambda - V_{CS})$$
 
-**语法习得 / Grammar Acquisition:**
+其中：
 
-$$G(t) = G_0 + \sum_{i=1}^t \Delta G_i$$
+- $\alpha$ 是CS的显著性
+- $\beta$ 是US的显著性
+- $\lambda$ 是最大强度
 
-**语言发展 / Language Development:**
+### 4.2 操作条件反射 / Operant Conditioning
 
-$$L(t) = L_0(1 - e^{-\lambda t})$$
+**强化学习 / Reinforcement Learning:**
 
----
+$$Q(s,a) = Q(s,a) + \alpha[r + \gamma \max_{a'} Q(s',a') - Q(s,a)]$$
 
-## 4. 推理与决策 / Reasoning and Decision Making
+**策略梯度 / Policy Gradient:**
 
-### 4.1 演绎推理 / Deductive Reasoning
+$$\nabla_\theta J(\theta) = \mathbb{E}[\nabla_\theta \log \pi(a|s) Q(s,a)]$$
 
-**逻辑推理 / Logical Reasoning:**
+### 4.3 观察学习 / Observational Learning
 
-$$\text{Valid}(\phi \rightarrow \psi) = \text{True} \text{ iff } \phi \models \psi$$
+**模仿学习 / Imitation Learning:**
 
-**三段论 / Syllogism:**
+$$\pi^*(a|s) = \arg\max_\pi \mathbb{E}_{s,a \sim \pi_E}[\log \pi(a|s)]$$
 
-$$\frac{A \rightarrow B \quad B \rightarrow C}{A \rightarrow C}$$
+## 5. 决策理论 / Decision Theory
 
-**反证法 / Proof by Contradiction:**
+### 5.1 期望效用理论 / Expected Utility Theory
 
-$$\text{If } \neg P \Rightarrow \bot, \text{ then } P$$
+**期望效用 / Expected Utility:**
 
-### 4.2 归纳推理 / Inductive Reasoning
+$$EU(A) = \sum_i p_i u(x_i)$$
 
-**模式识别 / Pattern Recognition:**
+**决策规则 / Decision Rule:**
 
-$$P(\text{pattern}|D) = \frac{P(D|\text{pattern}) P(\text{pattern})}{P(D)}$$
+$$A^* = \arg\max_A EU(A)$$
 
-**类比推理 / Analogical Reasoning:**
+### 5.2 前景理论 / Prospect Theory
 
-$$\text{Similarity}(A, B) = \sum_{i=1}^n w_i \text{sim}_i(A_i, B_i)$$
-
-**因果推理 / Causal Reasoning:**
-
-$$P(Y|do(X)) = \sum_z P(Y|X, Z) P(Z)$$
-
-### 4.3 决策理论 / Decision Theory
-
-**期望效用理论 / Expected Utility Theory:**
-
-$$U(a) = \sum_{s} P(s|a) U(s)$$
-
-**前景理论 / Prospect Theory:**
+**价值函数 / Value Function:**
 
 $$
-V(x) = \begin{cases}
+v(x) = \begin{cases}
 x^\alpha & \text{if } x \geq 0 \\
 -\lambda(-x)^\beta & \text{if } x < 0
 \end{cases}
 $$
 
-**多属性决策 / Multi-Attribute Decision Making:**
+**权重函数 / Weighting Function:**
 
-$$U(a) = \sum_{i=1}^n w_i u_i(a_i)$$
+$$\pi(p) = \frac{p^\gamma}{(p^\gamma + (1-p)^\gamma)^{1/\gamma}}$$
 
----
+### 5.3 启发式决策 / Heuristic Decision Making
 
-## 5. 意识与元认知 / Consciousness and Metacognition
+**可用性启发式 / Availability Heuristic:**
 
-### 5.1 意识理论 / Consciousness Theories
+$$P(A) \propto \text{availability of A}$$
 
-**全局工作空间理论 / Global Workspace Theory:**
+**代表性启发式 / Representativeness Heuristic:**
 
-$$C = \text{GlobalWorkspace}(\text{LocalProcesses})$$
+$$P(A|B) \propto \text{similarity}(A, B)$$
 
-**信息整合理论 / Integrated Information Theory:**
+## 6. 语言认知 / Language Cognition
 
-$$\Phi = \sum_{i=1}^n I(X_i; X_{-i})$$
+### 6.1 语言习得 / Language Acquisition
 
-其中 $\Phi$ 是整合信息量。
+**语言习得模型 / Language Acquisition Model:**
 
-where $\Phi$ is the integrated information.
+$$L(t) = L_0 + \alpha \int_0^t I(\tau) d\tau$$
 
-**高阶思维理论 / Higher-Order Thought Theory:**
+其中 $I(t)$ 是输入强度。
 
-$$\text{Conscious}(p) \text{ iff } \text{HOT}(p)$$
+### 6.2 语言理解 / Language Comprehension
 
-### 5.2 元认知 / Metacognition
+**句法分析 / Syntactic Parsing:**
 
-**元认知监控 / Metacognitive Monitoring:**
+$$P(T|S) = \frac{P(S|T)P(T)}{P(S)}$$
 
-$$M_{\text{monitoring}} = P(\text{correct}|\text{confidence})$$
+**语义理解 / Semantic Understanding:**
 
-**元认知控制 / Metacognitive Control:**
+$$M = \text{Composition}(w_1, w_2, ..., w_n)$$
 
-$$C_{\text{control}} = \arg\max_a \text{ExpectedGain}(a)$$
+### 6.3 语言产生 / Language Production
 
-**学习策略 / Learning Strategies:**
+**语言产生模型 / Language Production Model:**
 
-$$S^* = \arg\max_S \text{LearningEfficiency}(S)$$
+1. **概念化 / Conceptualization**
+2. **公式化 / Formulation**
+3. **发音 / Articulation**
 
-### 5.3 自我意识 / Self-Awareness
+## 7. 视觉认知 / Visual Cognition
 
-**自我模型 / Self-Model:**
+### 7.1 视觉感知 / Visual Perception
 
-$$S = \{\text{Identity}, \text{Capabilities}, \text{Preferences}\}$$
+**视觉处理层次 / Visual Processing Hierarchy:**
 
-**自我反思 / Self-Reflection:**
+1. **视网膜 / Retina**
+2. **外侧膝状体 / LGN**
+3. **初级视觉皮层 / V1**
+4. **高级视觉区域 / Higher Visual Areas**
 
-$$R(t) = \text{Reflect}(\text{Experience}(t))$$
+**感受野 / Receptive Field:**
 
-**自我调节 / Self-Regulation:**
+$$RF(x,y) = \sum_i w_i I(x_i, y_i)$$
 
-$$\text{Regulate}(g, s) = \text{Adjust}(g, s)$$
+### 7.2 物体识别 / Object Recognition
 
----
+**模板匹配 / Template Matching:**
 
-## 6. 认知发展 / Cognitive Development
+$$S = \sum_{i,j} T(i,j) \cdot I(i,j)$$
 
-### 6.1 皮亚杰理论 / Piaget's Theory
+**特征检测 / Feature Detection:**
 
-**认知发展阶段 / Cognitive Development Stages:**
+$$F = \sigma(W \cdot I + b)$$
 
-1. **感知运动期 / Sensorimotor Stage (0-2岁):**
-   - 对象永久性 / Object permanence
-   - 目标导向行为 / Goal-directed behavior
+### 7.3 空间认知 / Spatial Cognition
 
-2. **前运算期 / Preoperational Stage (2-7岁):**
-   - 符号思维 / Symbolic thinking
-   - 自我中心 / Egocentrism
+**空间表示 / Spatial Representation:**
 
-3. **具体运算期 / Concrete Operational Stage (7-11岁):**
-   - 守恒概念 / Conservation
-   - 逻辑推理 / Logical reasoning
+$$\mathbf{x} = [x, y, z, \theta]^T$$
 
-4. **形式运算期 / Formal Operational Stage (11+岁):**
-   - 抽象思维 / Abstract thinking
-   - 假设演绎推理 / Hypothetical-deductive reasoning
+**空间变换 / Spatial Transformation:**
 
-### 6.2 维果茨基理论 / Vygotsky's Theory
+$$
+T = \begin{bmatrix}
+R & t \\
+0 & 1
+\end{bmatrix}
+$$
 
-**最近发展区 / Zone of Proximal Development:**
+## 8. 情感认知 / Emotional Cognition
 
-$$\text{ZPD} = \text{PotentialLevel} - \text{CurrentLevel}$$
+### 8.1 情感理论 / Emotion Theory
 
-**脚手架 / Scaffolding:**
+**情感维度 / Emotional Dimensions:**
 
-$$S(t) = S_0 + \alpha t - \beta t^2$$
+1. **效价 / Valence:** 正面-负面
+2. **唤醒度 / Arousal:** 高-低
+3. **支配度 / Dominance:** 控制-被控制
 
-**社会建构主义 / Social Constructivism:**
+**情感强度 / Emotional Intensity:**
 
-$$K = \text{SocialInteraction} \cdot \text{IndividualConstruction}$$
+$$I = \sqrt{\sum_i e_i^2}$$
 
-### 6.3 认知负荷理论 / Cognitive Load Theory
+### 8.2 情感调节 / Emotion Regulation
 
-**内在认知负荷 / Intrinsic Cognitive Load:**
+**认知重评 / Cognitive Reappraisal:**
 
-$$CL_{\text{intrinsic}} = f(\text{ElementInteractivity})$$
+$$E' = f(E, C)$$
 
-**外在认知负荷 / Extraneous Cognitive Load:**
+其中 $C$ 是认知策略。
 
-$$CL_{\text{extraneous}} = f(\text{InstructionalDesign})$$
+**表达抑制 / Expressive Suppression:**
 
-**生成认知负荷 / Germane Cognitive Load:**
+$$E_{suppressed} = \alpha E_{original}$$
 
-$$CL_{\text{germane}} = f(\text{SchemaConstruction})$$
+### 8.3 情感与决策 / Emotion and Decision Making
 
----
+**情感影响决策 / Emotional Influence on Decision:**
 
-## 7. 认知神经科学 / Cognitive Neuroscience
+$$D = D_{rational} + \beta E$$
 
-### 7.1 神经编码 / Neural Coding
+其中 $\beta$ 是情感权重。
 
-**频率编码 / Rate Coding:**
+## 9. 元认知 / Metacognition
 
-$$r = \frac{\text{SpikeCount}}{\text{TimeWindow}}$$
+### 9.1 元认知监控 / Metacognitive Monitoring
 
-**时间编码 / Temporal Coding:**
+**信心判断 / Confidence Judgment:**
 
-$$T = \{t_1, t_2, \ldots, t_n\}$$
+$$C = f(\text{performance}, \text{effort}, \text{difficulty})$$
 
-**群体编码 / Population Coding:**
+**学习判断 / Judgments of Learning:**
 
-$$P(x) = \sum_{i=1}^n w_i f_i(x)$$
+$$JOL = \alpha \text{familiarity} + \beta \text{processing fluency}$$
 
-### 7.2 神经可塑性 / Neural Plasticity
+### 9.2 元认知控制 / Metacognitive Control
 
-**赫布学习 / Hebbian Learning:**
+**学习时间分配 / Study Time Allocation:**
 
-$$\Delta w_{ij} = \eta x_i x_j$$
+$$T_i = f(\text{difficulty}_i, \text{importance}_i, \text{time available})$$
 
-**长时程增强 / Long-Term Potentiation (LTP):**
+**策略选择 / Strategy Selection:**
 
-$$\Delta \text{Strength} = \alpha \text{Activity} \cdot \text{Time}$$
+$$S^* = \arg\max_S U(S)$$
 
-**长时程抑制 / Long-Term Depression (LTD):**
+### 9.3 自我调节学习 / Self-Regulated Learning
 
-$$\Delta \text{Strength} = -\beta \text{Activity} \cdot \text{Time}$$
+**自我调节循环 / Self-Regulation Cycle:**
 
-### 7.3 脑网络 / Brain Networks
+1. **计划 / Planning**
+2. **监控 / Monitoring**
+3. **控制 / Control**
+4. **反思 / Reflection**
 
-**功能连接 / Functional Connectivity:**
+## 10. 社会认知 / Social Cognition
 
-$$C_{ij} = \text{Correlation}(S_i, S_j)$$
+### 10.1 心理理论 / Theory of Mind
 
-**结构连接 / Structural Connectivity:**
+**心理状态推理 / Mental State Inference:**
 
-$$A_{ij} = \text{ConnectionStrength}(i, j)$$
+$$P(M|B) = \frac{P(B|M)P(M)}{P(B)}$$
 
-**小世界网络 / Small-World Networks:**
+**信念-欲望-意图模型 / Belief-Desire-Intention Model:**
 
-$$\text{Clustering} \gg \text{Random}, \text{PathLength} \approx \text{Random}$$
+$$A = f(B, D, I)$$
 
----
+### 10.2 社会学习 / Social Learning
 
-## 8. 认知建模 / Cognitive Modeling
+**观察学习 / Observational Learning:**
 
-### 8.1 符号认知模型 / Symbolic Cognitive Models
+$$L_{social} = \alpha L_{direct} + \beta L_{observational}$$
 
-**产生式系统 / Production Systems:**
+**模仿学习 / Imitation Learning:**
 
-$$\text{IF condition THEN action}$$
+$$\pi_{imitation} = \arg\min_\pi \mathbb{E}[d(\pi, \pi_{expert})]$$
 
-**语义网络 / Semantic Networks:**
+### 10.3 群体认知 / Group Cognition
 
-$$G = (V, E) \text{ where } V = \text{Concepts}, E = \text{Relations}$$
+**集体智能 / Collective Intelligence:**
 
-**框架理论 / Frame Theory:**
+$$I_{group} = f(I_1, I_2, ..., I_n, \text{interaction})$$
 
-$$F = \{\text{Slots}, \text{Values}, \text{Defaults}\}$$
+**群体决策 / Group Decision Making:**
 
-### 8.2 连接主义模型 / Connectionist Models
-
-**人工神经网络 / Artificial Neural Networks:**
-
-$$y = f\left(\sum_{i=1}^n w_i x_i + b\right)$$
-
-**自组织映射 / Self-Organizing Maps:**
-
-$$\Delta w_i = \eta h_{ci}(t)\[x(t) - w_i(t)\]$$
-
-**玻尔兹曼机 / Boltzmann Machines:**
-
-$$P(v, h) = \frac{1}{Z} e^{-E(v, h)}$$
-
-### 8.3 混合模型 / Hybrid Models
-
-**符号-连接混合 / Symbolic-Connectionist Hybrid:**
-
-$$H = \alpha S + (1-\alpha)C$$
-
-**认知架构 / Cognitive Architecture:**
-
-$$A = \{\text{Memory}, \text{Attention}, \text{Reasoning}, \text{Learning}\}$$
-
----
-
-## 9. 认知架构 / Cognitive Architecture
-
-### 9.1 ACT-R架构 / ACT-R Architecture
-
-**ACT-R组件 / ACT-R Components:**
-
-- **声明记忆 / Declarative Memory:** 存储事实和知识
-- **程序记忆 / Procedural Memory:** 存储产生式规则
-- **目标栈 / Goal Stack:** 管理当前目标
-- **注意模块 / Attention Module:** 控制注意焦点
-
-- **Declarative Memory:** stores facts and knowledge
-- **Procedural Memory:** stores production rules
-- **Goal Stack:** manages current goals
-- **Attention Module:** controls attentional focus
-
-**ACT-R方程 / ACT-R Equations:**
-
-$$\text{Activation}(i) = \text{BaseLevel}(i) + \sum_j \text{AssociativeStrength}(i,j) \cdot \text{Activation}(j)$$
-
-### 9.2 SOAR架构 / SOAR Architecture
-
-**SOAR组件 / SOAR Components:**
-
-- **工作记忆 / Working Memory:** 当前状态表示
-- **产生式记忆 / Production Memory:** 产生式规则
-- **长期记忆 / Long-Term Memory:** 语义和情景记忆
-- **决策周期 / Decision Cycle:** 认知处理循环
-
-- **Working Memory:** current state representation
-- **Production Memory:** production rules
-- **Long-Term Memory:** semantic and episodic memory
-- **Decision Cycle:** cognitive processing loop
-
-**SOAR决策 / SOAR Decision:**
-
-$$\text{Decision} = \text{Elaboration} \rightarrow \text{Decision} \rightarrow \text{Application}$$
-
-### 9.3 CLARION架构 / CLARION Architecture
-
-**CLARION组件 / CLARION Components:**
-
-- **隐式层 / Implicit Layer:** 无意识处理
-- **显式层 / Explicit Layer:** 有意识处理
-- **元认知层 / Metacognitive Layer:** 监控和控制
-- **动机层 / Motivational Layer:** 目标和动机
-
-- **Implicit Layer:** unconscious processing
-- **Explicit Layer:** conscious processing
-- **Metacognitive Layer:** monitoring and control
-- **Motivational Layer:** goals and motivation
-
-**CLARION学习 / CLARION Learning:**
-
-$$\text{Learning} = \text{ImplicitLearning} + \text{ExplicitLearning}$$
-
----
-
-## 10. 认知计算 / Cognitive Computing
-
-### 10.1 认知系统 / Cognitive Systems
-
-**认知系统特征 / Cognitive System Features:**
-
-- **自适应学习 / Adaptive Learning:** 从经验中学习
-- **自然语言处理 / Natural Language Processing:** 理解人类语言
-- **模式识别 / Pattern Recognition:** 识别复杂模式
-- **推理能力 / Reasoning Capabilities:** 逻辑和概率推理
-
-- **Adaptive Learning:** learns from experience
-- **Natural Language Processing:** understands human language
-- **Pattern Recognition:** recognizes complex patterns
-- **Reasoning Capabilities:** logical and probabilistic reasoning
-
-**认知计算模型 / Cognitive Computing Model:**
-
-$$C = \{\text{Perception}, \text{Learning}, \text{Reasoning}, \text{Interaction}\}$$
-
-### 10.2 认知增强 / Cognitive Enhancement
-
-**认知增强技术 / Cognitive Enhancement Technologies:**
-
-- **脑机接口 / Brain-Computer Interface:** 直接神经控制
-- **认知训练 / Cognitive Training:** 结构化练习
-- **药物增强 / Pharmacological Enhancement:** 认知药物
-- **技术增强 / Technological Enhancement:** 外部认知工具
-
-- **Brain-Computer Interface:** direct neural control
-- **Cognitive Training:** structured practice
-- **Pharmacological Enhancement:** cognitive drugs
-- **Technological Enhancement:** external cognitive tools
-
-**增强效果 / Enhancement Effects:**
-
-$$E = \alpha \text{Baseline} + \beta \text{Enhancement}$$
-
-### 10.3 认知伦理 / Cognitive Ethics
-
-**认知伦理问题 / Cognitive Ethical Issues:**
-
-- **隐私保护 / Privacy Protection:** 认知数据安全
-- **自主性 / Autonomy:** 认知增强的自主选择
-- **公平性 / Fairness:** 认知增强的公平分配
-- **责任归属 / Responsibility:** 增强认知的责任
-
-- **Privacy Protection:** cognitive data security
-- **Autonomy:** autonomous choice of cognitive enhancement
-- **Fairness:** fair distribution of cognitive enhancement
-- **Responsibility:** responsibility for enhanced cognition
-
-**伦理框架 / Ethical Framework:**
-
-$$\text{EthicalDecision} = f(\text{Benefits}, \text{Risks}, \text{Principles})$$
-
----
+$$D_{group} = \sum_i w_i D_i$$
 
 ## 代码示例 / Code Examples
 
-### Rust实现：工作记忆模型
+### Rust实现：认知架构模拟器
 
 ```rust
 use std::collections::HashMap;
 
-#[derive(Debug, Clone)]
-struct WorkingMemory {
-    phonological_loop: Vec<String>,
-    visuospatial_sketchpad: Vec<VisualObject>,
-    central_executive: CentralExecutive,
+// 认知架构模拟器
+struct CognitiveArchitecture {
+    declarative_memory: HashMap<String, f64>,
+    procedural_memory: Vec<ProductionRule>,
+    working_memory: Vec<String>,
+    attention_focus: Vec<String>,
+}
+
+struct ProductionRule {
+    condition: String,
+    action: String,
+    strength: f64,
+}
+
+impl CognitiveArchitecture {
+    fn new() -> Self {
+        Self {
+            declarative_memory: HashMap::new(),
+            procedural_memory: Vec::new(),
+            working_memory: Vec::new(),
+            attention_focus: Vec::new(),
+        }
+    }
+    
+    // 激活计算
+    fn calculate_activation(&self, node: &str) -> f64 {
+        let base_activation = self.declarative_memory.get(node).unwrap_or(&0.0);
+        let contextual_activation = self.calculate_contextual_activation(node);
+        base_activation + contextual_activation
+    }
+    
+    // 注意力分配
+    fn allocate_attention(&mut self, items: Vec<String>) {
+        let capacity = 4.0; // 工作记忆容量
+        let weights = self.calculate_attention_weights(&items);
+        
+        self.attention_focus = items
+            .into_iter()
+            .zip(weights)
+            .filter(|(_, w)| *w > 0.1)
+            .take(capacity as usize)
+            .map(|(item, _)| item)
+            .collect();
+    }
+    
+    // 决策过程
+    fn make_decision(&self, options: Vec<String>) -> String {
+        let utilities: Vec<f64> = options
+            .iter()
+            .map(|option| self.calculate_utility(option))
+            .collect();
+        
+        let max_index = utilities
+            .iter()
+            .enumerate()
+            .max_by(|(_, a), (_, b)| a.partial_cmp(b).unwrap())
+            .map(|(i, _)| i)
+            .unwrap();
+        
+        options[max_index].clone()
+    }
+}
+
+// 记忆模型
+struct MemoryModel {
+    working_memory: Vec<MemoryItem>,
+    long_term_memory: HashMap<String, MemoryTrace>,
+}
+
+struct MemoryItem {
+    content: String,
+    activation: f64,
+    timestamp: f64,
+}
+
+struct MemoryTrace {
+    strength: f64,
+    last_accessed: f64,
+    access_count: u32,
+}
+
+impl MemoryModel {
+    fn new() -> Self {
+        Self {
+            working_memory: Vec::new(),
+            long_term_memory: HashMap::new(),
+        }
+    }
+    
+    // 记忆编码
+    fn encode(&mut self, content: String, depth: f64) {
+        let activation = depth * 0.8 + 0.2; // 基础激活 + 深度激活
+        let item = MemoryItem {
+            content: content.clone(),
+            activation,
+            timestamp: 0.0, // 当前时间
+        };
+        
+        self.working_memory.push(item);
+        
+        // 存储到长期记忆
+        let trace = MemoryTrace {
+            strength: activation,
+            last_accessed: 0.0,
+            access_count: 1,
+        };
+        self.long_term_memory.insert(content, trace);
+    }
+    
+    // 记忆检索
+    fn retrieve(&mut self, cue: &str) -> Option<String> {
+        let mut best_match = None;
+        let mut best_score = 0.0;
+        
+        for (key, trace) in &mut self.long_term_memory {
+            if key.contains(cue) || cue.contains(key) {
+                let score = self.calculate_retrieval_score(trace);
+                if score > best_score {
+                    best_score = score;
+                    best_match = Some(key.clone());
+                }
+                trace.last_accessed = 0.0; // 当前时间
+                trace.access_count += 1;
+            }
+        }
+        
+        best_match
+    }
+    
+    // 计算检索分数
+    fn calculate_retrieval_score(&self, trace: &MemoryTrace) -> f64 {
+        let time_decay = (-0.1 * (0.0 - trace.last_accessed)).exp();
+        let frequency_boost = (trace.access_count as f64).ln() + 1.0;
+        trace.strength * time_decay * frequency_boost
+    }
+}
+
+// 注意力机制
+struct AttentionMechanism {
+    focus: Vec<String>,
     capacity: usize,
 }
 
-#[derive(Debug, Clone)]
-struct VisualObject {
-    position: (f64, f64),
-    color: String,
-    shape: String,
-}
-
-#[derive(Debug, Clone)]
-struct CentralExecutive {
-    attention_control: f64,
-    planning: f64,
-    monitoring: f64,
-}
-
-impl WorkingMemory {
+impl AttentionMechanism {
     fn new(capacity: usize) -> Self {
-        WorkingMemory {
-            phonological_loop: Vec::new(),
-            visuospatial_sketchpad: Vec::new(),
-            central_executive: CentralExecutive {
-                attention_control: 1.0,
-                planning: 1.0,
-                monitoring: 1.0,
-            },
+        Self {
+            focus: Vec::new(),
             capacity,
         }
     }
     
-    fn add_phonological(&mut self, item: String) -> bool {
-        if self.phonological_loop.len() < self.capacity {
-            self.phonological_loop.push(item);
-            true
-        } else {
-            false
-        }
-    }
-    
-    fn add_visual(&mut self, object: VisualObject) -> bool {
-        if self.visuospatial_sketchpad.len() < self.capacity {
-            self.visuospatial_sketchpad.push(object);
-            true
-        } else {
-            false
-        }
-    }
-    
-    fn rehearse(&mut self) {
-        // 复述增强记忆保持
-        for item in &mut self.phonological_loop {
-            // 模拟复述过程
-        }
-    }
-    
-    fn decay(&mut self, time: f64) {
-        let decay_rate = 0.1;
-        let decay_factor = (-decay_rate * time).exp();
+    // 选择性注意力
+    fn selective_attention(&mut self, stimuli: Vec<String>, relevance: Vec<f64>) {
+        let mut scored_items: Vec<(String, f64)> = stimuli
+            .into_iter()
+            .zip(relevance)
+            .collect();
         
-        // 模拟记忆衰减
-        if decay_factor < 0.5 {
-            self.phonological_loop.clear();
-            self.visuospatial_sketchpad.clear();
-        }
-    }
-    
-    fn get_memory_load(&self) -> f64 {
-        let phonological_load = self.phonological_loop.len() as f64 / self.capacity as f64;
-        let visual_load = self.visuospatial_sketchpad.len() as f64 / self.capacity as f64;
+        scored_items.sort_by(|(_, a), (_, b)| b.partial_cmp(a).unwrap());
         
-        (phonological_load + visual_load) / 2.0
+        self.focus = scored_items
+            .into_iter()
+            .take(self.capacity)
+            .map(|(item, _)| item)
+            .collect();
     }
     
-    fn executive_function(&self, task: &str) -> f64 {
-        match task {
-            "attention" => self.central_executive.attention_control,
-            "planning" => self.central_executive.planning,
-            "monitoring" => self.central_executive.monitoring,
-            _ => 0.0,
+    // 分配性注意力
+    fn divided_attention(&self, tasks: Vec<String>) -> Vec<f64> {
+        let n = tasks.len();
+        if n == 0 {
+            return Vec::new();
         }
+        
+        // 平均分配注意力
+        let weight_per_task = 1.0 / n as f64;
+        vec![weight_per_task; n]
     }
-}
-
-fn simulate_working_memory() {
-    let mut wm = WorkingMemory::new(7);
-    
-    // 添加语音信息
-    wm.add_phonological("apple".to_string());
-    wm.add_phonological("banana".to_string());
-    wm.add_phonological("cherry".to_string());
-    
-    // 添加视觉信息
-    wm.add_visual(VisualObject {
-        position: (10.0, 20.0),
-        color: "red".to_string(),
-        shape: "circle".to_string(),
-    });
-    
-    println!("工作记忆负载: {}", wm.get_memory_load());
-    println!("注意力控制能力: {}", wm.executive_function("attention"));
-    
-    // 模拟时间流逝
-    wm.decay(5.0);
-    println!("衰减后记忆负载: {}", wm.get_memory_load());
 }
 
 fn main() {
-    simulate_working_memory();
+    // 创建认知架构
+    let mut cognitive_arch = CognitiveArchitecture::new();
+    
+    // 创建记忆模型
+    let mut memory_model = MemoryModel::new();
+    
+    // 创建注意力机制
+    let mut attention = AttentionMechanism::new(4);
+    
+    // 模拟认知过程
+    println!("=== 认知科学模拟 ===");
+    
+    // 1. 记忆编码
+    memory_model.encode("认知科学很重要".to_string(), 0.9);
+    memory_model.encode("注意力机制".to_string(), 0.8);
+    memory_model.encode("工作记忆".to_string(), 0.7);
+    
+    // 2. 注意力分配
+    let stimuli = vec![
+        "视觉信息".to_string(),
+        "听觉信息".to_string(),
+        "触觉信息".to_string(),
+        "嗅觉信息".to_string(),
+    ];
+    let relevance = vec![0.9, 0.7, 0.5, 0.3];
+    attention.selective_attention(stimuli, relevance);
+    
+    println!("注意力焦点: {:?}", attention.focus);
+    
+    // 3. 记忆检索
+    if let Some(retrieved) = memory_model.retrieve("认知") {
+        println!("检索到: {}", retrieved);
+    }
+    
+    // 4. 决策过程
+    let options = vec![
+        "继续学习".to_string(),
+        "休息一下".to_string(),
+        "换个主题".to_string(),
+    ];
+    let decision = cognitive_arch.make_decision(options);
+    println!("决策结果: {}", decision);
 }
 ```
 
-### Haskell实现：认知发展模型
+### Haskell实现：记忆模型
 
 ```haskell
-import Data.List (foldl')
-import System.Random
+-- 认知科学模块
+module CognitiveScience where
 
--- 认知发展阶段
-data CognitiveStage = Sensorimotor | Preoperational | ConcreteOperational | FormalOperational deriving (Show, Eq)
+import Data.Map (Map)
+import qualified Data.Map as Map
+import Data.List (sortBy)
+import Data.Ord (comparing)
 
--- 认知能力
-data CognitiveAbility = ObjectPermanence | SymbolicThinking | Conservation | AbstractThinking deriving (Show, Eq)
+-- 记忆项
+data MemoryItem = MemoryItem
+    { content :: String
+    , activation :: Double
+    , timestamp :: Double
+    } deriving (Show, Eq)
 
--- 认知发展模型
-data CognitiveDevelopment = CognitiveDevelopment {
-    age :: Double,
-    stage :: CognitiveStage,
-    abilities :: [CognitiveAbility],
-    knowledge :: Double,
-    experience :: Double
-} deriving Show
+-- 记忆痕迹
+data MemoryTrace = MemoryTrace
+    { strength :: Double
+    , lastAccessed :: Double
+    , accessCount :: Int
+    } deriving (Show, Eq)
 
--- 皮亚杰发展理论
-piagetDevelopment :: Double -> CognitiveStage
-piagetDevelopment age
-    | age < 2 = Sensorimotor
-    | age < 7 = Preoperational
-    | age < 11 = ConcreteOperational
-    | otherwise = FormalOperational
+-- 工作记忆
+data WorkingMemory = WorkingMemory
+    { items :: [MemoryItem]
+    , capacity :: Int
+    } deriving (Show, Eq)
 
--- 认知能力发展
-abilityDevelopment :: Double -> CognitiveAbility -> Bool
-abilityDevelopment age ability = case ability of
-    ObjectPermanence -> age >= 0.5
-    SymbolicThinking -> age >= 2.0
-    Conservation -> age >= 7.0
-    AbstractThinking -> age >= 11.0
+-- 长期记忆
+type LongTermMemory = Map String MemoryTrace
 
--- 知识增长模型
-knowledgeGrowth :: Double -> Double -> Double
-knowledgeGrowth currentKnowledge experience = 
-    let learningRate = 0.1
-        maxKnowledge = 1.0
-    in min maxKnowledge (currentKnowledge + learningRate * experience)
+-- 记忆模型
+data MemoryModel = MemoryModel
+    { workingMemory :: WorkingMemory
+    , longTermMemory :: LongTermMemory
+    } deriving (Show, Eq)
 
--- 经验积累
-experienceAccumulation :: Double -> Double -> Double
-experienceAccumulation currentExperience time = 
-    let accumulationRate = 0.05
-    in currentExperience + accumulationRate * time
+-- 注意力机制
+data AttentionMechanism = AttentionMechanism
+    { focus :: [String]
+    , capacity :: Int
+    } deriving (Show, Eq)
 
--- 认知发展模拟
-simulateCognitiveDevelopment :: Double -> [CognitiveDevelopment]
-simulateCognitiveDevelopment maxAge = 
-    let timeSteps = [0.0, 0.5..maxAge]
-        initialDevelopment = CognitiveDevelopment {
-            age = 0.0,
-            stage = Sensorimotor,
-            abilities = [],
-            knowledge = 0.0,
-            experience = 0.0
-        }
-    in scanl updateDevelopment initialDevelopment timeSteps
+-- 认知架构
+data CognitiveArchitecture = CognitiveArchitecture
+    { declarativeMemory :: Map String Double
+    , proceduralMemory :: [ProductionRule]
+    , workingMemory :: [String]
+    , attentionFocus :: [String]
+    } deriving (Show, Eq)
 
--- 更新认知发展
-updateDevelopment :: CognitiveDevelopment -> Double -> CognitiveDevelopment
-updateDevelopment dev time = 
-    let newAge = age dev + time
-        newStage = piagetDevelopment newAge
-        newAbilities = filter (abilityDevelopment newAge) [ObjectPermanence, SymbolicThinking, Conservation, AbstractThinking]
-        newExperience = experienceAccumulation (experience dev) time
-        newKnowledge = knowledgeGrowth (knowledge dev) newExperience
-    in dev {
-        age = newAge,
-        stage = newStage,
-        abilities = newAbilities,
-        knowledge = newKnowledge,
-        experience = newExperience
+-- 产生式规则
+data ProductionRule = ProductionRule
+    { condition :: String
+    , action :: String
+    , ruleStrength :: Double
+    } deriving (Show, Eq)
+
+-- 创建新的记忆模型
+newMemoryModel :: MemoryModel
+newMemoryModel = MemoryModel
+    { workingMemory = WorkingMemory [] 7
+    , longTermMemory = Map.empty
     }
 
--- 维果茨基最近发展区
-zoneOfProximalDevelopment :: Double -> Double -> Double
-zoneOfProximalDevelopment currentLevel potentialLevel = potentialLevel - currentLevel
+-- 创建新的注意力机制
+newAttentionMechanism :: Int -> AttentionMechanism
+newAttentionMechanism cap = AttentionMechanism
+    { focus = []
+    , capacity = cap
+    }
 
--- 脚手架支持
-scaffolding :: Double -> Double -> Double
-scaffolding currentLevel targetLevel = 
-    let gap = targetLevel - currentLevel
-        supportLevel = max 0.0 (min 1.0 (gap / 2.0))
-    in supportLevel
+-- 创建新的认知架构
+newCognitiveArchitecture :: CognitiveArchitecture
+newCognitiveArchitecture = CognitiveArchitecture
+    { declarativeMemory = Map.empty
+    , proceduralMemory = []
+    , workingMemory = []
+    , attentionFocus = []
+    }
 
--- 认知负荷计算
-cognitiveLoad :: Double -> Double -> Double -> Double
-cognitiveLoad intrinsic extraneous germane = intrinsic + extraneous + germane
+-- 记忆编码
+encodeMemory :: MemoryModel -> String -> Double -> MemoryModel
+encodeMemory model content depth = model
+    { workingMemory = updatedWorkingMemory
+    , longTermMemory = updatedLongTermMemory
+    }
+  where
+    activation = depth * 0.8 + 0.2
+    newItem = MemoryItem content activation 0.0
+    updatedWorkingMemory = (workingMemory model)
+        { items = newItem : items (workingMemory model)
+        }
+    newTrace = MemoryTrace activation 0.0 1
+    updatedLongTermMemory = Map.insert content newTrace (longTermMemory model)
 
--- 示例
+-- 记忆检索
+retrieveMemory :: MemoryModel -> String -> Maybe String
+retrieveMemory model cue = 
+    case bestMatch of
+        Just (key, _) -> Just key
+        Nothing -> Nothing
+  where
+    matches = Map.toList $ Map.filterWithKey (\k _ -> 
+        cue `isInfixOf` k || k `isInfixOf` cue) (longTermMemory model)
+    scoredMatches = map (\(k, trace) -> (k, calculateRetrievalScore trace)) matches
+    bestMatch = if null scoredMatches 
+        then Nothing 
+        else Just $ maximumBy (comparing snd) scoredMatches
+
+-- 计算检索分数
+calculateRetrievalScore :: MemoryTrace -> Double
+calculateRetrievalScore trace = 
+    strength trace * timeDecay * frequencyBoost
+  where
+    timeDecay = exp (-0.1 * (0.0 - lastAccessed trace))
+    frequencyBoost = log (fromIntegral (accessCount trace) + 1.0)
+
+-- 选择性注意力
+selectiveAttention :: AttentionMechanism -> [String] -> [Double] -> AttentionMechanism
+selectiveAttention mechanism stimuli relevance = mechanism
+    { focus = take (capacity mechanism) selectedItems
+    }
+  where
+    scoredItems = zip stimuli relevance
+    sortedItems = sortBy (comparing (negate . snd)) scoredItems
+    selectedItems = map fst sortedItems
+
+-- 分配性注意力
+dividedAttention :: AttentionMechanism -> [String] -> [Double]
+dividedAttention mechanism tasks
+    | null tasks = []
+    | otherwise = replicate (length tasks) weightPerTask
+  where
+    weightPerTask = 1.0 / fromIntegral (length tasks)
+
+-- 激活计算
+calculateActivation :: CognitiveArchitecture -> String -> Double
+calculateActivation arch node = 
+    baseActivation + contextualActivation
+  where
+    baseActivation = Map.findWithDefault 0.0 node (declarativeMemory arch)
+    contextualActivation = calculateContextualActivation arch node
+
+-- 计算上下文激活
+calculateContextualActivation :: CognitiveArchitecture -> String -> Double
+calculateContextualActivation arch node = 
+    sum [weight * strength | (relatedNode, weight) <- contextItems]
+  where
+    contextItems = Map.toList $ Map.filterWithKey (\k _ -> k /= node) (declarativeMemory arch)
+    strength = Map.findWithDefault 0.0 node (declarativeMemory arch)
+
+-- 决策过程
+makeDecision :: CognitiveArchitecture -> [String] -> String
+makeDecision arch options = 
+    options !! maxIndex
+  where
+    utilities = map (calculateUtility arch) options
+    maxIndex = snd $ maximum $ zip utilities [0..]
+
+-- 计算效用
+calculateUtility :: CognitiveArchitecture -> String -> Double
+calculateUtility arch option = 
+    Map.findWithDefault 0.0 option (declarativeMemory arch)
+
+-- 示例使用
 main :: IO ()
 main = do
-    let development = simulateCognitiveDevelopment 15.0
+    putStrLn "=== 认知科学模拟 ==="
     
-    putStrLn "认知发展模拟:"
-    mapM_ (\dev -> 
-        putStrLn $ "年龄: " ++ show (age dev) ++ 
-                  ", 阶段: " ++ show (stage dev) ++ 
-                  ", 知识: " ++ show (knowledge dev) ++
-                  ", 能力: " ++ show (abilities dev)) 
-        (take 10 development)
+    -- 创建记忆模型
+    let initialModel = newMemoryModel
     
-    let zpd = zoneOfProximalDevelopment 0.6 0.8
-    let scaffold = scaffolding 0.6 0.8
-    let load = cognitiveLoad 0.3 0.2 0.1
+    -- 记忆编码
+    let model1 = encodeMemory initialModel "认知科学很重要" 0.9
+    let model2 = encodeMemory model1 "注意力机制" 0.8
+    let model3 = encodeMemory model2 "工作记忆" 0.7
     
-    putStrLn $ "\n最近发展区: " ++ show zpd
-    putStrLn $ "脚手架支持: " ++ show scaffold
-    putStrLn $ "认知负荷: " ++ show load
+    -- 记忆检索
+    case retrieveMemory model3 "认知" of
+        Just retrieved -> putStrLn $ "检索到: " ++ retrieved
+        Nothing -> putStrLn "未找到相关记忆"
+    
+    -- 注意力机制
+    let attention = newAttentionMechanism 4
+    let stimuli = ["视觉信息", "听觉信息", "触觉信息", "嗅觉信息"]
+    let relevance = [0.9, 0.7, 0.5, 0.3]
+    let focusedAttention = selectiveAttention attention stimuli relevance
+    
+    putStrLn $ "注意力焦点: " ++ show (focus focusedAttention)
+    
+    -- 认知架构
+    let arch = newCognitiveArchitecture
+    let options = ["继续学习", "休息一下", "换个主题"]
+    let decision = makeDecision arch options
+    
+    putStrLn $ "决策结果: " ++ decision
 ```
-
----
 
 ## 参考文献 / References
 
-1. Anderson, J. R. (2007). *How Can the Human Mind Occur in the Physical Universe?*. Oxford University Press.
-2. Baddeley, A. D. (2012). *Working Memory: Theories, Models, and Controversies*. Annual Review of Psychology.
-3. Chomsky, N. (1957). *Syntactic Structures*. Mouton.
-4. Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
-5. Piaget, J. (1952). *The Origins of Intelligence in Children*. International Universities Press.
-6. Vygotsky, L. S. (1978). *Mind in Society: The Development of Higher Psychological Processes*. Harvard University Press.
-7. Sweller, J. (1988). Cognitive load during problem solving. *Cognitive Science*.
-8. Newell, A., & Simon, H. A. (1972). *Human Problem Solving*. Prentice-Hall.
-9. Laird, J. E. (2012). *The Soar Cognitive Architecture*. MIT Press.
-10. Sun, R. (2006). *Cognition and Multi-Agent Interaction*. Cambridge University Press.
+1. Anderson, J. R. (2007). How can the human mind occur in the physical universe? Oxford University Press.
+2. Baddeley, A. (2012). Working memory: Theories, models, and controversies. Annual Review of Psychology, 63, 1-29.
+3. Kahneman, D. (2011). Thinking, fast and slow. Farrar, Straus and Giroux.
+4. Laird, J. E. (2012). The SOAR cognitive architecture. MIT Press.
+5. Sun, R. (2006). The CLARION cognitive architecture: Extending cognitive modeling. In Proceedings of the 28th Annual Conference of the Cognitive Science Society.
+6. Posner, M. I., & Petersen, S. E. (1990). The attention system of the human brain. Annual Review of Neuroscience, 13, 25-42.
+7. Tulving, E. (2002). Episodic memory: From mind to brain. Annual Review of Psychology, 53, 1-25.
+8. Bandura, A. (1977). Social learning theory. Prentice-Hall.
+9. Damasio, A. (1994). Descartes' error: Emotion, reason, and the human brain. Putnam.
+10. Flavell, J. H. (1979). Metacognition and cognitive monitoring: A new area of cognitive-developmental inquiry. American Psychologist, 34(10), 906-911.
 
 ---
 
-*本模块为FormalAI提供了全面的认知科学理论基础，涵盖了从感知到认知计算的完整认知理论体系。*
+*认知科学为FormalAI提供了理解人类智能认知过程的理论基础，为构建更智能的AI系统提供了重要指导。*
+
+*Cognitive science provides theoretical foundations for understanding human cognitive processes in FormalAI, offering important guidance for building more intelligent AI systems.*

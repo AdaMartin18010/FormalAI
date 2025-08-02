@@ -2,195 +2,121 @@
 
 ## 概述 / Overview
 
-价值学习理论是AI对齐的核心组成部分，旨在从人类行为、偏好和反馈中学习人类价值观，使AI系统能够做出符合人类价值观的决策。本文档涵盖价值学习的理论基础、方法体系和技术实现。
+价值学习理论研究如何让AI系统学习、理解和遵循人类价值观。本文档涵盖价值学习的理论基础、方法体系和技术实现。
 
-Value learning theory is a core component of AI alignment, aiming to learn human values from human behavior, preferences, and feedback, enabling AI systems to make decisions consistent with human values. This document covers the theoretical foundations, methodological systems, and technical implementations of value learning.
+Value learning theory studies how AI systems can learn, understand, and follow human values. This document covers the theoretical foundations, methodological systems, and technical implementations of value learning.
 
 ## 目录 / Table of Contents
 
-1. [理论基础 / Theoretical Foundations](#1-理论基础--theoretical-foundations)
-2. [价值表示 / Value Representation](#2-价值表示--value-representation)
-3. [学习方法 / Learning Methods](#3-学习方法--learning-methods)
-4. [价值不确定性 / Value Uncertainty](#4-价值不确定性--value-uncertainty)
-5. [评估框架 / Evaluation Framework](#5-评估框架--evaluation-framework)
-6. [应用领域 / Application Domains](#6-应用领域--application-domains)
+- [价值学习理论 / Value Learning Theory](#价值学习理论--value-learning-theory)
+  - [概述 / Overview](#概述--overview)
+  - [目录 / Table of Contents](#目录--table-of-contents)
+  - [1. 价值理论基础 / Value Theory Foundations](#1-价值理论基础--value-theory-foundations)
+    - [1.1 价值定义 / Value Definition](#11-价值定义--value-definition)
+    - [1.2 价值类型 / Value Types](#12-价值类型--value-types)
+    - [1.3 价值冲突 / Value Conflicts](#13-价值冲突--value-conflicts)
+  - [2. 价值表示 / Value Representation](#2-价值表示--value-representation)
+    - [2.1 价值函数 / Value Functions](#21-价值函数--value-functions)
+    - [2.2 价值网络 / Value Networks](#22-价值网络--value-networks)
+    - [2.3 价值语言 / Value Languages](#23-价值语言--value-languages)
+  - [3. 价值学习算法 / Value Learning Algorithms](#3-价值学习算法--value-learning-algorithms)
+    - [3.1 监督学习 / Supervised Learning](#31-监督学习--supervised-learning)
+    - [3.2 强化学习 / Reinforcement Learning](#32-强化学习--reinforcement-learning)
+    - [3.3 逆强化学习 / Inverse Reinforcement Learning](#33-逆强化学习--inverse-reinforcement-learning)
+  - [4. 价值对齐 / Value Alignment](#4-价值对齐--value-alignment)
+    - [4.1 对齐方法 / Alignment Methods](#41-对齐方法--alignment-methods)
+    - [4.2 对齐评估 / Alignment Evaluation](#42-对齐评估--alignment-evaluation)
+    - [4.3 对齐监控 / Alignment Monitoring](#43-对齐监控--alignment-monitoring)
+  - [5. 价值不确定性 / Value Uncertainty](#5-价值不确定性--value-uncertainty)
+    - [5.1 不确定性建模 / Uncertainty Modeling](#51-不确定性建模--uncertainty-modeling)
+    - [5.2 保守决策 / Conservative Decision Making](#52-保守决策--conservative-decision-making)
+    - [5.3 价值探索 / Value Exploration](#53-价值探索--value-exploration)
+  - [6. 多价值系统 / Multi-Value Systems](#6-多价值系统--multi-value-systems)
+    - [6.1 价值组合 / Value Composition](#61-价值组合--value-composition)
+    - [6.2 价值权衡 / Value Trade-offs](#62-价值权衡--value-trade-offs)
+    - [6.3 价值协商 / Value Negotiation](#63-价值协商--value-negotiation)
+  - [7. 价值演化 / Value Evolution](#7-价值演化--value-evolution)
+    - [7.1 价值适应 / Value Adaptation](#71-价值适应--value-adaptation)
+    - [7.2 价值稳定性 / Value Stability](#72-价值稳定性--value-stability)
+    - [7.3 价值一致性 / Value Consistency](#73-价值一致性--value-consistency)
+  - [代码示例 / Code Examples](#代码示例--code-examples)
+    - [Rust实现：价值学习系统](#rust实现价值学习系统)
+    - [Haskell实现：价值对齐算法](#haskell实现价值对齐算法)
+  - [参考文献 / References](#参考文献--references)
 
 ---
 
-## 1. 理论基础 / Theoretical Foundations
+## 1. 价值理论基础 / Value Theory Foundations
 
-### 1.1 价值理论 / Value Theory
+### 1.1 价值定义 / Value Definition
 
-#### 1.1.1 价值定义 / Value Definitions
+**价值的形式化定义 / Formal Definition of Value:**
 
-价值可以从多个角度进行定义：
+价值是指导决策和行为的偏好函数：
 
-Values can be defined from multiple perspectives:
+Values are preference functions that guide decisions and behavior:
 
-**效用价值 / Utility Value:**
-$$V_{utility}(s) = \mathbb{E}[\sum_{t=0}^{\infty} \gamma^t r_t | s_0 = s]$$
+$$\mathcal{V}: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}$$
 
-其中 $r_t$ 是时间步 $t$ 的奖励，$\gamma$ 是折扣因子。
+其中 $\mathcal{S}$ 是状态空间，$\mathcal{A}$ 是行动空间。
 
-Where $r_t$ is the reward at time step $t$ and $\gamma$ is the discount factor.
+where $\mathcal{S}$ is the state space and $\mathcal{A}$ is the action space.
 
-**偏好价值 / Preference Value:**
-$$V_{preference}(s) = P(s \succ s' | \text{human preferences})$$
+**价值函数 / Value Function:**
 
-其中 $s \succ s'$ 表示人类偏好状态 $s$ 胜过 $s'$。
+$$\mathcal{V}(s, a) = \mathbb{E}[\sum_{t=0}^{\infty} \gamma^t r_t | s_0=s, a_0=a]$$
 
-Where $s \succ s'$ indicates human preference for state $s$ over $s'$.
+其中 $\gamma$ 是折扣因子，$r_t$ 是奖励。
 
-```rust
-struct ValueAnalyzer {
-    utility_analyzer: UtilityAnalyzer,
-    preference_analyzer: PreferenceAnalyzer,
-}
+where $\gamma$ is the discount factor and $r_t$ is the reward.
 
-impl ValueAnalyzer {
-    fn analyze_utility_value(&self, state: State, reward_function: RewardFunction) -> UtilityValue {
-        let expected_rewards = self.utility_analyzer.compute_expected_rewards(state, reward_function);
-        let discounted_sum = self.utility_analyzer.compute_discounted_sum(expected_rewards);
-        
-        UtilityValue { 
-            value: discounted_sum,
-            confidence: self.utility_analyzer.compute_confidence(expected_rewards)
-        }
-    }
-    
-    fn analyze_preference_value(&self, state: State, human_preferences: HumanPreferences) -> PreferenceValue {
-        let preference_probability = self.preference_analyzer.compute_preference_probability(state, human_preferences);
-        
-        PreferenceValue { 
-            value: preference_probability,
-            ranking: self.preference_analyzer.compute_ranking(state, human_preferences)
-        }
-    }
-}
-```
-
-#### 1.1.2 价值类型 / Types of Values
+### 1.2 价值类型 / Value Types
 
 **内在价值 / Intrinsic Values:**
 
-- 独立于其他价值的基本价值
-- 如生命、自由、尊严等
-- 具有普遍性和稳定性
-
-**Basic values independent of other values**
-**Such as life, freedom, dignity, etc.**
-**Have universality and stability**
+$$\mathcal{V}_{intrinsic}(s) = \text{Inherent\_Worth}(s)$$
 
 **工具价值 / Instrumental Values:**
 
-- 服务于其他价值的中间价值
-- 如金钱、权力、知识等
-- 具有相对性和依赖性
+$$\mathcal{V}_{instrumental}(s) = \text{Means\_to\_End}(s)$$
 
-**Intermediate values serving other values**
-**Such as money, power, knowledge, etc.**
-**Have relativity and dependency**
+**终极价值 / Ultimate Values:**
+
+$$\mathcal{V}_{ultimate}(s) = \text{Final\_Goal}(s)$$
+
+### 1.3 价值冲突 / Value Conflicts
+
+**价值冲突定义 / Value Conflict Definition:**
+
+$$\text{Value\_Conflict} = \exists v_1, v_2: \text{Incompatible}(v_1, v_2)$$
+
+**冲突解决 / Conflict Resolution:**
 
 ```rust
-enum ValueType {
-    Intrinsic,
-    Instrumental,
-    Terminal,
-    InstrumentalToIntrinsic,
+struct ValueConflictResolver {
+    conflict_detector: ConflictDetector,
+    resolution_strategies: Vec<ResolutionStrategy>,
 }
 
-struct ValueClassifier {
-    intrinsic_value_detector: IntrinsicValueDetector,
-    instrumental_value_detector: InstrumentalValueDetector,
-}
-
-impl ValueClassifier {
-    fn classify_value(&self, value: Value) -> ValueType {
-        if self.intrinsic_value_detector.is_intrinsic(value) {
-            ValueType::Intrinsic
-        } else if self.instrumental_value_detector.is_instrumental(value) {
-            ValueType::Instrumental
-        } else {
-            ValueType::Terminal
+impl ValueConflictResolver {
+    fn resolve_conflicts(&self, values: &[Value]) -> Vec<ResolvedValue> {
+        let conflicts = self.conflict_detector.detect_conflicts(values);
+        let mut resolved_values = values.to_vec();
+        
+        for conflict in conflicts {
+            let strategy = self.select_resolution_strategy(&conflict);
+            resolved_values = strategy.apply(resolved_values, &conflict);
         }
+        
+        resolved_values
     }
-}
-```
-
-### 1.2 价值学习理论框架 / Value Learning Theoretical Framework
-
-#### 1.2.1 贝叶斯价值学习 / Bayesian Value Learning
-
-基于贝叶斯推理的价值学习：
-
-Value learning based on Bayesian inference:
-
-$$P(V|D) = \frac{P(D|V)P(V)}{P(D)}$$
-
-其中 $V$ 是价值函数，$D$ 是观察数据。
-
-Where $V$ is the value function and $D$ is the observed data.
-
-```rust
-struct BayesianValueLearner {
-    prior_distribution: ValuePrior,
-    likelihood_model: LikelihoodModel,
-    posterior_updater: PosteriorUpdater,
-}
-
-impl BayesianValueLearner {
-    fn learn_values_bayesian(&self, observations: Vec<ValueObservation>) -> BayesianValuePosterior {
-        let mut posterior = self.prior_distribution.initialize();
-        
-        for observation in observations {
-            let likelihood = self.likelihood_model.compute_likelihood(posterior, observation);
-            posterior = self.posterior_updater.update(posterior, likelihood);
+    
+    fn select_resolution_strategy(&self, conflict: &ValueConflict) -> &ResolutionStrategy {
+        match conflict.conflict_type {
+            ConflictType::Priority => &self.resolution_strategies[0],
+            ConflictType::Compromise => &self.resolution_strategies[1],
+            ConflictType::Negotiation => &self.resolution_strategies[2],
         }
-        
-        BayesianValuePosterior { 
-            distribution: posterior,
-            uncertainty: self.compute_uncertainty(posterior)
-        }
-    }
-}
-```
-
-#### 1.2.2 强化价值学习 / Reinforcement Value Learning
-
-基于强化学习的价值函数学习：
-
-Value function learning based on reinforcement learning:
-
-$$V(s) = V(s) + \alpha[r + \gamma V(s') - V(s)]$$
-
-其中 $\alpha$ 是学习率，$r$ 是奖励，$s'$ 是下一个状态。
-
-Where $\alpha$ is the learning rate, $r$ is the reward, and $s'$ is the next state.
-
-```rust
-struct ReinforcementValueLearner {
-    value_function: ValueFunction,
-    learning_rate: f32,
-    discount_factor: f32,
-}
-
-impl ReinforcementValueLearner {
-    fn learn_values_reinforcement(&self, experiences: Vec<Experience>) -> LearnedValueFunction {
-        let mut value_function = self.value_function.initialize();
-        
-        for experience in experiences {
-            let (state, action, reward, next_state) = experience;
-            let current_value = value_function.evaluate(state);
-            let next_value = value_function.evaluate(next_state);
-            
-            let target_value = reward + self.discount_factor * next_value;
-            let temporal_difference = target_value - current_value;
-            
-            let new_value = current_value + self.learning_rate * temporal_difference;
-            value_function = self.update_value_function(value_function, state, new_value);
-        }
-        
-        LearnedValueFunction { function: value_function }
     }
 }
 ```
@@ -199,548 +125,793 @@ impl ReinforcementValueLearner {
 
 ## 2. 价值表示 / Value Representation
 
-### 2.1 符号价值表示 / Symbolic Value Representation
+### 2.1 价值函数 / Value Functions
 
-#### 2.1.1 逻辑价值表示 / Logical Value Representation
+**价值函数表示 / Value Function Representation:**
+
+$$\mathcal{V}_\theta(s) = f_\theta(s)$$
+
+其中 $\theta$ 是参数向量。
+
+where $\theta$ is the parameter vector.
+
+**神经网络价值函数 / Neural Network Value Function:**
 
 ```rust
-struct LogicalValueRepresentation {
-    value_predicates: Vec<ValuePredicate>,
-    logical_connectors: Vec<LogicalConnector>,
+struct ValueNetwork {
+    layers: Vec<Layer>,
+    optimizer: Optimizer,
 }
 
-impl LogicalValueRepresentation {
-    fn represent_value_logically(&self, value: Value) -> LogicalValueFormula {
-        let predicates = self.value_predicates.iter()
-            .filter(|pred| pred.applies_to(value))
-            .cloned()
+impl ValueNetwork {
+    fn new(architecture: Vec<usize>) -> Self {
+        let layers = architecture.windows(2)
+            .map(|window| Layer::new(window[0], window[1]))
             .collect();
         
-        let formula = self.logical_connectors.iter()
-            .fold(predicates, |acc, connector| connector.combine(acc));
-        
-        LogicalValueFormula { 
-            formula,
-            complexity: self.compute_complexity(formula),
-            interpretability: self.compute_interpretability(formula)
+        ValueNetwork {
+            layers,
+            optimizer: Optimizer::new(),
         }
     }
-}
-```
-
-#### 2.1.2 规则价值表示 / Rule-based Value Representation
-
-```rust
-struct RuleBasedValueRepresentation {
-    value_rules: Vec<ValueRule>,
-    rule_engine: RuleEngine,
-}
-
-impl RuleBasedValueRepresentation {
-    fn represent_value_with_rules(&self, value: Value) -> RuleBasedValue {
-        let applicable_rules = self.value_rules.iter()
-            .filter(|rule| rule.applies_to(value))
-            .cloned()
-            .collect();
-        
-        let rule_chain = self.rule_engine.build_chain(applicable_rules);
-        
-        RuleBasedValue { 
-            rules: applicable_rules,
-            chain: rule_chain,
-            confidence: self.rule_engine.compute_confidence(rule_chain)
-        }
-    }
-}
-```
-
-### 2.2 神经价值表示 / Neural Value Representation
-
-#### 2.2.1 深度价值网络 / Deep Value Networks
-
-```rust
-struct DeepValueNetwork {
-    layers: Vec<NeuralLayer>,
-    value_head: ValueHead,
-}
-
-impl DeepValueNetwork {
-    fn represent_value_neurally(&self, input: Input) -> NeuralValueRepresentation {
-        let mut features = input;
+    
+    fn forward(&self, state: &State) -> f32 {
+        let mut activation = state.to_vector();
         
         for layer in &self.layers {
-            features = layer.forward(features);
+            activation = layer.forward(&activation);
         }
         
-        let value_output = self.value_head.forward(features);
+        activation[0]
+    }
+    
+    fn update(&mut self, state: &State, target_value: f32) {
+        let prediction = self.forward(state);
+        let loss = (target_value - prediction).powi(2);
         
-        NeuralValueRepresentation { 
-            features,
-            value_output,
-            interpretability: self.compute_interpretability(features, value_output)
-        }
+        self.optimizer.backward(&mut self.layers, loss);
     }
 }
 ```
 
-#### 2.2.2 注意力价值表示 / Attention-based Value Representation
+### 2.2 价值网络 / Value Networks
 
-```rust
-struct AttentionValueRepresentation {
-    attention_mechanism: AttentionMechanism,
-    value_aggregator: ValueAggregator,
-}
+**价值网络架构 / Value Network Architecture:**
 
-impl AttentionValueRepresentation {
-    fn represent_value_with_attention(&self, input_components: Vec<InputComponent>) -> AttentionValueRepresentation {
-        let attention_weights = self.attention_mechanism.compute_attention(input_components);
-        let weighted_values = self.value_aggregator.aggregate_with_attention(input_components, attention_weights);
-        
-        AttentionValueRepresentation { 
-            attention_weights,
-            weighted_values,
-            focus_areas: self.identify_focus_areas(attention_weights)
-        }
-    }
-}
-```
+$$\mathcal{V}_\theta(s) = \text{MLP}_\theta(\phi(s))$$
 
-### 2.3 混合价值表示 / Hybrid Value Representation
+其中 $\phi(s)$ 是状态表示。
 
-#### 2.3.1 神经符号价值表示 / Neural-Symbolic Value Representation
+where $\phi(s)$ is the state representation.
 
-```rust
-struct NeuralSymbolicValueRepresentation {
-    neural_component: NeuralComponent,
-    symbolic_component: SymbolicComponent,
-    integration_layer: IntegrationLayer,
-}
+### 2.3 价值语言 / Value Languages
 
-impl NeuralSymbolicValueRepresentation {
-    fn represent_value_hybrid(&self, input: Input) -> HybridValueRepresentation {
-        let neural_representation = self.neural_component.extract_neural_features(input);
-        let symbolic_representation = self.symbolic_component.extract_symbolic_features(input);
-        
-        let integrated_representation = self.integration_layer.integrate(
-            neural_representation, 
-            symbolic_representation
-        );
-        
-        HybridValueRepresentation { 
-            neural_part: neural_representation,
-            symbolic_part: symbolic_representation,
-            integrated: integrated_representation
-        }
-    }
-}
-```
+**价值语言定义 / Value Language Definition:**
+
+$$\mathcal{L}_V = \text{Value\_Expressions} \land \text{Value\_Operators} \land \text{Value\_Constraints}$$
 
 ---
 
-## 3. 学习方法 / Learning Methods
+## 3. 价值学习算法 / Value Learning Algorithms
 
-### 3.1 监督价值学习 / Supervised Value Learning
+### 3.1 监督学习 / Supervised Learning
 
-#### 3.1.1 基于示例的价值学习 / Example-based Value Learning
+**监督价值学习 / Supervised Value Learning:**
+
+$$\mathcal{L}(\theta) = \frac{1}{N} \sum_{i=1}^N (\mathcal{V}_\theta(s_i) - y_i)^2$$
+
+**价值标注 / Value Annotation:**
 
 ```rust
-struct ExampleBasedValueLearning {
-    example_collector: ExampleCollector,
-    value_classifier: ValueClassifier,
+struct ValueAnnotator {
+    human_annotators: Vec<HumanAnnotator>,
+    annotation_consensus: ConsensusAlgorithm,
 }
 
-impl ExampleBasedValueLearning {
-    fn learn_from_examples(&self, value_examples: Vec<ValueExample>) -> LearnedValueFunction {
-        let mut value_classifier = self.value_classifier.initialize();
+impl ValueAnnotator {
+    fn annotate_values(&self, scenarios: &[Scenario]) -> Vec<ValueAnnotation> {
+        let mut annotations = Vec::new();
         
-        for example in value_examples {
-            let (input, target_value) = example;
-            let predicted_value = value_classifier.predict(input);
-            let loss = self.compute_value_loss(predicted_value, target_value);
+        for scenario in scenarios {
+            let human_judgments = self.collect_human_judgments(scenario);
+            let consensus = self.annotation_consensus.compute_consensus(&human_judgments);
             
-            value_classifier = self.update_classifier(value_classifier, loss);
+            annotations.push(ValueAnnotation {
+                scenario: scenario.clone(),
+                value_score: consensus.value,
+                confidence: consensus.confidence,
+            });
         }
         
-        LearnedValueFunction { classifier: value_classifier }
+        annotations
     }
 }
 ```
 
-#### 3.1.2 基于偏好的价值学习 / Preference-based Value Learning
+### 3.2 强化学习 / Reinforcement Learning
 
-```rust
-struct PreferenceBasedValueLearning {
-    preference_learner: PreferenceLearner,
-    ranking_optimizer: RankingOptimizer,
-}
+**价值迭代 / Value Iteration:**
 
-impl PreferenceBasedValueLearning {
-    fn learn_from_preferences(&self, preferences: Vec<Preference>) -> LearnedValueFunction {
-        let mut preference_model = self.preference_learner.initialize();
-        
-        for preference in preferences {
-            let (option_a, option_b, human_choice) = preference;
-            let preference_probability = preference_model.predict_preference(option_a, option_b);
-            let target_probability = if human_choice == option_a { 1.0 } else { 0.0 };
-            
-            let loss = self.compute_preference_loss(preference_probability, target_probability);
-            preference_model = self.update_preference_model(preference_model, loss);
-        }
-        
-        LearnedValueFunction { preference_model }
-    }
-}
-```
+$$\mathcal{V}_{k+1}(s) = \max_a \sum_{s'} P(s'|s,a)[R(s,a,s') + \gamma \mathcal{V}_k(s')]$$
 
-### 3.2 强化价值学习 / Reinforcement Value Learning
+**Q学习 / Q-Learning:**
 
-#### 3.2.1 深度Q网络 / Deep Q-Networks
-
-```rust
-struct DeepQNetwork {
-    q_network: QNetwork,
-    target_network: TargetNetwork,
-    experience_buffer: ExperienceBuffer,
-}
-
-impl DeepQNetwork {
-    fn learn_values_dqn(&self, experiences: Vec<Experience>) -> LearnedValueFunction {
-        let mut q_network = self.q_network.initialize();
-        let target_network = self.target_network.initialize();
-        
-        for experience in experiences {
-            self.experience_buffer.store(experience);
-            
-            if self.experience_buffer.is_ready() {
-                let batch = self.experience_buffer.sample_batch();
-                let q_loss = self.compute_q_loss(q_network, target_network, batch);
-                
-                q_network = self.update_q_network(q_network, q_loss);
-            }
-        }
-        
-        LearnedValueFunction { q_network }
-    }
-}
-```
-
-#### 3.2.2 策略梯度 / Policy Gradients
-
-```rust
-struct PolicyGradientValueLearning {
-    policy_network: PolicyNetwork,
-    value_network: ValueNetwork,
-    policy_optimizer: PolicyOptimizer,
-}
-
-impl PolicyGradientValueLearning {
-    fn learn_values_policy_gradient(&self, trajectories: Vec<Trajectory>) -> LearnedValueFunction {
-        let mut policy_network = self.policy_network.initialize();
-        let mut value_network = self.value_network.initialize();
-        
-        for trajectory in trajectories {
-            let returns = self.compute_returns(trajectory);
-            let advantages = self.compute_advantages(trajectory, value_network);
-            
-            let policy_loss = self.compute_policy_loss(policy_network, trajectory, advantages);
-            let value_loss = self.compute_value_loss(value_network, trajectory, returns);
-            
-            policy_network = self.policy_optimizer.update(policy_network, policy_loss);
-            value_network = self.update_value_network(value_network, value_loss);
-        }
-        
-        LearnedValueFunction { policy_network, value_network }
-    }
-}
-```
+$$Q(s,a) \leftarrow Q(s,a) + \alpha[r + \gamma \max_{a'} Q(s',a') - Q(s,a)]$$
 
 ### 3.3 逆强化学习 / Inverse Reinforcement Learning
 
-#### 3.3.1 最大熵逆强化学习 / Maximum Entropy IRL
+**逆强化学习 / Inverse Reinforcement Learning:**
 
-```rust
-struct MaximumEntropyIRL {
-    reward_function: RewardFunction,
-    policy_optimizer: PolicyOptimizer,
-    entropy_regularizer: EntropyRegularizer,
-}
+$$\mathcal{R}^* = \arg\max_{\mathcal{R}} \sum_{i=1}^N \mathcal{V}_{\mathcal{R}}(\tau_i)$$
 
-impl MaximumEntropyIRL {
-    fn learn_rewards_max_entropy(&self, demonstrations: Vec<Demonstration>) -> LearnedRewardFunction {
-        let mut reward_function = self.reward_function.initialize();
-        
-        for iteration in 0..max_iterations {
-            // Compute optimal policy given current reward
-            let policy = self.policy_optimizer.optimize_policy(reward_function);
-            
-            // Update reward function to match demonstrations
-            let reward_loss = self.compute_reward_loss(reward_function, demonstrations, policy);
-            let entropy_loss = self.entropy_regularizer.compute_entropy_loss(policy);
-            
-            let total_loss = reward_loss + entropy_loss;
-            reward_function = self.update_reward_function(reward_function, total_loss);
-        }
-        
-        LearnedRewardFunction { function: reward_function }
-    }
-}
-```
+其中 $\tau_i$ 是专家轨迹。
+
+where $\tau_i$ are expert trajectories.
 
 ---
 
-## 4. 价值不确定性 / Value Uncertainty
+## 4. 价值对齐 / Value Alignment
 
-### 4.1 贝叶斯不确定性 / Bayesian Uncertainty
+### 4.1 对齐方法 / Alignment Methods
 
-#### 4.1.1 后验不确定性 / Posterior Uncertainty
+**价值对齐方法 / Value Alignment Methods:**
+
+1. **直接偏好优化 / Direct Preference Optimization:** $\text{DPO}$
+2. **强化学习对齐 / Reinforcement Learning Alignment:** $\text{RLHF}$
+3. **价值迭代 / Value Iteration:** $\text{Value\_Iteration}$
+
+**对齐算法 / Alignment Algorithm:**
 
 ```rust
-struct PosteriorUncertainty {
-    posterior_distribution: PosteriorDistribution,
-    uncertainty_quantifier: UncertaintyQuantifier,
+struct ValueAlignment {
+    preference_optimizer: PreferenceOptimizer,
+    reward_model: RewardModel,
+    policy_optimizer: PolicyOptimizer,
 }
 
-impl PosteriorUncertainty {
-    fn compute_posterior_uncertainty(&self, observations: Vec<ValueObservation>) -> PosteriorUncertaintyResult {
-        let posterior = self.posterior_distribution.update(observations);
-        let uncertainty = self.uncertainty_quantifier.quantify(posterior);
+impl ValueAlignment {
+    fn align_values(&mut self, demonstrations: &[Demonstration], preferences: &[Preference]) -> AlignedPolicy {
+        // 训练奖励模型
+        self.reward_model.train(demonstrations, preferences);
         
-        PosteriorUncertaintyResult { 
-            posterior,
-            uncertainty,
-            confidence_intervals: self.compute_confidence_intervals(posterior)
+        // 优化策略
+        let aligned_policy = self.policy_optimizer.optimize(&self.reward_model);
+        
+        AlignedPolicy {
+            policy: aligned_policy,
+            alignment_score: self.evaluate_alignment(&aligned_policy),
         }
+    }
+    
+    fn evaluate_alignment(&self, policy: &Policy) -> f32 {
+        let mut alignment_score = 0.0;
+        let test_scenarios = self.generate_test_scenarios();
+        
+        for scenario in test_scenarios {
+            let human_preference = self.get_human_preference(&scenario);
+            let ai_decision = policy.decide(&scenario);
+            let agreement = self.calculate_agreement(human_preference, ai_decision);
+            alignment_score += agreement;
+        }
+        
+        alignment_score / test_scenarios.len() as f32
     }
 }
 ```
 
-#### 4.1.2 预测不确定性 / Predictive Uncertainty
+### 4.2 对齐评估 / Alignment Evaluation
+
+**对齐评估指标 / Alignment Evaluation Metrics:**
+
+1. **偏好一致性 / Preference Consistency:** $\text{Consistency}(AI, Human)$
+2. **行为相似性 / Behavior Similarity:** $\text{Similarity}(AI, Human)$
+3. **价值理解 / Value Understanding:** $\text{Understanding}(AI, Values)$
+
+### 4.3 对齐监控 / Alignment Monitoring
+
+**对齐监控 / Alignment Monitoring:**
+
+$$\text{Alignment\_Monitoring} = \text{Continuous\_Assessment} \land \text{Drift\_Detection} \land \text{Intervention\_System}$$
+
+---
+
+## 5. 价值不确定性 / Value Uncertainty
+
+### 5.1 不确定性建模 / Uncertainty Modeling
+
+**价值不确定性 / Value Uncertainty:**
+
+$$\mathcal{V}_{uncertain}(s) = \mathcal{V}(s) \pm \sigma(s)$$
+
+其中 $\sigma(s)$ 是不确定性。
+
+where $\sigma(s)$ is the uncertainty.
+
+**贝叶斯价值网络 / Bayesian Value Network:**
 
 ```rust
-struct PredictiveUncertainty {
-    predictive_distribution: PredictiveDistribution,
+struct BayesianValueNetwork {
+    weight_distributions: Vec<WeightDistribution>,
     uncertainty_estimator: UncertaintyEstimator,
 }
 
-impl PredictiveUncertainty {
-    fn compute_predictive_uncertainty(&self, value_model: ValueModel, input: Input) -> PredictiveUncertaintyResult {
-        let predictive_dist = self.predictive_distribution.predict(value_model, input);
-        let uncertainty = self.uncertainty_estimator.estimate(predictive_dist);
+impl BayesianValueNetwork {
+    fn predict_with_uncertainty(&self, state: &State) -> (f32, f32) {
+        let mut predictions = Vec::new();
         
-        PredictiveUncertaintyResult { 
-            prediction: predictive_dist.mean(),
-            uncertainty,
-            distribution: predictive_dist
+        // 多次前向传播
+        for _ in 0..100 {
+            let weights = self.sample_weights();
+            let prediction = self.forward_with_weights(state, &weights);
+            predictions.push(prediction);
         }
+        
+        let mean = predictions.iter().sum::<f32>() / predictions.len() as f32;
+        let variance = predictions.iter()
+            .map(|p| (p - mean).powi(2))
+            .sum::<f32>() / predictions.len() as f32;
+        
+        (mean, variance.sqrt())
     }
 }
 ```
 
-### 4.2 认知不确定性 / Epistemic Uncertainty
+### 5.2 保守决策 / Conservative Decision Making
 
-#### 4.2.1 模型不确定性 / Model Uncertainty
+**保守决策 / Conservative Decision Making:**
+
+$$a^* = \arg\max_a \mathcal{V}(s, a) - \beta \sigma(s, a)$$
+
+其中 $\beta$ 是保守系数。
+
+where $\beta$ is the conservatism coefficient.
+
+### 5.3 价值探索 / Value Exploration
+
+**价值探索 / Value Exploration:**
+
+$$\text{Value\_Exploration} = \text{Uncertainty\_Driven} \land \text{Information\_Gain}$$
+
+---
+
+## 6. 多价值系统 / Multi-Value Systems
+
+### 6.1 价值组合 / Value Composition
+
+**价值组合方法 / Value Composition Methods:**
+
+$$\mathcal{V}_{combined}(s) = \sum_{i=1}^n w_i \mathcal{V}_i(s)$$
+
+其中 $w_i$ 是权重。
+
+where $w_i$ are weights.
+
+**多价值学习 / Multi-Value Learning:**
 
 ```rust
-struct ModelUncertainty {
-    model_ensemble: ModelEnsemble,
-    uncertainty_analyzer: UncertaintyAnalyzer,
+struct MultiValueSystem {
+    value_functions: Vec<ValueFunction>,
+    composition_weights: Vec<f32>,
+    conflict_resolver: ConflictResolver,
 }
 
-impl ModelUncertainty {
-    fn compute_model_uncertainty(&self, input: Input) -> ModelUncertaintyResult {
-        let predictions: Vec<ValuePrediction> = self.model_ensemble.models.iter()
-            .map(|model| model.predict(input))
+impl MultiValueSystem {
+    fn combine_values(&self, state: &State) -> f32 {
+        let individual_values: Vec<f32> = self.value_functions.iter()
+            .map(|vf| vf.evaluate(state))
             .collect();
         
-        let uncertainty = self.uncertainty_analyzer.analyze_model_uncertainty(predictions);
+        let combined_value = individual_values.iter()
+            .zip(&self.composition_weights)
+            .map(|(v, w)| v * w)
+            .sum();
         
-        ModelUncertaintyResult { 
-            predictions,
+        combined_value
+    }
+    
+    fn resolve_conflicts(&self, values: &[f32]) -> Vec<f32> {
+        self.conflict_resolver.resolve(values)
+    }
+}
+```
+
+### 6.2 价值权衡 / Value Trade-offs
+
+**价值权衡 / Value Trade-offs:**
+
+$$\text{Value\_Trade\_off} = \text{Pareto\_Optimal} \land \text{Multi\_Objective}$$
+
+### 6.3 价值协商 / Value Negotiation
+
+**价值协商 / Value Negotiation:**
+
+$$\text{Value\_Negotiation} = \text{Multi\_Agent} \land \text{Consensus\_Building}$$
+
+---
+
+## 7. 价值演化 / Value Evolution
+
+### 7.1 价值适应 / Value Adaptation
+
+**价值适应 / Value Adaptation:**
+
+$$\mathcal{V}_{t+1} = \mathcal{V}_t + \alpha \Delta\mathcal{V}$$
+
+其中 $\alpha$ 是适应率。
+
+where $\alpha$ is the adaptation rate.
+
+### 7.2 价值稳定性 / Value Stability
+
+**价值稳定性 / Value Stability:**
+
+$$\text{Value\_Stability} = \text{Consistency} \land \text{Robustness} \land \text{Resilience}$$
+
+### 7.3 价值一致性 / Value Consistency
+
+**价值一致性 / Value Consistency:**
+
+$$\text{Value\_Consistency} = \forall t_1, t_2: \text{Consistent}(\mathcal{V}_{t_1}, \mathcal{V}_{t_2})$$
+
+---
+
+## 代码示例 / Code Examples
+
+### Rust实现：价值学习系统
+
+```rust
+use std::collections::HashMap;
+
+#[derive(Debug, Clone)]
+struct ValueLearningSystem {
+    value_network: ValueNetwork,
+    preference_learner: PreferenceLearner,
+    alignment_monitor: AlignmentMonitor,
+}
+
+impl ValueLearningSystem {
+    fn new() -> Self {
+        ValueLearningSystem {
+            value_network: ValueNetwork::new(vec![10, 20, 10, 1]),
+            preference_learner: PreferenceLearner::new(),
+            alignment_monitor: AlignmentMonitor::new(),
+        }
+    }
+    
+    fn learn_values(&mut self, demonstrations: &[Demonstration], preferences: &[Preference]) -> LearningResult {
+        // 训练价值网络
+        self.value_network.train(demonstrations);
+        
+        // 学习偏好
+        self.preference_learner.learn(preferences);
+        
+        // 评估对齐
+        let alignment_score = self.alignment_monitor.evaluate_alignment(&self.value_network);
+        
+        LearningResult {
+            value_network_performance: self.value_network.get_performance(),
+            preference_learning_accuracy: self.preference_learner.get_accuracy(),
+            alignment_score,
+        }
+    }
+    
+    fn make_decision(&self, state: &State) -> Decision {
+        let value = self.value_network.predict(state);
+        let uncertainty = self.value_network.predict_uncertainty(state);
+        
+        Decision {
+            action: self.select_action(state, value),
+            value,
             uncertainty,
-            model_disagreement: self.compute_disagreement(predictions)
+            confidence: 1.0 - uncertainty,
         }
     }
+    
+    fn select_action(&self, state: &State, value: f32) -> Action {
+        // 基于价值选择行动
+        let available_actions = state.get_available_actions();
+        let mut best_action = available_actions[0].clone();
+        let mut best_value = f32::NEG_INFINITY;
+        
+        for action in available_actions {
+            let action_value = self.value_network.predict_action_value(state, &action);
+            if action_value > best_value {
+                best_value = action_value;
+                best_action = action;
+            }
+        }
+        
+        best_action
+    }
+}
+
+#[derive(Debug)]
+struct ValueNetwork {
+    layers: Vec<Layer>,
+    optimizer: Optimizer,
+}
+
+impl ValueNetwork {
+    fn new(architecture: Vec<usize>) -> Self {
+        let layers = architecture.windows(2)
+            .map(|window| Layer::new(window[0], window[1]))
+            .collect();
+        
+        ValueNetwork {
+            layers,
+            optimizer: Optimizer::new(),
+        }
+    }
+    
+    fn train(&mut self, demonstrations: &[Demonstration]) {
+        for demonstration in demonstrations {
+            let target_value = self.calculate_target_value(demonstration);
+            self.update(demonstration.state(), target_value);
+        }
+    }
+    
+    fn predict(&self, state: &State) -> f32 {
+        let mut activation = state.to_vector();
+        
+        for layer in &self.layers {
+            activation = layer.forward(&activation);
+        }
+        
+        activation[0]
+    }
+    
+    fn predict_uncertainty(&self, state: &State) -> f32 {
+        // 简化的不确定性估计
+        let predictions: Vec<f32> = (0..10).map(|_| self.predict(state)).collect();
+        let mean = predictions.iter().sum::<f32>() / predictions.len() as f32;
+        let variance = predictions.iter()
+            .map(|p| (p - mean).powi(2))
+            .sum::<f32>() / predictions.len() as f32;
+        
+        variance.sqrt()
+    }
+    
+    fn predict_action_value(&self, state: &State, action: &Action) -> f32 {
+        let state_action = state.with_action(action);
+        self.predict(&state_action)
+    }
+    
+    fn update(&mut self, state: &State, target_value: f32) {
+        let prediction = self.predict(state);
+        let loss = (target_value - prediction).powi(2);
+        
+        self.optimizer.backward(&mut self.layers, loss);
+    }
+    
+    fn get_performance(&self) -> f32 {
+        // 返回网络性能指标
+        0.85
+    }
+}
+
+#[derive(Debug)]
+struct PreferenceLearner {
+    preference_model: PreferenceModel,
+}
+
+impl PreferenceLearner {
+    fn new() -> Self {
+        PreferenceLearner {
+            preference_model: PreferenceModel::new(),
+        }
+    }
+    
+    fn learn(&mut self, preferences: &[Preference]) {
+        for preference in preferences {
+            self.preference_model.update(preference);
+        }
+    }
+    
+    fn get_accuracy(&self) -> f32 {
+        // 返回偏好学习准确率
+        0.92
+    }
+}
+
+#[derive(Debug)]
+struct AlignmentMonitor {
+    human_values: Vec<HumanValue>,
+}
+
+impl AlignmentMonitor {
+    fn new() -> Self {
+        AlignmentMonitor {
+            human_values: Vec::new(),
+        }
+    }
+    
+    fn evaluate_alignment(&self, value_network: &ValueNetwork) -> f32 {
+        let mut alignment_score = 0.0;
+        let test_scenarios = self.generate_test_scenarios();
+        
+        for scenario in test_scenarios {
+            let human_preference = self.get_human_preference(&scenario);
+            let ai_value = value_network.predict(&scenario);
+            let agreement = self.calculate_agreement(human_preference, ai_value);
+            alignment_score += agreement;
+        }
+        
+        alignment_score / test_scenarios.len() as f32
+    }
+    
+    fn generate_test_scenarios(&self) -> Vec<Scenario> {
+        // 生成测试场景
+        vec![Scenario::new(), Scenario::new(), Scenario::new()]
+    }
+    
+    fn get_human_preference(&self, scenario: &Scenario) -> f32 {
+        // 获取人类偏好
+        0.8
+    }
+    
+    fn calculate_agreement(&self, human_preference: f32, ai_value: f32) -> f32 {
+        1.0 - (human_preference - ai_value).abs()
+    }
+}
+
+#[derive(Debug)]
+struct LearningResult {
+    value_network_performance: f32,
+    preference_learning_accuracy: f32,
+    alignment_score: f32,
+}
+
+#[derive(Debug)]
+struct Decision {
+    action: Action,
+    value: f32,
+    uncertainty: f32,
+    confidence: f32,
+}
+
+// 简化的数据结构
+#[derive(Debug, Clone)]
+struct State;
+#[derive(Debug, Clone)]
+struct Action;
+#[derive(Debug)]
+struct Demonstration;
+#[derive(Debug)]
+struct Preference;
+#[derive(Debug)]
+struct Scenario;
+#[derive(Debug)]
+struct HumanValue;
+
+impl State {
+    fn to_vector(&self) -> Vec<f32> {
+        vec![0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    }
+    
+    fn get_available_actions(&self) -> Vec<Action> {
+        vec![Action, Action, Action]
+    }
+    
+    fn with_action(&self, action: &Action) -> State {
+        State
+    }
+}
+
+impl Scenario {
+    fn new() -> Self {
+        Scenario
+    }
+}
+
+struct Layer;
+struct Optimizer;
+struct PreferenceModel;
+
+impl Layer {
+    fn new(input_size: usize, output_size: usize) -> Self {
+        Layer
+    }
+    
+    fn forward(&self, input: &[f32]) -> Vec<f32> {
+        input.to_vec()
+    }
+}
+
+impl Optimizer {
+    fn new() -> Self {
+        Optimizer
+    }
+    
+    fn backward(&self, layers: &mut Vec<Layer>, loss: f32) {
+        // 反向传播
+    }
+}
+
+impl PreferenceModel {
+    fn new() -> Self {
+        PreferenceModel
+    }
+    
+    fn update(&mut self, preference: &Preference) {
+        // 更新偏好模型
+    }
+}
+
+fn main() {
+    let mut value_learning_system = ValueLearningSystem::new();
+    
+    let demonstrations = vec![Demonstration, Demonstration, Demonstration];
+    let preferences = vec![Preference, Preference, Preference];
+    
+    let result = value_learning_system.learn_values(&demonstrations, &preferences);
+    println!("学习结果: {:?}", result);
+    
+    let state = State;
+    let decision = value_learning_system.make_decision(&state);
+    println!("决策结果: {:?}", decision);
 }
 ```
 
-#### 4.2.2 数据不确定性 / Data Uncertainty
+### Haskell实现：价值对齐算法
 
-```rust
-struct DataUncertainty {
-    data_analyzer: DataAnalyzer,
-    uncertainty_quantifier: UncertaintyQuantifier,
-}
+```haskell
+-- 价值学习系统
+data ValueLearningSystem = ValueLearningSystem {
+    valueNetwork :: ValueNetwork,
+    preferenceLearner :: PreferenceLearner,
+    alignmentMonitor :: AlignmentMonitor
+} deriving (Show)
 
-impl DataUncertainty {
-    fn compute_data_uncertainty(&self, training_data: TrainingData) -> DataUncertaintyResult {
-        let data_quality = self.data_analyzer.analyze_quality(training_data);
-        let uncertainty = self.uncertainty_quantifier.quantify_data_uncertainty(data_quality);
-        
-        DataUncertaintyResult { 
-            data_quality,
-            uncertainty,
-            coverage_analysis: self.analyze_coverage(training_data)
-        }
+data ValueNetwork = ValueNetwork {
+    layers :: [Layer],
+    optimizer :: Optimizer
+} deriving (Show)
+
+data LearningResult = LearningResult {
+    valueNetworkPerformance :: Double,
+    preferenceLearningAccuracy :: Double,
+    alignmentScore :: Double
+} deriving (Show)
+
+data Decision = Decision {
+    action :: Action,
+    value :: Double,
+    uncertainty :: Double,
+    confidence :: Double
+} deriving (Show)
+
+-- 价值学习
+learnValues :: ValueLearningSystem -> [Demonstration] -> [Preference] -> LearningResult
+learnValues system demonstrations preferences = 
+    let updatedNetwork = trainValueNetwork (valueNetwork system) demonstrations
+        updatedLearner = learnPreferences (preferenceLearner system) preferences
+        alignmentScore = evaluateAlignment (alignmentMonitor system) updatedNetwork
+    in LearningResult {
+        valueNetworkPerformance = getPerformance updatedNetwork,
+        preferenceLearningAccuracy = getAccuracy updatedLearner,
+        alignmentScore = alignmentScore
     }
-}
+
+-- 训练价值网络
+trainValueNetwork :: ValueNetwork -> [Demonstration] -> ValueNetwork
+trainValueNetwork network demonstrations = 
+    foldl trainOnDemonstration network demonstrations
+
+trainOnDemonstration :: ValueNetwork -> Demonstration -> ValueNetwork
+trainOnDemonstration network demonstration = 
+    let targetValue = calculateTargetValue demonstration
+        state = getState demonstration
+    in updateNetwork network state targetValue
+
+-- 预测价值
+predict :: ValueNetwork -> State -> Double
+predict network state = 
+    let input = stateToVector state
+        output = forwardPass (layers network) input
+    in head output
+
+-- 预测不确定性
+predictUncertainty :: ValueNetwork -> State -> Double
+predictUncertainty network state = 
+    let predictions = map (\_ -> predict network state) [1..10]
+        mean = sum predictions / fromIntegral (length predictions)
+        variance = sum (map (\p -> (p - mean) ^ 2) predictions) / fromIntegral (length predictions)
+    in sqrt variance
+
+-- 前向传播
+forwardPass :: [Layer] -> [Double] -> [Double]
+forwardPass layers input = 
+    foldl (\activation layer -> forwardLayer layer activation) input layers
+
+forwardLayer :: Layer -> [Double] -> [Double]
+forwardLayer layer input = 
+    -- 简化的层前向传播
+    map (\_ -> sum input / fromIntegral (length input)) [1..5]
+
+-- 更新网络
+updateNetwork :: ValueNetwork -> State -> Double -> ValueNetwork
+updateNetwork network state targetValue = 
+    let prediction = predict network state
+        loss = (targetValue - prediction) ^ 2
+    in network -- 简化的更新
+
+-- 获取性能
+getPerformance :: ValueNetwork -> Double
+getPerformance _ = 0.85
+
+-- 偏好学习
+data PreferenceLearner = PreferenceLearner deriving (Show)
+
+learnPreferences :: PreferenceLearner -> [Preference] -> PreferenceLearner
+learnPreferences learner preferences = learner
+
+getAccuracy :: PreferenceLearner -> Double
+getAccuracy _ = 0.92
+
+-- 对齐监控
+data AlignmentMonitor = AlignmentMonitor deriving (Show)
+
+evaluateAlignment :: AlignmentMonitor -> ValueNetwork -> Double
+evaluateAlignment monitor network = 
+    let testScenarios = generateTestScenarios
+        agreements = map (\scenario -> 
+            let humanPreference = getHumanPreference scenario
+                aiValue = predict network scenario
+            in calculateAgreement humanPreference aiValue) testScenarios
+    in sum agreements / fromIntegral (length agreements)
+
+generateTestScenarios :: [Scenario]
+generateTestScenarios = [Scenario, Scenario, Scenario]
+
+getHumanPreference :: Scenario -> Double
+getHumanPreference _ = 0.8
+
+calculateAgreement :: Double -> Double -> Double
+calculateAgreement humanPreference aiValue = 
+    1.0 - abs (humanPreference - aiValue)
+
+-- 简化的数据类型
+data State = State deriving (Show)
+data Action = Action deriving (Show)
+data Demonstration = Demonstration deriving (Show)
+data Preference = Preference deriving (Show)
+data Scenario = Scenario deriving (Show)
+data Layer = Layer deriving (Show)
+data Optimizer = Optimizer deriving (Show)
+
+stateToVector :: State -> [Double]
+stateToVector _ = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+
+getState :: Demonstration -> State
+getState _ = State
+
+calculateTargetValue :: Demonstration -> Double
+calculateTargetValue _ = 0.9
+
+-- 主函数
+main :: IO ()
+main = do
+    let system = ValueLearningSystem ValueNetwork [] Optimizer PreferenceLearner AlignmentMonitor
+    let demonstrations = [Demonstration, Demonstration, Demonstration]
+    let preferences = [Preference, Preference, Preference]
+    
+    let result = learnValues system demonstrations preferences
+    putStrLn $ "学习结果: " ++ show result
 ```
 
 ---
 
-## 5. 评估框架 / Evaluation Framework
+## 参考文献 / References
 
-### 5.1 价值学习评估 / Value Learning Evaluation
-
-#### 5.1.1 准确性评估 / Accuracy Evaluation
-
-```rust
-struct ValueLearningAccuracyEvaluator {
-    accuracy_metrics: Vec<AccuracyMetric>,
-    evaluator: MultiMetricEvaluator,
-}
-
-impl ValueLearningAccuracyEvaluator {
-    fn evaluate_accuracy(&self, learned_values: LearnedValueFunction, 
-                        test_data: TestData) -> AccuracyEvaluation {
-        let mut accuracy_scores = HashMap::new();
-        
-        for metric in &self.accuracy_metrics {
-            let score = metric.compute_accuracy(learned_values, test_data);
-            accuracy_scores.insert(metric.name(), score);
-        }
-        
-        let overall_accuracy = self.evaluator.compute_overall_accuracy(accuracy_scores);
-        
-        AccuracyEvaluation { 
-            scores: accuracy_scores,
-            overall_accuracy,
-            detailed_analysis: self.analyze_accuracy_breakdown(learned_values, test_data)
-        }
-    }
-}
-```
-
-#### 5.1.2 一致性评估 / Consistency Evaluation
-
-```rust
-struct ValueConsistencyEvaluator {
-    consistency_checker: ConsistencyChecker,
-    conflict_detector: ConflictDetector,
-}
-
-impl ValueConsistencyEvaluator {
-    fn evaluate_consistency(&self, learned_values: LearnedValueFunction) -> ConsistencyEvaluation {
-        let consistency_score = self.consistency_checker.check_consistency(learned_values);
-        let conflicts = self.conflict_detector.detect_conflicts(learned_values);
-        
-        ConsistencyEvaluation { 
-            consistency_score,
-            conflicts,
-            resolution_suggestions: self.suggest_resolutions(conflicts)
-        }
-    }
-}
-```
-
-### 5.2 鲁棒性评估 / Robustness Evaluation
-
-```rust
-struct ValueRobustnessEvaluator {
-    robustness_tester: RobustnessTester,
-    perturbation_generator: PerturbationGenerator,
-}
-
-impl ValueRobustnessEvaluator {
-    fn evaluate_robustness(&self, learned_values: LearnedValueFunction, 
-                          test_data: TestData) -> RobustnessEvaluation {
-        let perturbations = self.perturbation_generator.generate_perturbations(test_data);
-        let robustness_scores = self.robustness_tester.test_robustness(learned_values, perturbations);
-        
-        RobustnessEvaluation { 
-            robustness_scores,
-            vulnerability_analysis: self.analyze_vulnerabilities(learned_values, perturbations),
-            defense_recommendations: self.recommend_defenses(robustness_scores)
-        }
-    }
-}
-```
+1. Russell, S. (2019). *Human Compatible: Artificial Intelligence and the Problem of Control*. Viking.
+2. Christiano, P., Leike, J., Brown, T., Martic, M., Legg, S., & Amodei, D. (2017). Deep reinforcement learning from human preferences. *Advances in Neural Information Processing Systems*, 30.
+3. Ziebart, B. D., Maas, A. L., Bagnell, J. A., & Dey, A. K. (2008). Maximum entropy inverse reinforcement learning. *Proceedings of the 23rd AAAI Conference on Artificial Intelligence*.
+4. Ng, A. Y., & Russell, S. J. (2000). Algorithms for inverse reinforcement learning. *Proceedings of the 17th International Conference on Machine Learning*.
+5. Abbeel, P., & Ng, A. Y. (2004). Apprenticeship learning via inverse reinforcement learning. *Proceedings of the 21st International Conference on Machine Learning*.
+6. Hadfield-Menell, D., Dragan, A., Abbeel, P., & Russell, S. (2016). Cooperative inverse reinforcement learning. *Advances in Neural Information Processing Systems*, 29.
+7. Ibarz, B., Leike, J., Pohlen, T., Irving, G., Legg, S., & Amodei, D. (2018). Reward learning from human preferences and demonstrations in Atari. *Advances in Neural Information Processing Systems*, 31.
+8. Stiennon, N., Ouyang, L., Wu, J., Ziegler, D. M., Lowe, R., Voss, C., ... & Christiano, P. (2020). Learning to summarize with human feedback. *Advances in Neural Information Processing Systems*, 33.
 
 ---
 
-## 6. 应用领域 / Application Domains
-
-### 6.1 道德AI / Ethical AI
-
-```rust
-struct EthicalValueLearning {
-    moral_value_learner: MoralValueLearner,
-    ethical_framework: EthicalFramework,
-}
-
-impl EthicalValueLearning {
-    fn learn_ethical_values(&self, moral_dilemmas: Vec<MoralDilemma>) -> EthicalValueSystem {
-        let moral_values = self.moral_value_learner.learn_from_dilemmas(moral_dilemmas);
-        let ethical_framework = self.ethical_framework.build_framework(moral_values);
-        
-        EthicalValueSystem { 
-            moral_values,
-            ethical_framework,
-            decision_procedure: self.build_decision_procedure(ethical_framework)
-        }
-    }
-}
-```
-
-### 6.2 个性化AI / Personalized AI
-
-```rust
-struct PersonalizedValueLearning {
-    user_profiler: UserProfiler,
-    personalization_engine: PersonalizationEngine,
-}
-
-impl PersonalizedValueLearning {
-    fn learn_personalized_values(&self, user_data: UserData) -> PersonalizedValueSystem {
-        let user_profile = self.user_profiler.build_profile(user_data);
-        let personalized_values = self.personalization_engine.personalize_values(user_profile);
-        
-        PersonalizedValueSystem { 
-            user_profile,
-            personalized_values,
-            adaptation_mechanism: self.build_adaptation_mechanism(user_profile)
-        }
-    }
-}
-```
-
-### 6.3 文化适应AI / Culturally Adaptive AI
-
-```rust
-struct CulturalValueLearning {
-    cultural_analyzer: CulturalAnalyzer,
-    adaptation_engine: CulturalAdaptationEngine,
-}
-
-impl CulturalValueLearning {
-    fn learn_cultural_values(&self, cultural_context: CulturalContext) -> CulturalValueSystem {
-        let cultural_values = self.cultural_analyzer.analyze_culture(cultural_context);
-        let adaptation_strategy = self.adaptation_engine.build_strategy(cultural_values);
-        
-        CulturalValueSystem { 
-            cultural_values,
-            adaptation_strategy,
-            sensitivity_metrics: self.compute_sensitivity_metrics(cultural_values)
-        }
-    }
-}
-```
-
----
-
-## 总结 / Summary
-
-价值学习理论为构建符合人类价值观的AI系统提供了重要基础。通过有效的价值学习方法和不确定性处理，可以确保AI系统在复杂环境中做出符合人类价值观的决策，促进AI技术的负责任发展。
-
-Value learning theory provides an important foundation for building AI systems that align with human values. Through effective value learning methods and uncertainty handling, AI systems can be ensured to make decisions consistent with human values in complex environments, promoting responsible development of AI technology.
-
-**激情澎湃的 <(￣︶￣)↗[GO!] 继续构建中...**
+*本模块为FormalAI提供了价值学习理论基础，为AI系统的价值对齐和伦理决策提供了重要的理论框架。*
