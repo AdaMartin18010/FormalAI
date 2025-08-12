@@ -1,4 +1,4 @@
-# 4.2 形式化语义 / Formal Semantics
+# 4.2 形式化语义 / Formal Semantics / Formale Semantik / Sémantique formelle
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Formal semantics studies the formal representation and semantic interpretation o
 
 ## 目录 / Table of Contents
 
-- [4.2 形式化语义 / Formal Semantics](#42-形式化语义--formal-semantics)
+- [4.2 形式化语义 / Formal Semantics / Formale Semantik / Sémantique formelle](#42-形式化语义--formal-semantics--formale-semantik--sémantique-formelle)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 蒙塔古语法 / Montague Grammar](#1-蒙塔古语法--montague-grammar)
@@ -35,6 +35,18 @@ Formal semantics studies the formal representation and semantic interpretation o
     - [Rust实现：语义解析器](#rust实现语义解析器)
     - [Haskell实现：分布语义模型](#haskell实现分布语义模型)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [3.3 类型理论](../03-formal-methods/03-type-theory/README.md) - 提供类型基础 / Provides type foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [4.3 知识表示](03-knowledge-representation/README.md) - 提供语义基础 / Provides semantic foundation
+- [4.4 推理机制](04-reasoning-mechanisms/README.md) - 提供语义基础 / Provides semantic foundation
 
 ---
 

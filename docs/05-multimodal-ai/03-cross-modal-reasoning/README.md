@@ -68,6 +68,18 @@ Le raisonnement cross-modal est le processus de transfert d'informations et de r
 
 ---
 
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [4.4 推理机制](../04-language-models/04-reasoning-mechanisms/README.md) - 提供推理基础 / Provides reasoning foundation
+- [5.1 视觉-语言模型](01-vision-language-models/README.md) - 提供对齐基础 / Provides alignment foundation
+- [5.2 多模态融合](02-multimodal-fusion/README.md) - 提供融合基础 / Provides fusion foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供推理基础 / Provides reasoning foundation
+
+---
+
 ## 1. 跨模态检索 / Cross-Modal Retrieval / Kreuzmodale Abfrage / Récupération cross-modale
 
 ### 1.1 相似性度量 / Similarity Measurement / Ähnlichkeitsmessung / Mesure de similarité

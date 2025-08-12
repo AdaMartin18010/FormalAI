@@ -72,6 +72,18 @@ L'apprentissage profond est une branche de l'apprentissage automatique qui utili
 
 ---
 
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [2.1 统计学习理论](01-statistical-learning-theory/README.md) - 提供理论基础 / Provides theoretical foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供模型基础 / Provides model foundation
+- [5.1 视觉-语言模型](../05-multimodal-ai/01-vision-language-models/README.md) - 提供神经网络基础 / Provides neural network foundation
+- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+
+---
+
 ## 1. 神经网络表达能力 / Neural Network Expressive Power / Ausdruckskraft neuronaler Netze / Puissance expressive des réseaux de neurones
 
 ### 1.1 通用逼近定理 / Universal Approximation Theorem / Universal Approximation Theorem / Théorème d'approximation universelle
@@ -486,6 +498,103 @@ impl NeuralNetwork {
                 z[i] += layer.weights[i][j] * input[j];
             }
             z[i] += layer.biases[i];
+        }
+        
+        z
+    }
+    
+    fn compute_loss(&self, output: &[f32], target: &[f32]) -> f32 {
+        // 交叉熵损失 / Cross-entropy loss / Kreuzentropieverlust / Perte d'entropie croisée
+        let mut loss = 0.0;
+        for (o, t) in output.iter().zip(target.iter()) {
+            let epsilon = 1e-15;
+            let o_clamped = o.max(epsilon).min(1.0 - epsilon);
+            loss -= t * o_clamped.ln() + (1.0 - t) * (1.0 - o_clamped).ln();
+        }
+        loss
+    }
+    
+    fn compute_output_delta(&self, output: &[f32], target: &[f32]) -> Vec<f32> {
+        // 输出层误差 / Output layer error / Ausgabeschichtfehler / Erreur de la couche de sortie
+        output.iter().zip(target.iter()).map(|(o, t)| o - t).collect()
+    }
+    
+    fn compute_hidden_delta(&self, layer: &Layer, next_delta: &[f32], z: &[f32]) -> Vec<f32> {
+        // 隐藏层误差 / Hidden layer error / Versteckte Schichtfehler / Erreur de la couche cachée
+        let mut delta = vec![0.0; layer.weights[0].len()];
+        
+        for i in 0..next_delta.len() {
+            let activation_derivative = layer.apply_activation_derivative(z[i]);
+            for j in 0..layer.weights[i].len() {
+                delta[j] += next_delta[i] * activation_derivative * layer.weights[i][j];
+            }
+        }
+        
+        delta
+    }
+    
+    fn update_layer(&mut self, layer: &mut Layer, input: &[f32], delta: &[f32]) {
+        // 更新权重和偏置 / Update weights and biases / Gewichte und Bias aktualisieren / Mettre à jour les poids et biais
+        for i in 0..layer.weights.len() {
+            for j in 0..layer.weights[i].len() {
+                layer.weights[i][j] -= self.learning_rate * delta[i] * input[j];
+            }
+            layer.biases[i] -= self.learning_rate * delta[i];
+        }
+    }
+    
+    fn train(&mut self, training_data: &[(Vec<f32>, Vec<f32>)], epochs: usize) -> Vec<f32> {
+        // 训练网络 / Train network / Netzwerk trainieren / Entraîner le réseau
+        let mut losses = Vec::new();
+        
+        for epoch in 0..epochs {
+            let mut epoch_loss = 0.0;
+            
+            for (input, target) in training_data {
+                let loss = self.backward(input, target);
+                epoch_loss += loss;
+            }
+            
+            epoch_loss /= training_data.len() as f32;
+            losses.push(epoch_loss);
+            
+            if epoch % 100 == 0 {
+                println!("Epoch {}, Loss: {:.6}", epoch, epoch_loss);
+            }
+        }
+        
+        losses
+    }
+    
+    fn predict(&self, input: &[f32]) -> Vec<f32> {
+        // 预测 / Prediction / Vorhersage / Prédiction
+        self.forward(input)
+    }
+    
+    fn evaluate(&self, test_data: &[(Vec<f32>, Vec<f32>)]) -> f32 {
+        // 评估模型 / Evaluate model / Modell bewerten / Évaluer le modèle
+        let mut correct = 0;
+        let mut total = 0;
+        
+        for (input, target) in test_data {
+            let prediction = self.predict(input);
+            let predicted_class = prediction.iter().enumerate()
+                .max_by(|(_, a), (_, b)| a.partial_cmp(b).unwrap())
+                .map(|(i, _)| i)
+                .unwrap();
+            let true_class = target.iter().enumerate()
+                .max_by(|(_, a), (_, b)| a.partial_cmp(b).unwrap())
+                .map(|(i, _)| i)
+                .unwrap();
+            
+            if predicted_class == true_class {
+                correct += 1;
+            }
+            total += 1;
+        }
+        
+        correct as f32 / total as f32
+    }
         }
         
         z

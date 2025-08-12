@@ -43,6 +43,16 @@ La théorie des ensembles est la branche mathématique qui étudie les ensembles
 - 完备性 / Completeness / Vollständigkeit / Complétude
 - 独立性 / Independence / Unabhängigkeit / Indépendance
 
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.1 形式化逻辑基础](01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [2.1 统计学习理论](../02-machine-learning/01-statistical-learning-theory/README.md) - 提供数学基础 / Provides mathematical foundation
+- [2.2 深度学习理论](../02-machine-learning/02-deep-learning-theory/README.md) - 提供优化基础 / Provides optimization foundation
+- [3.3 类型理论](../03-formal-methods/03-type-theory/README.md) - 提供集合论基础 / Provides set theory foundation
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [1.2 数学基础 / Mathematical Foundations / Mathematische Grundlagen / Fondements mathématiques](#12-数学基础--mathematical-foundations--mathematische-grundlagen--fondements-mathématiques)
@@ -587,6 +597,72 @@ impl<T: Hash + Eq + Clone> Set<T> {
     fn add(&mut self, element: T) {
         self.elements.insert(element);
     }
+    
+    fn remove(&mut self, element: &T) -> bool {
+        self.elements.remove(element)
+    }
+    
+    fn clear(&mut self) {
+        self.elements.clear();
+    }
+    
+    fn iter(&self) -> std::collections::hash_set::Iter<T> {
+        self.elements.iter()
+    }
+    
+    fn power_set(&self) -> Set<Set<T>> {
+        let mut power_set = Set::new();
+        let elements: Vec<T> = self.elements.iter().cloned().collect();
+        let n = elements.len();
+        
+        for i in 0..(1 << n) {
+            let mut subset = Set::new();
+            for j in 0..n {
+                if (i >> j) & 1 == 1 {
+                    subset.add(elements[j].clone());
+                }
+            }
+            power_set.add(subset);
+        }
+        
+        power_set
+    }
+    
+    fn cartesian_product<U: Hash + Eq + Clone>(&self, other: &Set<U>) -> Set<(T, U)> {
+        let mut product = Set::new();
+        for a in &self.elements {
+            for b in &other.elements {
+                product.add((a.clone(), b.clone()));
+            }
+        }
+        product
+    }
+}
+
+// 集合代数运算 / Set Algebraic Operations / Mengenalgebraische Operationen / Opérations algébriques d'ensembles
+impl<T: Hash + Eq + Clone> std::ops::Add for Set<T> {
+    type Output = Set<T>;
+    
+    fn add(self, other: Set<T>) -> Set<T> {
+        self.union(&other)
+    }
+}
+
+impl<T: Hash + Eq + Clone> std::ops::Mul for Set<T> {
+    type Output = Set<T>;
+    
+    fn mul(self, other: Set<T>) -> Set<T> {
+        self.intersection(&other)
+    }
+}
+
+impl<T: Hash + Eq + Clone> std::ops::Sub for Set<T> {
+    type Output = Set<T>;
+    
+    fn sub(self, other: Set<T>) -> Set<T> {
+        self.difference(&other)
+    }
+}
 
     fn remove(&mut self, element: &T) -> bool {
         self.elements.remove(element)
@@ -791,6 +867,119 @@ getZero :: Ring a -> a
 getZero ring = zero ring
 
 getOne :: Ring a -> a
+getOne ring = one ring
+
+-- 优化算法实现 / Optimization Algorithm Implementation / Optimierungsalgorithmus-Implementierung / Implémentation d'algorithme d'optimisation
+
+-- 梯度下降 / Gradient Descent / Gradientenabstieg / Descente de gradient
+gradientDescent :: (Floating a, Ord a) => 
+    (Vector a -> a) ->           -- 目标函数 / Objective function / Zielfunktion / Fonction objectif
+    (Vector a -> Vector a) ->    -- 梯度函数 / Gradient function / Gradientenfunktion / Fonction gradient
+    Vector a ->                  -- 初始点 / Initial point / Startpunkt / Point initial
+    a ->                         -- 学习率 / Learning rate / Lernrate / Taux d'apprentissage
+    a ->                         -- 收敛阈值 / Convergence threshold / Konvergenzschwelle / Seuil de convergence
+    Int ->                       -- 最大迭代次数 / Maximum iterations / Maximale Iterationen / Itérations maximales
+    Vector a
+gradientDescent f grad_f x0 alpha epsilon max_iter = 
+    let iterate x k
+            | k >= max_iter = x
+            | norm (grad_f x) < epsilon = x
+            | otherwise = iterate (x - alpha *^ grad_f x) (k + 1)
+    in iterate x0 0
+
+-- 牛顿法 / Newton's Method / Newton-Verfahren / Méthode de Newton
+newtonMethod :: (Floating a, Ord a) => 
+    (Vector a -> a) ->           -- 目标函数 / Objective function / Zielfunktion / Fonction objectif
+    (Vector a -> Vector a) ->    -- 梯度函数 / Gradient function / Gradientenfunktion / Fonction gradient
+    (Vector a -> Matrix a) ->    -- 海森矩阵函数 / Hessian function / Hessematrixfunktion / Fonction hessienne
+    Vector a ->                  -- 初始点 / Initial point / Startpunkt / Point initial
+    a ->                         -- 收敛阈值 / Convergence threshold / Konvergenzschwelle / Seuil de convergence
+    Int ->                       -- 最大迭代次数 / Maximum iterations / Maximale Iterationen / Itérations maximales
+    Vector a
+newtonMethod f grad_f hess_f x0 epsilon max_iter = 
+    let iterate x k
+            | k >= max_iter = x
+            | norm (grad_f x) < epsilon = x
+            | otherwise = 
+                let hess = hess_f x
+                    grad = grad_f x
+                    step = linearSolve hess grad
+                in iterate (x - step) (k + 1)
+    in iterate x0 0
+
+-- 随机梯度下降 / Stochastic Gradient Descent / Stochastischer Gradientenabstieg / Descente de gradient stochastique
+stochasticGradientDescent :: (Floating a, Ord a) => 
+    (Vector a -> Vector a -> a) ->    -- 损失函数 / Loss function / Verlustfunktion / Fonction de perte
+    (Vector a -> Vector a -> Vector a) -> -- 梯度函数 / Gradient function / Gradientenfunktion / Fonction gradient
+    [Vector a] ->                     -- 训练数据 / Training data / Trainingsdaten / Données d'entraînement
+    Vector a ->                       -- 初始参数 / Initial parameters / Anfangsparameter / Paramètres initiaux
+    a ->                              -- 初始学习率 / Initial learning rate / Anfangs-Lernrate / Taux d'apprentissage initial
+    a ->                              -- 学习率衰减 / Learning rate decay / Lernratenabfall / Décroissance du taux d'apprentissage
+    Int ->                            -- 最大迭代次数 / Maximum iterations / Maximale Iterationen / Itérations maximales
+    Vector a
+stochasticGradientDescent loss_f grad_f data w0 alpha0 decay max_iter = 
+    let iterate w alpha k
+            | k >= max_iter = w
+            | otherwise = 
+                let batch = take 32 (drop (k * 32) data)  -- 小批量 / Mini-batch / Mini-Batch / Mini-lot
+                    grad = sum [grad_f w x | x <- batch] / fromIntegral (length batch)
+                    new_w = w - alpha *^ grad
+                    new_alpha = alpha * decay
+                in iterate new_w new_alpha (k + 1)
+    in iterate w0 alpha0 0
+
+-- 凸优化 / Convex Optimization / Konvexe Optimierung / Optimisation convexe
+convexOptimization :: (Floating a, Ord a) => 
+    (Vector a -> a) ->           -- 目标函数 / Objective function / Zielfunktion / Fonction objectif
+    (Vector a -> Vector a) ->    -- 梯度函数 / Gradient function / Gradientenfunktion / Fonction gradient
+    (Vector a -> Bool) ->        -- 约束函数 / Constraint function / Nebenbedingungsfunktion / Fonction de contrainte
+    Vector a ->                  -- 初始点 / Initial point / Startpunkt / Point initial
+    a ->                         -- 收敛阈值 / Convergence threshold / Konvergenzschwelle / Seuil de convergence
+    Int ->                       -- 最大迭代次数 / Maximum iterations / Maximale Iterationen / Itérations maximales
+    Vector a
+convexOptimization f grad_f constraint x0 epsilon max_iter = 
+    let iterate x k
+            | k >= max_iter = x
+            | norm (grad_f x) < epsilon = x
+            | otherwise = 
+                let grad = grad_f x
+                    step = -grad
+                    new_x = x + step
+                    feasible_x = if constraint new_x then new_x else projectToConstraint new_x
+                in iterate feasible_x (k + 1)
+    in iterate x0 0
+
+-- 投影到约束集 / Project to constraint set / Projektion auf Nebenbedingungsmenge / Projection sur l'ensemble de contraintes
+projectToConstraint :: Vector a -> Vector a
+projectToConstraint x = 
+    -- 这里实现具体的投影算法 / Implement specific projection algorithm here
+    -- Hier spezifischen Projektionsalgorithmus implementieren
+    -- Implémenter l'algorithme de projection spécifique ici
+    x
+
+-- 线性求解器 / Linear solver / Linearer Löser / Solveur linéaire
+linearSolve :: Matrix a -> Vector a -> Vector a
+linearSolve a b = 
+    -- 这里实现线性方程组求解 / Implement linear system solving here
+    -- Hier lineares Gleichungssystem lösen
+    -- Résoudre le système linéaire ici
+    b
+
+-- 向量范数 / Vector norm / Vektornorm / Norme vectorielle
+norm :: (Floating a) => Vector a -> a
+norm v = sqrt (sum [x^2 | x <- toList v])
+
+-- 向量标量乘法 / Vector scalar multiplication / Vektorskalarmultiplikation / Multiplication scalaire vectorielle
+(*^) :: (Num a) => Vector a -> a -> Vector a
+v *^ s = fromList [x * s | x <- toList v]
+
+-- 向量减法 / Vector subtraction / Vektorsubtraktion / Soustraction vectorielle
+(-) :: (Num a) => Vector a -> Vector a -> Vector a
+v1 - v2 = fromList [x - y | (x, y) <- zip (toList v1) (toList v2)]
+
+-- 向量加法 / Vector addition / Vektoraddition / Addition vectorielle
+(+) :: (Num a) => Vector a -> Vector a -> Vector a
+v1 + v2 = fromList [x + y | (x, y) <- zip (toList v1) (toList v2)]
 getOne ring = one ring
 
 getAdditiveInverse :: Ring a -> a -> a

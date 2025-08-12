@@ -1,4 +1,4 @@
-# 2.1 统计学习理论 / Statistical Learning Theory
+# 2.1 统计学习理论 / Statistical Learning Theory / Statistische Lerntheorie / Théorie de l'apprentissage statistique
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Statistical learning theory provides mathematical foundations for machine learni
 
 ## 目录 / Table of Contents
 
-- [2.1 统计学习理论 / Statistical Learning Theory](#21-统计学习理论--statistical-learning-theory)
+- [2.1 统计学习理论 / Statistical Learning Theory / Statistische Lerntheorie / Théorie de l'apprentissage statistique](#21-统计学习理论--statistical-learning-theory--statistische-lerntheorie--théorie-de-lapprentissage-statistique)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 学习问题形式化 / Learning Problem Formulation](#1-学习问题形式化--learning-problem-formulation)
@@ -54,6 +54,18 @@ Statistical learning theory provides mathematical foundations for machine learni
     - [Rust实现：VC维计算](#rust实现vc维计算)
     - [Haskell实现：Rademacher复杂度](#haskell实现rademacher复杂度)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.2 数学基础](../01-foundations/02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [2.2 深度学习理论](02-deep-learning-theory/README.md) - 提供理论基础 / Provides theoretical foundation
+- [2.3 强化学习理论](03-reinforcement-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
+- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
 
 ---
 

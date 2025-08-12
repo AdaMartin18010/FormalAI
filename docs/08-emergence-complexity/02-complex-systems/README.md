@@ -1,4 +1,4 @@
-# 8.2 复杂系统 / Complex Systems
+# 8.2 复杂系统 / Complex Systems / Komplexe Systeme / Systèmes complexes
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Complex systems theory studies the behavior of systems composed of large numbers
 
 ## 目录 / Table of Contents
 
-- [8.2 复杂系统 / Complex Systems](#82-复杂系统--complex-systems)
+- [8.2 复杂系统 / Complex Systems / Komplexe Systeme / Systèmes complexes](#82-复杂系统--complex-systems--komplexe-systeme--systèmes-complexes)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 系统动力学 / System Dynamics](#1-系统动力学--system-dynamics)
@@ -35,6 +35,16 @@ Complex systems theory studies the behavior of systems composed of large numbers
     - [Rust实现：复杂系统模拟](#rust实现复杂系统模拟)
     - [Haskell实现：复杂系统](#haskell实现复杂系统)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [8.1 涌现理论](01-emergence-theory/README.md) - 提供涌现基础 / Provides emergence foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [8.3 自组织理论](03-self-organization/README.md) - 提供系统基础 / Provides system foundation
 
 ---
 

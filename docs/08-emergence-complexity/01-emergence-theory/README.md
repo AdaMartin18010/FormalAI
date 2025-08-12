@@ -25,18 +25,21 @@ Emergenz sind kollektive Eigenschaften und Verhaltensweisen, die in komplexen Sy
 L'émergence est des propriétés et comportements collectifs qui émergent dans les systèmes complexes et ne peuvent pas être directement prédits à partir des comportements individuels.
 
 **内涵 / Intension / Intension / Intension:**
+
 - 非线性相互作用 / Nonlinear interactions / Nichtlineare Wechselwirkungen / Interactions non linéaires
 - 集体行为 / Collective behavior / Kollektives Verhalten / Comportement collectif
 - 不可预测性 / Unpredictability / Unvorhersagbarkeit / Imprévisibilité
 - 自组织 / Self-organization / Selbstorganisation / Auto-organisation
 
 **外延 / Extension / Extension / Extension:**
+
 - 弱涌现 / Weak emergence / Schwache Emergenz / Émergence faible
 - 强涌现 / Strong emergence / Starke Emergenz / Émergence forte
 - 计算涌现 / Computational emergence / Berechnungsemerenz / Émergence computationnelle
 - 认知涌现 / Cognitive emergence / Kognitive Emergenz / Émergence cognitive
 
 **属性 / Properties / Eigenschaften / Propriétés:**
+
 - 不可约性 / Irreducibility / Irreduzibilität / Irréductibilité
 - 新颖性 / Novelty / Neuheit / Nouveauté
 - 整体性 / Wholeness / Ganzheitlichkeit / Totalité
@@ -44,30 +47,42 @@ L'émergence est des propriétés et comportements collectifs qui émergent dans
 
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
-- [8.1 涌现理论 / Emergence Theory](#81-涌现理论--emergence-theory)
-  - [概述 / Overview](#概述--overview)
-  - [核心概念定义 / Core Concept Definitions](#核心概念定义--core-concept-definitions)
-  - [目录 / Table of Contents](#目录--table-of-contents)
-  - [1. 涌现定义 / Emergence Definition](#1-涌现定义--emergence-definition)
-    - [1.1 涌现概念 / Emergence Concepts](#11-涌现概念--emergence-concepts)
-    - [1.2 涌现类型 / Types of Emergence](#12-涌现类型--types-of-emergence)
-    - [1.3 涌现层次 / Emergence Levels](#13-涌现层次--emergence-levels)
-  - [2. 涌现机制 / Emergence Mechanisms](#2-涌现机制--emergence-mechanisms)
-    - [2.1 非线性相互作用 / Nonlinear Interactions](#21-非线性相互作用--nonlinear-interactions)
-    - [2.2 反馈循环 / Feedback Loops](#22-反馈循环--feedback-loops)
-    - [2.3 临界现象 / Critical Phenomena](#23-临界现象--critical-phenomena)
-  - [3. 涌现检测 / Emergence Detection](#3-涌现检测--emergence-detection)
-    - [3.1 涌现指标 / Emergence Indicators](#31-涌现指标--emergence-indicators)
-    - [3.2 涌现测量 / Emergence Measurement](#32-涌现测量--emergence-measurement)
-    - [3.3 涌现预测 / Emergence Prediction](#33-涌现预测--emergence-prediction)
-  - [4. AI中的涌现 / Emergence in AI](#4-ai中的涌现--emergence-in-ai)
-    - [4.1 语言模型涌现 / Language Model Emergence](#41-语言模型涌现--language-model-emergence)
-    - [4.2 多智能体涌现 / Multi-Agent Emergence](#42-多智能体涌现--multi-agent-emergence)
-    - [4.3 认知涌现 / Cognitive Emergence](#43-认知涌现--cognitive-emergence)
-  - [代码示例 / Code Examples](#代码示例--code-examples)
+- [8.1 涌现理论 / Emergence Theory / Emergenztheorie / Théorie de l'émergence](#81-涌现理论--emergence-theory--emergenztheorie--théorie-de-lémergence)
+  - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
+  - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
+    - [涌现 / Emergence / Emergenz / Émergence](#涌现--emergence--emergenz--émergence)
+  - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
+  - [1. 涌现定义 / Emergence Definition / Emergenzdefinition / Définition de l'émergence](#1-涌现定义--emergence-definition--emergenzdefinition--définition-de-lémergence)
+    - [1.1 涌现概念 / Emergence Concepts / Emergenzkonzepte / Concepts d'émergence](#11-涌现概念--emergence-concepts--emergenzkonzepte--concepts-démergence)
+    - [1.2 涌现类型 / Types of Emergence / Emergenztypen / Types d'émergence](#12-涌现类型--types-of-emergence--emergenztypen--types-démergence)
+    - [1.3 涌现层次 / Emergence Levels / Emergenzstufen / Niveaux d'émergence](#13-涌现层次--emergence-levels--emergenzstufen--niveaux-démergence)
+  - [2. 涌现机制 / Emergence Mechanisms / Emergenzmechanismen / Mécanismes d'émergence](#2-涌现机制--emergence-mechanisms--emergenzmechanismen--mécanismes-démergence)
+    - [2.1 非线性相互作用 / Nonlinear Interactions / Nichtlineare Wechselwirkungen / Interactions non linéaires](#21-非线性相互作用--nonlinear-interactions--nichtlineare-wechselwirkungen--interactions-non-linéaires)
+    - [2.2 反馈循环 / Feedback Loops / Rückkopplungsschleifen / Boucles de rétroaction](#22-反馈循环--feedback-loops--rückkopplungsschleifen--boucles-de-rétroaction)
+    - [2.3 临界现象 / Critical Phenomena / Kritische Phänomene / Phénomènes critiques](#23-临界现象--critical-phenomena--kritische-phänomene--phénomènes-critiques)
+  - [3. 涌现检测 / Emergence Detection / Emergenzerkennung / Détection d'émergence](#3-涌现检测--emergence-detection--emergenzerkennung--détection-démergence)
+    - [3.1 涌现指标 / Emergence Indicators / Emergenzindikatoren / Indicateurs d'émergence](#31-涌现指标--emergence-indicators--emergenzindikatoren--indicateurs-démergence)
+    - [3.2 涌现测量 / Emergence Measurement / Emergenzmessung / Mesure d'émergence](#32-涌现测量--emergence-measurement--emergenzmessung--mesure-démergence)
+    - [3.3 涌现预测 / Emergence Prediction / Emergenzvorhersage / Prédiction d'émergence](#33-涌现预测--emergence-prediction--emergenzvorhersage--prédiction-démergence)
+  - [4. AI中的涌现 / Emergence in AI / Emergenz in KI / Émergence dans l'IA](#4-ai中的涌现--emergence-in-ai--emergenz-in-ki--émergence-dans-lia)
+    - [4.1 语言模型涌现 / Language Model Emergence / Sprachmodell-Emergenz / Émergence de modèle de langage](#41-语言模型涌现--language-model-emergence--sprachmodell-emergenz--émergence-de-modèle-de-langage)
+    - [4.2 多智能体涌现 / Multi-Agent Emergence / Multi-Agent-Emergenz / Émergence multi-agents](#42-多智能体涌现--multi-agent-emergence--multi-agent-emergenz--émergence-multi-agents)
+    - [4.3 认知涌现 / Cognitive Emergence / Kognitive Emergenz / Émergence cognitive](#43-认知涌现--cognitive-emergence--kognitive-emergenz--émergence-cognitive)
+  - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
     - [Rust实现：涌现检测器](#rust实现涌现检测器)
     - [Haskell实现：涌现分析器](#haskell实现涌现分析器)
-  - [参考文献 / References](#参考文献--references)
+  - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.4 认知科学](../01-foundations/04-cognitive-science/README.md) - 提供认知基础 / Provides cognitive foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [8.2 复杂系统](02-complex-systems/README.md) - 提供涌现基础 / Provides emergence foundation
+- [8.3 自组织理论](03-self-organization/README.md) - 提供涌现基础 / Provides emergence foundation
 
 ---
 

@@ -1,4 +1,4 @@
-# 3.4 证明系统 / Proof Systems
+# 3.4 证明系统 / Proof Systems / Beweissysteme / Systèmes de preuve
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Proof systems study the construction and verification of formal proofs, providin
 
 ## 目录 / Table of Contents
 
-- [3.4 证明系统 / Proof Systems](#34-证明系统--proof-systems)
+- [3.4 证明系统 / Proof Systems / Beweissysteme / Systèmes de preuve](#34-证明系统--proof-systems--beweissysteme--systèmes-de-preuve)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 自然演绎 / Natural Deduction](#1-自然演绎--natural-deduction)
@@ -55,6 +55,17 @@ Proof systems study the construction and verification of formal proofs, providin
     - [Rust实现：自然演绎证明系统](#rust实现自然演绎证明系统)
     - [Haskell实现：序列演算证明系统](#haskell实现序列演算证明系统)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [3.3 类型理论](03-type-theory/README.md) - 提供类型基础 / Provides type foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供证明基础 / Provides proof foundation
 
 ---
 

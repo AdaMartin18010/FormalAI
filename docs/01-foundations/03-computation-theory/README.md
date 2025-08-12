@@ -37,6 +37,16 @@ Le calcul est le processus de traitement d'information qui transforme l'entrée 
 - 随机计算 / Probabilistic computation / Probabilistische Berechnung / Calcul probabiliste
 - 量子计算 / Quantum computation / Quantenberechnung / Calcul quantique
 
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.1 形式化逻辑基础](01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [1.2 数学基础](02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [3.2 程序合成](../03-formal-methods/02-program-synthesis/README.md) - 提供计算基础 / Provides computation foundation
+- [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供复杂度基础 / Provides complexity foundation
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [1.3 计算理论 / Computation Theory / Berechnungstheorie / Théorie du calcul](#13-计算理论--computation-theory--berechnungstheorie--théorie-du-calcul)

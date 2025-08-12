@@ -78,6 +78,19 @@ L'interprétabilité est le degré auquel le processus de décision d'un modèle
 
 ---
 
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [2.1 统计学习理论](../02-machine-learning/01-statistical-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
+- [3.4 证明系统](../03-formal-methods/04-proof-systems/README.md) - 提供证明基础 / Provides proof foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [6.2 公平性与偏见理论](02-fairness-bias/README.md) - 提供解释基础 / Provides interpretability foundation
+- [6.3 鲁棒性理论](03-robustness-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+
+---
+
 ## 1. 可解释性定义 / Interpretability Definition / Interpretierbarkeitsdefinition / Définition de l'interprétabilité
 
 ### 1.1 可解释性概念 / Interpretability Concepts / Interpretierbarkeitskonzepte / Concepts d'interprétabilité

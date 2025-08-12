@@ -1,4 +1,4 @@
-# 公平性与偏见理论 / Fairness and Bias Theory
+# 6.2 公平性与偏见理论 / Fairness and Bias Theory / Fairness- und Bias-Theorie / Théorie de l'équité et des biais
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Fairness and bias theory studies how to ensure AI systems do not produce discrim
 
 ## 目录 / Table of Contents
 
-- [公平性与偏见理论 / Fairness and Bias Theory](#公平性与偏见理论--fairness-and-bias-theory)
+- [6.2 公平性与偏见理论 / Fairness and Bias Theory / Fairness- und Bias-Theorie / Théorie de l'équité et des biais](#62-公平性与偏见理论--fairness-and-bias-theory--fairness--und-bias-theorie--théorie-de-léquité-et-des-biais)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 公平性定义 / Fairness Definitions](#1-公平性定义--fairness-definitions)
@@ -47,6 +47,17 @@ Fairness and bias theory studies how to ensure AI systems do not produce discrim
     - [Rust实现：公平性检测系统](#rust实现公平性检测系统)
     - [Haskell实现：偏见缓解算法](#haskell实现偏见缓解算法)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [2.4 因果推理理论](../02-machine-learning/04-causal-inference/README.md) - 提供因果基础 / Provides causal foundation
+- [6.1 可解释性理论](01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [7.1 对齐理论](../07-alignment-safety/01-alignment-theory/README.md) - 提供公平性基础 / Provides fairness foundation
 
 ---
 

@@ -1,4 +1,4 @@
-# 鲁棒性理论 / Robustness Theory
+# 6.3 鲁棒性理论 / Robustness Theory / Robustheitstheorie / Théorie de la robustesse
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Robustness theory studies the stability and reliability of AI systems when facin
 
 ## 目录 / Table of Contents
 
-- [鲁棒性理论 / Robustness Theory](#鲁棒性理论--robustness-theory)
+- [6.3 鲁棒性理论 / Robustness Theory / Robustheitstheorie / Théorie de la robustesse](#63-鲁棒性理论--robustness-theory--robustheitstheorie--théorie-de-la-robustesse)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 鲁棒性基础 / Robustness Foundations](#1-鲁棒性基础--robustness-foundations)
@@ -47,6 +47,18 @@ Robustness theory studies the stability and reliability of AI systems when facin
     - [Rust实现：鲁棒性评估系统](#rust实现鲁棒性评估系统)
     - [Haskell实现：对抗训练算法](#haskell实现对抗训练算法)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [2.4 因果推理理论](../02-machine-learning/04-causal-inference/README.md) - 提供推理基础 / Provides reasoning foundation
+- [3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md) - 提供验证基础 / Provides verification foundation
+- [6.1 可解释性理论](01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [7.3 安全机制](../07-alignment-safety/03-safety-mechanisms/README.md) - 提供鲁棒性基础 / Provides robustness foundation
 
 ---
 

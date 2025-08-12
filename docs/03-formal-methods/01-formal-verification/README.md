@@ -1,4 +1,4 @@
-# 3.1 形式化验证 / Formal Verification
+# 3.1 形式化验证 / Formal Verification / Formale Verifikation / Vérification formelle
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Formal verification studies how to prove that systems satisfy their specificatio
 
 ## 目录 / Table of Contents
 
-- [3.1 形式化验证 / Formal Verification](#31-形式化验证--formal-verification)
+- [3.1 形式化验证 / Formal Verification / Formale Verifikation / Vérification formelle](#31-形式化验证--formal-verification--formale-verifikation--vérification-formelle)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 模型检测 / Model Checking](#1-模型检测--model-checking)
@@ -55,6 +55,17 @@ Formal verification studies how to prove that systems satisfy their specificatio
     - [Rust实现：模型检测器](#rust实现模型检测器)
     - [Haskell实现：霍尔逻辑验证](#haskell实现霍尔逻辑验证)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [7.3 安全机制](../07-alignment-safety/03-safety-mechanisms/README.md) - 提供验证基础 / Provides verification foundation
+- [6.3 鲁棒性理论](../06-interpretable-ai/03-robustness-theory/README.md) - 提供验证基础 / Provides verification foundation
 
 ---
 

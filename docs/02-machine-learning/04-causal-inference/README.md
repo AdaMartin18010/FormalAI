@@ -1,4 +1,4 @@
-# 2.4 因果推理理论 / Causal Inference Theory
+# 2.4 因果推理理论 / Causal Inference Theory / Kausale Inferenztheorie / Théorie de l'inférence causale
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Causal inference theory studies how to identify and estimate causal relationship
 
 ## 目录 / Table of Contents
 
-- [2.4 因果推理理论 / Causal Inference Theory](#24-因果推理理论--causal-inference-theory)
+- [2.4 因果推理理论 / Causal Inference Theory / Kausale Inferenztheorie / Théorie de l'inférence causale](#24-因果推理理论--causal-inference-theory--kausale-inferenztheorie--théorie-de-linférence-causale)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 因果图模型 / Causal Graphical Models](#1-因果图模型--causal-graphical-models)
@@ -35,6 +35,18 @@ Causal inference theory studies how to identify and estimate causal relationship
     - [Rust实现：因果发现算法](#rust实现因果发现算法)
     - [Haskell实现：因果效应估计](#haskell实现因果效应估计)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [2.1 统计学习理论](01-statistical-learning-theory/README.md) - 提供统计基础 / Provides statistical foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [6.2 公平性与偏见理论](../06-interpretable-ai/02-fairness-bias/README.md) - 提供因果基础 / Provides causal foundation
+- [6.3 鲁棒性理论](../06-interpretable-ai/03-robustness-theory/README.md) - 提供推理基础 / Provides reasoning foundation
 
 ---
 

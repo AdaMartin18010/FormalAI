@@ -78,6 +78,17 @@ La représentation des connaissances est la description formelle des connaissanc
 
 ---
 
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [4.2 形式化语义](02-formal-semantics/README.md) - 提供语义基础 / Provides semantic foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [4.4 推理机制](04-reasoning-mechanisms/README.md) - 提供知识基础 / Provides knowledge foundation
+- [5.3 跨模态推理](../05-multimodal-ai/03-cross-modal-reasoning/README.md) - 提供表示基础 / Provides representation foundation
+
+---
+
 ## 1. 语义网络 / Semantic Networks / Semantische Netze / Réseaux sémantiques
 
 ### 1.1 节点与边 / Nodes and Edges / Knoten und Kanten / Nœuds et arêtes

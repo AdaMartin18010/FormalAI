@@ -73,6 +73,16 @@ La synthèse de programmes est le processus de dérivation automatique de progra
 
 ---
 
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.3 计算理论](../01-foundations/03-computation-theory/README.md) - 提供计算基础 / Provides computation foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供生成基础 / Provides generation foundation
+
+---
+
 ## 1. 语法引导合成 / Syntax-Guided Synthesis / Syntaxgesteuerte Synthese / Synthèse guidée par syntaxe
 
 ### 1.1 语法定义 / Syntax Definition / Syntaxdefinition / Définition de syntaxe

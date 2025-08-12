@@ -1,4 +1,4 @@
-# 伦理框架 / Ethical Frameworks
+# 9.3 伦理框架 / Ethical Frameworks / Ethische Rahmenwerke / Cadres éthiques
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Ethical frameworks provide moral guidance for the development and application of
 
 ## 目录 / Table of Contents
 
-- [伦理框架 / Ethical Frameworks](#伦理框架--ethical-frameworks)
+- [9.3 伦理框架 / Ethical Frameworks / Ethische Rahmenwerke / Cadres éthiques](#93-伦理框架--ethical-frameworks--ethische-rahmenwerke--cadres-éthiques)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 伦理理论基础 / Ethical Theory Foundations](#1-伦理理论基础--ethical-theory-foundations)
@@ -45,9 +45,22 @@ Ethical frameworks provide moral guidance for the development and application of
     - [8.2 监管要求 / Regulatory Requirements](#82-监管要求--regulatory-requirements)
     - [8.3 合规机制 / Compliance Mechanisms](#83-合规机制--compliance-mechanisms)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：伦理评估系统](#rust实现伦理评估系统)
-    - [Haskell实现：公平性检测](#haskell实现公平性检测)
+    - [Rust实现：伦理评估系统 / Rust Implementation: Ethical Evaluation System](#rust实现伦理评估系统--rust-implementation-ethical-evaluation-system)
+    - [Haskell实现：公平性检测 / Haskell Implementation: Fairness Detection](#haskell实现公平性检测--haskell-implementation-fairness-detection)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [7.2 价值学习理论](../07-alignment-safety/02-value-learning/README.md) - 提供价值基础 / Provides value foundation
+- [7.3 安全机制](../07-alignment-safety/03-safety-mechanisms/README.md) - 提供安全基础 / Provides safety foundation
+- [9.1 AI哲学](01-ai-philosophy/README.md) - 提供哲学基础 / Provides philosophical foundation
+- [9.2 意识理论](02-consciousness-theory/README.md) - 提供意识基础 / Provides consciousness foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- 无 / None / Keine / Aucune (最终应用层 / Final application layer)
 
 ---
 

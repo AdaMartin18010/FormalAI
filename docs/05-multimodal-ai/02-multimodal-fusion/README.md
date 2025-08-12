@@ -73,6 +73,16 @@ La fusion multimodale est le processus d'intégration d'informations de différe
 
 ---
 
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [5.1 视觉-语言模型](01-vision-language-models/README.md) - 提供模型基础 / Provides model foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [5.3 跨模态推理](03-cross-modal-reasoning/README.md) - 提供融合基础 / Provides fusion foundation
+
+---
+
 ## 1. 早期融合 / Early Fusion / Frühe Fusion / Fusion précoce
 
 ### 1.1 特征级融合 / Feature-Level Fusion / Merkmalsebenen-Fusion / Fusion au niveau des caractéristiques

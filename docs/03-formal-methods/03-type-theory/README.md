@@ -1,4 +1,4 @@
-# 3.3 类型理论 / Type Theory
+# 3.3 类型理论 / Type Theory / Typentheorie / Théorie des types
 
 ## 概述 / Overview
 
@@ -8,7 +8,7 @@ Type theory studies the mathematical foundations of type systems, providing theo
 
 ## 目录 / Table of Contents
 
-- [3.3 类型理论 / Type Theory](#33-类型理论--type-theory)
+- [3.3 类型理论 / Type Theory / Typentheorie / Théorie des types](#33-类型理论--type-theory--typentheorie--théorie-des-types)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [1. 简单类型理论 / Simple Type Theory](#1-简单类型理论--simple-type-theory)
@@ -39,6 +39,17 @@ Type theory studies the mathematical foundations of type systems, providing theo
     - [Rust实现：类型系统 / Rust Implementation: Type System](#rust实现类型系统--rust-implementation-type-system)
     - [Haskell实现：类型系统 / Haskell Implementation: Type System](#haskell实现类型系统--haskell-implementation-type-system)
   - [参考文献 / References](#参考文献--references)
+
+---
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- [1.2 数学基础](../01-foundations/02-mathematical-foundations/README.md) - 提供集合论基础 / Provides set theory foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [4.2 形式化语义](../04-language-models/02-formal-semantics/README.md) - 提供类型基础 / Provides type foundation
+- [3.4 证明系统](04-proof-systems/README.md) - 提供类型基础 / Provides type foundation
 
 ---
 

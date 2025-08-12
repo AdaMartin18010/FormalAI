@@ -44,6 +44,17 @@ La logique formelle est la discipline mathématique qui étudie les formes valid
 - 可靠性 / Soundness / Korrektheit / Correction
 - 可判定性 / Decidability / Entscheidbarkeit / Décidabilité
 
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+- 无 / None / Keine / Aucun
+
+**后续应用 / Applications / Anwendungen / Applications:**
+- [3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md) - 提供逻辑基础 / Provides logical foundation
+- [3.4 证明系统](../03-formal-methods/04-proof-systems/README.md) - 提供推理基础 / Provides reasoning foundation
+- [4.2 形式化语义](../04-language-models/02-formal-semantics/README.md) - 提供语义基础 / Provides semantic foundation
+- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [1.1 形式化逻辑基础 / Formal Logic Foundations / Grundlagen der formalen Logik / Fondements de la logique formelle](#11-形式化逻辑基础--formal-logic-foundations--grundlagen-der-formalen-logik--fondements-de-la-logique-formelle)
@@ -203,20 +214,62 @@ data ProofStep =
   | ModusPonens ProofStep ProofStep
   | Assumption Formula
   | Discharge Formula ProofStep
+  | ConjunctionIntro ProofStep ProofStep
+  | ConjunctionElim1 ProofStep
+  | ConjunctionElim2 ProofStep
+  | DisjunctionIntro1 Formula ProofStep
+  | DisjunctionIntro2 Formula ProofStep
+  | DisjunctionElim ProofStep ProofStep ProofStep
+  | ImplicationIntro Formula ProofStep
+  | ImplicationElim ProofStep ProofStep
+  | NegationIntro Formula ProofStep
+  | NegationElim ProofStep ProofStep
+  | ExFalso Formula ProofStep
 
 -- 证明验证 / Proof Verification / Beweisverifikation / Vérification de preuve
 verifyProof :: [ProofStep] -> Formula -> Bool
 verifyProof steps conclusion = 
     let validSteps = map verifyStep steps
         dischargedAssumptions = collectDischarges steps
-    in all id validSteps && null dischargedAssumptions
+        conclusionMatches = checkConclusion steps conclusion
+    in all id validSteps && null dischargedAssumptions && conclusionMatches
 
 -- 证明搜索 / Proof Search / Beweissuche / Recherche de preuve
 searchProof :: [Formula] -> Formula -> Maybe [ProofStep]
 searchProof assumptions goal = 
-    case findProof assumptions goal of
+    case findDirectProof assumptions goal of
         Just proof -> Just proof
-        Nothing -> tryContradiction assumptions goal
+        Nothing -> case findContradictionProof assumptions goal of
+            Just proof -> Just proof
+            Nothing -> findIndirectProof assumptions goal
+
+-- 直接证明搜索 / Direct Proof Search / Direkte Beweissuche / Recherche de preuve directe
+findDirectProof :: [Formula] -> Formula -> Maybe [ProofStep]
+findDirectProof assumptions goal = 
+    let candidates = generateProofCandidates assumptions goal
+        validProofs = filter (\p -> verifyProof p goal) candidates
+    in case validProofs of
+        (proof:_) -> Just proof
+        [] -> Nothing
+
+-- 矛盾证明搜索 / Contradiction Proof Search / Widerspruchsbeweissuche / Recherche de preuve par contradiction
+findContradictionProof :: [Formula] -> Formula -> Maybe [ProofStep]
+findContradictionProof assumptions goal = 
+    let negatedGoal = Negation goal
+        extendedAssumptions = assumptions ++ [negatedGoal]
+        contradiction = findContradiction extendedAssumptions
+    in case contradiction of
+        Just _ -> Just (constructContradictionProof assumptions goal)
+        Nothing -> Nothing
+
+-- 间接证明搜索 / Indirect Proof Search / Indirekte Beweissuche / Recherche de preuve indirecte
+findIndirectProof :: [Formula] -> Formula -> Maybe [ProofStep]
+findIndirectProof assumptions goal = 
+    let equivalentForms = findEquivalentForms goal
+        alternativeProofs = map (\form -> findDirectProof assumptions form) equivalentForms
+    in case catMaybes alternativeProofs of
+        (proof:_) -> Just (convertToOriginalGoal proof goal)
+        [] -> Nothing
 ```
 
 ### 1.3 完备性定理 / Completeness Theorem / Vollständigkeitssatz / Théorème de complétude
@@ -236,6 +289,7 @@ Pour la logique du premier ordre, si $\Gamma \models \phi$, alors $\Gamma \vdash
 **证明构造 / Proof Construction:**
 
 ```rust
+#[derive(Debug, Clone)]
 struct CompletenessProof {
     consistent_theory: Theory,
     maximal_consistent_extension: Theory,
@@ -263,14 +317,120 @@ impl CompletenessProof {
         // Verwende das Lemma von Zorn zur Konstruktion maximal konsistenter Theorie
         // Utiliser le lemme de Zorn pour construire une théorie maximale cohérente
         let mut extended_theory = self.consistent_theory.clone();
+        let all_formulas = self.enumerate_all_formulas();
         
-        for formula in self.enumerate_all_formulas() {
+        for formula in all_formulas {
             if !extended_theory.add_formula(&formula).is_inconsistent() {
                 extended_theory.add_formula(&formula);
             }
         }
         
         extended_theory
+    }
+    
+    fn construct_domain(&self) -> Domain {
+        // 构造Herbrand域 / Construct Herbrand domain
+        // Konstruiere Herbrand-Domäne / Construire le domaine de Herbrand
+        let constants = self.collect_constants();
+        let functions = self.collect_functions();
+        
+        Domain::new(constants, functions)
+    }
+    
+    fn construct_interpretation(&self, theory: &Theory) -> Interpretation {
+        // 构造解释函数 / Construct interpretation function
+        // Konstruiere Interpretationsfunktion / Construire la fonction d'interprétation
+        let mut interpretation = Interpretation::new();
+        
+        for formula in theory.get_formulas() {
+            match formula {
+                Formula::Atomic(predicate, terms) => {
+                    interpretation.add_predicate(predicate.clone(), terms.clone());
+                }
+                Formula::Equality(term1, term2) => {
+                    interpretation.add_equality(term1.clone(), term2.clone());
+                }
+                _ => {}
+            }
+        }
+        
+        interpretation
+    }
+    
+    fn verify_completeness(&self) -> bool {
+        // 验证完备性 / Verify completeness
+        // Verifiziere Vollständigkeit / Vérifier la complétude
+        let canonical_model = self.construct_canonical_model();
+        
+        for formula in &self.consistent_theory.formulas {
+            if !canonical_model.satisfies(formula) {
+                return false;
+            }
+        }
+        
+        true
+    }
+}
+
+#[derive(Debug, Clone)]
+struct Theory {
+    formulas: Vec<Formula>,
+    signature: Signature,
+}
+
+impl Theory {
+    fn add_formula(&mut self, formula: &Formula) -> &mut Self {
+        self.formulas.push(formula.clone());
+        self
+    }
+    
+    fn is_inconsistent(&self) -> bool {
+        // 检查理论是否不一致 / Check if theory is inconsistent
+        // Prüfe ob Theorie inkonsistent ist / Vérifier si la théorie est incohérente
+        self.formulas.iter().any(|f| matches!(f, Formula::Contradiction))
+    }
+    
+    fn get_formulas(&self) -> &[Formula] {
+        &self.formulas
+    }
+}
+
+#[derive(Debug, Clone)]
+struct Model {
+    domain: Domain,
+    interpretation: Interpretation,
+}
+
+impl Model {
+    fn satisfies(&self, formula: &Formula) -> bool {
+        // 模型满足公式 / Model satisfies formula
+        // Modell erfüllt Formel / Modèle satisfait la formule
+        match formula {
+            Formula::Atomic(predicate, terms) => {
+                self.interpretation.evaluate_predicate(predicate, terms)
+            }
+            Formula::Equality(term1, term2) => {
+                self.interpretation.evaluate_equality(term1, term2)
+            }
+            Formula::Negation(inner) => !self.satisfies(inner),
+            Formula::Conjunction(left, right) => {
+                self.satisfies(left) && self.satisfies(right)
+            }
+            Formula::Disjunction(left, right) => {
+                self.satisfies(left) || self.satisfies(right)
+            }
+            Formula::Implication(antecedent, consequent) => {
+                !self.satisfies(antecedent) || self.satisfies(consequent)
+            }
+            Formula::Universal(variable, body) => {
+                self.satisfies_universal(variable, body)
+            }
+            Formula::Existential(variable, body) => {
+                self.satisfies_existential(variable, body)
+            }
+            Formula::Contradiction => false,
+            Formula::Tautology => true,
+        }
     }
 }
 ```
