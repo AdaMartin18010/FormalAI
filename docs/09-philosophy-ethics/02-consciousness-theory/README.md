@@ -11,6 +11,7 @@ Consciousness theory studies the nature, characteristics, and mechanisms of cons
 - [9.2 意识理论 / Consciousness Theory / Bewusstseinstheorie / Théorie de la conscience](#92-意识理论--consciousness-theory--bewusstseinstheorie--théorie-de-la-conscience)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 意识理论 / Consciousness Theories](#1-意识理论--consciousness-theories)
     - [1.1 意识定义 / Consciousness Definition](#11-意识定义--consciousness-definition)
     - [1.2 意识理论 / Consciousness Theories](#12-意识理论--consciousness-theories)
@@ -37,10 +38,12 @@ Consciousness theory studies the nature, characteristics, and mechanisms of cons
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [1.4 认知科学](../01-foundations/04-cognitive-science/README.md) - 提供认知基础 / Provides cognitive foundation
 - [9.1 AI哲学](01-ai-philosophy/README.md) - 提供哲学基础 / Provides philosophical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [9.3 伦理框架](03-ethical-frameworks/README.md) - 提供意识基础 / Provides consciousness foundation
 
 ---

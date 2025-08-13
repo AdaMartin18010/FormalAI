@@ -2,6 +2,49 @@
 
 ## 概述 / Overview
 
+### 1. 语义学基本记号 / Semantic Notation / Semantische Notation / Notation sémantique
+
+- 语义赋值 / Denotation: 设表达式为 $e$，环境为 $\rho$，模型为 $\mathcal{M}$，则
+
+$$\llbracket e \rrbracket_{\rho}^{\mathcal{M}} \in D$$
+
+- 满足关系 / Satisfaction:
+
+$$(\mathcal{M}, g) \vDash \varphi \iff \text{公式 } \varphi \text{ 在模型 } \mathcal{M} \text{ 下由赋值 } g \text{ 满足}$$
+
+- 组合性原理 / Compositionality:
+
+$$\llbracket f(e_1, \ldots, e_n) \rrbracket_{\rho}^{\mathcal{M}} = f^{\mathcal{M}}\big(\llbracket e_1 \rrbracket_{\rho}^{\mathcal{M}}, \ldots, \llbracket e_n \rrbracket_{\rho}^{\mathcal{M}}\big)$$
+
+### 2. Haskell示例：极简Lambda演算求值 / Minimal Lambda Calculus Evaluator / Minimaler Lambda-Kalkül-Auswerter / Évaluateur du lambda-calcul minimal
+
+```haskell
+-- 表达式 / Expressions
+data Expr = Var String | Lam String Expr | App Expr Expr | Lit Int | Add Expr Expr
+  deriving (Eq, Show)
+
+type Env = [(String, Value)]
+
+data Value = VInt Int | VFun (Value -> Value)
+
+-- 求值 / Evaluation (call-by-value)
+eval :: Env -> Expr -> Value
+eval env (Var x)        = maybe (error ("unbound: " ++ x)) id (lookup x env)
+eval env (Lam x body)   = VFun (\v -> eval ((x, v):env) body)
+eval env (App e1 e2)    = case eval env e1 of
+  VFun f -> f (eval env e2)
+  _      -> error "apply non-function"
+eval _   (Lit n)        = VInt n
+eval env (Add e1 e2)    = case (eval env e1, eval env e2) of
+  (VInt a, VInt b) -> VInt (a + b)
+  _                -> error "type error"
+
+-- 例 / Example: (\x. x + 1) 41
+example :: Value
+example = eval [] (App (Lam "x" (Add (Var "x") (Lit 1))) (Lit 41))
+```
+
+
 形式化语义研究自然语言的形式化表示和语义解释，为语言模型提供理论基础。
 
 Formal semantics studies the formal representation and semantic interpretation of natural language, providing theoretical foundations for language models.

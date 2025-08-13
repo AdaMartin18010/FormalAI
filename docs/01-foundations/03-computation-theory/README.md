@@ -40,10 +40,12 @@ Le calcul est le processus de traitement d'information qui transforme l'entrée 
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [1.1 形式化逻辑基础](01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
 - [1.2 数学基础](02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [3.2 程序合成](../03-formal-methods/02-program-synthesis/README.md) - 提供计算基础 / Provides computation foundation
 - [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供复杂度基础 / Provides complexity foundation
 
@@ -53,6 +55,7 @@ Le calcul est le processus de traitement d'information qui transforme l'entrée 
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [计算 / Computation / Berechnung / Calcul](#计算--computation--berechnung--calcul)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [1. 自动机理论 / Automata Theory / Automatentheorie / Théorie des automates](#1-自动机理论--automata-theory--automatentheorie--théorie-des-automates)
     - [1.1 有限自动机 / Finite Automata / Endliche Automaten / Automates finis](#11-有限自动机--finite-automata--endliche-automaten--automates-finis)

@@ -47,6 +47,7 @@ La représentation des connaissances est la description formelle des connaissanc
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [知识表示 / Knowledge Representation / Wissensrepräsentation / Représentation des connaissances](#知识表示--knowledge-representation--wissensrepräsentation--représentation-des-connaissances)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 语义网络 / Semantic Networks / Semantische Netze / Réseaux sémantiques](#1-语义网络--semantic-networks--semantische-netze--réseaux-sémantiques)
     - [1.1 节点与边 / Nodes and Edges / Knoten und Kanten / Nœuds et arêtes](#11-节点与边--nodes-and-edges--knoten-und-kanten--nœuds-et-arêtes)
     - [1.2 语义关系 / Semantic Relations / Semantische Relationen / Relations sémantiques](#12-语义关系--semantic-relations--semantische-relationen--relations-sémantiques)
@@ -81,9 +82,11 @@ La représentation des connaissances est la description formelle des connaissanc
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [4.2 形式化语义](02-formal-semantics/README.md) - 提供语义基础 / Provides semantic foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [4.4 推理机制](04-reasoning-mechanisms/README.md) - 提供知识基础 / Provides knowledge foundation
 - [5.3 跨模态推理](../05-multimodal-ai/03-cross-modal-reasoning/README.md) - 提供表示基础 / Provides representation foundation
 

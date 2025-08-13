@@ -11,6 +11,7 @@ Formal verification studies how to prove that systems satisfy their specificatio
 - [3.1 形式化验证 / Formal Verification / Formale Verifikation / Vérification formelle](#31-形式化验证--formal-verification--formale-verifikation--vérification-formelle)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 模型检测 / Model Checking](#1-模型检测--model-checking)
     - [1.1 状态空间搜索 / State Space Exploration](#11-状态空间搜索--state-space-exploration)
     - [1.2 线性时序逻辑 / Linear Temporal Logic](#12-线性时序逻辑--linear-temporal-logic)
@@ -61,9 +62,11 @@ Formal verification studies how to prove that systems satisfy their specificatio
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [7.3 安全机制](../07-alignment-safety/03-safety-mechanisms/README.md) - 提供验证基础 / Provides verification foundation
 - [6.3 鲁棒性理论](../06-interpretable-ai/03-robustness-theory/README.md) - 提供验证基础 / Provides verification foundation
 

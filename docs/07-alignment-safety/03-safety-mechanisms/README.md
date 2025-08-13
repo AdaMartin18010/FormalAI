@@ -11,6 +11,7 @@ Safety mechanisms study how to ensure the safety of AI systems during operation,
 - [7.3 安全机制 / Safety Mechanisms / Sicherheitsmechanismen / Mécanismes de sécurité](#73-安全机制--safety-mechanisms--sicherheitsmechanismen--mécanismes-de-sécurité)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 安全约束 / Safety Constraints](#1-安全约束--safety-constraints)
     - [1.1 约束类型 / Constraint Types](#11-约束类型--constraint-types)
     - [1.2 约束表示 / Constraint Representation](#12-约束表示--constraint-representation)
@@ -37,11 +38,13 @@ Safety mechanisms study how to ensure the safety of AI systems during operation,
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md) - 提供验证基础 / Provides verification foundation
 - [6.3 鲁棒性理论](../06-interpretable-ai/03-robustness-theory/README.md) - 提供鲁棒性基础 / Provides robustness foundation
 - [7.1 对齐理论](01-alignment-theory/README.md) - 提供对齐基础 / Provides alignment foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [9.3 伦理框架](../09-philosophy-ethics/03-ethical-frameworks/README.md) - 提供安全基础 / Provides safety foundation
 
 ---

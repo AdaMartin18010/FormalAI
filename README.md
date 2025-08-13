@@ -1,4 +1,4 @@
-# FormalAI
+# FormalAI / Formal AI / Formale KI / IA Formelle
 
 Formal AI model.
 

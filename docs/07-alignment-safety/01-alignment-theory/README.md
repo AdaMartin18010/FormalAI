@@ -52,6 +52,7 @@ L'alignement est le degré auquel le comportement du système d'IA est cohérent
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [对齐 / Alignment / Ausrichtung / Alignement](#对齐--alignment--ausrichtung--alignement)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 价值学习 / Value Learning / Werte-Lernen / Apprentissage des valeurs](#1-价值学习--value-learning--werte-lernen--apprentissage-des-valeurs)
     - [1.1 偏好学习 / Preference Learning / Präferenzlernen / Apprentissage des préférences](#11-偏好学习--preference-learning--präferenzlernen--apprentissage-des-préférences)
     - [1.2 奖励建模 / Reward Modeling / Belohnungsmodellierung / Modélisation de récompense](#12-奖励建模--reward-modeling--belohnungsmodellierung--modélisation-de-récompense)
@@ -82,11 +83,13 @@ L'alignement est le degré auquel le comportement du système d'IA est cohérent
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [2.3 强化学习理论](../02-machine-learning/03-reinforcement-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
 - [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供模型基础 / Provides model foundation
 - [6.2 公平性与偏见理论](../06-interpretable-ai/02-fairness-bias/README.md) - 提供公平性基础 / Provides fairness foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [7.2 价值学习理论](02-value-learning/README.md) - 提供对齐基础 / Provides alignment foundation
 - [7.3 安全机制](03-safety-mechanisms/README.md) - 提供对齐基础 / Provides alignment foundation
 

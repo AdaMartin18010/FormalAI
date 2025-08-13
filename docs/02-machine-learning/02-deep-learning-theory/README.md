@@ -45,6 +45,7 @@ L'apprentissage profond est une branche de l'apprentissage automatique qui utili
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [深度学习 / Deep Learning / Deep Learning / Apprentissage profond](#深度学习--deep-learning--deep-learning--apprentissage-profond)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 神经网络表达能力 / Neural Network Expressive Power / Ausdruckskraft neuronaler Netze / Puissance expressive des réseaux de neurones](#1-神经网络表达能力--neural-network-expressive-power--ausdruckskraft-neuronaler-netze--puissance-expressive-des-réseaux-de-neurones)
     - [1.1 通用逼近定理 / Universal Approximation Theorem / Universal Approximation Theorem / Théorème d'approximation universelle](#11-通用逼近定理--universal-approximation-theorem--universal-approximation-theorem--théorème-dapproximation-universelle)
     - [1.2 深度优势 / Depth Advantage / Tiefenvorteil / Avantage de profondeur](#12-深度优势--depth-advantage--tiefenvorteil--avantage-de-profondeur)
@@ -75,9 +76,11 @@ L'apprentissage profond est une branche de l'apprentissage automatique qui utili
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [2.1 统计学习理论](01-statistical-learning-theory/README.md) - 提供理论基础 / Provides theoretical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供模型基础 / Provides model foundation
 - [5.1 视觉-语言模型](../05-multimodal-ai/01-vision-language-models/README.md) - 提供神经网络基础 / Provides neural network foundation
 - [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation

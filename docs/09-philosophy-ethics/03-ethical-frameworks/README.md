@@ -54,12 +54,14 @@ Ethical frameworks provide moral guidance for the development and application of
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [7.2 价值学习理论](../07-alignment-safety/02-value-learning/README.md) - 提供价值基础 / Provides value foundation
 - [7.3 安全机制](../07-alignment-safety/03-safety-mechanisms/README.md) - 提供安全基础 / Provides safety foundation
 - [9.1 AI哲学](01-ai-philosophy/README.md) - 提供哲学基础 / Provides philosophical foundation
 - [9.2 意识理论](02-consciousness-theory/README.md) - 提供意识基础 / Provides consciousness foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - 无 / None / Keine / Aucune (最终应用层 / Final application layer)
 
 ---

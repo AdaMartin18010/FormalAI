@@ -52,6 +52,7 @@ L'émergence est des propriétés et comportements collectifs qui émergent dans
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [涌现 / Emergence / Emergenz / Émergence](#涌现--emergence--emergenz--émergence)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 涌现定义 / Emergence Definition / Emergenzdefinition / Définition de l'émergence](#1-涌现定义--emergence-definition--emergenzdefinition--définition-de-lémergence)
     - [1.1 涌现概念 / Emergence Concepts / Emergenzkonzepte / Concepts d'émergence](#11-涌现概念--emergence-concepts--emergenzkonzepte--concepts-démergence)
     - [1.2 涌现类型 / Types of Emergence / Emergenztypen / Types d'émergence](#12-涌现类型--types-of-emergence--emergenztypen--types-démergence)
@@ -78,9 +79,11 @@ L'émergence est des propriétés et comportements collectifs qui émergent dans
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [1.4 认知科学](../01-foundations/04-cognitive-science/README.md) - 提供认知基础 / Provides cognitive foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [8.2 复杂系统](02-complex-systems/README.md) - 提供涌现基础 / Provides emergence foundation
 - [8.3 自组织理论](03-self-organization/README.md) - 提供涌现基础 / Provides emergence foundation
 

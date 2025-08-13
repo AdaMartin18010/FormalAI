@@ -11,6 +11,7 @@ Type theory studies the mathematical foundations of type systems, providing theo
 - [3.3 类型理论 / Type Theory / Typentheorie / Théorie des types](#33-类型理论--type-theory--typentheorie--théorie-des-types)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 简单类型理论 / Simple Type Theory](#1-简单类型理论--simple-type-theory)
     - [1.1 类型语法 / Type Syntax](#11-类型语法--type-syntax)
     - [1.2 类型推导 / Type Inference](#12-类型推导--type-inference)
@@ -45,9 +46,11 @@ Type theory studies the mathematical foundations of type systems, providing theo
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [1.2 数学基础](../01-foundations/02-mathematical-foundations/README.md) - 提供集合论基础 / Provides set theory foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [4.2 形式化语义](../04-language-models/02-formal-semantics/README.md) - 提供类型基础 / Provides type foundation
 - [3.4 证明系统](04-proof-systems/README.md) - 提供类型基础 / Provides type foundation
 

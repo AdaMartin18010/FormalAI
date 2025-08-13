@@ -47,9 +47,11 @@ La logique formelle est la discipline mathématique qui étudie les formes valid
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - 无 / None / Keine / Aucun
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md) - 提供逻辑基础 / Provides logical foundation
 - [3.4 证明系统](../03-formal-methods/04-proof-systems/README.md) - 提供推理基础 / Provides reasoning foundation
 - [4.2 形式化语义](../04-language-models/02-formal-semantics/README.md) - 提供语义基础 / Provides semantic foundation
@@ -61,6 +63,7 @@ La logique formelle est la discipline mathématique qui étudie les formes valid
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [形式化逻辑 / Formal Logic / Formale Logik / Logique formelle](#形式化逻辑--formal-logic--formale-logik--logique-formelle)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [1. 命题逻辑 / Propositional Logic / Aussagenlogik / Logique propositionnelle](#1-命题逻辑--propositional-logic--aussagenlogik--logique-propositionnelle)
     - [1.1 基本概念 / Basic Concepts / Grundbegriffe / Concepts de base](#11-基本概念--basic-concepts--grundbegriffe--concepts-de-base)

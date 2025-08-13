@@ -11,6 +11,7 @@ AI philosophy studies fundamental questions about the nature of artificial intel
 - [9.1 AI哲学 / AI Philosophy / KI-Philosophie / Philosophie de l'IA](#91-ai哲学--ai-philosophy--ki-philosophie--philosophie-de-lia)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 智能的本质 / Nature of Intelligence](#1-智能的本质--nature-of-intelligence)
     - [1.1 计算主义 / Computationalism](#11-计算主义--computationalism)
     - [1.2 功能主义 / Functionalism](#12-功能主义--functionalism)
@@ -41,10 +42,12 @@ AI philosophy studies fundamental questions about the nature of artificial intel
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [1.4 认知科学](../01-foundations/04-cognitive-science/README.md) - 提供认知基础 / Provides cognitive foundation
 - [8.3 自组织理论](../08-emergence-complexity/03-self-organization/README.md) - 提供组织基础 / Provides organization foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [9.2 意识理论](02-consciousness-theory/README.md) - 提供哲学基础 / Provides philosophical foundation
 - [9.3 伦理框架](03-ethical-frameworks/README.md) - 提供哲学基础 / Provides philosophical foundation
 

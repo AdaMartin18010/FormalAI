@@ -46,6 +46,7 @@ La synthèse de programmes est le processus de dérivation automatique de progra
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [程序合成 / Program Synthesis / Programmsynthese / Synthèse de programmes](#程序合成--program-synthesis--programmsynthese--synthèse-de-programmes)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 语法引导合成 / Syntax-Guided Synthesis / Syntaxgesteuerte Synthese / Synthèse guidée par syntaxe](#1-语法引导合成--syntax-guided-synthesis--syntaxgesteuerte-synthese--synthèse-guidée-par-syntaxe)
     - [1.1 语法定义 / Syntax Definition / Syntaxdefinition / Définition de syntaxe](#11-语法定义--syntax-definition--syntaxdefinition--définition-de-syntaxe)
     - [1.2 语法约束 / Syntax Constraints / Syntaxconstraints / Contraintes de syntaxe](#12-语法约束--syntax-constraints--syntaxconstraints--contraintes-de-syntaxe)
@@ -76,9 +77,11 @@ La synthèse de programmes est le processus de dérivation automatique de progra
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [1.3 计算理论](../01-foundations/03-computation-theory/README.md) - 提供计算基础 / Provides computation foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供生成基础 / Provides generation foundation
 
 ---

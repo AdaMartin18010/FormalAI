@@ -11,6 +11,7 @@ Value learning theory studies how AI systems can learn, understand, and follow h
 - [7.2 价值学习理论 / Value Learning Theory / Wertlern-Theorie / Théorie de l'apprentissage des valeurs](#72-价值学习理论--value-learning-theory--wertlern-theorie--théorie-de-lapprentissage-des-valeurs)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 价值理论基础 / Value Theory Foundations](#1-价值理论基础--value-theory-foundations)
     - [1.1 价值定义 / Value Definition](#11-价值定义--value-definition)
     - [1.2 价值类型 / Value Types](#12-价值类型--value-types)
@@ -49,10 +50,12 @@ Value learning theory studies how AI systems can learn, understand, and follow h
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [2.3 强化学习理论](../02-machine-learning/03-reinforcement-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
 - [7.1 对齐理论](01-alignment-theory/README.md) - 提供对齐基础 / Provides alignment foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [9.3 伦理框架](../09-philosophy-ethics/03-ethical-frameworks/README.md) - 提供价值基础 / Provides value foundation
 
 ---

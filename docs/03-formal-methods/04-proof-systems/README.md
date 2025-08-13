@@ -2,6 +2,35 @@
 
 ## 概述 / Overview
 
+### 0. 公理化与推理规则总览 / Axiomatization and Rules / Axiomatisierung und Regeln / Axiomatisation et règles
+
+- 语法层级：公式、证明对象、推演树
+- 语义层级：模型、可满足性、有效性
+- 推理基本律：合取/析取/蕴含/否定、自反/交换/结合、同一/爆炸
+
+### 0.1 典型自然演绎规则 / Natural Deduction Rules
+
+- 合取引入：(∧I) 从 \(\varphi\), \(\psi\) 推出 \(\varphi \land \psi\)
+- 合取消去：(∧E) 从 \(\varphi \land \psi\) 推出 \(\varphi\) 或 \(\psi\)
+- 析取引入：(∨I) 从 \(\varphi\) 推出 \(\varphi \lor \psi\)
+- 析取消去：(∨E) 由 \(\varphi \Rightarrow \chi\), \(\psi \Rightarrow \chi\), \(\varphi \lor \psi\) 推出 \(\chi\)
+- 蕴含引入：(→I) 由假设 \(\varphi\) 推出 \(\psi\)，排出假设得 \(\varphi \to \psi\)
+- 蕴含消去：(→E, MP) 由 \(\varphi\), \(\varphi \to \psi\) 推出 \(\psi\)
+- 否定引入：(¬I) 从 \(\varphi\) 推出矛盾得 \(\neg \varphi\)
+- 否定消去：(¬E) 由 \(\neg\neg \varphi\) 推出 \(\varphi\)
+
+### 0.2 序列演算关键规则 / Sequent Calculus Key Rules
+
+- 结构规则：弱化、收缩、交换
+- 逻辑规则：每个联结词的左/右规则（L/R）
+- 归结与Cut：Cut消去性质与可消去性
+
+### 0.3 归结与表方法 / Resolution and Tableau
+
+- 归结：CNF 归一化 + 子句对归结
+- 表证明：系统化分裂拓展直到闭合
+
+
 证明系统研究形式化证明的构造和验证，为FormalAI提供自动化定理证明和形式化推理的理论基础。
 
 Proof systems study the construction and verification of formal proofs, providing theoretical foundations for automated theorem proving and formal reasoning in FormalAI.
@@ -11,6 +40,7 @@ Proof systems study the construction and verification of formal proofs, providin
 - [3.4 证明系统 / Proof Systems / Beweissysteme / Systèmes de preuve](#34-证明系统--proof-systems--beweissysteme--systèmes-de-preuve)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 自然演绎 / Natural Deduction](#1-自然演绎--natural-deduction)
     - [1.1 自然演绎规则 / Natural Deduction Rules](#11-自然演绎规则--natural-deduction-rules)
     - [1.2 自然演绎证明 / Natural Deduction Proof](#12-自然演绎证明--natural-deduction-proof)
@@ -61,10 +91,12 @@ Proof systems study the construction and verification of formal proofs, providin
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
 - [3.3 类型理论](03-type-theory/README.md) - 提供类型基础 / Provides type foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供证明基础 / Provides proof foundation
 
 ---

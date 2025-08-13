@@ -11,6 +11,7 @@ Reinforcement learning theory studies how agents learn optimal policies through 
 - [2.3 强化学习理论 / Reinforcement Learning Theory / Verstärkungslern-Theorie / Théorie de l'apprentissage par renforcement](#23-强化学习理论--reinforcement-learning-theory--verstärkungslern-theorie--théorie-de-lapprentissage-par-renforcement)
   - [概述 / Overview](#概述--overview)
   - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 马尔可夫决策过程 / Markov Decision Processes](#1-马尔可夫决策过程--markov-decision-processes)
     - [1.1 MDP形式化 / MDP Formulation](#11-mdp形式化--mdp-formulation)
     - [1.2 策略与价值函数 / Policy and Value Functions](#12-策略与价值函数--policy-and-value-functions)
@@ -61,9 +62,11 @@ Reinforcement learning theory studies how agents learn optimal policies through 
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [2.1 统计学习理论](01-statistical-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [7.1 对齐理论](../07-alignment-safety/01-alignment-theory/README.md) - 提供学习基础 / Provides learning foundation
 - [7.2 价值学习理论](../07-alignment-safety/02-value-learning/README.md) - 提供价值基础 / Provides value foundation
 

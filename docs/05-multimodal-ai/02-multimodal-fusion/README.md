@@ -46,6 +46,7 @@ La fusion multimodale est le processus d'intégration d'informations de différe
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [多模态融合 / Multimodal Fusion / Multimodale Fusion / Fusion multimodale](#多模态融合--multimodal-fusion--multimodale-fusion--fusion-multimodale)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 早期融合 / Early Fusion / Frühe Fusion / Fusion précoce](#1-早期融合--early-fusion--frühe-fusion--fusion-précoce)
     - [1.1 特征级融合 / Feature-Level Fusion / Merkmalsebenen-Fusion / Fusion au niveau des caractéristiques](#11-特征级融合--feature-level-fusion--merkmalsebenen-fusion--fusion-au-niveau-des-caractéristiques)
     - [1.2 原始数据融合 / Raw Data Fusion / Rohdatenfusion / Fusion de données brutes](#12-原始数据融合--raw-data-fusion--rohdatenfusion--fusion-de-données-brutes)
@@ -60,7 +61,7 @@ La fusion multimodale est le processus d'intégration d'informations de différe
     - [3.3 多头注意力融合 / Multi-Head Attention Fusion / Multi-Head-Aufmerksamkeitsfusion / Fusion par attention multi-têtes](#33-多头注意力融合--multi-head-attention-fusion--multi-head-aufmerksamkeitsfusion--fusion-par-attention-multi-têtes)
   - [4. 层次融合 / Hierarchical Fusion / Hierarchische Fusion / Fusion hiérarchique](#4-层次融合--hierarchical-fusion--hierarchische-fusion--fusion-hiérarchique)
     - [4.1 多尺度融合 / Multi-Scale Fusion / Multiskalenfusion / Fusion multi-échelle](#41-多尺度融合--multi-scale-fusion--multiskalenfusion--fusion-multi-échelle)
-    - [4.2 金字塔融合 / Pyramid Fusion / Pyramidenfusion / Fusion pyramidale](#42-金字塔融合--pyramid-fusion--pyramidenfusion--fusion-pyramidale]
+    - [4.2 金字塔融合 / Pyramid Fusion / Pyramidenfusion / Fusion pyramidale](#42-金字塔融合--pyramid-fusion--pyramidenfusion--fusion-pyramidale)
     - [4.3 树状融合 / Tree Fusion / Baumfusion / Fusion arborescente](#43-树状融合--tree-fusion--baumfusion--fusion-arborescente)
   - [5. 动态融合 / Dynamic Fusion / Dynamische Fusion / Fusion dynamique](#5-动态融合--dynamic-fusion--dynamische-fusion--fusion-dynamique)
     - [5.1 自适应融合 / Adaptive Fusion / Adaptive Fusion / Fusion adaptative](#51-自适应融合--adaptive-fusion--adaptive-fusion--fusion-adaptative)
@@ -76,9 +77,11 @@ La fusion multimodale est le processus d'intégration d'informations de différe
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
 - [5.1 视觉-语言模型](01-vision-language-models/README.md) - 提供模型基础 / Provides model foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
+
 - [5.3 跨模态推理](03-cross-modal-reasoning/README.md) - 提供融合基础 / Provides fusion foundation
 
 ---
