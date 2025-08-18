@@ -38,12 +38,37 @@ Le raisonnement cross-modal est le processus de transfert d'informations et de r
 - 跨模态理解 / Cross-modal understanding / Kreuzmodales Verständnis / Compréhension cross-modale
 - 跨模态推理 / Cross-modal inference / Kreuzmodale Inferenz / Inférence cross-modale
 
+### 0. 语义图与消息传递 / Semantic Graph and Message Passing / Semantischer Graph und Nachrichtenweitergabe / Graphe sémantique et passage de messages
+
+- 单步消息传递：
+
+\[ h_i^{(t+1)} = \phi\!\left( h_i^{(t)},\; \sum_{j \in \mathcal{N}(i)} W h_j^{(t)} \right) \]
+
+#### Rust示例：一轮消息聚合
+
+```rust
+fn msg_passing(h: &Vec<Vec<f32>>, adj: &Vec<Vec<usize>>, w: f32) -> Vec<Vec<f32>> {
+    let n = h.len();
+    let mut out = vec![vec![0.0f32; h[0].len()]; n];
+    for i in 0..n {
+        let mut agg = vec![0.0f32; h[0].len()];
+        for &j in &adj[i] {
+            for k in 0..agg.len() { agg[k] += w * h[j][k]; }
+        }
+        for k in 0..agg.len() { out[i][k] = (h[i][k] + agg[k]).tanh(); }
+    }
+    out
+}
+```
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [5.3 跨模态推理 / Cross-Modal Reasoning / Kreuzmodales Schlussfolgern / Raisonnement cross-modal](#53-跨模态推理--cross-modal-reasoning--kreuzmodales-schlussfolgern--raisonnement-cross-modal)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [跨模态推理 / Cross-Modal Reasoning / Kreuzmodales Schlussfolgern / Raisonnement cross-modal](#跨模态推理--cross-modal-reasoning--kreuzmodales-schlussfolgern--raisonnement-cross-modal)
+    - [0. 语义图与消息传递 / Semantic Graph and Message Passing / Semantischer Graph und Nachrichtenweitergabe / Graphe sémantique et passage de messages](#0-语义图与消息传递--semantic-graph-and-message-passing--semantischer-graph-und-nachrichtenweitergabe--graphe-sémantique-et-passage-de-messages)
+      - [Rust示例：一轮消息聚合](#rust示例一轮消息聚合)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 跨模态检索 / Cross-Modal Retrieval / Kreuzmodale Abfrage / Récupération cross-modale](#1-跨模态检索--cross-modal-retrieval--kreuzmodale-abfrage--récupération-cross-modale)

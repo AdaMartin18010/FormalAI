@@ -55,6 +55,16 @@ La théorie des ensembles est la branche mathématique qui étudie les ensembles
 - [2.2 深度学习理论](../02-machine-learning/02-deep-learning-theory/README.md) - 提供优化基础 / Provides optimization foundation
 - [3.3 类型理论](../03-formal-methods/03-type-theory/README.md) - 提供集合论基础 / Provides set theory foundation
 
+### 0. 常用数学记号 / Common Mathematical Notation / Übliche mathematische Notation / Notation mathématique usuelle
+
+- 集合：\( \mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C} \)
+- 映射与集合运算：\( f: A \to B \), \( \mathcal{P}(A) \)（幂集）, \( A\times B \), \( A\cup B \), \( A\cap B \), \( A\setminus B \)
+- 量词：\( \forall, \exists \)
+- 向量与矩阵：\( \mathbf{x} \in \mathbb{R}^n,\; \mathbf{A} \in \mathbb{R}^{m\times n} \)
+- 范数与内积：\( \lVert x \rVert_2, \; \langle x, y \rangle \)
+
+这些记号在全书各章反复出现，建议读者先熟悉。
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [1.2 数学基础 / Mathematical Foundations / Mathematische Grundlagen / Fondements mathématiques](#12-数学基础--mathematical-foundations--mathematische-grundlagen--fondements-mathématiques)

@@ -6,10 +6,36 @@
 
 Fairness and bias theory studies how to ensure AI systems do not produce discriminatory bias in decision-making processes, providing fair treatment for all users. This document covers fairness definitions, bias detection, mitigation methods, and evaluation frameworks.
 
+### 0. 关键公平性定义 / Key Fairness Definitions / Zentrale Fairness-Definitionen / Définitions clés de l'équité
+
+- 人口平价（DP）: \( P(\hat{Y}=1\mid A=a) = P(\hat{Y}=1\mid A=b) \)
+- 机会平等（EOpp）: \( P(\hat{Y}=1\mid Y=1,A=a) = P(\hat{Y}=1\mid Y=1,A=b) \)
+- 平等机会（EO）: TPR与FPR在各组接近
+
+#### Rust示例：按组统计DP/EOpp
+
+```rust
+use std::collections::HashMap;
+
+struct Stat { tp:u32, fp:u32, tn:u32, fn_:u32 }
+
+fn rate(p: u32, n: u32) -> f32 { if p+n==0 {0.0} else { p as f32 / (p+n) as f32 } }
+
+fn dp(group: &HashMap<String, Stat>) -> Vec<(String, f32)> {
+    group.iter().map(|(g,s)| (g.clone(), rate(s.tp+s.fp, s.tp+s.fp+s.tn+s.fn_))).collect()
+}
+
+fn eopp(group: &HashMap<String, Stat>) -> Vec<(String, f32)> { // TPR
+    group.iter().map(|(g,s)| (g.clone(), rate(s.tp, s.tp+s.fn_))).collect()
+}
+```
+
 ## 目录 / Table of Contents
 
 - [6.2 公平性与偏见理论 / Fairness and Bias Theory / Fairness- und Bias-Theorie / Théorie de l'équité et des biais](#62-公平性与偏见理论--fairness-and-bias-theory--fairness--und-bias-theorie--théorie-de-léquité-et-des-biais)
   - [概述 / Overview](#概述--overview)
+    - [0. 关键公平性定义 / Key Fairness Definitions / Zentrale Fairness-Definitionen / Définitions clés de l'équité](#0-关键公平性定义--key-fairness-definitions--zentrale-fairness-definitionen--définitions-clés-de-léquité)
+      - [Rust示例：按组统计DP/EOpp](#rust示例按组统计dpeopp)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 公平性定义 / Fairness Definitions](#1-公平性定义--fairness-definitions)

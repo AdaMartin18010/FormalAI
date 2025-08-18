@@ -10,6 +10,72 @@ Die Wissensrepräsentation untersucht, wie Wissen in Computern dargestellt und o
 
 La représentation des connaissances étudie comment représenter et organiser les connaissances dans les ordinateurs, fournissant les fondements théoriques pour la gestion des connaissances et le raisonnement dans FormalAI.
 
+### 1. 描述逻辑基本记号 / Description Logic Notation / Beschreibunglogik-Notation / Notation de la logique de description
+
+- TBox（术语盒）: 概念与关系的包含、公理与等价，如 \(C \sqsubseteq D\), \(C \equiv D\)
+- ABox（断言盒）: 个体上的断言，如 \(a : C\), \((a,b) : R\)
+- 语义（满足关系）/ Semantics:
+  - \(\mathcal{I} = (\Delta^{\mathcal{I}}, \cdot^{\mathcal{I}})\)
+  - \(\mathcal{I} \vDash C \sqsubseteq D \iff C^{\mathcal{I}} \subseteq D^{\mathcal{I}}\)
+  - \(\mathcal{I} \vDash a : C \iff a^{\mathcal{I}} \in C^{\mathcal{I}}\)
+
+### 2. Rust示例：极简DL一致性检查器 / Minimal DL Consistency Checker / Minimaler DL-Konsistenzprüfer / Vérificateur de cohérence DL minimal
+
+```rust
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
+enum Concept { Atomic(String), Not(Box<Concept>) }
+
+#[derive(Clone, Debug)]
+enum Assertion { Inst(String, Concept) } // a : C
+
+use std::collections::{HashSet, HashMap};
+
+type ABox = Vec<Assertion>;
+type Subsumption = (String, String); // C ⊑ D
+type TBox = Vec<Subsumption>;
+
+fn entails(tbox: &TBox, c: &str, d: &str) -> bool {
+    let mut g: HashMap<String, HashSet<String>> = HashMap::new();
+    for (a,b) in tbox { g.entry(a.clone()).or_default().insert(b.clone()); }
+    let mut stack = vec![c.to_string()];
+    let mut seen = HashSet::new();
+    while let Some(x) = stack.pop() {
+        if x == d { return true; }
+        if !seen.insert(x.clone()) { continue; }
+        if let Some(ns) = g.get(&x) { for n in ns { stack.push(n.clone()); } }
+    }
+    c == d
+}
+
+fn contradictory(a: &Assertion, b: &Assertion, tbox: &TBox) -> bool {
+    match (a, b) {
+        (Assertion::Inst(x1, Concept::Atomic(c)), Assertion::Inst(x2, Concept::Not(nc))) if x1==x2 => {
+            if let Concept::Atomic(d) = &**nc {
+                entails(tbox, c, d) || entails(tbox, d, c) || c==d
+            } else { false }
+        }
+        (Assertion::Inst(_, Concept::Not(_)), Assertion::Inst(_, Concept::Atomic(_))) => contradictory(b, a, tbox),
+        _ => false
+    }
+}
+
+fn is_consistent(tbox: &TBox, abox: &ABox) -> bool {
+    for i in 0..abox.len() { for j in i+1..abox.len() {
+        if contradictory(&abox[i], &abox[j], tbox) { return false; }
+    }}
+    true
+}
+
+fn demo() {
+    let tbox = vec![("Student".into(), "Person".into())];
+    let abox = vec![
+        Assertion::Inst("alice".into(), Concept::Atomic("Student".into())),
+        Assertion::Inst("alice".into(), Concept::Not(Box::new(Concept::Atomic("Person".into())))),
+    ];
+    assert_eq!(is_consistent(&tbox, &abox), false);
+}
+```
+
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 
 ### 知识表示 / Knowledge Representation / Wissensrepräsentation / Représentation des connaissances

@@ -10,6 +10,43 @@ Schlussfolgerungsmechanismen untersuchen, wie aus vorhandenem Wissen neues Wisse
 
 Les mécanismes de raisonnement étudient comment dériver de nouvelles connaissances à partir de connaissances existantes, fournissant les fondements théoriques pour le raisonnement intelligent et la prise de décision dans FormalAI.
 
+### 1. Horn子句与前向链推理 / Horn Clauses and Forward Chaining / Horn-Klauseln und Vorwärtsverkettung / Clauses de Horn et chaînage avant
+
+- Horn子句：形如 \((A_1 \land \cdots \land A_n) \to B\) 或事实 \(B\)
+- 语义：若所有前提为真，则结论为真；采用单调闭包求解
+- 前向链算法（不动点）：从事实集出发，不断触发可满足前提的规则，直至不再新增事实
+
+```rust
+use std::collections::{HashSet, HashMap};
+
+#[derive(Clone, Debug)]
+struct Rule { premises: Vec<String>, conclusion: String }
+
+fn forward_chain(mut facts: HashSet<String>, rules: &[Rule]) -> HashSet<String> {
+    let mut changed = true;
+    while changed {
+        changed = false;
+        for r in rules {
+            if r.premises.iter().all(|p| facts.contains(p)) && !facts.contains(&r.conclusion) {
+                facts.insert(r.conclusion.clone());
+                changed = true;
+            }
+        }
+    }
+    facts
+}
+
+fn demo() {
+    let facts: HashSet<String> = ["A".into()].into_iter().collect();
+    let rules = vec![
+        Rule { premises: vec!["A".into()], conclusion: "B".into() },
+        Rule { premises: vec!["B".into()], conclusion: "C".into() },
+    ];
+    let closure = forward_chain(facts, &rules);
+    assert!(closure.contains("C"));
+}
+```
+
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 
 ### 推理 / Reasoning / Schlussfolgerung / Raisonnement

@@ -6,10 +6,29 @@
 
 Robustness theory studies the stability and reliability of AI systems when facing various perturbations, attacks, and abnormal situations. This document covers the theoretical foundations, evaluation methods, enhancement techniques, and practical applications of robustness.
 
+### 0. PGD对抗攻击 / PGD Adversarial Attack / PGD-Angriff / Attaque PGD
+
+- 更新：
+
+\[ x^{t+1} = \Pi_{\mathcal{B}_{\epsilon}(x^0)}\big( x^t + \alpha\, \text{sign}(\nabla_x L(f(x^t), y)) \big) \]
+
+#### Rust示例：标量损失的PGD一轮
+
+```rust
+fn sign(x: f32) -> f32 { if x>0.0 { 1.0 } else if x<0.0 { -1.0 } else { 0.0 } }
+
+fn pgd_step(x: f32, grad: f32, x0: f32, eps: f32, alpha: f32) -> f32 {
+    let x_new = x + alpha * sign(grad);
+    (x_new - x0).clamp(-eps, eps) + x0
+}
+```
+
 ## 目录 / Table of Contents
 
 - [6.3 鲁棒性理论 / Robustness Theory / Robustheitstheorie / Théorie de la robustesse](#63-鲁棒性理论--robustness-theory--robustheitstheorie--théorie-de-la-robustesse)
   - [概述 / Overview](#概述--overview)
+    - [0. PGD对抗攻击 / PGD Adversarial Attack / PGD-Angriff / Attaque PGD](#0-pgd对抗攻击--pgd-adversarial-attack--pgd-angriff--attaque-pgd)
+      - [Rust示例：标量损失的PGD一轮](#rust示例标量损失的pgd一轮)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 鲁棒性基础 / Robustness Foundations](#1-鲁棒性基础--robustness-foundations)

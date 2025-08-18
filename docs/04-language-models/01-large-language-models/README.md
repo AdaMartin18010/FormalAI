@@ -45,6 +45,30 @@ Les grands modèles de langage sont des modèles de langage pré-entraînés à 
 - 计算复杂度 / Computational complexity / Berechnungskomplexität / Complexité computationnelle
 - 泛化能力 / Generalization capability / Generalisierungsfähigkeit / Capacité de généralisation
 
+### 0. 统一视角：CLM/MLM/对比学习 / Unified View: CLM/MLM/Contrastive / Vereinheitlichte Sicht: CLM/MLM/Kontrastiv / Vue unifiée: CLM/MLM/Contrastif
+
+- CLM：\( \mathcal{L}_{\text{CLM}} = -\sum_{t} \log p_\theta(x_t \mid x_{<t}) \)
+- MLM：掩码位置集 \(M\) 上的交叉熵
+- 对比学习（文本-文本/模态-模态）：InfoNCE 形式
+
+#### Rust示例：缩放点积注意力（单查询）
+```rust
+fn dot(a:&[f32], b:&[f32])->f32{ a.iter().zip(b).map(|(x,y)| x*y).sum() }
+fn softmax(xs:&[f32])->Vec<f32>{
+    let m=xs.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
+    let ex:Vec<f32>=xs.iter().map(|v| (v-m).exp()).collect();
+    let s: f32 = ex.iter().sum();
+    ex.into_iter().map(|v| v/s).collect()
+}
+fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
+    let logits: Vec<f32> = ks.iter().map(|k| dot(q,k)/tau).collect();
+    let w=softmax(&logits);
+    let mut out=vec![0.0; vs[0].len()];
+    for (wi, v) in w.iter().zip(vs){ for i in 0..out.len(){ out[i]+= wi* v[i]; } }
+    out
+}
+```
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [4.1 大语言模型理论 / Large Language Model Theory / Theorie der großen Sprachmodelle / Théorie des grands modèles de langage](#41-大语言模型理论--large-language-model-theory--theorie-der-großen-sprachmodelle--théorie-des-grands-modèles-de-langage)

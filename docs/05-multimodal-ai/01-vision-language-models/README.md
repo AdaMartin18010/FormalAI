@@ -38,12 +38,59 @@ Un modèle vision-langage est un modèle d'IA capable de traiter simultanément 
 - 视觉问答 / Visual question answering / Visuelle Fragebeantwortung / Question-réponse visuelle
 - 图像描述 / Image captioning / Bildbeschreibung / Description d'image
 
+### 0. 对比学习目标（InfoNCE/CLIP）/ Contrastive Objective / Kontrastives Ziel / Objectif contrastif
+
+- 归一化嵌入：
+
+\[ \tilde{u} = \frac{u}{\lVert u \rVert},\quad \tilde{v} = \frac{v}{\lVert v \rVert} \]
+
+- 相似度：\( s_{ij} = \tilde{u}_i^{\top}\tilde{v}_j / \tau \)（温度 \(\tau>0\)）
+- 双向交叉熵损失：
+
+\[ \mathcal{L} = \frac{1}{2} \big( \text{CE}(i \to j) + \text{CE}(j \to i) \big) \]
+
+#### Rust示例：批内对比学习损失（余弦相似度）
+
+```rust
+fn l2_normalize(x: &mut Vec<f32>) { let n = (x.iter().map(|a| a*a).sum::<f32>()).sqrt(); if n>0.0 { for a in x { *a /= n; } } }
+
+fn cosine_sim(a: &Vec<f32>, b: &Vec<f32>) -> f32 { a.iter().zip(b).map(|(x,y)| x*y).sum() }
+
+fn clip_loss(us: &mut [Vec<f32>], vs: &mut [Vec<f32>], tau: f32) -> f32 {
+    for u in us.iter_mut() { l2_normalize(u); }
+    for v in vs.iter_mut() { l2_normalize(v); }
+    let n = us.len();
+    let mut loss = 0.0f32;
+    // i->j
+    for i in 0..n { 
+        let logits: Vec<f32> = (0..n).map(|j| cosine_sim(&us[i], &vs[j]) / tau).collect();
+        let max_l = logits.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
+        let exps: Vec<f32> = logits.iter().map(|l| (l - max_l).exp()).collect();
+        let denom: f32 = exps.iter().sum();
+        let logp = (exps[i] / denom).ln();
+        loss += -logp;
+    }
+    // j->i
+    for j in 0..n { 
+        let logits: Vec<f32> = (0..n).map(|i| cosine_sim(&us[i], &vs[j]) / tau).collect();
+        let max_l = logits.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
+        let exps: Vec<f32> = logits.iter().map(|l| (l - max_l).exp()).collect();
+        let denom: f32 = exps.iter().sum();
+        let logp = (exps[j] / denom).ln();
+        loss += -logp;
+    }
+    loss / (2.0 * n as f32)
+}
+```
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [5.1 视觉-语言模型 / Vision-Language Models / Vision-Sprach-Modelle / Modèles vision-langage](#51-视觉-语言模型--vision-language-models--vision-sprach-modelle--modèles-vision-langage)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [视觉-语言模型 / Vision-Language Model / Vision-Sprach-Modell / Modèle vision-langage](#视觉-语言模型--vision-language-model--vision-sprach-modell--modèle-vision-langage)
+    - [0. 对比学习目标（InfoNCE/CLIP）/ Contrastive Objective / Kontrastives Ziel / Objectif contrastif](#0-对比学习目标infonceclip-contrastive-objective--kontrastives-ziel--objectif-contrastif)
+      - [Rust示例：批内对比学习损失（余弦相似度）](#rust示例批内对比学习损失余弦相似度)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 视觉编码 / Visual Encoding / Visuelle Kodierung / Encodage visuel](#1-视觉编码--visual-encoding--visuelle-kodierung--encodage-visuel)

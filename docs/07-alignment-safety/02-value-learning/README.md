@@ -6,6 +6,26 @@
 
 Value learning theory studies how AI systems can learn, understand, and follow human values. This document covers the theoretical foundations, methodological systems, and technical implementations of value learning.
 
+### 0. 最大熵逆强化学习（MaxEnt IRL）/ Maximum Entropy IRL / Max-Ent-IRL / IRL à entropie maximale
+
+- 轨迹分布：
+
+\[ P(\tau) \propto \exp\big( \sum_{t} r_\theta(s_t, a_t) \big) \]
+
+- 目标（最大化专家轨迹似然）：
+
+\[ \max_\theta \; \sum_{\tau \in \mathcal{D}} \log P_\theta(\tau) \]
+
+- 特征期望匹配思想：学习到的奖励应使得模型的特征期望接近专家。
+
+#### Rust示例：给定每步奖励的轨迹对数概率
+```rust
+pub fn logprob_traj(rewards: &[f32], tau: f32) -> f32 {
+    let s: f32 = rewards.iter().sum();
+    s / tau  // 归一化常数省略于玩具实现
+}
+```
+
 ## 目录 / Table of Contents
 
 - [7.2 价值学习理论 / Value Learning Theory / Wertlern-Theorie / Théorie de l'apprentissage des valeurs](#72-价值学习理论--value-learning-theory--wertlern-theorie--théorie-de-lapprentissage-des-valeurs)

@@ -39,6 +39,32 @@ La fusion multimodale est le processus d'intégration d'informations de différe
 - 层次融合 / Hierarchical fusion / Hierarchische Fusion / Fusion hiérarchique
 - 动态融合 / Dynamic fusion / Dynamische Fusion / Fusion dynamique
 
+### 0. 注意力融合与门控 / Attention Fusion and Gating / Aufmerksamkeitsfusion und Gate / Fusion par attention et portes
+
+- 注意力融合：
+
+\[ F = \text{softmax}\!\left( \frac{QK^{\top}}{\sqrt{d}} \right) V \]
+
+- 门控融合（两模态）：
+
+\[ g = \sigma(W_g [x;y]),\quad z = g \odot x + (1-g) \odot y \]
+
+#### Rust示例：简单门控融合
+
+```rust
+fn sigmoid(x: f32) -> f32 { 1.0 / (1.0 + (-x).exp()) }
+
+fn gated_fusion(x: &[f32], y: &[f32], w_g: &[f32]) -> Vec<f32> {
+    assert_eq!(x.len(), y.len());
+    assert_eq!(w_g.len(), x.len() + y.len());
+    let mut s = 0.0f32;
+    for (i, xv) in x.iter().enumerate() { s += w_g[i] * *xv; }
+    for (j, yv) in y.iter().enumerate() { s += w_g[x.len()+j] * *yv; }
+    let g = sigmoid(s);
+    x.iter().zip(y).map(|(a,b)| g* *a + (1.0-g)* *b).collect()
+}
+```
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [5.2 多模态融合 / Multimodal Fusion / Multimodale Fusion / Fusion multimodale](#52-多模态融合--multimodal-fusion--multimodale-fusion--fusion-multimodale)

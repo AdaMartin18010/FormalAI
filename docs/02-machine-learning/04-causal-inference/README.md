@@ -6,6 +6,22 @@
 
 Causal inference theory studies how to identify and estimate causal relationships from observational data, providing theoretical foundations for decision-making and intervention in AI systems.
 
+### do-演算与调整公式 / Do-Calculus and Adjustment / Do-Kalkül und Adjustierung / Calcul do et ajustement
+
+- 后门准则（Backdoor Criterion）: 集合 \(Z\) 阻断 \(X\to Y\) 所有后门路径且不包含 \(X\) 的后代
+- 后门调整：
+
+\[ P(y\mid do(x)) = \sum_{z} P(y\mid x,z) P(z) \]
+
+- 前门调整（Frontdoor，存在适当中介 \(Z\) 时）：
+
+\[ P(y\mid do(x)) = \sum_{z} P(z\mid x) \sum_{x'} P(y\mid z, x') P(x') \]
+
+- do-演算规则（示意）：
+  1) 插入/删除观测
+  2) 插入/删除干预
+  3) 交换干预与观测（满足相应d-分离条件）
+
 ## 目录 / Table of Contents
 
 - [2.4 因果推理理论 / Causal Inference Theory / Kausale Inferenztheorie / Théorie de l'inférence causale](#24-因果推理理论--causal-inference-theory--kausale-inferenztheorie--théorie-de-linférence-causale)

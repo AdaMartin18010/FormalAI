@@ -44,7 +44,6 @@ example :: Value
 example = eval [] (App (Lam "x" (Add (Var "x") (Lit 1))) (Lit 41))
 ```
 
-
 形式化语义研究自然语言的形式化表示和语义解释，为语言模型提供理论基础。
 
 Formal semantics studies the formal representation and semantic interpretation of natural language, providing theoretical foundations for language models.
@@ -53,6 +52,8 @@ Formal semantics studies the formal representation and semantic interpretation o
 
 - [4.2 形式化语义 / Formal Semantics / Formale Semantik / Sémantique formelle](#42-形式化语义--formal-semantics--formale-semantik--sémantique-formelle)
   - [概述 / Overview](#概述--overview)
+    - [1. 语义学基本记号 / Semantic Notation / Semantische Notation / Notation sémantique](#1-语义学基本记号--semantic-notation--semantische-notation--notation-sémantique)
+    - [2. Haskell示例：极简Lambda演算求值 / Minimal Lambda Calculus Evaluator / Minimaler Lambda-Kalkül-Auswerter / Évaluateur du lambda-calcul minimal](#2-haskell示例极简lambda演算求值--minimal-lambda-calculus-evaluator--minimaler-lambda-kalkül-auswerter--évaluateur-du-lambda-calcul-minimal)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 蒙塔古语法 / Montague Grammar](#1-蒙塔古语法--montague-grammar)

@@ -10,6 +10,72 @@ Die Programmsynthese ist der Prozess der automatischen Generierung von Programme
 
 La synthèse de programmes est le processus de génération automatique de programmes satisfaisant des spécifications données, fournissant les fondements théoriques pour la programmation automatisée et la génération de code dans FormalAI.
 
+### 0. 典型框架：CEGIS / Typical Framework: CEGIS / Typischer Rahmen: CEGIS / Cadre typique : CEGIS
+
+- 目标：寻找满足规范 \(\varphi\) 的程序候选 \(P\)
+- 过程：
+  1) 合成器 S 根据当前反例集 E 产生候选 \(P\)
+  2) 验证器 V 检验 \(P \models \varphi\)，如失败给出新反例加入 E
+  3) 迭代直至通过或搜索空间耗尽
+
+#### Rust示例：二元布尔CEGIS玩具实现 / Toy Boolean CEGIS (Rust)
+
+```rust
+#[derive(Clone, Debug)]
+enum Expr { X, Y, Not(Box<Expr>), And(Box<Expr>, Box<Expr>), Or(Box<Expr>, Box<Expr>) }
+
+fn eval(e: &Expr, x: bool, y: bool) -> bool {
+    match e {
+        Expr::X => x,
+        Expr::Y => y,
+        Expr::Not(a) => !eval(a, x, y),
+        Expr::And(a,b) => eval(a,x,y) && eval(b,x,y),
+        Expr::Or(a,b) => eval(a,x,y) || eval(b,x,y),
+    }
+}
+
+fn enumerate(depth: usize) -> Vec<Expr> {
+    if depth == 0 { return vec![Expr::X, Expr::Y]; }
+    let mut res = Vec::new();
+    let smaller = enumerate(depth-1);
+    for a in &smaller {
+        res.push(Expr::Not(Box::new(a.clone())));
+        for b in &smaller {
+            res.push(Expr::And(Box::new(a.clone()), Box::new(b.clone())));
+            res.push(Expr::Or(Box::new(a.clone()), Box::new(b.clone())));
+        }
+    }
+    res
+}
+
+type Example = (bool, bool, bool); // (x, y, out)
+
+fn satisfies(e: &Expr, examples: &[Example]) -> bool {
+    examples.iter().all(|(x,y,o)| eval(e, *x, *y) == *o)
+}
+
+fn cegis(target: &dyn Fn(bool,bool)->bool) -> Option<Expr> {
+    let mut examples: Vec<Example> = vec![(false,false,target(false,false))];
+    for d in 0..3 {
+        for cand in enumerate(d) {
+            if satisfies(&cand, &examples) {
+                let mut found_cex = None;
+                for x in [false,true] { for y in [false,true] {
+                    let o = target(x,y);
+                    if eval(&cand, x, y) != o { found_cex = Some((x,y,o)); break; }
+                } if found_cex.is_some() { break; } }
+                if let Some(cex) = found_cex { examples.push(cex); } else { return Some(cand); }
+            }
+        }
+    }
+    None
+}
+
+fn target_fn(x: bool, y: bool) -> bool { (!x) && y }
+
+fn demo() { let res = cegis(&target_fn); assert!(res.is_some()); }
+```
+
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 
 ### 程序合成 / Program Synthesis / Programmsynthese / Synthèse de programmes
@@ -43,6 +109,8 @@ La synthèse de programmes est le processus de dérivation automatique de progra
 
 - [3.2 程序合成 / Program Synthesis / Programmsynthese / Synthèse de programmes](#32-程序合成--program-synthesis--programmsynthese--synthèse-de-programmes)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
+    - [0. 典型框架：CEGIS / Typical Framework: CEGIS / Typischer Rahmen: CEGIS / Cadre typique : CEGIS](#0-典型框架cegis--typical-framework-cegis--typischer-rahmen-cegis--cadre-typique--cegis)
+      - [Rust示例：二元布尔CEGIS玩具实现 / Toy Boolean CEGIS (Rust)](#rust示例二元布尔cegis玩具实现--toy-boolean-cegis-rust)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [程序合成 / Program Synthesis / Programmsynthese / Synthèse de programmes](#程序合成--program-synthesis--programmsynthese--synthèse-de-programmes)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)

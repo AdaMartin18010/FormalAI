@@ -30,7 +30,6 @@
 - 归结：CNF 归一化 + 子句对归结
 - 表证明：系统化分裂拓展直到闭合
 
-
 证明系统研究形式化证明的构造和验证，为FormalAI提供自动化定理证明和形式化推理的理论基础。
 
 Proof systems study the construction and verification of formal proofs, providing theoretical foundations for automated theorem proving and formal reasoning in FormalAI.
@@ -39,6 +38,10 @@ Proof systems study the construction and verification of formal proofs, providin
 
 - [3.4 证明系统 / Proof Systems / Beweissysteme / Systèmes de preuve](#34-证明系统--proof-systems--beweissysteme--systèmes-de-preuve)
   - [概述 / Overview](#概述--overview)
+    - [0. 公理化与推理规则总览 / Axiomatization and Rules / Axiomatisierung und Regeln / Axiomatisation et règles](#0-公理化与推理规则总览--axiomatization-and-rules--axiomatisierung-und-regeln--axiomatisation-et-règles)
+    - [0.1 典型自然演绎规则 / Natural Deduction Rules](#01-典型自然演绎规则--natural-deduction-rules)
+    - [0.2 序列演算关键规则 / Sequent Calculus Key Rules](#02-序列演算关键规则--sequent-calculus-key-rules)
+    - [0.3 归结与表方法 / Resolution and Tableau](#03-归结与表方法--resolution-and-tableau)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 自然演绎 / Natural Deduction](#1-自然演绎--natural-deduction)

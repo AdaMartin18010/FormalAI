@@ -6,6 +6,39 @@
 
 Formal verification studies how to prove that systems satisfy their specifications through mathematical methods, providing theoretical foundations for rigorous correctness guarantees in FormalAI.
 
+### 0. 验证核心图景 / Core Picture of Verification / Kernbild der Verifikation / Vue d’ensemble de la vérification
+
+- 系统模型：有穷或可数状态转移系统 \(\mathcal{M} = (S, s_0, \to)\)
+- 性质分类：安全性（Safety）与活性（Liveness）
+- 满足关系：\((\mathcal{M}, s) \vDash \varphi\)
+- 模型检测问题：判定 \(s_0 \vDash \varphi\)
+
+#### Rust示例：BFS 可达性（安全性违例检测）
+```rust
+use std::collections::{VecDeque, HashSet};
+
+#[derive(Clone, Hash, Eq, PartialEq, Debug)]
+struct State(u32);
+
+fn next(s: &State) -> Vec<State> { vec![State(s.0 + 1), State(s.0 * 2)] }
+fn violates(s: &State) -> bool { s.0 == 13 }
+
+fn reach_bad(init: State, max: u32) -> bool {
+    let mut q = VecDeque::new();
+    let mut seen: HashSet<State> = HashSet::new();
+    q.push_back(init.clone());
+    seen.insert(init);
+    while let Some(s) = q.pop_front() {
+        if violates(&s) { return true; }
+        if s.0 > max { continue; }
+        for ns in next(&s) {
+            if seen.insert(ns.clone()) { q.push_back(ns); }
+        }
+    }
+    false
+}
+```
+
 ## 目录 / Table of Contents
 
 - [3.1 形式化验证 / Formal Verification / Formale Verifikation / Vérification formelle](#31-形式化验证--formal-verification--formale-verifikation--vérification-formelle)

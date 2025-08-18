@@ -45,12 +45,32 @@ L'interprétabilité est le degré auquel le processus de décision d'un modèle
 - 稳定性 / Stability / Stabilität / Stabilité
 - 鲁棒性 / Robustness / Robustheit / Robustesse
 
+### 0. Shapley与积分梯度 / Shapley and Integrated Gradients / Shapley und Integrierte Gradienten / Shapley et gradients intégrés
+
+- Shapley值：对所有特征子集的边际贡献加权平均
+
+\[ \phi_i(f,x) = \sum_{S \subseteq N\setminus\{i\}} \frac{|S|!\,(|N|-|S|-1)!}{|N|!} [ f(x_{S\cup\{i\}}) - f(x_S) ] \]
+
+- 积分梯度（基线 \(x'\)）：
+
+\[ \text{IG}_i(f,x,x') = (x_i - x_i') \int_{0}^{1} \frac{\partial f\big(x' + \alpha (x-x')\big)}{\partial x_i}\, d\alpha \]
+
+#### Rust示例：线性模型的IG（精确）
+
+```rust
+fn integrated_gradients_linear(w: &[f32], x: &[f32], x0: &[f32]) -> Vec<f32> {
+    x.iter().zip(x0).zip(w).map(|((&xi,&x0i), &wi)| (xi - x0i) * wi).collect()
+}
+```
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [6.1 可解释性理论 / Interpretability Theory / Interpretierbarkeitstheorie / Théorie de l'interprétabilité](#61-可解释性理论--interpretability-theory--interpretierbarkeitstheorie--théorie-de-linterprétabilité)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [可解释性 / Interpretability / Interpretierbarkeit / Interprétabilité](#可解释性--interpretability--interpretierbarkeit--interprétabilité)
+    - [0. Shapley与积分梯度 / Shapley and Integrated Gradients / Shapley und Integrierte Gradienten / Shapley et gradients intégrés](#0-shapley与积分梯度--shapley-and-integrated-gradients--shapley-und-integrierte-gradienten--shapley-et-gradients-intégrés)
+      - [Rust示例：线性模型的IG（精确）](#rust示例线性模型的ig精确)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 可解释性定义 / Interpretability Definition / Interpretierbarkeitsdefinition / Définition de l'interprétabilité](#1-可解释性定义--interpretability-definition--interpretierbarkeitsdefinition--définition-de-linterprétabilité)
@@ -1103,25 +1123,25 @@ testInterpretabilityAnalyzer = do
 ## 参考文献 / References / Literatur / Références
 
 1. **中文 / Chinese:**
-   - 李航 (2012). *统计学习方法*. 清华大学出版社.
-   - 周志华 (2016). *机器学习*. 清华大学出版社.
-   - 邱锡鹏 (2020). *神经网络与深度学习*. 机械工业出版社.
+   - 李航 (2012). _统计学习方法_. 清华大学出版社.
+   - 周志华 (2016). _机器学习_. 清华大学出版社.
+   - 邱锡鹏 (2020). _神经网络与深度学习_. 机械工业出版社.
 
 2. **English:**
-   - Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). "Why should I trust you?" Explaining the predictions of any classifier. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*.
-   - Lundberg, S. M., & Lee, S. I. (2017). A unified approach to interpreting model predictions. *Advances in Neural Information Processing Systems*, 30.
-   - Molnar, C. (2020). *Interpretable Machine Learning*. Lulu.com.
+   - Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). "Why should I trust you?" Explaining the predictions of any classifier. _Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining_.
+   - Lundberg, S. M., & Lee, S. I. (2017). A unified approach to interpreting model predictions. _Advances in Neural Information Processing Systems_, 30.
+   - Molnar, C. (2020). _Interpretable Machine Learning_. Lulu.com.
 
 3. **Deutsch / German:**
-   - Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). "Warum sollte ich dir vertrauen?" Erklärung der Vorhersagen beliebiger Klassifikatoren. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*.
-   - Lundberg, S. M., & Lee, S. I. (2017). Ein einheitlicher Ansatz zur Interpretation von Modellvorhersagen. *Advances in Neural Information Processing Systems*, 30.
-   - Molnar, C. (2020). *Interpretierbares maschinelles Lernen*. Lulu.com.
+   - Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). "Warum sollte ich dir vertrauen?" Erklärung der Vorhersagen beliebiger Klassifikatoren. _Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining_.
+   - Lundberg, S. M., & Lee, S. I. (2017). Ein einheitlicher Ansatz zur Interpretation von Modellvorhersagen. _Advances in Neural Information Processing Systems_, 30.
+   - Molnar, C. (2020). _Interpretierbares maschinelles Lernen_. Lulu.com.
 
 4. **Français / French:**
-   - Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). "Pourquoi devrais-je vous faire confiance?" Expliquer les prédictions de tout classifieur. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*.
-   - Lundberg, S. M., & Lee, S. I. (2017). Une approche unifiée pour interpréter les prédictions de modèles. *Advances in Neural Information Processing Systems*, 30.
-   - Molnar, C. (2020). *Apprentissage automatique interprétable*. Lulu.com.
+   - Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). "Pourquoi devrais-je vous faire confiance?" Expliquer les prédictions de tout classifieur. _Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining_.
+   - Lundberg, S. M., & Lee, S. I. (2017). Une approche unifiée pour interpréter les prédictions de modèles. _Advances in Neural Information Processing Systems_, 30.
+   - Molnar, C. (2020). _Apprentissage automatique interprétable_. Lulu.com.
 
 ---
 
-*本模块为FormalAI提供了完整的可解释性理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为可信AI系统的设计和评估提供了重要的理论指导。*
+_本模块为FormalAI提供了完整的可解释性理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为可信AI系统的设计和评估提供了重要的理论指导。_

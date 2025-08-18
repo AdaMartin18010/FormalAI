@@ -6,6 +6,21 @@
 
 Safety mechanisms study how to ensure the safety of AI systems during operation, providing theoretical foundations for system safety guarantees in FormalAI.
 
+### 0. 风险预算与阈值干预 / Risk Budgeting and Threshold Intervention / Risikobudgetierung und Schwellwertintervention / Budgétisation du risque et intervention par seuil
+
+- 风险约束：
+
+\[ \mathbb{E}[\text{Risk}(s,a)] \leq \beta \]
+
+- 在线阈值干预：当瞬时风险超过阈值时切换到安全策略。
+
+#### Rust示例：简单风险阈值守卫
+```rust
+pub fn safe_action(risk: f32, beta: f32, a: i32, a_safe: i32) -> i32 {
+    if risk <= beta { a } else { a_safe }
+}
+```
+
 ## 目录 / Table of Contents
 
 - [7.3 安全机制 / Safety Mechanisms / Sicherheitsmechanismen / Mécanismes de sécurité](#73-安全机制--safety-mechanisms--sicherheitsmechanismen--mécanismes-de-sécurité)

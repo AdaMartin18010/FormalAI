@@ -6,6 +6,20 @@
 
 Complex systems theory studies the behavior of systems composed of large numbers of interacting components, providing theoretical foundations for emergence and self-organization phenomena in FormalAI.
 
+### 0. Logistic映射与分岔直觉 / Logistic Map and Bifurcation Intuition / Logistic-Abbildung und Bifurkationsintuition / Application logistique et intuition de bifurcation
+
+- Logistic 映射：\( x_{t+1} = r\, x_t (1 - x_t) \)
+- 不同 \(r\) 下的固定点与周期倍化，提示复杂系统的丰富相图
+
+#### Rust示例：迭代Logistic映射
+```rust
+pub fn logistic_iter(x0: f32, r: f32, steps: usize) -> Vec<f32> {
+    let mut x = x0; let mut seq = Vec::with_capacity(steps);
+    for _ in 0..steps { x = r * x * (1.0 - x); seq.push(x); }
+    seq
+}
+```
+
 ## 目录 / Table of Contents
 
 - [8.2 复杂系统 / Complex Systems / Komplexe Systeme / Systèmes complexes](#82-复杂系统--complex-systems--komplexe-systeme--systèmes-complexes)

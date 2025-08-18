@@ -45,6 +45,34 @@ L'alignement est le degré auquel le comportement du système d'IA est cohérent
 - 可控制性 / Controllability / Steuerbarkeit / Contrôlabilité
 - 可验证性 / Verifiability / Überprüfbarkeit / Vérifiabilité
 
+### 0. 偏好建模与对齐优化 / Preference Modeling and Alignment Optimization / Präferenzmodellierung und Ausrichtungsoptimierung / Modélisation des préférences et optimisation de l'alignement
+
+- 成对偏好建模（Bradley–Terry / Logistic）：
+
+\[ P(y \succ y'\mid x) = \sigma\big(r_\theta(x,y) - r_\theta(x,y')\big) \]
+
+- 偏好损失（最大似然）：
+
+\[ \mathcal{L}(\theta) = - \sum_{(x, y^+, y^-)} \log \sigma\big(r_\theta(x, y^+) - r_\theta(x, y^-)\big) \]
+
+- 连接RLHF/DPO思想：将人类偏好转化为奖励差分约束，从而优化策略或奖励模型。
+
+#### Rust示例：批量成对偏好Logistic损失
+```rust
+fn sigmoid(z: f32) -> f32 { 1.0 / (1.0 + (-z).exp()) }
+
+pub fn pairwise_pref_loss(rs_pos: &[f32], rs_neg: &[f32]) -> f32 {
+    assert_eq!(rs_pos.len(), rs_neg.len());
+    let mut loss = 0.0f32;
+    for i in 0..rs_pos.len() {
+        let z = rs_pos[i] - rs_neg[i];
+        let p = sigmoid(z);
+        loss += -(p.ln());
+    }
+    loss / (rs_pos.len() as f32)
+}
+```
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [7.1 对齐理论 / Alignment Theory / Ausrichtungstheorie / Théorie de l'alignement](#71-对齐理论--alignment-theory--ausrichtungstheorie--théorie-de-lalignement)

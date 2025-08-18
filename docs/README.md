@@ -6,6 +6,10 @@ FormalAI是一个全面的AI理论体系，涵盖从基础数学到前沿应用�
 
 FormalAI is a comprehensive AI theoretical system covering all aspects from fundamental mathematics to cutting-edge applications, providing systematic theoretical foundations for formal research in artificial intelligence.
 
+## 快速导航 / Quick Navigation / Schnelle Navigation / Navigation rapide
+
+- [全局导航 / Global Navigation](GLOBAL_NAVIGATION.md)
+
 ## 文档结构 / Documentation Structure
 
 ### 1. 基础理论 / Foundation Theory

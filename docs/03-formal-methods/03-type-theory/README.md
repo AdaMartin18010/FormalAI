@@ -6,6 +6,20 @@
 
 Type theory studies the mathematical foundations of type systems, providing theoretical foundations for type safety and program correctness in FormalAI.
 
+### 0. 基本定理速览 / Key Metatheorems / Zentrale Metatheoreme / Métathéorèmes clés
+
+- 进步定理（Progress）:
+
+\[ \emptyset \vdash e : T \implies e \text{ 是值 } \lor \exists e'.\ e \to e' \]
+
+- 保型定理（Preservation）:
+
+\[ \Gamma \vdash e : T \land e \to e' \implies \Gamma \vdash e' : T \]
+
+- 规范化（Normalization，依赖于系统）: 某些类型系统下所有良构项均归约至正常形
+
+这些元定理共同保证“类型即规范”的语义：良类型程序不会“出错”。
+
 ## 目录 / Table of Contents
 
 - [3.3 类型理论 / Type Theory / Typentheorie / Théorie des types](#33-类型理论--type-theory--typentheorie--théorie-des-types)

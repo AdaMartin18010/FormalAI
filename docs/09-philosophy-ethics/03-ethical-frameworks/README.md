@@ -6,6 +6,21 @@
 
 Ethical frameworks provide moral guidance for the development and application of AI systems, ensuring AI technology aligns with human values and social interests. This document covers the theoretical foundations, ethical principles, evaluation methods, and practical applications of AI ethics.
 
+### 0. 多目标伦理决策模型 / Multi-Objective Ethical Decision Model / Mehrziel-Ethikentscheidungsmodell / Modèle décisionnel éthique multi-objectifs
+
+- 加权效用最大化并受约束：
+
+\[ \max_{a \in \mathcal{A}} \sum_i w_i U_i(a) \quad \text{s.t.}\; C_j(a) \leq 0 \]
+
+- 典型维度：有益性、无害性、公正性、自主性、隐私、安全
+
+#### Rust示例：线性加权打分（示意）
+```rust
+pub fn ethical_score(ws: &[f32], us: &[f32]) -> f32 {
+    ws.iter().zip(us).map(|(w,u)| w*u).sum()
+}
+```
+
 ## 目录 / Table of Contents
 
 - [9.3 伦理框架 / Ethical Frameworks / Ethische Rahmenwerke / Cadres éthiques](#93-伦理框架--ethical-frameworks--ethische-rahmenwerke--cadres-éthiques)
