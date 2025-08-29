@@ -91,25 +91,25 @@ docs/
 
 #### 基础理论章节 (01-foundations) - 4个文件
 
-2. **docs/01-foundations/01-formal-logic/README.md** - 形式化逻辑
+1. **docs/01-foundations/01-formal-logic/README.md** - 形式化逻辑
    - ✅ 序号系统正确
    - ✅ 使用多语言标题格式（中英德法）
    - ✅ 包含完整的目录结构
    - ✅ 序号层次清晰（1., 1.1, 1.1.1, ...）
 
-3. **docs/01-foundations/02-mathematical-foundations/README.md** - 数学基础
+2. **docs/01-foundations/02-mathematical-foundations/README.md** - 数学基础
    - ✅ 序号系统正确
    - ✅ 使用多语言标题格式（中英德法）
    - ✅ 包含完整的目录结构
    - ✅ 序号层次清晰（1., 1.1, 1.2, ...）
 
-4. **docs/01-foundations/03-computation-theory/README.md** - 计算理论
+3. **docs/01-foundations/03-computation-theory/README.md** - 计算理论
    - ✅ 序号系统正确
    - ✅ 使用多语言标题格式（中英德法）
    - ✅ 包含完整的目录结构
    - ✅ 序号层次清晰（1., 1.1, 1.2, ...）
 
-5. **docs/01-foundations/04-cognitive-science/README.md** - 认知科学
+4. **docs/01-foundations/04-cognitive-science/README.md** - 认知科学
    - ✅ 序号系统正确
    - ✅ 使用多语言标题格式（中英德法）
    - ✅ 包含完整的目录结构
@@ -117,19 +117,19 @@ docs/
 
 #### 机器学习理论章节 (02-machine-learning) - 3个文件
 
-6. **docs/02-machine-learning/01-statistical-learning-theory/README.md** - 统计学习理论
+1. **docs/02-machine-learning/01-statistical-learning-theory/README.md** - 统计学习理论
    - ✅ 序号系统正确
    - ✅ 使用标准的章节序号
    - ✅ 包含详细的子章节结构
    - ✅ 序号格式一致
 
-7. **docs/02-machine-learning/02-deep-learning-theory/README.md** - 深度学习理论
+2. **docs/02-machine-learning/02-deep-learning-theory/README.md** - 深度学习理论
    - ✅ 序号系统正确
    - ✅ 使用多语言标题格式（中英德法）
    - ✅ 包含完整的目录结构
    - ✅ 序号层次清晰
 
-8. **docs/02-machine-learning/03-reinforcement-learning-theory/README.md** - 强化学习理论
+3. **docs/02-machine-learning/03-reinforcement-learning-theory/README.md** - 强化学习理论
    - ✅ 序号系统正确
    - ✅ 使用标准的章节序号
    - ✅ 包含完整的子章节结构
@@ -137,13 +137,13 @@ docs/
 
 #### 形式化方法章节 (03-formal-methods) - 2个文件
 
-9. **docs/03-formal-methods/01-formal-verification/README.md** - 形式化验证
+1. **docs/03-formal-methods/01-formal-verification/README.md** - 形式化验证
    - ✅ 序号系统正确
    - ✅ 使用标准的章节序号
    - ✅ 包含完整的子章节结构
    - ✅ 序号层次清晰
 
-10. **docs/03-formal-methods/02-program-synthesis/README.md** - 程序合成
+2. **docs/03-formal-methods/02-program-synthesis/README.md** - 程序合成
     - ✅ 序号系统正确
     - ✅ 使用多语言标题格式（中英德法）
     - ✅ 包含完整的目录结构
@@ -151,13 +151,13 @@ docs/
 
 #### 语言模型理论章节 (04-language-models) - 2个文件
 
-11. **docs/04-language-models/01-large-language-models/README.md** - 大语言模型理论
+1. **docs/04-language-models/01-large-language-models/README.md** - 大语言模型理论
     - ✅ 序号系统正确
     - ✅ 使用多语言标题格式（中英德法）
     - ✅ 包含完整的目录结构
     - ✅ 序号层次清晰
 
-12. **docs/04-language-models/02-formal-semantics/README.md** - 形式化语义
+2. **docs/04-language-models/02-formal-semantics/README.md** - 形式化语义
     - ✅ 序号系统正确
     - ✅ 使用标准的章节序号
     - ✅ 包含完整的子章节结构
@@ -286,7 +286,7 @@ docs/
 
 ### 目录命名规范
 
-```
+```text
 格式: XX-descriptive-name
 示例: 01-foundations, 02-machine-learning
 要求: 两位数字前缀，连字符分隔，小写字母
@@ -294,7 +294,7 @@ docs/
 
 ### 内容序号规范
 
-```
+```text
 一级标题: 1., 2., 3., ...
 二级标题: 1.1, 1.2, 1.3, ...
 三级标题: 1.1.1, 1.1.2, 1.1.3, ...
@@ -303,7 +303,7 @@ docs/
 
 ### 标题格式规范
 
-```
+```text
 多语言格式: 中文 / 英文 / 德文 / 法文
 标准格式: 中文 / 英文
 要求: 中文在前，英文在后，使用斜杠分隔
@@ -311,7 +311,7 @@ docs/
 
 ### 目录结构规范
 
-```
+```text
 - 包含完整的目录结构
 - 使用锚点链接
 - 反映内容层次

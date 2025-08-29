@@ -19,6 +19,7 @@ Value learning theory studies how AI systems can learn, understand, and follow h
 - 特征期望匹配思想：学习到的奖励应使得模型的特征期望接近专家。
 
 #### Rust示例：给定每步奖励的轨迹对数概率
+
 ```rust
 pub fn logprob_traj(rewards: &[f32], tau: f32) -> f32 {
     let s: f32 = rewards.iter().sum();
@@ -30,6 +31,8 @@ pub fn logprob_traj(rewards: &[f32], tau: f32) -> f32 {
 
 - [7.2 价值学习理论 / Value Learning Theory / Wertlern-Theorie / Théorie de l'apprentissage des valeurs](#72-价值学习理论--value-learning-theory--wertlern-theorie--théorie-de-lapprentissage-des-valeurs)
   - [概述 / Overview](#概述--overview)
+    - [0. 最大熵逆强化学习（MaxEnt IRL）/ Maximum Entropy IRL / Max-Ent-IRL / IRL à entropie maximale](#0-最大熵逆强化学习maxent-irl-maximum-entropy-irl--max-ent-irl--irl-à-entropie-maximale)
+      - [Rust示例：给定每步奖励的轨迹对数概率](#rust示例给定每步奖励的轨迹对数概率)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 价值理论基础 / Value Theory Foundations](#1-价值理论基础--value-theory-foundations)

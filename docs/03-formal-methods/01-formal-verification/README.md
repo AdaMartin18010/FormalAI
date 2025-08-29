@@ -14,6 +14,7 @@ Formal verification studies how to prove that systems satisfy their specificatio
 - 模型检测问题：判定 \(s_0 \vDash \varphi\)
 
 #### Rust示例：BFS 可达性（安全性违例检测）
+
 ```rust
 use std::collections::{VecDeque, HashSet};
 
@@ -43,6 +44,8 @@ fn reach_bad(init: State, max: u32) -> bool {
 
 - [3.1 形式化验证 / Formal Verification / Formale Verifikation / Vérification formelle](#31-形式化验证--formal-verification--formale-verifikation--vérification-formelle)
   - [概述 / Overview](#概述--overview)
+    - [0. 验证核心图景 / Core Picture of Verification / Kernbild der Verifikation / Vue d’ensemble de la vérification](#0-验证核心图景--core-picture-of-verification--kernbild-der-verifikation--vue-densemble-de-la-vérification)
+      - [Rust示例：BFS 可达性（安全性违例检测）](#rust示例bfs-可达性安全性违例检测)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 模型检测 / Model Checking](#1-模型检测--model-checking)

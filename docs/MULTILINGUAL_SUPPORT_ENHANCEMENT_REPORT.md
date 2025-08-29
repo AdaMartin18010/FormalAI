@@ -19,13 +19,13 @@ This report documents the enhancement of multilingual support in the FormalAI pr
 
 #### 四语言格式 / Four-Language Format
 
-```
+```text
 中文 / English / Deutsch / Français
 ```
 
 #### 标准格式 / Standard Format
 
-```
+```text
 中文 / English
 ```
 
@@ -266,7 +266,7 @@ This report documents the enhancement of multilingual support in the FormalAI pr
 
 #### 文件组织 / File Organization
 
-```
+```text
 docs/
 ├── 01-foundations/
 │   ├── 01-formal-logic/
@@ -276,7 +276,7 @@ docs/
 └── ...
 ```
 
-#### 标题格式规范 / Title Format Standards
+#### 2标题格式规范 / Title Format Standards
 
 ```markdown
 # 章节序号 中文标题 / English Title / Deutscher Titel / Titre français

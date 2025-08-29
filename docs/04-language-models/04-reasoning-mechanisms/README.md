@@ -81,6 +81,7 @@ Le raisonnement est le processus logique de dérivation de conclusions à partir
 
 - [4.4 推理机制 / Reasoning Mechanisms / Schlussfolgerungsmechanismen / Mécanismes de raisonnement](#44-推理机制--reasoning-mechanisms--schlussfolgerungsmechanismen--mécanismes-de-raisonnement)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
+    - [1. Horn子句与前向链推理 / Horn Clauses and Forward Chaining / Horn-Klauseln und Vorwärtsverkettung / Clauses de Horn et chaînage avant](#1-horn子句与前向链推理--horn-clauses-and-forward-chaining--horn-klauseln-und-vorwärtsverkettung--clauses-de-horn-et-chaînage-avant)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [推理 / Reasoning / Schlussfolgerung / Raisonnement](#推理--reasoning--schlussfolgerung--raisonnement)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)

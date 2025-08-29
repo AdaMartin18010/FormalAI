@@ -52,6 +52,7 @@ Les grands modèles de langage sont des modèles de langage pré-entraînés à 
 - 对比学习（文本-文本/模态-模态）：InfoNCE 形式
 
 #### Rust示例：缩放点积注意力（单查询）
+
 ```rust
 fn dot(a:&[f32], b:&[f32])->f32{ a.iter().zip(b).map(|(x,y)| x*y).sum() }
 fn softmax(xs:&[f32])->Vec<f32>{
@@ -75,6 +76,8 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [大语言模型 / Large Language Model / Großes Sprachmodell / Grand modèle de langage](#大语言模型--large-language-model--großes-sprachmodell--grand-modèle-de-langage)
+    - [0. 统一视角：CLM/MLM/对比学习 / Unified View: CLM/MLM/Contrastive / Vereinheitlichte Sicht: CLM/MLM/Kontrastiv / Vue unifiée: CLM/MLM/Contrastif](#0-统一视角clmmlm对比学习--unified-view-clmmlmcontrastive--vereinheitlichte-sicht-clmmlmkontrastiv--vue-unifiée-clmmlmcontrastif)
+      - [Rust示例：缩放点积注意力（单查询）](#rust示例缩放点积注意力单查询)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 预训练目标 / Pre-training Objectives / Vortrainingsziele / Objectifs de pré-entraînement](#1-预训练目标--pre-training-objectives--vortrainingsziele--objectifs-de-pré-entraînement)
@@ -643,25 +646,25 @@ main = do
 ## 参考文献 / References / Literatur / Références
 
 1. **中文 / Chinese:**
-   - 邱锡鹏 (2020). *神经网络与深度学习*. 机械工业出版社.
-   - 李航 (2012). *统计学习方法*. 清华大学出版社.
-   - 周志华 (2016). *机器学习*. 清华大学出版社.
+   - 邱锡鹏 (2020). _神经网络与深度学习_. 机械工业出版社.
+   - 李航 (2012). _统计学习方法_. 清华大学出版社.
+   - 周志华 (2016). _机器学习_. 清华大学出版社.
 
 2. **English:**
-   - Vaswani, A., et al. (2017). Attention is all you need. *Advances in Neural Information Processing Systems*, 30.
-   - Brown, T., et al. (2020). Language models are few-shot learners. *Advances in Neural Information Processing Systems*, 33.
-   - Hoffmann, J., et al. (2022). Training compute-optimal large language models. *arXiv preprint arXiv:2203.15556*.
+   - Vaswani, A., et al. (2017). Attention is all you need. _Advances in Neural Information Processing Systems_, 30.
+   - Brown, T., et al. (2020). Language models are few-shot learners. _Advances in Neural Information Processing Systems_, 33.
+   - Hoffmann, J., et al. (2022). Training compute-optimal large language models. _arXiv preprint arXiv:2203.15556_.
 
 3. **Deutsch / German:**
-   - Vaswani, A., et al. (2017). Attention ist alles, was Sie brauchen. *Advances in Neural Information Processing Systems*, 30.
-   - Brown, T., et al. (2020). Sprachmodelle sind Few-Shot-Lerner. *Advances in Neural Information Processing Systems*, 33.
-   - Hoffmann, J., et al. (2022). Training berechnungsoptimaler großer Sprachmodelle. *arXiv preprint arXiv:2203.15556*.
+   - Vaswani, A., et al. (2017). Attention ist alles, was Sie brauchen. _Advances in Neural Information Processing Systems_, 30.
+   - Brown, T., et al. (2020). Sprachmodelle sind Few-Shot-Lerner. _Advances in Neural Information Processing Systems_, 33.
+   - Hoffmann, J., et al. (2022). Training berechnungsoptimaler großer Sprachmodelle. _arXiv preprint arXiv:2203.15556_.
 
 4. **Français / French:**
-   - Vaswani, A., et al. (2017). L'attention est tout ce dont vous avez besoin. *Advances in Neural Information Processing Systems*, 30.
-   - Brown, T., et al. (2020). Les modèles de langage sont des apprenants à quelques exemples. *Advances in Neural Information Processing Systems*, 33.
-   - Hoffmann, J., et al. (2022). Entraînement de grands modèles de langage optimaux en calcul. *arXiv preprint arXiv:2203.15556*.
+   - Vaswani, A., et al. (2017). L'attention est tout ce dont vous avez besoin. _Advances in Neural Information Processing Systems_, 30.
+   - Brown, T., et al. (2020). Les modèles de langage sont des apprenants à quelques exemples. _Advances in Neural Information Processing Systems_, 33.
+   - Hoffmann, J., et al. (2022). Entraînement de grands modèles de langage optimaux en calcul. _arXiv preprint arXiv:2203.15556_.
 
 ---
 
-*本模块为FormalAI提供了完整的大语言模型理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为现代AI系统的设计和理解提供了重要的理论指导。*
+_本模块为FormalAI提供了完整的大语言模型理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为现代AI系统的设计和理解提供了重要的理论指导。_

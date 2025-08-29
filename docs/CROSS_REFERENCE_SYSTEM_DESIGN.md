@@ -387,20 +387,20 @@ This document designs the cross-reference system for the FormalAI project, aimin
 
 ### 第二阶段：内部引用完善 / Phase 2: Internal Reference Enhancement
 
-#### 目标 / Objectives
+#### 2目标 / Objectives
 
 - 建立章节内部的交叉引用
 - 完善相关内容的引用
 - 优化引用格式和表达
 
-#### 任务 / Tasks
+#### 2任务 / Tasks
 
 1. **内部引用分析**: 分析章节内部关联关系
 2. **引用格式优化**: 优化引用格式和表达
 3. **内部引用实现**: 实现章节内部引用
 4. **引用质量检查**: 检查引用质量和准确性
 
-#### 时间安排 / Timeline
+#### 2时间安排 / Timeline
 
 - **分析阶段**: 2-3天
 - **优化阶段**: 1-2天
@@ -409,20 +409,20 @@ This document designs the cross-reference system for the FormalAI project, aimin
 
 ### 第三阶段：外部引用扩展 / Phase 3: External Reference Extension
 
-#### 目标 / Objectives
+#### 3目标 / Objectives
 
 - 建立外部资源引用
 - 扩展相关阅读材料
 - 完善引用体系
 
-#### 任务 / Tasks
+#### 3任务 / Tasks
 
 1. **外部资源收集**: 收集相关的外部资源
 2. **引用体系完善**: 完善整体引用体系
 3. **外部引用实现**: 实现外部资源引用
 4. **体系验证**: 验证整体引用体系
 
-#### 时间安排 / Timeline
+#### 3时间安排 / Timeline
 
 - **收集阶段**: 3-5天
 - **完善阶段**: 2-3天

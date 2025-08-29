@@ -1,851 +1,1074 @@
-# 1.1 形式化逻辑基础 / Formal Logic Foundations / Grundlagen der formalen Logik / Fondements de la logique formelle
+# 1.1 形式逻辑 / Formal Logic / Formale Logik / Logique formelle
 
-## 概述 / Overview / Übersicht / Aperçu
+## 概述 / Overview
 
-形式化逻辑是FormalAI的理论基石，为人工智能的推理、验证和形式化方法提供数学基础。
+形式逻辑是研究推理形式和有效性的数学分支，为FormalAI提供严格的逻辑基础。本文档涵盖命题逻辑、谓词逻辑、模态逻辑等核心内容。
 
-Formal logic serves as the theoretical foundation of FormalAI, providing mathematical basis for reasoning, verification, and formal methods in artificial intelligence.
+Formal logic is the mathematical study of reasoning forms and validity, providing rigorous logical foundations for FormalAI. This document covers propositional logic, predicate logic, modal logic, and other core content.
 
-Die formale Logik dient als theoretische Grundlage von FormalAI und liefert die mathematische Basis für Schlussfolgerungen, Verifikation und formale Methoden in der künstlichen Intelligenz.
+## 核心概念 / Core Concepts
 
-La logique formelle sert de fondement théorique à FormalAI, fournissant la base mathématique pour le raisonnement, la vérification et les méthodes formelles en intelligence artificielle.
+### 命题逻辑 / Propositional Logic
 
-## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
+- **命题 / Propositions**: 具有真值的陈述句
+- **连接词 / Connectives**: ¬, ∧, ∨, →, ↔
+- **真值表 / Truth Tables**: 显示所有可能真值组合
+- **逻辑等价 / Logical Equivalence**: 在所有解释下具有相同真值
 
-### 形式化逻辑 / Formal Logic / Formale Logik / Logique formelle
+### 谓词逻辑 / Predicate Logic
 
-**定义 / Definition / Definition / Définition:**
+- **谓词 / Predicates**: 描述对象性质的函数
+- **量词 / Quantifiers**: ∀ (全称), ∃ (存在)
+- **一阶逻辑 / First-Order Logic**: 包含量词的逻辑系统
 
-形式化逻辑是研究有效推理形式的数学学科，通过符号系统来精确表达和验证逻辑关系。
+### 模态逻辑 / Modal Logic
 
-Formal logic is the mathematical discipline that studies valid forms of reasoning, using symbolic systems to precisely express and verify logical relationships.
+- **模态算子 / Modal Operators**: □ (必然), ◇ (可能)
+- **可能世界语义 / Possible Worlds Semantics**: 克里普克模型
+- **模态系统 / Modal Systems**: K, T, S4, S5
 
-Die formale Logik ist die mathematische Disziplin, die gültige Formen des Schließens untersucht und symbolische Systeme verwendet, um logische Beziehungen präzise auszudrücken und zu verifizieren.
+## 数学形式化 / Mathematical Formalization
 
-La logique formelle est la discipline mathématique qui étudie les formes valides de raisonnement, utilisant des systèmes symboliques pour exprimer et vérifier précisément les relations logiques.
+### 命题逻辑形式化
 
-**内涵 / Intension / Intension / Intension:**
+$$\begin{align}
+\text{Proposition} &= \text{Declarative\_Sentence} \land \text{Truth\_Value} \\
+p \land q &= \text{AND}(p, q) \\
+p \lor q &= \text{OR}(p, q) \\
+p \rightarrow q &= \neg p \lor q \\
+p \leftrightarrow q &= (p \rightarrow q) \land (q \rightarrow p)
+\end{align}$$
 
-- 符号化表达 / Symbolic expression / Symbolische Darstellung / Expression symbolique
-- 形式化推理 / Formal reasoning / Formales Schließen / Raisonnement formel
-- 有效性验证 / Validity verification / Gültigkeitsverifikation / Vérification de validité
+### 谓词逻辑形式化
+$$\begin{align}
+\forall x P(x) &\equiv \text{For all } x, P(x) \\
+\exists x P(x) &\equiv \text{There exists } x \text{ such that } P(x) \\
+\neg \forall x P(x) &\equiv \exists x \neg P(x)
+\end{align}$$
 
-**外延 / Extension / Extension / Extension:**
+### 模态逻辑形式化
+$$\begin{align}
+\Box \phi &\equiv \text{Necessarily } \phi \\
+\Diamond \phi &\equiv \text{Possibly } \phi \\
+\Diamond \phi &\equiv \neg \Box \neg \phi
+\end{align}$$
 
-- 命题逻辑 / Propositional logic / Aussagenlogik / Logique propositionnelle
-- 谓词逻辑 / Predicate logic / Prädikatenlogik / Logique des prédicats
-- 模态逻辑 / Modal logic / Modallogik / Logique modale
-- 直觉逻辑 / Intuitionistic logic / Intuitionistische Logik / Logique intuitionniste
+## 推理规则 / Inference Rules
 
-**属性 / Properties / Eigenschaften / Propriétés:**
+### 基本推理规则
+1. **假言推理 / Modus Ponens**: $\frac{p \rightarrow q \quad p}{q}$
+2. **假言三段论 / Hypothetical Syllogism**: $\frac{p \rightarrow q \quad q \rightarrow r}{p \rightarrow r}$
+3. **析取三段论 / Disjunctive Syllogism**: $\frac{p \lor q \quad \neg p}{q}$
 
-- 一致性 / Consistency / Konsistenz / Cohérence
-- 完备性 / Completeness / Vollständigkeit / Complétude
-- 可靠性 / Soundness / Korrektheit / Correction
-- 可判定性 / Decidability / Entscheidbarkeit / Décidabilité
+### 等价律
+- **德摩根律 / De Morgan's Laws**: $\neg(p \land q) \equiv \neg p \lor \neg q$
+- **分配律 / Distributive Laws**: $p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$
+- **双重否定 / Double Negation**: $\neg \neg p \equiv p$
 
-## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+## 应用领域 / Applications
+
+### AI中的应用
+- **知识表示 / Knowledge Representation**: 使用逻辑表示知识
+- **推理系统 / Reasoning Systems**: 基于逻辑的推理
+- **形式化验证 / Formal Verification**: 验证系统正确性
+- **自然语言处理 / Natural Language Processing**: 语义分析
+
+### 计算机科学中的应用
+- **程序验证 / Program Verification**: 证明程序正确性
+- **数据库理论 / Database Theory**: 查询语言和约束
+- **人工智能 / Artificial Intelligence**: 专家系统和推理
+
+## 参考文献 / References
+
+1. Enderton, H. B. (2001). *A Mathematical Introduction to Logic*. Academic Press.
+2. Mendelson, E. (2015). *Introduction to Mathematical Logic*. CRC Press.
+3. Hughes, G. E., & Cresswell, M. J. (1996). *A New Introduction to Modal Logic*. Routledge.
+4. Boolos, G. S., Burgess, J. P., & Jeffrey, R. C. (2007). *Computability and Logic*. Cambridge University Press.
+
+---
+
+*本模块为FormalAI提供了完整的形式逻辑基础，为AI系统的逻辑推理能力提供了坚实的理论基础。*
+
+## 目录 / Table of Contents
+
+- [1.1 形式逻辑 / Formal Logic / Formale Logik / Logique formelle](#11-形式逻辑--formal-logic--formale-logik--logique-formelle)
+  - [概述 / Overview](#概述--overview)
+  - [核心概念 / Core Concepts](#核心概念--core-concepts)
+    - [命题逻辑 / Propositional Logic](#命题逻辑--propositional-logic)
+    - [谓词逻辑 / Predicate Logic](#谓词逻辑--predicate-logic)
+    - [模态逻辑 / Modal Logic](#模态逻辑--modal-logic)
+  - [数学形式化 / Mathematical Formalization](#数学形式化--mathematical-formalization)
+    - [命题逻辑形式化](#命题逻辑形式化)
+    - [谓词逻辑形式化](#谓词逻辑形式化)
+    - [模态逻辑形式化](#模态逻辑形式化)
+  - [推理规则 / Inference Rules](#推理规则--inference-rules)
+    - [基本推理规则](#基本推理规则)
+    - [等价律](#等价律)
+  - [应用领域 / Applications](#应用领域--applications)
+    - [AI中的应用](#ai中的应用)
+    - [计算机科学中的应用](#计算机科学中的应用)
+  - [参考文献 / References](#参考文献--references)
+  - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters](#相关章节--related-chapters)
+  - [1. 命题逻辑 / Propositional Logic](#1-命题逻辑--propositional-logic)
+    - [1.1 命题与连接词 / Propositions and Connectives](#11-命题与连接词--propositions-and-connectives)
+    - [1.2 真值表 / Truth Tables](#12-真值表--truth-tables)
+    - [1.3 逻辑等价 / Logical Equivalence](#13-逻辑等价--logical-equivalence)
+    - [1.4 推理规则 / Inference Rules](#14-推理规则--inference-rules)
+  - [2. 谓词逻辑 / Predicate Logic](#2-谓词逻辑--predicate-logic)
+    - [2.1 谓词与量词 / Predicates and Quantifiers](#21-谓词与量词--predicates-and-quantifiers)
+    - [2.2 一阶逻辑 / First-Order Logic](#22-一阶逻辑--first-order-logic)
+    - [2.3 形式化理论 / Formal Theories](#23-形式化理论--formal-theories)
+  - [3. 模态逻辑 / Modal Logic](#3-模态逻辑--modal-logic)
+    - [3.1 模态算子 / Modal Operators](#31-模态算子--modal-operators)
+    - [3.2 可能世界语义 / Possible Worlds Semantics](#32-可能世界语义--possible-worlds-semantics)
+    - [3.3 模态系统 / Modal Systems](#33-模态系统--modal-systems)
+  - [4. 证明理论 / Proof Theory](#4-证明理论--proof-theory)
+    - [4.1 自然演绎 / Natural Deduction](#41-自然演绎--natural-deduction)
+    - [4.2 序列演算 / Sequent Calculus](#42-序列演算--sequent-calculus)
+    - [4.3 证明复杂性 / Proof Complexity](#43-证明复杂性--proof-complexity)
+  - [代码示例 / Code Examples](#代码示例--code-examples)
+    - [Rust实现：逻辑推理引擎](#rust实现逻辑推理引擎)
+    - [Haskell实现：类型化逻辑](#haskell实现类型化逻辑)
+  - [参考文献 / References](#参考文献--references-1)
+
+---
+
+## 相关章节 / Related Chapters
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
-
-- 无 / None / Keine / Aucun
+- 无 / None / Keine / Aucune (基础模块 / Foundation module)
 
 **后续应用 / Applications / Anwendungen / Applications:**
-
+- [1.2 数学基础](02-mathematical-foundations/README.md) - 提供逻辑基础 / Provides logical foundation
 - [3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md) - 提供逻辑基础 / Provides logical foundation
-- [3.4 证明系统](../03-formal-methods/04-proof-systems/README.md) - 提供推理基础 / Provides reasoning foundation
-- [4.2 形式化语义](../04-language-models/02-formal-semantics/README.md) - 提供语义基础 / Provides semantic foundation
-- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
-
-## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
-
-- [1.1 形式化逻辑基础 / Formal Logic Foundations / Grundlagen der formalen Logik / Fondements de la logique formelle](#11-形式化逻辑基础--formal-logic-foundations--grundlagen-der-formalen-logik--fondements-de-la-logique-formelle)
-  - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
-  - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
-    - [形式化逻辑 / Formal Logic / Formale Logik / Logique formelle](#形式化逻辑--formal-logic--formale-logik--logique-formelle)
-  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
-  - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
-  - [1. 命题逻辑 / Propositional Logic / Aussagenlogik / Logique propositionnelle](#1-命题逻辑--propositional-logic--aussagenlogik--logique-propositionnelle)
-    - [1.1 基本概念 / Basic Concepts / Grundbegriffe / Concepts de base](#11-基本概念--basic-concepts--grundbegriffe--concepts-de-base)
-      - [形式化定义 / Formal Definition / Formale Definition / Définition formelle](#形式化定义--formal-definition--formale-definition--définition-formelle)
-      - [语义 / Semantics / Semantik / Sémantique](#语义--semantics--semantik--sémantique)
-      - [语义论证 / Semantic Arguments / Semantische Argumente / Arguments sémantiques](#语义论证--semantic-arguments--semantische-argumente--arguments-sémantiques)
-    - [1.2 推理系统 / Inference Systems / Schlusssysteme / Systèmes d'inférence](#12-推理系统--inference-systems--schlusssysteme--systèmes-dinférence)
-      - [自然演绎 / Natural Deduction / Natürliches Schließen / Déduction naturelle](#自然演绎--natural-deduction--natürliches-schließen--déduction-naturelle)
-      - [希尔伯特系统 / Hilbert System / Hilbert-System / Système de Hilbert](#希尔伯特系统--hilbert-system--hilbert-system--système-de-hilbert)
-      - [证明过程 / Proof Processes / Beweisprozesse / Processus de preuve](#证明过程--proof-processes--beweisprozesse--processus-de-preuve)
-    - [1.3 完备性定理 / Completeness Theorem / Vollständigkeitssatz / Théorème de complétude](#13-完备性定理--completeness-theorem--vollständigkeitssatz--théorème-de-complétude)
-      - [哥德尔完备性定理 / Gödel's Completeness Theorem / Gödelscher Vollständigkeitssatz / Théorème de complétude de Gödel](#哥德尔完备性定理--gödels-completeness-theorem--gödelscher-vollständigkeitssatz--théorème-de-complétude-de-gödel)
-  - [2. 一阶逻辑 / First-Order Logic / Prädikatenlogik / Logique du premier ordre](#2-一阶逻辑--first-order-logic--prädikatenlogik--logique-du-premier-ordre)
-    - [2.1 语言结构 / Language Structure / Sprachstruktur / Structure du langage](#21-语言结构--language-structure--sprachstruktur--structure-du-langage)
-    - [2.2 项和公式 / Terms and Formulas / Terme und Formeln / Termes et formules](#22-项和公式--terms-and-formulas--terme-und-formeln--termes-et-formules)
-    - [2.3 语义 / Semantics / Semantik / Sémantique](#23-语义--semantics--semantik--sémantique)
-    - [2.4 推理规则 / Inference Rules / Schlussregeln / Règles d'inférence](#24-推理规则--inference-rules--schlussregeln--règles-dinférence)
-  - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
-    - [Rust实现：命题逻辑求解器](#rust实现命题逻辑求解器)
-    - [Haskell实现：自然演绎系统](#haskell实现自然演绎系统)
-  - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
 
 ---
 
-## 1. 命题逻辑 / Propositional Logic / Aussagenlogik / Logique propositionnelle
+## 1. 命题逻辑 / Propositional Logic
 
-### 1.1 基本概念 / Basic Concepts / Grundbegriffe / Concepts de base
+### 1.1 命题与连接词 / Propositions and Connectives
 
-**命题逻辑**是研究简单命题之间逻辑关系的数学理论。
+**命题定义 / Proposition Definition:**
 
-**Propositional logic** is the mathematical theory studying logical relationships between simple propositions.
+命题是具有真值的陈述句：
+A proposition is a declarative sentence with a truth value:
 
-**Aussagenlogik** ist die mathematische Theorie, die logische Beziehungen zwischen einfachen Aussagen untersucht.
+$$\text{Proposition} = \text{Declarative\_Sentence} \land \text{Truth\_Value}$$
 
-**La logique propositionnelle** est la théorie mathématique qui étudie les relations logiques entre propositions simples.
+**基本连接词 / Basic Connectives:**
 
-#### 形式化定义 / Formal Definition / Formale Definition / Définition formelle
+1. **否定 / Negation:** $\neg p$ (NOT p)
+2. **合取 / Conjunction:** $p \land q$ (p AND q)
+3. **析取 / Disjunction:** $p \lor q$ (p OR q)
+4. **蕴含 / Implication:** $p \rightarrow q$ (p IMPLIES q)
+5. **等价 / Equivalence:** $p \leftrightarrow q$ (p IFF q)
 
-设 $\mathcal{P}$ 为命题变元集合，命题逻辑的语言 $\mathcal{L}$ 定义为：
+**形式化定义 / Formal Definitions:**
 
-Let $\mathcal{P}$ be a set of propositional variables, the language $\mathcal{L}$ of propositional logic is defined as:
+$$\begin{align}
+\neg p &= \text{NOT}(p) \\
+p \land q &= \text{AND}(p, q) \\
+p \lor q &= \text{OR}(p, q) \\
+p \rightarrow q &= \neg p \lor q \\
+p \leftrightarrow q &= (p \rightarrow q) \land (q \rightarrow p)
+\end{align}$$
 
-Sei $\mathcal{P}$ eine Menge von Aussagenvariablen, die Sprache $\mathcal{L}$ der Aussagenlogik ist definiert als:
+### 1.2 真值表 / Truth Tables
 
-Soit $\mathcal{P}$ un ensemble de variables propositionnelles, le langage $\mathcal{L}$ de la logique propositionnelle est défini comme:
+**真值表定义 / Truth Table Definition:**
 
-$$\mathcal{L} ::= \mathcal{P} \mid \bot \mid \top \mid \neg \phi \mid \phi \land \psi \mid \phi \lor \psi \mid \phi \rightarrow \psi \mid \phi \leftrightarrow \psi$$
+真值表是显示命题在所有可能真值组合下真值的表格：
+A truth table is a table showing the truth values of propositions under all possible truth value combinations:
 
-#### 语义 / Semantics / Semantik / Sémantique
+| p | q | ¬p | p∧q | p∨q | p→q | p↔q |
+|---|---|----|-----|-----|-----|-----|
+| T | T | F  | T   | T   | T   | T   |
+| T | F | F  | F   | T   | F   | F   |
+| F | T | T  | F   | T   | T   | F   |
+| F | F | T  | F   | F   | T   | T   |
 
-**真值函数** $\mathcal{V}: \mathcal{P} \rightarrow \{0,1\}$ 的扩展：
+**真值函数 / Truth Functions:**
 
-**Truth function** extension of $\mathcal{V}: \mathcal{P} \rightarrow \{0,1\}$:
+$$\begin{align}
+f_{\neg}(p) &= 1 - p \\
+f_{\land}(p, q) &= \min(p, q) \\
+f_{\lor}(p, q) &= \max(p, q) \\
+f_{\rightarrow}(p, q) &= \max(1-p, q) \\
+f_{\leftrightarrow}(p, q) &= 1 - |p - q|
+\end{align}$$
 
-**Wahrheitsfunktion** Erweiterung von $\mathcal{V}: \mathcal{P} \rightarrow \{0,1\}$:
+### 1.3 逻辑等价 / Logical Equivalence
 
-**Fonction de vérité** extension de $\mathcal{V}: \mathcal{P} \rightarrow \{0,1\}$:
+**逻辑等价定义 / Logical Equivalence Definition:**
 
-$$
-\begin{align}
-\mathcal{V}(\bot) &= 0 \\
-\mathcal{V}(\top) &= 1 \\
-\mathcal{V}(\neg \phi) &= 1 - \mathcal{V}(\phi) \\
-\mathcal{V}(\phi \land \psi) &= \min(\mathcal{V}(\phi), \mathcal{V}(\psi)) \\
-\mathcal{V}(\phi \lor \psi) &= \max(\mathcal{V}(\phi), \mathcal{V}(\psi)) \\
-\mathcal{V}(\phi \rightarrow \psi) &= \max(1 - \mathcal{V}(\phi), \mathcal{V}(\psi))
-\end{align}
-$$
+两个命题在逻辑上等价，当且仅当它们在所有解释下具有相同的真值：
+Two propositions are logically equivalent if and only if they have the same truth value under all interpretations:
 
-#### 语义论证 / Semantic Arguments / Semantische Argumente / Arguments sémantiques
+$$p \equiv q \Leftrightarrow \forall I: I(p) = I(q)$$
 
-**语义有效性论证 / Semantic Validity Arguments:**
+**重要等价律 / Important Equivalences:**
 
-$$\text{Validity}(\phi) = \forall \mathcal{V}: \mathcal{V}(\phi) = 1$$
+1. **德摩根律 / De Morgan's Laws:**
+   $$\neg(p \land q) \equiv \neg p \lor \neg q$$
+   $$\neg(p \lor q) \equiv \neg p \land \neg q$$
 
-**语义一致性论证 / Semantic Consistency Arguments:**
+2. **分配律 / Distributive Laws:**
+   $$p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$$
+   $$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$$
 
-$$\text{Consistency}(\Gamma) = \exists \mathcal{V}: \forall \psi \in \Gamma, \mathcal{V}(\psi) = 1$$
+3. **双重否定 / Double Negation:**
+   $$\neg \neg p \equiv p$$
 
-**语义蕴涵论证 / Semantic Entailment Arguments:**
+4. **蕴含等价 / Implication Equivalence:**
+   $$p \rightarrow q \equiv \neg p \lor q$$
 
-$$\Gamma \models \phi \Leftrightarrow \forall \mathcal{V}: (\forall \psi \in \Gamma, \mathcal{V}(\psi) = 1) \Rightarrow \mathcal{V}(\phi) = 1$$
+### 1.4 推理规则 / Inference Rules
 
-### 1.2 推理系统 / Inference Systems / Schlusssysteme / Systèmes d'inférence
+**推理规则定义 / Inference Rule Definition:**
 
-#### 自然演绎 / Natural Deduction / Natürliches Schließen / Déduction naturelle
+推理规则是从前提推导结论的形式化规则：
+An inference rule is a formal rule for deriving conclusions from premises:
 
-**自然演绎规则 / Natural Deduction Rules:**
+$$\frac{\text{Premises}}{\text{Conclusion}}$$
 
-```rust
-#[derive(Debug, Clone)]
-enum NaturalDeductionRule {
-    // 引入规则 / Introduction Rules / Einführungsregeln / Règles d'introduction
-    AndIntro(Box<Proof>, Box<Proof>),
-    OrIntroLeft(Box<Proof>),
-    OrIntroRight(Box<Proof>),
-    ImplicationIntro(Box<Proof>),
-    
-    // 消去规则 / Elimination Rules / Beseitigungsregeln / Règles d'élimination
-    AndElimLeft(Box<Proof>),
-    AndElimRight(Box<Proof>),
-    OrElim(Box<Proof>, Box<Proof>, Box<Proof>),
-    ImplicationElim(Box<Proof>, Box<Proof>),
-    
-    // 假设规则 / Assumption Rules / Annahmeregeln / Règles d'hypothèse
-    Assumption(Formula),
-    
-    // 矛盾规则 / Contradiction Rules / Widerspruchsregeln / Règles de contradiction
-    ContradictionIntro(Box<Proof>, Box<Proof>),
-    ContradictionElim(Box<Proof>),
-}
+**基本推理规则 / Basic Inference Rules:**
 
-impl NaturalDeductionRule {
-    fn is_valid(&self) -> bool {
-        match self {
-            NaturalDeductionRule::AndIntro(p1, p2) => {
-                p1.is_valid() && p2.is_valid()
-            },
-            NaturalDeductionRule::ImplicationIntro(proof) => {
-                proof.is_valid()
-            },
-            NaturalDeductionRule::ImplicationElim(p1, p2) => {
-                p1.is_valid() && p2.is_valid()
-            },
-            _ => true
-        }
-    }
-}
-```
+1. **假言推理 / Modus Ponens:**
+   $$\frac{p \rightarrow q \quad p}{q}$$
 
-#### 希尔伯特系统 / Hilbert System / Hilbert-System / Système de Hilbert
+2. **假言三段论 / Hypothetical Syllogism:**
+   $$\frac{p \rightarrow q \quad q \rightarrow r}{p \rightarrow r}$$
 
-**希尔伯特公理 / Hilbert Axioms:**
+3. **析取三段论 / Disjunctive Syllogism:**
+   $$\frac{p \lor q \quad \neg p}{q}$$
 
-$$\text{Ax1}: \phi \rightarrow (\psi \rightarrow \phi)$$
-$$\text{Ax2}: (\phi \rightarrow (\psi \rightarrow \chi)) \rightarrow ((\phi \rightarrow \psi) \rightarrow (\phi \rightarrow \chi))$$
-$$\text{Ax3}: (\neg \phi \rightarrow \neg \psi) \rightarrow (\psi \rightarrow \phi)$$
-
-**推理规则 / Inference Rule:**
-
-$$\frac{\phi \quad \phi \rightarrow \psi}{\psi} \text{ (MP)}$$
-
-#### 证明过程 / Proof Processes / Beweisprozesse / Processus de preuve
-
-**证明构造算法 / Proof Construction Algorithm:**
-
-```haskell
--- 证明构造 / Proof Construction / Beweiskonstruktion / Construction de preuve
-data ProofStep = 
-    Axiom Formula
-  | ModusPonens ProofStep ProofStep
-  | Assumption Formula
-  | Discharge Formula ProofStep
-  | ConjunctionIntro ProofStep ProofStep
-  | ConjunctionElim1 ProofStep
-  | ConjunctionElim2 ProofStep
-  | DisjunctionIntro1 Formula ProofStep
-  | DisjunctionIntro2 Formula ProofStep
-  | DisjunctionElim ProofStep ProofStep ProofStep
-  | ImplicationIntro Formula ProofStep
-  | ImplicationElim ProofStep ProofStep
-  | NegationIntro Formula ProofStep
-  | NegationElim ProofStep ProofStep
-  | ExFalso Formula ProofStep
-
--- 证明验证 / Proof Verification / Beweisverifikation / Vérification de preuve
-verifyProof :: [ProofStep] -> Formula -> Bool
-verifyProof steps conclusion = 
-    let validSteps = map verifyStep steps
-        dischargedAssumptions = collectDischarges steps
-        conclusionMatches = checkConclusion steps conclusion
-    in all id validSteps && null dischargedAssumptions && conclusionMatches
-
--- 证明搜索 / Proof Search / Beweissuche / Recherche de preuve
-searchProof :: [Formula] -> Formula -> Maybe [ProofStep]
-searchProof assumptions goal = 
-    case findDirectProof assumptions goal of
-        Just proof -> Just proof
-        Nothing -> case findContradictionProof assumptions goal of
-            Just proof -> Just proof
-            Nothing -> findIndirectProof assumptions goal
-
--- 直接证明搜索 / Direct Proof Search / Direkte Beweissuche / Recherche de preuve directe
-findDirectProof :: [Formula] -> Formula -> Maybe [ProofStep]
-findDirectProof assumptions goal = 
-    let candidates = generateProofCandidates assumptions goal
-        validProofs = filter (\p -> verifyProof p goal) candidates
-    in case validProofs of
-        (proof:_) -> Just proof
-        [] -> Nothing
-
--- 矛盾证明搜索 / Contradiction Proof Search / Widerspruchsbeweissuche / Recherche de preuve par contradiction
-findContradictionProof :: [Formula] -> Formula -> Maybe [ProofStep]
-findContradictionProof assumptions goal = 
-    let negatedGoal = Negation goal
-        extendedAssumptions = assumptions ++ [negatedGoal]
-        contradiction = findContradiction extendedAssumptions
-    in case contradiction of
-        Just _ -> Just (constructContradictionProof assumptions goal)
-        Nothing -> Nothing
-
--- 间接证明搜索 / Indirect Proof Search / Indirekte Beweissuche / Recherche de preuve indirecte
-findIndirectProof :: [Formula] -> Formula -> Maybe [ProofStep]
-findIndirectProof assumptions goal = 
-    let equivalentForms = findEquivalentForms goal
-        alternativeProofs = map (\form -> findDirectProof assumptions form) equivalentForms
-    in case catMaybes alternativeProofs of
-        (proof:_) -> Just (convertToOriginalGoal proof goal)
-        [] -> Nothing
-```
-
-### 1.3 完备性定理 / Completeness Theorem / Vollständigkeitssatz / Théorème de complétude
-
-#### 哥德尔完备性定理 / Gödel's Completeness Theorem / Gödelscher Vollständigkeitssatz / Théorème de complétude de Gödel
-
-**定理陈述 / Theorem Statement:**
-
-对于一阶逻辑，如果 $\Gamma \models \phi$，那么 $\Gamma \vdash \phi$。
-
-For first-order logic, if $\Gamma \models \phi$, then $\Gamma \vdash \phi$.
-
-Für die Prädikatenlogik erster Stufe gilt: Wenn $\Gamma \models \phi$, dann $\Gamma \vdash \phi$.
-
-Pour la logique du premier ordre, si $\Gamma \models \phi$, alors $\Gamma \vdash \phi$.
-
-**证明构造 / Proof Construction:**
-
-```rust
-#[derive(Debug, Clone)]
-struct CompletenessProof {
-    consistent_theory: Theory,
-    maximal_consistent_extension: Theory,
-    canonical_model: Model,
-}
-
-impl CompletenessProof {
-    fn construct_canonical_model(&self) -> Model {
-        // 1. 构建极大一致理论 / Build maximal consistent theory
-        let maximal_theory = self.extend_to_maximal_consistent();
-        
-        // 2. 构造典范模型 / Construct canonical model
-        let domain = self.construct_domain();
-        let interpretation = self.construct_interpretation(&maximal_theory);
-        
-        Model {
-            domain,
-            interpretation,
-        }
-    }
-    
-    fn extend_to_maximal_consistent(&self) -> Theory {
-        // 使用Zorn引理构造极大一致理论
-        // Use Zorn's lemma to construct maximal consistent theory
-        // Verwende das Lemma von Zorn zur Konstruktion maximal konsistenter Theorie
-        // Utiliser le lemme de Zorn pour construire une théorie maximale cohérente
-        let mut extended_theory = self.consistent_theory.clone();
-        let all_formulas = self.enumerate_all_formulas();
-        
-        for formula in all_formulas {
-            if !extended_theory.add_formula(&formula).is_inconsistent() {
-                extended_theory.add_formula(&formula);
-            }
-        }
-        
-        extended_theory
-    }
-    
-    fn construct_domain(&self) -> Domain {
-        // 构造Herbrand域 / Construct Herbrand domain
-        // Konstruiere Herbrand-Domäne / Construire le domaine de Herbrand
-        let constants = self.collect_constants();
-        let functions = self.collect_functions();
-        
-        Domain::new(constants, functions)
-    }
-    
-    fn construct_interpretation(&self, theory: &Theory) -> Interpretation {
-        // 构造解释函数 / Construct interpretation function
-        // Konstruiere Interpretationsfunktion / Construire la fonction d'interprétation
-        let mut interpretation = Interpretation::new();
-        
-        for formula in theory.get_formulas() {
-            match formula {
-                Formula::Atomic(predicate, terms) => {
-                    interpretation.add_predicate(predicate.clone(), terms.clone());
-                }
-                Formula::Equality(term1, term2) => {
-                    interpretation.add_equality(term1.clone(), term2.clone());
-                }
-                _ => {}
-            }
-        }
-        
-        interpretation
-    }
-    
-    fn verify_completeness(&self) -> bool {
-        // 验证完备性 / Verify completeness
-        // Verifiziere Vollständigkeit / Vérifier la complétude
-        let canonical_model = self.construct_canonical_model();
-        
-        for formula in &self.consistent_theory.formulas {
-            if !canonical_model.satisfies(formula) {
-                return false;
-            }
-        }
-        
-        true
-    }
-}
-
-#[derive(Debug, Clone)]
-struct Theory {
-    formulas: Vec<Formula>,
-    signature: Signature,
-}
-
-impl Theory {
-    fn add_formula(&mut self, formula: &Formula) -> &mut Self {
-        self.formulas.push(formula.clone());
-        self
-    }
-    
-    fn is_inconsistent(&self) -> bool {
-        // 检查理论是否不一致 / Check if theory is inconsistent
-        // Prüfe ob Theorie inkonsistent ist / Vérifier si la théorie est incohérente
-        self.formulas.iter().any(|f| matches!(f, Formula::Contradiction))
-    }
-    
-    fn get_formulas(&self) -> &[Formula] {
-        &self.formulas
-    }
-}
-
-#[derive(Debug, Clone)]
-struct Model {
-    domain: Domain,
-    interpretation: Interpretation,
-}
-
-impl Model {
-    fn satisfies(&self, formula: &Formula) -> bool {
-        // 模型满足公式 / Model satisfies formula
-        // Modell erfüllt Formel / Modèle satisfait la formule
-        match formula {
-            Formula::Atomic(predicate, terms) => {
-                self.interpretation.evaluate_predicate(predicate, terms)
-            }
-            Formula::Equality(term1, term2) => {
-                self.interpretation.evaluate_equality(term1, term2)
-            }
-            Formula::Negation(inner) => !self.satisfies(inner),
-            Formula::Conjunction(left, right) => {
-                self.satisfies(left) && self.satisfies(right)
-            }
-            Formula::Disjunction(left, right) => {
-                self.satisfies(left) || self.satisfies(right)
-            }
-            Formula::Implication(antecedent, consequent) => {
-                !self.satisfies(antecedent) || self.satisfies(consequent)
-            }
-            Formula::Universal(variable, body) => {
-                self.satisfies_universal(variable, body)
-            }
-            Formula::Existential(variable, body) => {
-                self.satisfies_existential(variable, body)
-            }
-            Formula::Contradiction => false,
-            Formula::Tautology => true,
-        }
-    }
-}
-```
+4. **构造性二难 / Constructive Dilemma:**
+   $$\frac{p \rightarrow q \quad r \rightarrow s \quad p \lor r}{q \lor s}$$
 
 ---
 
-## 2. 一阶逻辑 / First-Order Logic / Prädikatenlogik / Logique du premier ordre
+## 2. 谓词逻辑 / Predicate Logic
 
-### 2.1 语言结构 / Language Structure / Sprachstruktur / Structure du langage
+### 2.1 谓词与量词 / Predicates and Quantifiers
 
-**一阶语言 / First-Order Language:**
+**谓词定义 / Predicate Definition:**
 
-$$\mathcal{L} = \langle \mathcal{C}, \mathcal{F}, \mathcal{P}, \mathcal{V} \rangle$$
+谓词是描述对象性质的函数：
+A predicate is a function that describes properties of objects:
+
+$$P(x_1, x_2, \ldots, x_n)$$
+
+其中 $x_i$ 是变量，$P$ 是谓词符号。
+where $x_i$ are variables and $P$ is a predicate symbol.
+
+**量词定义 / Quantifier Definition:**
+
+1. **全称量词 / Universal Quantifier:** $\forall x P(x)$ (For all x, P(x))
+2. **存在量词 / Existential Quantifier:** $\exists x P(x)$ (There exists x such that P(x))
+
+**量词等价律 / Quantifier Equivalences:**
+
+$$\begin{align}
+\neg \forall x P(x) &\equiv \exists x \neg P(x) \\
+\neg \exists x P(x) &\equiv \forall x \neg P(x) \\
+\forall x (P(x) \land Q(x)) &\equiv \forall x P(x) \land \forall x Q(x) \\
+\exists x (P(x) \lor Q(x)) &\equiv \exists x P(x) \lor \exists x Q(x)
+\end{align}$$
+
+### 2.2 一阶逻辑 / First-Order Logic
+
+**一阶逻辑语言 / First-Order Logic Language:**
+
+$$\mathcal{L} = (\mathcal{C}, \mathcal{F}, \mathcal{P}, \mathcal{V})$$
 
 其中：
-
-- $\mathcal{C}$ 是常元集合
-- $\mathcal{F}$ 是函数符号集合
-- $\mathcal{P}$ 是谓词符号集合
-- $\mathcal{V}$ 是变元集合
-
-where:
-
-- $\mathcal{C}$ is the set of constants
-- $\mathcal{F}$ is the set of function symbols
-- $\mathcal{P}$ is the set of predicate symbols
-- $\mathcal{V}$ is the set of variables
-
-wobei:
-
-- $\mathcal{C}$ ist die Menge der Konstanten
-- $\mathcal{F}$ ist die Menge der Funktionssymbole
-- $\mathcal{P}$ ist die Menge der Prädikatsymbole
-- $\mathcal{V}$ ist die Menge der Variablen
-
-où:
-
-- $\mathcal{C}$ est l'ensemble des constantes
-- $\mathcal{F}$ est l'ensemble des symboles de fonction
-- $\mathcal{P}$ est l'ensemble des symboles de prédicat
-- $\mathcal{V}$ est l'ensemble des variables
-
-### 2.2 项和公式 / Terms and Formulas / Terme und Formeln / Termes et formules
+- $\mathcal{C}$ 是常元集合 / set of constants
+- $\mathcal{F}$ 是函数符号集合 / set of function symbols
+- $\mathcal{P}$ 是谓词符号集合 / set of predicate symbols
+- $\mathcal{V}$ 是变量集合 / set of variables
 
 **项的定义 / Term Definition:**
 
-$$t ::= x \mid c \mid f(t_1, ..., t_n)$$
-
-其中 $x \in \mathcal{V}$, $c \in \mathcal{C}$, $f \in \mathcal{F}$。
+1. 变量是项 / Variables are terms
+2. 常元是项 / Constants are terms
+3. 如果 $f$ 是 $n$ 元函数符号，$t_1, \ldots, t_n$ 是项，则 $f(t_1, \ldots, t_n)$ 是项
 
 **公式的定义 / Formula Definition:**
 
-$$\phi ::= P(t_1, ..., t_n) \mid t_1 = t_2 \mid \neg \phi \mid \phi \land \psi \mid \phi \lor \psi \mid \phi \rightarrow \psi \mid \forall x \phi \mid \exists x \phi$$
+1. 如果 $P$ 是 $n$ 元谓词符号，$t_1, \ldots, t_n$ 是项，则 $P(t_1, \ldots, t_n)$ 是原子公式
+2. 如果 $\phi$ 和 $\psi$ 是公式，则 $\neg \phi$, $\phi \land \psi$, $\phi \lor \psi$, $\phi \rightarrow \psi$ 是公式
+3. 如果 $\phi$ 是公式，$x$ 是变量，则 $\forall x \phi$ 和 $\exists x \phi$ 是公式
 
-### 2.3 语义 / Semantics / Semantik / Sémantique
+### 2.3 形式化理论 / Formal Theories
 
-**结构 / Structure:**
+**理论定义 / Theory Definition:**
 
-$$\mathcal{A} = \langle A, I \rangle$$
+形式化理论是一组公理和推理规则：
+A formal theory is a set of axioms and inference rules:
 
-其中 $A$ 是论域，$I$ 是解释函数。
+$$\mathcal{T} = (\mathcal{L}, \mathcal{A}, \mathcal{R})$$
 
-**赋值 / Assignment:**
+其中：
+- $\mathcal{L}$ 是语言 / language
+- $\mathcal{A}$ 是公理集合 / set of axioms
+- $\mathcal{R}$ 是推理规则集合 / set of inference rules
 
-$$\sigma: \mathcal{V} \rightarrow A$$
+**常见理论 / Common Theories:**
 
-**项的解释 / Term Interpretation:**
+1. **集合论 / Set Theory:**
+   - 外延公理 / Axiom of Extensionality
+   - 空集公理 / Axiom of Empty Set
+   - 配对公理 / Axiom of Pairing
+   - 并集公理 / Axiom of Union
+   - 幂集公理 / Axiom of Power Set
 
-$$
-\sigma^*(t) = \begin{cases}
-\sigma(x) & \text{if } t = x \\
-I(c) & \text{if } t = c \\
-I(f)(\sigma^*(t_1), ..., \sigma^*(t_n)) & \text{if } t = f(t_1, ..., t_n)
-\end{cases}
-$$
-
-**公式的满足关系 / Satisfaction Relation:**
-
-$$\mathcal{A} \models_\sigma \phi$$
-
-### 2.4 推理规则 / Inference Rules / Schlussregeln / Règles d'inférence
-
-**全称消去 / Universal Elimination:**
-
-$$\frac{\forall x \phi}{\phi[t/x]}$$
-
-**全称引入 / Universal Introduction:**
-
-$$\frac{\phi}{\forall x \phi} \text{ (if } x \text{ not free in assumptions)}$$
-
-**存在引入 / Existential Introduction:**
-
-$$\frac{\phi[t/x]}{\exists x \phi}$$
-
-**存在消去 / Existential Elimination:**
-
-$$\frac{\exists x \phi \quad \phi \vdash \psi}{\psi} \text{ (if } x \text{ not free in } \psi\text{)}$$
+2. **算术理论 / Arithmetic Theory:**
+   - 皮亚诺公理 / Peano Axioms
+   - 归纳原理 / Principle of Induction
 
 ---
 
-## 代码示例 / Code Examples / Codebeispiele / Exemples de code
+## 3. 模态逻辑 / Modal Logic
 
-### Rust实现：命题逻辑求解器
+### 3.1 模态算子 / Modal Operators
+
+**模态算子定义 / Modal Operator Definition:**
+
+模态逻辑扩展了经典逻辑，增加了模态算子：
+Modal logic extends classical logic with modal operators:
+
+1. **必然算子 / Necessity Operator:** $\Box \phi$ (necessarily $\phi$)
+2. **可能算子 / Possibility Operator:** $\Diamond \phi$ (possibly $\phi$)
+
+**模态等价 / Modal Equivalence:**
+
+$$\Diamond \phi \equiv \neg \Box \neg \phi$$
+
+**基本模态公理 / Basic Modal Axioms:**
+
+1. **K公理 / K Axiom:** $\Box(\phi \rightarrow \psi) \rightarrow (\Box \phi \rightarrow \Box \psi)$
+2. **T公理 / T Axiom:** $\Box \phi \rightarrow \phi$
+3. **4公理 / 4 Axiom:** $\Box \phi \rightarrow \Box \Box \phi$
+4. **5公理 / 5 Axiom:** $\Diamond \phi \rightarrow \Box \Diamond \phi$
+
+### 3.2 可能世界语义 / Possible Worlds Semantics
+
+**克里普克模型 / Kripke Model:**
+
+$$\mathcal{M} = (W, R, V)$$
+
+其中：
+- $W$ 是可能世界集合 / set of possible worlds
+- $R \subseteq W \times W$ 是可达关系 / accessibility relation
+- $V: W \times \mathcal{P} \rightarrow \{0,1\}$ 是赋值函数 / valuation function
+
+**真值定义 / Truth Definition:**
+
+$$\begin{align}
+\mathcal{M}, w &\models p \Leftrightarrow V(w, p) = 1 \\
+\mathcal{M}, w &\models \neg \phi \Leftrightarrow \mathcal{M}, w \not\models \phi \\
+\mathcal{M}, w &\models \phi \land \psi \Leftrightarrow \mathcal{M}, w \models \phi \text{ and } \mathcal{M}, w \models \psi \\
+\mathcal{M}, w &\models \Box \phi \Leftrightarrow \forall v: wRv \Rightarrow \mathcal{M}, v \models \phi \\
+\mathcal{M}, w &\models \Diamond \phi \Leftrightarrow \exists v: wRv \text{ and } \mathcal{M}, v \models \phi
+\end{align}$$
+
+### 3.3 模态系统 / Modal Systems
+
+**常见模态系统 / Common Modal Systems:**
+
+1. **K系统 / System K:** 基本模态逻辑
+2. **T系统 / System T:** K + T公理
+3. **S4系统 / System S4:** T + 4公理
+4. **S5系统 / System S5:** T + 4 + 5公理
+
+**对应关系 / Correspondence:**
+
+- T公理 ↔ 自反性 / reflexivity
+- 4公理 ↔ 传递性 / transitivity
+- 5公理 ↔ 欧几里得性 / euclidean property
+
+---
+
+## 4. 证明理论 / Proof Theory
+
+### 4.1 自然演绎 / Natural Deduction
+
+**自然演绎系统 / Natural Deduction System:**
+
+自然演绎是一种证明系统，使用引入和消除规则：
+Natural deduction is a proof system using introduction and elimination rules.
+
+**命题逻辑规则 / Propositional Logic Rules:**
+
+**合取规则 / Conjunction Rules:**
+$$\frac{\phi \quad \psi}{\phi \land \psi} \land I \quad \frac{\phi \land \psi}{\phi} \land E_1 \quad \frac{\phi \land \psi}{\psi} \land E_2$$
+
+**析取规则 / Disjunction Rules:**
+$$\frac{\phi}{\phi \lor \psi} \lor I_1 \quad \frac{\psi}{\phi \lor \psi} \lor I_2$$
+
+**蕴含规则 / Implication Rules:**
+$$\frac{[\phi] \quad \vdots \quad \psi}{\phi \rightarrow \psi} \rightarrow I \quad \frac{\phi \rightarrow \psi \quad \phi}{\psi} \rightarrow E$$
+
+### 4.2 序列演算 / Sequent Calculus
+
+**序列定义 / Sequent Definition:**
+
+序列是形如 $\Gamma \vdash \Delta$ 的表达式：
+A sequent is an expression of the form $\Gamma \vdash \Delta$:
+
+$$\Gamma \vdash \Delta$$
+
+其中 $\Gamma$ 和 $\Delta$ 是公式集合。
+where $\Gamma$ and $\Delta$ are sets of formulas.
+
+**基本规则 / Basic Rules:**
+
+**左规则 / Left Rules:**
+$$\frac{\Gamma, \phi \vdash \Delta}{\Gamma, \phi \land \psi \vdash \Delta} \land L_1 \quad \frac{\Gamma, \psi \vdash \Delta}{\Gamma, \phi \land \psi \vdash \Delta} \land L_2$$
+
+**右规则 / Right Rules:**
+$$\frac{\Gamma \vdash \phi, \Delta \quad \Gamma \vdash \psi, \Delta}{\Gamma \vdash \phi \land \psi, \Delta} \land R$$
+
+### 4.3 证明复杂性 / Proof Complexity
+
+**证明长度 / Proof Length:**
+
+证明的长度是证明中步骤的数量：
+The length of a proof is the number of steps in the proof.
+
+**证明复杂性类 / Proof Complexity Classes:**
+
+1. **多项式时间证明 / Polynomial-time proofs**
+2. **指数时间证明 / Exponential-time proofs**
+3. **不可证明性 / Unprovability**
+
+---
+
+## 代码示例 / Code Examples
+
+### Rust实现：逻辑推理引擎
 
 ```rust
 use std::collections::HashMap;
 
-# [derive(Debug, Clone, PartialEq)]
-enum Formula {
+/// 命题逻辑推理引擎
+pub struct PropositionalLogicEngine {
+    variables: HashMap<String, bool>,
+    rules: Vec<InferenceRule>,
+}
+
+/// 推理规则
+pub struct InferenceRule {
+    name: String,
+    premises: Vec<Formula>,
+    conclusion: Formula,
+}
+
+/// 逻辑公式
+# [derive(Debug, Clone)]
+pub enum Formula {
     Atom(String),
     Not(Box<Formula>),
     And(Box<Formula>, Box<Formula>),
     Or(Box<Formula>, Box<Formula>),
     Implies(Box<Formula>, Box<Formula>),
-    Iff(Box<Formula>, Box<Formula>),
+    Equiv(Box<Formula>, Box<Formula>),
 }
 
-# [derive(Debug)]
-struct PropositionalSolver {
-    variables: HashMap<String, bool>,
-}
-
-impl PropositionalSolver {
-    fn new() -> Self {
-        PropositionalSolver {
+impl PropositionalLogicEngine {
+    pub fn new() -> Self {
+        Self {
             variables: HashMap::new(),
+            rules: vec![
+                InferenceRule::modus_ponens(),
+                InferenceRule::modus_tollens(),
+                InferenceRule::hypothetical_syllogism(),
+                InferenceRule::disjunctive_syllogism(),
+            ],
         }
     }
 
-    fn evaluate(&self, formula: &Formula) -> bool {
+    /// 评估公式真值
+    pub fn evaluate(&self, formula: &Formula) -> Option<bool> {
         match formula {
-            Formula::Atom(name) => *self.variables.get(name).unwrap_or(&false),
-            Formula::Not(f) => !self.evaluate(f),
-            Formula::And(f1, f2) => self.evaluate(f1) && self.evaluate(f2),
-            Formula::Or(f1, f2) => self.evaluate(f1) || self.evaluate(f2),
-            Formula::Implies(f1, f2) => !self.evaluate(f1) || self.evaluate(f2),
-            Formula::Iff(f1, f2) => self.evaluate(f1) == self.evaluate(f2),
-        }
-    }
-
-    fn is_tautology(&self, formula: &Formula) -> bool {
-        let variables = self.collect_variables(formula);
-        self.check_all_assignments(formula, &variables)
-    }
-
-    fn collect_variables(&self, formula: &Formula) -> Vec<String> {
-        match formula {
-            Formula::Atom(name) => vec![name.clone()],
-            Formula::Not(f) => self.collect_variables(f),
-            Formula::And(f1, f2) | Formula::Or(f1, f2) |
-            Formula::Implies(f1, f2) | Formula::Iff(f1, f2) => {
-                let mut vars = self.collect_variables(f1);
-                vars.extend(self.collect_variables(f2));
-                vars.sort();
-                vars.dedup();
-                vars
+            Formula::Atom(name) => self.variables.get(name).copied(),
+            Formula::Not(f) => self.evaluate(f).map(|v| !v),
+            Formula::And(f1, f2) => {
+                let v1 = self.evaluate(f1)?;
+                let v2 = self.evaluate(f2)?;
+                Some(v1 && v2)
+            }
+            Formula::Or(f1, f2) => {
+                let v1 = self.evaluate(f1)?;
+                let v2 = self.evaluate(f2)?;
+                Some(v1 || v2)
+            }
+            Formula::Implies(f1, f2) => {
+                let v1 = self.evaluate(f1)?;
+                let v2 = self.evaluate(f2)?;
+                Some(!v1 || v2)
+            }
+            Formula::Equiv(f1, f2) => {
+                let v1 = self.evaluate(f1)?;
+                let v2 = self.evaluate(f2)?;
+                Some(v1 == v2)
             }
         }
     }
 
-    fn check_all_assignments(&mut self, formula: &Formula, variables: &[String]) -> bool {
-        if variables.is_empty() {
-            return self.evaluate(formula);
+    /// 生成真值表
+    pub fn generate_truth_table(&self, formula: &Formula) -> Vec<TruthTableRow> {
+        let variables = self.extract_variables(formula);
+        let mut table = Vec::new();
+
+        for i in 0..(1 << variables.len()) {
+            let mut row = TruthTableRow::new();
+
+            for (j, var) in variables.iter().enumerate() {
+                let value = (i >> j) & 1 == 1;
+                row.assignments.insert(var.clone(), value);
+            }
+
+            // 临时设置变量值
+            let original_vars = self.variables.clone();
+            self.variables.extend(row.assignments.clone());
+
+            row.result = self.evaluate(formula);
+
+            // 恢复原始变量
+            self.variables = original_vars;
+
+            table.push(row);
         }
 
-        let var = &variables[0];
-        let remaining_vars = &variables[1..];
-
-        // 尝试真值 / Try true value / Versuche Wahrheitswert / Essayer valeur vraie
-        self.variables.insert(var.clone(), true);
-        let result_true = self.check_all_assignments(formula, remaining_vars);
-
-        // 尝试假值 / Try false value / Versuche Falschwert / Essayer valeur fausse
-        self.variables.insert(var.clone(), false);
-        let result_false = self.check_all_assignments(formula, remaining_vars);
-
-        result_true && result_false
+        table
     }
 
-    fn find_satisfying_assignment(&mut self, formula: &Formula) -> Option<HashMap<String, bool>> {
-        let variables = self.collect_variables(formula);
-        self.find_satisfying_assignment_recursive(formula, &variables)
+    /// 检查逻辑等价
+    pub fn are_equivalent(&self, f1: &Formula, f2: &Formula) -> bool {
+        let variables = self.extract_variables(f1);
+        let variables2 = self.extract_variables(f2);
+        let all_variables: Vec<_> = variables.union(&variables2).cloned().collect();
+
+        for i in 0..(1 << all_variables.len()) {
+            let mut assignments = HashMap::new();
+
+            for (j, var) in all_variables.iter().enumerate() {
+                let value = (i >> j) & 1 == 1;
+                assignments.insert(var.clone(), value);
+            }
+
+            // 临时设置变量值
+            let original_vars = self.variables.clone();
+            self.variables.extend(assignments);
+
+            let result1 = self.evaluate(f1);
+            let result2 = self.evaluate(f2);
+
+            // 恢复原始变量
+            self.variables = original_vars;
+
+            if result1 != result2 {
+                return false;
+            }
+        }
+
+        true
     }
 
-    fn find_satisfying_assignment_recursive(&mut self, formula: &Formula, variables: &[String]) -> Option<HashMap<String, bool>> {
-        if variables.is_empty() {
-            return if self.evaluate(formula) {
-                Some(self.variables.clone())
-            } else {
-                None
-            };
+    /// 应用推理规则
+    pub fn apply_inference(&self, premises: &[Formula], rule: &InferenceRule) -> Option<Formula> {
+        // 检查前提是否匹配
+        if premises.len() != rule.premises.len() {
+            return None;
         }
 
-        let var = &variables[0];
-        let remaining_vars = &variables[1..];
-
-        // 尝试真值 / Try true value / Versuche Wahrheitswert / Essayer valeur vraie
-        self.variables.insert(var.clone(), true);
-        if let Some(assignment) = self.find_satisfying_assignment_recursive(formula, remaining_vars) {
-            return Some(assignment);
+        // 检查前提是否逻辑等价
+        for (premise, rule_premise) in premises.iter().zip(&rule.premises) {
+            if !self.are_equivalent(premise, rule_premise) {
+                return None;
+            }
         }
 
-        // 尝试假值 / Try false value / Versuche Falschwert / Essayer valeur fausse
-        self.variables.insert(var.clone(), false);
-        self.find_satisfying_assignment_recursive(formula, remaining_vars)
+        Some(rule.conclusion.clone())
+    }
+
+    /// 提取公式中的变量
+    fn extract_variables(&self, formula: &Formula) -> std::collections::HashSet<String> {
+        let mut variables = std::collections::HashSet::new();
+        self.extract_variables_recursive(formula, &mut variables);
+        variables
+    }
+
+    fn extract_variables_recursive(&self, formula: &Formula, variables: &mut std::collections::HashSet<String>) {
+        match formula {
+            Formula::Atom(name) => {
+                variables.insert(name.clone());
+            }
+            Formula::Not(f) => {
+                self.extract_variables_recursive(f, variables);
+            }
+            Formula::And(f1, f2) | Formula::Or(f1, f2) |
+            Formula::Implies(f1, f2) | Formula::Equiv(f1, f2) => {
+                self.extract_variables_recursive(f1, variables);
+                self.extract_variables_recursive(f2, variables);
+            }
+        }
+    }
+}
+
+impl InferenceRule {
+    pub fn modus_ponens() -> Self {
+        Self {
+            name: "Modus Ponens".to_string(),
+            premises: vec![
+                Formula::Implies(Box::new(Formula::Atom("p".to_string())),
+                               Box::new(Formula::Atom("q".to_string()))),
+                Formula::Atom("p".to_string()),
+            ],
+            conclusion: Formula::Atom("q".to_string()),
+        }
+    }
+
+    pub fn modus_tollens() -> Self {
+        Self {
+            name: "Modus Tollens".to_string(),
+            premises: vec![
+                Formula::Implies(Box::new(Formula::Atom("p".to_string())),
+                               Box::new(Formula::Atom("q".to_string()))),
+                Formula::Not(Box::new(Formula::Atom("q".to_string()))),
+            ],
+            conclusion: Formula::Not(Box::new(Formula::Atom("p".to_string()))),
+        }
+    }
+
+    pub fn hypothetical_syllogism() -> Self {
+        Self {
+            name: "Hypothetical Syllogism".to_string(),
+            premises: vec![
+                Formula::Implies(Box::new(Formula::Atom("p".to_string())),
+                               Box::new(Formula::Atom("q".to_string()))),
+                Formula::Implies(Box::new(Formula::Atom("q".to_string())),
+                               Box::new(Formula::Atom("r".to_string()))),
+            ],
+            conclusion: Formula::Implies(Box::new(Formula::Atom("p".to_string())),
+                                       Box::new(Formula::Atom("r".to_string()))),
+        }
+    }
+
+    pub fn disjunctive_syllogism() -> Self {
+        Self {
+            name: "Disjunctive Syllogism".to_string(),
+            premises: vec![
+                Formula::Or(Box::new(Formula::Atom("p".to_string())),
+                           Box::new(Formula::Atom("q".to_string()))),
+                Formula::Not(Box::new(Formula::Atom("p".to_string()))),
+            ],
+            conclusion: Formula::Atom("q".to_string()),
+        }
+    }
+}
+
+/// 真值表行
+pub struct TruthTableRow {
+    pub assignments: HashMap<String, bool>,
+    pub result: Option<bool>,
+}
+
+impl TruthTableRow {
+    pub fn new() -> Self {
+        Self {
+            assignments: HashMap::new(),
+            result: None,
+        }
+    }
+}
+
+/// 谓词逻辑引擎
+pub struct PredicateLogicEngine {
+    domain: Vec<String>,
+    interpretations: HashMap<String, Box<dyn Fn(&[String]) -> bool>>,
+}
+
+impl PredicateLogicEngine {
+    pub fn new() -> Self {
+        Self {
+            domain: Vec::new(),
+            interpretations: HashMap::new(),
+        }
+    }
+
+    /// 添加谓词解释
+    pub fn add_predicate_interpretation<P>(&mut self, name: String, interpretation: P)
+    where
+        P: Fn(&[String]) -> bool + 'static,
+    {
+        self.interpretations.insert(name, Box::new(interpretation));
+    }
+
+    /// 评估谓词公式
+    pub fn evaluate_predicate(&self, predicate: &str, arguments: &[String]) -> Option<bool> {
+        if let Some(interpretation) = self.interpretations.get(predicate) {
+            Some(interpretation(arguments))
+        } else {
+            None
+        }
     }
 }
 
 fn main() {
-    let mut solver = PropositionalSolver::new();
+    println!("=== 形式逻辑推理引擎演示 ===");
 
-    // 示例公式 / Example formula / Beispielformel / Formule d'exemple
+    // 创建命题逻辑引擎
+    let mut engine = PropositionalLogicEngine::new();
+
+    // 设置变量值
+    engine.variables.insert("p".to_string(), true);
+    engine.variables.insert("q".to_string(), false);
+
+    // 创建公式
     let formula = Formula::Implies(
         Box::new(Formula::Atom("p".to_string())),
         Box::new(Formula::Atom("q".to_string()))
     );
 
-    println!("公式: {:?}", formula);
-    println!("是重言式: {}", solver.is_tautology(&formula));
+    // 评估公式
+    let result = engine.evaluate(&formula);
+    println!("p → q 的真值: {:?}", result);
 
-    if let Some(assignment) = solver.find_satisfying_assignment(&formula) {
-        println!("满足赋值: {:?}", assignment);
-    }
+    // 生成真值表
+    let truth_table = engine.generate_truth_table(&formula);
+    println!("真值表行数: {}", truth_table.len());
+
+    // 测试逻辑等价
+    let formula1 = Formula::Implies(
+        Box::new(Formula::Atom("p".to_string())),
+        Box::new(Formula::Atom("q".to_string()))
+    );
+    let formula2 = Formula::Or(
+        Box::new(Formula::Not(Box::new(Formula::Atom("p".to_string())))),
+        Box::new(Formula::Atom("q".to_string()))
+    );
+
+    let equivalent = engine.are_equivalent(&formula1, &formula2);
+    println!("p → q 与 ¬p ∨ q 等价: {}", equivalent);
+
+    // 应用推理规则
+    let premises = vec![
+        Formula::Implies(Box::new(Formula::Atom("p".to_string())),
+                        Box::new(Formula::Atom("q".to_string()))),
+        Formula::Atom("p".to_string()),
+    ];
+
+    let rule = InferenceRule::modus_ponens();
+    let conclusion = engine.apply_inference(&premises, &rule);
+    println!("推理结论: {:?}", conclusion);
+
+    println!("形式逻辑演示完成！");
 }
 ```
 
-### Haskell实现：自然演绎系统
+### Haskell实现：类型化逻辑
 
 ```haskell
--- 自然演绎系统 / Natural Deduction System / Natürliches Deduktionssystem / Système de déduction naturelle
-data Formula =
-    Atom String
-  | Not Formula
-  | And Formula Formula
-  | Or Formula Formula
-  | Implies Formula Formula
-  | Iff Formula Formula
-  deriving (Show, Eq)
+-- 形式逻辑模块
+module FormalLogic where
 
-data Proof =
-    Assumption Formula
-  | AndIntro Proof Proof
-  | AndElimLeft Proof
-  | AndElimRight Proof
-  | OrIntroLeft Proof
-  | OrIntroRight Proof
-  | OrElim Proof Proof Proof
-  | ImplicationIntro Proof
-  | ImplicationElim Proof Proof
-  | NotIntro Proof
-  | NotElim Proof Proof
-  | IffIntro Proof Proof
-  | IffElimLeft Proof
-  | IffElimRight Proof
-  deriving (Show)
+import Data.Map (Map)
+import qualified Data.Map as Map
+import Data.Set (Set)
+import qualified Data.Set as Set
+import Data.Maybe (fromMaybe)
 
--- 证明验证 / Proof Verification / Beweisverifikation / Vérification de preuve
-verifyProof :: Proof -> [Formula] -> Formula -> Bool
-verifyProof proof assumptions conclusion =
-    case proof of
-        Assumption f -> f `elem` assumptions
+-- 命题逻辑公式
+data Formula = Atom String
+             | Not Formula
+             | And Formula Formula
+             | Or Formula Formula
+             | Implies Formula Formula
+             | Equiv Formula Formula
+             deriving (Show, Eq)
 
-        AndIntro p1 p2 ->
-            let (f1, f2) = extractAndFormulas conclusion
-            in verifyProof p1 assumptions f1 && verifyProof p2 assumptions f2
+-- 谓词逻辑公式
+data PredicateFormula = Predicate String [Term]
+                      | ForAll String PredicateFormula
+                      | Exists String PredicateFormula
+                      | PredNot PredicateFormula
+                      | PredAnd PredicateFormula PredicateFormula
+                      | PredOr PredicateFormula PredicateFormula
+                      | PredImplies PredicateFormula PredicateFormula
+                      deriving (Show, Eq)
 
-        AndElimLeft p ->
-            let f = extractLeftFormula conclusion
-            in verifyProof p assumptions (And f conclusion)
+-- 项
+data Term = Variable String
+          | Constant String
+          | Function String [Term]
+          deriving (Show, Eq)
 
-        AndElimRight p ->
-            let f = extractRightFormula conclusion
-            in verifyProof p assumptions (And conclusion f)
+-- 解释
+data Interpretation = Interpretation
+    { domain :: [String]
+    , predicateInterpretations :: Map String ([String] -> Bool)
+    , functionInterpretations :: Map String ([String] -> String)
+    }
 
-        OrIntroLeft p ->
-            let f = extractLeftFormula conclusion
-            in verifyProof p assumptions f
+-- 真值表行
+data TruthTableRow = TruthTableRow
+    { assignments :: Map String Bool
+    , result :: Maybe Bool
+    } deriving (Show)
 
-        OrIntroRight p ->
-            let f = extractRightFormula conclusion
-            in verifyProof p assumptions f
+-- 推理规则
+data InferenceRule = InferenceRule
+    { ruleName :: String
+    , premises :: [Formula]
+    , conclusion :: Formula
+    } deriving (Show)
 
-        OrElim p1 p2 p3 ->
-            let (f1, f2) = extractOrFormulas conclusion
-            in verifyProof p1 assumptions (Or f1 f2) &&
-               verifyProof p2 (f1:assumptions) conclusion &&
-               verifyProof p3 (f2:assumptions) conclusion
+-- 命题逻辑引擎
+data PropositionalLogicEngine = PropositionalLogicEngine
+    { variables :: Map String Bool
+    , rules :: [InferenceRule]
+    }
 
-        ImplicationIntro p ->
-            let (f1, f2) = extractImpliesFormulas conclusion
-            in verifyProof p (f1:assumptions) f2
+-- 创建新的命题逻辑引擎
+newPropositionalLogicEngine :: PropositionalLogicEngine
+newPropositionalLogicEngine = PropositionalLogicEngine
+    { variables = Map.empty
+    , rules = [modusPonens, modusTollens, hypotheticalSyllogism, disjunctiveSyllogism]
+    }
 
-        ImplicationElim p1 p2 ->
-            let (f1, f2) = extractImpliesFormulas conclusion
-            in verifyProof p1 assumptions (Implies f1 f2) &&
-               verifyProof p2 assumptions f1
+-- 评估公式
+evaluate :: PropositionalLogicEngine -> Formula -> Maybe Bool
+evaluate engine formula = case formula of
+    Atom name -> Map.lookup name (variables engine)
+    Not f -> not <$> evaluate engine f
+    And f1 f2 -> do
+        v1 <- evaluate engine f1
+        v2 <- evaluate engine f2
+        return (v1 && v2)
+    Or f1 f2 -> do
+        v1 <- evaluate engine f1
+        v2 <- evaluate engine f2
+        return (v1 || v2)
+    Implies f1 f2 -> do
+        v1 <- evaluate engine f1
+        v2 <- evaluate engine f2
+        return (not v1 || v2)
+    Equiv f1 f2 -> do
+        v1 <- evaluate engine f1
+        v2 <- evaluate engine f2
+        return (v1 == v2)
 
--- 证明搜索 / Proof Search / Beweissuche / Recherche de preuve
-searchProof :: [Formula] -> Formula -> Maybe Proof
-searchProof assumptions goal =
-    case goal of
-        And f1 f2 ->
-            case (searchProof assumptions f1, searchProof assumptions f2) of
-                (Just p1, Just p2) -> Just (AndIntro p1 p2)
-                _ -> Nothing
+-- 生成真值表
+generateTruthTable :: PropositionalLogicEngine -> Formula -> [TruthTableRow]
+generateTruthTable engine formula =
+    let vars = extractVariables formula
+        assignments = generateAllAssignments vars
+    in map (\assign -> TruthTableRow assign (evaluateWithAssignment engine formula assign)) assignments
 
-        Or f1 f2 ->
-            case searchProof assumptions f1 of
-                Just p -> Just (OrIntroLeft p)
-                Nothing ->
-                    case searchProof assumptions f2 of
-                        Just p -> Just (OrIntroRight p)
-                        Nothing -> Nothing
+-- 提取变量
+extractVariables :: Formula -> Set String
+extractVariables formula = case formula of
+    Atom name -> Set.singleton name
+    Not f -> extractVariables f
+    And f1 f2 -> Set.union (extractVariables f1) (extractVariables f2)
+    Or f1 f2 -> Set.union (extractVariables f1) (extractVariables f2)
+    Implies f1 f2 -> Set.union (extractVariables f1) (extractVariables f2)
+    Equiv f1 f2 -> Set.union (extractVariables f1) (extractVariables f2)
 
-        Implies f1 f2 ->
-            case searchProof (f1:assumptions) f2 of
-                Just p -> Just (ImplicationIntro p)
-                Nothing -> Nothing
+-- 生成所有赋值
+generateAllAssignments :: Set String -> [Map String Bool]
+generateAllAssignments vars =
+    let varList = Set.toList vars
+        n = length varList
+    in map (\i -> Map.fromList (zip varList (bitsToBools i n))) [0..(2^n - 1)]
 
-        _ -> searchDirectProof assumptions goal
+-- 将整数转换为布尔列表
+bitsToBools :: Int -> Int -> [Bool]
+bitsToBools num bits = [((num `div` (2^i)) `mod` 2) == 1 | i <- [0..bits-1]]
 
--- 直接证明搜索 / Direct Proof Search / Direkte Beweissuche / Recherche de preuve directe
-searchDirectProof :: [Formula] -> Formula -> Maybe Proof
-searchDirectProof assumptions goal =
-    case find (\f -> f == goal) assumptions of
-        Just _ -> Just (Assumption goal)
-        Nothing -> searchBackwardProof assumptions goal
+-- 使用赋值评估公式
+evaluateWithAssignment :: PropositionalLogicEngine -> Formula -> Map String Bool -> Maybe Bool
+evaluateWithAssignment engine formula assignment =
+    let engineWithAssignment = engine { variables = assignment }
+    in evaluate engineWithAssignment formula
 
--- 反向证明搜索 / Backward Proof Search / Rückwärtsbeweissuche / Recherche de preuve arrière
-searchBackwardProof :: [Formula] -> Formula -> Maybe Proof
-searchBackwardProof assumptions goal =
-    case goal of
-        And f1 f2 ->
-            case (searchProof assumptions f1, searchProof assumptions f2) of
-                (Just p1, Just p2) -> Just (AndIntro p1 p2)
-                _ -> Nothing
+-- 检查逻辑等价
+areEquivalent :: PropositionalLogicEngine -> Formula -> Formula -> Bool
+areEquivalent engine f1 f2 =
+    let vars1 = extractVariables f1
+        vars2 = extractVariables f2
+        allVars = Set.union vars1 vars2
+        assignments = generateAllAssignments allVars
+    in all (\assign ->
+        evaluateWithAssignment engine f1 assign == evaluateWithAssignment engine f2 assign) assignments
 
-        Or f1 f2 ->
-            case searchProof assumptions f1 of
-                Just p -> Just (OrIntroLeft p)
-                Nothing ->
-                    case searchProof assumptions f2 of
-                        Just p -> Just (OrIntroRight p)
-                        Nothing -> Nothing
+-- 应用推理规则
+applyInference :: PropositionalLogicEngine -> [Formula] -> InferenceRule -> Maybe Formula
+applyInference engine premises rule =
+    if length premises == length (premises rule) &&
+       all (\(p, rp) -> areEquivalent engine p rp) (zip premises (premises rule))
+    then Just (conclusion rule)
+    else Nothing
 
-        Implies f1 f2 ->
-            case searchProof (f1:assumptions) f2 of
-                Just p -> Just (ImplicationIntro p)
-                Nothing -> Nothing
+-- 推理规则定义
+modusPonens :: InferenceRule
+modusPonens = InferenceRule
+    { ruleName = "Modus Ponens"
+    , premises = [Implies (Atom "p") (Atom "q"), Atom "p"]
+    , conclusion = Atom "q"
+    }
 
-        _ -> Nothing
+modusTollens :: InferenceRule
+modusTollens = InferenceRule
+    { ruleName = "Modus Tollens"
+    , premises = [Implies (Atom "p") (Atom "q"), Not (Atom "q")]
+    , conclusion = Not (Atom "p")
+    }
 
--- 辅助函数 / Helper Functions / Hilfsfunktionen / Fonctions auxiliaires
-extractAndFormulas :: Formula -> (Formula, Formula)
-extractAndFormulas (And f1 f2) = (f1, f2)
-extractAndFormulas _ = error "Not an And formula"
+hypotheticalSyllogism :: InferenceRule
+hypotheticalSyllogism = InferenceRule
+    { ruleName = "Hypothetical Syllogism"
+    , premises = [Implies (Atom "p") (Atom "q"), Implies (Atom "q") (Atom "r")]
+    , conclusion = Implies (Atom "p") (Atom "r")
+    }
 
-extractOrFormulas :: Formula -> (Formula, Formula)
-extractOrFormulas (Or f1 f2) = (f1, f2)
-extractOrFormulas _ = error "Not an Or formula"
+disjunctiveSyllogism :: InferenceRule
+disjunctiveSyllogism = InferenceRule
+    { ruleName = "Disjunctive Syllogism"
+    , premises = [Or (Atom "p") (Atom "q"), Not (Atom "p")]
+    , conclusion = Atom "q"
+    }
 
-extractImpliesFormulas :: Formula -> (Formula, Formula)
-extractImpliesFormulas (Implies f1 f2) = (f1, f2)
-extractImpliesFormulas _ = error "Not an Implies formula"
+-- 谓词逻辑引擎
+data PredicateLogicEngine = PredicateLogicEngine
+    { domain :: [String]
+    , predicateInterpretations :: Map String ([String] -> Bool)
+    , functionInterpretations :: Map String ([String] -> String)
+    }
 
-extractLeftFormula :: Formula -> Formula
-extractLeftFormula (And f1 _) = f1
-extractLeftFormula (Or f1 _) = f1
-extractLeftFormula _ = error "Not a binary formula"
+-- 创建新的谓词逻辑引擎
+newPredicateLogicEngine :: [String] -> PredicateLogicEngine
+newPredicateLogicEngine domain = PredicateLogicEngine
+    { domain = domain
+    , predicateInterpretations = Map.empty
+    , functionInterpretations = Map.empty
+    }
 
-extractRightFormula :: Formula -> Formula
-extractRightFormula (And _ f2) = f2
-extractRightFormula (Or _ f2) = f2
-extractRightFormula _ = error "Not a binary formula"
+-- 添加谓词解释
+addPredicateInterpretation :: PredicateLogicEngine -> String -> ([String] -> Bool) -> PredicateLogicEngine
+addPredicateInterpretation engine name interpretation =
+    engine { predicateInterpretations = Map.insert name interpretation (predicateInterpretations engine) }
 
--- 主函数 / Main Function / Hauptfunktion / Fonction principale
+-- 评估谓词
+evaluatePredicate :: PredicateLogicEngine -> String -> [String] -> Maybe Bool
+evaluatePredicate engine predicateName arguments =
+    Map.lookup predicateName (predicateInterpretations engine) >>= \interpretation ->
+    Just (interpretation arguments)
+
+-- 模态逻辑
+data ModalFormula = ModalAtom String
+                  | ModalNot ModalFormula
+                  | ModalAnd ModalFormula ModalFormula
+                  | ModalOr ModalFormula ModalFormula
+                  | ModalImplies ModalFormula ModalFormula
+                  | Necessity ModalFormula
+                  | Possibility ModalFormula
+                  deriving (Show, Eq)
+
+-- 克里普克模型
+data KripkeModel = KripkeModel
+    { worlds :: [String]
+    , accessibility :: Map String [String]
+    , valuation :: Map (String, String) Bool  -- (world, atom) -> bool
+    }
+
+-- 评估模态公式
+evaluateModal :: KripkeModel -> String -> ModalFormula -> Bool
+evaluateModal model world formula = case formula of
+    ModalAtom atom -> Map.findWithDefault False (world, atom) (valuation model)
+    ModalNot f -> not (evaluateModal model world f)
+    ModalAnd f1 f2 -> evaluateModal model world f1 && evaluateModal model world f2
+    ModalOr f1 f2 -> evaluateModal model world f1 || evaluateModal model world f2
+    ModalImplies f1 f2 -> not (evaluateModal model world f1) || evaluateModal model world f2
+    Necessity f -> all (\w -> evaluateModal model w f) (accessibleWorlds model world)
+    Possibility f -> any (\w -> evaluateModal model w f) (accessibleWorlds model world)
+
+-- 获取可达世界
+accessibleWorlds :: KripkeModel -> String -> [String]
+accessibleWorlds model world = Map.findWithDefault [] world (accessibility model)
+
+-- 示例使用
 main :: IO ()
 main = do
-    let assumptions = [Atom "p", Atom "q"]
-    let goal = And (Atom "p") (Atom "q")
+    putStrLn "=== 形式逻辑演示 ==="
 
-    case searchProof assumptions goal of
-        Just proof -> do
-            putStrLn "找到证明:"
-            print proof
-            putStrLn $ "证明有效: " ++ show (verifyProof proof assumptions goal)
-        Nothing -> putStrLn "未找到证明"
+    -- 创建命题逻辑引擎
+    let engine = newPropositionalLogicEngine
+
+    -- 设置变量
+    let engineWithVars = engine { variables = Map.fromList [("p", True), ("q", False)] }
+
+    -- 创建公式
+    let formula = Implies (Atom "p") (Atom "q")
+
+    -- 评估公式
+    let result = evaluate engineWithVars formula
+    putStrLn $ "p → q 的真值: " ++ show result
+
+    -- 生成真值表
+    let truthTable = generateTruthTable engine formula
+    putStrLn $ "真值表行数: " ++ show (length truthTable)
+
+    -- 测试逻辑等价
+    let formula1 = Implies (Atom "p") (Atom "q")
+    let formula2 = Or (Not (Atom "p")) (Atom "q")
+    let equivalent = areEquivalent engine formula1 formula2
+    putStrLn $ "p → q 与 ¬p ∨ q 等价: " ++ show equivalent
+
+    -- 应用推理规则
+    let premises = [Implies (Atom "p") (Atom "q"), Atom "p"]
+    let conclusion = applyInference engine premises modusPonens
+    putStrLn $ "推理结论: " ++ show conclusion
+
+    -- 创建谓词逻辑引擎
+    let predEngine = newPredicateLogicEngine ["a", "b", "c"]
+    let predEngineWithInterp = addPredicateInterpretation predEngine "P" (\args -> head args == "a")
+
+    -- 评估谓词
+    let predResult = evaluatePredicate predEngineWithInterp "P" ["a"]
+    putStrLn $ "谓词 P(a) 的真值: " ++ show predResult
+
+    putStrLn "形式逻辑演示完成！"
 ```
 
 ---
 
-## 参考文献 / References / Literatur / Références
+## 参考文献 / References
 
 1. **中文 / Chinese:**
-   - 王浩 (1981). *数理逻辑*. 科学出版社.
-   - 张锦文 (1997). *集合论与连续统假设*. 科学出版社.
+   - 王宪钧 (1982). *数理逻辑引论*. 北京大学出版社.
+   - 张清宇 (2003). *逻辑哲学九章*. 江苏人民出版社.
+   - 李小五 (2005). *模态逻辑*. 中国社会科学出版社.
 
 2. **English:**
-   - Gödel, K. (1930). Die Vollständigkeit der Axiome des logischen Funktionenkalküls. *Monatshefte für Mathematik und Physik*, 37(1), 349-360.
-   - Church, A. (1936). An unsolvable problem of elementary number theory. *American Journal of Mathematics*, 58(2), 345-363.
-   - Tarski, A. (1936). Der Wahrheitsbegriff in den formalisierten Sprachen. *Studia Philosophica*, 1, 261-405.
+   - Enderton, H. B. (2001). *A Mathematical Introduction to Logic*. Academic Press.
+   - Mendelson, E. (2015). *Introduction to Mathematical Logic*. CRC Press.
+   - Hughes, G. E., & Cresswell, M. J. (1996). *A New Introduction to Modal Logic*. Routledge.
+   - Boolos, G. S., Burgess, J. P., & Jeffrey, R. C. (2007). *Computability and Logic*. Cambridge University Press.
 
 3. **Deutsch / German:**
-   - Hilbert, D., & Ackermann, W. (1928). *Grundzüge der theoretischen Logik*. Springer.
-   - Gentzen, G. (1935). Untersuchungen über das logische Schließen. *Mathematische Zeitschrift*, 39(1), 176-210.
-   - Gödel, K. (1931). Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I. *Monatshefte für Mathematik und Physik*, 38(1), 173-198.
+   - Ebbinghaus, H. D., Flum, J., & Thomas, W. (2018). *Einführung in die mathematische Logik*. Springer.
+   - Rautenberg, W. (2008). *Einführung in die mathematische Logik*. Vieweg+Teubner.
 
 4. **Français / French:**
-   - Bourbaki, N. (1970). *Éléments de mathématique: Théorie des ensembles*. Hermann.
-   - Girard, J.-Y. (1987). *Proof Theory and Logical Complexity*. Bibliopolis.
-   - Coquand, T., & Huet, G. (1988). The calculus of constructions. *Information and Computation*, 76(2-3), 95-120.
+   - Cori, R., & Lascar, D. (2003). *Logique mathématique*. Dunod.
+   - David, R., Nour, K., & Raffalli, C. (2004). *Introduction à la logique*. Dunod.
 
 ---
 
-*本模块为FormalAI提供了形式化逻辑的完整理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的形式化推理和验证提供了严格的数学基础。*
+*本模块为FormalAI提供了完整的形式逻辑基础，涵盖命题逻辑、谓词逻辑、模态逻辑等核心内容，为AI系统的逻辑推理能力提供了坚实的理论基础。*
+
+*This module provides complete formal logic foundations for FormalAI, covering propositional logic, predicate logic, modal logic, and other core content, providing solid theoretical foundations for logical reasoning capabilities in AI systems.*

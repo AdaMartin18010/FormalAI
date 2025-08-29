@@ -15,6 +15,7 @@ Ethical frameworks provide moral guidance for the development and application of
 - 典型维度：有益性、无害性、公正性、自主性、隐私、安全
 
 #### Rust示例：线性加权打分（示意）
+
 ```rust
 pub fn ethical_score(ws: &[f32], us: &[f32]) -> f32 {
     ws.iter().zip(us).map(|(w,u)| w*u).sum()
@@ -25,7 +26,10 @@ pub fn ethical_score(ws: &[f32], us: &[f32]) -> f32 {
 
 - [9.3 伦理框架 / Ethical Frameworks / Ethische Rahmenwerke / Cadres éthiques](#93-伦理框架--ethical-frameworks--ethische-rahmenwerke--cadres-éthiques)
   - [概述 / Overview](#概述--overview)
+    - [0. 多目标伦理决策模型 / Multi-Objective Ethical Decision Model / Mehrziel-Ethikentscheidungsmodell / Modèle décisionnel éthique multi-objectifs](#0-多目标伦理决策模型--multi-objective-ethical-decision-model--mehrziel-ethikentscheidungsmodell--modèle-décisionnel-éthique-multi-objectifs)
+      - [Rust示例：线性加权打分（示意）](#rust示例线性加权打分示意)
   - [目录 / Table of Contents](#目录--table-of-contents)
+  - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 伦理理论基础 / Ethical Theory Foundations](#1-伦理理论基础--ethical-theory-foundations)
     - [1.1 功利主义 / Utilitarianism](#11-功利主义--utilitarianism)
     - [1.2 义务论 / Deontological Ethics](#12-义务论--deontological-ethics)

@@ -15,6 +15,7 @@ Safety mechanisms study how to ensure the safety of AI systems during operation,
 - 在线阈值干预：当瞬时风险超过阈值时切换到安全策略。
 
 #### Rust示例：简单风险阈值守卫
+
 ```rust
 pub fn safe_action(risk: f32, beta: f32, a: i32, a_safe: i32) -> i32 {
     if risk <= beta { a } else { a_safe }
@@ -25,6 +26,8 @@ pub fn safe_action(risk: f32, beta: f32, a: i32, a_safe: i32) -> i32 {
 
 - [7.3 安全机制 / Safety Mechanisms / Sicherheitsmechanismen / Mécanismes de sécurité](#73-安全机制--safety-mechanisms--sicherheitsmechanismen--mécanismes-de-sécurité)
   - [概述 / Overview](#概述--overview)
+    - [0. 风险预算与阈值干预 / Risk Budgeting and Threshold Intervention / Risikobudgetierung und Schwellwertintervention / Budgétisation du risque et intervention par seuil](#0-风险预算与阈值干预--risk-budgeting-and-threshold-intervention--risikobudgetierung-und-schwellwertintervention--budgétisation-du-risque-et-intervention-par-seuil)
+      - [Rust示例：简单风险阈值守卫](#rust示例简单风险阈值守卫)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 安全约束 / Safety Constraints](#1-安全约束--safety-constraints)
