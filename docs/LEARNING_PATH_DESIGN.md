@@ -52,21 +52,21 @@ This document designs progressive learning paths for the FormalAI project, ensur
 
 #### 第一阶段：基础认知 / Phase 1: Basic Understanding (2-3个月)
 
-**1.1 AI基础概念 / AI Basic Concepts**
+**1.1 AI基础概念 / AI Basic Concepts**:
 
 - 学习内容：AI定义、发展历史、应用领域
 - 推荐章节：[1.1 形式化逻辑](../01-foundations/01-formal-logic/README.md)
 - 学习方式：概念理解 + 案例分析
 - 预期时间：2周
 
-**1.2 数学基础 / Mathematical Foundations**
+**1.2 数学基础 / Mathematical Foundations**:
 
 - 学习内容：线性代数、概率统计、微积分基础
 - 推荐章节：[1.2 数学基础](../01-foundations/02-mathematical-foundations/README.md)
 - 学习方式：理论学习 + 练习实践
 - 预期时间：4周
 
-**1.3 编程基础 / Programming Basics**
+**1.3 编程基础 / Programming Basics**:
 
 - 学习内容：Python基础、数据结构、算法思维
 - 推荐章节：[1.3 计算理论](../01-foundations/03-computation-theory/README.md)
@@ -75,21 +75,21 @@ This document designs progressive learning paths for the FormalAI project, ensur
 
 #### 第二阶段：机器学习入门 / Phase 2: Machine Learning Introduction (3-4个月)
 
-**2.1 统计学习理论 / Statistical Learning Theory**
+**2.1 统计学习理论 / Statistical Learning Theory**:
 
 - 学习内容：监督学习、无监督学习、模型评估
 - 推荐章节：[2.1 统计学习理论](../02-machine-learning/01-statistical-learning-theory/README.md)
 - 学习方式：理论学习 + 实验验证
 - 预期时间：6周
 
-**2.2 深度学习基础 / Deep Learning Basics**
+**2.2 深度学习基础 / Deep Learning Basics**:
 
 - 学习内容：神经网络、反向传播、优化算法
 - 推荐章节：[2.2 深度学习理论](../02-machine-learning/02-deep-learning-theory/README.md)
 - 学习方式：模型构建 + 训练实践
 - 预期时间：6周
 
-**2.3 实际应用 / Practical Applications**
+**2.3 实际应用 / Practical Applications**:
 
 - 学习内容：图像分类、文本分析、推荐系统
 - 推荐章节：[4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md)
@@ -104,31 +104,31 @@ This document designs progressive learning paths for the FormalAI project, ensur
 - 有机器学习基础的工程师
 - 希望深入AI理论的研究者
 
-**学习目标 / Learning Objectives:**
+**学习目标 / Learning Objectives:**:
 
 - 深入理解AI理论体系
 - 掌握前沿AI技术
 - 能够进行AI理论研究
 
-**学习路径 / Learning Path:**
+**学习路径 / Learning Path:**:
 
 #### 第一阶段：理论深化 / Phase 1: Theoretical Deepening (3-4个月)
 
-**1.1 形式化方法 / Formal Methods**
+:
 
 - 学习内容：形式化验证、程序合成、类型理论
 - 推荐章节：[3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md)
 - 学习方式：理论推导 + 形式化证明
 - 预期时间：6周
 
-**1.2 高级机器学习 / Advanced Machine Learning**
+**1.2 高级机器学习 / Advanced Machine Learning**:
 
 - 学习内容：强化学习、因果推理、元学习
 - 推荐章节：[2.3 强化学习理论](../02-machine-learning/03-reinforcement-learning-theory/README.md)
 - 学习方式：算法实现 + 实验研究
 - 预期时间：8周
 
-**1.3 多模态AI / Multimodal AI**
+**1.3 多模态AI / Multimodal AI**:
 
 - 学习内容：视觉-语言模型、多模态融合、跨模态推理
 - 推荐章节：[5.1 视觉-语言模型](../05-multimodal-ai/01-vision-language-models/README.md)
@@ -137,21 +137,21 @@ This document designs progressive learning paths for the FormalAI project, ensur
 
 #### 第二阶段：前沿探索 / Phase 2: Frontier Exploration (4-6个月)
 
-**2.1 AI安全与对齐 / AI Safety and Alignment**
+**2.1 AI安全与对齐 / AI Safety and Alignment**:
 
 - 学习内容：对齐理论、价值学习、安全机制
 - 推荐章节：[7.1 对齐理论](../07-alignment-safety/01-alignment-theory/README.md)
 - 学习方式：理论研究 + 安全评估
 - 预期时间：8周
 
-**2.2 涌现与复杂性 / Emergence and Complexity**
+**2.2 涌现与复杂性 / Emergence and Complexity**:
 
 - 学习内容：涌现理论、复杂系统、自组织
 - 推荐章节：[8.1 涌现理论](../08-emergence-complexity/01-emergence-theory/README.md)
 - 学习方式：系统分析 + 仿真实验
 - 预期时间：6周
 
-**2.3 哲学与伦理 / Philosophy and Ethics**
+**2.3 哲学与伦理 / Philosophy and Ethics**:
 
 - 学习内容：AI哲学、意识理论、伦理框架
 - 推荐章节：[9.1 AI哲学](../09-philosophy-ethics/01-ai-philosophy/README.md)
@@ -176,21 +176,21 @@ This document designs progressive learning paths for the FormalAI project, ensur
 
 #### 第一阶段：前沿理论 / Phase 1: Frontier Theories (6-8个月)
 
-**1.1 最新发展跟踪 / Latest Developments Tracking**
+**1.1 最新发展跟踪 / Latest Developments Tracking**:
 
 - 学习内容：2024年最新AI理论发展
 - 推荐章节：各章节的"2024年最新发展"部分
 - 学习方式：文献阅读 + 理论分析
 - 预期时间：12周
 
-**1.2 跨学科融合 / Interdisciplinary Integration**
+**1.2 跨学科融合 / Interdisciplinary Integration**:
 
 - 学习内容：认知科学、神经科学、复杂系统科学
 - 推荐章节：[1.4 认知科学](../01-foundations/04-cognitive-science/README.md)
 - 学习方式：跨学科研究 + 理论整合
 - 预期时间：8周
 
-**1.3 理论创新 / Theoretical Innovation**
+**1.3 理论创新 / Theoretical Innovation**:
 
 - 学习内容：理论框架设计、数学建模、实验验证
 - 推荐章节：所有章节的理论部分
@@ -199,21 +199,21 @@ This document designs progressive learning paths for the FormalAI project, ensur
 
 #### 第二阶段：研究实践 / Phase 2: Research Practice (8-12个月)
 
-**2.1 研究项目 / Research Projects**
+**2.1 研究项目 / Research Projects**:
 
 - 学习内容：独立研究项目设计、实施、评估
 - 推荐章节：根据研究主题选择相关章节
 - 学习方式：项目研究 + 成果发表
 - 预期时间：16周
 
-**2.2 学术交流 / Academic Exchange**
+**2.2 学术交流 / Academic Exchange**:
 
 - 学习内容：学术会议参与、论文发表、合作研究
 - 推荐章节：所有章节的参考文献部分
 - 学习方式：学术交流 + 合作研究
 - 预期时间：8周
 
-**2.3 理论贡献 / Theoretical Contributions**
+**2.3 理论贡献 / Theoretical Contributions**:
 
 - 学习内容：理论创新、方法改进、标准制定
 - 推荐章节：根据贡献领域选择相关章节
