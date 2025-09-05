@@ -85,7 +85,8 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
 
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
-- [4.1 大语言模型理论 / Large Language Model Theory / Theorie der großen Sprachmodelle / Théorie des grands modèles de langage](#41-大语言模型理论--large-language-model-theory--theorie-der-großen-sprachmodelle--théorie-des-grands-modèles-de-langage)
+- [\[2024/2025 最新进展 / Latest Updates\]](#20242025-最新进展--latest-updates)
+  - [4.1 大语言模型理论 / Large Language Model Theory / Theorie der großen Sprachmodelle / Théorie des grands modèles de langage](#41-大语言模型理论--large-language-model-theory--theorie-der-großen-sprachmodelle--théorie-des-grands-modèles-de-langage)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [大语言模型 / Large Language Model / Großes Sprachmodell / Grand modèle de langage](#大语言模型--large-language-model--großes-sprachmodell--grand-modèle-de-langage)

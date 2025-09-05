@@ -74,6 +74,7 @@ La théorie des ensembles est la branche mathématique qui étudie les ensembles
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [集合论 / Set Theory / Mengenlehre / Théorie des ensembles](#集合论--set-theory--mengenlehre--théorie-des-ensembles)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
+    - [0. 常用数学记号 / Common Mathematical Notation / Übliche mathematische Notation / Notation mathématique usuelle](#0-常用数学记号--common-mathematical-notation--übliche-mathematische-notation--notation-mathématique-usuelle)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [1. 集合论 / Set Theory / Mengenlehre / Théorie des ensembles](#1-集合论--set-theory--mengenlehre--théorie-des-ensembles)
     - [1.1 基本概念 / Basic Concepts / Grundbegriffe / Concepts de base](#11-基本概念--basic-concepts--grundbegriffe--concepts-de-base)
@@ -111,6 +112,7 @@ La théorie des ensembles est la branche mathématique qui étudie les ensembles
     - [Rust实现：集合运算](#rust实现集合运算)
     - [Haskell实现：代数结构](#haskell实现代数结构)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [2024/2025 最新进展 / Latest Updates](#20242025-最新进展--latest-updates)
 
 ---
 
@@ -1141,3 +1143,5 @@ main = do
 
 - 近似推理中的测度与泛函不等式新界（占位）。
 - 深度学习优化的鞍点几何与收敛性新结果综述（占位）。
+
+[返回“最新进展”索引](../../LATEST_UPDATES_INDEX.md)
