@@ -1,5 +1,7 @@
 # 1.3 计算理论 / Computation Theory / Berechnungstheorie / Théorie du calcul
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 计算理论研究计算的本质、能力和限制，为FormalAI提供计算复杂性和算法分析的理论基础。
@@ -41,13 +43,13 @@ Le calcul est le processus de traitement d'information qui transforme l'entrée 
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑基础](01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
-- [1.2 数学基础](02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
+- [1.1 形式化逻辑基础](../01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [1.2 数学基础](../02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [3.2 程序合成](../03-formal-methods/02-program-synthesis/README.md) - 提供计算基础 / Provides computation foundation
-- [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供复杂度基础 / Provides complexity foundation
+- [3.2 程序合成](../../03-formal-methods/02-program-synthesis/README.md) - 提供计算基础 / Provides computation foundation
+- [4.1 大语言模型理论](../../04-language-models/01-large-language-models/README.md) - 提供复杂度基础 / Provides complexity foundation
 
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
@@ -764,3 +766,8 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的计算理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的算法设计和复杂性分析提供了严格的数学基础。*
+
+## 2024/2025 最新进展 / Latest Updates
+
+- 神经算法的计算复杂性下界与平均情形分析（占位）。
+- 量子取样与经典可模拟性边界的最新突破（占位）。

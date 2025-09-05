@@ -1,5 +1,7 @@
 # 2.1 统计学习理论 / Statistical Learning Theory / Statistische Lerntheorie / Théorie de l'apprentissage statistique
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 统计学习理论为机器学习提供数学基础，研究学习算法的泛化能力和收敛性质。
@@ -62,7 +64,7 @@ Statistical learning theory provides mathematical foundations for machine learni
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.2 数学基础](../01-foundations/02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
+- [1.2 数学基础](../../01-foundations/02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 

@@ -1,5 +1,7 @@
 # 1.2 数学基础 / Mathematical Foundations / Mathematische Grundlagen / Fondements mathématiques
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 数学基础为FormalAI提供严格的数学语言和工具，涵盖集合论、代数、拓扑学、微分几何、概率论、统计学、信息论和优化理论等核心领域。
@@ -47,13 +49,13 @@ La théorie des ensembles est la branche mathématique qui étudie les ensembles
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑基础](01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [1.1 形式化逻辑基础](../01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [2.1 统计学习理论](../02-machine-learning/01-statistical-learning-theory/README.md) - 提供数学基础 / Provides mathematical foundation
-- [2.2 深度学习理论](../02-machine-learning/02-deep-learning-theory/README.md) - 提供优化基础 / Provides optimization foundation
-- [3.3 类型理论](../03-formal-methods/03-type-theory/README.md) - 提供集合论基础 / Provides set theory foundation
+- [2.1 统计学习理论](../../02-machine-learning/01-statistical-learning-theory/README.md) - 提供数学基础 / Provides mathematical foundation
+- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供优化基础 / Provides optimization foundation
+- [3.3 类型理论](../../03-formal-methods/03-type-theory/README.md) - 提供集合论基础 / Provides set theory foundation
 
 ### 0. 常用数学记号 / Common Mathematical Notation / Übliche mathematische Notation / Notation mathématique usuelle
 
@@ -1134,3 +1136,8 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的数学基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的数学建模和分析提供了严格的数学基础。*
+
+## 2024/2025 最新进展 / Latest Updates
+
+- 近似推理中的测度与泛函不等式新界（占位）。
+- 深度学习优化的鞍点几何与收敛性新结果综述（占位）。

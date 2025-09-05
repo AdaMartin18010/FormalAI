@@ -1,5 +1,7 @@
 # 1.4 认知科学 / Cognitive Science / Kognitionswissenschaft / Sciences cognitives
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 认知科学研究人类智能的机制和过程，为FormalAI提供认知建模和智能系统设计的理论基础。
@@ -49,12 +51,12 @@ La cognition est le processus mental de traitement d'information, d'acquisition 
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑基础](01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [1.1 形式化逻辑基础](../01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [9.1 AI哲学](../09-philosophy-ethics/01-ai-philosophy/README.md) - 提供认知基础 / Provides cognitive foundation
-- [9.2 意识理论](../09-philosophy-ethics/02-consciousness-theory/README.md) - 提供意识基础 / Provides consciousness foundation
+- [9.1 AI哲学](../../09-philosophy-ethics/01-ai-philosophy/README.md) - 提供认知基础 / Provides cognitive foundation
+- [9.2 意识理论](../../09-philosophy-ethics/02-consciousness-theory/README.md) - 提供意识基础 / Provides consciousness foundation
 
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
@@ -906,3 +908,8 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的认知科学理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的认知建模和智能行为设计提供了科学的理论基础。*
+
+## 2024/2025 最新进展 / Latest Updates
+
+- 具身智能与世界模型在任务泛化中的作用评测（占位）。
+- 注意力机制的认知神经学证据与AI对照实验（占位）。

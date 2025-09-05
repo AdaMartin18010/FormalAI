@@ -1,5 +1,7 @@
 # 5.1 视觉-语言模型 / Vision-Language Models / Vision-Sprach-Modelle / Modèles vision-langage
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 视觉-语言模型研究如何将视觉信息与语言信息进行联合建模和理解，为FormalAI提供多模态智能的理论基础。本理论体系已更新至2024年最新发展，包含Gemini 2.0的统一多模态架构、Sora的视频生成理论、多模态Agent等前沿内容。
@@ -222,13 +224,13 @@ $$\text{Deep Understanding} = \text{Surface Features} + \text{Semantic Relations
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.2 深度学习理论](../02-machine-learning/02-deep-learning-theory/README.md) - 提供神经网络基础 / Provides neural network foundation
-- [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供语言基础 / Provides language foundation
+- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供神经网络基础 / Provides neural network foundation
+- [4.1 大语言模型理论](../../04-language-models/01-large-language-models/README.md) - 提供语言基础 / Provides language foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [5.2 多模态融合](02-multimodal-fusion/README.md) - 提供模型基础 / Provides model foundation
-- [5.3 跨模态推理](03-cross-modal-reasoning/README.md) - 提供对齐基础 / Provides alignment foundation
+- [5.2 多模态融合](../02-multimodal-fusion/README.md) - 提供模型基础 / Provides model foundation
+- [5.3 跨模态推理](../03-cross-modal-reasoning/README.md) - 提供对齐基础 / Provides alignment foundation
 
 ---
 

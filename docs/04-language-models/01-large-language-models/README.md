@@ -1,4 +1,11 @@
-# 4.1 大语言模型理论 / Large Language Model Theory / Theorie der großen Sprachmodelle / Théorie des grands modèles de langage
+# [2024/2025 最新进展 / Latest Updates]
+
+- 扩散-Transformer混合与对齐新范式（占位）。
+- Agentic LLM 的规划-执行-验证闭环（占位）。
+
+## 4.1 大语言模型理论 / Large Language Model Theory / Theorie der großen Sprachmodelle / Théorie des grands modèles de langage
+
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
 
 ## 概述 / Overview / Übersicht / Aperçu
 
@@ -109,6 +116,18 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
     - [Rust实现：注意力机制](#rust实现注意力机制)
     - [Haskell实现：缩放定律分析](#haskell实现缩放定律分析)
+  - [2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024](#2024年最新发展--latest-developments-2024--neueste-entwicklungen-2024--derniers-développements-2024)
+    - [前沿模型理论分析 / Cutting-edge Model Theoretical Analysis](#前沿模型理论分析--cutting-edge-model-theoretical-analysis)
+      - [2024年重大突破模型 / Major Breakthrough Models 2024](#2024年重大突破模型--major-breakthrough-models-2024)
+      - [Gemini 2.0 理论突破 / Gemini 2.0 Theoretical Breakthroughs](#gemini-20-理论突破--gemini-20-theoretical-breakthroughs)
+      - [Claude 3.5 理论进展 / Claude 3.5 Theoretical Advances](#claude-35-理论进展--claude-35-theoretical-advances)
+      - [GPT-5 理论预测 / GPT-5 Theoretical Predictions](#gpt-5-理论预测--gpt-5-theoretical-predictions)
+    - [Agent理论与自主系统 / Agent Theory and Autonomous Systems](#agent理论与自主系统--agent-theory-and-autonomous-systems)
+      - [Agent架构理论 / Agent Architecture Theory](#agent架构理论--agent-architecture-theory)
+      - [工具使用理论 / Tool Use Theory](#工具使用理论--tool-use-theory)
+    - [自主推理理论 / Autonomous Reasoning Theory](#自主推理理论--autonomous-reasoning-theory)
+      - [推理链理论 / Reasoning Chain Theory](#推理链理论--reasoning-chain-theory)
+      - [元推理理论 / Meta-Reasoning Theory](#元推理理论--meta-reasoning-theory)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
 
 ---
@@ -117,13 +136,13 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.2 深度学习理论](../02-machine-learning/02-deep-learning-theory/README.md) - 提供模型基础 / Provides model foundation
-- [3.2 程序合成](../03-formal-methods/02-program-synthesis/README.md) - 提供生成基础 / Provides generation foundation
+- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供模型基础 / Provides model foundation
+- [3.2 程序合成](../../03-formal-methods/02-program-synthesis/README.md) - 提供生成基础 / Provides generation foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [5.1 视觉-语言模型](../05-multimodal-ai/01-vision-language-models/README.md) - 提供语言基础 / Provides language foundation
-- [7.1 对齐理论](../07-alignment-safety/01-alignment-theory/README.md) - 提供模型基础 / Provides model foundation
+- [5.1 视觉-语言模型](../../05-multimodal-ai/01-vision-language-models/README.md) - 提供语言基础 / Provides language foundation
+- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 提供模型基础 / Provides model foundation
 
 ---
 
@@ -652,6 +671,36 @@ main = do
 ## 2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024
 
 ### 前沿模型理论分析 / Cutting-edge Model Theoretical Analysis
+
+#### 2024年重大突破模型 / Major Breakthrough Models 2024
+
+**GPT-4o (2024年5月发布) / GPT-4o (Released May 2024):**
+
+- 多模态统一架构 / Unified multimodal architecture
+- 实时语音交互 / Real-time voice interaction
+- 视觉理解能力 / Visual understanding capabilities
+- 参数规模: 约1.8万亿 / Parameter scale: ~1.8 trillion
+
+**Claude 3.5 Sonnet (2024年6月发布) / Claude 3.5 Sonnet (Released June 2024):**
+
+- 增强推理能力 / Enhanced reasoning capabilities
+- 代码生成优化 / Optimized code generation
+- 多语言支持 / Multilingual support
+- 参数规模: 约1.4万亿 / Parameter scale: ~1.4 trillion
+
+**Gemini 2.0 Flash (2024年12月发布) / Gemini 2.0 Flash (Released December 2024):**
+
+- 极速推理 / Ultra-fast inference
+- 多模态融合 / Multimodal fusion
+- 边缘部署优化 / Edge deployment optimization
+- 参数规模: 约1.2万亿 / Parameter scale: ~1.2 trillion
+
+**DeepSeek-V3 (2024年12月发布) / DeepSeek-V3 (Released December 2024):**
+
+- 数学推理专长 / Mathematical reasoning expertise
+- 代码理解能力 / Code understanding capabilities
+- 中文优化 / Chinese language optimization
+- 参数规模: 约2.1万亿 / Parameter scale: ~2.1 trillion
 
 #### Gemini 2.0 理论突破 / Gemini 2.0 Theoretical Breakthroughs
 

@@ -27,6 +27,7 @@
 - 4.2 形式化语义 / Formal Semantics: `04-language-models/02-formal-semantics/README.md`
 - 4.3 知识表示 / Knowledge Representation: `04-language-models/03-knowledge-representation/README.md`
 - 4.4 推理机制 / Reasoning Mechanisms: `04-language-models/04-reasoning-mechanisms/README.md`
+- 4.5 AI智能体理论 / AI Agent Theory: `04-language-models/05-ai-agents/README.md`
 
 ## 5. 多模态AI / Multimodal AI
 
@@ -57,3 +58,27 @@
 - 9.1 AI哲学 / AI Philosophy: `09-philosophy-ethics/01-ai-philosophy/README.md`
 - 9.2 意识理论 / Consciousness Theory: `09-philosophy-ethics/02-consciousness-theory/README.md`
 - 9.3 伦理框架 / Ethical Frameworks: `09-philosophy-ethics/03-ethical-frameworks/README.md`
+
+## 10. 具身智能 / Embodied AI
+
+- 10.1 具身智能理论 / Embodied Intelligence Theory: `10-embodied-ai/01-embodied-intelligence/README.md`
+
+## 11. 边缘AI / Edge AI
+
+- 11.1 联邦学习理论 / Federated Learning Theory: `11-edge-ai/01-federated-learning/README.md`
+
+## 12. 量子AI / Quantum AI
+
+- 12.1 量子机器学习理论 / Quantum Machine Learning Theory: `12-quantum-ai/01-quantum-machine-learning/README.md`
+
+## 13. 神经符号AI / Neural-Symbolic AI
+
+- 13.1 神经符号AI理论 / Neural-Symbolic AI Theory: `13-neural-symbolic/01-neural-symbolic-ai/README.md`
+
+## 14. 绿色AI / Green AI
+
+- 14.1 可持续AI理论 / Sustainable AI Theory: `14-green-ai/01-sustainable-ai/README.md`
+
+## 15. 元学习 / Meta-Learning
+
+- 15.1 元学习理论 / Meta-Learning Theory: `15-meta-learning/01-meta-learning-theory/README.md`

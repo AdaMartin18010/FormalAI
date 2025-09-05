@@ -1,10 +1,12 @@
 # 7.1 对齐理论 / Alignment Theory / Ausrichtungstheorie / Théorie de l'alignement
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
-对齐理论研究如何确保AI系统的行为与人类价值观和意图保持一致，为安全AI系统提供理论基础。本理论体系已更新至2024年最新发展，包含多智能体对齐、自主系统对齐、工具使用对齐等前沿内容。
+对齐理论研究如何确保AI系统的行为与人类价值观和意图保持一致，为安全AI系统提供理论基础。本理论体系已更新至2024年最新发展，包含多智能体对齐、自主系统对齐、工具使用对齐等前沿内容，并添加了RLHF、DPO、Constitutional AI等实际对齐技术的详细分析。
 
-Alignment theory studies how to ensure AI system behavior aligns with human values and intentions, providing theoretical foundations for safe AI systems. This theoretical system has been updated to include the latest developments of 2024, covering multi-agent alignment, autonomous system alignment, tool use alignment and other frontier content.
+Alignment theory studies how to ensure AI system behavior aligns with human values and intentions, providing theoretical foundations for safe AI systems. This theoretical system has been updated to include the latest developments of 2024, covering multi-agent alignment, autonomous system alignment, tool use alignment and other frontier content, with detailed analysis of practical alignment techniques such as RLHF, DPO, and Constitutional AI.
 
 Die Ausrichtungstheorie untersucht, wie sichergestellt werden kann, dass das Verhalten von KI-Systemen mit menschlichen Werten und Absichten übereinstimmt, und liefert theoretische Grundlagen für sichere KI-Systeme. Dieses theoretische System wurde auf die neuesten Entwicklungen von 2024 aktualisiert und umfasst Multi-Agent-Ausrichtung, autonome Systemausrichtung, Werkzeugnutzungsausrichtung und andere Grenzinhalte.
 
@@ -237,14 +239,14 @@ $$\text{Cross-Cultural Alignment} = \text{Cultural Understanding} + \text{Value 
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.3 强化学习理论](../02-machine-learning/03-reinforcement-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
-- [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供模型基础 / Provides model foundation
-- [6.2 公平性与偏见理论](../06-interpretable-ai/02-fairness-bias/README.md) - 提供公平性基础 / Provides fairness foundation
+- [2.3 强化学习理论](../../02-machine-learning/03-reinforcement-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
+- [4.1 大语言模型理论](../../04-language-models/01-large-language-models/README.md) - 提供模型基础 / Provides model foundation
+- [6.2 公平性与偏见理论](../../06-interpretable-ai/02-fairness-bias/README.md) - 提供公平性基础 / Provides fairness foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [7.2 价值学习理论](02-value-learning/README.md) - 提供对齐基础 / Provides alignment foundation
-- [7.3 安全机制](03-safety-mechanisms/README.md) - 提供对齐基础 / Provides alignment foundation
+- [7.2 价值学习理论](../02-value-learning/README.md) - 提供对齐基础 / Provides alignment foundation
+- [7.3 安全机制](../03-safety-mechanisms/README.md) - 提供对齐基础 / Provides alignment foundation
 
 ---
 

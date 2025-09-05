@@ -1,5 +1,7 @@
 # 3.1 形式化验证 / Formal Verification / Formale Verifikation / Vérification formelle
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 形式化验证研究如何通过数学方法证明系统满足其规范，为FormalAI提供严格的正确性保证理论基础。
@@ -99,7 +101,7 @@ fn reach_bad(init: State, max: u32) -> bool {
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [1.1 形式化逻辑基础](../../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
@@ -854,3 +856,8 @@ main = do
 ---
 
 *本模块为FormalAI提供了全面的形式化验证理论基础，涵盖了从模型检测到验证工具的完整形式化验证理论体系。*
+
+## 2024/2025 最新进展 / Latest Updates
+
+- LLM 生成代码的形式化验证基准与工具链整合（占位）。
+- 可扩展模型检测在分布式系统与智能体中的应用（占位）。

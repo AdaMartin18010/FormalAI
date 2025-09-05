@@ -116,6 +116,12 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 - **内容**: 逻辑推理、概率推理、因果推理、类比推理、反事实推理
 - **状态**: ✅ 已完成
 
+#### 4.5 AI智能体理论 / AI Agent Theory
+
+- **路径**: `docs/04-language-models/05-ai-agents/README.md`
+- **内容**: 自主智能体、工具使用、多智能体协作、自主推理、Agent生态系统
+- **状态**: ✅ 已完成
+
 ### 5. 多模态AI理论 / Multimodal AI Theory
 
 #### 5.1 视觉-语言模型 / Vision-Language Models
@@ -309,6 +315,61 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 - ✅ AI哲学
 - ✅ 意识理论
 - ✅ 伦理框架
+- ✅ AI智能体理论 (已更新2024年最新发展)
+- ✅ 具身智能理论 (已更新2024年最新发展)
+- ✅ 联邦学习理论 (已更新2024年最新发展)
+- ✅ 量子机器学习理论 (已更新2024年最新发展)
+- ✅ 神经符号AI理论 (已更新2024年最新发展)
+- ✅ 可持续AI理论 (已更新2024年最新发展)
+- ✅ 元学习理论 (已更新2024年最新发展)
+
+### 10. 具身智能 / Embodied AI
+
+#### 10.1 具身智能理论 / Embodied Intelligence Theory
+
+- **路径**: `docs/10-embodied-ai/01-embodied-intelligence/README.md`
+- **内容**: 物理具身性、感知-行动循环、环境交互、具身认知、机器人学、多模态感知
+- **状态**: ✅ 已完成
+
+### 11. 边缘AI / Edge AI
+
+#### 11.1 联邦学习理论 / Federated Learning Theory
+
+- **路径**: `docs/11-edge-ai/01-federated-learning/README.md`
+- **内容**: 隐私保护、通信效率、模型聚合、差分隐私、个性化联邦学习、异步训练
+- **状态**: ✅ 已完成
+
+### 12. 量子AI / Quantum AI
+
+#### 12.1 量子机器学习理论 / Quantum Machine Learning Theory
+
+- **路径**: `docs/12-quantum-ai/01-quantum-machine-learning/README.md`
+- **内容**: 量子算法、量子神经网络、量子优化、量子纠错、量子优势、量子-经典混合算法
+- **状态**: ✅ 已完成
+
+### 13. 神经符号AI / Neural-Symbolic AI
+
+#### 13.1 神经符号AI理论 / Neural-Symbolic AI Theory
+
+- **路径**: `docs/13-neural-symbolic/01-neural-symbolic-ai/README.md`
+- **内容**: 知识图谱、逻辑推理、神经符号融合、程序合成、可解释AI、因果推理
+- **状态**: ✅ 已完成
+
+### 14. 绿色AI / Green AI
+
+#### 14.1 可持续AI理论 / Sustainable AI Theory
+
+- **路径**: `docs/14-green-ai/01-sustainable-ai/README.md`
+- **内容**: 绿色计算、碳足迹优化、公平性保证、模型压缩、节能算法、可持续机器学习
+- **状态**: ✅ 已完成
+
+### 15. 元学习 / Meta-Learning
+
+#### 15.1 元学习理论 / Meta-Learning Theory
+
+- **路径**: `docs/15-meta-learning/01-meta-learning-theory/README.md`
+- **内容**: 少样本学习、迁移学习、神经架构搜索、MAML、原型网络、元强化学习
+- **状态**: ✅ 已完成
 
 ### 第一阶段优化成果 / Phase 1 Optimization Results
 
