@@ -28,88 +28,88 @@
 
 ### 1.3 基础理论 (01-foundations)
 
-- [01.1 形式逻辑](./01-foundations/01-formal-logic/README.md)
-- [01.2 数学基础](./01-foundations/02-mathematical-foundations/README.md)
-- [01.3 计算理论](./01-foundations/03-computation-theory/README.md)
-- [01.4 认知科学](./01-foundations/04-cognitive-science/README.md)
+- [01.1 形式逻辑](./01-foundations/01.1-形式逻辑/README.md)
+- [01.2 数学基础](./01-foundations/01.2-数学基础/README.md)
+- [01.3 计算理论](./01-foundations/01.3-计算理论/README.md)
+- [01.4 认知科学](./01-foundations/01.4-认知科学/README.md)
 
 ### 1.4 机器学习理论 (02-machine-learning)
 
-- [02.1 统计学习理论](./02-machine-learning/01-statistical-learning-theory/README.md)
+- [02.1 统计学习理论](./02-machine-learning/02.1-统计学习理论/README.md)
   - [02.1.1 PAC学习理论](./02-machine-learning/02.1-统计学习理论/02.1.1-PAC学习理论.md)
-- [02.2 深度学习理论](./02-machine-learning/02-deep-learning-theory/README.md)
+- [02.2 深度学习理论](./02-machine-learning/02.2-深度学习理论/README.md)
   - [02.2.1 神经网络理论](./02-machine-learning/02.2-深度学习理论/02.2.1-神经网络理论.md)
-- [02.3 强化学习理论](./02-machine-learning/03-reinforcement-learning-theory/README.md)
-- [02.4 因果推理](./02-machine-learning/04-causal-inference/README.md)
+- [02.3 强化学习理论](./02-machine-learning/02.3-强化学习理论/README.md)
+- [02.4 因果推理](./02-machine-learning/02.4-因果推理/README.md)
 
 ### 1.5 形式化方法 (03-formal-methods)
 
-- [03.1 形式化验证](./03-formal-methods/01-formal-verification/README.md)
-- [03.2 程序综合](./03-formal-methods/02-program-synthesis/README.md)
-- [03.3 类型理论](./03-formal-methods/03-type-theory/README.md)
-- [03.4 证明系统](./03-formal-methods/04-proof-systems/README.md)
+- [03.1 形式化验证](./03-formal-methods/03.1-形式化验证/README.md)
+- [03.2 程序综合](./03-formal-methods/03.2-程序综合/README.md)
+- [03.3 类型理论](./03-formal-methods/03.3-类型理论/README.md)
+- [03.4 证明系统](./03-formal-methods/03.4-证明系统/README.md)
 
 ### 1.6 语言模型 (04-language-models)
 
-- [04.1 大型语言模型](./04-language-models/01-large-language-models/README.md)
-- [04.2 形式语义](./04-language-models/02-formal-semantics/README.md)
-- [04.3 知识表示](./04-language-models/03-knowledge-representation/README.md)
-- [04.4 推理机制](./04-language-models/04-reasoning-mechanisms/README.md)
-- [04.5 AI代理](./04-language-models/05-ai-agents/README.md)
+- [04.1 大型语言模型](./04-language-models/04.1-大型语言模型/README.md)
+- [04.2 形式语义](./04-language-models/04.2-形式语义/README.md)
+- [04.3 知识表示](./04-language-models/04.3-知识表示/README.md)
+- [04.4 推理机制](./04-language-models/04.4-推理机制/README.md)
+- [04.5 AI代理](./04-language-models/04.5-AI代理/README.md)
 
 ### 1.7 多模态AI (05-multimodal-ai)
 
-- [05.1 视觉语言模型](./05-multimodal-ai/01-vision-language-models/README.md)
-- [05.2 多模态融合](./05-multimodal-ai/02-multimodal-fusion/README.md)
-- [05.3 跨模态推理](./05-multimodal-ai/03-cross-modal-reasoning/README.md)
+- [05.1 视觉语言模型](./05-multimodal-ai/05.1-视觉语言模型/README.md)
+- [05.2 多模态融合](./05-multimodal-ai/05.2-多模态融合/README.md)
+- [05.3 跨模态推理](./05-multimodal-ai/05.3-跨模态推理/README.md)
 
 ### 1.8 可解释AI (06-interpretable-ai)
 
-- [06.1 可解释性理论](./06-interpretable-ai/01-interpretability-theory/README.md)
-- [06.2 公平性与偏见](./06-interpretable-ai/02-fairness-bias/README.md)
-- [06.3 鲁棒性理论](./06-interpretable-ai/03-robustness-theory/README.md)
+- [06.1 可解释性理论](./06-interpretable-ai/06.1-可解释性理论/README.md)
+- [06.2 公平性与偏见](./06-interpretable-ai/06.2-公平性与偏见/README.md)
+- [06.3 鲁棒性理论](./06-interpretable-ai/06.3-鲁棒性理论/README.md)
 
 ### 1.9 对齐与安全 (07-alignment-safety)
 
-- [07.1 对齐理论](./07-alignment-safety/01-alignment-theory/README.md)
-- [07.2 价值学习](./07-alignment-safety/02-value-learning/README.md)
-- [07.3 安全机制](./07-alignment-safety/03-safety-mechanisms/README.md)
+- [07.1 对齐理论](./07-alignment-safety/07.1-对齐理论/README.md)
+- [07.2 价值学习](./07-alignment-safety/07.2-价值学习/README.md)
+- [07.3 安全机制](./07-alignment-safety/07.3-安全机制/README.md)
 
 ### 1.10 涌现与复杂性 (08-emergence-complexity)
 
-- [08.1 涌现理论](./08-emergence-complexity/01-emergence-theory/README.md)
-- [08.2 复杂系统](./08-emergence-complexity/02-complex-systems/README.md)
-- [08.3 自组织](./08-emergence-complexity/03-self-organization/README.md)
+- [08.1 涌现理论](./08-emergence-complexity/08.1-涌现理论/README.md)
+- [08.2 复杂系统](./08-emergence-complexity/08.2-复杂系统/README.md)
+- [08.3 自组织](./08-emergence-complexity/08.3-自组织/README.md)
 
 ### 1.11 哲学与伦理 (09-philosophy-ethics)
 
-- [09.1 AI哲学](./09-philosophy-ethics/01-ai-philosophy/README.md)
-- [09.2 意识理论](./09-philosophy-ethics/02-consciousness-theory/README.md)
-- [09.3 伦理框架](./09-philosophy-ethics/03-ethical-frameworks/README.md)
+- [09.1 AI哲学](./09-philosophy-ethics/09.1-AI哲学/README.md)
+- [09.2 意识理论](./09-philosophy-ethics/09.2-意识理论/README.md)
+- [09.3 伦理框架](./09-philosophy-ethics/09.3-伦理框架/README.md)
 
 ### 1.12 具身AI (10-embodied-ai)
 
-- [10.1 具身智能](./10-embodied-ai/01-embodied-intelligence/README.md)
+- [10.1 具身智能](./10-embodied-ai/10.1-具身智能/README.md)
 
 ### 1.13 边缘AI (11-edge-ai)
 
-- [11.1 联邦学习](./11-edge-ai/01-federated-learning/README.md)
+- [11.1 联邦学习](./11-edge-ai/11.1-联邦学习/README.md)
 
 ### 1.14 量子AI (12-quantum-ai)
 
-- [12.1 量子机器学习](./12-quantum-ai/01-quantum-machine-learning/README.md)
+- [12.1 量子机器学习](./12-quantum-ai/12.1-量子机器学习/README.md)
 
 ### 1.15 神经符号AI (13-neural-symbolic)
 
-- [13.1 神经符号AI](./13-neural-symbolic/01-neural-symbolic-ai/README.md)
+- [13.1 神经符号AI](./13-neural-symbolic/13.1-神经符号AI/README.md)
 
 ### 1.16 绿色AI (14-green-ai)
 
-- [14.1 可持续AI](./14-green-ai/01-sustainable-ai/README.md)
+- [14.1 可持续AI](./14-green-ai/14.1-可持续AI/README.md)
 
 ### 1.17 元学习 (15-meta-learning)
 
-- [15.1 元学习理论](./15-meta-learning/01-meta-learning-theory/README.md)
+- [15.1 元学习理论](./15-meta-learning/15.1-元学习理论/README.md)
 
 ## 2. 快速导航
 
@@ -128,8 +128,8 @@
 
 **形式化方法**:
 
-- [形式化验证](./03-formal-methods/01-formal-verification/README.md)
-- [程序综合](./03-formal-methods/02-program-synthesis/README.md)
+- [形式化验证](./03-formal-methods/03.1-形式化验证/README.md)
+- [程序综合](./03-formal-methods/03.2-程序综合/README.md)
 
 ### 2.2 按学习路径
 
@@ -148,8 +148,8 @@
 **专家路径**:
 
 1. [00.4 理论依赖关系图](./00-foundations/00-mathematical-foundations/04-theory-dependency-graph.md)
-2. [03.1 形式化验证](./03-formal-methods/01-formal-verification/README.md)
-3. [09.1 AI哲学](./09-philosophy-ethics/01-ai-philosophy/README.md)
+2. [03.1 形式化验证](./03-formal-methods/03.1-形式化验证/README.md)
+3. [09.1 AI哲学](./09-philosophy-ethics/09.1-AI哲学/README.md)
 
 ## 3. 交叉引用索引
 
@@ -173,8 +173,8 @@
 
 **理论与应用**:
 
-- [类型理论](./00-foundations/00-mathematical-foundations/02-type-theory.md) ↔ [形式化验证](./03-formal-methods/01-formal-verification/README.md)
-- [逻辑演算系统](./00-foundations/00-mathematical-foundations/03-logical-calculus.md) ↔ [程序综合](./03-formal-methods/02-program-synthesis/README.md)
+- [类型理论](./00-foundations/00-mathematical-foundations/02-type-theory.md) ↔ [形式化验证](./03-formal-methods/03.1-形式化验证/README.md)
+- [逻辑演算系统](./00-foundations/00-mathematical-foundations/03-logical-calculus.md) ↔ [程序综合](./03-formal-methods/03.2-程序综合/README.md)
 
 ## 4. 搜索与索引
 
