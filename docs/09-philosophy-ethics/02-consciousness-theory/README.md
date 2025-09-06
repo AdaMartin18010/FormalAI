@@ -1,5 +1,7 @@
 # 9.2 意识理论 / Consciousness Theory / Bewusstseinstheorie / Théorie de la conscience
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 意识理论研究意识的本质、特征和机制，为FormalAI提供机器意识和智能本质的理论基础。

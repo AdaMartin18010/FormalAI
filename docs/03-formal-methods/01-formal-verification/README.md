@@ -101,6 +101,8 @@ fn reach_bad(init: State, max: u32) -> bool {
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
+- [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
+- [0.5 形式化证明](../../00-foundations/00-mathematical-foundations/05-formal-proofs.md) - 提供证明基础 / Provides proof foundation
 - [1.1 形式化逻辑基础](../../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**

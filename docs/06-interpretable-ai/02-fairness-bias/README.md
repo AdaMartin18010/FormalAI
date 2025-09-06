@@ -1,5 +1,7 @@
 # 6.2 公平性与偏见理论 / Fairness and Bias Theory / Fairness- und Bias-Theorie / Théorie de l'équité et des biais
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 公平性与偏见理论研究如何确保AI系统在决策过程中不产生歧视性偏见，为所有用户提供公平的待遇。本文档涵盖公平性定义、偏见检测、缓解方法和评估框架。

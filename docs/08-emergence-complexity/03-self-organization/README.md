@@ -1,5 +1,7 @@
 # 8.3 自组织理论 / Self-Organization Theory / Selbstorganisationstheorie / Théorie de l'auto-organisation
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 自组织理论研究系统如何在没有外部控制的情况下自发形成有序结构。本文档涵盖自组织的理论基础、机制分析、控制方法和在AI系统中的应用。

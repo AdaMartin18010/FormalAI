@@ -1,5 +1,7 @@
 # 5.2 多模态融合 / Multimodal Fusion / Multimodale Fusion / Fusion multimodale
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 多模态融合研究如何将不同模态的信息进行有效整合，为FormalAI提供多模态信息处理的理论基础。

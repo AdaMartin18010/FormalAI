@@ -1,5 +1,7 @@
 # 7.2 价值学习理论 / Value Learning Theory / Wertlern-Theorie / Théorie de l'apprentissage des valeurs
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 价值学习理论研究如何让AI系统学习、理解和遵循人类价值观。本文档涵盖价值学习的理论基础、方法体系和技术实现。

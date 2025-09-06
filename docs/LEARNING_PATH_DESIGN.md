@@ -52,21 +52,28 @@ This document designs progressive learning paths for the FormalAI project, ensur
 
 #### 第一阶段：基础认知 / Phase 1: Basic Understanding (2-3个月)
 
-**1.1 AI基础概念 / AI Basic Concepts**:
+**1.1 数学与逻辑基础 / Mathematical and Logical Foundations**:
+
+- 学习内容：ZFC公理系统、范畴论、类型理论、逻辑演算系统
+- 推荐章节：[0.0 ZFC公理系统](../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md)
+- 学习方式：理论学习 + 数学证明
+- 预期时间：4周
+
+**1.2 AI基础概念 / AI Basic Concepts**:
 
 - 学习内容：AI定义、发展历史、应用领域
 - 推荐章节：[1.1 形式化逻辑](../01-foundations/01-formal-logic/README.md)
 - 学习方式：概念理解 + 案例分析
 - 预期时间：2周
 
-**1.2 数学基础 / Mathematical Foundations**:
+**1.3 数学基础 / Mathematical Foundations**:
 
 - 学习内容：线性代数、概率统计、微积分基础
 - 推荐章节：[1.2 数学基础](../01-foundations/02-mathematical-foundations/README.md)
 - 学习方式：理论学习 + 练习实践
 - 预期时间：4周
 
-**1.3 编程基础 / Programming Basics**:
+**1.4 编程基础 / Programming Basics**:
 
 - 学习内容：Python基础、数据结构、算法思维
 - 推荐章节：[1.3 计算理论](../01-foundations/03-computation-theory/README.md)
@@ -114,21 +121,28 @@ This document designs progressive learning paths for the FormalAI project, ensur
 
 #### 第一阶段：理论深化 / Phase 1: Theoretical Deepening (3-4个月)
 
-:
+**1.1 数学与逻辑深化 / Mathematical and Logical Deepening**:
+
+- 学习内容：ZFC公理系统、范畴论、类型理论、逻辑演算系统
+- 推荐章节：[0.0 ZFC公理系统](../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md)
+- 学习方式：理论推导 + 形式化证明
+- 预期时间：6周
+
+**1.2 形式化方法 / Formal Methods**:
 
 - 学习内容：形式化验证、程序合成、类型理论
 - 推荐章节：[3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md)
 - 学习方式：理论推导 + 形式化证明
 - 预期时间：6周
 
-**1.2 高级机器学习 / Advanced Machine Learning**:
+**1.3 高级机器学习 / Advanced Machine Learning**:
 
 - 学习内容：强化学习、因果推理、元学习
 - 推荐章节：[2.3 强化学习理论](../02-machine-learning/03-reinforcement-learning-theory/README.md)
 - 学习方式：算法实现 + 实验研究
 - 预期时间：8周
 
-**1.3 多模态AI / Multimodal AI**:
+**1.4 多模态AI / Multimodal AI**:
 
 - 学习内容：视觉-语言模型、多模态融合、跨模态推理
 - 推荐章节：[5.1 视觉-语言模型](../05-multimodal-ai/01-vision-language-models/README.md)
@@ -176,21 +190,28 @@ This document designs progressive learning paths for the FormalAI project, ensur
 
 #### 第一阶段：前沿理论 / Phase 1: Frontier Theories (6-8个月)
 
-**1.1 最新发展跟踪 / Latest Developments Tracking**:
+**1.1 数学与逻辑前沿 / Mathematical and Logical Frontiers**:
+
+- 学习内容：ZFC公理系统、范畴论、类型理论、逻辑演算系统的最新发展
+- 推荐章节：[0.0 ZFC公理系统](../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md)
+- 学习方式：文献阅读 + 理论分析
+- 预期时间：8周
+
+**1.2 最新发展跟踪 / Latest Developments Tracking**:
 
 - 学习内容：2024年最新AI理论发展
 - 推荐章节：各章节的"2024年最新发展"部分
 - 学习方式：文献阅读 + 理论分析
 - 预期时间：12周
 
-**1.2 跨学科融合 / Interdisciplinary Integration**:
+**1.3 跨学科融合 / Interdisciplinary Integration**:
 
 - 学习内容：认知科学、神经科学、复杂系统科学
 - 推荐章节：[1.4 认知科学](../01-foundations/04-cognitive-science/README.md)
 - 学习方式：跨学科研究 + 理论整合
 - 预期时间：8周
 
-**1.3 理论创新 / Theoretical Innovation**:
+**1.4 理论创新 / Theoretical Innovation**:
 
 - 学习内容：理论框架设计、数学建模、实验验证
 - 推荐章节：所有章节的理论部分

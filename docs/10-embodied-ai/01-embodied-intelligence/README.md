@@ -1,5 +1,7 @@
 # 10.1 具身智能理论 / Embodied Intelligence Theory / Verkörperte Intelligenz-Theorie / Théorie de l'intelligence incarnée
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 具身智能理论研究具有物理身体和感知能力的智能系统，强调智能与环境的交互作用。本理论体系涵盖机器人学、感知-行动循环、物理世界理解等核心内容，并已更新至2024年最新发展。
@@ -44,6 +46,22 @@ L'intelligence incarnée fait référence aux systèmes intelligents avec des co
 - 实时响应 / Real-time response / Echtzeitantwort / Réponse en temps réel
 - 多模态感知 / Multimodal perception / Multimodale Wahrnehmung / Perception multimodale
 - 适应性学习 / Adaptive learning / Adaptives Lernen / Apprentissage adaptatif
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
+- [1.4 认知科学](../../01-foundations/04-cognitive-science/README.md) - 提供认知基础 / Provides cognitive foundation
+- [5.1 视觉-语言模型](../../05-multimodal-ai/01-vision-language-models/README.md) - 提供多模态基础 / Provides multimodal foundation
+- [8.1 涌现理论](../../08-emergence-complexity/01-emergence-theory/README.md) - 提供涌现基础 / Provides emergence foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+
+- [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用具身智能 / Applies embodied intelligence
+- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 应用安全对齐 / Applies safety alignment
+- [9.1 AI哲学](../../09-philosophy-ethics/01-ai-philosophy/README.md) - 应用哲学思考 / Applies philosophical thinking
+
+---
 
 ## 2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024
 

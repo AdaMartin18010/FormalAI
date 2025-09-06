@@ -1,5 +1,7 @@
 # 2.4 因果推理理论 / Causal Inference Theory / Kausale Inferenztheorie / Théorie de l'inférence causale
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 因果推理理论研究如何从观察数据中识别和估计因果关系，为AI系统的决策和干预提供理论基础。
@@ -59,6 +61,7 @@ Causal inference theory studies how to identify and estimate causal relationship
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
+- [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
 - [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
 - [2.1 统计学习理论](01-statistical-learning-theory/README.md) - 提供统计基础 / Provides statistical foundation
 
@@ -752,6 +755,42 @@ main = do
 4. Hernán, M. A., & Robins, J. M. (2020). *Causal Inference: What If*. Chapman & Hall/CRC.
 5. Athey, S., & Imbens, G. (2016). Recursive partitioning for heterogeneous causal effects. *PNAS*.
 6. Wager, S., & Athey, S. (2018). Estimation and inference of heterogeneous treatment effects using random forests. *JASA*.
+
+---
+
+---
+
+## 2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements
+
+### 大规模因果推理 / Large-Scale Causal Inference
+
+**2024年重要发展**:
+
+- **高维因果发现**: 研究在高维数据中的因果发现算法和理论保证
+- **时间序列因果推理**: 探索时间序列数据中的因果关系识别和估计
+- **多变量因果推理**: 研究多变量系统中的复杂因果网络推断
+
+**理论突破**:
+
+- **因果表示学习**: 研究从观察数据中学习因果表示的理论框架
+- **反事实推理**: 探索反事实推理的理论基础和计算方法
+- **因果强化学习**: 研究结合因果推理的强化学习理论和算法
+
+### 深度因果推理 / Deep Causal Inference
+
+**前沿发展**:
+
+- **神经因果模型**: 研究基于神经网络的因果模型和推理方法
+- **因果生成模型**: 探索具有因果结构的生成模型理论
+- **因果迁移学习**: 研究基于因果关系的迁移学习理论
+
+### 因果推理应用理论 / Causal Inference Application Theory
+
+**新兴应用领域**:
+
+- **医疗AI**: 研究因果推理在医疗诊断和治疗中的理论基础
+- **推荐系统**: 探索因果推理在推荐系统中的理论和实践
+- **金融AI**: 研究因果推理在金融风险评估中的应用理论
 
 ---
 

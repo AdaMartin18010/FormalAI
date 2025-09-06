@@ -1,5 +1,7 @@
 # 7.3 安全机制 / Safety Mechanisms / Sicherheitsmechanismen / Mécanismes de sécurité
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 安全机制研究如何确保AI系统在运行过程中的安全性，为FormalAI提供系统安全保障的理论基础。

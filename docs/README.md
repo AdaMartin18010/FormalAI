@@ -12,6 +12,44 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 ## 文档结构 / Documentation Structure
 
+### 0. 数学与逻辑基础 / Mathematical and Logical Foundations
+
+#### 0.0 ZFC公理系统 / ZFC Axiom System
+
+- **路径**: `docs/00-foundations/00-mathematical-foundations/00-set-theory-zfc.md`
+- **内容**: 策梅洛-弗兰克尔公理系统、选择公理、集合论基础、基数理论、序数理论
+- **状态**: ✅ 已完成
+
+#### 0.1 范畴论 / Category Theory
+
+- **路径**: `docs/00-foundations/00-mathematical-foundations/01-category-theory.md`
+- **内容**: 范畴、函子、自然变换、极限与余极限、伴随函子、拓扑斯理论
+- **状态**: ✅ 已完成
+
+#### 0.2 类型理论 / Type Theory
+
+- **路径**: `docs/00-foundations/00-mathematical-foundations/02-type-theory.md`
+- **内容**: 简单类型理论、依赖类型理论、同伦类型理论、类型系统设计
+- **状态**: ✅ 已完成
+
+#### 0.3 逻辑演算系统 / Logical Calculus System
+
+- **路径**: `docs/00-foundations/00-mathematical-foundations/03-logical-calculus.md`
+- **内容**: 自然演绎、序列演算、模态逻辑、直觉逻辑、线性逻辑
+- **状态**: ✅ 已完成
+
+#### 0.4 理论依赖关系图 / Theory Dependency Graph
+
+- **路径**: `docs/00-foundations/00-mathematical-foundations/04-theory-dependency-graph.md`
+- **内容**: 理论间的依赖关系、知识图谱、学习路径规划
+- **状态**: ✅ 已完成
+
+#### 0.5 形式化证明 / Formal Proofs
+
+- **路径**: `docs/00-foundations/00-mathematical-foundations/05-formal-proofs.md`
+- **内容**: 证明理论、证明搜索、证明检查、交互式定理证明
+- **状态**: ✅ 已完成
+
 ### 1. 基础理论 / Foundation Theory
 
 #### 1.1 形式化逻辑 / Formal Logic
@@ -252,15 +290,17 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 ### 1. 阅读顺序 / Reading Order
 
-1. 从基础理论开始（形式化逻辑、数学基础）
-2. 学习机器学习理论（统计学习、深度学习、强化学习）
-3. 理解形式化方法（验证、合成、类型理论）
-4. 探索语言模型理论（大语言模型、语义、知识表示）
-5. 研究多模态AI理论（视觉-语言、融合、推理）
-6. 关注可解释性理论（可解释性、公平性、鲁棒性）
-7. 学习对齐与安全（对齐理论、价值学习、安全机制）
-8. 理解涌现与复杂性（涌现理论、复杂系统、自组织）
-9. 思考哲学与伦理学（AI哲学、意识理论、伦理框架）
+1. 从数学与逻辑基础开始（ZFC公理系统、范畴论、类型理论、逻辑演算系统）
+2. 学习基础理论（形式化逻辑、数学基础、计算理论、认知科学）
+3. 掌握机器学习理论（统计学习、深度学习、强化学习、因果推理）
+4. 理解形式化方法（验证、合成、类型理论、证明系统）
+5. 探索语言模型理论（大语言模型、语义、知识表示、推理机制、AI智能体）
+6. 研究多模态AI理论（视觉-语言、融合、推理）
+7. 关注可解释性理论（可解释性、公平性、鲁棒性）
+8. 学习对齐与安全（对齐理论、价值学习、安全机制）
+9. 理解涌现与复杂性（涌现理论、复杂系统、自组织）
+10. 思考哲学与伦理学（AI哲学、意识理论、伦理框架）
+11. 探索前沿领域（具身智能、联邦学习、量子AI、神经符号AI、绿色AI、元学习）
 
 ### 2. 实践建议 / Practical Suggestions
 
@@ -284,6 +324,12 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 ### 已完成模块 / Completed Modules
 
+- ✅ ZFC公理系统
+- ✅ 范畴论
+- ✅ 类型理论
+- ✅ 逻辑演算系统
+- ✅ 理论依赖关系图
+- ✅ 形式化证明
 - ✅ 形式化逻辑基础
 - ✅ 数学基础
 - ✅ 计算理论

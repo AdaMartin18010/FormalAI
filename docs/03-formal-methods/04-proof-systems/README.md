@@ -1,5 +1,7 @@
 # 3.4 证明系统 / Proof Systems / Beweissysteme / Systèmes de preuve
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 ### 0. 公理化与推理规则总览 / Axiomatization and Rules / Axiomatisierung und Regeln / Axiomatisation et règles
@@ -974,6 +976,40 @@ main = do
 6. Heyting, A. (1930). Die formalen Regeln der intuitionistischen Logik. *Sitzungsberichte der Preußischen Akademie der Wissenschaften*.
 7. Girard, J. Y. (1987). Linear logic. *TCS*.
 8. Martin-Löf, P. (1984). *Intuitionistic Type Theory*. Bibliopolis.
+
+---
+
+## 2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements
+
+### 现代证明系统 / Modern Proof Systems
+
+**2024年重要发展**:
+
+- **交互式定理证明**: 研究更高效的交互式定理证明器和证明策略
+- **自动证明生成**: 探索基于机器学习的自动证明生成算法
+- **证明验证优化**: 研究更快速和准确的证明验证方法
+
+**理论突破**:
+
+- **证明复杂度理论**: 深入研究证明的复杂度理论和下界分析
+- **证明搜索算法**: 探索更智能的证明搜索算法和启发式方法
+- **证明压缩**: 研究证明压缩和简化理论
+
+### 证明系统在AI中的应用 / Proof Systems Applications in AI
+
+**前沿发展**:
+
+- **神经证明系统**: 研究基于神经网络的证明生成和验证
+- **概率证明**: 探索概率证明系统和不确定性推理
+- **量子证明系统**: 研究量子计算中的证明理论和验证方法
+
+### 证明工具和实现 / Proof Tools and Implementation
+
+**新兴工具**:
+
+- **证明助手**: 研究更用户友好的证明助手和交互界面
+- **证明库**: 探索大规模证明库的构建和管理方法
+- **证明标准化**: 研究证明格式的标准化和互操作性
 
 ---
 

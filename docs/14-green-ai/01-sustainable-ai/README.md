@@ -1,5 +1,7 @@
 # 14.1 可持续AI理论 / Sustainable AI Theory / Nachhaltige KI Theorie / Théorie de l'IA durable
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 可持续AI理论研究如何构建环境友好、资源高效、社会负责任的AI系统，涵盖绿色计算、碳足迹优化、公平性保证等核心内容。本理论体系已更新至2024年最新发展，包含绿色AI、可持续机器学习、环境友好算法等前沿内容。
@@ -44,6 +46,22 @@ L'IA durable fait référence aux systèmes d'IA qui considèrent l'impact envir
 - 能耗效率 / Energy efficiency / Energieeffizienz / Efficacité énergétique
 - 计算复杂度 / Computational complexity / Berechnungskomplexität / Complexité computationnelle
 - 社会影响 / Social impact / Sozialer Einfluss / Impact social
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
+- [2.1 统计学习理论](../../02-machine-learning/01-statistical-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
+- [6.2 公平性与偏见理论](../../06-interpretable-ai/02-fairness-bias/README.md) - 提供公平性基础 / Provides fairness foundation
+- [11.1 联邦学习理论](../../11-edge-ai/01-federated-learning/README.md) - 提供分布式基础 / Provides distributed foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+
+- [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用可持续智能体 / Applies sustainable agents
+- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 应用可持续对齐 / Applies sustainable alignment
+- [9.3 伦理框架](../../09-philosophy-ethics/03-ethical-frameworks/README.md) - 应用可持续伦理 / Applies sustainable ethics
+
+---
 
 ## 2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024
 

@@ -1,5 +1,7 @@
 # 9.3 伦理框架 / Ethical Frameworks / Ethische Rahmenwerke / Cadres éthiques
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 伦理框架为AI系统的发展和应用提供道德指导，确保AI技术符合人类价值观和社会利益。本文档涵盖AI伦理的理论基础、伦理原则、评估方法和实践应用。

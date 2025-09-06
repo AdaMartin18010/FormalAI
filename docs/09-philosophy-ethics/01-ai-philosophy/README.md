@@ -1,5 +1,7 @@
 # 9.1 AI哲学 / AI Philosophy / KI-Philosophie / Philosophie de l'IA
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 AI哲学研究人工智能的本质、意识、智能和存在等根本问题，为FormalAI提供哲学基础。

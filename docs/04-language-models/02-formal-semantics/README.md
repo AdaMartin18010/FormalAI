@@ -1,5 +1,7 @@
 # 4.2 形式化语义 / Formal Semantics / Formale Semantik / Sémantique formelle
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 ### 1. 语义学基本记号 / Semantic Notation / Semantische Notation / Notation sémantique

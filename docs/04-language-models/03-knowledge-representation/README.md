@@ -1,5 +1,7 @@
 # 4.3 知识表示 / Knowledge Representation / Wissensrepräsentation / Représentation des connaissances
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 知识表示研究如何在计算机中表示和组织知识，为FormalAI提供知识管理和推理的理论基础。

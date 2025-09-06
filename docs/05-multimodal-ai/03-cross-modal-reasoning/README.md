@@ -1,5 +1,7 @@
 # 5.3 跨模态推理 / Cross-Modal Reasoning / Kreuzmodales Schlussfolgern / Raisonnement cross-modal
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 跨模态推理研究如何在不同模态间进行信息传递和推理，为FormalAI提供跨模态智能推理的理论基础。

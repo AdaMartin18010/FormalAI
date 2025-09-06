@@ -1,5 +1,7 @@
 # 8.2 复杂系统 / Complex Systems / Komplexe Systeme / Systèmes complexes
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 复杂系统理论研究由大量相互作用的组件组成的系统行为，为FormalAI提供涌现和自组织现象的理论基础。

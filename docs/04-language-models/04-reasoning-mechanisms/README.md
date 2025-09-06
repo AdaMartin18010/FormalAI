@@ -1,5 +1,7 @@
 # 4.4 推理机制 / Reasoning Mechanisms / Schlussfolgerungsmechanismen / Mécanismes de raisonnement
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 推理机制研究如何从已有知识推导出新知识，为FormalAI提供智能推理和决策的理论基础。

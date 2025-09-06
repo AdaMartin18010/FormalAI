@@ -1,84 +1,227 @@
-# 全局导航 / Global Navigation / Globale Navigation / Navigation globale
+# 全局导航系统 / Global Navigation System
 
-## 1. 基础理论 / Foundations
+[返回总览](../README.md)
 
-- 1.1 形式化逻辑 / Formal Logic: `01-foundations/01-formal-logic/README.md`
-- 1.2 数学基础 / Mathematical Foundations: `01-foundations/02-mathematical-foundations/README.md`
-- 1.3 计算理论 / Computation Theory: `01-foundations/03-computation-theory/README.md`
-- 1.4 认知科学 / Cognitive Science: `01-foundations/04-cognitive-science/README.md`
+---
 
-## 2. 机器学习理论 / Machine Learning
+## 概述
 
-- 2.1 统计学习理论 / Statistical Learning Theory: `02-machine-learning/01-statistical-learning-theory/README.md`
-- 2.2 深度学习理论 / Deep Learning Theory: `02-machine-learning/02-deep-learning-theory/README.md`
-- 2.3 强化学习理论 / Reinforcement Learning Theory: `02-machine-learning/03-reinforcement-learning-theory/README.md`
-- 2.4 因果推理理论 / Causal Inference Theory: `02-machine-learning/04-causal-inference/README.md`
+本文档提供FormalAI项目的全局导航系统，确保所有文档间的导航一致性和完整性。
 
-## 3. 形式化方法 / Formal Methods
+## 1. 主要主题导航
 
-- 3.1 形式化验证 / Formal Verification: `03-formal-methods/01-formal-verification/README.md`
-- 3.2 程序合成 / Program Synthesis: `03-formal-methods/02-program-synthesis/README.md`
-- 3.3 类型理论 / Type Theory: `03-formal-methods/03-type-theory/README.md`
-- 3.4 证明系统 / Proof Systems: `03-formal-methods/04-proof-systems/README.md`
+### 1.1 总览与导航 (0-总览与导航)
 
-## 4. 语言模型理论 / Language Models
+- [0.1 全局主题树形目录](./0-总览与导航/0.1-全局主题树形目录.md)
+- [0.2 交叉引用与本地跳转说明](./0-总览与导航/0.2-交叉引用与本地跳转说明.md)
+- [0.3 持续上下文进度文档](./0-总览与导航/0.3-持续上下文进度文档.md)
+- [0.4 现有内容哲科批判分析](./0-总览与导航/0.4-现有内容哲科批判分析.md)
 
-- 4.1 大语言模型 / Large Language Models: `04-language-models/01-large-language-models/README.md`
-- 4.2 形式化语义 / Formal Semantics: `04-language-models/02-formal-semantics/README.md`
-- 4.3 知识表示 / Knowledge Representation: `04-language-models/03-knowledge-representation/README.md`
-- 4.4 推理机制 / Reasoning Mechanisms: `04-language-models/04-reasoning-mechanisms/README.md`
-- 4.5 AI智能体理论 / AI Agent Theory: `04-language-models/05-ai-agents/README.md`
+### 1.2 数学基础 (00-foundations)
 
-## 5. 多模态AI / Multimodal AI
+- [00.0 ZFC公理系统](./00-foundations/00-mathematical-foundations/00-set-theory-zfc.md)
+- [00.1 范畴论](./00-foundations/00-mathematical-foundations/01-category-theory.md)
+- [00.2 类型理论](./00-foundations/00-mathematical-foundations/02-type-theory.md)
+- [00.3 逻辑演算系统](./00-foundations/00-mathematical-foundations/03-logical-calculus.md)
+- [00.4 理论依赖关系图](./00-foundations/00-mathematical-foundations/04-theory-dependency-graph.md)
+- [00.5 形式化证明](./00-foundations/00-mathematical-foundations/05-formal-proofs.md)
 
-- 5.1 视觉-语言模型 / Vision-Language Models: `05-multimodal-ai/01-vision-language-models/README.md`
-- 5.2 多模态融合 / Multimodal Fusion: `05-multimodal-ai/02-multimodal-fusion/README.md`
-- 5.3 跨模态推理 / Cross-Modal Reasoning: `05-multimodal-ai/03-cross-modal-reasoning/README.md`
+### 1.3 基础理论 (01-foundations)
 
-## 6. 可解释AI / Interpretable AI
+- [01.1 形式逻辑](./01-foundations/01-formal-logic/README.md)
+- [01.2 数学基础](./01-foundations/02-mathematical-foundations/README.md)
+- [01.3 计算理论](./01-foundations/03-computation-theory/README.md)
+- [01.4 认知科学](./01-foundations/04-cognitive-science/README.md)
 
-- 6.1 可解释性理论 / Interpretability Theory: `06-interpretable-ai/01-interpretability-theory/README.md`
-- 6.2 公平性与偏见 / Fairness and Bias: `06-interpretable-ai/02-fairness-bias/README.md`
-- 6.3 鲁棒性理论 / Robustness Theory: `06-interpretable-ai/03-robustness-theory/README.md`
+### 1.4 机器学习理论 (02-machine-learning)
 
-## 7. 对齐与安全 / Alignment & Safety
+- [02.1 统计学习理论](./02-machine-learning/01-statistical-learning-theory/README.md)
+  - [02.1.1 PAC学习理论](./02-machine-learning/02.1-统计学习理论/02.1.1-PAC学习理论.md)
+- [02.2 深度学习理论](./02-machine-learning/02-deep-learning-theory/README.md)
+  - [02.2.1 神经网络理论](./02-machine-learning/02.2-深度学习理论/02.2.1-神经网络理论.md)
+- [02.3 强化学习理论](./02-machine-learning/03-reinforcement-learning-theory/README.md)
+- [02.4 因果推理](./02-machine-learning/04-causal-inference/README.md)
 
-- 7.1 对齐理论 / Alignment Theory: `07-alignment-safety/01-alignment-theory/README.md`
-- 7.2 价值学习 / Value Learning: `07-alignment-safety/02-value-learning/README.md`
-- 7.3 安全机制 / Safety Mechanisms: `07-alignment-safety/03-safety-mechanisms/README.md`
+### 1.5 形式化方法 (03-formal-methods)
 
-## 8. 涌现与复杂性 / Emergence & Complexity
+- [03.1 形式化验证](./03-formal-methods/01-formal-verification/README.md)
+- [03.2 程序综合](./03-formal-methods/02-program-synthesis/README.md)
+- [03.3 类型理论](./03-formal-methods/03-type-theory/README.md)
+- [03.4 证明系统](./03-formal-methods/04-proof-systems/README.md)
 
-- 8.1 涌现理论 / Emergence Theory: `08-emergence-complexity/01-emergence-theory/README.md`
-- 8.2 复杂系统 / Complex Systems: `08-emergence-complexity/02-complex-systems/README.md`
-- 8.3 自组织 / Self-Organization: `08-emergence-complexity/03-self-organization/README.md`
+### 1.6 语言模型 (04-language-models)
 
-## 9. 哲学与伦理 / Philosophy & Ethics
+- [04.1 大型语言模型](./04-language-models/01-large-language-models/README.md)
+- [04.2 形式语义](./04-language-models/02-formal-semantics/README.md)
+- [04.3 知识表示](./04-language-models/03-knowledge-representation/README.md)
+- [04.4 推理机制](./04-language-models/04-reasoning-mechanisms/README.md)
+- [04.5 AI代理](./04-language-models/05-ai-agents/README.md)
 
-- 9.1 AI哲学 / AI Philosophy: `09-philosophy-ethics/01-ai-philosophy/README.md`
-- 9.2 意识理论 / Consciousness Theory: `09-philosophy-ethics/02-consciousness-theory/README.md`
-- 9.3 伦理框架 / Ethical Frameworks: `09-philosophy-ethics/03-ethical-frameworks/README.md`
+### 1.7 多模态AI (05-multimodal-ai)
 
-## 10. 具身智能 / Embodied AI
+- [05.1 视觉语言模型](./05-multimodal-ai/01-vision-language-models/README.md)
+- [05.2 多模态融合](./05-multimodal-ai/02-multimodal-fusion/README.md)
+- [05.3 跨模态推理](./05-multimodal-ai/03-cross-modal-reasoning/README.md)
 
-- 10.1 具身智能理论 / Embodied Intelligence Theory: `10-embodied-ai/01-embodied-intelligence/README.md`
+### 1.8 可解释AI (06-interpretable-ai)
 
-## 11. 边缘AI / Edge AI
+- [06.1 可解释性理论](./06-interpretable-ai/01-interpretability-theory/README.md)
+- [06.2 公平性与偏见](./06-interpretable-ai/02-fairness-bias/README.md)
+- [06.3 鲁棒性理论](./06-interpretable-ai/03-robustness-theory/README.md)
 
-- 11.1 联邦学习理论 / Federated Learning Theory: `11-edge-ai/01-federated-learning/README.md`
+### 1.9 对齐与安全 (07-alignment-safety)
 
-## 12. 量子AI / Quantum AI
+- [07.1 对齐理论](./07-alignment-safety/01-alignment-theory/README.md)
+- [07.2 价值学习](./07-alignment-safety/02-value-learning/README.md)
+- [07.3 安全机制](./07-alignment-safety/03-safety-mechanisms/README.md)
 
-- 12.1 量子机器学习理论 / Quantum Machine Learning Theory: `12-quantum-ai/01-quantum-machine-learning/README.md`
+### 1.10 涌现与复杂性 (08-emergence-complexity)
 
-## 13. 神经符号AI / Neural-Symbolic AI
+- [08.1 涌现理论](./08-emergence-complexity/01-emergence-theory/README.md)
+- [08.2 复杂系统](./08-emergence-complexity/02-complex-systems/README.md)
+- [08.3 自组织](./08-emergence-complexity/03-self-organization/README.md)
 
-- 13.1 神经符号AI理论 / Neural-Symbolic AI Theory: `13-neural-symbolic/01-neural-symbolic-ai/README.md`
+### 1.11 哲学与伦理 (09-philosophy-ethics)
 
-## 14. 绿色AI / Green AI
+- [09.1 AI哲学](./09-philosophy-ethics/01-ai-philosophy/README.md)
+- [09.2 意识理论](./09-philosophy-ethics/02-consciousness-theory/README.md)
+- [09.3 伦理框架](./09-philosophy-ethics/03-ethical-frameworks/README.md)
 
-- 14.1 可持续AI理论 / Sustainable AI Theory: `14-green-ai/01-sustainable-ai/README.md`
+### 1.12 具身AI (10-embodied-ai)
 
-## 15. 元学习 / Meta-Learning
+- [10.1 具身智能](./10-embodied-ai/01-embodied-intelligence/README.md)
 
-- 15.1 元学习理论 / Meta-Learning Theory: `15-meta-learning/01-meta-learning-theory/README.md`
+### 1.13 边缘AI (11-edge-ai)
+
+- [11.1 联邦学习](./11-edge-ai/01-federated-learning/README.md)
+
+### 1.14 量子AI (12-quantum-ai)
+
+- [12.1 量子机器学习](./12-quantum-ai/01-quantum-machine-learning/README.md)
+
+### 1.15 神经符号AI (13-neural-symbolic)
+
+- [13.1 神经符号AI](./13-neural-symbolic/01-neural-symbolic-ai/README.md)
+
+### 1.16 绿色AI (14-green-ai)
+
+- [14.1 可持续AI](./14-green-ai/01-sustainable-ai/README.md)
+
+### 1.17 元学习 (15-meta-learning)
+
+- [15.1 元学习理论](./15-meta-learning/01-meta-learning-theory/README.md)
+
+## 2. 快速导航
+
+### 2.1 按主题类型
+
+**数学基础**:
+
+- [ZFC公理系统](./00-foundations/00-mathematical-foundations/00-set-theory-zfc.md)
+- [范畴论](./00-foundations/00-mathematical-foundations/01-category-theory.md)
+- [类型理论](./00-foundations/00-mathematical-foundations/02-type-theory.md)
+
+**机器学习**:
+
+- [PAC学习理论](./02-machine-learning/02.1-统计学习理论/02.1.1-PAC学习理论.md)
+- [神经网络理论](./02-machine-learning/02.2-深度学习理论/02.2.1-神经网络理论.md)
+
+**形式化方法**:
+
+- [形式化验证](./03-formal-methods/01-formal-verification/README.md)
+- [程序综合](./03-formal-methods/02-program-synthesis/README.md)
+
+### 2.2 按学习路径
+
+**初学者路径**:
+
+1. [0.1 全局主题树形目录](./0-总览与导航/0.1-全局主题树形目录.md)
+2. [00.0 ZFC公理系统](./00-foundations/00-mathematical-foundations/00-set-theory-zfc.md)
+3. [02.1.1 PAC学习理论](./02-machine-learning/02.1-统计学习理论/02.1.1-PAC学习理论.md)
+
+**进阶路径**:
+
+1. [00.1 范畴论](./00-foundations/00-mathematical-foundations/01-category-theory.md)
+2. [00.2 类型理论](./00-foundations/00-mathematical-foundations/02-type-theory.md)
+3. [02.2.1 神经网络理论](./02-machine-learning/02.2-深度学习理论/02.2.1-神经网络理论.md)
+
+**专家路径**:
+
+1. [00.4 理论依赖关系图](./00-foundations/00-mathematical-foundations/04-theory-dependency-graph.md)
+2. [03.1 形式化验证](./03-formal-methods/01-formal-verification/README.md)
+3. [09.1 AI哲学](./09-philosophy-ethics/01-ai-philosophy/README.md)
+
+## 3. 交叉引用索引
+
+### 3.1 理论依赖关系
+
+**基础依赖**:
+
+- ZFC公理系统 → 范畴论 → 类型理论 → 逻辑演算系统
+
+**应用依赖**:
+
+- 统计学习理论 → 深度学习理论 → 神经网络理论
+- 形式化验证 → 程序综合 → 证明系统
+
+### 3.2 相关主题
+
+**数学与AI**:
+
+- [ZFC公理系统](./00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) ↔ [PAC学习理论](./02-machine-learning/02.1-统计学习理论/02.1.1-PAC学习理论.md)
+- [范畴论](./00-foundations/00-mathematical-foundations/01-category-theory.md) ↔ [神经网络理论](./02-machine-learning/02.2-深度学习理论/02.2.1-神经网络理论.md)
+
+**理论与应用**:
+
+- [类型理论](./00-foundations/00-mathematical-foundations/02-type-theory.md) ↔ [形式化验证](./03-formal-methods/01-formal-verification/README.md)
+- [逻辑演算系统](./00-foundations/00-mathematical-foundations/03-logical-calculus.md) ↔ [程序综合](./03-formal-methods/02-program-synthesis/README.md)
+
+## 4. 搜索与索引
+
+### 4.1 关键词索引
+
+**数学概念**:
+
+- 集合论、范畴论、类型理论、逻辑演算
+
+**AI概念**:
+
+- 机器学习、深度学习、神经网络、强化学习
+
+**形式化概念**:
+
+- 验证、综合、证明、类型安全
+
+### 4.2 主题索引
+
+**基础理论**:
+
+- 数学基础、计算理论、认知科学
+
+**应用理论**:
+
+- 机器学习、形式化方法、语言模型
+
+**前沿理论**:
+
+- 量子AI、神经符号AI、元学习
+
+## 5. 更新日志
+
+### 5.1 版本历史
+
+- **v2025-01**: 初始版本，建立基础导航结构
+- **v2025-01.1**: 添加机器学习理论导航
+- **v2025-01.2**: 完善交叉引用系统
+
+### 5.2 最近更新
+
+- 2025-01-01: 创建全局导航系统
+- 2025-01-01: 添加快速导航功能
+- 2025-01-01: 建立交叉引用索引
+
+---
+
+**最后更新**：2025-01-01  
+**版本**：v2025-01  
+**维护者**：FormalAI项目组

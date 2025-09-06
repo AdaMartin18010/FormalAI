@@ -1,5 +1,7 @@
 # 11.1 联邦学习理论 / Federated Learning Theory / Föderiertes Lernen Theorie / Théorie de l'apprentissage fédéré
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 联邦学习理论研究在保护数据隐私的前提下，通过分布式训练实现机器学习模型的方法。本理论体系涵盖隐私保护、通信效率、模型聚合等核心内容，并已更新至2024年最新发展。
@@ -44,6 +46,22 @@ L'apprentissage fédéré est un paradigme d'apprentissage automatique distribu�
 - 通信开销 / Communication overhead / Kommunikationsaufwand / Surcharge de communication
 - 收敛速度 / Convergence speed / Konvergenzgeschwindigkeit / Vitesse de convergence
 - 模型性能 / Model performance / Modellleistung / Performance du modèle
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
+- [2.1 统计学习理论](../../02-machine-learning/01-statistical-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
+- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供模型基础 / Provides model foundation
+- [6.2 公平性与偏见理论](../../06-interpretable-ai/02-fairness-bias/README.md) - 提供公平性基础 / Provides fairness foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+
+- [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用联邦学习 / Applies federated learning
+- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 应用隐私保护 / Applies privacy protection
+- [14.1 可持续AI理论](../../14-green-ai/01-sustainable-ai/README.md) - 应用绿色计算 / Applies green computing
+
+---
 
 ## 2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024
 

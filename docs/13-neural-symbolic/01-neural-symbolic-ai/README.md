@@ -1,5 +1,7 @@
 # 13.1 神经符号AI理论 / Neural-Symbolic AI Theory / Neuronale-symbolische KI Theorie / Théorie de l'IA neuronale-symbolique
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview / Übersicht / Aperçu
 
 神经符号AI理论研究如何将神经网络的模式识别能力与符号推理的逻辑能力相结合，实现更强大和可解释的AI系统。本理论体系涵盖知识图谱、逻辑推理、神经符号融合等核心内容，并已更新至2024年最新发展。
@@ -44,6 +46,22 @@ L'IA neuronale-symbolique est un paradigme d'IA qui combine les capacités d'app
 - 推理准确性 / Reasoning accuracy / Denkgenauigkeit / Précision du raisonnement
 - 知识可迁移性 / Knowledge transferability / Wissenstransferierbarkeit / Transférabilité des connaissances
 - 系统可解释性 / System interpretability / Systeminterpretierbarkeit / Interprétabilité du système
+
+## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
+
+**前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
+
+- [1.1 形式化逻辑](../../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供神经网络基础 / Provides neural network foundation
+- [4.3 知识表示](../../04-language-models/03-knowledge-representation/README.md) - 提供知识基础 / Provides knowledge foundation
+
+**后续应用 / Applications / Anwendungen / Applications:**
+
+- [4.4 推理机制](../../04-language-models/04-reasoning-mechanisms/README.md) - 应用神经符号推理 / Applies neural-symbolic reasoning
+- [6.1 可解释性理论](../../06-interpretable-ai/01-interpretability-theory/README.md) - 应用可解释性 / Applies interpretability
+- [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用智能体系统 / Applies agent systems
+
+---
 
 ## 2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024
 

@@ -747,7 +747,8 @@ main = do
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- 无 / None / Keine / Aucune (基础模块 / Foundation module)
+- [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
+- [0.3 逻辑演算系统](../../00-foundations/00-mathematical-foundations/03-logical-calculus.md) - 提供逻辑演算基础 / Provides logical calculus foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 

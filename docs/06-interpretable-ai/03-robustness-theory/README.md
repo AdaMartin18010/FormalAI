@@ -1,5 +1,7 @@
 # 6.3 鲁棒性理论 / Robustness Theory / Robustheitstheorie / Théorie de la robustesse
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
 ## 概述 / Overview
 
 鲁棒性理论研究AI系统在面对各种扰动、攻击和异常情况时的稳定性和可靠性。本文档涵盖鲁棒性的理论基础、评估方法、增强技术和应用实践。
