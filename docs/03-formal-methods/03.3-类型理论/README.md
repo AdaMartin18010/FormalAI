@@ -26,6 +26,7 @@ Type theory studies the mathematical foundations of type systems, providing theo
 
 - [3.3 类型理论 / Type Theory / Typentheorie / Théorie des types](#33-类型理论--type-theory--typentheorie--théorie-des-types)
   - [概述 / Overview](#概述--overview)
+    - [0. 基本定理速览 / Key Metatheorems / Zentrale Metatheoreme / Métathéorèmes clés](#0-基本定理速览--key-metatheorems--zentrale-metatheoreme--métathéorèmes-clés)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 简单类型理论 / Simple Type Theory](#1-简单类型理论--simple-type-theory)
@@ -56,6 +57,10 @@ Type theory studies the mathematical foundations of type systems, providing theo
     - [Rust实现：类型系统 / Rust Implementation: Type System](#rust实现类型系统--rust-implementation-type-system)
     - [Haskell实现：类型系统 / Haskell Implementation: Type System](#haskell实现类型系统--haskell-implementation-type-system)
   - [参考文献 / References](#参考文献--references)
+  - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
+    - [现代类型理论 / Modern Type Theory](#现代类型理论--modern-type-theory)
+    - [类型理论在AI中的应用 / Type Theory Applications in AI](#类型理论在ai中的应用--type-theory-applications-in-ai)
+    - [类型理论工具和实现 / Type Theory Tools and Implementation](#类型理论工具和实现--type-theory-tools-and-implementation)
 
 ---
 
@@ -1205,31 +1210,43 @@ testTypeUnification = do
 
 **2024年重要发展**:
 
-- **同伦类型理论**: 深入研究同伦类型理论在数学基础中的应用
-- **依赖类型系统**: 探索更强大的依赖类型系统和类型推断算法
-- **线性类型理论**: 研究线性类型理论在资源管理和并发编程中的应用
+- **同伦类型理论**: 深入研究同伦类型理论在数学基础中的应用，包括立方类型理论和模态类型理论
+- **依赖类型系统**: 探索更强大的依赖类型系统和类型推断算法，如Lean 4和Agda的最新发展
+- **线性类型理论**: 研究线性类型理论在资源管理和并发编程中的应用，包括Rust的所有权系统
 
 **理论突破**:
 
-- **类型推断优化**: 研究更高效的类型推断算法和理论保证
-- **类型系统设计**: 探索新的类型系统设计原则和理论框架
-- **类型安全证明**: 研究类型系统的形式化验证和安全性证明
+- **类型推断优化**: 研究更高效的类型推断算法和理论保证，包括双向类型检查
+- **类型系统设计**: 探索新的类型系统设计原则和理论框架，如渐进式类型系统
+- **类型安全证明**: 研究类型系统的形式化验证和安全性证明，包括类型擦除的正确性
 
 ### 类型理论在AI中的应用 / Type Theory Applications in AI
 
 **前沿发展**:
 
-- **神经类型系统**: 研究基于神经网络的类型推断和类型系统学习
-- **概率类型理论**: 探索概率编程中的类型理论和类型安全
-- **量子类型理论**: 研究量子计算中的类型理论和类型系统
+- **神经类型系统**: 研究基于神经网络的类型推断和类型系统学习，包括类型预测模型
+- **概率类型理论**: 探索概率编程中的类型理论和类型安全，如Pyro和Stan的类型系统
+- **量子类型理论**: 研究量子计算中的类型理论和类型系统，包括量子电路的类型安全
+
+**AI系统类型安全**:
+
+- **大语言模型类型**: 研究大语言模型的类型系统和类型安全保证
+- **机器学习类型**: 探索机器学习框架的类型系统，如TensorFlow和PyTorch的类型注解
+- **自动类型推导**: 研究基于AI的自动类型推导和类型修复技术
 
 ### 类型理论工具和实现 / Type Theory Tools and Implementation
 
 **新兴工具**:
 
-- **类型检查器**: 研究更高效和准确的类型检查器实现
-- **类型推导引擎**: 探索自动类型推导的理论基础和算法
-- **类型系统验证**: 研究类型系统正确性的形式化验证方法
+- **类型检查器**: 研究更高效和准确的类型检查器实现，包括增量类型检查
+- **类型推导引擎**: 探索自动类型推导的理论基础和算法，如Hindley-Milner算法的扩展
+- **类型系统验证**: 研究类型系统正确性的形式化验证方法，包括元理论的形式化
+
+**实用工具链**:
+
+- **IDE集成**: 研究类型系统在IDE中的集成，提供更好的开发体验
+- **类型可视化**: 探索复杂类型结构的可视化工具和方法
+- **类型调试**: 研究类型错误的调试和修复工具
 
 ---
 

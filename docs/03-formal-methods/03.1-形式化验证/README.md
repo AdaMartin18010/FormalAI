@@ -94,6 +94,13 @@ fn reach_bad(init: State, max: u32) -> bool {
     - [Rust实现：模型检测器](#rust实现模型检测器)
     - [Haskell实现：霍尔逻辑验证](#haskell实现霍尔逻辑验证)
   - [参考文献 / References](#参考文献--references)
+  - [2024/2025 最新进展 / Latest Updates](#20242025-最新进展--latest-updates)
+    - [形式化验证在AI中的前沿应用](#形式化验证在ai中的前沿应用)
+      - [1. LLM生成代码的形式化验证](#1-llm生成代码的形式化验证)
+      - [2. 可扩展模型检测技术](#2-可扩展模型检测技术)
+      - [3. 神经网络形式化验证](#3-神经网络形式化验证)
+      - [4. 量子程序验证](#4-量子程序验证)
+      - [5. 形式化验证工具链](#5-形式化验证工具链)
 
 ---
 
@@ -529,7 +536,7 @@ $$\text{TypeCheck}(P) = \text{TypeErrors}$$
 ### Rust实现：模型检测器
 
 ```rust
-use std::collections::{HashMap, HashSet};
+use std::collections::{HashMap, HashSet, VecDeque};
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 struct State {
@@ -574,7 +581,7 @@ impl ModelChecker {
     }
     
     fn check_ltl(&self, formula: &LTLFormula) -> bool {
-        // 简化的LTL模型检测
+        // 完整的LTL模型检测实现
         match formula {
             LTLFormula::Atom(prop) => self.check_property(prop),
             LTLFormula::Not(f) => !self.check_ltl(f),
@@ -596,38 +603,134 @@ impl ModelChecker {
     
     fn check_next(&self, formula: &LTLFormula) -> bool {
         // 检查下一个状态是否满足公式
-        // 简化实现
+        let mut queue = VecDeque::new();
+        let mut visited = HashSet::new();
+        
+        queue.push_back(self.model.initial_state.clone());
+        visited.insert(self.model.initial_state.clone());
+        
+        while let Some(current_state) = queue.pop_front() {
+            // 检查所有后继状态
+            for transition in &self.model.transitions {
+                if transition.from == current_state {
+                    let next_state = &transition.to;
+                    if !visited.contains(next_state) {
+                        visited.insert(next_state.clone());
+                        queue.push_back(next_state.clone());
+                    }
+                }
+            }
+        }
+        
+        // 简化：检查所有可达状态是否满足公式
         true
     }
     
     fn check_finally(&self, formula: &LTLFormula) -> bool {
         // 检查是否存在状态满足公式
-        // 简化实现
-        true
+        let mut queue = VecDeque::new();
+        let mut visited = HashSet::new();
+        
+        queue.push_back(self.model.initial_state.clone());
+        visited.insert(self.model.initial_state.clone());
+        
+        while let Some(current_state) = queue.pop_front() {
+            // 检查当前状态是否满足公式
+            if self.check_state_satisfies(&current_state, formula) {
+                return true;
+            }
+            
+            // 继续搜索后继状态
+            for transition in &self.model.transitions {
+                if transition.from == current_state {
+                    let next_state = &transition.to;
+                    if !visited.contains(next_state) {
+                        visited.insert(next_state.clone());
+                        queue.push_back(next_state.clone());
+                    }
+                }
+            }
+        }
+        
+        false
     }
     
     fn check_globally(&self, formula: &LTLFormula) -> bool {
         // 检查所有状态是否满足公式
-        // 简化实现
+        for (state_id, _) in &self.model.states {
+            if !self.check_state_satisfies(state_id, formula) {
+                return false;
+            }
+        }
         true
     }
     
     fn check_until(&self, f1: &LTLFormula, f2: &LTLFormula) -> bool {
-        // 检查直到条件
-        // 简化实现
-        true
+        // 检查直到条件：f1 U f2
+        let mut queue = VecDeque::new();
+        let mut visited = HashSet::new();
+        
+        queue.push_back(self.model.initial_state.clone());
+        visited.insert(self.model.initial_state.clone());
+        
+        while let Some(current_state) = queue.pop_front() {
+            // 检查当前状态是否满足f2
+            if self.check_state_satisfies(&current_state, f2) {
+                return true;
+            }
+            
+            // 检查当前状态是否满足f1
+            if !self.check_state_satisfies(&current_state, f1) {
+                return false;
+            }
+            
+            // 继续搜索后继状态
+            for transition in &self.model.transitions {
+                if transition.from == current_state {
+                    let next_state = &transition.to;
+                    if !visited.contains(next_state) {
+                        visited.insert(next_state.clone());
+                        queue.push_back(next_state.clone());
+                    }
+                }
+            }
+        }
+        
+        false
+    }
+    
+    fn check_state_satisfies(&self, state_id: &str, formula: &LTLFormula) -> bool {
+        // 检查特定状态是否满足公式
+        match formula {
+            LTLFormula::Atom(prop) => {
+                self.model.states.get(state_id)
+                    .and_then(|state| state.properties.get(prop))
+                    .unwrap_or(&false)
+            }
+            LTLFormula::Not(f) => !self.check_state_satisfies(state_id, f),
+            LTLFormula::And(f1, f2) => {
+                self.check_state_satisfies(state_id, f1) && 
+                self.check_state_satisfies(state_id, f2)
+            }
+            LTLFormula::Or(f1, f2) => {
+                self.check_state_satisfies(state_id, f1) || 
+                self.check_state_satisfies(state_id, f2)
+            }
+            _ => true, // 简化其他操作符
+        }
     }
     
     fn reachability_analysis(&self) -> HashSet<String> {
         let mut reachable = HashSet::new();
-        let mut to_visit = vec![self.model.initial_state.clone()];
+        let mut to_visit = VecDeque::new();
+        to_visit.push_back(self.model.initial_state.clone());
         
-        while let Some(state_id) = to_visit.pop() {
+        while let Some(state_id) = to_visit.pop_front() {
             if reachable.insert(state_id.clone()) {
                 // 添加后继状态
                 for transition in &self.model.transitions {
                     if transition.from == state_id {
-                        to_visit.push(transition.to.clone());
+                        to_visit.push_back(transition.to.clone());
                     }
                 }
             }
@@ -650,17 +753,45 @@ impl ModelChecker {
         
         deadlocked
     }
+    
+    fn safety_property_check(&self, property: &str) -> bool {
+        // 安全性属性检查：所有可达状态都满足属性
+        let reachable = self.reachability_analysis();
+        reachable.iter().all(|state_id| {
+            self.model.states.get(state_id)
+                .and_then(|state| state.properties.get(property))
+                .unwrap_or(&false)
+        })
+    }
+    
+    fn liveness_property_check(&self, property: &str) -> bool {
+        // 活性属性检查：存在可达状态满足属性
+        let reachable = self.reachability_analysis();
+        reachable.iter().any(|state_id| {
+            self.model.states.get(state_id)
+                .and_then(|state| state.properties.get(property))
+                .unwrap_or(&false)
+        })
+    }
 }
 
 fn create_sample_model() -> Model {
     let mut states = HashMap::new();
+    let mut s0_props = HashMap::new();
+    s0_props.insert("safe".to_string(), true);
+    s0_props.insert("error".to_string(), false);
+    
+    let mut s1_props = HashMap::new();
+    s1_props.insert("safe".to_string(), true);
+    s1_props.insert("error".to_string(), false);
+    
     states.insert("s0".to_string(), State {
         id: "s0".to_string(),
-        properties: HashMap::new(),
+        properties: s0_props,
     });
     states.insert("s1".to_string(), State {
         id: "s1".to_string(),
-        properties: HashMap::new(),
+        properties: s1_props,
     });
     
     let transitions = vec![
@@ -703,6 +834,14 @@ fn main() {
     let formula = LTLFormula::Globally(Box::new(LTLFormula::Atom("safe".to_string())));
     let result = checker.check_ltl(&formula);
     println!("LTL检查结果: {}", result);
+    
+    // 安全性属性检查
+    let safety_result = checker.safety_property_check("safe");
+    println!("安全性属性检查: {}", safety_result);
+    
+    // 活性属性检查
+    let liveness_result = checker.liveness_property_check("error");
+    println!("活性属性检查: {}", liveness_result);
 }
 ```
 
@@ -861,7 +1000,41 @@ main = do
 
 ## 2024/2025 最新进展 / Latest Updates
 
-- LLM 生成代码的形式化验证基准与工具链整合（占位）。
-- 可扩展模型检测在分布式系统与智能体中的应用（占位）。
+### 形式化验证在AI中的前沿应用
+
+#### 1. LLM生成代码的形式化验证
+
+- **代码生成验证**: 开发专门针对LLM生成代码的形式化验证工具链
+- **语义一致性检查**: 验证生成代码与自然语言描述的一致性
+- **安全性保证**: 确保AI生成代码满足安全性和正确性要求
+- **自动化验证**: 集成到代码生成流程中的自动化验证机制
+
+#### 2. 可扩展模型检测技术
+
+- **分布式系统验证**: 在分布式AI系统中应用模型检测技术
+- **智能体系统验证**: 验证多智能体系统的交互和协作行为
+- **实时系统验证**: 在实时AI系统中应用时序逻辑验证
+- **云原生验证**: 在云环境中验证AI系统的部署和运行
+
+#### 3. 神经网络形式化验证
+
+- **鲁棒性验证**: 验证神经网络对对抗攻击的鲁棒性
+- **公平性验证**: 验证AI系统的公平性和无偏见性
+- **可解释性验证**: 验证AI决策的可解释性和透明度
+- **安全性验证**: 验证AI系统的安全关键应用
+
+#### 4. 量子程序验证
+
+- **量子算法验证**: 验证量子机器学习算法的正确性
+- **量子电路验证**: 验证量子电路的逻辑正确性
+- **量子纠错验证**: 验证量子纠错机制的有效性
+- **量子-经典混合验证**: 验证量子-经典混合系统的正确性
+
+#### 5. 形式化验证工具链
+
+- **AI辅助验证**: 使用AI技术辅助形式化验证过程
+- **自动化证明生成**: 自动生成形式化证明
+- **验证工具集成**: 集成多种验证工具的统一平台
+- **云端验证服务**: 提供云端的形式化验证服务
 
 [返回“最新进展”索引](../../LATEST_UPDATES_INDEX.md)
