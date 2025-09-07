@@ -52,6 +52,7 @@ pub fn safe_action(risk: f32, beta: f32, a: i32, a_safe: i32) -> i32 {
     - [Rust实现：安全机制系统](#rust实现安全机制系统)
     - [Haskell实现：安全机制](#haskell实现安全机制)
   - [参考文献 / References](#参考文献--references)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -1009,3 +1010,20 @@ main = do
 *安全机制为FormalAI提供了系统安全保障的理论基础，确保AI系统在运行过程中的安全性和可靠性。*
 
 *Safety mechanisms provide theoretical foundations for system safety guarantees in FormalAI, ensuring the safety and reliability of AI systems during operation.*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（安全RL、风险约束、形式化安全、系统安全工程）
+  - A类会议/期刊：S&P/CCS/USENIX Security/CAV/POPL/NeurIPS/ICML 等
+  - 标准与基准：NIST、ISO/IEC、W3C；安全评测、红队/蓝队协议与可复现标准
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。
+
+- 示例与落地：
+  - 示例模型卡：见 `docs/07-alignment-safety/07.3-安全机制/EXAMPLE_MODEL_CARD.md`
+  - 示例评测卡：见 `docs/07-alignment-safety/07.3-安全机制/EXAMPLE_EVAL_CARD.md`

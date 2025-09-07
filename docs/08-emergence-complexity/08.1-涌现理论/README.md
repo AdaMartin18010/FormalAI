@@ -73,6 +73,7 @@ L'émergence est des propriétés et comportements collectifs qui émergent dans
     - [Rust实现：涌现检测器](#rust实现涌现检测器)
     - [Haskell实现：涌现分析器](#haskell实现涌现分析器)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -847,3 +848,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的涌现理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为理解AI系统的涌现能力和集体行为提供了重要的理论指导。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（复杂系统、涌现、自组织、网络科学）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/AAAI/PNAS/Nature/Science（与复杂系统/AI涌现相关）
+  - 标准与基准：NIST、ISO/IEC、W3C；可复现评测与数据/模型卡
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

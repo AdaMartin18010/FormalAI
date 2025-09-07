@@ -50,6 +50,7 @@ Self-organization theory studies how systems spontaneously form ordered structur
     - [Rust实现：自组织系统模拟器](#rust实现自组织系统模拟器)
     - [Haskell实现：序参量分析](#haskell实现序参量分析)
   - [参考文献 / References](#参考文献--references)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -1157,3 +1158,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了自组织理论基础，为理解AI系统的自组织行为和涌现性质提供了重要的理论框架。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（自组织、协同学、反应扩散、SOM）
+  - A类会议/期刊：PNAS/Nature/Science/NeurIPS/ICML（自组织与AI交叉）
+  - 标准与基准：NIST、ISO/IEC、W3C；可复现评测与模型/数据卡
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

@@ -112,6 +112,14 @@ Le raisonnement est le processus logique de dérivation de conclusions à partir
     - [Rust实现：逻辑推理引擎](#rust实现逻辑推理引擎)
     - [Haskell实现：概率推理系统](#haskell实现概率推理系统)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
+    - [大模型推理机制 / Large Model Reasoning Mechanisms](#大模型推理机制--large-model-reasoning-mechanisms)
+    - [神经推理理论 / Neural Reasoning Theory](#神经推理理论--neural-reasoning-theory)
+    - [多模态推理理论 / Multimodal Reasoning Theory](#多模态推理理论--multimodal-reasoning-theory)
+    - [推理计算理论 / Reasoning Computing Theory](#推理计算理论--reasoning-computing-theory)
+    - [推理评估理论 / Reasoning Evaluation Theory](#推理评估理论--reasoning-evaluation-theory)
+    - [实用工具链 / Practical Toolchain](#实用工具链--practical-toolchain)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -944,3 +952,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的推理机制理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的智能推理和决策提供了科学的理论基础。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（逻辑/概率/因果/类比/反事实推理）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/AAAI/IJCAI/ACL/CAV 等
+  - 标准与基准：NIST、ISO/IEC、W3C；推理评测与统计显著性协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

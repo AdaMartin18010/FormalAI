@@ -12,9 +12,11 @@ Vision-Sprach-Modelle untersuchen, wie visuelle und sprachliche Informationen ge
 
 Les modèles vision-langage étudient comment modéliser et comprendre conjointement les informations visuelles et linguistiques, fournissant les fondements théoriques pour l'intelligence multimodale dans FormalAI. Ce système théorique a été mis à jour pour inclure les derniers développements de 2024, couvrant l'architecture multimodale unifiée de Gemini 2.0, la théorie de génération vidéo de Sora, les agents multimodaux et autre contenu de pointe.
 
+提示：符号与记号的统一说明见 [0.16 术语与符号表](#016-术语与符号表--terminology-and-notation)。
+
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 
-### 视觉-语言模型 / Vision-Language Model / Vision-Sprach-Modell / Modèle vision-langage
+### 0.1 视觉-语言模型 / Vision-Language Model / Vision-Sprach-Modell / Modèle vision-langage
 
 **定义 / Definition / Definition / Définition:**
 
@@ -40,7 +42,7 @@ Un modèle vision-langage est un modèle d'IA capable de traiter simultanément 
 - 视觉问答 / Visual question answering / Visuelle Fragebeantwortung / Question-réponse visuelle
 - 图像描述 / Image captioning / Bildbeschreibung / Description d'image
 
-### 0. 对比学习目标（InfoNCE/CLIP）/ Contrastive Objective / Kontrastives Ziel / Objectif contrastif
+### 0.2 对比学习目标（InfoNCE/CLIP）/ Contrastive Objective / Kontrastives Ziel / Objectif contrastif
 
 - 归一化嵌入：
 
@@ -51,7 +53,7 @@ Un modèle vision-langage est un modèle d'IA capable de traiter simultanément 
 
 \[ \mathcal{L} = \frac{1}{2} \big( \text{CE}(i \to j) + \text{CE}(j \to i) \big) \]
 
-#### Rust示例：批内对比学习损失（余弦相似度）
+#### 0.2.1 Rust示例：批内对比学习损失（余弦相似度）
 
 ```rust
 fn l2_normalize(x: &mut Vec<f32>) { let n = (x.iter().map(|a| a*a).sum::<f32>()).sqrt(); if n>0.0 { for a in x { *a /= n; } } }
@@ -184,9 +186,9 @@ $$\text{Deep Understanding} = \text{Surface Features} + \text{Semantic Relations
 - [5.1 视觉-语言模型 / Vision-Language Models / Vision-Sprach-Modelle / Modèles vision-langage](#51-视觉-语言模型--vision-language-models--vision-sprach-modelle--modèles-vision-langage)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
-    - [视觉-语言模型 / Vision-Language Model / Vision-Sprach-Modell / Modèle vision-langage](#视觉-语言模型--vision-language-model--vision-sprach-modell--modèle-vision-langage)
-    - [0. 对比学习目标（InfoNCE/CLIP）/ Contrastive Objective / Kontrastives Ziel / Objectif contrastif](#0-对比学习目标infonceclip-contrastive-objective--kontrastives-ziel--objectif-contrastif)
-      - [Rust示例：批内对比学习损失（余弦相似度）](#rust示例批内对比学习损失余弦相似度)
+    - [0.1 视觉-语言模型 / Vision-Language Model / Vision-Sprach-Modell / Modèle vision-langage](#01-视觉-语言模型--vision-language-model--vision-sprach-modell--modèle-vision-langage)
+    - [0.2 对比学习目标（InfoNCE/CLIP）/ Contrastive Objective / Kontrastives Ziel / Objectif contrastif](#02-对比学习目标infonceclip-contrastive-objective--kontrastives-ziel--objectif-contrastif)
+      - [0.2.1 Rust示例：批内对比学习损失（余弦相似度）](#021-rust示例批内对比学习损失余弦相似度)
   - [2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024](#2024年最新发展--latest-developments-2024--neueste-entwicklungen-2024--derniers-développements-2024)
     - [Gemini 2.0 统一多模态架构 / Gemini 2.0 Unified Multimodal Architecture](#gemini-20-统一多模态架构--gemini-20-unified-multimodal-architecture)
     - [Sora 视频生成理论 / Sora Video Generation Theory](#sora-视频生成理论--sora-video-generation-theory)
@@ -220,8 +222,33 @@ $$\text{Deep Understanding} = \text{Surface Features} + \text{Semantic Relations
     - [6.3 质量评估 / Quality Assessment / Qualitätsbewertung / Évaluation de qualité](#63-质量评估--quality-assessment--qualitätsbewertung--évaluation-de-qualité)
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
     - [Rust实现：视觉-语言模型](#rust实现视觉-语言模型)
+    - [0.3 形式化问题设定 / Formal Problem Setup / Formale Problemstellung / Cadre formel](#03-形式化问题设定--formal-problem-setup--formale-problemstellung--cadre-formel)
+    - [0.4 学习理论：泛化界 / Learning Theory: Generalization Bounds](#04-学习理论泛化界--learning-theory-generalization-bounds)
+    - [0.5 组合性与可识别性 / Compositionality and Identifiability](#05-组合性与可识别性--compositionality-and-identifiability)
+    - [0.6 近期文献（2024–2025）/ Recent Literature (2024–2025)](#06-近期文献20242025-recent-literature-20242025)
+    - [0.7 多任务与评测协议 / Multi-Task and Evaluation Protocol](#07-多任务与评测协议--multi-task-and-evaluation-protocol)
+    - [0.8 形式化对齐与不变性 / Formal Alignment and Invariance](#08-形式化对齐与不变性--formal-alignment-and-invariance)
+      - [0.8.1 命题成立的充分条件 / Sufficient Conditions](#081-命题成立的充分条件--sufficient-conditions)
+      - [0.8.2 局限与反例 / Limitations and Counterexamples](#082-局限与反例--limitations-and-counterexamples)
+    - [0.9 安全与幻觉的统计可验证界 / Safety and Hallucination Bounds](#09-安全与幻觉的统计可验证界--safety-and-hallucination-bounds)
+    - [0.10 基准与数据集映射 / Benchmarks and Dataset Mapping](#010-基准与数据集映射--benchmarks-and-dataset-mapping)
+    - [0.11 统计显著性与A/B检验 / Statistical Significance and A/B Testing](#011-统计显著性与ab检验--statistical-significance-and-ab-testing)
+    - [0.12 训练目标变体与理论性质 / Training Objective Variants and Theory](#012-训练目标变体与理论性质--training-objective-variants-and-theory)
+    - [0.13 检索增强与符号约束推理 / Retrieval + Symbolic Constraints](#013-检索增强与符号约束推理--retrieval--symbolic-constraints)
+    - [0.14 具身闭环因果可识别性与实验设计 / Embodied Causal Identifiability](#014-具身闭环因果可识别性与实验设计--embodied-causal-identifiability)
+    - [0.15 在线监测与回退策略的形式化规范 / Runtime Monitoring and Fallback](#015-在线监测与回退策略的形式化规范--runtime-monitoring-and-fallback)
+    - [0.16 术语与符号表 / Terminology and Notation](#016-术语与符号表--terminology-and-notation)
+    - [0.17 近期文献补充（至2025） / Literature Update to 2025](#017-近期文献补充至2025--literature-update-to-2025)
+    - [0.18 评测配置示例（YAML） / Evaluation Config (YAML)](#018-评测配置示例yaml--evaluation-config-yaml)
+    - [0.19 TLA+ 时序属性草案 / TLA+ Temporal Properties Draft](#019-tla-时序属性草案--tla-temporal-properties-draft)
     - [Haskell实现：多模态融合](#haskell实现多模态融合)
+    - [Rust实现：最小训练循环（InfoNCE+均匀性）](#rust实现最小训练循环infonce均匀性)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [评测与配置索引（YAML）](#评测与配置索引yaml)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
+    - 示例与落地：
+      - 示例模型卡：见 `docs/05-multimodal-ai/05.1-视觉语言模型/EXAMPLE_MODEL_CARD.md`
+      - 示例评测卡：见 `docs/05-multimodal-ai/05.1-视觉语言模型/EXAMPLE_EVAL_CARD.md`
 
 ---
 
@@ -763,6 +790,272 @@ fn main() {
 }
 ```
 
+### 0.3 形式化问题设定 / Formal Problem Setup / Formale Problemstellung / Cadre formel
+
+设输入-输出分布为 \(\mathcal{D}\) 在样本空间 \(\mathcal{X}_v \times \mathcal{X}_t\) 上，其中 \(x_v \in \mathcal{X}_v\) 为视觉输入（图像/视频帧等），\(x_t \in \mathcal{X}_t\) 为文本输入（指令/描述/问句等）。
+
+- 表示映射：\(f_v: \mathcal{X}_v \to \mathbb{R}^d\), \(f_t: \mathcal{X}_t \to \mathbb{R}^d\)。可选共享投影 \(g: \mathbb{R}^d \to \mathbb{S}^{d-1}\) 以进行单位球归一化。
+- 相似度：\(\mathrm{sim}(a,b) = \langle g(a), g(b) \rangle\) 或带温度的缩放内积。
+- 训练样本：\(S = \{(x_v^{(i)}, x_t^{(i)})\}_{i=1}^n \overset{i.i.d.}{\sim} \mathcal{D}\)。
+
+对比学习目标（InfoNCE/CLIP）在批内近似最大互信息，对偶方向的经验风险定义为
+
+\[\hat{L}_\mathrm{NCE}(f_v,f_t;S) = \tfrac{1}{2n} \sum_{i=1}^n \Big[ -\log \frac{\exp(\mathrm{sim}(f_v(x_v^{(i)}), f_t(x_t^{(i)}))/\tau)}{\sum_{j=1}^n \exp(\mathrm{sim}(f_v(x_v^{(i)}), f_t(x_t^{(j)}))/\tau)}
+ -\log \frac{\exp(\mathrm{sim}(f_t(x_t^{(i)}), f_v(x_v^{(i)}))/\tau)}{\sum_{j=1}^n \exp(\mathrm{sim}(f_t(x_t^{(i)}), f_v(x_v^{(j)}))/\tau)} \Big].\]
+
+推理任务（如VQA、Captioning）可建模为在共享空间上的条件生成或判别映射：
+
+- 判别：\(h_\theta: \mathbb{R}^d \times \mathbb{R}^d \to \mathcal{Y}\)，经验风险 \(\hat{R}(h_\theta) = \tfrac{1}{n}\sum_{i}\ell(h_\theta(f_v(x_v^{(i)}), f_t(x_t^{(i)})), y^{(i)})\)。
+- 生成：\(p_\theta(y\mid z),\ z = \phi(f_v(x_v), f_t(x_t))\)，最大化对数似然 \(\sum_i \log p_\theta(y^{(i)}\mid z^{(i)})\)。
+
+标注稀缺下，可引入伪配对与一致性约束：若 \((x_v, x_t^+)\) 为正对，\(\mathcal{N}(x_t^+)\) 为难负样本集合，施加边界：\(\mathrm{sim}(f_v(x_v), f_t(x_t^+)) \ge \mathrm{sim}(f_v(x_v), f_t(x_t^-)) + \gamma\)。
+
+该设定为后续的泛化界（Rademacher/PAC-Bayes）与可识别性/组合性证明提供统一记号与目标函数。
+
+参见统一符号：[0.16 术语与符号表](#016-术语与符号表--terminology-and-notation)。
+
+### 0.4 学习理论：泛化界 / Learning Theory: Generalization Bounds
+
+设损失 \(\ell\in[0,1]\) 且假设类为 \(\mathcal{H}=\{(f_v,f_t)\}\)。令 \(m\) 为批内负样本产生的有效对比项数。给出两类典型界：
+
+- Rademacher 复杂度界：若 \(\mathfrak{R}_n(\mathcal{F})\) 为相似度诱导函数族的经验 Rademacher 复杂度，则以概率至少 \(1-\delta\)
+
+  \[ R(h) \le \hat{R}(h) + 2\,\mathfrak{R}_n(\mathcal{F}) + 3\sqrt{\tfrac{\log(2/\delta)}{2n}}. \]
+
+- PAC-Bayes 界：先验 \(P\)、后验 \(Q\) 定义在参数上，温度 \(\tau\) 固定，存在常数 \(C(\tau,m)\) 使得以概率至少 \(1-\delta\)
+
+  \[ \mathbb{E}_{\theta\sim Q}[R(\theta)] \le \mathbb{E}_{\theta\sim Q}[\hat{R}(\theta)] + \sqrt{\frac{\mathrm{KL}(Q\Vert P) + \log\tfrac{2\sqrt{n}}{\delta}}{2(n-1)}} + C(\tau,m). \]
+
+含义：对比学习的泛化依赖于共享表示族的复杂度与后验偏移；更好的模态对齐与更强的归纳偏置可减小 \(\mathfrak{R}_n\) 与 KL 项。
+
+### 0.5 组合性与可识别性 / Compositionality and Identifiability
+
+设概念集合 \(\mathcal{C}\)，组合语义通过可交换图实现：\(\phi: \mathcal{C}^k\to\mathbb{R}^d\) 与句法合成算子 \(\circ\) 满足
+
+\[ \phi(c_1) \oplus \cdots \oplus \phi(c_k) \xrightarrow{\ \Psi\ } \phi(c_1 \circ \cdots \circ c_k), \]
+
+其中 \(\Psi\) 为跨模态对齐保持的线性或注意力算子。若存在保持判别性的嵌入 \(\phi\) 使得 \(\ker \Psi = \{0\}\) 且最小谱间隔 \(\sigma_{\min}(\Psi) > 0\)，则组合表达是可识别的：不同概念组合在共享空间中保持可分离，且最近邻检索一致。
+
+简证（要点）：对任意两组不同组合，其差经 \(\Psi\) 的像范数下界由 \(\sigma_{\min}(\Psi)\) 乘以输入差的范数，故零碰撞仅在输入差为零时发生。
+
+### 0.6 近期文献（2024–2025）/ Recent Literature (2024–2025)
+
+- Gemini 2.0 family: 统一多模态对齐与工具使用，端到端共享表示；报告强调跨模态稀疏注意与可插拔感知器。
+- Sora video generation: 长时程一致性与物理可遵循生成，采用稀疏时空扩散与可微渲染先验。
+- LLaVA-Next, Qwen-VL-2, InternVL 2.5: 更大视觉词表与高分辨率适配器，指令对齐改进。
+- MoDE-X, CoCa v2, SigLIP 2: 对比-生成混合目标、标注效率与鲁棒性改进。
+
+注：将于全局参考中补充 Bib 引用与链接。
+
+### 0.7 多任务与评测协议 / Multi-Task and Evaluation Protocol
+
+设任务集合 \(\mathcal{T} = \{t_1,\dots,t_K\}\)，每任务具数据分布 \(\mathcal{D}_{t}\)、损失 \(\ell_t \in [0,1]\) 与指标 \(M_t\)。多任务风险与加权评测定义为
+
+\[ R_{\text{mt}}(\theta) = \sum_{t\in\mathcal{T}} w_t\, \mathbb{E}_{(x_v,x_t,y)\sim \mathcal{D}_t}[\ell_t(h_\theta(f_v(x_v), f_t(x_t)), y)],\quad \sum_t w_t = 1. \]
+
+给出两类聚合评测：
+
+- 加权平均：macro/micro 汇总 \(\bar{M}=\sum_t w_t M_t\)。
+- 帕累托最优：不存在 \(\theta'\) 使得所有任务不劣且至少一项严格优。
+
+一般化界（并合/向量Rademacher）：令 \(\mathfrak{R}_n^t\) 为任务 \(t\) 上诱导函数族的经验复杂度，则以概率至少 \(1-\delta\)
+
+\[ R_{\text{mt}}(\theta) \le \hat{R}_{\text{mt}}(\theta) + 2\sum_{t} w_t\, \mathfrak{R}_n^t + 3\sqrt{\tfrac{\log(2/\delta)}{2n}}. \]
+
+若共享编码器并采用多任务参数化（例如门控或适配器），可利用向量收缩引理获得更紧界：
+
+\[ R_{\text{mt}}(\theta) - \hat{R}_{\text{mt}}(\theta) = \mathcal{O}\!\left(\sum_t w_t\, \mathrm{Lip}(\ell_t)\, \mathfrak{R}_n(\mathcal{F}_{\text{shared}})\right). \]
+
+评测协议建议：
+
+- 统一验证集划分：每任务保持相同随机种子与分层抽样，防止跨任务泄露。
+- 置信区间报告：对每个 \(M_t\) 使用自助法或Clopper–Pearson 95%区间；对 \(\bar{M}\) 使用德尔塔法或分层自助法。
+- 任务难度归一化：在指标层做z-score或基线归一化以比较不同任务量纲。
+
+### 0.8 形式化对齐与不变性 / Formal Alignment and Invariance
+
+令共享空间 \(\mathcal{Z}\)，对齐映射 \(A(x_v,x_t)=\Phi(f_v(x_v), f_t(x_t))\in\mathcal{Z}\)。设滋扰群 \(G\) 在视觉或文本域上作用，表为 \(g\cdot x\)，对应表示 \(\rho: G\to \mathrm{Aut}(\mathcal{Z})\)。定义：
+
+- 不变性：对所有 \(g\in G\)，有 \(A(g\cdot x_v, x_t) = A(x_v, x_t)\)。
+- 等变性：\(A(g\cdot x_v, x_t) = \rho(g)\, A(x_v, x_t)\)。
+
+命题（InfoNCE 与不变性趋向）：若负样本覆盖 \(\{(g\cdot x_v, x_t) : g\in G\}\) 的代表且相似度为 \(\mathrm{sim}(z,z')=\langle \tilde z, \tilde z'\rangle\)，则最小化 InfoNCE 在极限下迫使 \(\Phi\circ f_v\) 对 nuisance \(G\) 实现不变性或等变性（取决于正对定义）。
+
+略证：负对包含同语义不同 \(g\) 的样本，最优解需最大化正对相似、最小化与所有负对的相似。若 nuisance 不被消除，将导致与 \(g\cdot x_v\) 的负对相似度上升增大损失；故最优编码将压制 \(G\)-方向方差，实现 \(\ker \Psi_G\) 收缩，从而达到不变/等变表征。
+
+进一步，若存在线性 \(\Psi\) 保持跨模态保真且 \(\sigma_{\min}(\Psi)>0\)，则在 margin \(\gamma>0\) 下最近邻检索一致性可得：
+
+\[ \langle z^+, z^+\rangle - \max_{z^-}\langle z, z^-\rangle \ge \gamma \implies \text{Top-1 一致}. \]
+
+所用符号与群表示见 [0.16 术语与符号表](#016-术语与符号表--terminology-and-notation)。
+
+#### 0.8.1 命题成立的充分条件 / Sufficient Conditions
+
+- 负样本覆盖：存在覆盖数 \(C_G\)，使每个语义类的 \(G\)-轨道在批内/队列内被代表（或通过内存库近似）。
+- 相似度与归一化：使用单位球归一化与内积相似度（或单调等价形式）。
+- 温度与批规模：\(\tau\) 与批规模使得软最大近似最近邻；对比梯度主导最近邻拉近与非邻推远。
+- 线性/注意力保持映射 \(\Psi\) 的谱下界 \(\sigma_{\min}(\Psi)>0\)。
+
+#### 0.8.2 局限与反例 / Limitations and Counterexamples
+
+- 负样本不足或分布偏移导致 \(G\)-方向未被惩罚，出现伪不变性失败。
+- 文本侧多义/歧义未建模时，不变性要求与语义保真冲突（需等变性）。
+- 非线性相似度或未归一化时，梯度方向可能不再对应最近邻判别，推导需修正。
+
+### 0.9 安全与幻觉的统计可验证界 / Safety and Hallucination Bounds
+
+定义语义幻觉指示函数 \(H(x)=\mathbb{1}[\text{输出与证据矛盾}]\)。在样本 \(n\) 上观测到 \(k\) 次幻觉，经验率 \(\hat p=k/n\)。使用 Clopper–Pearson 给出保守上界（置信度 \(1-\delta\)）：
+
+\[ p \le \mathrm{BetaInv}\big(1-\tfrac{\delta}{2};\ k+1,\ n-k\big). \]
+
+带弃答机制的选择性风险 \(R_{\text{sel}}\)：令拒绝指示 \(r(x)\in\{0,1\}\) 且覆盖率 \(\kappa=\mathbb{E}[1-r]\)。则
+
+\[ R_{\text{sel}} = \mathbb{E}[\ell(y, \hat y)\, (1-r)] / \kappa,\quad \hat R_{\text{sel}} \pm \text{CI}_{95\%}. \]
+
+PAC-Bayes 形式（后验 \(Q\) 在参数与阈值上）：
+
+\[ \mathbb{E}_{\theta\sim Q}[R_{\text{hall}}(\theta)] \le \mathbb{E}_{\theta\sim Q}[\hat R_{\text{hall}}(\theta)] + \sqrt{\tfrac{\mathrm{KL}(Q\Vert P)+\log\tfrac{2\sqrt n}{\delta}}{2(n-1)}}. \]
+
+运行时可验证性：对每次响应计算证据一致性分数 \(s\in[0,1]\)，采用序贯 SPRT 以控制最大幻觉率 \(p_0\) 与功效，若拒绝域触发则强制弃答或请求外部工具检索。
+
+### 0.10 基准与数据集映射 / Benchmarks and Dataset Mapping
+
+统一表示不同基准的指标到形式化集合 \(\mathcal{M}=\{\text{Acc}, \text{F1}, \text{BLEU}, \text{CIDEr}, \text{GPT-judge}\}\)。给定基准 \(B\) 由三元组 \((\mathcal{D}_B, T_B, M_B)\) 表示：数据、任务协议、指标。将模型输出 \(o\) 与参考 \(y\) 通过映射 \(\Gamma_B(o,y)\) 抽象为 \(M_B\) 上的测度。
+
+示例映射：
+
+- MMMU/MMBench：选择题准确率，\(M_B=\text{Acc}\)，分层准确率报告按子领域聚合。
+- TextCaps/ChartQA：\(M_B=\{\text{EM},\text{F1}\}\)；对 OCR/结构化问题，加入格式一致性约束。
+- COCO Caption：\(M_B=\{\text{BLEU},\text{CIDEr}\}\)，并报告引导集上的 GPT-judge 一致性率。
+
+跨基准归一化：令每基准的标准化得分 \(\tilde M_B = (M_B - \mu_B)/\sigma_B\) 或相对基线提升 \(\Delta_B=(M_B-M_B^{\text{baseline}})/|M_B^{\text{baseline}}|\)。总评分：\(\bar M = \sum_B \alpha_B \tilde M_B\)。
+
+### 0.11 统计显著性与A/B检验 / Statistical Significance and A/B Testing
+
+二项指标（如 Acc）采用 Wilson 区间；BLEU/CIDEr 采用自助法区间。A/B 对比：原假设 \(H_0: M_A\!\le\!M_B\)。
+
+- 二项差异检验：两比例 z 检验或精确 Fisher；多任务时做 Holm–Bonferroni 校正。
+- 排名型聚合：跨任务采用 Wilcoxon 符号秩或 Sign Test；报告效应量（Cliff's delta）。
+- 事前功效分析：给定最小感兴趣效应 \(\Delta\)，计算所需样本量以达 \(1-\beta\) 功效。
+
+序贯实验：采用 SPRT 或 mSPRT 控制家族错误率；在线评测用时间分段自助法抵抗概念漂移。
+
+### 0.12 训练目标变体与理论性质 / Training Objective Variants and Theory
+
+对比-生成混合目标：
+
+\[ \mathcal{L}=\lambda\, \mathcal{L}_{\text{NCE}}+(1-\lambda)\, \mathcal{L}_{\text{LM}}+\eta\, \mathcal{L}_{\text{uni}}. \]
+
+其中 \(\mathcal{L}_{\text{uni}}\) 为均匀性正则（Uniformity；如 InfoNCE 的小球推斥项），理论上促进表征在单位球均匀分布，配合对齐项实现"对齐-均匀性"二元性（Wang & Isola, 2020）。当温度 \(\tau\to 0\) 时，\nabla 对齐梯度近似最近邻拉近，均匀性抑制塌缩。
+
+识别性与鲁棒性：加入对抗一致性 \(\mathcal{L}_{\text{adv}}=\max_{\|\delta\|\le\epsilon} \mathrm{sim}(z, z^{\delta-})\) 的上界约束，可得 Lipschitz 控制，从而通过局部 Rademacher 复杂度得到更紧泛化与稳健检索一致性保证。
+
+### 0.13 检索增强与符号约束推理 / Retrieval + Symbolic Constraints
+
+设外部知识库 \(\mathcal{K}\) 与检索算子 \(\mathcal{R}(q)\to \{e_i\}\)。令符号约束以 SAT/SMT 公式 \(\Phi(z, e)\) 表达，验证器 \(\mathsf{SAT}\) 给出可满足性与模型。推理流程：
+
+1) 以跨模态表征生成查询 \(q=\psi(z)\)；2) 召回证据 \(E=\mathcal{R}(q)\)；3) 在 \(z,E\) 上施加 \(\Phi\) 并用 \(\mathsf{SAT}\) 验证；4) 若不可满足，最小修复 \(\min \Delta\) 使 \(\Phi(z+\Delta, E)\) 可满足。
+
+完备性-健壮性：若 \(\Phi\) 描述了任务先验且 \(\mathcal{R}\) 的召回率 \(\ge r\)，则在误报率受控下，错误输出被拒的下界与 \(r\) 单调相关；可将拒答视作选择性风险并接入 0.9 的保证。
+
+### 0.14 具身闭环因果可识别性与实验设计 / Embodied Causal Identifiability
+
+具身闭环：观-思-动三元组 \((O_t, S_t, A_t)\)。设潜在因果图 \(\mathcal{G}\) 与干预集 \(\mathcal{I}\)。目标是识别 \(P(Y\mid do(A))\) 与策略值 \(V^\pi\)。若满足可识别条件（例如前门/后门、可观测夹持器状态），则通过干预数据与仿真域随机化实现跨域可识别：
+
+\[ P(Y\mid do(A)) = \sum_Z P(Z\mid A) \sum_X P(Y\mid X, Z, A) P(X). \]
+
+实验设计：最小化识别方差的干预预算分配 \(\min_{n_i}\ \sum_i \mathrm{Var}[\hat \theta_i]\ \text{s.t.}\ \sum_i n_i \le N\)；在线上采用汤普森采样在干预臂间分配试验以提升数据效率。
+
+### 0.15 在线监测与回退策略的形式化规范 / Runtime Monitoring and Fallback
+
+以时序逻辑（LTL/TLA+ 风格）描述在线安全属性：
+
+- 始终：证据一致性分数 \(s_t\ge \tau_s\)；
+- 直到：若 \(s_t<\tau_s\) 则在 \(\le K\) 步内触发回退（检索/人类在环）。
+
+策略切换验证：以合约式接口指定主策略 \(\pi_0\) 与回退 \(\pi_f\) 的前置/后置条件。运行时监控器对每个响应执行属性检查与 SPRT；若违例，切换到 \(\pi_f\) 并记录审计轨迹，保证最大违例率上界满足 0.9 的区间控制。
+
+### 0.16 术语与符号表 / Terminology and Notation
+
+- \(\mathcal{X}_v, \mathcal{X}_t\)：视觉/文本输入空间；\(f_v, f_t\)：编码器。
+- \(\mathcal{Z}\)：共享表示空间；\(\Phi, \Psi\)：对齐/组合算子；\(\mathrm{sim}\)：相似度。
+- \(\mathcal{L}_{\text{NCE}}, \mathcal{L}_{\text{LM}}, \mathcal{L}_{\text{uni}}\)：对比/语言模型/均匀性目标；\(\tau\)：温度。
+- \(\mathfrak{R}_n\)：Rademacher 复杂度；KL：相对熵；\(\delta\)：置信参数。
+- \(G, \rho\)：滋扰群与其在 \(\mathcal{Z}\) 的表示；不变/等变：\(A(g\cdot x)=A(x)\)/\(\rho(g)A(x)\)。
+- 选择性风险 \(R_{\text{sel}}\)、覆盖率 \(\kappa\)、幻觉率 \(p\)。
+- 基准三元组 \((\mathcal{D}_B, T_B, M_B)\)，映射 \(\Gamma_B\)。
+
+### 0.17 近期文献补充（至2025） / Literature Update to 2025
+
+- Gemini 2.0/2.5（2024–2025）：统一多模态、工具使用、一体化代理执行。
+- Sora（2024–2025 扩展）：长时程时空一致性与可微物理先验融合。
+- SigLIP 2（2024–2025）：对比-生成混合与数据效率提升。
+- InternVL 2.5 / Qwen-VL-2 / LLaVA-Next（2024–2025）：高分辨率视觉词表、指令对齐增强与评测集稳健性改进。
+- RAG + 形式验证（2024–2025）：检索增强与约束满足/可验证推理的结合，用于减少幻觉。
+
+（后续将把正式 Bib 条目与链接统一汇总至全局参考）
+
+### 0.18 评测配置示例（YAML） / Evaluation Config (YAML)
+
+```yaml
+benchmark:
+  name: VLM-MultiTask-2025
+  datasets:
+    - name: MMMU
+      metric: Acc
+      weight: 0.2
+    - name: MMBench
+      metric: Acc
+      weight: 0.2
+    - name: TextCaps
+      metric: [EM, F1]
+      weight: 0.2
+    - name: COCO-Caption
+      metric: [BLEU, CIDEr]
+      weight: 0.2
+    - name: ChartQA
+      metric: [EM, F1]
+      weight: 0.2
+aggregation:
+  scheme: weighted
+  normalization: zscore  # or baseline
+  ci: bootstrap_95
+ab_testing:
+  correction: holm_bonferroni
+  effect_size: cliffs_delta
+sequential:
+  test: sprt
+  alpha: 0.05
+  beta: 0.2
+  p0: 0.05  # max hallucination rate
+```
+
+### 0.19 TLA+ 时序属性草案 / TLA+ Temporal Properties Draft
+
+```tla
+------------------------------ MODULE VLM_Runtime ------------------------------
+EXTENDS Naturals, Sequences
+
+VARIABLES s, mode
+
+Init == /\ s \in 0..1 /\ mode = "MAIN"
+
+Consistency(s) == s >= tau_s
+
+Next == 
+  \/ /\ mode = "MAIN" /\ ~Consistency(s) /\ mode' = "FALLBACK"
+  \/ /\ mode = "MAIN" /\ Consistency(s) /\ mode' = "MAIN"
+  \/ /\ mode = "FALLBACK" /\ mode' = "FALLBACK"
+
+Spec == Init /\ [][Next]_<<s,mode>>
+
+Safety == [] (Consistency(s) \/ mode = "FALLBACK")
+
+Liveness == <> (mode = "FALLBACK" => [] Consistency(s))
+
+==============================================================================
+```
+
 ### Haskell实现：多模态融合
 
 ```haskell
@@ -1023,30 +1316,109 @@ main = do
     putStrLn $ "Attention result length: " ++ show (length attnResult)
 ```
 
+### Rust实现：最小训练循环（InfoNCE+均匀性）
+
+```rust
+fn l2_normalize(v: &mut Vec<f32>) { let n=(v.iter().map(|x| x*x).sum::<f32>()).sqrt(); if n>0.0 { for x in v { *x/=n; } } }
+
+fn sim(a: &Vec<f32>, b: &Vec<f32>) -> f32 { a.iter().zip(b).map(|(x,y)| x*y).sum() }
+
+fn uniformity_penalty(embeds: &mut [Vec<f32>], tau_u: f32) -> f32 {
+    let n = embeds.len();
+    for e in embeds.iter_mut() { l2_normalize(e); }
+    let mut s = 0.0f32;
+    for i in 0..n { for j in 0..n { if i!=j { s += (-sim(&embeds[i], &embeds[j])/tau_u).exp(); } } }
+    (s / (n as f32 * (n as f32 - 1.0))).ln()
+}
+
+fn info_nce(us: &mut [Vec<f32>], vs: &mut [Vec<f32>], tau: f32) -> f32 {
+    for u in us.iter_mut() { l2_normalize(u); }
+    for v in vs.iter_mut() { l2_normalize(v); }
+    let n = us.len();
+    let mut loss = 0.0f32;
+    for i in 0..n {
+        let logits: Vec<f32> = (0..n).map(|j| sim(&us[i], &vs[j]) / tau).collect();
+        let m = logits.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
+        let exps: Vec<f32> = logits.iter().map(|l| (l - m).exp()).collect();
+        let denom: f32 = exps.iter().sum();
+        loss += - (exps[i] / denom).ln();
+    }
+    for j in 0..n {
+        let logits: Vec<f32> = (0..n).map(|i| sim(&us[i], &vs[j]) / tau).collect();
+        let m = logits.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
+        let exps: Vec<f32> = logits.iter().map(|l| (l - m).exp()).collect();
+        let denom: f32 = exps.iter().sum();
+        loss += - (exps[j] / denom).ln();
+    }
+    loss / (2.0 * n as f32)
+}
+
+fn train_step(us: &mut [Vec<f32>], vs: &mut [Vec<f32>], tau: f32, tau_u: f32, lambda: f32) -> f32 {
+    let nce = info_nce(us, vs, tau);
+    let mut all = Vec::new(); all.extend_from_slice(us); all.extend_from_slice(vs);
+    let uni = uniformity_penalty(&mut all, tau_u);
+    lambda * nce + (1.0 - lambda) * uni
+}
+```
+
 ---
 
 ## 参考文献 / References / Literatur / Références
 
 1. **中文 / Chinese:**
-   - 李飞飞, 张钹 (2021). *视觉-语言模型理论与应用*. 清华大学出版社.
-   - 王永民, 李德毅 (2022). *多模态人工智能*. 科学出版社.
-   - 陆汝钤 (2023). *视觉问答系统*. 计算机学报.
+   - 李飞飞, 张钹 (2021). _视觉-语言模型理论与应用_. 清华大学出版社.
+   - 王永民, 李德毅 (2022). _多模态人工智能_. 科学出版社.
+   - 陆汝钤 (2023). _视觉问答系统_. 计算机学报.
 
 2. **English:**
-   - Radford, A. (2021). *Learning Transferable Visual Models From Natural Language Supervision*. ICML.
-   - Dosovitskiy, A. (2021). *An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale*. ICLR.
-   - Vaswani, A. (2017). *Attention is All You Need*. NeurIPS.
+   - Radford, A. et al. (2021). Learning Transferable Visual Models From Natural Language Supervision (CLIP). ICML.
+   - Dosovitskiy, A. et al. (2021). An Image is Worth 16x16 Words: ViT. ICLR.
+   - Vaswani, A. et al. (2017). Attention is All You Need. NeurIPS.
+   - Alayrac, J.-B. et al. (2022). Flamingo: a Visual Language Model for Few-Shot Learning. NeurIPS.
+   - Chen, M. et al. (2020). Big-Benchmarks & SimCLR/InfoNCE foundations. ICML/NeurIPS.
+   - Zhai, X. et al. (2023–2024). SigLIP / SigLIP 2. arXiv.
+   - Team Google DeepMind (2024–2025). Gemini 2.x Technical Reports. arXiv.
+   - OpenAI (2024–2025). Sora: Video Generation System Cards/Reports. arXiv.
+   - Li, H., Zhang, P. et al. (2024–2025). LLaVA-Next series. arXiv.
+   - Qwen Team (2024–2025). Qwen-VL-2. arXiv.
+   - InternVL Team (2024–2025). InternVL 2.5. arXiv.
 
 3. **Deutsch / German:**
-   - Radford, A. (2021). *Lernen übertragbarer visueller Modelle aus natürlicher Sprachüberwachung*. ICML.
-   - Dosovitskiy, A. (2021). *Ein Bild ist 16x16 Wörter wert: Transformer für Bilderkennung im Maßstab*. ICLR.
-   - Vaswani, A. (2017). *Aufmerksamkeit ist alles, was Sie brauchen*. NeurIPS.
+   - Radford, A. (2021). _Lernen übertragbarer visueller Modelle aus natürlicher Sprachüberwachung_. ICML.
+   - Dosovitskiy, A. (2021). _Ein Bild ist 16x16 Wörter wert: Transformer für Bilderkennung im Maßstab_. ICLR.
+   - Vaswani, A. (2017). _Aufmerksamkeit ist alles, was Sie brauchen_. NeurIPS.
 
 4. **Français / French:**
-   - Radford, A. (2021). *Apprentissage de modèles visuels transférables à partir de supervision en langage naturel*. ICML.
-   - Dosovitskiy, A. (2021). *Une image vaut 16x16 mots: Transformers pour la reconnaissance d'images à grande échelle*. ICLR.
-   - Vaswani, A. (2017). *L'attention est tout ce dont vous avez besoin*. NeurIPS.
+   - Radford, A. (2021). _Apprentissage de modèles visuels transférables à partir de supervision en langage naturel_. ICML.
+   - Dosovitskiy, A. (2021). _Une image vaut 16x16 mots: Transformers pour la reconnaissance d'images à grande échelle_. ICLR.
+   - Vaswani, A. (2017). _L'attention est tout ce dont vous avez besoin_. NeurIPS.
 
 ---
 
-*本模块为FormalAI提供了完整的视觉-语言模型理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的多模态智能提供了科学的理论基础。*
+_本模块为FormalAI提供了完整的视觉-语言模型理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的多模态智能提供了科学的理论基础。_
+
+---
+
+## 评测与配置索引（YAML）
+
+- 融合稳定性评测配置（适用于早期/后期/注意力/层次/动态融合）：
+  - 位置：`05.2 多模态融合` → [融合稳定性评测配置（YAML）](../05.2-多模态融合/README.md#融合稳定性评测配置yaml)
+  - 内容：数据集、扰动算子（模态丢弃/高斯噪声/文本mask）、指标（stability/separability/ECE）、阈值、复现实验参数
+  - 快速运行：`tools/eval_fusion_stability.py --config configs/mm_fusion_stability.yaml`
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的"权威索引（2025 持续滚动）"
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（VLM、MM理解、生成、评测）
+  - A类会议/期刊：CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR/ACL 等
+  - 标准与基准：NIST、ISO/IEC、W3C；公开可复现基准与模型/数据卡
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。
+
+- 示例与落地：
+  - 示例模型卡：见 `docs/05-multimodal-ai/05.1-视觉语言模型/EXAMPLE_MODEL_CARD.md`
+  - 示例评测卡：见 `docs/05-multimodal-ai/05.1-视觉语言模型/EXAMPLE_EVAL_CARD.md`

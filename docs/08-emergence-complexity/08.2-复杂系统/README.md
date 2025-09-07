@@ -55,6 +55,7 @@ pub fn logistic_iter(x0: f32, r: f32, steps: usize) -> Vec<f32> {
     - [Rust实现：复杂系统模拟](#rust实现复杂系统模拟)
     - [Haskell实现：复杂系统](#haskell实现复杂系统)
   - [参考文献 / References](#参考文献--references)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -1007,3 +1008,16 @@ main = do
 *复杂系统理论为FormalAI提供了涌现和自组织现象的理论基础，为理解AI系统的集体行为和智能涌现提供了重要框架。*
 
 *Complex systems theory provides theoretical foundations for emergence and self-organization phenomena in FormalAI, offering important frameworks for understanding collective behavior and intelligent emergence in AI systems.*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（复杂系统、动力系统、网络科学）
+  - A类会议/期刊：PNAS/Nature/Science/NeurIPS/ICML（与复杂系统/AI交叉）
+  - 标准与基准：NIST、ISO/IEC、W3C；评测与可复现协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

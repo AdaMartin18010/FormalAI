@@ -101,6 +101,7 @@ fn reach_bad(init: State, max: u32) -> bool {
       - [3. 神经网络形式化验证](#3-神经网络形式化验证)
       - [4. 量子程序验证](#4-量子程序验证)
       - [5. 形式化验证工具链](#5-形式化验证工具链)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -1038,3 +1039,16 @@ main = do
 - **云端验证服务**: 提供云端的形式化验证服务
 
 [返回“最新进展”索引](../../LATEST_UPDATES_INDEX.md)
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（模型检测、抽象解释、定理证明、静态分析）
+  - A类会议/期刊：CAV/POPL/PLDI/LICS/S&P/CCS/TOPLAS 等
+  - 标准与基准：NIST、ISO/IEC、W3C；形式化规范、验证报告与可复现评测
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。

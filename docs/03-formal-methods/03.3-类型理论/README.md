@@ -61,6 +61,7 @@ Type theory studies the mathematical foundations of type systems, providing theo
     - [现代类型理论 / Modern Type Theory](#现代类型理论--modern-type-theory)
     - [类型理论在AI中的应用 / Type Theory Applications in AI](#类型理论在ai中的应用--type-theory-applications-in-ai)
     - [类型理论工具和实现 / Type Theory Tools and Implementation](#类型理论工具和实现--type-theory-tools-and-implementation)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -1253,3 +1254,16 @@ testTypeUnification = do
 *类型理论为FormalAI提供了类型安全和程序正确性的理论基础，是现代编程语言和形式化方法的重要基础。*
 
 *Type theory provides theoretical foundations for type safety and program correctness in FormalAI, serving as important foundations for modern programming languages and formal methods.*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（类型理论、HoTT、依赖类型、线性类型、PL基础）
+  - A类会议/期刊：POPL/PLDI/ICFP/LICS/JFP/TOPLAS 等
+  - 标准与基准：NIST、ISO/IEC、W3C；语言规范/类型系统形式化与验证资料
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。

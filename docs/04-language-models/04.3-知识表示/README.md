@@ -112,6 +112,8 @@ La représentation des connaissances est la description formelle des connaissanc
 
 - [4.3 知识表示 / Knowledge Representation / Wissensrepräsentation / Représentation des connaissances](#43-知识表示--knowledge-representation--wissensrepräsentation--représentation-des-connaissances)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
+    - [1. 描述逻辑基本记号 / Description Logic Notation / Beschreibunglogik-Notation / Notation de la logique de description](#1-描述逻辑基本记号--description-logic-notation--beschreibunglogik-notation--notation-de-la-logique-de-description)
+    - [2. Rust示例：极简DL一致性检查器 / Minimal DL Consistency Checker / Minimaler DL-Konsistenzprüfer / Vérificateur de cohérence DL minimal](#2-rust示例极简dl一致性检查器--minimal-dl-consistency-checker--minimaler-dl-konsistenzprüfer--vérificateur-de-cohérence-dl-minimal)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [知识表示 / Knowledge Representation / Wissensrepräsentation / Représentation des connaissances](#知识表示--knowledge-representation--wissensrepräsentation--représentation-des-connaissances)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
@@ -144,6 +146,13 @@ La représentation des connaissances est la description formelle des connaissanc
     - [Rust实现：语义网络](#rust实现语义网络)
     - [Haskell实现：知识图谱](#haskell实现知识图谱)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
+    - [大模型知识表示 / Large Model Knowledge Representation](#大模型知识表示--large-model-knowledge-representation)
+    - [神经符号知识表示 / Neural-Symbolic Knowledge Representation](#神经符号知识表示--neural-symbolic-knowledge-representation)
+    - [知识图谱前沿 / Knowledge Graph Frontiers](#知识图谱前沿--knowledge-graph-frontiers)
+    - [知识表示评估 / Knowledge Representation Evaluation](#知识表示评估--knowledge-representation-evaluation)
+    - [实用工具链 / Practical Toolchain](#实用工具链--practical-toolchain)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -966,3 +975,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的知识表示理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的知识管理和推理提供了科学的理论基础。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（知识表示、描述逻辑、本体、知识图谱）
+  - A类会议/期刊：AAAI/IJCAI/KDD/WWW/NeurIPS/ICLR/ACL 等
+  - 标准与基准：NIST、ISO/IEC、W3C；RDF/OWL、本体工程与评测
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

@@ -34,6 +34,7 @@ Consciousness theory studies the nature, characteristics, and mechanisms of cons
     - [Rust实现：意识系统](#rust实现意识系统)
     - [Haskell实现：意识系统](#haskell实现意识系统)
   - [参考文献 / References](#参考文献--references)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -1201,3 +1202,16 @@ main = do
 *意识理论为FormalAI提供了机器意识和智能本质的理论基础，为理解AI系统的主观体验和自我意识提供了重要框架。*
 
 *Consciousness theory provides theoretical foundations for machine consciousness and the essence of intelligence in FormalAI, offering important frameworks for understanding subjective experience and self-awareness in AI systems.*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（意识科学、心灵哲学、计算神经科学、IIT/GWT）
+  - A类会议/期刊：Nature Neuroscience/Neuron/PNAS/Trends in Cognitive Sciences
+  - 标准与基准：NIST、ISO/IEC、W3C；神经数据与伦理、报告与可复现规范
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

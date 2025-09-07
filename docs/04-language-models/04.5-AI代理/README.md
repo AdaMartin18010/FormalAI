@@ -617,3 +617,16 @@ main = do
 *Dieses Dokument wird kontinuierlich aktualisiert, um die neuesten Entwicklungen in der KI-Agenten-Theorie widerzuspiegeln.*
 
 *Ce document sera continuellement mis à jour pour refléter les derniers développements de la théorie des agents IA.*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（AI Agent、MAS、工具使用、规划与协作）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/AAAI/IJCAI/CoRL 等
+  - 标准与基准：NIST、ISO/IEC、W3C；Agent 评测基准与模型/数据卡
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

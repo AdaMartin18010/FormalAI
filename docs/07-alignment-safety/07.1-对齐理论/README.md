@@ -206,6 +206,12 @@ $$\text{Cross-Cultural Alignment} = \text{Cultural Understanding} + \text{Value 
     - [对齐 / Alignment / Ausrichtung / Alignement](#对齐--alignment--ausrichtung--alignement)
     - [0. 偏好建模与对齐优化 / Preference Modeling and Alignment Optimization / Präferenzmodellierung und Ausrichtungsoptimierung / Modélisation des préférences et optimisation de l'alignement](#0-偏好建模与对齐优化--preference-modeling-and-alignment-optimization--präferenzmodellierung-und-ausrichtungsoptimierung--modélisation-des-préférences-et-optimisation-de-lalignement)
       - [Rust示例：批量成对偏好Logistic损失](#rust示例批量成对偏好logistic损失)
+  - [2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024](#2024年最新发展--latest-developments-2024--neueste-entwicklungen-2024--derniers-développements-2024)
+    - [多智能体对齐理论 / Multi-Agent Alignment Theory](#多智能体对齐理论--multi-agent-alignment-theory)
+    - [自主系统对齐理论 / Autonomous System Alignment Theory](#自主系统对齐理论--autonomous-system-alignment-theory)
+    - [工具使用对齐理论 / Tool Use Alignment Theory](#工具使用对齐理论--tool-use-alignment-theory)
+    - [动态对齐理论 / Dynamic Alignment Theory](#动态对齐理论--dynamic-alignment-theory)
+    - [跨文化对齐理论 / Cross-Cultural Alignment Theory](#跨文化对齐理论--cross-cultural-alignment-theory)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 价值学习 / Value Learning / Werte-Lernen / Apprentissage des valeurs](#1-价值学习--value-learning--werte-lernen--apprentissage-des-valeurs)
@@ -232,6 +238,7 @@ $$\text{Cross-Cultural Alignment} = \text{Cultural Understanding} + \text{Value 
     - [Rust实现：偏好学习算法](#rust实现偏好学习算法)
     - [Haskell实现：价值函数学习](#haskell实现价值函数学习)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -885,3 +892,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的对齐理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为安全AI系统的设计和实现提供了重要的理论指导。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（对齐、安全、RLHF、DPO、偏好/价值学习）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/S&P/CCS/USENIX Security/CAV/POPL 等
+  - 标准与基准：NIST、ISO/IEC、W3C；安全评测、合规与风险报告框架
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

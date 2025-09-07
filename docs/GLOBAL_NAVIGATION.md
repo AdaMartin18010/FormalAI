@@ -63,6 +63,23 @@
 - [05.2 多模态融合](./05-multimodal-ai/05.2-多模态融合/README.md)
 - [05.3 跨模态推理](./05-multimodal-ai/05.3-跨模态推理/README.md)
 
+#### 1.7.1 快速索引与依赖指引（05.1–05.3）
+
+- 进入顺序：
+  1) [05.1 视觉语言模型](./05-multimodal-ai/05.1-视觉语言模型/README.md) → 概念、对齐、InfoNCE、泛化界、安全与幻觉界、评测YAML、术语表（0.16）
+  2) [05.2 多模态融合](./05-multimodal-ai/05.2-多模态融合/README.md) → 融合代数、稳定性与可分性、SMT一致性片段、融合稳定性YAML
+  3) [05.3 跨模态推理](./05-multimodal-ai/05.3-跨模态推理/README.md) → 语义/语法、正确性/完备性、SAT/SMT一致性、推理安全界
+
+- 关键交叉引用：
+  - 术语与符号表锚点：05.1 的 [0.16 术语与符号表](./05-multimodal-ai/05.1-视觉语言模型/README.md#016-术语与符号表--terminology-and-notation)
+  - 运行时安全与回退：05.1 的 0.15/0.19；与 05.3 的 0.4/0.5 协同
+  - RAG+SMT：05.1 的 0.13 与 05.3 的 0.3 配套
+
+- 评测与配置：
+  - 多任务评测（05.1：0.7/0.10/0.11/0.18）
+  - 融合稳定性评测（05.2：评测YAML → ./05-multimodal-ai/05.2-多模态融合/README.md#融合稳定性评测配置yaml）
+  - 推理一致性与显著性（05.3：评测配置 → ./05-multimodal-ai/05.3-跨模态推理/README.md#评测配置一致性与显著性yaml）
+
 ### 1.8 可解释AI (06-interpretable-ai)
 
 - [06.1 可解释性理论](./06-interpretable-ai/06.1-可解释性理论/README.md)
@@ -219,6 +236,36 @@
 - 2025-01-01: 创建全局导航系统
 - 2025-01-01: 添加快速导航功能
 - 2025-01-01: 建立交叉引用索引
+
+## 6. 对齐标准与权威来源（2025）
+
+为确保内容持续对齐至2025年国际最成熟的理论、模型与技术，并统一引用口径，项目遵循如下权威来源体系（示例性锚点，随“最近更新”滚动同步）：
+
+- 国际知识库与标准
+  - Wikipedia/Wikidata：概念与术语的跨语种锚点（审慎核验一手论文）
+  - arXiv/ACL Anthology/IEEE Xplore/ACM DL：论文一手来源
+  - NIST、ISO/IEC JTC 1、W3C：评测基准、术语标准与技术规范
+
+- 顶尖大学课程（2024/2025学季代表）
+  - MIT、Stanford、Carnegie Mellon、Berkeley、Harvard 的公开课与课程讲义（如深度学习理论、统计学习、形式化方法、LLM、RL、因果推断）
+  - 选取近两学年的最新授课大纲与作业/项目要求作为教学对齐参考
+
+- 权威会议与期刊（A类优先）
+  - 机器学习与AI：NeurIPS、ICML、ICLR、AAAI、IJCAI、KDD、WWW
+  - 计算机视觉与多模态：CVPR、ICCV、ECCV
+  - NLP与语言模型：ACL、EMNLP、NAACL、COLING
+  - 系统安全与验证：CAV、POPL、PLDI、CSF、S&P、CCS、USENIX Security
+
+- 长期综述与基准
+  - Survey/Review/Position：系统性综述与领域蓝皮书作为稳定锚点
+  - Benchmarks/Leaderboards：遵循公开可复现评测及数据卡/模型卡规范
+
+- 更新与治理
+  - 在 `docs/LATEST_UPDATES_INDEX.md` 维护“年度权威索引”，提供课程、论文、基准与标准的链接清单
+  - 在各主题 `README.md` 以“参考/进一步阅读”区块落地至一手来源
+  - 最小合规核对单：见 `docs/STANDARDS_CHECKLISTS.md`（模型卡/数据卡/评测卡）
+
+注：如二手资料与一手论文不一致，以一手论文与标准规范为准。
 
 ---
 

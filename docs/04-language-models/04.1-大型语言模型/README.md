@@ -117,6 +117,7 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
     - [Rust实现：注意力机制](#rust实现注意力机制)
     - [Haskell实现：缩放定律分析](#haskell实现缩放定律分析)
+    - [0.1 多模态工具使用接口与形式化规范 / Multimodal Tool-Use Interface and Formal Spec](#01-多模态工具使用接口与形式化规范--multimodal-tool-use-interface-and-formal-spec)
   - [2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024](#2024年最新发展--latest-developments-2024--neueste-entwicklungen-2024--derniers-développements-2024)
     - [前沿模型理论分析 / Cutting-edge Model Theoretical Analysis](#前沿模型理论分析--cutting-edge-model-theoretical-analysis)
       - [2024年重大突破模型 / Major Breakthrough Models 2024](#2024年重大突破模型--major-breakthrough-models-2024)
@@ -135,6 +136,13 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
       - [推理链理论 / Reasoning Chain Theory](#推理链理论--reasoning-chain-theory)
       - [元推理理论 / Meta-Reasoning Theory](#元推理理论--meta-reasoning-theory)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
+    - 参考模板：
+      - 模型卡模板：见 `docs/TEMPLATES_MODEL_CARD.md`
+      - 评测卡模板：见 `docs/TEMPLATES_EVAL_CARD.md`
+    - 示例与落地：
+      - 示例模型卡：见 `docs/04-language-models/04.1-大型语言模型/EXAMPLE_MODEL_CARD.md`
+      - 示例评测卡：见 `docs/04-language-models/04.1-大型语言模型/EXAMPLE_EVAL_CARD.md`
 
 ---
 
@@ -672,6 +680,42 @@ main = do
     putStrLn "Les lois de mise à l'échelle fournissent des orientations importantes pour la conception de modèles"
 ```
 
+### 0.1 多模态工具使用接口与形式化规范 / Multimodal Tool-Use Interface and Formal Spec
+
+提示：统一符号与记号参见 05.1 的 [0.16 术语与符号表](../../05-multimodal-ai/05.1-视觉语言模型/README.md#016-术语与符号表--terminology-and-notation)。运行时安全与回退策略可参考 05.1 的 0.15/0.19。
+
+形式化定义：
+
+- 工具规范：\(T=(\text{name}, \Sigma_{in}, \Sigma_{out}, \varphi, \psi, E)\)，其中 \(\varphi\) 为前置条件，\(\psi\) 为后置条件，\(E\) 为副作用/外部世界效应模型。
+- 调用语义：策略 \(\pi_\theta\) 在上下文 \(c\) 下选择 \((T, a)\)，执行器产生 \(o\) 与证据 \(e\)，验证器判定 \(\psi(c,a,o,e)\)。
+
+Hoare 合约与不变式：
+
+\[ \{ I \land \varphi(c,a) \}\ \text{call}(T,a)\ \{ I' \land \psi(c,a,o) \}\, , \quad I' = \mathsf{Upd}(I,E) . \]
+
+安全约束与选择性风险：若证据一致性分数 \(s<\tau_s\) 或违反 \(\psi\)，则触发回退/弃答；定义覆盖率 \(\kappa\) 与选择性风险 \(R_{sel}\) 与 05.1 保持一致。
+
+评测协议（与 05.1/05.2/05.3 对齐）：
+
+- 成功率/违例率/回退触发率；
+- 工具链组合错误上界：\(p_{err}^{chain} \le 1-\prod_i (1-p_{err}^{(i)})\)；
+- 统计显著性（Holm–Bonferroni）与序贯检验（mSPRT）。
+
+示例（YAML 工具白名单，最小合约片段）：
+
+```yaml
+tools:
+  - name: web_search
+    inputs: {query: string}
+    pre: "len(query) > 0"
+    post: "results_count >= 0"
+    effects: [network_io]
+policy:
+  fallback:
+    consistency_threshold: 0.7
+    on_violation: [retry, human_in_loop]
+```
+
 ---
 
 ## 2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024
@@ -965,3 +1009,16 @@ $$\text{Meta-Reasoning} = \text{Monitor}(\text{Reasoning Process}) + \text{Contr
 ---
 
 _本模块为FormalAI提供了完整的大语言模型理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为现代AI系统的设计和理解提供了重要的理论指导。_
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的"权威索引（2025 持续滚动）"
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（深度学习理论、统计学习、LLM、RL、因果、形式化方法）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/ACL/CVPR/CAV/POPL/PLDI/S&P/CCS 等
+  - 标准与基准：NIST、ISO/IEC JTC 1、W3C；公开可复现Leaderboard/模型卡/数据卡
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：所有二手资料以一手论文与标准规范为准；版本与发布日期需在引用处标注。

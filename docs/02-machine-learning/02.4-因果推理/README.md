@@ -28,6 +28,7 @@ Causal inference theory studies how to identify and estimate causal relationship
 
 - [2.4 因果推理理论 / Causal Inference Theory / Kausale Inferenztheorie / Théorie de l'inférence causale](#24-因果推理理论--causal-inference-theory--kausale-inferenztheorie--théorie-de-linférence-causale)
   - [概述 / Overview](#概述--overview)
+    - [do-演算与调整公式 / Do-Calculus and Adjustment / Do-Kalkül und Adjustierung / Calcul do et ajustement](#do-演算与调整公式--do-calculus-and-adjustment--do-kalkül-und-adjustierung--calcul-do-et-ajustement)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 因果图模型 / Causal Graphical Models](#1-因果图模型--causal-graphical-models)
@@ -54,6 +55,14 @@ Causal inference theory studies how to identify and estimate causal relationship
     - [Rust实现：因果发现算法](#rust实现因果发现算法)
     - [Haskell实现：因果效应估计](#haskell实现因果效应估计)
   - [参考文献 / References](#参考文献--references)
+  - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
+    - [大规模因果推理 / Large-Scale Causal Inference](#大规模因果推理--large-scale-causal-inference)
+    - [深度因果推理 / Deep Causal Inference](#深度因果推理--deep-causal-inference)
+    - [因果推理应用理论 / Causal Inference Application Theory](#因果推理应用理论--causal-inference-application-theory)
+    - [大模型因果推理 / Large Model Causal Inference](#大模型因果推理--large-model-causal-inference)
+    - [因果AI对齐 / Causal AI Alignment](#因果ai对齐--causal-ai-alignment)
+    - [实用工具链 / Practical Toolchain](#实用工具链--practical-toolchain)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -826,3 +835,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了因果推理的理论基础，涵盖了从因果图模型到因果机器学习的各个方面，为AI系统的决策和干预提供了数学工具。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（因果图、SCM、反事实、因果ML/因果RL）
+  - A类会议/期刊：NeurIPS/ICML/UAI/AAAI/JMLR/PNAS 等
+  - 标准与基准：NIST、ISO/IEC、W3C；数据许可、评测与显著性、模型/数据卡
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。

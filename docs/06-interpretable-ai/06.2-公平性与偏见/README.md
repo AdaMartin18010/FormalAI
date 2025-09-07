@@ -1096,3 +1096,20 @@ main = do
 ---
 
 *本模块为FormalAI提供了公平性与偏见理论基础，为AI系统的公平性保证提供了重要的理论框架。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（公平性、公平机器学习、因果公平、监管与合规）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/AAAI/WWW/FAccT/JMLR 等
+  - 标准与基准：NIST、ISO/IEC、W3C；公平性评测、合规报告与可复现协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。
+
+- 示例与落地：
+  - 示例模型卡：见 `docs/06-interpretable-ai/06.2-公平性与偏见/EXAMPLE_MODEL_CARD.md`
+  - 示例评测卡：见 `docs/06-interpretable-ai/06.2-公平性与偏见/EXAMPLE_EVAL_CARD.md`

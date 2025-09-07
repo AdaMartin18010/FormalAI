@@ -887,3 +887,16 @@ mod tests {
 *Dieses Dokument wird kontinuierlich aktualisiert, um die neuesten Entwicklungen in der Theorie des quantenmaschinellen Lernens widerzuspiegeln.*
 
 *Ce document sera continuellement mis à jour pour refléter les derniers développements de la théorie de l'apprentissage automatique quantique.*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（量子计算/量子信息/量子机器学习）
+  - A类会议/期刊：Nature/Science/Nature Physics/PRL/Quantum
+  - 标准与基准：NIST、ISO/IEC、W3C；量子设备/算法报告与复现规范
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

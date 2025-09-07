@@ -90,6 +90,11 @@ Proof systems study the construction and verification of formal proofs, providin
     - [Rust实现：自然演绎证明系统](#rust实现自然演绎证明系统)
     - [Haskell实现：序列演算证明系统](#haskell实现序列演算证明系统)
   - [参考文献 / References](#参考文献--references)
+  - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
+    - [现代证明系统 / Modern Proof Systems](#现代证明系统--modern-proof-systems)
+    - [证明系统在AI中的应用 / Proof Systems Applications in AI](#证明系统在ai中的应用--proof-systems-applications-in-ai)
+    - [证明工具和实现 / Proof Tools and Implementation](#证明工具和实现--proof-tools-and-implementation)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -1038,3 +1043,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了全面的证明系统理论基础，涵盖了从自然演绎到证明工具的完整证明系统理论体系。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（自然演绎、序列演算、表方法、线性逻辑、交互式定理证明）
+  - A类会议/期刊：CAV/POPL/LICS/CADE/TABLEAUX/JAR 等
+  - 标准与基准：NIST、ISO/IEC、W3C；证明格式、互操作与可复现评测
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。

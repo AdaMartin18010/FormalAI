@@ -72,6 +72,12 @@ L'apprentissage profond est une branche de l'apprentissage automatique qui utili
     - [Rust实现：神经网络框架](#rust实现神经网络框架)
     - [Haskell实现：优化算法](#haskell实现优化算法)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
+    - [大规模深度学习理论 / Large-Scale Deep Learning Theory](#大规模深度学习理论--large-scale-deep-learning-theory)
+    - [高效深度学习 / Efficient Deep Learning](#高效深度学习--efficient-deep-learning)
+    - [鲁棒深度学习 / Robust Deep Learning](#鲁棒深度学习--robust-deep-learning)
+    - [新兴架构理论 / Emerging Architecture Theory](#新兴架构理论--emerging-architecture-theory)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -932,3 +938,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的深度学习理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为现代AI系统的设计和优化提供了严格的数学基础。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（深度学习理论、优化、缩放定律、扩散/状态空间模型）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/JMLR/TPAMI 等
+  - 标准与基准：NIST、ISO/IEC、W3C；可复现评测、统计显著性与模型/数据卡
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。

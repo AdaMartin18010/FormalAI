@@ -57,6 +57,11 @@ Statistical learning theory provides mathematical foundations for machine learni
     - [Rust实现：VC维计算](#rust实现vc维计算)
     - [Haskell实现：Rademacher复杂度](#haskell实现rademacher复杂度)
   - [参考文献 / References](#参考文献--references)
+  - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
+    - [大规模统计学习理论 / Large-Scale Statistical Learning Theory](#大规模统计学习理论--large-scale-statistical-learning-theory)
+    - [量子统计学习 / Quantum Statistical Learning](#量子统计学习--quantum-statistical-learning)
+    - [神经统计学习 / Neural Statistical Learning](#神经统计学习--neural-statistical-learning)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -739,3 +744,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了坚实的统计学习理论基础，为机器学习算法的设计和分析提供了数学保证。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（统计学习、泛化界、PAC-Bayes、在线学习）
+  - A类会议/期刊：NeurIPS/ICML/ALT/JMLR/Annals of Statistics 等
+  - 标准与基准：NIST、ISO/IEC、W3C；评测与显著性、可复现协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。

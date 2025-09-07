@@ -69,6 +69,7 @@ fn pgd_step(x: f32, grad: f32, x0: f32, eps: f32, alpha: f32) -> f32 {
     - [Rust实现：鲁棒性评估系统](#rust实现鲁棒性评估系统)
     - [Haskell实现：对抗训练算法](#haskell实现对抗训练算法)
   - [参考文献 / References](#参考文献--references)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -930,3 +931,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了鲁棒性理论基础，为AI系统的稳定性和可靠性提供了重要的理论框架。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（对抗鲁棒、分布偏移、不确定性、稳健学习）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/CVPR/TPAMI/JMLR 等
+  - 标准与基准：NIST、ISO/IEC、W3C；鲁棒评测、显著性与可复现协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。

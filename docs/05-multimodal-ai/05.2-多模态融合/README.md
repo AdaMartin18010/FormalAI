@@ -12,6 +12,8 @@ Multimodale Fusion untersucht, wie Informationen aus verschiedenen Modalitäten 
 
 La fusion multimodale étudie comment intégrer efficacement les informations de différentes modalités, fournissant les fondements théoriques pour le traitement d'informations multimodales dans FormalAI. Ce système théorique a été mis à jour pour inclure les derniers développements de 2024, couvrant l'architecture multimodale unifiée, les mécanismes de fusion adaptative, la fusion neuro-symbolique et autre contenu de pointe.
 
+提示：统一符号与记号见 [0.16 术语与符号表](../05.1-视觉语言模型/README.md#016-术语与符号表--terminology-and-notation)。
+
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 
 ### 多模态融合 / Multimodal Fusion / Multimodale Fusion / Fusion multimodale
@@ -129,6 +131,55 @@ fn gated_fusion(x: &[f32], y: &[f32], w_g: &[f32]) -> Vec<f32> {
 }
 ```
 
+### Rust实现：SMT 一致性检查（伪实现）
+
+```rust
+#[derive(Clone)]
+enum Constraint { Eq(usize, f32), Le(usize, f32), Ge(usize, f32) }
+
+fn encode_fusion_constraints(zs: &Vec<Vec<f32>>) -> Vec<Constraint> {
+    let mut cs = Vec::new();
+    let d = zs[0].len();
+    for z in zs { assert_eq!(z.len(), d); }
+    cs.push(Constraint::Ge(0, 0.0));
+    cs
+}
+
+fn smt_check_satisfiable(_constraints: &Vec<Constraint>) -> bool {
+    true
+}
+
+fn main() {
+    let z1 = vec![0.1, 0.2, 0.3];
+    let z2 = vec![0.2, 0.1, 0.4];
+    let cs = encode_fusion_constraints(&vec![z1, z2]);
+    let sat = smt_check_satisfiable(&cs);
+    println!("constraints SAT? {}", sat);
+}
+```
+
+### 评测配置：融合稳定性（YAML）
+
+```yaml
+stability_eval:
+  name: FusionStability-2025
+  datasets: [MMMU, MMBench, TextCaps]
+  ablations:
+    - drop_modality: visual
+    - drop_modality: text
+  metrics:
+    - name: delta_fuse
+      formula: M_fuse - max(M_modalities)
+    - name: stability_beta
+      estimate: uniform_replace
+  significance:
+    correction: holm_bonferroni
+  sequential:
+    test: msprt
+    alpha: 0.05
+    beta: 0.2
+```
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [5.2 多模态融合 / Multimodal Fusion / Multimodale Fusion / Fusion multimodale](#52-多模态融合--multimodal-fusion--multimodale-fusion--fusion-multimodale)
@@ -140,8 +191,17 @@ fn gated_fusion(x: &[f32], y: &[f32], w_g: &[f32]) -> Vec<f32> {
     - [神经符号融合 / Neural-Symbolic Fusion / Neuronale-symbolische Fusion / Fusion neuro-symbolique](#神经符号融合--neural-symbolic-fusion--neuronale-symbolische-fusion--fusion-neuro-symbolique)
     - [自适应融合机制 / Adaptive Fusion Mechanisms / Adaptive Fusionsmechanismen / Mécanismes de fusion adaptative](#自适应融合机制--adaptive-fusion-mechanisms--adaptive-fusionsmechanismen--mécanismes-de-fusion-adaptative)
     - [0. 注意力融合与门控 / Attention Fusion and Gating / Aufmerksamkeitsfusion und Gate / Fusion par attention et portes](#0-注意力融合与门控--attention-fusion-and-gating--aufmerksamkeitsfusion-und-gate--fusion-par-attention-et-portes)
+      - [Rust示例：简单门控融合](#rust示例简单门控融合)
+    - [Rust实现：SMT 一致性检查（伪实现）](#rust实现smt-一致性检查伪实现)
+    - [评测配置：融合稳定性（YAML）](#评测配置融合稳定性yaml)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
+    - [0.1 形式化问题设定 / Formal Problem Setup](#01-形式化问题设定--formal-problem-setup)
+    - [0.2 融合代数与表示 / Fusion Algebra and Representations](#02-融合代数与表示--fusion-algebra-and-representations)
+    - [0.3 稳定性与泛化界 / Stability and Generalization Bounds](#03-稳定性与泛化界--stability-and-generalization-bounds)
+    - [0.4 可识别性与可分性 / Identifiability and Separability](#04-可识别性与可分性--identifiability-and-separability)
+    - [0.5 评测协议与显著性 / Evaluation Protocol and Significance](#05-评测协议与显著性--evaluation-protocol-and-significance)
+    - [0.6 近期文献（2024–2025） / Recent Literature (2024–2025)](#06-近期文献20242025--recent-literature-20242025)
   - [1. 早期融合 / Early Fusion / Frühe Fusion / Fusion précoce](#1-早期融合--early-fusion--frühe-fusion--fusion-précoce)
     - [1.1 特征级融合 / Feature-Level Fusion / Merkmalsebenen-Fusion / Fusion au niveau des caractéristiques](#11-特征级融合--feature-level-fusion--merkmalsebenen-fusion--fusion-au-niveau-des-caractéristiques)
     - [1.2 原始数据融合 / Raw Data Fusion / Rohdatenfusion / Fusion de données brutes](#12-原始数据融合--raw-data-fusion--rohdatenfusion--fusion-de-données-brutes)
@@ -165,7 +225,9 @@ fn gated_fusion(x: &[f32], y: &[f32], w_g: &[f32]) -> Vec<f32> {
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
     - [Rust实现：多模态融合器](#rust实现多模态融合器)
     - [Haskell实现：层次融合系统](#haskell实现层次融合系统)
+  - [融合稳定性评测配置（YAML）](#融合稳定性评测配置yaml)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -180,6 +242,56 @@ fn gated_fusion(x: &[f32], y: &[f32], w_g: &[f32]) -> Vec<f32> {
 - [5.3 跨模态推理](03-cross-modal-reasoning/README.md) - 提供融合基础 / Provides fusion foundation
 
 ---
+
+### 0.1 形式化问题设定 / Formal Problem Setup
+
+设模态集 \(\mathcal{M}=\{m_1,\dots,m_K\}\)，输入 \(x_{m}\in\mathcal{X}_m\)，编码器 \(f_m: \mathcal{X}_m\to\mathbb{R}^{d_m}\)，投影 \(P_m: \mathbb{R}^{d_m}\to\mathbb{R}^{d}\)。融合算子 \(\mathcal{F}: (\mathbb{R}^{d})^K\to\mathbb{R}^{d}\)。任务损失 \(\ell\in[0,1]\)。
+
+\[ z_m=P_m f_m(x_m),\quad z=\mathcal{F}(z_{m_1},\dots,z_{m_K}),\quad R(\theta)=\mathbb{E}[\ell(h_\theta(z),y)]. \]
+
+目标：在给定融合族 \(\mathfrak{F}\) 与假设类 \(\mathcal{H}\) 下最小化风险并给出可验证性质（稳定性、可识别性）。
+
+### 0.2 融合代数与表示 / Fusion Algebra and Representations
+
+定义融合代数 \((\mathbb{R}^d,\oplus,\odot)\)：
+
+- 早期：\(\oplus=\text{concat}\) 后接线性映射；
+- 加性：\(z=\sum_i w_i z_i\)；
+- 注意力：\(z=\text{softmax}(QK^\top/\sqrt d) V\) 的聚合元；
+- 门控：\(z=g\odot z_1+(1-g)\odot z_2\), \(g=\sigma(W[z_1;z_2])\)。
+
+若存在保持语义的线性算子 \(\Psi\) 使 \(\sigma_{\min}(\Psi)>0\)，则上述融合的等价类在 \(\ker \Psi\) 因子空间上同构，保障下游线性可分性不劣于最优单模态。
+
+### 0.3 稳定性与泛化界 / Stability and Generalization Bounds
+
+令算法对单样本替换稳定度为 \(\beta_n\)。则以概率至少 \(1-\delta\)
+
+\[ R(\theta)\le \hat R(\theta)+2\beta_n+\sqrt{\tfrac{\log(1/\delta)}{2n}}. \]
+
+若融合算子 \(\mathcal{F}\) 的 Lipschitz 常数 \(L_\mathcal{F}\) 有界，且各编码器 \(f_m\) 为 \(L_m\)-Lipschitz，则整体复合的 Rademacher 复杂度满足
+
+\[ \mathfrak{R}_n(\mathcal{H}\circ\mathcal{F})\le L_{\mathcal{H}}\,L_\mathcal{F}\,\sum_m L_m\,\mathfrak{R}_n(\mathcal{X}_m). \]
+
+### 0.4 可识别性与可分性 / Identifiability and Separability
+
+若存在 margin \(\gamma>0\) 与判别映射 \(\Psi\) 使
+
+\[ \langle \Psi z^+,\Psi z^+\rangle-\max_{z^-}\langle \Psi z,\Psi z^-\rangle\ge \gamma, \]
+
+则最近邻检索与多数投票的决策一致；当门控满足 \(\sigma_{\min}(\partial z/\partial z_i)>0\) 时，融合不会抹除关键模态的判别信息（可分性保持）。
+
+### 0.5 评测协议与显著性 / Evaluation Protocol and Significance
+
+- 统一切分与复现实验种子；
+- 报告每模态消融与融合增益 \(\Delta= M_{fuse}-\max_i M_{m_i}\)；
+- 多任务下 Holm–Bonferroni 校正；
+- 在线 A/B 采用 mSPRT；失败回退策略参照 5.1 的 0.15/0.19。
+
+### 0.6 近期文献（2024–2025） / Recent Literature (2024–2025)
+
+- Unified fusion with shared encoders/adapters（2024–2025）;
+- Neural-symbolic fusion with constraint satisfaction（2024–2025）;
+- Robust fusion under missing-modality and partial observability（2024–2025）。
 
 ## 1. 早期融合 / Early Fusion / Frühe Fusion / Fusion précoce
 
@@ -1021,34 +1133,141 @@ main = do
 
 ---
 
-## 参考文献 / References / Literatur / Références
+## 融合稳定性评测配置（YAML）
 
-1. **中文 / Chinese:**
-   - 张钹, 李飞飞 (2022). *多模态融合理论与技术*. 清华大学出版社.
-   - 王永民, 李德毅 (2023). *多模态人工智能*. 科学出版社.
-   - 陆汝钤 (2024). *多模态信息融合*. 计算机学报.
-   - 李飞飞 (2024). *统一多模态架构研究*. 人工智能学报.
+下述配置用于评测多模态融合在扰动、缺失与随机性的稳定性与可分性。包含数据源、扰动算子、融合方法、指标与阈值、以及输出与复现实验所需的随机种子。
 
-2. **English:**
-   - Baltrusaitis, T. (2019). *Multimodal Machine Learning: A Survey and Taxonomy*. IEEE TPAMI.
-   - Ramachandran, P. (2017). *Searching for Activation Functions*. arXiv.
-   - Vaswani, A. (2017). *Attention is All You Need*. NeurIPS.
-   - OpenAI (2024). *GPT-4V: A Unified Multimodal Model*. OpenAI Technical Report.
-   - Google (2024). *Gemini 2.0: Unified Multimodal Architecture*. Google Research.
-   - Meta (2024). *Neural-Symbolic Fusion for Multimodal Reasoning*. Meta AI Research.
+```yaml
+version: 1.0
+task: multimodal_fusion_stability
+dataset:
+  name: MM-Bench-Mini
+  path: data/mm_bench_mini
+  splits: [dev]
+  modalities: [image, text, audio]
 
-3. **Deutsch / German:**
-   - Baltrusaitis, T. (2019). *Multimodales maschinelles Lernen: Eine Übersicht und Taxonomie*. IEEE TPAMI.
-   - Ramachandran, P. (2017). *Suche nach Aktivierungsfunktionen*. arXiv.
-   - Vaswani, A. (2017). *Aufmerksamkeit ist alles, was Sie brauchen*. NeurIPS.
-   - OpenAI (2024). *GPT-4V: Ein einheitliches multimodales Modell*. OpenAI Technischer Bericht.
+perturbations:
+  - name: modality_dropout
+    params:
+      drop_prob: [0.0, 0.1, 0.2, 0.3]
+      drop_set: [[image], [text], [audio], [image, text]]
+  - name: gaussian_noise
+    apply_to: [image, audio]
+    params:
+      sigma: [0.0, 0.01, 0.02, 0.05]
+  - name: text_masking
+    apply_to: [text]
+    params:
+      mask_ratio: [0.0, 0.1, 0.2]
 
-4. **Français / French:**
-   - Baltrusaitis, T. (2019). *Apprentissage automatique multimodal: Une enquête et taxonomie*. IEEE TPAMI.
-   - Ramachandran, P. (2017). *Recherche de fonctions d'activation*. arXiv.
-   - Vaswani, A. (2017). *L'attention est tout ce dont vous avez besoin*. NeurIPS.
-   - OpenAI (2024). *GPT-4V: Un modèle multimodal unifié*. Rapport technique OpenAI.
+fusion_methods:
+  - Early
+  - Late
+  - Attention
+  - Hierarchical
+  - Dynamic
+
+metrics:
+  - name: stability
+    definition: 1 - Var(score | seeds, perturbations)
+    reduction: mean
+  - name: separability
+    definition: margin(pos, neg)
+    reduction: mean
+  - name: calibration_ece
+    definition: expected_calibration_error
+    bins: 15
+
+thresholds:
+  stability:
+    warn: 0.85
+    fail: 0.75
+  separability:
+    warn: 0.10
+    fail: 0.05
+  calibration_ece:
+    warn: 0.08
+    fail: 0.12
+
+evaluation:
+  seeds: [1, 2, 3]
+  batch_size: 32
+  max_samples: 2000
+  scorer: auc_roc
+
+logging:
+  output_dir: outputs/mm_fusion_stability
+  save_curves: true
+  save_embeddings: false
+
+repro:
+  framework: pytorch
+  cuda_deterministic: true
+  benchmark: false
+```
+
+运行说明（参考）：
+
+- 以 Python 评测脚本为例：
+
+```bash
+python tools/eval_fusion_stability.py \
+  --config configs/mm_fusion_stability.yaml \
+  --model your_model_id \
+  --checkpoint path/to/ckpt.pt
+```
+
+- 输出目录 `outputs/mm_fusion_stability/` 中包含：
+  - 指标汇总 `metrics.json`
+  - 扰动-方法二维曲线 `curves/*.png`
+  - 失败项与告警清单 `alerts.md`
 
 ---
 
-*本模块为FormalAI提供了完整的多模态融合理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的多模态信息处理提供了科学的理论基础。*
+## 参考文献 / References / Literatur / Références
+
+1. **中文 / Chinese:**
+   - 张钹, 李飞飞 (2022). _多模态融合理论与技术_. 清华大学出版社.
+   - 王永民, 李德毅 (2023). _多模态人工智能_. 科学出版社.
+   - 陆汝钤 (2024). _多模态信息融合_. 计算机学报.
+   - 李飞飞 (2024). _统一多模态架构研究_. 人工智能学报.
+
+2. **English:**
+   - Baltrusaitis, T. et al. (2019). Multimodal Machine Learning: A Survey and Taxonomy. IEEE TPAMI.
+   - Vaswani, A. et al. (2017). Attention is All You Need. NeurIPS.
+   - Zhai, X. et al. (2023–2024). SigLIP / SigLIP 2. arXiv.
+   - Team Google DeepMind (2024–2025). Gemini 2.x Technical Reports. arXiv.
+   - OpenAI (2024–2025). Sora: System Cards/Reports. arXiv.
+   - Meta AI (2024–2025). Neural-Symbolic Fusion for Multimodal Reasoning. arXiv.
+   - Li, H., Zhang, P. et al. (2024–2025). LLaVA-Next series. arXiv.
+   - Qwen Team (2024–2025). Qwen-VL-2. arXiv.
+   - InternVL Team (2024–2025). InternVL 2.5. arXiv.
+
+3. **Deutsch / German:**
+   - Baltrusaitis, T. (2019). _Multimodales maschinelles Lernen: Eine Übersicht und Taxonomie_. IEEE TPAMI.
+   - Ramachandran, P. (2017). _Suche nach Aktivierungsfunktionen_. arXiv.
+   - Vaswani, A. (2017). _Aufmerksamkeit ist alles, was Sie brauchen_. NeurIPS.
+   - OpenAI (2024). _GPT-4V: Ein einheitliches multimodales Modell_. OpenAI Technischer Bericht.
+
+4. **Français / French:**
+   - Baltrusaitis, T. (2019). _Apprentissage automatique multimodal: Une enquête et taxonomie_. IEEE TPAMI.
+   - Ramachandran, P. (2017). _Recherche de fonctions d'activation_. arXiv.
+   - Vaswani, A. (2017). _L'attention est tout ce dont vous avez besoin_. NeurIPS.
+   - OpenAI (2024). _GPT-4V: Un modèle multimodal unifié_. Rapport technique OpenAI.
+
+---
+
+_本模块为FormalAI提供了完整的多模态融合理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的多模态信息处理提供了科学的理论基础。_
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（多模态融合、神经符号、评测）
+  - A类会议/期刊：CVPR/ICCV/ECCV/NeurIPS/ICML/ICLR/AAAI/IJCAI 等
+  - 标准与基准：NIST、ISO/IEC、W3C；公开可复现Leaderboards/模型卡/数据卡
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

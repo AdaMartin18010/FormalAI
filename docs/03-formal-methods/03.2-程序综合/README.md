@@ -149,6 +149,7 @@ La synthèse de programmes est le processus de dérivation automatique de progra
       - [4. 程序修复与优化](#4-程序修复与优化)
       - [5. 智能程序合成系统](#5-智能程序合成系统)
       - [6. 分布式程序合成](#6-分布式程序合成)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -954,3 +955,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的程序合成理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的自动化编程和代码生成提供了科学的理论基础。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（CEGIS、SyGuS、Neuro-Symbolic、LLM-Program Synthesis）
+  - A类会议/期刊：POPL/PLDI/CAV/OOPSLA/ICLR/NeurIPS 等
+  - 标准与基准：NIST、ISO/IEC、W3C；合成任务基准、可复现脚本与评测协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。

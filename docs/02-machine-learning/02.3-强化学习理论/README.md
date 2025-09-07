@@ -58,6 +58,12 @@ Reinforcement learning theory studies how agents learn optimal policies through 
     - [Rust实现：Q学习算法](#rust实现q学习算法)
     - [Haskell实现：策略梯度](#haskell实现策略梯度)
   - [参考文献 / References](#参考文献--references)
+  - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
+    - [大规模强化学习 / Large-Scale Reinforcement Learning](#大规模强化学习--large-scale-reinforcement-learning)
+    - [深度强化学习前沿 / Deep Reinforcement Learning Frontiers](#深度强化学习前沿--deep-reinforcement-learning-frontiers)
+    - [强化学习应用理论 / Reinforcement Learning Application Theory](#强化学习应用理论--reinforcement-learning-application-theory)
+    - [强化学习理论创新 / Reinforcement Learning Theory Innovation](#强化学习理论创新--reinforcement-learning-theory-innovation)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -976,3 +982,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了强化学习的理论基础，涵盖了从基础MDP到深度强化学习的各个方面，为自主AI系统的设计和分析提供了数学工具。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（RL/DRL、MARL、离线RL、世界模型）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/AAAI/IJCAI/JAIR 等
+  - 标准与基准：NIST、ISO/IEC、W3C；安全/风险约束评测与可复现协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。

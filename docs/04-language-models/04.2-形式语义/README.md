@@ -82,6 +82,14 @@ Formal semantics studies the formal representation and semantic interpretation o
     - [Rust实现：语义解析器](#rust实现语义解析器)
     - [Haskell实现：分布语义模型](#haskell实现分布语义模型)
   - [参考文献 / References](#参考文献--references)
+  - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
+    - [大模型语义理论 / Large Model Semantic Theory](#大模型语义理论--large-model-semantic-theory)
+    - [神经语义前沿 / Neural Semantic Frontiers](#神经语义前沿--neural-semantic-frontiers)
+    - [多模态语义理论 / Multimodal Semantic Theory](#多模态语义理论--multimodal-semantic-theory)
+    - [语义计算理论 / Semantic Computing Theory](#语义计算理论--semantic-computing-theory)
+    - [语义评估理论 / Semantic Evaluation Theory](#语义评估理论--semantic-evaluation-theory)
+    - [实用工具链 / Practical Toolchain](#实用工具链--practical-toolchain)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -923,3 +931,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了形式化语义的理论基础，涵盖了从蒙塔古语法到神经语义的各个方面，为语言模型的语义理解提供了数学工具。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（形式语义、蒙塔古语法、动态语义、分布语义）
+  - A类会议/期刊：ACL/EMNLP/NAACL/COLING/NeurIPS/ICLR 等
+  - 标准与基准：NIST、ISO/IEC、W3C；术语/评测/可复现协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

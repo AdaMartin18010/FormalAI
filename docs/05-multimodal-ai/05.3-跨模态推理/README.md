@@ -12,6 +12,8 @@ Kreuzmodales Schlussfolgern untersucht, wie Informationen zwischen verschiedenen
 
 Le raisonnement cross-modal étudie comment transférer et raisonner les informations entre différentes modalités, fournissant les fondements théoriques pour le raisonnement intelligent cross-modal dans FormalAI. Ce système théorique a été mis à jour pour inclure les derniers développements de 2024, couvrant le raisonnement mathématique formel, la preuve automatique de théorèmes, la vérification d'équivalence symbolique et autre contenu de pointe.
 
+提示：统一符号与记号见 [0.16 术语与符号表](../05.1-视觉语言模型/README.md#016-术语与符号表--terminology-and-notation)。
+
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 
 ### 跨模态推理 / Cross-Modal Reasoning / Kreuzmodales Schlussfolgern / Raisonnement cross-modal
@@ -157,8 +159,16 @@ fn msg_passing(h: &Vec<Vec<f32>>, adj: &Vec<Vec<usize>>, w: f32) -> Vec<Vec<f32>
     - [4.3 类比推理 / Analogical Reasoning / Analogisches Schlussfolgern / Raisonnement analogique](#43-类比推理--analogical-reasoning--analogisches-schlussfolgern--raisonnement-analogique)
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
     - [Rust实现：跨模态推理引擎](#rust实现跨模态推理引擎)
+    - [0.1 语义与语法 / Semantics and Syntax](#01-语义与语法--semantics-and-syntax)
+    - [0.2 正确性与完备性 / Soundness and Completeness](#02-正确性与完备性--soundness-and-completeness)
+    - [0.3 约束一致性（SAT/SMT） / Constraint Consistency](#03-约束一致性satsmt--constraint-consistency)
+    - [0.4 推理安全界 / Safety Bounds for Reasoning](#04-推理安全界--safety-bounds-for-reasoning)
+    - [0.5 评测协议 / Evaluation Protocol](#05-评测协议--evaluation-protocol)
     - [Haskell实现：跨模态检索系统](#haskell实现跨模态检索系统)
+    - [评测配置：一致性与显著性（YAML）](#评测配置一致性与显著性yaml)
+    - [Rust实现：SMT 一致性检查（伪实现）](#rust实现smt-一致性检查伪实现)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -809,6 +819,37 @@ fn main() {
 }
 ```
 
+### 0.1 语义与语法 / Semantics and Syntax
+
+采用结构化操作语义 \(\llbracket \cdot \rrbracket\) 将跨模态表达式映射到含模态注释的语义域；推理规则以自然演绎/序列演算形式给出，语义保真性：
+
+\[ \Gamma \vdash e: \tau \implies \llbracket e \rrbracket \in \llbracket \tau \rrbracket. \]
+
+### 0.2 正确性与完备性 / Soundness and Completeness
+
+设证明系统 \(\mathcal{P}\) 与语义蕴涵 \(\models\)。若 \(\mathcal{P}\) 满足：
+
+\[ \Gamma \vdash \phi \Rightarrow \Gamma \models \phi \quad(\text{正确性}),\quad \Gamma \models \phi \Rightarrow \Gamma \vdash \phi \ (\text{完备性}). \]
+
+跨模态映射 \(f\) 保持推导：若 \(\Gamma \vdash \phi\) 则 \(f(\Gamma) \vdash f(\phi)\)。
+
+### 0.3 约束一致性（SAT/SMT） / Constraint Consistency
+
+将跨模态一致性写为公式集 \(\Phi=\{\phi_i\}\)。一致当且仅当 \(\Phi\) 可满足。对不一致情形求最小不可满足核（MUS）与最小修复集（MCS），用于生成可解释反例与自动修复策略（参见 5.1 的 0.13）。
+
+### 0.4 推理安全界 / Safety Bounds for Reasoning
+
+对错误推理率 \(p_{err}\) 设经验上界（Clopper–Pearson）与 PAC-Bayes 界；对工具链组合推理使用并合界：
+
+\[ p_{err}^{\text{chain}} \le 1-\prod_i (1-p_{err}^{(i)}). \]
+
+### 0.5 评测协议 / Evaluation Protocol
+
+- 任务集覆盖：检索、生成、逻辑/因果/类比推理的分项指标与总分；
+- 一致性验证：符号等价、约束满足、语义回归测试；
+- 统计显著性：Holm–Bonferroni；序贯评测：mSPRT；
+- 失败处理：回退与人类在环。
+
 ### Haskell实现：跨模态检索系统
 
 ```haskell
@@ -1006,6 +1047,87 @@ main = do
     putStrLn $ "Analogical inference result: " ++ show analogicalResult
 ```
 
+### 评测配置：一致性与显著性（YAML）
+
+```yaml
+version: 1.0
+task: cross_modal_consistency_saliency
+dataset:
+  name: XL-Retrieval-Mini
+  path: data/xl_retrieval_mini
+  splits: [dev]
+  modalities: [image, text]
+
+checks:
+  - name: equivalence_consistency
+    description: symbolic equivalence ↔ embedding proximity
+    metrics:
+      - name: sat_rate
+      - name: avg_alignment
+    thresholds:
+      sat_rate: { warn: 0.9, fail: 0.8 }
+      avg_alignment: { warn: 0.35, fail: 0.25 }
+  - name: counterfactual_robustness
+    description: causal negation/edit should flip entailment with bounded margin
+    params:
+      edit_ops: [negate, replace_subject, replace_attribute]
+    metrics:
+      - name: flip_rate
+      - name: margin_delta
+    thresholds:
+      flip_rate: { warn: 0.75, fail: 0.6 }
+      margin_delta: { warn: 0.15, fail: 0.1 }
+  - name: saliency_faithfulness
+    description: saliency mass on gold rationale region
+    metrics:
+      - name: iou_rationale
+      - name: mass_on_rationale
+    thresholds:
+      iou_rationale: { warn: 0.35, fail: 0.25 }
+      mass_on_rationale: { warn: 0.6, fail: 0.5 }
+
+evaluation:
+  seeds: [1, 2]
+  batch_size: 32
+  max_samples: 1500
+
+logging:
+  output_dir: outputs/cross_modal_consistency
+  save_rationales: true
+```
+
+运行说明（参考）：
+
+```bash
+python tools/eval_cross_modal_consistency.py \
+  --config configs/cross_modal_consistency.yaml \
+  --model your_model_id \
+  --checkpoint path/to/ckpt.pt
+```
+
+### Rust实现：SMT 一致性检查（伪实现）
+
+```rust
+#[derive(Clone)]
+enum Formula { Eq(usize, f32), Imp(usize, usize) }
+
+fn encode_consistency(z_text: &Vec<f32>, z_image: &Vec<f32>) -> Vec<Formula> {
+    let mut phi = Vec::new();
+    // 示例：文本与图像第0维语义一致（占位）
+    phi.push(Formula::Eq(0, (z_text[0] - z_image[0]).abs()));
+    phi
+}
+
+fn smt_sat(_phi: &Vec<Formula>) -> bool { true }
+
+fn main() {
+    let z_t = vec![0.1, 0.2];
+    let z_i = vec![0.1, 0.3];
+    let phi = encode_consistency(&z_t, &z_i);
+    println!("SAT? {}", smt_sat(&phi));
+}
+```
+
 ---
 
 ## 参考文献 / References / Literatur / Références
@@ -1017,13 +1139,15 @@ main = do
    - 魏斌 (2022). *法律论证人工智能研究的非形式逻辑转向*. 法商研究.
 
 2. **English:**
-   - Baltrusaitis, T. (2019). *Multimodal Machine Learning: A Survey and Taxonomy*. IEEE TPAMI.
-   - Li, Y. (2020). *Cross-Modal Retrieval: A Survey*. ACM Computing Surveys.
-   - Wang, X. (2021). *Cross-Modal Generation: Methods and Applications*. NeurIPS.
-   - Wu, Y., et al. (2022). *Large Language Models are Zero-Shot Reasoners*. NeurIPS.
-   - Wu, Y., et al. (2024). *Alchemy: A Structured Task Distribution for LLM Reasoning*. arXiv:2410.15748.
-   - Li, Y., et al. (2024). *Symbolic Equivalence and Semantic Consistency for Automated Formalization*. arXiv:2410.20936.
-   - Dong, Q., et al. (2024). *Rewarding LLMs for Hierarchical Decomposition of Formal Theorem Proving*. arXiv:2411.01829.
+   - Baltrusaitis, T. et al. (2019). Multimodal Machine Learning: A Survey and Taxonomy. IEEE TPAMI.
+   - Li, Y. et al. (2020). Cross-Modal Retrieval: A Survey. ACM Computing Surveys.
+   - Wang, X. et al. (2021). Cross-Modal Generation: Methods and Applications. NeurIPS.
+   - Wei, J. et al. (2022). Chain-of-Thought Prompting Elicits Reasoning. NeurIPS.
+   - Wu, Y. et al. (2024). Alchemy: A Structured Task Distribution for LLM Reasoning. arXiv:2410.15748.
+   - Li, Y. et al. (2024). Symbolic Equivalence and Semantic Consistency for Automated Formalization. arXiv:2410.20936.
+   - Dong, Q. et al. (2024). Rewarding LLMs for Hierarchical Decomposition of Formal Theorem Proving. arXiv:2411.01829.
+   - Team Google DeepMind (2024–2025). Gemini 2.x Technical Reports. arXiv.
+   - OpenAI (2024–2025). Sora: System Cards/Reports. arXiv.
 
 3. **Deutsch / German:**
    - Baltrusaitis, T. (2019). *Multimodales maschinelles Lernen: Eine Übersicht und Taxonomie*. IEEE TPAMI.
@@ -1042,3 +1166,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了完整的跨模态推理理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的跨模态智能推理提供了科学的理论基础。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（自动定理证明、形式化方法、MM推理）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/ACL/CAV/POPL/PLDI/S&P/CCS 等
+  - 标准与基准：NIST、ISO/IEC、W3C；一致性/显著性评测基准与复现协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

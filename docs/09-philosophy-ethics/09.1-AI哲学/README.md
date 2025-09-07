@@ -38,6 +38,7 @@ AI philosophy studies fundamental questions about the nature of artificial intel
     - [Rust实现：图灵测试模拟器](#rust实现图灵测试模拟器)
     - [Haskell实现：意识模型](#haskell实现意识模型)
   - [参考文献 / References](#参考文献--references)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -904,3 +905,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了AI哲学的基础，涵盖了从智能本质到存在本体论的各个方面，为理解AI系统的哲学含义提供了理论工具。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（AI哲学、心灵哲学、认知科学、伦理哲学）
+  - A类会议/期刊：Mind/Philosophical Review/Noûs/PNAS/Nature Human Behaviour（相关跨学科）
+  - 标准与基准：NIST、ISO/IEC、W3C；AI伦理与透明度、责任与合规框架
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；在引用处标注版本/日期。

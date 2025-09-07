@@ -69,6 +69,7 @@ pub fn logprob_traj(rewards: &[f32], tau: f32) -> f32 {
     - [Rust实现：价值学习系统](#rust实现价值学习系统)
     - [Haskell实现：价值对齐算法](#haskell实现价值对齐算法)
   - [参考文献 / References](#参考文献--references)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -954,3 +955,16 @@ main = do
 ---
 
 *本模块为FormalAI提供了价值学习理论基础，为AI系统的价值对齐和伦理决策提供了重要的理论框架。*
+
+---
+
+## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
+
+- 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
+- 来源类别锚点：
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（价值学习、偏好学习、IRL、对齐与伦理）
+  - A类会议/期刊：NeurIPS/ICML/ICLR/AAAI/IJCAI/FAccT 等
+  - 标准与基准：NIST、ISO/IEC、W3C；价值与对齐评测、合规报告与可复现协议
+  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+
+注：二手资料以一手论文与标准为准；引用需标注版本/日期。
