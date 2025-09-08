@@ -128,6 +128,11 @@ La synthèse de programmes est le processus de dérivation automatique de progra
     - [1.1 语法定义 / Syntax Definition / Syntaxdefinition / Définition de syntaxe](#11-语法定义--syntax-definition--syntaxdefinition--définition-de-syntaxe)
     - [1.2 语法约束 / Syntax Constraints / Syntaxconstraints / Contraintes de syntaxe](#12-语法约束--syntax-constraints--syntaxconstraints--contraintes-de-syntaxe)
     - [1.3 语法搜索 / Syntax Search / Syntaxsuche / Recherche de syntaxe](#13-语法搜索--syntax-search--syntaxsuche--recherche-de-syntaxe)
+    - [1.5 SyGuS 概览与SMT-LIB示例](#15-sygus-概览与smt-lib示例)
+    - [1.6 CEGIS 与 SyGuS 对照（要点）](#16-cegis-与-sygus-对照要点)
+    - [1.7 反例驱动约简策略（CE）](#17-反例驱动约简策略ce)
+    - [1.8 CEGIS 并行化与分布式搜索（实践要点）](#18-cegis-并行化与分布式搜索实践要点)
+    - [1.9 SyGuS 理论与求解器支持（概览）](#19-sygus-理论与求解器支持概览)
   - [2. 类型引导合成 / Type-Guided Synthesis / Typgesteuerte Synthese / Synthèse guidée par type](#2-类型引导合成--type-guided-synthesis--typgesteuerte-synthese--synthèse-guidée-par-type)
     - [2.1 类型系统 / Type System / Typsystem / Système de types](#21-类型系统--type-system--typsystem--système-de-types)
     - [2.2 类型推导 / Type Inference / Typinferenz / Inférence de types](#22-类型推导--type-inference--typinferenz--inférence-de-types)
@@ -148,6 +153,8 @@ La synthèse de programmes est le processus de dérivation automatique de progra
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
     - [Rust实现：语法引导合成器](#rust实现语法引导合成器)
     - [Haskell实现：类型引导合成器](#haskell实现类型引导合成器)
+    - [SMT-LIB SyGuS 最小示例与命令](#smt-lib-sygus-最小示例与命令)
+    - [CEGIS 并行验证（伪代码）](#cegis-并行验证伪代码)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
   - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
     - [大语言模型程序合成 / Large Language Model Program Synthesis](#大语言模型程序合成--large-language-model-program-synthesis)
@@ -238,7 +245,89 @@ $$\text{search}(\text{syntax}, \text{spec}) = \arg\min_{p \in \text{programs}} \
 
 $$\text{cost}(p) = \text{complexity}(p) + \lambda \cdot \text{deviation}(p, \text{spec})$$
 
----
+### 1.5 SyGuS 概览与SMT-LIB示例
+
+SyGuS（Syntax-Guided Synthesis）以约束求解为后端，通过限制DSL语法与语义规范，统一表述程序合成问题。核心接口为 SyGuS-IF/SMT-LIB 语法。
+
+最小示例（合成线性算子使得在若干 I/O 示例上成立）：
+
+```lisp
+; set-logic: 可选，指明理论
+(set-logic LIA)
+
+; 声明待合成函数 f : Int Int -> Int
+(synth-fun f ((x Int) (y Int)) Int
+  ((Start Int (x y 0 1 (+ Start Start) (- Start Start)))) )
+
+; 语义约束（示例驱动）
+(constraint (= (f 1 2) 3))
+(constraint (= (f 2 2) 4))
+(constraint (= (f 10 5) 15))
+
+(check-synth)
+```
+
+命令行提示：可使用 `cvc5 --lang=sygus2 file.sygus` 或 `eusolver file.sygus` 进行求解（不同求解器对语法支持略有差异）。
+
+### 1.6 CEGIS 与 SyGuS 对照（要点）
+
+- 目标表述：
+  - CEGIS：在给定 DSL/模板内寻找程序，使其对累计反例集通过；验证器找全局反例。
+  - SyGuS：将语法（Grammar）+ 语义（Constraints）统一编码为求解问题，由 SMT/枚举-约束混合引擎全局搜索。
+- 搜索驱动：
+  - CEGIS：候选生成器与验证器交替；反例驱动收敛。
+  - SyGuS：基于语法的受限搜索+求解器剪枝；可直接获得全局满足的解。
+- 规模与可扩展：
+  - CEGIS：适合增量扩展与特定领域启发；可并行多候选评测。
+  - SyGuS：受语法/理论支持影响；对数值/字符串/位向量等理论有成熟后端。
+- 适配场景：
+  - CEGIS：程序修复、编译器优化片段、DSL 规则学习。
+  - SyGuS：函数合成、约束满足、教育/竞赛基准（SyGuS-COMP）。
+
+### 1.7 反例驱动约简策略（CE）
+
+- 样例集压缩（Example Minimization）：保留信息冗余低的代表性反例，降低候选验证成本。
+- 核心冲突提取（Unsat Core/Minimal Hitting Set）：从验证器返回的不可满足集合中提取最小致因子。
+- 语义相似合并（Semantic Clustering）：将行为等价或近似的反例聚类，仅保留簇中心。
+- 局部搜索与修补（Local Repair）：对候选的失败点进行最小变动修补，减少全局搜索范围。
+- 优先级调度（Priority Scheduling）：优先使用覆盖未约束区域的反例，提升收敛速度。
+
+### 1.8 CEGIS 并行化与分布式搜索（实践要点）
+
+- 并行候选评测：将同一轮候选在多核上并行验证；共享反例池（锁/无锁环形缓冲）。
+- 分区搜索空间：按语法深度、操作符集合或类型签名切分，避免重复搜索并定期合并前沿。
+- 异步反例回灌：验证器首先返回“最小反例”，其余排队；生成器接收即刻剪枝，缩短停顿。
+- 预算与抢占：给候选分配时间/步数预算，超限抢占回收，防止个别难例拖慢整体吞吐。
+- 断点续跑与快照：周期性固化反例集和启发式状态，支持故障恢复与增量扩容。
+
+### 1.9 SyGuS 理论与求解器支持（概览）
+
+- 常见理论：
+  - LIA/LRA：线性整数/实数算术；广泛支持，求解稳定。
+  - BV：位向量；适合低层程序/硬件片段合成。
+  - Strings：字符串与正则；用于程序修复与数据清洗。
+  - UF：未解释函数；与以上理论组合形成丰富建模空间。
+- 求解器生态（示例）：
+  - cvc5：支持 SyGuS-IF/SMT-LIB，多理论良好；提供 `--lang=sygus2`。
+  - EUSolver：枚举与归纳结合，对竞赛基准表现优良。
+  - Sketch/Leon（相关）：基于草图/归纳，理念相近可对照参考。
+- 实践提示：
+  - 约束尽量采用“判定友好”的理论与谓词；
+  - 语法尽量小而表达充分，逐步放宽；
+  - 利用求解器选项（超时、启发式、seed）提升稳定性与可复现性。
+
+常用 cvc5 选项示例：
+
+```bash
+# 读取 SyGuS-IF/SMT-LIB 文件并设置超时与随机种子
+cvc5 --lang=sygus2 --tlimit-per=60000 --seed=42 add.sygus | cat
+
+# 打印统计与详细日志（调试）
+cvc5 --lang=sygus2 --stats --verbosity=2 add.sygus | cat
+
+# 设定位向量域并限制枚举深度（示例）
+cvc5 --lang=sygus2 --sygus-grammar-consider-const --sygus-abort-size=50 bv_task.sygus | cat
+```
 
 ## 2. 类型引导合成 / Type-Guided Synthesis / Typgesteuerte Synthese / Synthèse guidée par type
 
@@ -890,6 +979,50 @@ main = do
     case predict trainedSynthesizer "add" of
         Just program -> putStrLn $ "ML预测程序: " ++ show program
         Nothing -> putStrLn "ML预测失败"
+```
+
+### SMT-LIB SyGuS 最小示例与命令
+
+```lisp
+; file: add.sygus
+(set-logic LIA)
+(synth-fun f ((x Int) (y Int)) Int
+  ((Start Int (x y 0 1 (+ Start Start) (- Start Start)))) )
+(constraint (= (f 1 2) 3))
+(constraint (= (f 2 2) 4))
+(constraint (= (f 10 5) 15))
+(check-synth)
+```
+
+运行命令（择一）：
+
+```bash
+cvc5 --lang=sygus2 add.sygus | cat
+eusolver add.sygus | cat
+```
+
+### CEGIS 并行验证（伪代码）
+
+```text
+Input: Grammar G, Spec φ, Generator S, Verifier V, Workers W
+E := {}                    ; global counterexample set (thread-safe)
+Q := new_work_queue()      ; candidate queue
+
+spawn W workers:
+  loop:
+    P := S.next_candidate(G, E)
+    if P == NONE: break
+    if satisfies_examples(P, E):
+      cex := V.find_counterexample(P, φ)
+      if cex == NONE:
+        return P
+      else:
+        E := E ∪ {minimize(cex)}
+        Q.push(backoff_hint(P, cex))
+    else:
+      continue
+
+return FAIL
 ```
 
 ---
