@@ -12,6 +12,11 @@ Kreuzmodales Schlussfolgern untersucht, wie Informationen zwischen verschiedenen
 
 Le raisonnement cross-modal étudie comment transférer et raisonner les informations entre différentes modalités, fournissant les fondements théoriques pour le raisonnement intelligent cross-modal dans FormalAI. Ce système théorique a été mis à jour pour inclure les derniers développements de 2024, couvrant le raisonnement mathématique formel, la preuve automatique de théorèmes, la vérification d'équivalence symbolique et autre contenu de pointe.
 
+### 示例卡片 / Example Cards
+
+- [EXAMPLE_MODEL_CARD.md](./EXAMPLE_MODEL_CARD.md)
+- [EXAMPLE_EVAL_CARD.md](./EXAMPLE_EVAL_CARD.md)
+
 提示：统一符号与记号见 [0.16 术语与符号表](../05.1-视觉语言模型/README.md#016-术语与符号表--terminology-and-notation)。
 
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux

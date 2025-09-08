@@ -18,6 +18,7 @@ Statistical learning theory provides mathematical foundations for machine learni
     - [1.1 基本框架 / Basic Framework](#11-基本框架--basic-framework)
     - [1.2 假设空间 / Hypothesis Space](#12-假设空间--hypothesis-space)
   - [2. 经验风险最小化 / Empirical Risk Minimization](#2-经验风险最小化--empirical-risk-minimization)
+    - [2.4 有限假设类的PAC界（形式化片段）](#24-有限假设类的pac界形式化片段)
     - [2.1 ERM算法 / ERM Algorithm](#21-erm算法--erm-algorithm)
     - [2.2 有限假设空间 / Finite Hypothesis Space](#22-有限假设空间--finite-hypothesis-space)
     - [2.3 无限假设空间 / Infinite Hypothesis Space](#23-无限假设空间--infinite-hypothesis-space)
@@ -29,6 +30,7 @@ Statistical learning theory provides mathematical foundations for machine learni
     - [4.1 定义 / Definition](#41-定义--definition)
     - [4.2 泛化界 / Generalization Bounds](#42-泛化界--generalization-bounds)
     - [4.3 计算Rademacher复杂度 / Computing Rademacher Complexity](#43-计算rademacher复杂度--computing-rademacher-complexity)
+    - [4.4 形式化片段：Rademacher界](#44-形式化片段rademacher界)
   - [5. 稳定性理论 / Stability Theory](#5-稳定性理论--stability-theory)
     - [5.1 稳定性定义 / Stability Definition](#51-稳定性定义--stability-definition)
     - [5.2 稳定性与泛化 / Stability and Generalization](#52-稳定性与泛化--stability-and-generalization)
@@ -74,9 +76,9 @@ Statistical learning theory provides mathematical foundations for machine learni
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [2.2 深度学习理论](02-deep-learning-theory/README.md) - 提供理论基础 / Provides theoretical foundation
-- [2.3 强化学习理论](03-reinforcement-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
-- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+- [2.2 深度学习理论](../../02-machine-learning/02.2-深度学习理论/README.md) - 提供理论基础 / Provides theoretical foundation
+- [2.3 强化学习理论](../../02-machine-learning/02.3-强化学习理论/README.md) - 提供学习基础 / Provides learning foundation
+- [6.1 可解释性理论](../../06-interpretable-ai/06.1-可解释性理论/README.md) - 提供解释基础 / Provides interpretability foundation
 
 ---
 
@@ -137,6 +139,17 @@ where $\hat{f} = \mathcal{A}(S)$ is the learned function and $f^* = \arg\min_{f 
 ---
 
 ## 2. 经验风险最小化 / Empirical Risk Minimization
+
+### 2.4 有限假设类的PAC界（形式化片段）
+
+命题：有限假设类 $\mathcal{H}$，对0-1损失，若样本数
+$$ m \ge \frac{1}{2\epsilon^2}\Big(\ln |\mathcal{H}| + \ln \frac{1}{\delta}\Big), $$
+则以概率至少 $1-\delta$ 有 $\forall h\in\mathcal{H}: R(h) \le \hat R(h) + \epsilon$。
+
+证明要点：并联合取界 + Hoeffding不等式：
+$$ \Pr\big[\exists h: R(h) - \hat R(h) > \epsilon\big] \le |\mathcal{H}| e^{-2m\epsilon^2} \le \delta. $$
+
+推论：ERM 返回的 $\hat h$ 满足 $R(\hat h) \le \min_{h\in\mathcal{H}} R(h) + 2\epsilon$（将上界分别作用于 $\hat h$ 与风险最小者）。
 
 ### 2.1 ERM算法 / ERM Algorithm
 
@@ -265,6 +278,13 @@ $$\sup_{f \in \mathcal{F}} |R_n(f) - R(f)| \leq 2\mathcal{R}_n(\mathcal{F}) + \s
 Using McDiarmid's inequality and symmetrization technique.
 
 ### 4.3 计算Rademacher复杂度 / Computing Rademacher Complexity
+
+### 4.4 形式化片段：Rademacher界
+
+命题（实值函数族，0-1截断损失）：以概率至少 \(1-\delta\) 有
+$$ \forall f \in \mathcal{F}:\; R(f) \le \hat R(f) + 2\,\mathcal{R}_m(\mathcal{F}) + \sqrt{\tfrac{\ln(1/\delta)}{2m}}. $$
+
+证明要点：Ledoux-Talagrand浓缩 + 钩缝不等式（symmetrization）将经验-真风险差转化为与Rademacher复杂度有关的上界，再用McDiarmid对采样波动取界，合并即可得结论。
 
 **线性函数类 / Linear Function Class:**
 

@@ -86,14 +86,14 @@ L'apprentissage profond est une branche de l'apprentissage automatique qui utili
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
 - [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
-- [1.2 数学基础](../../01-foundations/02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
-- [2.1 统计学习理论](01-statistical-learning-theory/README.md) - 提供理论基础 / Provides theoretical foundation
+- [1.2 数学基础](../../01-foundations/01.2-数学基础/README.md) - 提供数学基础 / Provides mathematical foundation
+- [2.1 统计学习理论](../02.1-统计学习理论/README.md) - 提供理论基础 / Provides theoretical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供模型基础 / Provides model foundation
-- [5.1 视觉-语言模型](../05-multimodal-ai/01-vision-language-models/README.md) - 提供神经网络基础 / Provides neural network foundation
-- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+- [4.1 大语言模型](../../04-language-models/04.1-大型语言模型/README.md) - 提供模型基础 / Provides model foundation
+- [5.1 视觉语言模型](../../05-multimodal-ai/05.1-视觉语言模型/README.md) - 提供神经网络基础 / Provides neural network foundation
+- [6.1 可解释性理论](../../06-interpretable-ai/06.1-可解释性理论/README.md) - 提供解释基础 / Provides interpretability foundation
 
 ---
 

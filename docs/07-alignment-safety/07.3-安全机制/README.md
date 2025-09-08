@@ -8,6 +8,11 @@
 
 Safety mechanisms study how to ensure the safety of AI systems during operation, providing theoretical foundations for system safety guarantees in FormalAI.
 
+### 示例卡片 / Example Cards
+
+- [EXAMPLE_MODEL_CARD.md](./EXAMPLE_MODEL_CARD.md)
+- [EXAMPLE_EVAL_CARD.md](./EXAMPLE_EVAL_CARD.md)
+
 ### 0. 风险预算与阈值干预 / Risk Budgeting and Threshold Intervention / Risikobudgetierung und Schwellwertintervention / Budgétisation du risque et intervention par seuil
 
 - 风险约束：
@@ -60,13 +65,13 @@ pub fn safe_action(risk: f32, beta: f32, a: i32, a_safe: i32) -> i32 {
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md) - 提供验证基础 / Provides verification foundation
-- [6.3 鲁棒性理论](../06-interpretable-ai/03-robustness-theory/README.md) - 提供鲁棒性基础 / Provides robustness foundation
-- [7.1 对齐理论](01-alignment-theory/README.md) - 提供对齐基础 / Provides alignment foundation
+- [3.1 形式化验证](../../03-formal-methods/03.1-形式化验证/README.md) - 提供验证基础 / Provides verification foundation
+- [6.3 鲁棒性理论](../../06-interpretable-ai/06.3-鲁棒性理论/README.md) - 提供鲁棒性基础 / Provides robustness foundation
+- [7.1 对齐理论](../07.1-对齐理论/README.md) - 提供对齐基础 / Provides alignment foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [9.3 伦理框架](../09-philosophy-ethics/03-ethical-frameworks/README.md) - 提供安全基础 / Provides safety foundation
+- [9.3 伦理框架](../../09-philosophy-ethics/09.3-伦理框架/README.md) - 提供安全基础 / Provides safety foundation
 
 ---
 

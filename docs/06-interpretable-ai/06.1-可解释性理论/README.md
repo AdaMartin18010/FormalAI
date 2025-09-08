@@ -12,6 +12,11 @@ Die Interpretierbarkeitstheorie untersucht, wie die Entscheidungsprozesse von KI
 
 La théorie de l'interprétabilité étudie comment rendre les processus de décision des systèmes d'IA transparents et compréhensibles pour les humains, fournissant les fondements théoriques pour l'IA de confiance dans FormalAI.
 
+### 示例卡片 / Example Cards
+
+- [EXAMPLE_MODEL_CARD.md](./EXAMPLE_MODEL_CARD.md)
+- [EXAMPLE_EVAL_CARD.md](./EXAMPLE_EVAL_CARD.md)
+
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 
 ### 可解释性 / Interpretability / Interpretierbarkeit / Interprétabilité
@@ -106,14 +111,14 @@ fn integrated_gradients_linear(w: &[f32], x: &[f32], x0: &[f32]) -> Vec<f32> {
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑基础](../../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
-- [2.1 统计学习理论](../../02-machine-learning/01-statistical-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
-- [3.4 证明系统](../../03-formal-methods/04-proof-systems/README.md) - 提供证明基础 / Provides proof foundation
+- [1.1 形式逻辑](../../01-foundations/01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
+- [2.1 统计学习理论](../../02-machine-learning/02.1-统计学习理论/README.md) - 提供学习基础 / Provides learning foundation
+- [3.4 证明系统](../../03-formal-methods/03.4-证明系统/README.md) - 提供证明基础 / Provides proof foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [6.2 公平性与偏见理论](../02-fairness-bias/README.md) - 提供解释基础 / Provides interpretability foundation
-- [6.3 鲁棒性理论](../03-robustness-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+- [6.2 公平性与偏见](../06.2-公平性与偏见/README.md) - 提供解释基础 / Provides interpretability foundation
+- [6.3 鲁棒性理论](../06.3-鲁棒性理论/README.md) - 提供解释基础 / Provides interpretability foundation
 
 ---
 

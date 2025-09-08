@@ -51,9 +51,12 @@ fn reach_bad(init: State, max: u32) -> bool {
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 模型检测 / Model Checking](#1-模型检测--model-checking)
+    - [1.4 LTL 安全性质的反例存在性（形式化片段）](#14-ltl-安全性质的反例存在性形式化片段)
+    - [1.5 CTL 反例与证据树（形式化片段）](#15-ctl-反例与证据树形式化片段)
     - [1.1 状态空间搜索 / State Space Exploration](#11-状态空间搜索--state-space-exploration)
     - [1.2 线性时序逻辑 / Linear Temporal Logic](#12-线性时序逻辑--linear-temporal-logic)
     - [1.3 计算树逻辑 / Computation Tree Logic](#13-计算树逻辑--computation-tree-logic)
+    - [1.6 LTL→Büchi 自动机转换（概览）](#16-ltlbüchi-自动机转换概览)
   - [2. 定理证明 / Theorem Proving](#2-定理证明--theorem-proving)
     - [2.1 自然演绎 / Natural Deduction](#21-自然演绎--natural-deduction)
     - [2.2 归结证明 / Resolution Proof](#22-归结证明--resolution-proof)
@@ -111,16 +114,28 @@ fn reach_bad(init: State, max: u32) -> bool {
 
 - [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
 - [0.5 形式化证明](../../00-foundations/00-mathematical-foundations/05-formal-proofs.md) - 提供证明基础 / Provides proof foundation
-- [1.1 形式化逻辑基础](../../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [1.1 形式化逻辑基础](../../01-foundations/01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [7.3 安全机制](../07-alignment-safety/03-safety-mechanisms/README.md) - 提供验证基础 / Provides verification foundation
-- [6.3 鲁棒性理论](../06-interpretable-ai/03-robustness-theory/README.md) - 提供验证基础 / Provides verification foundation
+- [7.3 安全机制](../../07-alignment-safety/07.3-安全机制/README.md) - 提供验证基础 / Provides verification foundation
+- [6.3 鲁棒性理论](../../06-interpretable-ai/06.3-鲁棒性理论/README.md) - 提供验证基础 / Provides verification foundation
 
 ---
 
 ## 1. 模型检测 / Model Checking
+
+### 1.4 LTL 安全性质的反例存在性（形式化片段）
+
+设系统模型 \(\mathcal{M}\) 与线性时序逻辑（LTL）公式 \(\varphi\) 描述安全性质（形如 \(\square\, p\)）。若存在路径 \(\pi\) 使得 \(\pi \nvDash \varphi\)，则存在有限前缀 \(\pi[0..k]\) 和坏状态 \(s_k\) 使得前缀成为反例见证。
+
+要点：由 \(\square p\) 的语义，违例等价于 \(\lozenge \neg p\)。若 \(\pi \vDash \lozenge \neg p\)，则存在最小 \(k\) 使 \(s_k \vDash \neg p\)。此前缀即反例。算法上，BFS/DFS 搜索到首个坏状态即可生成反例路径。
+
+### 1.5 CTL 反例与证据树（形式化片段）
+
+设CTL公式 \(\varphi = \text{AG } p\)（对所有路径全局保持 \(p\)）。若 \(\mathcal{M}, s_0 \nvDash \text{AG } p\)，则存在路径 \(\pi\) 与最小索引 \(k\) 使 \(\pi[k] \vDash \neg p\)。模型检测器可返回一棵“证据树”（counterexample tree）：从 \(s_0\) 出发的分支构成的有限前缀，包含到违例状态的转移见证。该树满足：每条根到叶路径是系统可达路径，叶满足 \(\neg p\)。
+
+要点：AG 的语义等价于 \(\neg\,\text{EF }\neg p\)。若 \(\mathcal{M}, s_0 \vDash \text{EF }\neg p\)，则存在可达状态 \(s_k\) 使 \(s_k \vDash \neg p\)。构造到 \(s_k\) 的最短可达路径即为证据树的主干，必要时在分支点扩展最少的出边以保证可达性见证充分。
 
 ### 1.1 状态空间搜索 / State Space Exploration
 
@@ -173,6 +188,20 @@ $$\phi ::= p | \neg \phi | \phi \land \psi | AX \phi | EX \phi | AF \phi | EF \p
 
 - $A$: for all paths
 - $E$: there exists a path
+
+### 1.6 LTL→Büchi 自动机转换（概览）
+
+给定 LTL 公式 \(\varphi\)，可构造等价的 Büchi 自动机 \(\mathcal{A}_\varphi\) 使得：
+
+$$L(\mathcal{A}_\varphi) = \{\pi \mid \pi \vDash \varphi\}$$
+
+关键要点：
+
+- 状态编码子公式满足性（例如通过闭包 \(\text{cl}(\varphi)\) 的一致集）
+- 迁移保持一步演化一致性（Next 运算处理）
+- 接受条件捕获直到/最终算子（例如对每个 \(\psi_1\,U\,\psi_2\) 加入公平性集）
+
+复杂度：经典构造在最坏情况下是指数级大小。模型检测通过构造系统与 \(\mathcal{A}_{\neg\varphi}\) 的乘积并检查可接受循环来进行。
 
 ---
 
@@ -509,6 +538,42 @@ $$\text{SPIN}(M, \phi) = \text{Verify}(M \models \phi)$$
 **NuSMV模型检测器 / NuSMV Model Checker:**
 
 $$\text{NuSMV}(M, \phi) = \text{Check}(M, \phi)$$
+
+最小示例与命令行：
+
+Promela（SPIN）示例：
+
+```text
+// file: toggle.pml
+bool x = false;
+init {
+  do
+  :: x = !x
+  od
+}
+```
+
+命令：
+
+```bash
+spin -run -E toggle.pml | cat
+```
+
+NuSMV 示例：
+
+```text
+-- file: simple.smv
+MODULE main
+VAR x : boolean;
+ASSIGN init(x) := FALSE; next(x) := !x;
+SPEC AG (x | !x)
+```
+
+命令：
+
+```bash
+nusmv -dcx simple.smv | cat
+```
 
 ### 10.2 定理证明器 / Theorem Provers
 

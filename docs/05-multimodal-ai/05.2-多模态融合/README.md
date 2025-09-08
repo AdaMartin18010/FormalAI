@@ -12,6 +12,11 @@ Multimodale Fusion untersucht, wie Informationen aus verschiedenen Modalitäten 
 
 La fusion multimodale étudie comment intégrer efficacement les informations de différentes modalités, fournissant les fondements théoriques pour le traitement d'informations multimodales dans FormalAI. Ce système théorique a été mis à jour pour inclure les derniers développements de 2024, couvrant l'architecture multimodale unifiée, les mécanismes de fusion adaptative, la fusion neuro-symbolique et autre contenu de pointe.
 
+### 示例卡片 / Example Cards
+
+- [EXAMPLE_MODEL_CARD.md](./EXAMPLE_MODEL_CARD.md)
+- [EXAMPLE_EVAL_CARD.md](./EXAMPLE_EVAL_CARD.md)
+
 提示：统一符号与记号见 [0.16 术语与符号表](../05.1-视觉语言模型/README.md#016-术语与符号表--terminology-and-notation)。
 
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
@@ -1271,3 +1276,7 @@ _本模块为FormalAI提供了完整的多模态融合理论基础，结合国�
   - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
 
 注：二手资料以一手论文与标准为准；在引用处标注版本/日期。
+
+- 示例与落地：
+  - 示例模型卡：见 `docs/05-multimodal-ai/05.2-多模态融合/EXAMPLE_MODEL_CARD.md`
+  - 示例评测卡：见 `docs/05-multimodal-ai/05.2-多模态融合/EXAMPLE_EVAL_CARD.md`

@@ -12,6 +12,11 @@ Die Programmsynthese ist der Prozess der automatischen Generierung von Programme
 
 La synthèse de programmes est le processus de génération automatique de programmes satisfaisant des spécifications données, fournissant les fondements théoriques pour la programmation automatisée et la génération de code dans FormalAI.
 
+### 示例卡片 / Example Cards
+
+- [EXAMPLE_MODEL_CARD.md](./EXAMPLE_MODEL_CARD.md)
+- [EXAMPLE_EVAL_CARD.md](./EXAMPLE_EVAL_CARD.md)
+
 ### 0. 典型框架：CEGIS / Typical Framework: CEGIS / Typischer Rahmen: CEGIS / Cadre typique : CEGIS
 
 - 目标：寻找满足规范 \(\varphi\) 的程序候选 \(P\)
@@ -111,6 +116,7 @@ La synthèse de programmes est le processus de dérivation automatique de progra
 
 - [3.2 程序合成 / Program Synthesis / Programmsynthese / Synthèse de programmes](#32-程序合成--program-synthesis--programmsynthese--synthèse-de-programmes)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
+    - [示例卡片 / Example Cards](#示例卡片--example-cards)
     - [0. 典型框架：CEGIS / Typical Framework: CEGIS / Typischer Rahmen: CEGIS / Cadre typique : CEGIS](#0-典型框架cegis--typical-framework-cegis--typischer-rahmen-cegis--cadre-typique--cegis)
       - [Rust示例：二元布尔CEGIS玩具实现 / Toy Boolean CEGIS (Rust)](#rust示例二元布尔cegis玩具实现--toy-boolean-cegis-rust)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
@@ -118,6 +124,7 @@ La synthèse de programmes est le processus de dérivation automatique de progra
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 语法引导合成 / Syntax-Guided Synthesis / Syntaxgesteuerte Synthese / Synthèse guidée par syntaxe](#1-语法引导合成--syntax-guided-synthesis--syntaxgesteuerte-synthese--synthèse-guidée-par-syntaxe)
+    - [1.4 形式化片段：语法引导合成的正确性与完备性（要点）](#14-形式化片段语法引导合成的正确性与完备性要点)
     - [1.1 语法定义 / Syntax Definition / Syntaxdefinition / Définition de syntaxe](#11-语法定义--syntax-definition--syntaxdefinition--définition-de-syntaxe)
     - [1.2 语法约束 / Syntax Constraints / Syntaxconstraints / Contraintes de syntaxe](#12-语法约束--syntax-constraints--syntaxconstraints--contraintes-de-syntaxe)
     - [1.3 语法搜索 / Syntax Search / Syntaxsuche / Recherche de syntaxe](#13-语法搜索--syntax-search--syntaxsuche--recherche-de-syntaxe)
@@ -126,6 +133,7 @@ La synthèse de programmes est le processus de dérivation automatique de progra
     - [2.2 类型推导 / Type Inference / Typinferenz / Inférence de types](#22-类型推导--type-inference--typinferenz--inférence-de-types)
     - [2.3 类型约束 / Type Constraints / Typconstraints / Contraintes de types](#23-类型约束--type-constraints--typconstraints--contraintes-de-types)
   - [3. 约束引导合成 / Constraint-Guided Synthesis / Constraintgesteuerte Synthese / Synthèse guidée par contrainte](#3-约束引导合成--constraint-guided-synthesis--constraintgesteuerte-synthese--synthèse-guidée-par-contrainte)
+    - [3.4 形式化片段：SMT约束化的可满足性→可实现性（要点）](#34-形式化片段smt约束化的可满足性可实现性要点)
     - [3.1 约束定义 / Constraint Definition / Constraintdefinition / Définition de contrainte](#31-约束定义--constraint-definition--constraintdefinition--définition-de-contrainte)
     - [3.2 约束求解 / Constraint Solving / Constraintlösung / Résolution de contraintes](#32-约束求解--constraint-solving--constraintlösung--résolution-de-contraintes)
     - [3.3 约束优化 / Constraint Optimization / Constraintoptimierung / Optimisation de contraintes](#33-约束优化--constraint-optimization--constraintoptimierung--optimisation-de-contraintes)
@@ -157,15 +165,24 @@ La synthèse de programmes est le processus de dérivation automatique de progra
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.3 计算理论](../01-foundations/03-computation-theory/README.md) - 提供计算基础 / Provides computation foundation
+- [1.3 计算理论](../../01-foundations/01.3-计算理论/README.md) - 提供计算基础 / Provides computation foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md) - 提供生成基础 / Provides generation foundation
+- [4.1 大语言模型理论](../../04-language-models/04.1-大型语言模型/README.md) - 提供生成基础 / Provides generation foundation
 
 ---
 
 ## 1. 语法引导合成 / Syntax-Guided Synthesis / Syntaxgesteuerte Synthese / Synthèse guidée par syntaxe
+
+### 1.4 形式化片段：语法引导合成的正确性与完备性（要点）
+
+设DSL语法 \(\mathcal{G}\) 与语义解释 \(\llbracket\cdot\rrbracket\)，规范 \(\varphi\) 为满足性质的判定器。若搜索过程仅在 \(\mathcal{G}\) 的可生成项上，并且验证器完全（对每个候选判定真值），则：
+
+- 正确性（Soundness）：若合成返回程序 \(P\)，则 \(\llbracket P\rrbracket \vDash \varphi\)。
+- 相对完备性（Relative Completeness）：若存在 \(P^*\in\mathcal{L}(\mathcal{G})\) 使 \(\llbracket P^*\rrbracket \vDash \varphi\)，则穷尽搜索最终能找到某个满足者（时间受搜索次序与剪枝策略影响）。
+
+证明要点：正确性由验证器的完全性立即得出；相对完备性由可生成项的穷尽性与验证器的判定性给出存在性保证。
 
 ### 1.1 语法定义 / Syntax Definition / Syntaxdefinition / Définition de syntaxe
 
@@ -264,6 +281,12 @@ $$\text{solve}(\text{constraints}) = \text{unifier}(\text{constraints})$$
 ---
 
 ## 3. 约束引导合成 / Constraint-Guided Synthesis / Constraintgesteuerte Synthese / Synthèse guidée par contrainte
+
+### 3.4 形式化片段：SMT约束化的可满足性→可实现性（要点）
+
+设规格 \(\varphi\) 与目标程序族以一组一阶约束 \(\Phi\) 编码，解向量 \(\theta\) 对应程序语义参数（或选择变量）。若SMT求解器返回 \(\theta\) 使 \(\Phi(\theta)\) 可满足，则可构造程序 \(P_\theta\) 满足 \(\varphi\)。
+
+构造性证明思路：给出从 \(\theta\) 到语法/语义构件的映射 \(\mathcal{C}(\theta)\)，并证明 \(\llbracket \mathcal{C}(\theta) \rrbracket \vDash \varphi\)。反向方向（可实现性→可满足性）通常由编码的忠实性（sound & complete encoding）保证。
 
 ### 3.1 约束定义 / Constraint Definition / Constraintdefinition / Définition de contrainte
 
@@ -507,7 +530,7 @@ impl fmt::Display for Expression {
 }
 
 // 类型引导合成器 / Type-guided synthesizer / Typgesteuerter Synthesizer / Synthétiseur guidé par type
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 enum Type {
     Int,
     Bool,
@@ -636,26 +659,15 @@ fn main() {
     
     // 类型引导合成示例 / Type-guided synthesis example / Typgesteuerte Synthese Beispiel / Exemple de synthèse guidée par type
     let mut type_synthesizer = TypeGuidedSynthesizer::new();
-    
-    // 添加类型规则 / Add type rules / Füge Typregeln hinzu / Ajouter des règles de type
+    // 添加类型规则 / Add type rules
     type_synthesizer.add_type_rule(Type::Int, Type::Int, Type::Int);
-    
-    case synthesizeWithType typeSynthesizer1 TInt of
-        Just typedProgram -> putStrLn $ "类型化程序: " ++ show typedProgram
-        Nothing -> putStrLn "类型合成失败"
-    
-    case synthesizeWithType typeSynthesizer1 TBool of
-        Just typedProgram -> putStrLn $ "布尔程序: " ++ show typedProgram
-        Nothing -> putStrLn "布尔合成失败"
-    
-    -- 机器学习合成示例 / Machine learning synthesis example / Maschinelles Lernensynthese Beispiel / Exemple de synthèse par apprentissage automatique
-    let mlSynthesizer = MLBasedSynthesizer [] 0.1
-    let examples = [TrainingExample "add" (BinaryOp (Variable "x") "+" (Variable "y"))]
-    let trainedSynthesizer = trainModel mlSynthesizer examples
-    
-    case predict trainedSynthesizer "add" of
-        Just program -> putStrLn $ "ML预测程序: " ++ show program
-        Nothing -> putStrLn "ML预测失败"
+
+    if let Some(typed) = type_synthesizer.synthesize_with_type(&Type::Int) {
+        println!("类型化程序(Int): {:?}", typed);
+    }
+    if let Some(typed) = type_synthesizer.synthesize_with_type(&Type::Bool) {
+        println!("类型化程序(Bool): {:?}", typed);
+    }
 ```
 
 ### Haskell实现：类型引导合成器

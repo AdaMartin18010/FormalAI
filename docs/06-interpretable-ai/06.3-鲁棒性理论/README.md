@@ -8,6 +8,11 @@
 
 Robustness theory studies the stability and reliability of AI systems when facing various perturbations, attacks, and abnormal situations. This document covers the theoretical foundations, evaluation methods, enhancement techniques, and practical applications of robustness.
 
+### 示例卡片 / Example Cards
+
+- [EXAMPLE_MODEL_CARD.md](./EXAMPLE_MODEL_CARD.md)
+- [EXAMPLE_EVAL_CARD.md](./EXAMPLE_EVAL_CARD.md)
+
 ### 0. PGD对抗攻击 / PGD Adversarial Attack / PGD-Angriff / Attaque PGD
 
 - 更新：
@@ -77,13 +82,13 @@ fn pgd_step(x: f32, grad: f32, x0: f32, eps: f32, alpha: f32) -> f32 {
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.4 因果推理理论](../02-machine-learning/04-causal-inference/README.md) - 提供推理基础 / Provides reasoning foundation
-- [3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md) - 提供验证基础 / Provides verification foundation
-- [6.1 可解释性理论](01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+- [2.4 因果推理](../../02-machine-learning/02.4-因果推理/README.md) - 提供推理基础 / Provides reasoning foundation
+- [3.1 形式化验证](../../03-formal-methods/03.1-形式化验证/README.md) - 提供验证基础 / Provides verification foundation
+- [6.1 可解释性理论](../06.1-可解释性理论/README.md) - 提供解释基础 / Provides interpretability foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [7.3 安全机制](../07-alignment-safety/03-safety-mechanisms/README.md) - 提供鲁棒性基础 / Provides robustness foundation
+- [7.3 安全机制](../../07-alignment-safety/07.3-安全机制/README.md) - 提供鲁棒性基础 / Provides robustness foundation
 
 ---
 
@@ -944,3 +949,7 @@ main = do
   - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
 
 注：二手资料以一手论文与标准为准；引用需标注版本/日期。
+
+- 示例与落地：
+  - 示例模型卡：见 `docs/06-interpretable-ai/06.3-鲁棒性理论/EXAMPLE_MODEL_CARD.md`
+  - 示例评测卡：见 `docs/06-interpretable-ai/06.3-鲁棒性理论/EXAMPLE_EVAL_CARD.md`

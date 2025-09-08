@@ -37,6 +37,7 @@
 
 - [02.1 统计学习理论](./02-machine-learning/02.1-统计学习理论/README.md)
   - [02.1.1 PAC学习理论](./02-machine-learning/02.1-统计学习理论/02.1.1-PAC学习理论.md)
+  - [02.1.2 VC维理论](./02-machine-learning/02.1-统计学习理论/02.1.2-VC维理论.md)
 - [02.2 深度学习理论](./02-machine-learning/02.2-深度学习理论/README.md)
   - [02.2.1 神经网络理论](./02-machine-learning/02.2-深度学习理论/02.2.1-神经网络理论.md)
 - [02.3 强化学习理论](./02-machine-learning/02.3-强化学习理论/README.md)

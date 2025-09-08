@@ -8,6 +8,11 @@
 
 Fairness and bias theory studies how to ensure AI systems do not produce discriminatory bias in decision-making processes, providing fair treatment for all users. This document covers fairness definitions, bias detection, mitigation methods, and evaluation frameworks.
 
+### 示例卡片 / Example Cards
+
+- [EXAMPLE_MODEL_CARD.md](./EXAMPLE_MODEL_CARD.md)
+- [EXAMPLE_EVAL_CARD.md](./EXAMPLE_EVAL_CARD.md)
+
 ### 0. 关键公平性定义 / Key Fairness Definitions / Zentrale Fairness-Definitionen / Définitions clés de l'équité
 
 - 人口平价（DP）: \( P(\hat{Y}=1\mid A=a) = P(\hat{Y}=1\mid A=b) \)
@@ -76,6 +81,7 @@ fn eopp(group: &HashMap<String, Stat>) -> Vec<(String, f32)> { // TPR
     - [Rust实现：公平性检测系统](#rust实现公平性检测系统)
     - [Haskell实现：偏见缓解算法](#haskell实现偏见缓解算法)
   - [参考文献 / References](#参考文献--references)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -83,12 +89,12 @@ fn eopp(group: &HashMap<String, Stat>) -> Vec<(String, f32)> { // TPR
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.4 因果推理理论](../02-machine-learning/04-causal-inference/README.md) - 提供因果基础 / Provides causal foundation
-- [6.1 可解释性理论](01-interpretability-theory/README.md) - 提供解释基础 / Provides interpretability foundation
+- [2.4 因果推理](../../02-machine-learning/02.4-因果推理/README.md) - 提供因果基础 / Provides causal foundation
+- [6.1 可解释性理论](../06.1-可解释性理论/README.md) - 提供解释基础 / Provides interpretability foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [7.1 对齐理论](../07-alignment-safety/01-alignment-theory/README.md) - 提供公平性基础 / Provides fairness foundation
+- [7.1 对齐理论](../../07-alignment-safety/07.1-对齐理论/README.md) - 提供公平性基础 / Provides fairness foundation
 
 ---
 

@@ -757,3 +757,7 @@ mod tests {
   - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
 
 注：二手资料以一手论文与标准为准；在引用处标注版本/日期。
+
+- 示例与落地：
+  - 示例模型卡：见 `docs/11-edge-ai/11.1-联邦学习/EXAMPLE_MODEL_CARD.md`
+  - 示例评测卡：见 `docs/11-edge-ai/11.1-联邦学习/EXAMPLE_EVAL_CARD.md`
