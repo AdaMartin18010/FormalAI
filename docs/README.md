@@ -54,25 +54,25 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 1.1 形式化逻辑 / Formal Logic
 
-- **路径**: `docs/01-foundations/01-formal-logic/README.md`
+- **路径**: `docs/01-foundations/01.1-形式逻辑/README.md`
 - **内容**: 命题逻辑、一阶逻辑、高阶逻辑、模态逻辑、直觉逻辑、线性逻辑、类型理论、证明论、模型论、计算逻辑
 - **状态**: ✅ 已完成
 
 #### 1.2 数学基础 / Mathematical Foundations
 
-- **路径**: `docs/01-foundations/02-mathematical-foundations/README.md`
+- **路径**: `docs/01-foundations/01.2-数学基础/README.md`
 - **内容**: 集合论、代数、拓扑学、微分几何、概率论、统计学、信息论、优化理论
 - **状态**: ✅ 已完成
 
 #### 1.3 计算理论 / Computation Theory
 
-- **路径**: `docs/01-foundations/03-computation-theory/README.md`
+- **路径**: `docs/01-foundations/01.3-计算理论/README.md`
 - **内容**: 自动机理论、可计算性理论、复杂性理论、算法分析、并行计算、量子计算
 - **状态**: ✅ 已完成
 
 #### 1.4 认知科学 / Cognitive Science
 
-- **路径**: `docs/01-foundations/04-cognitive-science/README.md`
+- **路径**: `docs/01-foundations/01.4-认知科学/README.md`
 - **内容**: 认知架构、记忆模型、注意力机制、学习理论、决策理论
 - **状态**: ✅ 已完成
 
@@ -80,25 +80,25 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 2.1 统计学习理论 / Statistical Learning Theory
 
-- **路径**: `docs/02-machine-learning/01-statistical-learning-theory/README.md`
+- **路径**: `docs/02-machine-learning/02.1-统计学习理论/README.md`
 - **内容**: 学习问题形式化、经验风险最小化、VC维、Rademacher复杂度、稳定性理论、信息论方法、在线学习、多任务学习、迁移学习、对抗鲁棒性
 - **状态**: ✅ 已完成
 
 #### 2.2 深度学习理论 / Deep Learning Theory
 
-- **路径**: `docs/02-machine-learning/02-deep-learning-theory/README.md`
+- **路径**: `docs/02-machine-learning/02.2-深度学习理论/README.md`
 - **内容**: 神经网络表达能力、优化理论、损失景观、初始化理论、正则化理论、残差网络理论、注意力机制理论、图神经网络理论、生成对抗网络理论、强化学习理论
 - **状态**: ✅ 已完成
 
 #### 2.3 强化学习理论 / Reinforcement Learning Theory
 
-- **路径**: `docs/02-machine-learning/03-reinforcement-learning-theory/README.md`
+- **路径**: `docs/02-machine-learning/02.3-强化学习理论/README.md`
 - **内容**: 马尔可夫决策过程、动态规划、蒙特卡洛方法、时序差分学习、Q学习、策略梯度方法、Actor-Critic方法、深度强化学习、多智能体强化学习、元强化学习
 - **状态**: ✅ 已完成
 
 #### 2.4 因果推理理论 / Causal Inference Theory
 
-- **路径**: `docs/02-machine-learning/04-causal-inference/README.md`
+- **路径**: `docs/02-machine-learning/02.4-因果推理/README.md`
 - **内容**: 因果图模型、结构因果模型、因果发现、因果效应估计、因果机器学习
 - **状态**: ✅ 已完成
 
@@ -106,25 +106,25 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 3.1 形式化验证 / Formal Verification
 
-- **路径**: `docs/03-formal-methods/01-formal-verification/README.md`
+- **路径**: `docs/03-formal-methods/03.1-形式化验证/README.md`
 - **内容**: 模型检测、定理证明、抽象解释、类型系统、程序逻辑、符号执行、静态分析、契约验证、时序逻辑、验证工具
 - **状态**: ✅ 已完成
 
 #### 3.2 程序合成 / Program Synthesis
 
-- **路径**: `docs/03-formal-methods/02-program-synthesis/README.md`
+- **路径**: `docs/03-formal-methods/03.2-程序综合/README.md`
 - **内容**: 语法引导合成、类型引导合成、约束引导合成、机器学习合成、神经程序合成
 - **状态**: ✅ 已完成
 
 #### 3.3 类型理论 / Type Theory
 
-- **路径**: `docs/03-formal-methods/03-type-theory/README.md`
+- **路径**: `docs/03-formal-methods/03.3-类型理论/README.md`
 - **内容**: 简单类型理论、依赖类型理论、同伦类型理论、类型系统设计、类型安全
 - **状态**: ✅ 已完成
 
 #### 3.4 证明系统 / Proof Systems
 
-- **路径**: `docs/03-formal-methods/04-proof-systems/README.md`
+- **路径**: `docs/03-formal-methods/03.4-证明系统/README.md`
 - **内容**: 自然演绎、序列演算、证明搜索、证明检查、交互式定理证明
 - **状态**: ✅ 已完成
 
@@ -132,31 +132,31 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 4.1 大语言模型理论 / Large Language Model Theory
 
-- **路径**: `docs/04-language-models/01-large-language-models/README.md`
+- **路径**: `docs/04-language-models/04.1-大型语言模型/README.md`
 - **内容**: 预训练目标、涌现能力、缩放定律、注意力机制理论、位置编码、上下文学习、思维链推理、对齐理论、多模态扩展、安全与鲁棒性
 - **状态**: ✅ 已完成
 
 #### 4.2 形式化语义 / Formal Semantics
 
-- **路径**: `docs/04-language-models/02-formal-semantics/README.md`
+- **路径**: `docs/04-language-models/04.2-形式语义/README.md`
 - **内容**: 蒙塔古语法、动态语义、分布语义、神经语义、多模态语义
 - **状态**: ✅ 已完成
 
 #### 4.3 知识表示 / Knowledge Representation
 
-- **路径**: `docs/04-language-models/03-knowledge-representation/README.md`
+- **路径**: `docs/04-language-models/04.3-知识表示/README.md`
 - **内容**: 语义网络、框架理论、描述逻辑、本体论、知识图谱、神经知识表示
 - **状态**: ✅ 已完成
 
 #### 4.4 推理机制 / Reasoning Mechanisms
 
-- **路径**: `docs/04-language-models/04-reasoning-mechanisms/README.md`
+- **路径**: `docs/04-language-models/04.4-推理机制/README.md`
 - **内容**: 逻辑推理、概率推理、因果推理、类比推理、反事实推理
 - **状态**: ✅ 已完成
 
 #### 4.5 AI智能体理论 / AI Agent Theory
 
-- **路径**: `docs/04-language-models/05-ai-agents/README.md`
+- **路径**: `docs/04-language-models/04.5-AI代理/README.md`
 - **内容**: 自主智能体、工具使用、多智能体协作、自主推理、Agent生态系统
 - **状态**: ✅ 已完成
 
@@ -164,19 +164,19 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 5.1 视觉-语言模型 / Vision-Language Models
 
-- **路径**: `docs/05-multimodal-ai/01-vision-language-models/README.md`
+- **路径**: `docs/05-multimodal-ai/05.1-视觉语言模型/README.md`
 - **内容**: 视觉编码、语言编码、跨模态对齐、多模态融合、视觉问答、图像描述
 - **状态**: ✅ 已完成
 
 #### 5.2 多模态融合 / Multimodal Fusion
 
-- **路径**: `docs/05-multimodal-ai/02-multimodal-fusion/README.md`
+- **路径**: `docs/05-multimodal-ai/05.2-多模态融合/README.md`
 - **内容**: 早期融合、晚期融合、注意力融合、层次融合、动态融合
 - **状态**: ✅ 已完成
 
 #### 5.3 跨模态推理 / Cross-Modal Reasoning
 
-- **路径**: `docs/05-multimodal-ai/03-cross-modal-reasoning/README.md`
+- **路径**: `docs/05-multimodal-ai/05.3-跨模态推理/README.md`
 - **内容**: 跨模态检索、跨模态生成、跨模态理解、跨模态推理
 - **状态**: ✅ 已完成
 
@@ -184,19 +184,19 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 6.1 可解释性理论 / Interpretability Theory
 
-- **路径**: `docs/06-interpretable-ai/01-interpretability-theory/README.md`
+- **路径**: `docs/06-interpretable-ai/06.1-可解释性理论/README.md`
 - **内容**: 可解释性定义、可解释性度量、可解释性方法、可解释性评估
 - **状态**: ✅ 已完成
 
 #### 6.2 公平性与偏见 / Fairness and Bias
 
-- **路径**: `docs/06-interpretable-ai/02-fairness-bias/README.md`
+- **路径**: `docs/06-interpretable-ai/06.2-公平性与偏见/README.md`
 - **内容**: 公平性定义、偏见检测、去偏见方法、公平性评估
 - **状态**: ✅ 已完成
 
 #### 6.3 鲁棒性理论 / Robustness Theory
 
-- **路径**: `docs/06-interpretable-ai/03-robustness-theory/README.md`
+- **路径**: `docs/06-interpretable-ai/06.3-鲁棒性理论/README.md`
 - **内容**: 对抗鲁棒性、分布偏移、不确定性量化、鲁棒性评估
 - **状态**: ✅ 已完成
 
@@ -204,19 +204,19 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 7.1 对齐理论 / Alignment Theory
 
-- **路径**: `docs/07-alignment-safety/01-alignment-theory/README.md`
+- **路径**: `docs/07-alignment-safety/07.1-对齐理论/README.md`
 - **内容**: 价值学习、强化学习对齐、可解释性对齐、鲁棒性对齐、多智能体对齐
 - **状态**: ✅ 已完成
 
 #### 7.2 价值学习 / Value Learning
 
-- **路径**: `docs/07-alignment-safety/02-value-learning/README.md`
+- **路径**: `docs/07-alignment-safety/07.2-价值学习/README.md`
 - **内容**: 偏好学习、奖励建模、价值函数逼近、价值不确定性
 - **状态**: ✅ 已完成
 
 #### 7.3 安全机制 / Safety Mechanisms
 
-- **路径**: `docs/07-alignment-safety/03-safety-mechanisms/README.md`
+- **路径**: `docs/07-alignment-safety/07.3-安全机制/README.md`
 - **内容**: 安全约束、安全监控、安全干预、安全评估
 - **状态**: ✅ 已完成
 
@@ -224,19 +224,19 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 8.1 涌现理论 / Emergence Theory
 
-- **路径**: `docs/08-emergence-complexity/01-emergence-theory/README.md`
+- **路径**: `docs/08-emergence-complexity/08.1-涌现理论/README.md`
 - **内容**: 涌现定义、涌现检测、涌现能力、涌现预测、涌现控制
 - **状态**: ✅ 已完成
 
 #### 8.2 复杂系统 / Complex Systems
 
-- **路径**: `docs/08-emergence-complexity/02-complex-systems/README.md`
+- **路径**: `docs/08-emergence-complexity/08.2-复杂系统/README.md`
 - **内容**: 系统动力学、网络理论、自组织、临界现象、相变理论
 - **状态**: ✅ 已完成
 
 #### 8.3 自组织 / Self-Organization
 
-- **路径**: `docs/08-emergence-complexity/03-self-organization/README.md`
+- **路径**: `docs/08-emergence-complexity/08.3-自组织/README.md`
 - **内容**: 自组织机制、涌现模式、集体行为、适应性系统
 - **状态**: ✅ 已完成
 
@@ -244,19 +244,19 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 9.1 AI哲学 / AI Philosophy
 
-- **路径**: `docs/09-philosophy-ethics/01-ai-philosophy/README.md`
+- **路径**: `docs/09-philosophy-ethics/09.1-AI哲学/README.md`
 - **内容**: 智能的本质、意识问题、图灵测试、中文房间论证、存在与本体论
 - **状态**: ✅ 已完成
 
 #### 9.2 意识理论 / Consciousness Theory
 
-- **路径**: `docs/09-philosophy-ethics/02-consciousness-theory/README.md`
+- **路径**: `docs/09-philosophy-ethics/09.2-意识理论/README.md`
 - **内容**: 意识理论、机器意识、意识测量、意识建模
 - **状态**: ✅ 已完成
 
 #### 9.3 伦理框架 / Ethical Frameworks
 
-- **路径**: `docs/09-philosophy-ethics/03-ethical-frameworks/README.md`
+- **路径**: `docs/09-philosophy-ethics/09.3-伦理框架/README.md`
 - **内容**: 功利主义、义务论、美德伦理学、AI伦理学、伦理决策
 - **状态**: ✅ 已完成
 
@@ -373,7 +373,7 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 10.1 具身智能理论 / Embodied Intelligence Theory
 
-- **路径**: `docs/10-embodied-ai/01-embodied-intelligence/README.md`
+- **路径**: `docs/10-embodied-ai/10.1-具身智能/README.md`
 - **内容**: 物理具身性、感知-行动循环、环境交互、具身认知、机器人学、多模态感知
 - **状态**: ✅ 已完成
 
@@ -381,7 +381,7 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 11.1 联邦学习理论 / Federated Learning Theory
 
-- **路径**: `docs/11-edge-ai/01-federated-learning/README.md`
+- **路径**: `docs/11-edge-ai/11.1-联邦学习/README.md`
 - **内容**: 隐私保护、通信效率、模型聚合、差分隐私、个性化联邦学习、异步训练
 - **状态**: ✅ 已完成
 
@@ -389,7 +389,7 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 12.1 量子机器学习理论 / Quantum Machine Learning Theory
 
-- **路径**: `docs/12-quantum-ai/01-quantum-machine-learning/README.md`
+- **路径**: `docs/12-quantum-ai/12.1-量子机器学习/README.md`
 - **内容**: 量子算法、量子神经网络、量子优化、量子纠错、量子优势、量子-经典混合算法
 - **状态**: ✅ 已完成
 
@@ -397,7 +397,7 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 13.1 神经符号AI理论 / Neural-Symbolic AI Theory
 
-- **路径**: `docs/13-neural-symbolic/01-neural-symbolic-ai/README.md`
+- **路径**: `docs/13-neural-symbolic/13.1-神经符号AI/README.md`
 - **内容**: 知识图谱、逻辑推理、神经符号融合、程序合成、可解释AI、因果推理
 - **状态**: ✅ 已完成
 
@@ -405,7 +405,7 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 14.1 可持续AI理论 / Sustainable AI Theory
 
-- **路径**: `docs/14-green-ai/01-sustainable-ai/README.md`
+- **路径**: `docs/14-green-ai/14.1-可持续AI/README.md`
 - **内容**: 绿色计算、碳足迹优化、公平性保证、模型压缩、节能算法、可持续机器学习
 - **状态**: ✅ 已完成
 
@@ -413,7 +413,7 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 
 #### 15.1 元学习理论 / Meta-Learning Theory
 
-- **路径**: `docs/15-meta-learning/01-meta-learning-theory/README.md`
+- **路径**: `docs/15-meta-learning/15.1-元学习理论/README.md`
 - **内容**: 少样本学习、迁移学习、神经架构搜索、MAML、原型网络、元强化学习
 - **状态**: ✅ 已完成
 
