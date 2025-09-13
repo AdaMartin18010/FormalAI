@@ -128,7 +128,7 @@ Le raisonnement est le processus logique de dérivation de conclusions à partir
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
 - [4.2 形式化语义](../04.2-形式语义/README.md) - 提供语义基础 / Provides semantic foundation
-- [4.3 知识表示](03-knowledge-representation/README.md) - 提供知识基础 / Provides knowledge foundation
+- [4.3 知识表示](../04.3-知识表示/README.md) - 提供知识基础 / Provides knowledge foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
