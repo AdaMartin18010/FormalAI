@@ -240,11 +240,11 @@ stability_eval:
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [5.1 视觉-语言模型](01-vision-language-models/README.md) - 提供模型基础 / Provides model foundation
+- [5.1 视觉-语言模型](../05.1-视觉语言模型/README.md) - 提供模型基础 / Provides model foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [5.3 跨模态推理](03-cross-modal-reasoning/README.md) - 提供融合基础 / Provides fusion foundation
+- [5.3 跨模态推理](../05.3-跨模态推理/README.md) - 提供融合基础 / Provides fusion foundation
 
 ---
 

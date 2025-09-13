@@ -51,12 +51,12 @@ La cognition est le processus mental de traitement d'information, d'acquisition 
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑基础](../01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
+- [1.1 形式化逻辑基础](../01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [9.1 AI哲学](../../09-philosophy-ethics/01-ai-philosophy/README.md) - 提供认知基础 / Provides cognitive foundation
-- [9.2 意识理论](../../09-philosophy-ethics/02-consciousness-theory/README.md) - 提供意识基础 / Provides consciousness foundation
+- [9.1 AI哲学](../../09-philosophy-ethics/09.1-AI哲学/README.md) - 提供认知基础 / Provides cognitive foundation
+- [9.2 意识理论](../../09-philosophy-ethics/09.2-意识理论/README.md) - 提供意识基础 / Provides consciousness foundation
 
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 

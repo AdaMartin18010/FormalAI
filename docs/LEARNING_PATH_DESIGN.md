@@ -62,21 +62,21 @@ This document designs progressive learning paths for the FormalAI project, ensur
 **1.2 AI基础概念 / AI Basic Concepts**:
 
 - 学习内容：AI定义、发展历史、应用领域
-- 推荐章节：[1.1 形式化逻辑](../01-foundations/01-formal-logic/README.md)
+- 推荐章节：[1.1 形式化逻辑](../01-foundations/01.1-形式逻辑/README.md)
 - 学习方式：概念理解 + 案例分析
 - 预期时间：2周
 
 **1.3 数学基础 / Mathematical Foundations**:
 
 - 学习内容：线性代数、概率统计、微积分基础
-- 推荐章节：[1.2 数学基础](../01-foundations/02-mathematical-foundations/README.md)
+- 推荐章节：[1.2 数学基础](../01-foundations/01.2-数学基础/README.md)
 - 学习方式：理论学习 + 练习实践
 - 预期时间：4周
 
 **1.4 编程基础 / Programming Basics**:
 
 - 学习内容：Python基础、数据结构、算法思维
-- 推荐章节：[1.3 计算理论](../01-foundations/03-computation-theory/README.md)
+- 推荐章节：[1.3 计算理论](../01-foundations/01.3-计算理论/README.md)
 - 学习方式：编程实践 + 项目练习
 - 预期时间：4周
 
@@ -85,21 +85,21 @@ This document designs progressive learning paths for the FormalAI project, ensur
 **2.1 统计学习理论 / Statistical Learning Theory**:
 
 - 学习内容：监督学习、无监督学习、模型评估
-- 推荐章节：[2.1 统计学习理论](../02-machine-learning/01-statistical-learning-theory/README.md)
+- 推荐章节：[2.1 统计学习理论](../02-machine-learning/02.1-统计学习理论/README.md)
 - 学习方式：理论学习 + 实验验证
 - 预期时间：6周
 
 **2.2 深度学习基础 / Deep Learning Basics**:
 
 - 学习内容：神经网络、反向传播、优化算法
-- 推荐章节：[2.2 深度学习理论](../02-machine-learning/02-deep-learning-theory/README.md)
+- 推荐章节：[2.2 深度学习理论](../02-machine-learning/02.2-深度学习理论/README.md)
 - 学习方式：模型构建 + 训练实践
 - 预期时间：6周
 
 **2.3 实际应用 / Practical Applications**:
 
 - 学习内容：图像分类、文本分析、推荐系统
-- 推荐章节：[4.1 大语言模型理论](../04-language-models/01-large-language-models/README.md)
+- 推荐章节：[4.1 大语言模型理论](../04-language-models/04.1-大型语言模型/README.md)
 - 学习方式：项目实践 + 案例分析
 - 预期时间：4周
 
@@ -145,7 +145,7 @@ This document designs progressive learning paths for the FormalAI project, ensur
 **1.4 多模态AI / Multimodal AI**:
 
 - 学习内容：视觉-语言模型、多模态融合、跨模态推理
-- 推荐章节：[5.1 视觉-语言模型](../05-multimodal-ai/01-vision-language-models/README.md)
+- 推荐章节：[5.1 视觉-语言模型](../05-multimodal-ai/05.1-视觉语言模型/README.md)
 - 学习方式：模型设计 + 系统实现
 - 预期时间：6周
 
@@ -154,21 +154,21 @@ This document designs progressive learning paths for the FormalAI project, ensur
 **2.1 AI安全与对齐 / AI Safety and Alignment**:
 
 - 学习内容：对齐理论、价值学习、安全机制
-- 推荐章节：[7.1 对齐理论](../07-alignment-safety/01-alignment-theory/README.md)
+- 推荐章节：[7.1 对齐理论](../07-alignment-safety/07.1-对齐理论/README.md)
 - 学习方式：理论研究 + 安全评估
 - 预期时间：8周
 
 **2.2 涌现与复杂性 / Emergence and Complexity**:
 
 - 学习内容：涌现理论、复杂系统、自组织
-- 推荐章节：[8.1 涌现理论](../08-emergence-complexity/01-emergence-theory/README.md)
+- 推荐章节：[8.1 涌现理论](../08-emergence-complexity/08.1-涌现理论/README.md)
 - 学习方式：系统分析 + 仿真实验
 - 预期时间：6周
 
 **2.3 哲学与伦理 / Philosophy and Ethics**:
 
 - 学习内容：AI哲学、意识理论、伦理框架
-- 推荐章节：[9.1 AI哲学](../09-philosophy-ethics/01-ai-philosophy/README.md)
+- 推荐章节：[9.1 AI哲学](../09-philosophy-ethics/09.1-AI哲学/README.md)
 - 学习方式：哲学思辨 + 伦理讨论
 - 预期时间：4周
 
@@ -207,7 +207,7 @@ This document designs progressive learning paths for the FormalAI project, ensur
 **1.3 跨学科融合 / Interdisciplinary Integration**:
 
 - 学习内容：认知科学、神经科学、复杂系统科学
-- 推荐章节：[1.4 认知科学](../01-foundations/04-cognitive-science/README.md)
+- 推荐章节：[1.4 认知科学](../01-foundations/01.4-认知科学/README.md)
 - 学习方式：跨学科研究 + 理论整合
 - 预期时间：8周
 

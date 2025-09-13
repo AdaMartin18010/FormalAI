@@ -63,11 +63,11 @@ pub fn logistic_iter(x0: f32, r: f32, steps: usize) -> Vec<f32> {
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [8.1 涌现理论](01-emergence-theory/README.md) - 提供涌现基础 / Provides emergence foundation
+- [8.1 涌现理论](../08.1-涌现理论/README.md) - 提供涌现基础 / Provides emergence foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [8.3 自组织理论](03-self-organization/README.md) - 提供系统基础 / Provides system foundation
+- [8.3 自组织理论](../08.3-自组织/README.md) - 提供系统基础 / Provides system foundation
 
 ---
 

@@ -160,7 +160,7 @@ La représentation des connaissances est la description formelle des connaissanc
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [4.2 形式化语义](02-formal-semantics/README.md) - 提供语义基础 / Provides semantic foundation
+- [4.2 形式化语义](../04.2-形式语义/README.md) - 提供语义基础 / Provides semantic foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 

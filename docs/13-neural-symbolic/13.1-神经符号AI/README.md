@@ -51,14 +51,14 @@ L'IA neuronale-symbolique est un paradigme d'IA qui combine les capacités d'app
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑](../../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
-- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供神经网络基础 / Provides neural network foundation
+- [1.1 形式化逻辑](../../01-foundations/01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
+- [2.2 深度学习理论](../../02-machine-learning/02.2-深度学习理论/README.md) - 提供神经网络基础 / Provides neural network foundation
 - [4.3 知识表示](../../04-language-models/03-knowledge-representation/README.md) - 提供知识基础 / Provides knowledge foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
 - [4.4 推理机制](../../04-language-models/04-reasoning-mechanisms/README.md) - 应用神经符号推理 / Applies neural-symbolic reasoning
-- [6.1 可解释性理论](../../06-interpretable-ai/01-interpretability-theory/README.md) - 应用可解释性 / Applies interpretability
+- [6.1 可解释性理论](../../06-interpretable-ai/06.1-可解释性理论/README.md) - 应用可解释性 / Applies interpretability
 - [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用智能体系统 / Applies agent systems
 
 ---

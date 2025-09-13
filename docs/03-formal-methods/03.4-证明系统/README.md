@@ -102,12 +102,12 @@ Proof systems study the construction and verification of formal proofs, providin
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
-- [3.3 类型理论](03-type-theory/README.md) - 提供类型基础 / Provides type foundation
+- [1.1 形式化逻辑基础](../../01-foundations/01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
+- [3.3 类型理论](../03.3-类型理论/README.md) - 提供类型基础 / Provides type foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供证明基础 / Provides proof foundation
+- [6.1 可解释性理论](../../06-interpretable-ai/06.1-可解释性理论/README.md) - 提供证明基础 / Provides proof foundation
 
 ---
 

@@ -51,15 +51,15 @@ L'apprentissage fédéré est un paradigme d'apprentissage automatique distribu�
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.1 统计学习理论](../../02-machine-learning/01-statistical-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
-- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供模型基础 / Provides model foundation
-- [6.2 公平性与偏见理论](../../06-interpretable-ai/02-fairness-bias/README.md) - 提供公平性基础 / Provides fairness foundation
+- [2.1 统计学习理论](../../02-machine-learning/02.1-统计学习理论/README.md) - 提供学习基础 / Provides learning foundation
+- [2.2 深度学习理论](../../02-machine-learning/02.2-深度学习理论/README.md) - 提供模型基础 / Provides model foundation
+- [6.2 公平性与偏见理论](../../06-interpretable-ai/06.2-公平性与偏见/README.md) - 提供公平性基础 / Provides fairness foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
 - [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用联邦学习 / Applies federated learning
-- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 应用隐私保护 / Applies privacy protection
-- [14.1 可持续AI理论](../../14-green-ai/01-sustainable-ai/README.md) - 应用绿色计算 / Applies green computing
+- [7.1 对齐理论](../../07-alignment-safety/07.1-对齐理论/README.md) - 应用隐私保护 / Applies privacy protection
+- [14.1 可持续AI理论](../../14-green-ai/14.1-可持续AI/README.md) - 应用绿色计算 / Applies green computing
 
 ---
 

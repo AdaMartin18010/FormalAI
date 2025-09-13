@@ -71,8 +71,8 @@ Causal inference theory studies how to identify and estimate causal relationship
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
 - [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
-- [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
-- [2.1 统计学习理论](01-statistical-learning-theory/README.md) - 提供统计基础 / Provides statistical foundation
+- [1.1 形式化逻辑基础](../../01-foundations/01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
+- [2.1 统计学习理论](02.1-统计学习理论/README.md) - 提供统计基础 / Provides statistical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 

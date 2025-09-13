@@ -51,15 +51,15 @@ L'apprentissage automatique quantique est un domaine interdisciplinaire qui util
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.3 计算理论](../../01-foundations/03-computation-theory/README.md) - 提供计算基础 / Provides computational foundation
-- [2.1 统计学习理论](../../02-machine-learning/01-statistical-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
-- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供模型基础 / Provides model foundation
+- [1.3 计算理论](../../01-foundations/01.3-计算理论/README.md) - 提供计算基础 / Provides computational foundation
+- [2.1 统计学习理论](../../02-machine-learning/02.1-统计学习理论/README.md) - 提供学习基础 / Provides learning foundation
+- [2.2 深度学习理论](../../02-machine-learning/02.2-深度学习理论/README.md) - 提供模型基础 / Provides model foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
 - [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用量子计算 / Applies quantum computing
-- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 应用量子安全 / Applies quantum security
-- [14.1 可持续AI理论](../../14-green-ai/01-sustainable-ai/README.md) - 应用量子效率 / Applies quantum efficiency
+- [7.1 对齐理论](../../07-alignment-safety/07.1-对齐理论/README.md) - 应用量子安全 / Applies quantum security
+- [14.1 可持续AI理论](../../14-green-ai/14.1-可持续AI/README.md) - 应用量子效率 / Applies quantum efficiency
 
 ---
 

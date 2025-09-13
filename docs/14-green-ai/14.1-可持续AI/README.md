@@ -51,15 +51,15 @@ L'IA durable fait référence aux systèmes d'IA qui considèrent l'impact envir
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.1 统计学习理论](../../02-machine-learning/01-statistical-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
-- [6.2 公平性与偏见理论](../../06-interpretable-ai/02-fairness-bias/README.md) - 提供公平性基础 / Provides fairness foundation
-- [11.1 联邦学习理论](../../11-edge-ai/01-federated-learning/README.md) - 提供分布式基础 / Provides distributed foundation
+- [2.1 统计学习理论](../../02-machine-learning/02.1-统计学习理论/README.md) - 提供学习基础 / Provides learning foundation
+- [6.2 公平性与偏见理论](../../06-interpretable-ai/06.2-公平性与偏见/README.md) - 提供公平性基础 / Provides fairness foundation
+- [11.1 联邦学习理论](../../11-edge-ai/11.1-联邦学习/README.md) - 提供分布式基础 / Provides distributed foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
 - [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用可持续智能体 / Applies sustainable agents
-- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 应用可持续对齐 / Applies sustainable alignment
-- [9.3 伦理框架](../../09-philosophy-ethics/03-ethical-frameworks/README.md) - 应用可持续伦理 / Applies sustainable ethics
+- [7.1 对齐理论](../../07-alignment-safety/07.1-对齐理论/README.md) - 应用可持续对齐 / Applies sustainable alignment
+- [9.3 伦理框架](../../09-philosophy-ethics/09.3-伦理框架/README.md) - 应用可持续伦理 / Applies sustainable ethics
 
 ---
 

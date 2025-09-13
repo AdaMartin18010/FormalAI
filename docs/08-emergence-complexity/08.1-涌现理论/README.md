@@ -85,8 +85,8 @@ L'émergence est des propriétés et comportements collectifs qui émergent dans
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [8.2 复杂系统](02-complex-systems/README.md) - 提供涌现基础 / Provides emergence foundation
-- [8.3 自组织理论](03-self-organization/README.md) - 提供涌现基础 / Provides emergence foundation
+- [8.2 复杂系统](../08.2-复杂系统/README.md) - 提供涌现基础 / Provides emergence foundation
+- [8.3 自组织理论](../08.3-自组织/README.md) - 提供涌现基础 / Provides emergence foundation
 
 ---
 

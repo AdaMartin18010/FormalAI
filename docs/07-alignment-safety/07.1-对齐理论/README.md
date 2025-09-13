@@ -246,14 +246,14 @@ $$\text{Cross-Cultural Alignment} = \text{Cultural Understanding} + \text{Value 
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.3 强化学习理论](../../02-machine-learning/03-reinforcement-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
-- [4.1 大语言模型理论](../../04-language-models/01-large-language-models/README.md) - 提供模型基础 / Provides model foundation
-- [6.2 公平性与偏见理论](../../06-interpretable-ai/02-fairness-bias/README.md) - 提供公平性基础 / Provides fairness foundation
+- [2.3 强化学习理论](../../02-machine-learning/02.3-强化学习理论/README.md) - 提供学习基础 / Provides learning foundation
+- [4.1 大语言模型理论](../../04-language-models/04.1-大型语言模型/README.md) - 提供模型基础 / Provides model foundation
+- [6.2 公平性与偏见理论](../../06-interpretable-ai/06.2-公平性与偏见/README.md) - 提供公平性基础 / Provides fairness foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [7.2 价值学习理论](../02-value-learning/README.md) - 提供对齐基础 / Provides alignment foundation
-- [7.3 安全机制](../03-safety-mechanisms/README.md) - 提供对齐基础 / Provides alignment foundation
+- [7.2 价值学习理论](../07.2-价值学习/README.md) - 提供对齐基础 / Provides alignment foundation
+- [7.3 安全机制](../07.3-安全机制/README.md) - 提供对齐基础 / Provides alignment foundation
 
 ---
 

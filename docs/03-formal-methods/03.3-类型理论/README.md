@@ -73,7 +73,7 @@ Type theory studies the mathematical foundations of type systems, providing theo
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [4.2 形式化语义](../04-language-models/02-formal-semantics/README.md) - 提供类型基础 / Provides type foundation
+- [4.2 形式化语义](../../04-language-models/04.2-形式语义/README.md) - 提供类型基础 / Provides type foundation
 - [3.4 证明系统](04-proof-systems/README.md) - 提供类型基础 / Provides type foundation
 
 ---

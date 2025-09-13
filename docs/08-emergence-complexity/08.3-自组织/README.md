@@ -58,12 +58,12 @@ Self-organization theory studies how systems spontaneously form ordered structur
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [8.1 涌现理论](01-emergence-theory/README.md) - 提供涌现基础 / Provides emergence foundation
-- [8.2 复杂系统](02-complex-systems/README.md) - 提供系统基础 / Provides system foundation
+- [8.1 涌现理论](../08.1-涌现理论/README.md) - 提供涌现基础 / Provides emergence foundation
+- [8.2 复杂系统](../08.2-复杂系统/README.md) - 提供系统基础 / Provides system foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [9.1 AI哲学](../09-philosophy-ethics/01-ai-philosophy/README.md) - 提供组织基础 / Provides organization foundation
+- [9.1 AI哲学](../../09-philosophy-ethics/09.1-AI哲学/README.md) - 提供组织基础 / Provides organization foundation
 
 ---
 

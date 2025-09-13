@@ -72,7 +72,7 @@ Statistical learning theory provides mathematical foundations for machine learni
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
 - [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
-- [1.2 数学基础](../../01-foundations/02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
+- [1.2 数学基础](../../01-foundations/01.2-数学基础/README.md) - 提供数学基础 / Provides mathematical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 

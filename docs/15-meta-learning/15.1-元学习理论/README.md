@@ -51,15 +51,15 @@ Le méta-apprentissage est une branche de l'apprentissage automatique qui se con
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.1 统计学习理论](../../02-machine-learning/01-statistical-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
-- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供模型基础 / Provides model foundation
-- [2.3 强化学习理论](../../02-machine-learning/03-reinforcement-learning-theory/README.md) - 提供强化学习基础 / Provides reinforcement learning foundation
+- [2.1 统计学习理论](../../02-machine-learning/02.1-统计学习理论/README.md) - 提供学习基础 / Provides learning foundation
+- [2.2 深度学习理论](../../02-machine-learning/02.2-深度学习理论/README.md) - 提供模型基础 / Provides model foundation
+- [2.3 强化学习理论](../../02-machine-learning/02.3-强化学习理论/README.md) - 提供强化学习基础 / Provides reinforcement learning foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
 - [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用元学习智能体 / Applies meta-learning agents
-- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 应用元学习对齐 / Applies meta-learning alignment
-- [10.1 具身智能理论](../../10-embodied-ai/01-embodied-intelligence/README.md) - 应用元学习具身 / Applies meta-learning embodiment
+- [7.1 对齐理论](../../07-alignment-safety/07.1-对齐理论/README.md) - 应用元学习对齐 / Applies meta-learning alignment
+- [10.1 具身智能理论](../../10-embodied-ai/10.1-具身智能/README.md) - 应用元学习具身 / Applies meta-learning embodiment
 
 ---
 

@@ -256,13 +256,13 @@ $$\text{Deep Understanding} = \text{Surface Features} + \text{Semantic Relations
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供神经网络基础 / Provides neural network foundation
-- [4.1 大语言模型理论](../../04-language-models/01-large-language-models/README.md) - 提供语言基础 / Provides language foundation
+- [2.2 深度学习理论](../../02-machine-learning/02.2-深度学习理论/README.md) - 提供神经网络基础 / Provides neural network foundation
+- [4.1 大语言模型理论](../../04-language-models/04.1-大型语言模型/README.md) - 提供语言基础 / Provides language foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [5.2 多模态融合](../02-multimodal-fusion/README.md) - 提供模型基础 / Provides model foundation
-- [5.3 跨模态推理](../03-cross-modal-reasoning/README.md) - 提供对齐基础 / Provides alignment foundation
+- [5.2 多模态融合](../05.2-多模态融合/README.md) - 提供模型基础 / Provides model foundation
+- [5.3 跨模态推理](../05.3-跨模态推理/README.md) - 提供对齐基础 / Provides alignment foundation
 
 ---
 

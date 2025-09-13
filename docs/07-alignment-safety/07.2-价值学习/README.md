@@ -77,12 +77,12 @@ pub fn logprob_traj(rewards: &[f32], tau: f32) -> f32 {
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.3 强化学习理论](../02-machine-learning/03-reinforcement-learning-theory/README.md) - 提供学习基础 / Provides learning foundation
-- [7.1 对齐理论](01-alignment-theory/README.md) - 提供对齐基础 / Provides alignment foundation
+- [2.3 强化学习理论](../../02-machine-learning/02.3-强化学习理论/README.md) - 提供学习基础 / Provides learning foundation
+- [7.1 对齐理论](07.1-对齐理论/README.md) - 提供对齐基础 / Provides alignment foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [9.3 伦理框架](../09-philosophy-ethics/03-ethical-frameworks/README.md) - 提供价值基础 / Provides value foundation
+- [9.3 伦理框架](../../09-philosophy-ethics/09.3-伦理框架/README.md) - 提供价值基础 / Provides value foundation
 
 ---
 

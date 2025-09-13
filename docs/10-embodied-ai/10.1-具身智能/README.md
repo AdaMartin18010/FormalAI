@@ -51,15 +51,15 @@ L'intelligence incarnée fait référence aux systèmes intelligents avec des co
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.4 认知科学](../../01-foundations/04-cognitive-science/README.md) - 提供认知基础 / Provides cognitive foundation
-- [5.1 视觉-语言模型](../../05-multimodal-ai/01-vision-language-models/README.md) - 提供多模态基础 / Provides multimodal foundation
-- [8.1 涌现理论](../../08-emergence-complexity/01-emergence-theory/README.md) - 提供涌现基础 / Provides emergence foundation
+- [1.4 认知科学](../../01-foundations/01.4-认知科学/README.md) - 提供认知基础 / Provides cognitive foundation
+- [5.1 视觉-语言模型](../../05-multimodal-ai/05.1-视觉语言模型/README.md) - 提供多模态基础 / Provides multimodal foundation
+- [8.1 涌现理论](../../08-emergence-complexity/08.1-涌现理论/README.md) - 提供涌现基础 / Provides emergence foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
 - [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用具身智能 / Applies embodied intelligence
-- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 应用安全对齐 / Applies safety alignment
-- [9.1 AI哲学](../../09-philosophy-ethics/01-ai-philosophy/README.md) - 应用哲学思考 / Applies philosophical thinking
+- [7.1 对齐理论](../../07-alignment-safety/07.1-对齐理论/README.md) - 应用安全对齐 / Applies safety alignment
+- [9.1 AI哲学](../../09-philosophy-ethics/09.1-AI哲学/README.md) - 应用哲学思考 / Applies philosophical thinking
 
 ---
 

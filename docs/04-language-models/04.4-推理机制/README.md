@@ -127,13 +127,13 @@ Le raisonnement est le processus logique de dérivation de conclusions à partir
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [4.2 形式化语义](02-formal-semantics/README.md) - 提供语义基础 / Provides semantic foundation
+- [4.2 形式化语义](../04.2-形式语义/README.md) - 提供语义基础 / Provides semantic foundation
 - [4.3 知识表示](03-knowledge-representation/README.md) - 提供知识基础 / Provides knowledge foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [5.3 跨模态推理](../05-multimodal-ai/03-cross-modal-reasoning/README.md) - 提供推理基础 / Provides reasoning foundation
-- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供推理基础 / Provides reasoning foundation
+- [5.3 跨模态推理](../../05-multimodal-ai/05.3-跨模态推理/README.md) - 提供推理基础 / Provides reasoning foundation
+- [6.1 可解释性理论](../../06-interpretable-ai/06.1-可解释性理论/README.md) - 提供推理基础 / Provides reasoning foundation
 
 ---
 

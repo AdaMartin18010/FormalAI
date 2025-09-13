@@ -182,12 +182,12 @@ fn msg_passing(h: &Vec<Vec<f32>>, adj: &Vec<Vec<usize>>, w: f32) -> Vec<Vec<f32>
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
 - [4.4 推理机制](../04-language-models/04-reasoning-mechanisms/README.md) - 提供推理基础 / Provides reasoning foundation
-- [5.1 视觉-语言模型](01-vision-language-models/README.md) - 提供对齐基础 / Provides alignment foundation
-- [5.2 多模态融合](02-multimodal-fusion/README.md) - 提供融合基础 / Provides fusion foundation
+- [5.1 视觉-语言模型](../05.1-视觉语言模型/README.md) - 提供对齐基础 / Provides alignment foundation
+- [5.2 多模态融合](../05.2-多模态融合/README.md) - 提供融合基础 / Provides fusion foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [6.1 可解释性理论](../06-interpretable-ai/01-interpretability-theory/README.md) - 提供推理基础 / Provides reasoning foundation
+- [6.1 可解释性理论](../../06-interpretable-ai/06.1-可解释性理论/README.md) - 提供推理基础 / Provides reasoning foundation
 
 ---
 

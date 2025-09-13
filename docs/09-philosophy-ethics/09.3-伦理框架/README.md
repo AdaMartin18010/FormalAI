@@ -76,10 +76,10 @@ pub fn ethical_score(ws: &[f32], us: &[f32]) -> f32 {
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [7.2 价值学习理论](../07-alignment-safety/02-value-learning/README.md) - 提供价值基础 / Provides value foundation
-- [7.3 安全机制](../07-alignment-safety/03-safety-mechanisms/README.md) - 提供安全基础 / Provides safety foundation
-- [9.1 AI哲学](01-ai-philosophy/README.md) - 提供哲学基础 / Provides philosophical foundation
-- [9.2 意识理论](02-consciousness-theory/README.md) - 提供意识基础 / Provides consciousness foundation
+- [7.2 价值学习理论](../../07-alignment-safety/07.2-价值学习/README.md) - 提供价值基础 / Provides value foundation
+- [7.3 安全机制](../../07-alignment-safety/07.3-安全机制/README.md) - 提供安全基础 / Provides safety foundation
+- [9.1 AI哲学](../09.1-AI哲学/README.md) - 提供哲学基础 / Provides philosophical foundation
+- [9.2 意识理论](../09.2-意识理论/README.md) - 提供意识基础 / Provides consciousness foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 

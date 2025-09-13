@@ -97,8 +97,8 @@ Formal semantics studies the formal representation and semantic interpretation o
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑基础](../01-foundations/01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
-- [3.3 类型理论](../03-formal-methods/03-type-theory/README.md) - 提供类型基础 / Provides type foundation
+- [1.1 形式化逻辑基础](../../01-foundations/01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
+- [3.3 类型理论](../../03-formal-methods/03.3-类型理论/README.md) - 提供类型基础 / Provides type foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 

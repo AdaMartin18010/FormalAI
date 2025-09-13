@@ -46,13 +46,13 @@ AI philosophy studies fundamental questions about the nature of artificial intel
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.4 认知科学](../01-foundations/04-cognitive-science/README.md) - 提供认知基础 / Provides cognitive foundation
-- [8.3 自组织理论](../08-emergence-complexity/03-self-organization/README.md) - 提供组织基础 / Provides organization foundation
+- [1.4 认知科学](../../01-foundations/01.4-认知科学/README.md) - 提供认知基础 / Provides cognitive foundation
+- [8.3 自组织理论](../../08-emergence-complexity/08.3-自组织/README.md) - 提供组织基础 / Provides organization foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [9.2 意识理论](02-consciousness-theory/README.md) - 提供哲学基础 / Provides philosophical foundation
-- [9.3 伦理框架](03-ethical-frameworks/README.md) - 提供哲学基础 / Provides philosophical foundation
+- [9.2 意识理论](../09.2-意识理论/README.md) - 提供哲学基础 / Provides philosophical foundation
+- [9.3 伦理框架](../09.3-伦理框架/README.md) - 提供哲学基础 / Provides philosophical foundation
 
 ---
 
