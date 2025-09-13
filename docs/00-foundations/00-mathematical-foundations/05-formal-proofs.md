@@ -930,7 +930,7 @@ main = do
 
 **后续依赖 / Follow-ups:**
 
-- [docs/03-formal-methods/01-formal-verification/README.md](../../03-formal-methods/01-formal-verification/README.md)
+- [docs/03-formal-methods/03.1-形式化验证/README.md](../../03-formal-methods/03.1-形式化验证/README.md)
 
 ## 2024/2025 最新进展 / Latest Updates
 

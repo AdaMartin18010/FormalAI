@@ -150,13 +150,13 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [2.2 深度学习理论](../../02-machine-learning/02-deep-learning-theory/README.md) - 提供模型基础 / Provides model foundation
-- [3.2 程序合成](../../03-formal-methods/02-program-synthesis/README.md) - 提供生成基础 / Provides generation foundation
+- [2.2 深度学习理论](../../02-machine-learning/02.2-深度学习理论/README.md) - 提供模型基础 / Provides model foundation
+- [3.2 程序合成](../../03-formal-methods/03.2-程序综合/README.md) - 提供生成基础 / Provides generation foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [5.1 视觉-语言模型](../../05-multimodal-ai/01-vision-language-models/README.md) - 提供语言基础 / Provides language foundation
-- [7.1 对齐理论](../../07-alignment-safety/01-alignment-theory/README.md) - 提供模型基础 / Provides model foundation
+- [5.1 视觉-语言模型](../../05-multimodal-ai/05.1-视觉语言模型/README.md) - 提供语言基础 / Provides language foundation
+- [7.1 对齐理论](../../07-alignment-safety/07.1-对齐理论/README.md) - 提供模型基础 / Provides model foundation
 
 ---
 

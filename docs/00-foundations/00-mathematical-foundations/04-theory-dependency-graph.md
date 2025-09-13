@@ -545,7 +545,7 @@ graph TD
 
 **后续依赖 / Follow-ups:**
 
-- [docs/01-foundations/01-formal-logic/README.md](../../01-foundations/01-formal-logic/README.md)
+- [docs/01-foundations/01.1-形式逻辑/README.md](../../01-foundations/01.1-形式逻辑/README.md)
 
 ## 2024/2025 最新进展 / Latest Updates
 

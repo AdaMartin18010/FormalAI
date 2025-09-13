@@ -57,7 +57,7 @@ L'intelligence incarnée fait référence aux systèmes intelligents avec des co
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用具身智能 / Applies embodied intelligence
+- [4.5 AI智能体理论](../../04-language-models/04.5-AI代理/README.md) - 应用具身智能 / Applies embodied intelligence
 - [7.1 对齐理论](../../07-alignment-safety/07.1-对齐理论/README.md) - 应用安全对齐 / Applies safety alignment
 - [9.1 AI哲学](../../09-philosophy-ethics/09.1-AI哲学/README.md) - 应用哲学思考 / Applies philosophical thinking
 

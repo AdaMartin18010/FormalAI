@@ -131,7 +131,7 @@ This document designs progressive learning paths for the FormalAI project, ensur
 **1.2 形式化方法 / Formal Methods**:
 
 - 学习内容：形式化验证、程序合成、类型理论
-- 推荐章节：[3.1 形式化验证](../03-formal-methods/01-formal-verification/README.md)
+- 推荐章节：[3.1 形式化验证](../03-formal-methods/03.1-形式化验证/README.md)
 - 学习方式：理论推导 + 形式化证明
 - 预期时间：6周
 

@@ -102,8 +102,8 @@ Formal semantics studies the formal representation and semantic interpretation o
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [4.3 知识表示](03-knowledge-representation/README.md) - 提供语义基础 / Provides semantic foundation
-- [4.4 推理机制](04-reasoning-mechanisms/README.md) - 提供语义基础 / Provides semantic foundation
+- [4.3 知识表示](../04.3-知识表示/README.md) - 提供语义基础 / Provides semantic foundation
+- [4.4 推理机制](../04.4-推理机制/README.md) - 提供语义基础 / Provides semantic foundation
 
 ---
 

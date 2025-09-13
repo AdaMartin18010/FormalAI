@@ -57,7 +57,7 @@ L'IA durable fait référence aux systèmes d'IA qui considèrent l'impact envir
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [4.5 AI智能体理论](../../04-language-models/05-ai-agents/README.md) - 应用可持续智能体 / Applies sustainable agents
+- [4.5 AI智能体理论](../../04-language-models/04.5-AI代理/README.md) - 应用可持续智能体 / Applies sustainable agents
 - [7.1 对齐理论](../../07-alignment-safety/07.1-对齐理论/README.md) - 应用可持续对齐 / Applies sustainable alignment
 - [9.3 伦理框架](../../09-philosophy-ethics/09.3-伦理框架/README.md) - 应用可持续伦理 / Applies sustainable ethics
 

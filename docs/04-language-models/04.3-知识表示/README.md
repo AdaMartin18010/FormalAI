@@ -164,8 +164,8 @@ La représentation des connaissances est la description formelle des connaissanc
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [4.4 推理机制](04-reasoning-mechanisms/README.md) - 提供知识基础 / Provides knowledge foundation
-- [5.3 跨模态推理](../05-multimodal-ai/03-cross-modal-reasoning/README.md) - 提供表示基础 / Provides representation foundation
+- [4.4 推理机制](../04.4-推理机制/README.md) - 提供知识基础 / Provides knowledge foundation
+- [5.3 跨模态推理](../../05-multimodal-ai/05.3-跨模态推理/README.md) - 提供表示基础 / Provides representation foundation
 
 ---
 

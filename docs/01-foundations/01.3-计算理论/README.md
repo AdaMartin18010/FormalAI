@@ -43,13 +43,13 @@ Le calcul est le processus de traitement d'information qui transforme l'entrée 
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.1 形式化逻辑基础](../01-formal-logic/README.md) - 提供逻辑基础 / Provides logical foundation
-- [1.2 数学基础](../02-mathematical-foundations/README.md) - 提供数学基础 / Provides mathematical foundation
+- [1.1 形式化逻辑基础](../01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
+- [1.2 数学基础](../01.2-数学基础/README.md) - 提供数学基础 / Provides mathematical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [3.2 程序合成](../../03-formal-methods/02-program-synthesis/README.md) - 提供计算基础 / Provides computation foundation
-- [4.1 大语言模型理论](../../04-language-models/01-large-language-models/README.md) - 提供复杂度基础 / Provides complexity foundation
+- [3.2 程序合成](../../03-formal-methods/03.2-程序综合/README.md) - 提供计算基础 / Provides computation foundation
+- [4.1 大语言模型理论](../../04-language-models/04.1-大型语言模型/README.md) - 提供复杂度基础 / Provides complexity foundation
 
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 

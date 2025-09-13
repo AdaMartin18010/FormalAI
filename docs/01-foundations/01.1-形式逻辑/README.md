@@ -752,8 +752,8 @@ main = do
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [1.2 数学基础](../02-mathematical-foundations/README.md) - 提供逻辑基础 / Provides logical foundation
-- [3.1 形式化验证](../../03-formal-methods/01-formal-verification/README.md) - 提供逻辑基础 / Provides logical foundation
+- [1.2 数学基础](../01.2-数学基础/README.md) - 提供逻辑基础 / Provides logical foundation
+- [3.1 形式化验证](../../03-formal-methods/03.1-形式化验证/README.md) - 提供逻辑基础 / Provides logical foundation
 
 ---
 

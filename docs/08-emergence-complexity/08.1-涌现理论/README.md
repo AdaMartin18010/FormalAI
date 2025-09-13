@@ -81,7 +81,7 @@ L'émergence est des propriétés et comportements collectifs qui émergent dans
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.4 认知科学](../01-foundations/04-cognitive-science/README.md) - 提供认知基础 / Provides cognitive foundation
+- [1.4 认知科学](../../01-foundations/01.4-认知科学/README.md) - 提供认知基础 / Provides cognitive foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 

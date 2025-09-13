@@ -825,7 +825,7 @@ main = do
 **后续依赖 / Follow-ups:**
 
 - [0.5 形式化证明](05-formal-proofs.md)
-- [docs/01-foundations/01-formal-logic/README.md](../../01-foundations/01-formal-logic/README.md)
+- [docs/01-foundations/01.1-形式逻辑/README.md](../../01-foundations/01.1-形式逻辑/README.md)
 
 ## 2024/2025 最新进展 / Latest Updates
 

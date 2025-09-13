@@ -42,12 +42,12 @@ Consciousness theory studies the nature, characteristics, and mechanisms of cons
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.4 认知科学](../01-foundations/04-cognitive-science/README.md) - 提供认知基础 / Provides cognitive foundation
-- [9.1 AI哲学](01-ai-philosophy/README.md) - 提供哲学基础 / Provides philosophical foundation
+- [1.4 认知科学](../../01-foundations/01.4-认知科学/README.md) - 提供认知基础 / Provides cognitive foundation
+- [9.1 AI哲学](../09.1-AI哲学/README.md) - 提供哲学基础 / Provides philosophical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [9.3 伦理框架](03-ethical-frameworks/README.md) - 提供意识基础 / Provides consciousness foundation
+- [9.3 伦理框架](../09.3-伦理框架/README.md) - 提供意识基础 / Provides consciousness foundation
 
 ---
 

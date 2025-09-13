@@ -69,12 +69,12 @@ Type theory studies the mathematical foundations of type systems, providing theo
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [1.2 数学基础](../01-foundations/02-mathematical-foundations/README.md) - 提供集合论基础 / Provides set theory foundation
+- [1.2 数学基础](../../01-foundations/01.2-数学基础/README.md) - 提供集合论基础 / Provides set theory foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
 - [4.2 形式化语义](../../04-language-models/04.2-形式语义/README.md) - 提供类型基础 / Provides type foundation
-- [3.4 证明系统](04-proof-systems/README.md) - 提供类型基础 / Provides type foundation
+- [3.4 证明系统](../03.4-证明系统/README.md) - 提供类型基础 / Provides type foundation
 
 ---
 
