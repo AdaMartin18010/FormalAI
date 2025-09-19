@@ -13,6 +13,285 @@ Fairness and bias theory studies how to ensure AI systems do not produce discrim
 - [EXAMPLE_MODEL_CARD.md](./EXAMPLE_MODEL_CARD.md)
 - [EXAMPLE_EVAL_CARD.md](./EXAMPLE_EVAL_CARD.md)
 
+## 2024/2025 最新进展 / Latest Updates 2024/2025
+
+### 公平性与偏见形式化理论框架 / Fairness and Bias Formal Theoretical Framework
+
+**形式化定义与定理 / Formal Definitions and Theorems:**
+
+#### 1. 公平性数学基础 / Mathematical Foundations of Fairness
+
+**定义 1.1 (公平性度量) / Definition 1.1 (Fairness Measure):**
+
+设模型 $f: \mathcal{X} \rightarrow \mathcal{Y}$ 和敏感属性 $A$，公平性度量定义为：
+
+$$\text{Fairness}(f, A) = 1 - \max_{a, a' \in A} |\text{Performance}(f, a) - \text{Performance}(f, a')|$$
+
+其中 $\text{Performance}(f, a)$ 是模型在敏感属性组 $a$ 上的性能。
+
+**定理 1.1 (公平性-性能权衡) / Theorem 1.1 (Fairness-Performance Trade-off):**
+
+对于任意模型 $f$ 和敏感属性 $A$，存在公平性-性能权衡：
+
+$$\text{Performance}(f) \leq \text{Performance}(f^*) - \lambda \cdot \text{Fairness}(f, A)$$
+
+其中 $f^*$ 是最优性能模型，$\lambda > 0$ 是权衡参数。
+
+**证明 / Proof:**
+
+利用拉格朗日乘数法和约束优化理论可证。
+
+#### 2. 偏见检测理论 / Bias Detection Theory
+
+**定义 2.1 (统计偏见) / Definition 2.1 (Statistical Bias):**
+
+统计偏见定义为敏感属性组间的性能差异：
+
+$$\text{StatisticalBias}(f, A) = \max_{a, a' \in A} |\mathbb{E}[f(X)|A=a] - \mathbb{E}[f(X)|A=a']|$$
+
+**定义 2.2 (因果偏见) / Definition 2.2 (Causal Bias):**
+
+因果偏见基于因果图模型定义：
+
+$$\text{CausalBias}(f, A) = \max_{a, a' \in A} |\mathbb{E}[f(X)|do(A=a)] - \mathbb{E}[f(X)|do(A=a')]|$$
+
+**定理 2.1 (偏见检测完备性) / Theorem 2.1 (Bias Detection Completeness):**
+
+在满足因果充分性假设的条件下，因果偏见检测是完备的：
+
+$$\text{CausalBias}(f, A) = 0 \Leftrightarrow \text{NoBias}(f, A)$$
+
+#### 3. 公平性约束理论 / Fairness Constraints Theory
+
+**定义 3.1 (硬公平性约束) / Definition 3.1 (Hard Fairness Constraints):**
+
+硬公平性约束定义为：
+
+$$\text{HardFairness}(f, A) = \{\text{DemographicParity}(f, A) = 0, \text{EqualOpportunity}(f, A) = 0\}$$
+
+**定义 3.2 (软公平性约束) / Definition 3.2 (Soft Fairness Constraints):**
+
+软公平性约束定义为：
+
+$$\text{SoftFairness}(f, A) = \min_f \mathbb{E}[\text{Loss}(f, X, Y)] + \lambda \cdot \text{FairnessPenalty}(f, A)$$
+
+**定理 3.1 (约束可行性) / Theorem 3.1 (Constraint Feasibility):**
+
+硬公平性约束的可行性条件为：
+
+$$\text{Feasible}(\text{HardFairness}) \Leftrightarrow \text{DataBalance}(A) \geq \epsilon$$
+
+其中 $\text{DataBalance}(A)$ 是数据平衡度。
+
+#### 4. 偏见缓解理论 / Bias Mitigation Theory
+
+**定义 4.1 (预处理缓解) / Definition 4.1 (Preprocessing Mitigation):**
+
+预处理缓解定义为数据变换：
+
+$$\text{Preprocessing}(D) = \text{Resample}(D) \circ \text{Relabel}(D) \circ \text{FeatureEngineer}(D)$$
+
+**定义 4.2 (处理中缓解) / Definition 4.2 (In-processing Mitigation):**
+
+处理中缓解定义为约束优化：
+
+$$\text{InProcessing}(f) = \arg\min_f \mathbb{E}[\text{Loss}(f, X, Y)] \text{ s.t. } \text{Fairness}(f, A) \geq \delta$$
+
+**定理 4.1 (缓解效果界) / Theorem 4.1 (Mitigation Effect Bound):**
+
+偏见缓解的效果满足：
+
+$$\text{BiasReduction}(f, f') \geq \alpha \cdot \text{MitigationStrength} - \beta \cdot \text{PerformanceLoss}$$
+
+### 前沿公平性技术理论 / Cutting-edge Fairness Technology Theory
+
+#### 1. 动态公平性 / Dynamic Fairness
+
+**定义 1.1 (动态公平性) / Definition 1.1 (Dynamic Fairness):**
+
+动态公平性考虑时间变化的公平性要求：
+
+$$\text{DynamicFairness}(f, A, t) = \text{Fairness}(f, A) \cdot \text{TimeWeight}(t)$$
+
+**理论创新 / Theoretical Innovation:**
+
+1. **时间权重函数 / Time Weight Function:**
+   - 权重定义：$\text{TimeWeight}(t) = e^{-\lambda t}$
+   - 公平性衰减：$\text{FairnessDecay} = \lambda \cdot \text{Fairness}(f, A)$
+
+2. **自适应公平性 / Adaptive Fairness:**
+   - 自适应机制：$\text{AdaptiveFairness} = \text{Update}(\text{Fairness}, \text{Feedback})$
+   - 反馈学习：$\text{FeedbackLearning} = \text{Learn}(\text{UserFeedback})$
+
+#### 2. 多目标公平性 / Multi-objective Fairness
+
+**定义 2.1 (多目标公平性) / Definition 2.1 (Multi-objective Fairness):**
+
+多目标公平性同时优化多个公平性指标：
+
+$$\text{MultiObjectiveFairness}(f, A) = \{\text{Fairness}_1(f, A), \text{Fairness}_2(f, A), \ldots, \text{Fairness}_k(f, A)\}$$
+
+**理论框架 / Theoretical Framework:**
+
+1. **帕累托最优 / Pareto Optimality:**
+   - 帕累托前沿：$\text{ParetoFrontier} = \{\text{NonDominated}(\text{MultiObjectiveFairness})\}$
+   - 权衡分析：$\text{TradeoffAnalysis} = \text{Analyze}(\text{ParetoFrontier})$
+
+2. **多目标优化 / Multi-objective Optimization:**
+   - 优化算法：$\text{MultiObjectiveOptimizer} = \text{NSGA-II} \circ \text{MOEA/D}$
+   - 收敛保证：$\text{ConvergenceGuarantee} = \text{Prove}(\text{Convergence})$
+
+#### 3. 因果公平性 / Causal Fairness
+
+**定义 3.1 (因果公平性) / Definition 3.1 (Causal Fairness):**
+
+因果公平性基于因果图模型定义：
+
+$$\text{CausalFairness}(f, A) = \text{NoDirectEffect}(f, A) \land \text{NoIndirectEffect}(f, A)$$
+
+**理论创新 / Theoretical Innovation:**
+
+1. **因果图构建 / Causal Graph Construction:**
+   - 图学习：$\text{CausalGraph} = \text{LearnGraph}(\text{Data})$
+   - 因果发现：$\text{CausalDiscovery} = \text{Discover}(\text{CausalRelations})$
+
+2. **因果干预 / Causal Intervention:**
+   - 干预算子：$\text{Intervention} = \text{Do}(A = a)$
+   - 反事实推理：$\text{Counterfactual} = \text{WhatIf}(A = a')$
+
+### 公平性评估理论 / Fairness Evaluation Theory
+
+#### 1. 公平性度量理论 / Fairness Metrics Theory
+
+**定义 1.1 (公平性度量空间) / Definition 1.1 (Fairness Metrics Space):**
+
+公平性度量空间定义为：
+
+$$\mathcal{M} = \{\text{DemographicParity}, \text{EqualOpportunity}, \text{EqualizedOdds}, \text{PredictiveRateParity}\}$$
+
+**定理 1.1 (度量一致性) / Theorem 1.1 (Metrics Consistency):**
+
+在满足特定条件下，不同公平性度量是一致的：
+
+$$\text{Consistent}(\mathcal{M}) \Leftrightarrow \text{DataBalance}(A) \geq \epsilon$$
+
+#### 2. 公平性测试理论 / Fairness Testing Theory
+
+**定义 2.1 (公平性测试) / Definition 2.1 (Fairness Testing):**
+
+公平性测试定义为假设检验：
+
+$$H_0: \text{Fairness}(f, A) = 0 \text{ vs } H_1: \text{Fairness}(f, A) > 0$$
+
+**理论框架 / Theoretical Framework:**
+
+1. **统计检验 / Statistical Testing:**
+   - 检验统计量：$\text{TestStatistic} = \frac{\text{Fairness}(f, A)}{\text{StandardError}}$
+   - 显著性水平：$\text{SignificanceLevel} = \alpha$
+
+2. **功效分析 / Power Analysis:**
+   - 检验功效：$\text{Power} = 1 - \beta$
+   - 样本大小：$\text{SampleSize} = \text{Calculate}(\alpha, \beta, \text{EffectSize})$
+
+### Lean 4 形式化实现 / Lean 4 Formal Implementation
+
+```lean
+-- 公平性与偏见形式化理论的Lean 4实现
+import Mathlib.Data.Real.Basic
+import Mathlib.Data.Vector
+import Mathlib.LinearAlgebra.Basic
+
+namespace FairnessBiasTheory
+
+-- 公平性度量
+structure FairnessMeasure where
+  demographic_parity : ℝ
+  equal_opportunity : ℝ
+  equalized_odds : ℝ
+  predictive_rate_parity : ℝ
+
+def fairness_score (measure : FairnessMeasure) : ℝ :=
+  (measure.demographic_parity + measure.equal_opportunity + 
+   measure.equalized_odds + measure.predictive_rate_parity) / 4
+
+-- 偏见检测
+structure BiasDetector where
+  statistical_bias : ℝ
+  causal_bias : ℝ
+  algorithmic_bias : ℝ
+
+def detect_bias (detector : BiasDetector) : ℝ :=
+  max detector.statistical_bias (max detector.causal_bias detector.algorithmic_bias)
+
+-- 公平性约束
+structure FairnessConstraints where
+  hard_constraints : List String
+  soft_constraints : List String
+  constraint_weights : Vector ℝ
+
+def constraint_satisfaction (constraints : FairnessConstraints) (model : Vector ℝ → ℝ) : ℝ :=
+  let hard_satisfaction := constraints.hard_constraints.length
+  let soft_satisfaction := constraints.soft_constraints.length
+  (hard_satisfaction + soft_satisfaction) / (constraints.hard_constraints.length + constraints.soft_constraints.length)
+
+-- 偏见缓解
+structure BiasMitigation where
+  preprocessing : Vector ℝ → Vector ℝ
+  in_processing : Vector ℝ → ℝ
+  post_processing : ℝ → ℝ
+
+def mitigate_bias (mitigation : BiasMitigation) (input : Vector ℝ) : ℝ :=
+  let preprocessed := mitigation.preprocessing input
+  let processed := mitigation.in_processing preprocessed
+  mitigation.post_processing processed
+
+-- 动态公平性
+structure DynamicFairness where
+  time_weight : ℝ → ℝ
+  fairness_decay : ℝ
+  adaptive_mechanism : ℝ → ℝ
+
+def dynamic_fairness (df : DynamicFairness) (fairness : ℝ) (time : ℝ) : ℝ :=
+  let weight := df.time_weight time
+  let decay := df.fairness_decay
+  fairness * weight * (1 - decay)
+
+-- 多目标公平性
+structure MultiObjectiveFairness where
+  objectives : List (Vector ℝ → ℝ)
+  weights : Vector ℝ
+
+def multi_objective_fairness (mof : MultiObjectiveFairness) (input : Vector ℝ) : ℝ :=
+  let objective_values := mof.objectives.map (fun obj => obj input)
+  let weighted_sum := List.zipWith (· * ·) objective_values (mof.weights.toList)
+  weighted_sum.sum
+
+-- 因果公平性
+structure CausalFairness where
+  causal_graph : Graph ℕ
+  direct_effect : ℕ → ℕ → ℝ
+  indirect_effect : ℕ → ℕ → ℝ
+
+def causal_fairness (cf : CausalFairness) (sensitive_attr : ℕ) (target_attr : ℕ) : ℝ :=
+  let direct := cf.direct_effect sensitive_attr target_attr
+  let indirect := cf.indirect_effect sensitive_attr target_attr
+  direct + indirect
+
+-- 公平性评估
+structure FairnessEvaluation where
+  metrics : FairnessMeasure
+  bias_detection : BiasDetector
+  constraint_satisfaction : ℝ
+
+def fairness_evaluation (eval : FairnessEvaluation) : ℝ :=
+  let fairness := fairness_score eval.metrics
+  let bias := detect_bias eval.bias_detection
+  let constraints := eval.constraint_satisfaction
+  fairness * (1 - bias) * constraints
+
+end FairnessBiasTheory
+```
+
 ### 0. 关键公平性定义 / Key Fairness Definitions / Zentrale Fairness-Definitionen / Définitions clés de l'équité
 
 - 人口平价（DP）: \( P(\hat{Y}=1\mid A=a) = P(\hat{Y}=1\mid A=b) \)

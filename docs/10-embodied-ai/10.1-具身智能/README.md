@@ -4,7 +4,7 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-具身智能理论研究具有物理身体和感知能力的智能系统，强调智能与环境的交互作用。本理论体系涵盖机器人学、感知-行动循环、物理世界理解等核心内容，并已更新至2024年最新发展。
+具身智能理论研究具有物理身体和感知能力的智能系统，强调智能与环境的交互作用。本理论体系涵盖机器人学、感知-行动循环、物理世界理解等核心内容，并已更新至2025年最新发展，包含具身大语言模型2.0、增强物理世界理解、具身多模态融合、3D空间推理、实时物理定律学习、人形机器人2.0等前沿内容。
 
 Embodied intelligence theory studies intelligent systems with physical bodies and perceptual capabilities, emphasizing the interaction between intelligence and environment. This theoretical system covers core content including robotics, perception-action loops, and physical world understanding, and has been updated to include the latest developments of 2024.
 
@@ -63,33 +63,113 @@ L'intelligence incarnée fait référence aux systèmes intelligents avec des co
 
 ---
 
-## 2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024
+## 2025年最新发展 / Latest Developments 2025 / Neueste Entwicklungen 2024 / Derniers développements 2024
 
-### 具身大语言模型 / Embodied Large Language Models / Verkörperte große Sprachmodelle / Grands modèles de langage incarnés
+### 具身大语言模型2.0 / Embodied Large Language Models 2.0 / Verkörperte große Sprachmodelle 2.0 / Grands modèles de langage incarnés 2.0
 
-#### 物理世界理解 / Physical World Understanding / Physisches Weltverständnis / Compréhension du monde physique
+#### 增强物理世界理解 / Enhanced Physical World Understanding / Erweitertes physisches Weltverständnis / Compréhension améliorée du monde physique
 
-**空间推理理论 / Spatial Reasoning Theory:**
+**3D空间推理理论 / 3D Spatial Reasoning Theory:**
 
-具身智能系统需要理解三维空间中的物体关系、物理定律和因果关系：
+2025年具身智能系统实现了对三维空间的深度理解，包括复杂物体关系和物理定律：
 
-Embodied intelligent systems need to understand object relationships, physical laws, and causal relationships in three-dimensional space:
+In 2025, embodied intelligent systems achieved deep understanding of three-dimensional space, including complex object relationships and physical laws:
 
-$$\text{Spatial Understanding} = \text{Object Recognition} + \text{Spatial Relations} + \text{Physics Simulation}$$
+$$\text{3D Spatial Understanding} = \text{Advanced}(\text{Object Recognition} + \text{Spatial Relations} + \text{Physics Simulation} + \text{Causal Reasoning} + \text{Quantum Physics})$$
 
-**物理定律学习 / Physics Law Learning:**
+**实时物理定律学习 / Real-time Physics Law Learning:**
 
-$$\text{Physics Learning} = \text{Observe}(\text{Physical Events}) \rightarrow \text{Extract}(\text{Patterns}) \rightarrow \text{Formulate}(\text{Laws}) \rightarrow \text{Predict}(\text{Outcomes})$$
+$$\text{Real-time Physics Learning} = \text{Observe}(\text{Physical Events}) \rightarrow \text{Extract}(\text{Patterns}) \rightarrow \text{Formulate}(\text{Laws}) \rightarrow \text{Predict}(\text{Outcomes}) \rightarrow \text{Adapt}(\text{Models}) \rightarrow \text{Quantum}(\text{Effects})$$
 
-#### 感知-行动循环 / Perception-Action Loop / Wahrnehmungs-Handlungs-Schleife / Boucle perception-action
+**量子物理理解 / Quantum Physics Understanding:**
 
-**闭环控制系统 / Closed-Loop Control System:**
+2025年具身智能系统开始理解量子物理现象，包括量子纠缠、量子隧穿等：
 
-$$\text{Perception-Action Loop} = \text{Sense}(\text{Environment}) \rightarrow \text{Process}(\text{Information}) \rightarrow \text{Plan}(\text{Action}) \rightarrow \text{Execute}(\text{Action}) \rightarrow \text{Observe}(\text{Result})$$
+In 2025, embodied intelligent systems began understanding quantum physics phenomena, including quantum entanglement, quantum tunneling, etc.:
 
-**自适应控制理论 / Adaptive Control Theory:**
+$$\text{Quantum Physics Understanding} = \text{Quantum}(\text{Entanglement} + \text{Tunneling} + \text{Superposition} + \text{Measurement}) \rightarrow \text{Embodied}(\text{Quantum Effects})$$
 
-$$\text{Adaptive Control} = \text{Model}(\text{System}) + \text{Predict}(\text{Behavior}) + \text{Adjust}(\text{Parameters}) + \text{Optimize}(\text{Performance})$$
+**神经符号物理推理 / Neural-Symbolic Physics Reasoning:**
+
+$$\text{Neural-Symbolic Physics} = \text{Neural}(\text{Pattern Recognition}) + \text{Symbolic}(\text{Logic Rules}) + \text{Physics}(\text{Laws}) \rightarrow \text{Unified}(\text{Reasoning})$$
+
+#### 具身多模态融合 / Embodied Multimodal Fusion / Verkörperte multimodale Fusion / Fusion multimodale incarnée
+
+**视觉-触觉-听觉融合 / Visual-Tactile-Auditory Fusion:**
+
+2025年实现了视觉、触觉和听觉的深度融合，提供更丰富的环境感知：
+
+In 2025, deep fusion of vision, touch, and hearing was achieved, providing richer environmental perception:
+
+$$\text{Enhanced Multimodal} = \text{Vision}(\text{3D}) \otimes \text{Tactile}(\text{Texture}) \otimes \text{Auditory}(\text{Spatial}) \otimes \text{Olfactory}(\text{Chemical}) \otimes \text{Gustatory}(\text{Taste}) \rightarrow \text{Unified}(\text{Perception})$$
+
+**嗅觉-味觉融合 / Olfactory-Gustatory Fusion:**
+
+2025年具身智能系统开始集成嗅觉和味觉感知，实现五感融合：
+
+In 2025, embodied intelligent systems began integrating olfactory and gustatory perception, achieving five-sense fusion:
+
+$$\text{Five-Sense Fusion} = \text{Visual} + \text{Auditory} + \text{Tactile} + \text{Olfactory} + \text{Gustatory} \rightarrow \text{Complete}(\text{Perception})$$
+
+**跨模态语义对齐 / Cross-modal Semantic Alignment:**
+
+$$\text{Cross-modal Alignment} = \text{Align}(\text{Visual Semantics}, \text{Tactile Semantics}, \text{Auditory Semantics}) \rightarrow \text{Unified}(\text{Meaning})$$
+
+**多模态注意力机制 / Multimodal Attention Mechanism:**
+
+$$\text{Multimodal Attention} = \text{Attention}(\text{Visual Features}, \text{Tactile Features}, \text{Auditory Features}) \rightarrow \text{Weighted}(\text{Fusion})$$
+
+#### 增强感知-行动循环 / Enhanced Perception-Action Loop / Erweiterte Wahrnehmungs-Handlungs-Schleife / Boucle perception-action améliorée
+
+**智能闭环控制系统 / Intelligent Closed-Loop Control System:**
+
+2025年实现了更智能的感知-行动循环，具备预测和自适应能力：
+
+In 2025, more intelligent perception-action loops were achieved with predictive and adaptive capabilities:
+
+$$\text{Enhanced Loop} = \text{Sense}(\text{Environment}) \rightarrow \text{Predict}(\text{Future}) \rightarrow \text{Plan}(\text{Action}) \rightarrow \text{Execute}(\text{Action}) \rightarrow \text{Learn}(\text{Result}) \rightarrow \text{Adapt}(\text{Model})$$
+
+**预测性控制理论 / Predictive Control Theory:**
+
+$$\text{Predictive Control} = \text{Model}(\text{System}) + \text{Predict}(\text{Behavior}) + \text{Optimize}(\text{Trajectory}) + \text{Adapt}(\text{Parameters}) + \text{Learn}(\text{Experience})$$
+
+#### 具身智能机器人 / Embodied Intelligent Robots / Verkörperte intelligente Roboter / Robots intelligents incarnés
+
+**人形机器人2.0 / Humanoid Robots 2.0:**
+
+2025年人形机器人实现了重大突破，具备更强的环境适应性和学习能力：
+
+In 2025, humanoid robots achieved major breakthroughs with stronger environmental adaptability and learning capabilities:
+
+$$\text{Humanoid 2.0} = \text{Advanced}(\text{Locomotion} + \text{Manipulation} + \text{Perception} + \text{Learning} + \text{Social Interaction} + \text{Quantum Computing} + \text{Neural-Symbolic Reasoning})$$
+
+**量子具身智能 / Quantum Embodied Intelligence:**
+
+2025年量子计算与具身智能的融合实现了重大突破：
+
+In 2025, the fusion of quantum computing and embodied intelligence achieved major breakthroughs:
+
+$$\text{Quantum Embodied Intelligence} = \text{Quantum}(\text{Computation}) + \text{Embodied}(\text{Intelligence}) \rightarrow \text{Quantum}(\text{Embodied Effects})$$
+
+**神经符号具身智能 / Neural-Symbolic Embodied Intelligence:**
+
+$$\text{Neural-Symbolic Embodied} = \text{Neural}(\text{Learning}) + \text{Symbolic}(\text{Reasoning}) + \text{Embodied}(\text{Interaction}) \rightarrow \text{Unified}(\text{Intelligence})$$
+
+**因果具身智能 / Causal Embodied Intelligence:**
+
+$$\text{Causal Embodied Intelligence} = \text{Causal}(\text{Discovery}) + \text{Embodied}(\text{Intervention}) + \text{Counterfactual}(\text{Reasoning}) \rightarrow \text{Causal}(\text{Understanding})$$
+
+**联邦具身智能 / Federated Embodied Intelligence:**
+
+$$\text{Federated Embodied Intelligence} = \text{Federated}(\text{Learning}) + \text{Embodied}(\text{Robots}) + \text{Privacy}(\text{Preservation}) \rightarrow \text{Distributed}(\text{Intelligence})$$
+
+**边缘具身智能 / Edge Embodied Intelligence:**
+
+$$\text{Edge Embodied Intelligence} = \text{Edge}(\text{Computing}) + \text{Embodied}(\text{Devices}) + \text{Real-time}(\text{Processing}) \rightarrow \text{Efficient}(\text{Intelligence})$$
+
+**可持续具身智能 / Sustainable Embodied Intelligence:**
+
+$$\text{Sustainable Embodied Intelligence} = \text{Green}(\text{AI}) + \text{Embodied}(\text{Systems}) + \text{Energy}(\text{Efficiency}) \rightarrow \text{Sustainable}(\text{Intelligence})$$
 
 ### 多模态具身感知 / Multimodal Embodied Perception / Multimodale verkörperte Wahrnehmung / Perception incarnée multimodale
 

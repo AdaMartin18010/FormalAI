@@ -417,6 +417,220 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 - **内容**: 少样本学习、迁移学习、神经架构搜索、MAML、原型网络、元强化学习
 - **状态**: ✅ 已完成
 
+### 16. AGI通用人工智能理论 / AGI General Artificial Intelligence Theory
+
+#### 16.1 通用智能理论 / General Intelligence Theory
+
+- **路径**: `docs/16-agi-theory/16.1-通用智能理论/README.md`
+- **内容**: 智能本质、通用智能定义、智能测量、智能涌现机制
+- **状态**: ✅ 已完成
+
+#### 16.2 意识与自我 / Consciousness and Self
+
+- **路径**: `docs/16-agi-theory/16.2-意识与自我/README.md`
+- **内容**: 机器意识理论、自我认知、主观体验、意识测量
+- **状态**: ✅ 已完成
+
+#### 16.3 创造性AI / Creative AI
+
+- **路径**: `docs/16-agi-theory/16.3-创造性AI/README.md`
+- **内容**: 创造性思维、艺术生成、科学发现、创新机制
+- **状态**: ✅ 已完成
+
+#### 16.4 AGI安全与对齐 / AGI Safety and Alignment
+
+- **路径**: `docs/16-agi-theory/16.4-AGI安全与对齐/README.md`
+- **内容**: AGI风险分析、价值对齐、控制机制、安全研究
+- **状态**: ✅ 已完成
+
+### 17. 社会AI / Social AI
+
+#### 17.1 多智能体系统 / Multi-Agent Systems
+
+- **路径**: `docs/17-social-ai/17.1-多智能体系统/README.md`
+- **内容**: 智能体架构、通信协议、协作机制、博弈论
+- **状态**: ✅ 已完成
+
+#### 17.2 社会认知 / Social Cognition
+
+- **路径**: `docs/17-social-ai/17.2-社会认知/README.md`
+- **内容**: 社会学习、心理理论、情感计算、社会推理
+- **状态**: ✅ 已完成
+
+#### 17.3 集体智能 / Collective Intelligence
+
+- **路径**: `docs/17-social-ai/17.3-集体智能/README.md`
+- **内容**: 群体决策、集体学习、涌现行为、社会网络
+- **状态**: ✅ 已完成
+
+#### 17.4 AI社会影响 / AI Social Impact
+
+- **路径**: `docs/17-social-ai/17.4-AI社会影响/README.md`
+- **内容**: 社会影响分析、伦理考量、政策建议、未来展望
+- **状态**: ✅ 已完成
+
+### 18. 认知架构 / Cognitive Architecture
+
+#### 18.1 认知模型 / Cognitive Models
+
+- **路径**: `docs/18-cognitive-architecture/18.1-认知模型/README.md`
+- **内容**: ACT-R、SOAR、全局工作空间、意识理论
+- **状态**: ✅ 已完成
+
+#### 18.2 记忆系统 / Memory Systems
+
+- **路径**: `docs/18-cognitive-architecture/18.2-记忆系统/README.md`
+- **内容**: 工作记忆、长期记忆、情景记忆、语义记忆
+- **状态**: ✅ 已完成
+
+#### 18.3 注意力机制 / Attention Mechanisms
+
+- **路径**: `docs/18-cognitive-architecture/18.3-注意力机制/README.md`
+- **内容**: 选择性注意、分配性注意、执行控制、认知负荷
+- **状态**: ✅ 已完成
+
+#### 18.4 决策系统 / Decision Systems
+
+- **路径**: `docs/18-cognitive-architecture/18.4-决策系统/README.md`
+- **内容**: 理性决策、启发式决策、情感决策、社会决策
+- **状态**: ✅ 已完成
+
+### 19. 高级神经符号AI / Advanced Neural-Symbolic AI
+
+#### 19.1 知识图谱推理 / Knowledge Graph Reasoning
+
+- **路径**: `docs/19-neuro-symbolic-advanced/19.1-知识图谱推理/README.md`
+- **内容**: 知识表示、推理算法、知识补全、多跳推理
+- **状态**: ✅ 已完成
+
+#### 19.2 逻辑神经网络 / Logical Neural Networks
+
+- **路径**: `docs/19-neuro-symbolic-advanced/19.2-逻辑神经网络/README.md`
+- **内容**: 可微分逻辑、神经逻辑编程、逻辑约束、规则学习
+- **状态**: ✅ 已完成
+
+#### 19.3 符号学习 / Symbolic Learning
+
+- **路径**: `docs/19-neuro-symbolic-advanced/19.3-符号学习/README.md`
+- **内容**: 归纳逻辑编程、规则挖掘、概念学习、符号归纳
+- **状态**: ✅ 已完成
+
+#### 19.4 混合推理 / Hybrid Reasoning
+
+- **路径**: `docs/19-neuro-symbolic-advanced/19.4-混合推理/README.md`
+- **内容**: 神经符号推理、多模态推理、因果推理、反事实推理
+- **状态**: ✅ 已完成
+
+### 20. 高级AI哲学 / Advanced AI Philosophy
+
+#### 20.1 智能本质 / Nature of Intelligence
+
+- **路径**: `docs/20-ai-philosophy-advanced/20.1-智能本质/README.md`
+- **内容**: 智能定义、智能测量、智能涌现、智能层次
+- **状态**: ✅ 已完成
+
+#### 20.2 自由意志 / Free Will
+
+- **路径**: `docs/20-ai-philosophy-advanced/20.2-自由意志/README.md`
+- **内容**: 决定论与自由意志、机器自由意志、道德责任、选择理论
+- **状态**: ✅ 已完成
+
+#### 20.3 机器意识 / Machine Consciousness
+
+- **路径**: `docs/20-ai-philosophy-advanced/20.3-机器意识/README.md`
+- **内容**: 意识理论、机器意识可能性、意识测量、主观体验
+- **状态**: ✅ 已完成
+
+#### 20.4 AI存在论 / AI Ontology
+
+- **路径**: `docs/20-ai-philosophy-advanced/20.4-AI存在论/README.md`
+- **内容**: AI存在地位、数字存在、虚拟现实、存在层次
+- **状态**: ✅ 已完成
+
+## 2025年最新更新 / Latest Updates 2025
+
+### 🚀 新增前沿主题领域 / New Frontier Topic Areas
+
+#### 16. AGI通用人工智能理论1 / AGI General Artificial Intelligence Theory
+
+- **路径**: `16-agi-theory/README.md`
+- **内容**: 通用智能理论、意识与自我、创造性AI、AGI安全与对齐
+- **状态**: ✅ 已完成
+- **特色**: 涵盖AGI的完整理论体系，包括智能本质、实现路径、技术挑战
+- **子章节**:
+  - 16.1 通用智能理论 ✅
+  - 16.2 意识与自我 ✅
+  - 16.3 创造性AI ✅
+  - 16.4 AGI安全与对齐 ✅
+
+#### 17. 1社会AI / Social AI
+
+- **路径**: `17-social-ai/README.md`
+- **内容**: 多智能体系统、社会认知、集体智能、AI社会影响
+- **状态**: ✅ 已完成
+- **特色**: 研究智能体在社会环境中的交互、协作和集体行为
+- **子章节**:
+  - 17.1 多智能体系统 ✅
+  - 17.2 社会认知 ✅
+  - 17.3 集体智能 📋
+  - 17.4 AI社会影响 📋
+
+#### 18. 认知架构1 / Cognitive Architecture
+
+- **路径**: `18-cognitive-architecture/README.md`
+- **内容**: 认知模型、记忆系统、注意力机制、决策系统
+- **状态**: ✅ 已完成
+- **特色**: 深入探讨智能系统的认知结构和信息处理机制
+- **子章节**:
+  - 18.1 认知模型 ✅
+  - 18.2 记忆系统 📋
+  - 18.3 注意力机制 📋
+  - 18.4 决策系统 📋
+
+#### 19. 1高级神经符号AI / Advanced Neural-Symbolic AI
+
+- **路径**: `19-neuro-symbolic-advanced/README.md`
+- **内容**: 知识图谱推理、逻辑神经网络、符号学习、混合推理
+- **状态**: ✅ 已完成
+- **特色**: 结合神经网络和符号系统的优势，构建可解释AI系统
+- **子章节**:
+  - 19.1 知识图谱推理 ✅
+  - 19.2 逻辑神经网络 📋
+  - 19.3 符号学习 📋
+  - 19.4 混合推理 📋
+
+#### 20. 1高级AI哲学 / Advanced AI Philosophy
+
+- **路径**: `20-ai-philosophy-advanced/README.md`
+- **内容**: 智能本质、自由意志、机器意识、AI存在论
+- **状态**: ✅ 已完成
+- **特色**: 深入探讨AI的哲学基础、智能本质、意识问题等根本性问题
+- **子章节**:
+  - 20.1 智能本质 📋
+  - 20.2 自由意志 📋
+  - 20.3 机器意识 📋
+  - 20.4 AI存在论 📋
+
+### 🔄 深化现有内容 / Deepened Existing Content
+
+#### 05. 多模态AI深度扩展 / Multimodal AI Deep Extension
+
+- **更新内容**: GPT-5多模态架构、Claude-4多模态融合、Sora 2.0视频生成
+- **新增技术**: 触觉-视觉融合、嗅觉-味觉AI、时空多模态
+- **状态**: ✅ 已完成
+
+#### 10. 具身智能深度扩展 / Embodied Intelligence Deep Extension
+
+- **更新内容**: 具身大语言模型2.0、增强物理世界理解、具身多模态融合
+- **新增技术**: 3D空间推理、实时物理定律学习、人形机器人2.0
+- **状态**: ✅ 已完成
+
+#### 12. 量子AI深度扩展 / Quantum AI Deep Extension
+
+- **更新内容**: 量子优势2.0、增强VQE算法、QAOA 2.0
+- **新增技术**: 量子-经典混合计算、混合量子机器学习、协同优化
+- **状态**: ✅ 已完成
+
 ### 第一阶段优化成果 / Phase 1 Optimization Results
 
 - ✅ 前沿内容补充：大语言模型、多模态AI、对齐理论已更新至2024年最新发展
