@@ -1,0 +1,36 @@
+{
+  // Markdown 保存时自动格式化配置
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true
+  },
+
+  // 全局编辑器设置
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+
+  // 文件设置
+  "files.eol": "\n",
+  "files.encoding": "utf8",
+  "files.associations": {
+    "*.md": "markdown"
+  },
+
+  // Prettier 配置
+  "prettier.enable": true,
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
+
+  // Markdown 特定设置
+  "markdown.preview.breaks": true,
+  "markdown.preview.linkify": true
+}
+
