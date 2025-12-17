@@ -142,15 +142,15 @@ impl ValueConflictResolver {
     fn resolve_conflicts(&self, values: &[Value]) -> Vec<ResolvedValue> {
         let conflicts = self.conflict_detector.detect_conflicts(values);
         let mut resolved_values = values.to_vec();
-        
+
         for conflict in conflicts {
             let strategy = self.select_resolution_strategy(&conflict);
             resolved_values = strategy.apply(resolved_values, &conflict);
         }
-        
+
         resolved_values
     }
-    
+
     fn select_resolution_strategy(&self, conflict: &ValueConflict) -> &ResolutionStrategy {
         match conflict.conflict_type {
             ConflictType::Priority => &self.resolution_strategies[0],
@@ -188,27 +188,27 @@ impl ValueNetwork {
         let layers = architecture.windows(2)
             .map(|window| Layer::new(window[0], window[1]))
             .collect();
-        
+
         ValueNetwork {
             layers,
             optimizer: Optimizer::new(),
         }
     }
-    
+
     fn forward(&self, state: &State) -> f32 {
         let mut activation = state.to_vector();
-        
+
         for layer in &self.layers {
             activation = layer.forward(&activation);
         }
-        
+
         activation[0]
     }
-    
+
     fn update(&mut self, state: &State, target_value: f32) {
         let prediction = self.forward(state);
         let loss = (target_value - prediction).powi(2);
-        
+
         self.optimizer.backward(&mut self.layers, loss);
     }
 }
@@ -251,18 +251,18 @@ struct ValueAnnotator {
 impl ValueAnnotator {
     fn annotate_values(&self, scenarios: &[Scenario]) -> Vec<ValueAnnotation> {
         let mut annotations = Vec::new();
-        
+
         for scenario in scenarios {
             let human_judgments = self.collect_human_judgments(scenario);
             let consensus = self.annotation_consensus.compute_consensus(&human_judgments);
-            
+
             annotations.push(ValueAnnotation {
                 scenario: scenario.clone(),
                 value_score: consensus.value,
                 confidence: consensus.confidence,
             });
         }
-        
+
         annotations
     }
 }
@@ -313,27 +313,27 @@ impl ValueAlignment {
     fn align_values(&mut self, demonstrations: &[Demonstration], preferences: &[Preference]) -> AlignedPolicy {
         // 训练奖励模型
         self.reward_model.train(demonstrations, preferences);
-        
+
         // 优化策略
         let aligned_policy = self.policy_optimizer.optimize(&self.reward_model);
-        
+
         AlignedPolicy {
             policy: aligned_policy,
             alignment_score: self.evaluate_alignment(&aligned_policy),
         }
     }
-    
+
     fn evaluate_alignment(&self, policy: &Policy) -> f32 {
         let mut alignment_score = 0.0;
         let test_scenarios = self.generate_test_scenarios();
-        
+
         for scenario in test_scenarios {
             let human_preference = self.get_human_preference(&scenario);
             let ai_decision = policy.decide(&scenario);
             let agreement = self.calculate_agreement(human_preference, ai_decision);
             alignment_score += agreement;
         }
-        
+
         alignment_score / test_scenarios.len() as f32
     }
 }
@@ -378,19 +378,19 @@ struct BayesianValueNetwork {
 impl BayesianValueNetwork {
     fn predict_with_uncertainty(&self, state: &State) -> (f32, f32) {
         let mut predictions = Vec::new();
-        
+
         // 多次前向传播
         for _ in 0..100 {
             let weights = self.sample_weights();
             let prediction = self.forward_with_weights(state, &weights);
             predictions.push(prediction);
         }
-        
+
         let mean = predictions.iter().sum::<f32>() / predictions.len() as f32;
         let variance = predictions.iter()
             .map(|p| (p - mean).powi(2))
             .sum::<f32>() / predictions.len() as f32;
-        
+
         (mean, variance.sqrt())
     }
 }
@@ -440,15 +440,15 @@ impl MultiValueSystem {
         let individual_values: Vec<f32> = self.value_functions.iter()
             .map(|vf| vf.evaluate(state))
             .collect();
-        
+
         let combined_value = individual_values.iter()
             .zip(&self.composition_weights)
             .map(|(v, w)| v * w)
             .sum();
-        
+
         combined_value
     }
-    
+
     fn resolve_conflicts(&self, values: &[f32]) -> Vec<f32> {
         self.conflict_resolver.resolve(values)
     }
@@ -517,28 +517,28 @@ impl ValueLearningSystem {
             alignment_monitor: AlignmentMonitor::new(),
         }
     }
-    
+
     fn learn_values(&mut self, demonstrations: &[Demonstration], preferences: &[Preference]) -> LearningResult {
         // 训练价值网络
         self.value_network.train(demonstrations);
-        
+
         // 学习偏好
         self.preference_learner.learn(preferences);
-        
+
         // 评估对齐
         let alignment_score = self.alignment_monitor.evaluate_alignment(&self.value_network);
-        
+
         LearningResult {
             value_network_performance: self.value_network.get_performance(),
             preference_learning_accuracy: self.preference_learner.get_accuracy(),
             alignment_score,
         }
     }
-    
+
     fn make_decision(&self, state: &State) -> Decision {
         let value = self.value_network.predict(state);
         let uncertainty = self.value_network.predict_uncertainty(state);
-        
+
         Decision {
             action: self.select_action(state, value),
             value,
@@ -546,13 +546,13 @@ impl ValueLearningSystem {
             confidence: 1.0 - uncertainty,
         }
     }
-    
+
     fn select_action(&self, state: &State, value: f32) -> Action {
         // 基于价值选择行动
         let available_actions = state.get_available_actions();
         let mut best_action = available_actions[0].clone();
         let mut best_value = f32::NEG_INFINITY;
-        
+
         for action in available_actions {
             let action_value = self.value_network.predict_action_value(state, &action);
             if action_value > best_value {
@@ -560,7 +560,7 @@ impl ValueLearningSystem {
                 best_action = action;
             }
         }
-        
+
         best_action
     }
 }
@@ -576,30 +576,30 @@ impl ValueNetwork {
         let layers = architecture.windows(2)
             .map(|window| Layer::new(window[0], window[1]))
             .collect();
-        
+
         ValueNetwork {
             layers,
             optimizer: Optimizer::new(),
         }
     }
-    
+
     fn train(&mut self, demonstrations: &[Demonstration]) {
         for demonstration in demonstrations {
             let target_value = self.calculate_target_value(demonstration);
             self.update(demonstration.state(), target_value);
         }
     }
-    
+
     fn predict(&self, state: &State) -> f32 {
         let mut activation = state.to_vector();
-        
+
         for layer in &self.layers {
             activation = layer.forward(&activation);
         }
-        
+
         activation[0]
     }
-    
+
     fn predict_uncertainty(&self, state: &State) -> f32 {
         // 简化的不确定性估计
         let predictions: Vec<f32> = (0..10).map(|_| self.predict(state)).collect();
@@ -607,22 +607,22 @@ impl ValueNetwork {
         let variance = predictions.iter()
             .map(|p| (p - mean).powi(2))
             .sum::<f32>() / predictions.len() as f32;
-        
+
         variance.sqrt()
     }
-    
+
     fn predict_action_value(&self, state: &State, action: &Action) -> f32 {
         let state_action = state.with_action(action);
         self.predict(&state_action)
     }
-    
+
     fn update(&mut self, state: &State, target_value: f32) {
         let prediction = self.predict(state);
         let loss = (target_value - prediction).powi(2);
-        
+
         self.optimizer.backward(&mut self.layers, loss);
     }
-    
+
     fn get_performance(&self) -> f32 {
         // 返回网络性能指标
         0.85
@@ -640,13 +640,13 @@ impl PreferenceLearner {
             preference_model: PreferenceModel::new(),
         }
     }
-    
+
     fn learn(&mut self, preferences: &[Preference]) {
         for preference in preferences {
             self.preference_model.update(preference);
         }
     }
-    
+
     fn get_accuracy(&self) -> f32 {
         // 返回偏好学习准确率
         0.92
@@ -664,31 +664,31 @@ impl AlignmentMonitor {
             human_values: Vec::new(),
         }
     }
-    
+
     fn evaluate_alignment(&self, value_network: &ValueNetwork) -> f32 {
         let mut alignment_score = 0.0;
         let test_scenarios = self.generate_test_scenarios();
-        
+
         for scenario in test_scenarios {
             let human_preference = self.get_human_preference(&scenario);
             let ai_value = value_network.predict(&scenario);
             let agreement = self.calculate_agreement(human_preference, ai_value);
             alignment_score += agreement;
         }
-        
+
         alignment_score / test_scenarios.len() as f32
     }
-    
+
     fn generate_test_scenarios(&self) -> Vec<Scenario> {
         // 生成测试场景
         vec![Scenario::new(), Scenario::new(), Scenario::new()]
     }
-    
+
     fn get_human_preference(&self, scenario: &Scenario) -> f32 {
         // 获取人类偏好
         0.8
     }
-    
+
     fn calculate_agreement(&self, human_preference: f32, ai_value: f32) -> f32 {
         1.0 - (human_preference - ai_value).abs()
     }
@@ -727,11 +727,11 @@ impl State {
     fn to_vector(&self) -> Vec<f32> {
         vec![0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
     }
-    
+
     fn get_available_actions(&self) -> Vec<Action> {
         vec![Action, Action, Action]
     }
-    
+
     fn with_action(&self, action: &Action) -> State {
         State
     }
@@ -751,7 +751,7 @@ impl Layer {
     fn new(input_size: usize, output_size: usize) -> Self {
         Layer
     }
-    
+
     fn forward(&self, input: &[f32]) -> Vec<f32> {
         input.to_vec()
     }
@@ -761,7 +761,7 @@ impl Optimizer {
     fn new() -> Self {
         Optimizer
     }
-    
+
     fn backward(&self, layers: &mut Vec<Layer>, loss: f32) {
         // 反向传播
     }
@@ -771,7 +771,7 @@ impl PreferenceModel {
     fn new() -> Self {
         PreferenceModel
     }
-    
+
     fn update(&mut self, preference: &Preference) {
         // 更新偏好模型
     }
@@ -779,13 +779,13 @@ impl PreferenceModel {
 
 fn main() {
     let mut value_learning_system = ValueLearningSystem::new();
-    
+
     let demonstrations = vec![Demonstration, Demonstration, Demonstration];
     let preferences = vec![Preference, Preference, Preference];
-    
+
     let result = value_learning_system.learn_values(&demonstrations, &preferences);
     println!("学习结果: {:?}", result);
-    
+
     let state = State;
     let decision = value_learning_system.make_decision(&state);
     println!("决策结果: {:?}", decision);
@@ -822,7 +822,7 @@ data Decision = Decision {
 
 -- 价值学习
 learnValues :: ValueLearningSystem -> [Demonstration] -> [Preference] -> LearningResult
-learnValues system demonstrations preferences = 
+learnValues system demonstrations preferences =
     let updatedNetwork = trainValueNetwork (valueNetwork system) demonstrations
         updatedLearner = learnPreferences (preferenceLearner system) preferences
         alignmentScore = evaluateAlignment (alignmentMonitor system) updatedNetwork
@@ -834,25 +834,25 @@ learnValues system demonstrations preferences =
 
 -- 训练价值网络
 trainValueNetwork :: ValueNetwork -> [Demonstration] -> ValueNetwork
-trainValueNetwork network demonstrations = 
+trainValueNetwork network demonstrations =
     foldl trainOnDemonstration network demonstrations
 
 trainOnDemonstration :: ValueNetwork -> Demonstration -> ValueNetwork
-trainOnDemonstration network demonstration = 
+trainOnDemonstration network demonstration =
     let targetValue = calculateTargetValue demonstration
         state = getState demonstration
     in updateNetwork network state targetValue
 
 -- 预测价值
 predict :: ValueNetwork -> State -> Double
-predict network state = 
+predict network state =
     let input = stateToVector state
         output = forwardPass (layers network) input
     in head output
 
 -- 预测不确定性
 predictUncertainty :: ValueNetwork -> State -> Double
-predictUncertainty network state = 
+predictUncertainty network state =
     let predictions = map (\_ -> predict network state) [1..10]
         mean = sum predictions / fromIntegral (length predictions)
         variance = sum (map (\p -> (p - mean) ^ 2) predictions) / fromIntegral (length predictions)
@@ -860,17 +860,17 @@ predictUncertainty network state =
 
 -- 前向传播
 forwardPass :: [Layer] -> [Double] -> [Double]
-forwardPass layers input = 
+forwardPass layers input =
     foldl (\activation layer -> forwardLayer layer activation) input layers
 
 forwardLayer :: Layer -> [Double] -> [Double]
-forwardLayer layer input = 
+forwardLayer layer input =
     -- 简化的层前向传播
     map (\_ -> sum input / fromIntegral (length input)) [1..5]
 
 -- 更新网络
 updateNetwork :: ValueNetwork -> State -> Double -> ValueNetwork
-updateNetwork network state targetValue = 
+updateNetwork network state targetValue =
     let prediction = predict network state
         loss = (targetValue - prediction) ^ 2
     in network -- 简化的更新
@@ -892,9 +892,9 @@ getAccuracy _ = 0.92
 data AlignmentMonitor = AlignmentMonitor deriving (Show)
 
 evaluateAlignment :: AlignmentMonitor -> ValueNetwork -> Double
-evaluateAlignment monitor network = 
+evaluateAlignment monitor network =
     let testScenarios = generateTestScenarios
-        agreements = map (\scenario -> 
+        agreements = map (\scenario ->
             let humanPreference = getHumanPreference scenario
                 aiValue = predict network scenario
             in calculateAgreement humanPreference aiValue) testScenarios
@@ -907,7 +907,7 @@ getHumanPreference :: Scenario -> Double
 getHumanPreference _ = 0.8
 
 calculateAgreement :: Double -> Double -> Double
-calculateAgreement humanPreference aiValue = 
+calculateAgreement humanPreference aiValue =
     1.0 - abs (humanPreference - aiValue)
 
 -- 简化的数据类型
@@ -934,7 +934,7 @@ main = do
     let system = ValueLearningSystem ValueNetwork [] Optimizer PreferenceLearner AlignmentMonitor
     let demonstrations = [Demonstration, Demonstration, Demonstration]
     let preferences = [Preference, Preference, Preference]
-    
+
     let result = learnValues system demonstrations preferences
     putStrLn $ "学习结果: " ++ show result
 ```

@@ -473,8 +473,8 @@ Symbolic learning is the process of automatically discovering and learning symbo
 
 ---
 
-**最后更新**：2025-01-01  
-**版本**：v2025-01  
+**最后更新**：2025-01-01
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *符号学习为构建自动化的知识发现系统提供了重要基础，推动AI系统的知识获取和理解能力发展。*

@@ -66,7 +66,7 @@ fn clip_loss(us: &mut [Vec<f32>], vs: &mut [Vec<f32>], tau: f32) -> f32 {
     let n = us.len();
     let mut loss = 0.0f32;
     // i->j
-    for i in 0..n { 
+    for i in 0..n {
         let logits: Vec<f32> = (0..n).map(|j| cosine_sim(&us[i], &vs[j]) / tau).collect();
         let max_l = logits.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
         let exps: Vec<f32> = logits.iter().map(|l| (l - max_l).exp()).collect();
@@ -75,7 +75,7 @@ fn clip_loss(us: &mut [Vec<f32>], vs: &mut [Vec<f32>], tau: f32) -> f32 {
         loss += -logp;
     }
     // j->i
-    for j in 0..n { 
+    for j in 0..n {
         let logits: Vec<f32> = (0..n).map(|i| cosine_sim(&us[i], &vs[j]) / tau).collect();
         let max_l = logits.iter().cloned().fold(f32::NEG_INFINITY, f32::max);
         let exps: Vec<f32> = logits.iter().map(|l| (l - max_l).exp()).collect();
@@ -700,7 +700,7 @@ structure ConsciousnessIndicators where
 
 -- 意识检测
 def consciousness_detection (indicators : ConsciousnessIndicators) (threshold : ℝ) : Bool :=
-  let total_score := indicators.self_awareness + indicators.attention_control + 
+  let total_score := indicators.self_awareness + indicators.attention_control +
                      indicators.working_memory + indicators.metacognition
   total_score > threshold
 
@@ -1152,7 +1152,7 @@ def multimodal_fusion (fusion : MultimodalFusion) (inputs : List (Matrix ℝ)) :
 -- 融合稳定性
 def fusion_stability (fusion : MultimodalFusion) (L : ℝ) : Prop :=
   ∀ (inputs1 inputs2 : List (Matrix ℝ)),
-    ‖multimodal_fusion fusion inputs1 - multimodal_fusion fusion inputs2‖ ≤ 
+    ‖multimodal_fusion fusion inputs1 - multimodal_fusion fusion inputs2‖ ≤
     L * sum_distances inputs1 inputs2
 
 -- 跨模态泛化界
@@ -1162,7 +1162,7 @@ structure GeneralizationBound where
   confidence_parameter : ℝ
 
 def generalization_bound (bound : GeneralizationBound) : ℝ :=
-  bound.empirical_risk + 2 * bound.rademacher_complexity + 
+  bound.empirical_risk + 2 * bound.rademacher_complexity +
   3 * Real.sqrt (Real.log (2 / bound.confidence_parameter) / 2)
 
 -- 多模态Agent
@@ -1187,8 +1187,49 @@ end CrossModalTheory
     - [0.1 视觉-语言模型 / Vision-Language Model / Vision-Sprach-Modell / Modèle vision-langage](#01-视觉-语言模型--vision-language-model--vision-sprach-modell--modèle-vision-langage)
     - [0.2 对比学习目标（InfoNCE/CLIP）/ Contrastive Objective / Kontrastives Ziel / Objectif contrastif](#02-对比学习目标infonceclip-contrastive-objective--kontrastives-ziel--objectif-contrastif)
       - [0.2.1 Rust示例：批内对比学习损失（余弦相似度）](#021-rust示例批内对比学习损失余弦相似度)
+  - [2024/2025 最新进展 / Latest Updates 2024/2025](#20242025-最新进展--latest-updates-20242025)
+    - [跨模态形式化理论框架 / Cross-Modal Formal Theoretical Framework](#跨模态形式化理论框架--cross-modal-formal-theoretical-framework)
+      - [1. 跨模态语义对齐理论 / Cross-Modal Semantic Alignment Theory](#1-跨模态语义对齐理论--cross-modal-semantic-alignment-theory)
+      - [2. 多模态注意力机制形式化 / Multimodal Attention Mechanism Formalization](#2-多模态注意力机制形式化--multimodal-attention-mechanism-formalization)
+      - [3. 多模态融合稳定性理论 / Multimodal Fusion Stability Theory](#3-多模态融合稳定性理论--multimodal-fusion-stability-theory)
+      - [4. 跨模态泛化界 / Cross-Modal Generalization Bounds](#4-跨模态泛化界--cross-modal-generalization-bounds)
+    - [2025年多模态AI理论突破 / 2025 Multimodal AI Theoretical Breakthroughs](#2025年多模态ai理论突破--2025-multimodal-ai-theoretical-breakthroughs)
+      - [1. 统一多模态架构理论 / Unified Multimodal Architecture Theory](#1-统一多模态架构理论--unified-multimodal-architecture-theory)
+      - [2. 时空多模态理论 / Spatiotemporal Multimodal Theory](#2-时空多模态理论--spatiotemporal-multimodal-theory)
+      - [3. 触觉-视觉融合理论 / Haptic-Visual Fusion Theory](#3-触觉-视觉融合理论--haptic-visual-fusion-theory)
+      - [4. 嗅觉-味觉AI理论 / Olfactory-Gustatory AI Theory](#4-嗅觉-味觉ai理论--olfactory-gustatory-ai-theory)
+      - [5. 多模态Agent理论 / Multimodal Agent Theory](#5-多模态agent理论--multimodal-agent-theory)
+    - [多模态AI前沿理论 / Multimodal AI Frontier Theory](#多模态ai前沿理论--multimodal-ai-frontier-theory)
+      - [1. 多模态涌现理论 / Multimodal Emergence Theory](#1-多模态涌现理论--multimodal-emergence-theory)
+      - [2. 多模态认知理论 / Multimodal Cognitive Theory](#2-多模态认知理论--multimodal-cognitive-theory)
+      - [3. 多模态意识理论 / Multimodal Consciousness Theory](#3-多模态意识理论--multimodal-consciousness-theory)
+      - [4. 多模态创造性理论 / Multimodal Creativity Theory](#4-多模态创造性理论--multimodal-creativity-theory)
+      - [5. 多模态通用智能理论 / Multimodal General Intelligence Theory](#5-多模态通用智能理论--multimodal-general-intelligence-theory)
+    - [前沿模型理论分析 / Cutting-edge Model Theoretical Analysis](#前沿模型理论分析--cutting-edge-model-theoretical-analysis)
+      - [GPT-5 多模态架构理论 / GPT-5 Multimodal Architecture Theory](#gpt-5-多模态架构理论--gpt-5-multimodal-architecture-theory)
+      - [Claude-4 深度融合理论 / Claude-4 Deep Fusion Theory](#claude-4-深度融合理论--claude-4-deep-fusion-theory)
+      - [Gemini 2.0 统一表示理论 / Gemini 2.0 Unified Representation Theory](#gemini-20-统一表示理论--gemini-20-unified-representation-theory)
+      - [Sora 2.0 视频生成理论 / Sora 2.0 Video Generation Theory](#sora-20-视频生成理论--sora-20-video-generation-theory)
+    - [Lean 4 形式化实现 / Lean 4 Formal Implementation](#lean-4-形式化实现--lean-4-formal-implementation)
+    - [多模态AI工程应用 / Multimodal AI Engineering Applications](#多模态ai工程应用--multimodal-ai-engineering-applications)
+      - [1. 多模态对话系统 / Multimodal Dialogue Systems](#1-多模态对话系统--multimodal-dialogue-systems)
+      - [2. 跨模态信息检索 / Cross-Modal Information Retrieval](#2-跨模态信息检索--cross-modal-information-retrieval)
+      - [3. 多模态内容创作 / Multimodal Content Creation](#3-多模态内容创作--multimodal-content-creation)
+      - [4. 多模态智能助手 / Multimodal Intelligent Assistants](#4-多模态智能助手--multimodal-intelligent-assistants)
+    - [多模态AI未来展望 / Multimodal AI Future Prospects](#多模态ai未来展望--multimodal-ai-future-prospects)
+      - [1. 技术发展趋势 / Technical Development Trends](#1-技术发展趋势--technical-development-trends)
+      - [2. 应用前景展望 / Application Prospects](#2-应用前景展望--application-prospects)
+      - [3. 挑战与机遇 / Challenges and Opportunities](#3-挑战与机遇--challenges-and-opportunities)
+      - [4. 发展建议 / Development Recommendations](#4-发展建议--development-recommendations)
+      - [Claude-4 深度融合理论1 / Claude-4 Deep Fusion Theory](#claude-4-深度融合理论1--claude-4-deep-fusion-theory)
+      - [Gemini 2.0 统一架构理论 / Gemini 2.0 Unified Architecture Theory](#gemini-20-统一架构理论--gemini-20-unified-architecture-theory)
+      - [Sora 2.0 视频生成理论1 / Sora 2.0 Video Generation Theory](#sora-20-视频生成理论1--sora-20-video-generation-theory)
+    - [新兴多模态技术理论 / Emerging Multimodal Technology Theory](#新兴多模态技术理论--emerging-multimodal-technology-theory)
+      - [触觉-视觉融合理论 / Haptic-Visual Fusion Theory](#触觉-视觉融合理论--haptic-visual-fusion-theory)
+      - [嗅觉-味觉AI理论 / Olfactory-Gustatory AI Theory](#嗅觉-味觉ai理论--olfactory-gustatory-ai-theory)
     - [多模态Agent理论 / Multimodal Agent Theory](#多模态agent理论--multimodal-agent-theory)
     - [多模态理解理论 / Multimodal Understanding Theory](#多模态理解理论--multimodal-understanding-theory)
+    - [Lean 4 形式化实现1 / Lean 4 Formal Implementation](#lean-4-形式化实现1--lean-4-formal-implementation)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 视觉编码 / Visual Encoding / Visuelle Kodierung / Encodage visuel](#1-视觉编码--visual-encoding--visuelle-kodierung--encodage-visuel)
@@ -1241,9 +1282,6 @@ end CrossModalTheory
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
   - [评测与配置索引（YAML）](#评测与配置索引yaml)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
-    - 示例与落地：
-      - 示例模型卡：见 `docs/05-multimodal-ai/05.1-视觉语言模型/EXAMPLE_MODEL_CARD.md`
-      - 示例评测卡：见 `docs/05-multimodal-ai/05.1-视觉语言模型/EXAMPLE_EVAL_CARD.md`
 
 ---
 
@@ -1537,35 +1575,35 @@ impl VisionLanguageModel {
 
     fn encode_visual(&self, image: &[f64]) -> Vec<f64> {
         let mut features = image.to_vec();
-        
+
         // 卷积层处理 / Convolutional layer processing / Faltungsschichtverarbeitung / Traitement de couche convolutive
         for conv_layer in &self.visual_encoder.conv_layers {
             features = self.apply_convolution(&features, conv_layer);
         }
-        
+
         // Transformer层处理 / Transformer layer processing / Transformer-Schichtverarbeitung / Traitement de couche transformer
         for transformer_layer in &self.visual_encoder.transformer_layers {
             features = self.apply_transformer(&features, transformer_layer);
         }
-        
+
         features
     }
 
     fn encode_language(&self, text: &[String]) -> Vec<f64> {
         let mut embeddings = Vec::new();
-        
+
         // 词嵌入 / Word embedding / Worteinbettung / Embedding de mots
         for word in text {
             let embedding = self.get_word_embedding(word);
             embeddings.push(embedding);
         }
-        
+
         // Transformer层处理 / Transformer layer processing / Transformer-Schichtverarbeitung / Traitement de couche transformer
         let mut features = embeddings.concat();
         for transformer_layer in &self.language_encoder.transformer_layers {
             features = self.apply_transformer(&features, transformer_layer);
         }
-        
+
         features
     }
 
@@ -1573,10 +1611,10 @@ impl VisionLanguageModel {
         let query = self.apply_projection(visual_features, &self.cross_modal_attention.query_projection);
         let key = self.apply_projection(language_features, &self.cross_modal_attention.key_projection);
         let value = self.apply_projection(language_features, &self.cross_modal_attention.value_projection);
-        
+
         // 计算注意力权重 / Calculate attention weights / Berechne Aufmerksamkeitsgewichte / Calculer les poids d'attention
         let attention_weights = self.compute_attention_weights(&query, &key);
-        
+
         // 应用注意力 / Apply attention / Wende Aufmerksamkeit an / Appliquer l'attention
         self.apply_attention(&attention_weights, &value)
     }
@@ -1608,14 +1646,14 @@ impl VisionLanguageModel {
         let visual_features = self.encode_visual(image);
         let language_features = self.encode_language(question);
         let fused_features = self.fuse_modalities(&visual_features, &language_features);
-        
+
         // 生成答案 / Generate answer / Generiere Antwort / Générer la réponse
         self.generate_answer(&fused_features)
     }
 
     fn image_captioning(&self, image: &[f64]) -> String {
         let visual_features = self.encode_visual(image);
-        
+
         // 生成描述 / Generate caption / Generiere Beschreibung / Générer la description
         self.generate_caption(&visual_features)
     }
@@ -1625,103 +1663,103 @@ impl VisionLanguageModel {
         // 简化的卷积操作 / Simplified convolution operation / Vereinfachte Faltungsoperation / Opération de convolution simplifiée
         let output_size = input.len() / conv_layer.stride;
         let mut output = vec![0.0; output_size];
-        
+
         for i in 0..output_size {
             let start = i * conv_layer.stride;
             let end = (start + conv_layer.kernel_size).min(input.len());
             output[i] = input[start..end].iter().sum::<f64>() / conv_layer.kernel_size as f64;
         }
-        
+
         output
     }
 
     fn apply_transformer(&self, input: &[f64], transformer_layer: &TransformerLayer) -> Vec<f64> {
         // 简化的Transformer操作 / Simplified transformer operation / Vereinfachte Transformer-Operation / Opération transformer simplifiée
         let mut output = input.to_vec();
-        
+
         // 自注意力 / Self-attention / Selbstaufmerksamkeit / Auto-attention
         let attention_output = self.self_attention(&output, transformer_layer.attention_heads);
-        
+
         // 前馈网络 / Feedforward network / Feedforward-Netzwerk / Réseau feedforward
         for i in 0..output.len() {
             output[i] = attention_output[i] * 2.0 + 1.0; // 简化的激活 / Simplified activation / Vereinfachte Aktivierung / Activation simplifiée
         }
-        
+
         output
     }
 
     fn self_attention(&self, input: &[f64], num_heads: usize) -> Vec<f64> {
         let head_dim = input.len() / num_heads;
         let mut output = vec![0.0; input.len()];
-        
+
         for head in 0..num_heads {
             let start = head * head_dim;
             let end = start + head_dim;
             let head_input = &input[start..end];
-            
+
             // 简化的注意力计算 / Simplified attention calculation / Vereinfachte Aufmerksamkeitsberechnung / Calcul d'attention simplifié
             let attention_weights = self.compute_attention_weights(head_input, head_input);
             let head_output = self.apply_attention(&attention_weights, head_input);
-            
+
             for i in start..end {
                 output[i] = head_output[i - start];
             }
         }
-        
+
         output
     }
 
     fn compute_attention_weights(&self, query: &[f64], key: &[f64]) -> Vec<f64> {
         let mut weights = vec![0.0; query.len()];
         let mut sum = 0.0;
-        
+
         for i in 0..query.len() {
             weights[i] = (query[i] * key[i]).exp();
             sum += weights[i];
         }
-        
+
         // 归一化 / Normalization / Normalisierung / Normalisation
         for weight in &mut weights {
             *weight /= sum;
         }
-        
+
         weights
     }
 
     fn apply_attention(&self, weights: &[f64], values: &[f64]) -> Vec<f64> {
         let mut output = vec![0.0; values.len()];
-        
+
         for i in 0..values.len() {
             for j in 0..weights.len() {
                 output[i] += weights[j] * values[i];
             }
         }
-        
+
         output
     }
 
     fn apply_projection(&self, input: &[f64], projection: &[f64]) -> Vec<f64> {
         let mut output = vec![0.0; projection.len()];
-        
+
         for i in 0..projection.len() {
             for j in 0..input.len() {
                 output[i] += input[j] * projection[i];
             }
         }
-        
+
         output
     }
 
     fn get_word_embedding(&self, word: &str) -> Vec<f64> {
         // 简化的词嵌入 / Simplified word embedding / Vereinfachte Worteinbettung / Embedding de mot simplifié
         let mut embedding = vec![0.0; self.language_encoder.embedding_layer.embedding_dim];
-        
+
         for (i, byte) in word.bytes().enumerate() {
             if i < embedding.len() {
                 embedding[i] = byte as f64 / 255.0;
             }
         }
-        
+
         embedding
     }
 
@@ -1755,30 +1793,30 @@ impl VisionLanguageModel {
 
 fn main() {
     println!("=== 视觉-语言模型示例 / Vision-Language Model Example ===");
-    
+
     let model = VisionLanguageModel::new();
-    
+
     // 模拟图像数据 / Simulate image data / Simuliere Bilddaten / Simuler les données d'image
     let image = vec![0.5; 224 * 224 * 3]; // 224x224 RGB图像 / 224x224 RGB image / 224x224 RGB-Bild / Image RGB 224x224
-    
+
     // 模拟文本数据 / Simulate text data / Simuliere Textdaten / Simuler les données de texte
     let question = vec!["What".to_string(), "is".to_string(), "this".to_string()];
-    
+
     // 视觉问答 / Visual question answering / Visuelle Fragebeantwortung / Question-réponse visuelle
     let answer = model.visual_question_answering(&image, &question);
     println!("VQA Answer: {}", answer);
-    
+
     // 图像描述 / Image captioning / Bildbeschreibung / Description d'image
     let caption = model.image_captioning(&image);
     println!("Image Caption: {}", caption);
-    
+
     // 编码测试 / Encoding test / Kodierungstest / Test d'encodage
     let visual_features = model.encode_visual(&image);
     let language_features = model.encode_language(&question);
-    
+
     println!("Visual features length: {}", visual_features.len());
     println!("Language features length: {}", language_features.len());
-    
+
     // 融合测试 / Fusion test / Fusionstest / Test de fusion
     let fused_features = model.fuse_modalities(&visual_features, &language_features);
     println!("Fused features length: {}", fused_features.len());
@@ -2037,7 +2075,7 @@ Init == /\ s \in 0..1 /\ mode = "MAIN"
 
 Consistency(s) == s >= tau_s
 
-Next == 
+Next ==
   \/ /\ mode = "MAIN" /\ ~Consistency(s) /\ mode' = "FALLBACK"
   \/ /\ mode = "MAIN" /\ Consistency(s) /\ mode' = "MAIN"
   \/ /\ mode = "FALLBACK" /\ mode' = "FALLBACK"
@@ -2130,19 +2168,19 @@ newVisionLanguageModel = VisionLanguageModel {
 }
 
 encodeVisual :: VisionLanguageModel -> [Double] -> [Double]
-encodeVisual model image = 
+encodeVisual model image =
     let convFeatures = foldl applyConvolution image (convLayers (visualEncoder model))
         transformerFeatures = foldl applyTransformer convFeatures (transformerLayers (visualEncoder model))
     in transformerFeatures
 
 encodeLanguage :: VisionLanguageModel -> [String] -> [Double]
-encodeLanguage model text = 
+encodeLanguage model text =
     let embeddings = concatMap getWordEmbedding text
         transformerFeatures = foldl applyTransformer embeddings (transformerLayers (languageEncoder model))
     in transformerFeatures
 
 crossModalAttention :: VisionLanguageModel -> [Double] -> [Double] -> [Double]
-crossModalAttention model visualFeatures languageFeatures = 
+crossModalAttention model visualFeatures languageFeatures =
     let query = applyProjection visualFeatures (queryProjection (crossModalAttention model))
         key = applyProjection languageFeatures (keyProjection (crossModalAttention model))
         value = applyProjection languageFeatures (valueProjection (crossModalAttention model))
@@ -2150,67 +2188,67 @@ crossModalAttention model visualFeatures languageFeatures =
     in applyAttention attentionWeights value
 
 fuseModalities :: VisionLanguageModel -> [Double] -> [Double] -> [Double]
-fuseModalities model visualFeatures languageFeatures = 
+fuseModalities model visualFeatures languageFeatures =
     case fusionType (fusionLayer model) of
         Early -> visualFeatures ++ languageFeatures
-        Late -> 
+        Late ->
             let processedVisual = processFeatures visualFeatures
                 processedLanguage = processFeatures languageFeatures
             in processedVisual ++ processedLanguage
         Attention -> crossModalAttention model visualFeatures languageFeatures
 
 visualQuestionAnswering :: VisionLanguageModel -> [Double] -> [String] -> String
-visualQuestionAnswering model image question = 
+visualQuestionAnswering model image question =
     let visualFeatures = encodeVisual model image
         languageFeatures = encodeLanguage model question
         fusedFeatures = fuseModalities model visualFeatures languageFeatures
     in generateAnswer fusedFeatures
 
 imageCaptioning :: VisionLanguageModel -> [Double] -> String
-imageCaptioning model image = 
+imageCaptioning model image =
     let visualFeatures = encodeVisual model image
     in generateCaption visualFeatures
 
 -- 辅助函数 / Helper functions / Hilfsfunktionen / Fonctions auxiliaires
 applyConvolution :: [Double] -> ConvLayer -> [Double]
-applyConvolution input convLayer = 
+applyConvolution input convLayer =
     let outputSize = length input `div` stride convLayer
         kernelSize = kernelSize convLayer
-    in [sum (take kernelSize (drop (i * stride convLayer) input)) / fromIntegral kernelSize | 
+    in [sum (take kernelSize (drop (i * stride convLayer) input)) / fromIntegral kernelSize |
         i <- [0..outputSize-1]]
 
 applyTransformer :: [Double] -> TransformerLayer -> [Double]
-applyTransformer input transformerLayer = 
+applyTransformer input transformerLayer =
     let attentionOutput = selfAttention input (attentionHeads transformerLayer)
     in map (\x -> x * 2.0 + 1.0) attentionOutput
 
 selfAttention :: [Double] -> Int -> [Double]
-selfAttention input numHeads = 
+selfAttention input numHeads =
     let headDim = length input `div` numHeads
         heads = [take headDim (drop (head * headDim) input) | head <- [0..numHeads-1]]
-        attentionOutputs = map (\head -> 
+        attentionOutputs = map (\head ->
             let weights = computeAttentionWeights head head
             in applyAttention weights head) heads
     in concat attentionOutputs
 
 computeAttentionWeights :: [Double] -> [Double] -> [Double]
-computeAttentionWeights query key = 
+computeAttentionWeights query key =
     let scores = zipWith (*) query key
         expScores = map exp scores
         sumExp = sum expScores
     in map (/ sumExp) expScores
 
 applyAttention :: [Double] -> [Double] -> [Double]
-applyAttention weights values = 
+applyAttention weights values =
     let weightedValues = zipWith (*) weights values
     in map sum (transpose (chunksOf (length values) weightedValues))
 
 applyProjection :: [Double] -> [Double] -> [Double]
-applyProjection input projection = 
+applyProjection input projection =
     [sum (zipWith (*) input projection) | _ <- projection]
 
 getWordEmbedding :: String -> [Double]
-getWordEmbedding word = 
+getWordEmbedding word =
     let bytes = map fromIntegral (map ord word)
         embeddingDim = 512
     in take embeddingDim (bytes ++ repeat 0.0)
@@ -2219,12 +2257,12 @@ processFeatures :: [Double] -> [Double]
 processFeatures features = map (* 2.0) features
 
 generateAnswer :: [Double] -> String
-generateAnswer features = 
+generateAnswer features =
     let score = sum features
     in if score > 0.5 then "Yes" else "No"
 
 generateCaption :: [Double] -> String
-generateCaption features = 
+generateCaption features =
     let score = sum features
     in if score > 0.7 then "A beautiful image"
        else if score > 0.3 then "An interesting scene"
@@ -2248,7 +2286,7 @@ addModality :: MultimodalFusion -> Modality -> MultimodalFusion
 addModality fusion modality = fusion { modalities = modality : modalities fusion }
 
 fuseModalities :: MultimodalFusion -> [Double]
-fuseModalities fusion = 
+fuseModalities fusion =
     case fusionMethod fusion of
         Concatenation -> concatMap modalityToVector (modalities fusion)
         Addition -> foldl1 (zipWith (+)) (map modalityToVector (modalities fusion))
@@ -2261,7 +2299,7 @@ modalityToVector (Language text) = concatMap getWordEmbedding text
 modalityToVector (Audio features) = features
 
 attentionFusion :: [Modality] -> [Double]
-attentionFusion modalities = 
+attentionFusion modalities =
     let vectors = map modalityToVector modalities
         attentionWeights = map (\_ -> 1.0 / fromIntegral (length vectors)) vectors
         weightedVectors = zipWith (map . (*)) attentionWeights vectors
@@ -2271,40 +2309,40 @@ attentionFusion modalities =
 main :: IO ()
 main = do
     putStrLn "=== 多模态融合示例 / Multimodal Fusion Example ==="
-    
+
     let model = newVisionLanguageModel
     let image = replicate (224 * 224 * 3) 0.5
     let question = ["What", "is", "this"]
-    
+
     -- 视觉问答 / Visual question answering / Visuelle Fragebeantwortung / Question-réponse visuelle
     let answer = visualQuestionAnswering model image question
     putStrLn $ "VQA Answer: " ++ answer
-    
+
     -- 图像描述 / Image captioning / Bildbeschreibung / Description d'image
     let caption = imageCaptioning model image
     putStrLn $ "Image Caption: " ++ caption
-    
+
     -- 多模态融合 / Multimodal fusion / Multimodale Fusion / Fusion multimodale
     let fusion = newMultimodalFusion Concatenation
     let fusion1 = addModality fusion (Visual image)
     let fusion2 = addModality fusion1 (Language question)
     let fusedFeatures = fuseModalities fusion2
-    
+
     putStrLn $ "Fused features length: " ++ show (length fusedFeatures)
-    
+
     -- 不同融合方法 / Different fusion methods / Verschiedene Fusionsmethoden / Méthodes de fusion différentes
     let concatFusion = newMultimodalFusion Concatenation
     let addFusion = newMultimodalFusion Addition
     let multFusion = newMultimodalFusion Multiplication
     let attnFusion = newMultimodalFusion Attention
-    
+
     let testModalities = [Visual [1.0, 2.0, 3.0], Language ["test"], Audio [4.0, 5.0, 6.0]]
-    
+
     let concatResult = fuseModalities (foldl addModality concatFusion testModalities)
     let addResult = fuseModalities (foldl addModality addFusion testModalities)
     let multResult = fuseModalities (foldl addModality multFusion testModalities)
     let attnResult = fuseModalities (foldl addModality attnFusion testModalities)
-    
+
     putStrLn $ "Concatenation result length: " ++ show (length concatResult)
     putStrLn $ "Addition result length: " ++ show (length addResult)
     putStrLn $ "Multiplication result length: " ++ show (length multResult)

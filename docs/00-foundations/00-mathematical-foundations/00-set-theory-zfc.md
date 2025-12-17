@@ -1,20 +1,20 @@
-# 0.0 ZFC公理系统 / ZFC Axiom System / ZFC-Axiomensystem / Système d'axiomes ZFC
+# 0.0 ZFC 公理系统 / ZFC Axiom System / ZFC-Axiomensystem / Système d'axiomes ZFC
 
 [返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-ZFC公理系统（Zermelo-Fraenkel with Choice）是现代数学的基础，为FormalAI提供严格的集合论基础。本模块建立完整的公理化体系，确保所有后续理论都建立在坚实的数学基础之上。
+ZFC 公理系统（Zermelo-Fraenkel with Choice）是现代数学的基础，为 FormalAI 提供严格的集合论基础。本模块建立完整的公理化体系，确保所有后续理论都建立在坚实的数学基础之上。
 
 The ZFC axiom system (Zermelo-Fraenkel with Choice) is the foundation of modern mathematics, providing FormalAI with rigorous set-theoretic foundations. This module establishes a complete axiomatic system, ensuring all subsequent theories are built on solid mathematical foundations.
 
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
-- [0.0 ZFC公理系统](#00-zfc公理系统--zfc-axiom-system--zfc-axiomensystem--système-daxiomes-zfc)
+- [0.0 ZFC 公理系统](#00-zfc公理系统--zfc-axiom-system--zfc-axiomensystem--système-daxiomes-zfc)
   - [概述](#概述--overview--übersicht--aperçu)
   - [目录](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [1. 基本概念](#1-基本概念--basic-concepts--grundbegriffe--concepts-de-base)
-  - [2. ZFC公理](#2-zfc公理--zfc-axioms--zfc-axiome--axiomes-zfc)
+  - [2. ZFC 公理](#2-zfc公理--zfc-axioms--zfc-axiome--axiomes-zfc)
   - [3. 基本定理](#3-基本定理--basic-theorems--grundtheoreme--théorèmes-fondamentaux)
   - [4. 应用实例](#4-应用实例--applications--anwendungen--applications)
   - [参考文献](#参考文献--references--literatur--références)
@@ -50,7 +50,7 @@ $$A \setminus B = \{x : x \in A \land x \notin B\}$$
 **定义 1.2.4 (幂集)**
 $$\mathcal{P}(A) = \{B : B \subseteq A\}$$
 
-## 2. ZFC公理 / ZFC Axioms / ZFC-Axiome / Axiomes ZFC
+## 2. ZFC 公理 / ZFC Axioms / ZFC-Axiome / Axiomes ZFC
 
 ### 2.1 外延公理 / Axiom of Extensionality / Extensionalitätsaxiom / Axiome d'extensionalité
 
@@ -164,12 +164,12 @@ $(a, b) = (c, d)$ 当且仅当 $a = c$ 且 $b = d$。
 **证明：**
 （必要性）设 $(a, b) = (c, d)$，即 $\{\{a\}, \{a, b\}\} = \{\{c\}, \{c, d\}\}$。
 
-情况1：$\{a\} = \{c\}$ 且 $\{a, b\} = \{c, d\}$
+情况 1：$\{a\} = \{c\}$ 且 $\{a, b\} = \{c, d\}$
 
 - 由 $\{a\} = \{c\}$ 得 $a = c$
 - 由 $\{a, b\} = \{c, d\}$ 和 $a = c$ 得 $b = d$
 
-情况2：$\{a\} = \{c, d\}$ 且 $\{a, b\} = \{c\}$
+情况 2：$\{a\} = \{c, d\}$ 且 $\{a, b\} = \{c\}$
 
 - 由 $\{a\} = \{c, d\}$ 得 $a = c = d$
 - 由 $\{a, b\} = \{c\}$ 得 $b = c = a$
@@ -225,7 +225,7 @@ $$A \times B = \{x \in \mathcal{P}(\mathcal{P}(A \cup B)) : \exists a \in A \exi
 
 ## 代码实现 / Code Implementation / Code-Implementierung / Implémentation de code
 
-### Rust实现：集合运算 / Rust Implementation: Set Operations
+### Rust 实现：集合运算 / Rust Implementation: Set Operations
 
 ```rust
 use std::collections::HashSet;
@@ -242,47 +242,47 @@ impl<T: Hash + Eq + Clone> Set<T> {
             elements: HashSet::new(),
         }
     }
-    
+
     pub fn from_vec(elements: Vec<T>) -> Self {
         Set {
             elements: elements.into_iter().collect(),
         }
     }
-    
+
     pub fn insert(&mut self, element: T) {
         self.elements.insert(element);
     }
-    
+
     pub fn contains(&self, element: &T) -> bool {
         self.elements.contains(element)
     }
-    
+
     pub fn union(&self, other: &Set<T>) -> Set<T> {
         Set {
             elements: self.elements.union(&other.elements).cloned().collect(),
         }
     }
-    
+
     pub fn intersection(&self, other: &Set<T>) -> Set<T> {
         Set {
             elements: self.elements.intersection(&other.elements).cloned().collect(),
         }
     }
-    
+
     pub fn difference(&self, other: &Set<T>) -> Set<T> {
         Set {
             elements: self.elements.difference(&other.elements).cloned().collect(),
         }
     }
-    
+
     pub fn is_subset(&self, other: &Set<T>) -> bool {
         self.elements.is_subset(&other.elements)
     }
-    
+
     pub fn is_empty(&self) -> bool {
         self.elements.is_empty()
     }
-    
+
     pub fn cardinality(&self) -> usize {
         self.elements.len()
     }
@@ -299,11 +299,11 @@ impl<T: Hash + Eq + Clone> OrderedPair<T> {
     pub fn new(first: T, second: T) -> Self {
         OrderedPair { first, second }
     }
-    
+
     pub fn first(&self) -> &T {
         &self.first
     }
-    
+
     pub fn second(&self) -> &T {
         &self.second
     }
@@ -325,44 +325,44 @@ impl<T: Hash + Eq + Clone> Set<T> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_set_operations() {
         let mut set1 = Set::from_vec(vec![1, 2, 3]);
         let set2 = Set::from_vec(vec![2, 3, 4]);
-        
+
         let union = set1.union(&set2);
         assert_eq!(union.cardinality(), 4);
-        
+
         let intersection = set1.intersection(&set2);
         assert_eq!(intersection.cardinality(), 2);
-        
+
         let difference = set1.difference(&set2);
         assert_eq!(difference.cardinality(), 1);
     }
-    
+
     #[test]
     fn test_ordered_pair() {
         let pair1 = OrderedPair::new(1, 2);
         let pair2 = OrderedPair::new(1, 2);
         let pair3 = OrderedPair::new(2, 1);
-        
+
         assert_eq!(pair1, pair2);
         assert_ne!(pair1, pair3);
     }
-    
+
     #[test]
     fn test_cartesian_product() {
         let set1 = Set::from_vec(vec![1, 2]);
         let set2 = Set::from_vec(vec!['a', 'b']);
-        
+
         let product = set1.cartesian_product(&set2);
         assert_eq!(product.cardinality(), 4);
     }
 }
 ```
 
-### Haskell实现：类型安全的集合论 / Haskell Implementation: Type-Safe Set Theory
+### Haskell 实现：类型安全的集合论 / Haskell Implementation: Type-Safe Set Theory
 
 ```haskell
 {-# LANGUAGE GADTs, DataKinds, TypeFamilies #-}
@@ -381,23 +381,23 @@ data Set a = Empty | Insert a (Set a) deriving (Eq, Show)
 -- 集合运算
 union :: Eq a => Set a -> Set a -> Set a
 union Empty ys = ys
-union (Insert x xs) ys = 
-  if member x ys 
-    then union xs ys 
+union (Insert x xs) ys =
+  if member x ys
+    then union xs ys
     else Insert x (union xs ys)
 
 intersection :: Eq a => Set a -> Set a -> Set a
 intersection Empty _ = Empty
-intersection (Insert x xs) ys = 
-  if member x ys 
-    then Insert x (intersection xs ys) 
+intersection (Insert x xs) ys =
+  if member x ys
+    then Insert x (intersection xs ys)
     else intersection xs ys
 
 difference :: Eq a => Set a -> Set a -> Set a
 difference Empty _ = Empty
-difference (Insert x xs) ys = 
-  if member x ys 
-    then difference xs ys 
+difference (Insert x xs) ys =
+  if member x ys
+    then difference xs ys
     else Insert x (difference xs ys)
 
 member :: Eq a => a -> Set a -> Bool
@@ -410,7 +410,7 @@ data Pair a b = Pair a b deriving (Eq, Show)
 -- 笛卡尔积
 cartesianProduct :: Set a -> Set b -> Set (Pair a b)
 cartesianProduct Empty _ = Empty
-cartesianProduct (Insert x xs) ys = 
+cartesianProduct (Insert x xs) ys =
   union (mapSet (Pair x) ys) (cartesianProduct xs ys)
 
 mapSet :: (a -> b) -> Set a -> Set b
@@ -436,28 +436,28 @@ main :: IO ()
 main = do
   let set1 = Insert 1 (Insert 2 (Insert 3 Empty))
   let set2 = Insert 2 (Insert 3 (Insert 4 Empty))
-  
+
   print $ union set1 set2
   print $ intersection set1 set2
   print $ difference set1 set2
-  
+
   let pair = Pair 1 'a'
   print pair
 ```
 
 ## 参考文献 / References / Literatur / Références
 
-1. **Jech, T.** (2003). *Set Theory: The Third Millennium Edition*. Springer.
-2. **Kunen, K.** (2011). *Set Theory: An Introduction to Independence Proofs*. Elsevier.
-3. **Enderton, H. B.** (1977). *Elements of Set Theory*. Academic Press.
-4. **Halmos, P. R.** (1974). *Naive Set Theory*. Springer.
-5. **Suppes, P.** (1972). *Axiomatic Set Theory*. Dover Publications.
+1. **Jech, T.** (2003). _Set Theory: The Third Millennium Edition_. Springer.
+2. **Kunen, K.** (2011). _Set Theory: An Introduction to Independence Proofs_. Elsevier.
+3. **Enderton, H. B.** (1977). _Elements of Set Theory_. Academic Press.
+4. **Halmos, P. R.** (1974). _Naive Set Theory_. Springer.
+5. **Suppes, P.** (1972). _Axiomatic Set Theory_. Dover Publications.
 
 ---
 
-*本模块为FormalAI提供了严格的集合论基础，确保所有后续理论都建立在坚实的数学公理之上。*
+_本模块为 FormalAI 提供了严格的集合论基础，确保所有后续理论都建立在坚实的数学公理之上。_
 
-*This module provides FormalAI with rigorous set-theoretic foundations, ensuring all subsequent theories are built on solid mathematical axioms.*
+_This module provides FormalAI with rigorous set-theoretic foundations, ensuring all subsequent theories are built on solid mathematical axioms._
 
 ## 相关章节 / Related Chapters
 
@@ -473,18 +473,18 @@ main = do
 
 ## 2024/2025 最新进展 / Latest Updates
 
-### 集合论在AI中的新应用
+### 集合论在 AI 中的新应用
 
 #### 1. 大型语言模型语义对齐
 
-- **语义空间建模**: 使用集合论框架建模LLM的语义空间，通过集合运算实现语义对齐
-- **知识图谱构建**: 基于ZFC公理系统构建大规模知识图谱，支持可扩展的知识表示
+- **语义空间建模**: 使用集合论框架建模 LLM 的语义空间，通过集合运算实现语义对齐
+- **知识图谱构建**: 基于 ZFC 公理系统构建大规模知识图谱，支持可扩展的知识表示
 - **多模态语义统一**: 利用集合论统一不同模态的语义表示，实现跨模态理解
 
-#### 2. 强选择公理与AI推理
+#### 2. 强选择公理与 AI 推理
 
-- **可测基数理论**: 在AI推理系统中应用可测基数理论，提供更强的推理能力
-- **超限归纳**: 使用超限归纳原理优化AI系统的学习过程
+- **可测基数理论**: 在 AI 推理系统中应用可测基数理论，提供更强的推理能力
+- **超限归纳**: 使用超限归纳原理优化 AI 系统的学习过程
 - **选择公理的应用**: 在优化算法中应用选择公理，提高搜索效率
 
 #### 3. 集合论在机器学习中的新进展
@@ -564,7 +564,7 @@ def ordinal_lt : Ordinal → Ordinal → Prop
   | Ordinal.succ a, Ordinal.succ b => ordinal_lt a b
   | Ordinal.limit f, Ordinal.succ b => ∃ n, ordinal_lt (f n) b
   | Ordinal.succ a, Ordinal.limit f => ∀ n, ordinal_lt a (f n)
-  | Ordinal.limit f, Ordinal.limit g => 
+  | Ordinal.limit f, Ordinal.limit g =>
     ∃ n, ∀ m, ordinal_lt (f n) (g m)
 
 -- 机器学习应用：集合在数据表示中的应用
@@ -582,7 +582,7 @@ structure ProbabilitySpace (α : Type*) where
   -- 概率公理
   non_neg : ∀ A ∈ events, 0 ≤ probability A
   normalization : probability sample_space = 1
-  additivity : ∀ A B ∈ events, A ∩ B = ∅ → 
+  additivity : ∀ A B ∈ events, A ∩ B = ∅ →
     probability (A ∪ B) = probability A + probability B
 
 -- 信息论中的集合应用
@@ -591,7 +591,7 @@ def information_content (A : Set α) (P : ProbabilitySpace α) : ℝ :=
 
 -- 熵的定义
 def entropy (P : ProbabilitySpace α) : ℝ :=
-  ∑ x ∈ P.sample_space, 
+  ∑ x ∈ P.sample_space,
     -P.probability {x} * log (P.probability {x})
 
 end ZFC

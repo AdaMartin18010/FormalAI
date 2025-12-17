@@ -136,6 +136,7 @@ fn msg_passing(h: &Vec<Vec<f32>>, adj: &Vec<Vec<usize>>, w: f32) -> Vec<Vec<f32>
 
 - [5.3 跨模态推理 / Cross-Modal Reasoning / Kreuzmodales Schlussfolgern / Raisonnement cross-modal](#53-跨模态推理--cross-modal-reasoning--kreuzmodales-schlussfolgern--raisonnement-cross-modal)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
+    - [示例卡片 / Example Cards](#示例卡片--example-cards)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [跨模态推理 / Cross-Modal Reasoning / Kreuzmodales Schlussfolgern / Raisonnement cross-modal](#跨模态推理--cross-modal-reasoning--kreuzmodales-schlussfolgern--raisonnement-cross-modal)
   - [2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024](#2024年最新发展--latest-developments-2024--neueste-entwicklungen-2024--derniers-développements-2024)
@@ -524,7 +525,7 @@ impl CrossModalReasoningEngine {
             similarity_functions: HashMap::new(),
             retrieval_index: HashMap::new(),
         };
-        
+
         // 注册相似性函数 / Register similarity functions / Registriere Ähnlichkeitsfunktionen / Enregistrer les fonctions de similarité
         engine.similarity_functions.insert(
             "cosine".to_string(),
@@ -535,7 +536,7 @@ impl CrossModalReasoningEngine {
                 dot_product / (norm1 * norm2)
             })
         );
-        
+
         engine.similarity_functions.insert(
             "euclidean".to_string(),
             Box::new(|v1, v2| {
@@ -545,20 +546,20 @@ impl CrossModalReasoningEngine {
                 1.0 / (1.0 + distance)
             })
         );
-        
+
         engine
     }
 
     fn cross_modal_retrieval(&self, query: &Modality, modality_type: &str, k: usize) -> Vec<(f64, Vec<f64>)> {
         let query_features = self.extract_features(query);
         let candidates = self.retrieval_index.get(modality_type).unwrap_or(&Vec::new());
-        
+
         let mut similarities = Vec::new();
         for (i, candidate) in candidates.iter().enumerate() {
             let similarity = self.compute_similarity(&query_features, candidate, "cosine");
             similarities.push((similarity, candidate.clone()));
         }
-        
+
         // 排序并返回top-k / Sort and return top-k / Sortiere und gib top-k zurück / Trier et retourner top-k
         similarities.sort_by(|a, b| b.0.partial_cmp(&a.0).unwrap());
         similarities.into_iter().take(k).collect()
@@ -566,7 +567,7 @@ impl CrossModalReasoningEngine {
 
     fn cross_modal_generation(&self, source: &Modality, target_type: &str) -> Modality {
         let source_features = self.extract_features(source);
-        
+
         match target_type {
             "text" => {
                 // 简化的文本生成 / Simplified text generation / Vereinfachte Textgenerierung / Génération de texte simplifiée
@@ -587,19 +588,19 @@ impl CrossModalReasoningEngine {
 
     fn cross_modal_understanding(&self, modalities: &[Modality]) -> HashMap<String, f64> {
         let mut understanding = HashMap::new();
-        
+
         // 语义对齐 / Semantic alignment / Semantische Ausrichtung / Alignement sémantique
         let alignment_score = self.semantic_alignment(modalities);
         understanding.insert("alignment".to_string(), alignment_score);
-        
+
         // 概念映射 / Concept mapping / Konzeptabbildung / Mapping de concepts
         let mapping_score = self.concept_mapping(modalities);
         understanding.insert("mapping".to_string(), mapping_score);
-        
+
         // 知识推理 / Knowledge reasoning / Wissensschlussfolgerung / Raisonnement de connaissances
         let reasoning_score = self.knowledge_reasoning(modalities);
         understanding.insert("reasoning".to_string(), reasoning_score);
-        
+
         understanding
     }
 
@@ -616,10 +617,10 @@ impl CrossModalReasoningEngine {
         if modalities.len() < 2 {
             return 1.0;
         }
-        
+
         let mut total_similarity = 0.0;
         let mut pair_count = 0;
-        
+
         for i in 0..modalities.len() {
             for j in (i + 1)..modalities.len() {
                 let features1 = self.extract_features(&modalities[i]);
@@ -629,7 +630,7 @@ impl CrossModalReasoningEngine {
                 pair_count += 1;
             }
         }
-        
+
         if pair_count > 0 {
             total_similarity / pair_count as f64
         } else {
@@ -640,33 +641,33 @@ impl CrossModalReasoningEngine {
     fn concept_mapping(&self, modalities: &[Modality]) -> f64 {
         // 简化的概念映射评分 / Simplified concept mapping score / Vereinfachte Konzeptabbildungsbewertung / Score de mapping de concepts simplifié
         let mut mapping_score = 0.0;
-        
+
         for modality in modalities {
             let features = self.extract_features(modality);
             let concept_strength = features.iter().map(|&x| x.abs()).sum::<f64>();
             mapping_score += concept_strength;
         }
-        
+
         mapping_score / modalities.len() as f64
     }
 
     fn knowledge_reasoning(&self, modalities: &[Modality]) -> f64 {
         // 简化的知识推理评分 / Simplified knowledge reasoning score / Vereinfachte Wissensschlussfolgerungsbewertung / Score de raisonnement de connaissances simplifié
         let mut reasoning_score = 0.0;
-        
+
         for modality in modalities {
             let features = self.extract_features(modality);
             let knowledge_coherence = features.iter().map(|&x| x * x).sum::<f64>().sqrt();
             reasoning_score += knowledge_coherence;
         }
-        
+
         reasoning_score / modalities.len() as f64
     }
 
     fn logical_inference(&self, premises: &[Modality]) -> Modality {
         // 简化的逻辑推理 / Simplified logical inference / Vereinfachte logische Schlussfolgerung / Inférence logique simplifiée
         let mut combined_features = Vec::new();
-        
+
         for premise in premises {
             let features = self.extract_features(premise);
             if combined_features.is_empty() {
@@ -679,18 +680,18 @@ impl CrossModalReasoningEngine {
                 }
             }
         }
-        
+
         Modality::Visual(combined_features)
     }
 
     fn causal_inference(&self, premises: &[Modality]) -> Modality {
         // 简化的因果推理 / Simplified causal inference / Vereinfachte kausale Schlussfolgerung / Inférence causale simplifiée
         let mut causal_features = Vec::new();
-        
+
         for premise in premises {
             let features = self.extract_features(premise);
             let causal_effect: Vec<f64> = features.iter().map(|&x| x * 0.8).collect();
-            
+
             if causal_features.is_empty() {
                 causal_features = causal_effect;
             } else {
@@ -701,18 +702,18 @@ impl CrossModalReasoningEngine {
                 }
             }
         }
-        
+
         Modality::Visual(causal_features)
     }
 
     fn analogical_inference(&self, premises: &[Modality]) -> Modality {
         // 简化的类比推理 / Simplified analogical inference / Vereinfachte analogische Schlussfolgerung / Inférence analogique simplifiée
         let mut analogical_features = Vec::new();
-        
+
         for premise in premises {
             let features = self.extract_features(premise);
             let analogy_pattern: Vec<f64> = features.iter().map(|&x| x * 1.2).collect();
-            
+
             if analogical_features.is_empty() {
                 analogical_features = analogy_pattern;
             } else {
@@ -723,7 +724,7 @@ impl CrossModalReasoningEngine {
                 }
             }
         }
-        
+
         Modality::Visual(analogical_features)
     }
 
@@ -780,45 +781,45 @@ impl CrossModalReasoningEngine {
 
 fn main() {
     println!("=== 跨模态推理示例 / Cross-Modal Reasoning Example ===");
-    
+
     let mut engine = CrossModalReasoningEngine::new();
-    
+
     // 创建测试数据 / Create test data / Erstelle Testdaten / Créer des données de test
     let visual_data = Modality::Visual(vec![0.1, 0.2, 0.3, 0.4, 0.5]);
     let language_data = Modality::Language(vec!["hello".to_string(), "world".to_string()]);
     let audio_data = Modality::Audio(vec![0.6, 0.7, 0.8, 0.9, 1.0]);
     let text_data = Modality::Text(vec!["example".to_string(), "text".to_string()]);
-    
+
     // 添加到检索索引 / Add to retrieval index / Füge zum Abfrageindex hinzu / Ajouter à l'index de récupération
     engine.add_to_retrieval_index("visual", vec![0.1, 0.2, 0.3, 0.4, 0.5]);
     engine.add_to_retrieval_index("visual", vec![0.2, 0.3, 0.4, 0.5, 0.6]);
     engine.add_to_retrieval_index("text", vec![0.1, 0.2, 0.3, 0.4, 0.5]);
-    
+
     // 跨模态检索 / Cross-modal retrieval / Kreuzmodale Abfrage / Récupération cross-modale
     let retrieval_results = engine.cross_modal_retrieval(&visual_data, "visual", 3);
     println!("Cross-modal retrieval results: {:?}", retrieval_results);
-    
+
     // 跨模态生成 / Cross-modal generation / Kreuzmodale Generierung / Génération cross-modale
     let generated_text = engine.cross_modal_generation(&visual_data, "text");
     println!("Generated text: {:?}", generated_text);
-    
+
     let generated_visual = engine.cross_modal_generation(&language_data, "visual");
     println!("Generated visual: {:?}", generated_visual);
-    
+
     // 跨模态理解 / Cross-modal understanding / Kreuzmodales Verständnis / Compréhension cross-modale
     let modalities = vec![visual_data.clone(), language_data.clone(), audio_data.clone()];
     let understanding = engine.cross_modal_understanding(&modalities);
     println!("Cross-modal understanding: {:?}", understanding);
-    
+
     // 跨模态推理 / Cross-modal inference / Kreuzmodale Inferenz / Inférence cross-modale
     let premises = vec![visual_data.clone(), language_data.clone()];
-    
+
     let logical_result = engine.cross_modal_inference(&premises, "logical");
     println!("Logical inference result: {:?}", logical_result);
-    
+
     let causal_result = engine.cross_modal_inference(&premises, "causal");
     println!("Causal inference result: {:?}", causal_result);
-    
+
     let analogical_result = engine.cross_modal_inference(&premises, "analogical");
     println!("Analogical inference result: {:?}", analogical_result);
 }
@@ -884,14 +885,14 @@ newCrossModalReasoningEngine = CrossModalReasoningEngine {
 }
 
 crossModalRetrieval :: CrossModalReasoningEngine -> Modality -> String -> Int -> [(Double, [Double])]
-crossModalRetrieval engine query modalityType k = 
+crossModalRetrieval engine query modalityType k =
     let queryFeatures = extractFeatures query
         candidates = lookup modalityType (retrievalIndex engine) |> fromMaybe []
         similarities = map (\candidate -> (computeSimilarity engine queryFeatures candidate "cosine", candidate)) candidates
     in take k (sortBy (\(a, _) (b, _) -> compare b a) similarities)
 
 crossModalGeneration :: CrossModalReasoningEngine -> Modality -> String -> Modality
-crossModalGeneration engine source targetType = 
+crossModalGeneration engine source targetType =
     let sourceFeatures = extractFeatures source
     in case targetType of
         "text" -> Text ["generated", "text"]
@@ -899,14 +900,14 @@ crossModalGeneration engine source targetType =
         _ -> source
 
 crossModalUnderstanding :: CrossModalReasoningEngine -> [Modality] -> [(String, Double)]
-crossModalUnderstanding engine modalities = 
+crossModalUnderstanding engine modalities =
     let alignmentScore = semanticAlignment engine modalities
         mappingScore = conceptMapping engine modalities
         reasoningScore = knowledgeReasoning engine modalities
     in [("alignment", alignmentScore), ("mapping", mappingScore), ("reasoning", reasoningScore)]
 
 crossModalInference :: CrossModalReasoningEngine -> [Modality] -> String -> Modality
-crossModalInference engine premises inferenceType = 
+crossModalInference engine premises inferenceType =
     case inferenceType of
         "logical" -> logicalInference engine premises
         "causal" -> causalInference engine premises
@@ -916,79 +917,79 @@ crossModalInference engine premises inferenceType =
 -- 辅助函数 / Helper functions / Hilfsfunktionen / Fonctions auxiliaires
 extractFeatures :: Modality -> [Double]
 extractFeatures (Visual features) = features
-extractFeatures (Language text) = 
+extractFeatures (Language text) =
     concatMap (\word -> map (\b -> fromIntegral b / 255.0) (map ord word)) text
 extractFeatures (Audio features) = features
-extractFeatures (Text text) = 
+extractFeatures (Text text) =
     concatMap (\word -> map (\b -> fromIntegral b / 255.0) (map ord word)) text
 
 cosineSimilarity :: [Double] -> [Double] -> Double
-cosineSimilarity v1 v2 = 
+cosineSimilarity v1 v2 =
     let dotProduct = sum (zipWith (*) v1 v2)
         norm1 = sqrt (sum (map (^2) v1))
         norm2 = sqrt (sum (map (^2) v2))
     in dotProduct / (norm1 * norm2)
 
 euclideanSimilarity :: [Double] -> [Double] -> Double
-euclideanSimilarity v1 v2 = 
+euclideanSimilarity v1 v2 =
     let distance = sqrt (sum (zipWith (\a b -> (a - b) ^ 2) v1 v2))
     in 1.0 / (1.0 + distance)
 
 computeSimilarity :: CrossModalReasoningEngine -> [Double] -> [Double] -> String -> Double
-computeSimilarity engine v1 v2 method = 
+computeSimilarity engine v1 v2 method =
     case lookup method (similarityFunctions engine) of
         Just similarityFn -> similarityFn v1 v2
         Nothing -> 0.0
 
 semanticAlignment :: CrossModalReasoningEngine -> [Modality] -> Double
-semanticAlignment engine modalities = 
+semanticAlignment engine modalities =
     if length modalities < 2
     then 1.0
-    else 
+    else
         let pairs = [(i, j) | i <- [0..length modalities - 1], j <- [i+1..length modalities - 1]]
-            similarities = map (\(i, j) -> 
+            similarities = map (\(i, j) ->
                 let features1 = extractFeatures (modalities !! i)
                     features2 = extractFeatures (modalities !! j)
                 in computeSimilarity engine features1 features2 "cosine") pairs
         in sum similarities / fromIntegral (length similarities)
 
 conceptMapping :: CrossModalReasoningEngine -> [Modality] -> Double
-conceptMapping engine modalities = 
-    let mappingScores = map (\modality -> 
+conceptMapping engine modalities =
+    let mappingScores = map (\modality ->
         let features = extractFeatures modality
         in sum (map abs features)) modalities
     in sum mappingScores / fromIntegral (length mappingScores)
 
 knowledgeReasoning :: CrossModalReasoningEngine -> [Modality] -> Double
-knowledgeReasoning engine modalities = 
-    let reasoningScores = map (\modality -> 
+knowledgeReasoning engine modalities =
+    let reasoningScores = map (\modality ->
         let features = extractFeatures modality
         in sqrt (sum (map (^2) features))) modalities
     in sum reasoningScores / fromIntegral (length reasoningScores)
 
 logicalInference :: CrossModalReasoningEngine -> [Modality] -> Modality
-logicalInference engine premises = 
+logicalInference engine premises =
     let features = map extractFeatures premises
-        combinedFeatures = foldl1 (\acc features -> 
+        combinedFeatures = foldl1 (\acc features ->
             zipWith (\a b -> (a + b) / 2.0) acc features) features
     in Visual combinedFeatures
 
 causalInference :: CrossModalReasoningEngine -> [Modality] -> Modality
-causalInference engine premises = 
+causalInference engine premises =
     let features = map extractFeatures premises
-        causalFeatures = foldl1 (\acc features -> 
+        causalFeatures = foldl1 (\acc features ->
             zipWith (+) acc (map (* 0.8) features)) features
     in Visual causalFeatures
 
 analogicalInference :: CrossModalReasoningEngine -> [Modality] -> Modality
-analogicalInference engine premises = 
+analogicalInference engine premises =
     let features = map extractFeatures premises
-        analogicalFeatures = foldl1 (\acc features -> 
+        analogicalFeatures = foldl1 (\acc features ->
             zipWith (\a b -> (a + b) / 2.0) acc (map (* 1.2) features)) features
     in Visual analogicalFeatures
 
 defaultInference :: CrossModalReasoningEngine -> [Modality] -> Modality
-defaultInference engine premises = 
+defaultInference engine premises =
     case premises of
         (first:_) -> first
         [] -> Visual (replicate 10 0.0)
@@ -1008,46 +1009,46 @@ newCrossModalRetrievalSystem k = CrossModalRetrievalSystem {
 }
 
 retrieve :: CrossModalRetrievalSystem -> Modality -> String -> [(Double, [Double])]
-retrieve system query modalityType = 
+retrieve system query modalityType =
     crossModalRetrieval (retrievalEngine system) query modalityType (topKResults system)
 
 -- 主函数 / Main function / Hauptfunktion / Fonction principale
 main :: IO ()
 main = do
     putStrLn "=== 跨模态推理示例 / Cross-Modal Reasoning Example ==="
-    
+
     let engine = newCrossModalReasoningEngine
     let visualData = Visual [0.1, 0.2, 0.3, 0.4, 0.5]
     let languageData = Language ["hello", "world"]
     let audioData = Audio [0.6, 0.7, 0.8, 0.9, 1.0]
     let textData = Text ["example", "text"]
-    
+
     -- 跨模态检索 / Cross-modal retrieval / Kreuzmodale Abfrage / Récupération cross-modale
     let retrievalSystem = newCrossModalRetrievalSystem 3
     let retrievalResults = retrieve retrievalSystem visualData "visual"
     putStrLn $ "Cross-modal retrieval results: " ++ show retrievalResults
-    
+
     -- 跨模态生成 / Cross-modal generation / Kreuzmodale Generierung / Génération cross-modale
     let generatedText = crossModalGeneration engine visualData "text"
     putStrLn $ "Generated text: " ++ show generatedText
-    
+
     let generatedVisual = crossModalGeneration engine languageData "visual"
     putStrLn $ "Generated visual: " ++ show generatedVisual
-    
+
     -- 跨模态理解 / Cross-modal understanding / Kreuzmodales Verständnis / Compréhension cross-modale
     let modalities = [visualData, languageData, audioData]
     let understanding = crossModalUnderstanding engine modalities
     putStrLn $ "Cross-modal understanding: " ++ show understanding
-    
+
     -- 跨模态推理 / Cross-modal inference / Kreuzmodale Inferenz / Inférence cross-modale
     let premises = [visualData, languageData]
-    
+
     let logicalResult = crossModalInference engine premises "logical"
     putStrLn $ "Logical inference result: " ++ show logicalResult
-    
+
     let causalResult = crossModalInference engine premises "causal"
     putStrLn $ "Causal inference result: " ++ show causalResult
-    
+
     let analogicalResult = crossModalInference engine premises "analogical"
     putStrLn $ "Analogical inference result: " ++ show analogicalResult
 ```

@@ -4,7 +4,7 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-认知科学研究人类智能的机制和过程，为FormalAI提供认知建模和智能系统设计的理论基础。
+认知科学研究人类智能的机制和过程，为 FormalAI 提供认知建模和智能系统设计的理论基础。
 
 Cognitive science studies the mechanisms and processes of human intelligence, providing theoretical foundations for cognitive modeling and intelligent system design in FormalAI.
 
@@ -55,7 +55,7 @@ La cognition est le processus mental de traitement d'information, d'acquisition 
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [9.1 AI哲学](../../09-philosophy-ethics/09.1-AI哲学/README.md) - 提供认知基础 / Provides cognitive foundation
+- [9.1 AI 哲学](../../09-philosophy-ethics/09.1-AI哲学/README.md) - 提供认知基础 / Provides cognitive foundation
 - [9.2 意识理论](../../09-philosophy-ethics/09.2-意识理论/README.md) - 提供意识基础 / Provides consciousness foundation
 
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
@@ -64,11 +64,11 @@ La cognition est le processus mental de traitement d'information, d'acquisition 
 
 ## 1. 认知架构 / Cognitive Architecture / Kognitive Architektur / Architecture cognitive
 
-### 1.1 ACT-R架构 / ACT-R Architecture / ACT-R-Architektur / Architecture ACT-R
+### 1.1 ACT-R 架构 / ACT-R Architecture / ACT-R-Architektur / Architecture ACT-R
 
-**ACT-R定义 / ACT-R Definition:**:
+**ACT-R 定义 / ACT-R Definition:**:
 
-ACT-R是一个认知架构，将认知建模为产生式规则系统。
+ACT-R 是一个认知架构，将认知建模为产生式规则系统。
 
 ACT-R is a cognitive architecture that models cognition as a production rule system.
 
@@ -93,16 +93,18 @@ $$p: \text{IF } \text{condition} \text{ THEN } \text{action}$$
 
 **匹配过程 / Matching Process:**
 
-$$\text{match}(p, \text{state}) = \begin{cases}
+$$
+\text{match}(p, \text{state}) = \begin{cases}
 \text{true} & \text{if condition matches state} \\
 \text{false} & \text{otherwise}
-\end{cases}$$
+\end{cases}
+$$
 
-### 1.2 SOAR架构 / SOAR Architecture / SOAR-Architektur / Architecture SOAR
+### 1.2 SOAR 架构 / SOAR Architecture / SOAR-Architektur / Architecture SOAR
 
-**SOAR定义 / SOAR Definition:**
+**SOAR 定义 / SOAR Definition:**
 
-SOAR是一个基于问题空间的认知架构。
+SOAR 是一个基于问题空间的认知架构。
 
 SOAR is a problem-space based cognitive architecture.
 
@@ -156,7 +158,7 @@ Das Arbeitsgedächtnis ist das kognitive System für temporäre Speicherung und 
 
 La mémoire de travail est le système cognitif pour le stockage temporaire et le traitement d'informations.
 
-**Baddeley模型 / Baddeley Model:**
+**Baddeley 模型 / Baddeley Model:**
 
 $$\text{WM} = (\text{CE}, \text{PL}, \text{VSSP}, \text{EB})$$
 
@@ -276,7 +278,7 @@ $$Q(s, a) = Q(s, a) + \alpha[r + \gamma \max_{a'} Q(s', a') - Q(s, a)]$$
 
 ### 4.3 观察学习 / Observational Learning / Beobachtungslernen / Apprentissage par observation
 
-**Bandura模型 / Bandura Model:**
+**Bandura 模型 / Bandura Model:**
 
 $$\text{learning} = f(\text{attention}, \text{retention}, \text{reproduction}, \text{motivation})$$
 
@@ -304,10 +306,12 @@ $$A^* = \arg\max_A EU(A)$$
 
 **价值函数 / Value Function:**
 
-$$v(x) = \begin{cases}
+$$
+v(x) = \begin{cases}
 x^\alpha & \text{if } x \geq 0 \\
 -\lambda(-x)^\beta & \text{if } x < 0
-\end{cases}$$
+\end{cases}
+$$
 
 其中 / where / wobei / où:
 
@@ -332,7 +336,7 @@ $$P(A|B) \approx \text{similarity}(A, B)$$
 
 ## 代码示例 / Code Examples / Codebeispiele / Exemples de code
 
-### Rust实现：工作记忆模型
+### Rust 实现：工作记忆模型
 
 ```rust
 use std::collections::HashMap;
@@ -613,7 +617,7 @@ fn main() {
 }
 ```
 
-### Haskell实现：注意力机制
+### Haskell 实现：注意力机制
 
 ```haskell
 -- 工作记忆类型 / Working memory type / Arbeitsgedächtnistyp / Type mémoire de travail
@@ -886,32 +890,35 @@ main = do
 ## 参考文献 / References / Literatur / Références
 
 1. **中文 / Chinese:**
-   - 安德森, J. R. (2004). *认知心理学及其启示*. 人民邮电出版社.
-   - 巴德利, A. (2007). *工作记忆*. 北京大学出版社.
-   - 卡尼曼, D. (2012). *思考，快与慢*. 中信出版社.
+
+   - 安德森, J. R. (2004). _认知心理学及其启示_. 人民邮电出版社.
+   - 巴德利, A. (2007). _工作记忆_. 北京大学出版社.
+   - 卡尼曼, D. (2012). _思考，快与慢_. 中信出版社.
 
 2. **English:**
-   - Anderson, J. R. (2007). *How Can the Human Mind Occur in the Physical Universe?* Oxford University Press.
-   - Baddeley, A. (2012). *Working Memory: Theories, Models, and Controversies*. Annual Review of Psychology.
-   - Kahneman, D. (2011). *Thinking, Fast and Slow*. Farrar, Straus and Giroux.
+
+   - Anderson, J. R. (2007). _How Can the Human Mind Occur in the Physical Universe?_ Oxford University Press.
+   - Baddeley, A. (2012). _Working Memory: Theories, Models, and Controversies_. Annual Review of Psychology.
+   - Kahneman, D. (2011). _Thinking, Fast and Slow_. Farrar, Straus and Giroux.
 
 3. **Deutsch / German:**
-   - Anderson, J. R. (2007). *Wie kann der menschliche Geist im physischen Universum existieren?* Oxford University Press.
-   - Baddeley, A. (2012). *Arbeitsgedächtnis: Theorien, Modelle und Kontroversen*. Annual Review of Psychology.
-   - Kahneman, D. (2012). *Schnelles Denken, langsames Denken*. Siedler Verlag.
+
+   - Anderson, J. R. (2007). _Wie kann der menschliche Geist im physischen Universum existieren?_ Oxford University Press.
+   - Baddeley, A. (2012). _Arbeitsgedächtnis: Theorien, Modelle und Kontroversen_. Annual Review of Psychology.
+   - Kahneman, D. (2012). _Schnelles Denken, langsames Denken_. Siedler Verlag.
 
 4. **Français / French:**
-   - Anderson, J. R. (2007). *Comment l'esprit humain peut-il exister dans l'univers physique?* Oxford University Press.
-   - Baddeley, A. (2012). *Mémoire de travail: Théories, modèles et controverses*. Annual Review of Psychology.
-   - Kahneman, D. (2012). *Système 1, système 2: Les deux vitesses de la pensée*. Flammarion.
+   - Anderson, J. R. (2007). _Comment l'esprit humain peut-il exister dans l'univers physique?_ Oxford University Press.
+   - Baddeley, A. (2012). _Mémoire de travail: Théories, modèles et controverses_. Annual Review of Psychology.
+   - Kahneman, D. (2012). _Système 1, système 2: Les deux vitesses de la pensée_. Flammarion.
 
 ---
 
-*本模块为FormalAI提供了完整的认知科学理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的认知建模和智能行为设计提供了科学的理论基础。*
+_本模块为 FormalAI 提供了完整的认知科学理论基础，结合国际标准 Wiki 的概念定义，使用中英德法四语言诠释核心概念，为 AI 系统的认知建模和智能行为设计提供了科学的理论基础。_
 
 ## 2024/2025 最新进展 / Latest Updates
 
 - 具身智能与世界模型在任务泛化中的作用评测（占位）。
-- 注意力机制的认知神经学证据与AI对照实验（占位）。
+- 注意力机制的认知神经学证据与 AI 对照实验（占位）。
 
 [返回“最新进展”索引](../../LATEST_UPDATES_INDEX.md)

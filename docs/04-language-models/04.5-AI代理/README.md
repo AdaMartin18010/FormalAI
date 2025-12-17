@@ -187,7 +187,7 @@ impl Agent {
     pub fn select_tool(&self, task: &str) -> Option<&Tool> {
         // 基于任务描述选择最合适的工具
         self.tools.iter().find(|tool| {
-            tool.description.contains(task) || 
+            tool.description.contains(task) ||
             self.capabilities.iter().any(|cap| cap.contains(task))
         })
     }
@@ -205,7 +205,7 @@ impl Agent {
         // 多智能体协作逻辑
         let mut combined_capabilities = self.capabilities.clone();
         combined_capabilities.extend(other_agent.capabilities.clone());
-        
+
         // 基于组合能力执行任务
         if combined_capabilities.iter().any(|cap| cap.contains(shared_task)) {
             Ok(format!("Collaborative task '{}' completed successfully", shared_task))
@@ -220,11 +220,11 @@ fn calculator_tool(args: &[String]) -> Result<String, String> {
     if args.len() < 2 {
         return Err("Calculator requires at least 2 arguments".to_string());
     }
-    
+
     let a: f64 = args[0].parse().map_err(|_| "Invalid number")?;
     let b: f64 = args[1].parse().map_err(|_| "Invalid number")?;
     let operation = if args.len() > 2 { &args[2] } else { "add" };
-    
+
     match operation {
         "add" => Ok((a + b).to_string()),
         "subtract" => Ok((a - b).to_string()),
@@ -255,7 +255,7 @@ mod tests {
     fn test_tool_selection() {
         let mut agent = Agent::new("test_agent".to_string());
         agent.add_capability("calculation".to_string());
-        
+
         let calculator = Tool {
             name: "calculator".to_string(),
             description: "Performs mathematical calculations".to_string(),
@@ -273,9 +273,9 @@ mod tests {
             ],
             execute: calculator_tool,
         };
-        
+
         agent.add_tool(calculator);
-        
+
         let selected_tool = agent.select_tool("calculation");
         assert!(selected_tool.is_some());
         assert_eq!(selected_tool.unwrap().name, "calculator");
@@ -285,10 +285,10 @@ mod tests {
     fn test_collaboration() {
         let mut agent1 = Agent::new("agent1".to_string());
         let agent2 = Agent::new("agent2".to_string());
-        
+
         agent1.add_capability("data_analysis".to_string());
         agent2.add_capability("visualization".to_string());
-        
+
         let result = agent1.collaborate(&agent2, "data_analysis");
         assert!(result.is_ok());
     }
@@ -334,14 +334,14 @@ calculatorTool :: [Text] -> Either Text Text
 calculatorTool args
   | length args < 2 = Left "Calculator requires at least 2 arguments"
   | otherwise = case (readDouble (args !! 0), readDouble (args !! 1)) of
-      (Just a, Just b) -> 
+      (Just a, Just b) ->
         let operation = if length args > 2 then args !! 2 else "add"
         in case operation of
              "add" -> Right $ T.pack $ show (a + b)
              "subtract" -> Right $ T.pack $ show (a - b)
              "multiply" -> Right $ T.pack $ show (a * b)
-             "divide" -> 
-               if b == 0 
+             "divide" ->
+               if b == 0
                  then Left "Division by zero"
                  else Right $ T.pack $ show (a / b)
              _ -> Left "Unknown operation"
@@ -360,28 +360,28 @@ newAgent id = Agent
   }
 
 addCapability :: Text -> Agent -> Agent
-addCapability capability agent = 
+addCapability capability agent =
   agent { capabilities = capability : capabilities agent }
 
 addTool :: Tool -> Agent -> Agent
-addTool tool agent = 
+addTool tool agent =
   agent { tools = tool : tools agent }
 
 selectTool :: Text -> Agent -> Maybe Tool
-selectTool task agent = 
-  find (\tool -> 
+selectTool task agent =
+  find (\tool ->
     T.isInfixOf task (toolDescription tool) ||
     any (T.isInfixOf task) (capabilities agent)
   ) (tools agent)
 
 executeTask :: Text -> Agent -> Either Text Text
-executeTask task agent = 
+executeTask task agent =
   case selectTool task agent of
     Just tool -> toolExecute tool [task]
     Nothing -> Left $ "No suitable tool found for task: " `T.append` task
 
 collaborate :: Agent -> Agent -> Text -> Either Text Text
-collaborate agent1 agent2 sharedTask = 
+collaborate agent1 agent2 sharedTask =
   let combinedCapabilities = capabilities agent1 ++ capabilities agent2
   in if any (T.isInfixOf sharedTask) combinedCapabilities
        then Right $ "Collaborative task '" `T.append` sharedTask `T.append` "' completed successfully"
@@ -392,7 +392,7 @@ createCalculatorTool :: Tool
 createCalculatorTool = Tool
   { toolName = "calculator"
   , toolDescription = "Performs mathematical calculations"
-  , toolParameters = 
+  , toolParameters =
       [ Parameter "a" "number" True
       , Parameter "b" "number" True
       ]
@@ -401,13 +401,13 @@ createCalculatorTool = Tool
 
 -- 测试函数
 testAgentCreation :: Bool
-testAgentCreation = 
+testAgentCreation =
   let agent = newAgent "test_agent"
-  in agentId agent == "test_agent" && 
+  in agentId agent == "test_agent" &&
      null (capabilities agent)
 
 testToolSelection :: Bool
-testToolSelection = 
+testToolSelection =
   let agent = addCapability "calculation" $ newAgent "test_agent"
       agentWithTool = addTool createCalculatorTool agent
       selectedTool = selectTool "calculation" agentWithTool
@@ -416,7 +416,7 @@ testToolSelection =
        Nothing -> False
 
 testCollaboration :: Bool
-testCollaboration = 
+testCollaboration =
   let agent1 = addCapability "data_analysis" $ newAgent "agent1"
       agent2 = addCapability "visualization" $ newAgent "agent2"
       result = collaborate agent1 agent2 "data_analysis"
@@ -429,10 +429,10 @@ main :: IO ()
 main = do
   putStrLn "Testing Agent Creation:"
   print testAgentCreation
-  
+
   putStrLn "Testing Tool Selection:"
   print testToolSelection
-  
+
   putStrLn "Testing Collaboration:"
   print testCollaboration
 ```

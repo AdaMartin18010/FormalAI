@@ -84,6 +84,20 @@ Formal semantics studies the formal representation and semantic interpretation o
   - [参考文献 / References](#参考文献--references)
   - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
     - [大模型语义理论 / Large Model Semantic Theory](#大模型语义理论--large-model-semantic-theory)
+      - [1. 上下文语义的形式化理论 / Formal Theory of Contextual Semantics](#1-上下文语义的形式化理论--formal-theory-of-contextual-semantics)
+      - [2. 神经语义的形式化框架 / Formal Framework for Neural Semantics](#2-神经语义的形式化框架--formal-framework-for-neural-semantics)
+      - [3. 多模态语义的统一理论 / Unified Theory of Multimodal Semantics](#3-多模态语义的统一理论--unified-theory-of-multimodal-semantics)
+      - [4. 语义涌现的数学理论 / Mathematical Theory of Semantic Emergence](#4-语义涌现的数学理论--mathematical-theory-of-semantic-emergence)
+      - [5. 语义计算的复杂度理论 / Complexity Theory of Semantic Computing](#5-语义计算的复杂度理论--complexity-theory-of-semantic-computing)
+      - [6. 语义评估的形式化理论 / Formal Theory of Semantic Evaluation](#6-语义评估的形式化理论--formal-theory-of-semantic-evaluation)
+    - [Lean 4 形式化实现 / Lean 4 Formal Implementation](#lean-4-形式化实现--lean-4-formal-implementation)
+    - [前沿语义理论发展 / Cutting-edge Semantic Theory Development](#前沿语义理论发展--cutting-edge-semantic-theory-development)
+      - [7. 大模型语义理解的理论突破 / Theoretical Breakthroughs in Large Model Semantic Understanding](#7-大模型语义理解的理论突破--theoretical-breakthroughs-in-large-model-semantic-understanding)
+      - [8. 语义推理的形式化理论 / Formal Theory of Semantic Reasoning](#8-语义推理的形式化理论--formal-theory-of-semantic-reasoning)
+      - [9. 语义泛化的数学理论 / Mathematical Theory of Semantic Generalization](#9-语义泛化的数学理论--mathematical-theory-of-semantic-generalization)
+      - [10. 语义压缩的理论基础 / Theoretical Foundation of Semantic Compression](#10-语义压缩的理论基础--theoretical-foundation-of-semantic-compression)
+    - [实用工具链 / Practical Toolchain](#实用工具链--practical-toolchain)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -374,35 +388,35 @@ impl SemanticParser {
             lexicon: HashMap::new(),
             composition_rules: Vec::new(),
         };
-        
+
         // 初始化词汇表
         parser.initialize_lexicon();
         parser.initialize_composition_rules();
-        
+
         parser
     }
-    
+
     fn initialize_lexicon(&mut self) {
         // 名词
         self.lexicon.insert("John".to_string(), SemanticType::Individual);
         self.lexicon.insert("Mary".to_string(), SemanticType::Individual);
-        
+
         // 不及物动词
-        self.lexicon.insert("sleeps".to_string(), 
+        self.lexicon.insert("sleeps".to_string(),
             SemanticType::Function(Box::new(SemanticType::Individual), Box::new(SemanticType::Proposition)));
-        
+
         // 及物动词
-        self.lexicon.insert("loves".to_string(), 
+        self.lexicon.insert("loves".to_string(),
             SemanticType::Function(
                 Box::new(SemanticType::Individual),
                 Box::new(SemanticType::Function(Box::new(SemanticType::Individual), Box::new(SemanticType::Proposition)))
             ));
-        
+
         // 形容词
-        self.lexicon.insert("tall".to_string(), 
+        self.lexicon.insert("tall".to_string(),
             SemanticType::Function(Box::new(SemanticType::Individual), Box::new(SemanticType::Proposition)));
     }
-    
+
     fn initialize_composition_rules(&mut self) {
         // 函数应用规则
         let function_application = CompositionRule {
@@ -421,27 +435,27 @@ impl SemanticParser {
                 }
             }),
         };
-        
+
         self.composition_rules.push(function_application);
     }
-    
+
     fn parse(&self, tokens: &[String]) -> Option<SemanticValue> {
         if tokens.len() == 0 {
             return None;
         }
-        
+
         if tokens.len() == 1 {
             // 单个词的情况
             return self.lexicon.get(&tokens[0]).map(|_| {
                 SemanticValue::Individual(tokens[0].clone())
             });
         }
-        
+
         // 尝试不同的组合方式
         for i in 1..tokens.len() {
             let left_tokens = &tokens[..i];
             let right_tokens = &tokens[i..];
-            
+
             if let (Some(left_sem), Some(right_sem)) = (self.parse(left_tokens), self.parse(right_tokens)) {
                 // 尝试应用组合规则
                 if let Some(result) = self.apply_composition_rules(&left_sem, &right_sem) {
@@ -449,15 +463,15 @@ impl SemanticParser {
                 }
             }
         }
-        
+
         None
     }
-    
+
     fn apply_composition_rules(&self, left: &SemanticValue, right: &SemanticValue) -> Option<SemanticValue> {
         for rule in &self.composition_rules {
             if rule.input_types.len() == 2 {
                 // 简化的类型检查
-                if self.type_check(left, &rule.input_types[0]) && 
+                if self.type_check(left, &rule.input_types[0]) &&
                    self.type_check(right, &rule.input_types[1]) {
                     return Some((rule.function)(vec![left.clone(), right.clone()]));
                 }
@@ -465,7 +479,7 @@ impl SemanticParser {
         }
         None
     }
-    
+
     fn type_check(&self, value: &SemanticValue, expected_type: &SemanticType) -> bool {
         match (value, expected_type) {
             (SemanticValue::Individual(_), SemanticType::Individual) => true,
@@ -473,10 +487,10 @@ impl SemanticParser {
             _ => false, // 简化版本
         }
     }
-    
+
     fn evaluate_sentence(&self, sentence: &str) -> Option<bool> {
         let tokens: Vec<String> = sentence.split_whitespace().map(|s| s.to_string()).collect();
-        
+
         if let Some(semantic_value) = self.parse(&tokens) {
             match semantic_value {
                 SemanticValue::Proposition(b) => Some(b),
@@ -504,7 +518,7 @@ impl DistributionalSemantics {
             vector_dim: dim,
         }
     }
-    
+
     fn add_word(&mut self, word: &str, vector: Vec<f64>) {
         if vector.len() == self.vector_dim {
             self.word_vectors.insert(word.to_string(), vector);
@@ -513,17 +527,17 @@ impl DistributionalSemantics {
             }
         }
     }
-    
+
     fn get_vector(&self, word: &str) -> Option<&Vec<f64>> {
         self.word_vectors.get(word)
     }
-    
+
     fn cosine_similarity(&self, word1: &str, word2: &str) -> Option<f64> {
         if let (Some(v1), Some(v2)) = (self.get_vector(word1), self.get_vector(word2)) {
             let dot_product: f64 = v1.iter().zip(v2.iter()).map(|(a, b)| a * b).sum();
             let norm1: f64 = v1.iter().map(|x| x * x).sum::<f64>().sqrt();
             let norm2: f64 = v2.iter().map(|x| x * x).sum::<f64>().sqrt();
-            
+
             if norm1 > 0.0 && norm2 > 0.0 {
                 Some(dot_product / (norm1 * norm2))
             } else {
@@ -533,10 +547,10 @@ impl DistributionalSemantics {
             None
         }
     }
-    
+
     fn find_similar_words(&self, word: &str, top_k: usize) -> Vec<(String, f64)> {
         let mut similarities = Vec::new();
-        
+
         for vocab_word in &self.vocabulary {
             if vocab_word != word {
                 if let Some(sim) = self.cosine_similarity(word, vocab_word) {
@@ -544,21 +558,21 @@ impl DistributionalSemantics {
                 }
             }
         }
-        
+
         similarities.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
         similarities.truncate(top_k);
         similarities
     }
-    
+
     fn analogy(&self, a: &str, b: &str, c: &str) -> Option<String> {
         if let (Some(va), Some(vb), Some(vc)) = (self.get_vector(a), self.get_vector(b), self.get_vector(c)) {
             let target_vector: Vec<f64> = va.iter().zip(vb.iter()).zip(vc.iter())
                 .map(|((a_val, b_val), c_val)| c_val + (b_val - a_val))
                 .collect();
-            
+
             let mut best_word = None;
             let mut best_similarity = -1.0;
-            
+
             for word in &self.vocabulary {
                 if word != a && word != b && word != c {
                     if let Some(word_vec) = self.get_vector(word) {
@@ -570,18 +584,18 @@ impl DistributionalSemantics {
                     }
                 }
             }
-            
+
             best_word
         } else {
             None
         }
     }
-    
+
     fn cosine_similarity_vectors(&self, v1: &[f64], v2: &[f64]) -> f64 {
         let dot_product: f64 = v1.iter().zip(v2.iter()).map(|(a, b)| a * b).sum();
         let norm1: f64 = v1.iter().map(|x| x * x).sum::<f64>().sqrt();
         let norm2: f64 = v2.iter().map(|x| x * x).sum::<f64>().sqrt();
-        
+
         if norm1 > 0.0 && norm2 > 0.0 {
             dot_product / (norm1 * norm2)
         } else {
@@ -593,12 +607,12 @@ impl DistributionalSemantics {
 fn main() {
     // 测试语义解析器
     let mut parser = SemanticParser::new();
-    
+
     let sentences = vec![
         "John sleeps".to_string(),
         "Mary loves John".to_string(),
     ];
-    
+
     println!("语义解析结果:");
     for sentence in sentences {
         match parser.evaluate_sentence(&sentence) {
@@ -606,30 +620,30 @@ fn main() {
             None => println!("'{}' -> 无法解析", sentence),
         }
     }
-    
+
     // 测试分布语义模型
     let mut ds = DistributionalSemantics::new(3);
-    
+
     // 添加一些示例词向量
     ds.add_word("king", vec![1.0, 0.0, 0.0]);
     ds.add_word("queen", vec![0.0, 1.0, 0.0]);
     ds.add_word("man", vec![0.5, 0.0, 0.5]);
     ds.add_word("woman", vec![0.0, 0.5, 0.5]);
-    
+
     println!("\n分布语义结果:");
-    
+
     // 计算相似度
     if let Some(sim) = ds.cosine_similarity("king", "queen") {
         println!("king 和 queen 的相似度: {:.3}", sim);
     }
-    
+
     // 查找相似词
     let similar = ds.find_similar_words("king", 3);
     println!("与 king 最相似的词:");
     for (word, sim) in similar {
         println!("  {}: {:.3}", word, sim);
     }
-    
+
     // 类比推理
     if let Some(result) = ds.analogy("man", "king", "woman") {
         println!("man : king :: woman : {}", result);
@@ -671,8 +685,8 @@ addWordVector :: DistributionalModel -> String -> WordVector -> DistributionalMo
 addWordVector model word vector
     | V.length vector == vectorDim model = model {
         wordVectors = Map.insert word vector (wordVectors model),
-        vocabulary = if word `elem` vocabulary model 
-                    then vocabulary model 
+        vocabulary = if word `elem` vocabulary model
+                    then vocabulary model
                     else word : vocabulary model
     }
     | otherwise = model
@@ -693,7 +707,7 @@ cosineSimilarity v1 v2 =
     let dot = dotProduct v1 v2
         norm1 = vectorNorm v1
         norm2 = vectorNorm v2
-    in if norm1 > 0 && norm2 > 0 
+    in if norm1 > 0 && norm2 > 0
        then dot / (norm1 * norm2)
        else 0.0
 
@@ -725,13 +739,13 @@ analogy model a b c = do
     va <- getWordVector model a
     vb <- getWordVector model b
     vc <- getWordVector model c
-    
+
     let targetVector = vectorAdd vc (vectorSubtract vb va)
         candidates = [(w, sim) | w <- vocabulary model, w /= a, w /= b, w /= c,
                                 Just vw <- [getWordVector model w],
                                 let sim = cosineSimilarity targetVector vw]
         sorted = sortBy (\x y -> compare (snd y) (snd x)) candidates
-    
+
     case sorted of
         ((word, _):_) -> Just word
         [] -> Nothing
@@ -783,7 +797,7 @@ similarityMatrix model words =
 main :: IO ()
 main = do
     let model = createModel 3
-        
+
         -- 添加示例词向量
         model1 = addWordVector model "king" (fromList [1.0, 0.0, 0.0])
         model2 = addWordVector model1 "queen" (fromList [0.0, 1.0, 0.0])
@@ -791,11 +805,11 @@ main = do
         model4 = addWordVector model3 "woman" (fromList [0.0, 0.5, 0.5])
         model5 = addWordVector model4 "prince" (fromList [0.8, 0.2, 0.0])
         model6 = addWordVector model5 "princess" (fromList [0.2, 0.8, 0.0])
-        
+
         finalModel = model6
-    
+
     putStrLn "分布语义模型示例:"
-    
+
     -- 计算相似度
     putStrLn "\n词相似度:"
     mapM_ (\pair -> do
@@ -804,27 +818,27 @@ main = do
             Just sim -> putStrLn $ w1 ++ " 和 " ++ w2 ++ " 的相似度: " ++ show sim
             Nothing -> putStrLn $ "无法计算 " ++ w1 ++ " 和 " ++ w2 ++ " 的相似度"
     ) [("king", "queen"), ("man", "woman"), ("king", "man")]
-    
+
     -- 查找相似词
     putStrLn "\n与 'king' 最相似的词:"
     let similar = findSimilarWords finalModel "king" 3
     mapM_ (\(word, sim) -> putStrLn $ "  " ++ word ++ ": " ++ show sim) similar
-    
+
     -- 类比推理
     putStrLn "\n类比推理:"
     case analogy finalModel "man" "king" "woman" of
         Just result -> putStrLn $ "man : king :: woman : " ++ result
         Nothing -> putStrLn "无法进行类比推理"
-    
+
     case analogy finalModel "prince" "king" "princess" of
         Just result -> putStrLn $ "prince : king :: princess : " ++ result
         Nothing -> putStrLn "无法进行类比推理"
-    
+
     -- 语义聚类
     putStrLn "\n语义聚类:"
     let clusters = semanticClustering finalModel (vocabulary finalModel)
     mapM_ (\cluster -> putStrLn $ "聚类: " ++ show cluster) clusters
-    
+
     putStrLn "\n分布语义模型演示完成！"
 ```
 
@@ -914,10 +928,12 @@ $$\text{Fusion}(s_1, s_2, \alpha_1) \sqsubseteq \text{Fusion}(s_1, s_2, \alpha_2
 
 **定义 4.1 (语义涌现函数)**：
 语义涌现函数定义为：
-$$\text{SemanticEmergence}(s, \theta) = \begin{cases}
+$$
+\text{SemanticEmergence}(s, \theta) = \begin{cases}
 0 & \text{if } s < \theta \\
 f(s) & \text{if } s \geq \theta
-\end{cases}$$
+\end{cases}
+$$
 
 其中 $s$ 是模型规模，$\theta$ 是涌现阈值。
 

@@ -4,7 +4,7 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-逻辑演算系统是形式化推理的基础，为FormalAI提供严格的证明理论和推理机制。本模块建立完整的逻辑演算体系，包括自然演绎、序列演算和模型论。
+逻辑演算系统是形式化推理的基础，为 FormalAI 提供严格的证明理论和推理机制。本模块建立完整的逻辑演算体系，包括自然演绎、序列演算和模型论。
 
 Logical calculus system is the foundation of formal reasoning, providing FormalAI with rigorous proof theory and inference mechanisms. This module establishes a complete logical calculus system, including natural deduction, sequent calculus, and model theory.
 
@@ -18,7 +18,7 @@ Logical calculus system is the foundation of formal reasoning, providing FormalA
   - [3. 模型论基础](#3-模型论基础--model-theory-foundations--modelltheoretische-grundlagen--fondements-de-la-théorie-des-modèles)
   - [4. 证明论](#4-证明论--proof-theory--beweistheorie--théorie-de-la-preuve)
   - [5. 完备性定理](#5-完备性定理--completeness-theorems--vollständigkeitssätze--théorèmes-de-complétude)
-  - [6. AI中的逻辑演算应用](#6-ai中的逻辑演算应用--logical-calculus-applications-in-ai--anwendungen-des-logischen-kalküls-in-der-ki--applications-du-calcul-logique-dans-lia)
+  - [6. AI 中的逻辑演算应用](#6-ai中的逻辑演算应用--logical-calculus-applications-in-ai--anwendungen-des-logischen-kalküls-in-der-ki--applications-du-calcul-logique-dans-lia)
   - [代码实现](#代码实现--code-implementation--code-implementierung--implémentation-de-code)
   - [参考文献](#参考文献--references--literatur--références)
 
@@ -243,7 +243,7 @@ $$\Gamma \vdash \phi \Rightarrow \Gamma \models \phi$$
 **定理 5.3.2 (向上勒文海姆-斯科伦定理)**
 如果一阶理论有无限模型，则它有任意大基数的模型。
 
-## 6. AI中的逻辑演算应用 / Logical Calculus Applications in AI / Anwendungen des logischen Kalküls in der KI / Applications du calcul logique dans l'IA
+## 6. AI 中的逻辑演算应用 / Logical Calculus Applications in AI / Anwendungen des logischen Kalküls in der KI / Applications du calcul logique dans l'IA
 
 ### 6.1 自动定理证明 / Automated Theorem Proving / Automatisches Theorembeweisen / Démonstration automatique de théorèmes
 
@@ -258,15 +258,15 @@ data Clause = Clause [Literal] deriving (Eq, Show)
 data Literal = Pos String | Neg String deriving (Eq, Show)
 
 resolve :: Clause -> Clause -> Maybe Clause
-resolve (Clause lits1) (Clause lits2) = 
+resolve (Clause lits1) (Clause lits2) =
   case findComplementary lits1 lits2 of
     Nothing -> Nothing
-    Just (lit1, lit2) -> 
+    Just (lit1, lit2) ->
       let newLits = filter (/= lit1) lits1 ++ filter (/= lit2) lits2
       in Just (Clause newLits)
 
 resolution :: [Clause] -> [Clause] -> Bool
-resolution clauses goal = 
+resolution clauses goal =
   let allClauses = clauses ++ map negateClause goal
       newClauses = generateResolvents allClauses
   in emptyClause `elem` newClauses
@@ -312,7 +312,7 @@ $$\{P\} \ S \ \{Q\}$$
 
 ## 代码实现 / Code Implementation / Code-Implementierung / Implémentation de code
 
-### Rust实现：逻辑演算核心 / Rust Implementation: Logical Calculus Core
+### Rust 实现：逻辑演算核心 / Rust Implementation: Logical Calculus Core
 
 ```rust
 use std::collections::HashSet;
@@ -349,7 +349,7 @@ impl NaturalDeductionProver {
             assumptions: Vec::new(),
         }
     }
-    
+
     // 合取引入
     pub fn and_intro(&self, left: &Formula, right: &Formula) -> ProofNode {
         ProofNode {
@@ -369,7 +369,7 @@ impl NaturalDeductionProver {
             ],
         }
     }
-    
+
     // 合取消除
     pub fn and_elim_left(&self, and_formula: &Formula) -> Option<ProofNode> {
         if let Formula::And(left, _) = and_formula {
@@ -386,7 +386,7 @@ impl NaturalDeductionProver {
             None
         }
     }
-    
+
     // 蕴含引入
     pub fn impl_intro(&self, assumption: &Formula, conclusion: &Formula) -> ProofNode {
         ProofNode {
@@ -399,7 +399,7 @@ impl NaturalDeductionProver {
             }],
         }
     }
-    
+
     // 蕴含消除 (Modus Ponens)
     pub fn impl_elim(&self, impl: &Formula, antecedent: &Formula) -> Option<ProofNode> {
         if let Formula::Implies(ant, cons) = impl {
@@ -427,7 +427,7 @@ impl NaturalDeductionProver {
             None
         }
     }
-    
+
     // 全称量词引入
     pub fn forall_intro(&self, var: &str, formula: &Formula) -> ProofNode {
         ProofNode {
@@ -440,7 +440,7 @@ impl NaturalDeductionProver {
             }],
         }
     }
-    
+
     // 全称量词消除
     pub fn forall_elim(&self, forall_formula: &Formula, term: &str) -> Option<ProofNode> {
         if let Formula::Forall(var, body) = forall_formula {
@@ -458,7 +458,7 @@ impl NaturalDeductionProver {
             None
         }
     }
-    
+
     // 变量替换
     fn substitute(&self, formula: &Formula, var: &str, term: &str) -> Formula {
         match formula {
@@ -511,14 +511,14 @@ impl SequentProver {
             sequents: Vec::new(),
         }
     }
-    
+
     // 合取左规则
     pub fn and_left(&self, gamma: &[Formula], delta: &[Formula], a: &Formula, b: &Formula) -> (Vec<Formula>, Vec<Formula>) {
         let mut new_gamma = gamma.to_vec();
         new_gamma.push(Formula::And(Box::new(a.clone()), Box::new(b.clone())));
         (new_gamma, delta.to_vec())
     }
-    
+
     // 合取右规则
     pub fn and_right(&self, gamma: &[Formula], delta: &[Formula], a: &Formula, b: &Formula) -> Vec<(Vec<Formula>, Vec<Formula>)> {
         vec![
@@ -534,7 +534,7 @@ impl SequentProver {
             }),
         ]
     }
-    
+
     // 蕴含左规则
     pub fn impl_left(&self, gamma: &[Formula], delta: &[Formula], a: &Formula, b: &Formula) -> Vec<(Vec<Formula>, Vec<Formula>)> {
         vec![
@@ -550,7 +550,7 @@ impl SequentProver {
             }, delta.to_vec()),
         ]
     }
-    
+
     // 蕴含右规则
     pub fn impl_right(&self, gamma: &[Formula], delta: &[Formula], a: &Formula, b: &Formula) -> (Vec<Formula>, Vec<Formula>) {
         let mut new_gamma = gamma.to_vec();
@@ -572,12 +572,12 @@ impl ResolutionProver {
             clauses: Vec::new(),
         }
     }
-    
+
     // 添加子句
     pub fn add_clause(&mut self, literals: Vec<String>) {
         self.clauses.push(literals);
     }
-    
+
     // 归结
     pub fn resolve(&self, clause1: &[String], clause2: &[String]) -> Option<Vec<String>> {
         for lit1 in clause1 {
@@ -600,18 +600,18 @@ impl ResolutionProver {
         }
         None
     }
-    
+
     // 检查互补文字
     fn are_complementary(&self, lit1: &str, lit2: &str) -> bool {
-        (lit1.starts_with("¬") && lit2 == &lit1[1..]) || 
+        (lit1.starts_with("¬") && lit2 == &lit1[1..]) ||
         (lit2.starts_with("¬") && lit1 == &lit2[1..])
     }
-    
+
     // 归结证明
     pub fn prove(&mut self) -> bool {
         let mut new_clauses = Vec::new();
         let mut changed = true;
-        
+
         while changed {
             changed = false;
             for i in 0..self.clauses.len() {
@@ -636,37 +636,37 @@ impl ResolutionProver {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_natural_deduction() {
         let prover = NaturalDeductionProver::new();
-        
+
         // 测试合取引入
         let a = Formula::Atom("A".to_string());
         let b = Formula::Atom("B".to_string());
         let proof = prover.and_intro(&a, &b);
-        
+
         assert_eq!(proof.rule, "∧I");
         assert_eq!(proof.formula, Formula::And(Box::new(a), Box::new(b)));
     }
-    
+
     #[test]
     fn test_resolution() {
         let mut prover = ResolutionProver::new();
-        
+
         // 添加子句: {A, B}, {¬A, C}, {¬B, C}, {¬C}
         prover.add_clause(vec!["A".to_string(), "B".to_string()]);
         prover.add_clause(vec!["¬A".to_string(), "C".to_string()]);
         prover.add_clause(vec!["¬B".to_string(), "C".to_string()]);
         prover.add_clause(vec!["¬C".to_string()]);
-        
+
         // 应该能证明矛盾
         assert!(prover.prove());
     }
 }
 ```
 
-### Haskell实现：高级逻辑演算 / Haskell Implementation: Advanced Logical Calculus
+### Haskell 实现：高级逻辑演算 / Haskell Implementation: Advanced Logical Calculus
 
 ```haskell
 {-# LANGUAGE GADTs, DataKinds, TypeFamilies #-}
@@ -712,19 +712,19 @@ data Sequent = Sequent [Formula] [Formula]
 
 -- 序列演算规则
 andLeft :: Sequent -> Formula -> Formula -> Sequent
-andLeft (Sequent gamma delta) a b = 
+andLeft (Sequent gamma delta) a b =
   Sequent (Formula::And a b : gamma) delta
 
 andRight :: Sequent -> Formula -> Formula -> [Sequent]
-andRight (Sequent gamma delta) a b = 
+andRight (Sequent gamma delta) a b =
   [Sequent gamma (a : delta), Sequent gamma (b : delta)]
 
 implLeft :: Sequent -> Formula -> Formula -> [Sequent]
-implLeft (Sequent gamma delta) a b = 
+implLeft (Sequent gamma delta) a b =
   [Sequent gamma (a : delta), Sequent (b : gamma) delta]
 
 implRight :: Sequent -> Formula -> Formula -> Sequent
-implRight (Sequent gamma delta) a b = 
+implRight (Sequent gamma delta) a b =
   Sequent (a : gamma) (Formula::Implies a b : delta)
 
 -- 归结
@@ -732,15 +732,15 @@ data Literal = Pos String | Neg String deriving (Eq, Show)
 type Clause = [Literal]
 
 resolve :: Clause -> Clause -> Maybe Clause
-resolve c1 c2 = 
+resolve c1 c2 =
   case findComplementary c1 c2 of
     Nothing -> Nothing
-    Just (l1, l2) -> 
+    Just (l1, l2) ->
       let newClause = filter (/= l1) c1 ++ filter (/= l2) c2
       in Just newClause
 
 findComplementary :: Clause -> Clause -> Maybe (Literal, Literal)
-findComplementary c1 c2 = 
+findComplementary c1 c2 =
   case [ (l1, l2) | l1 <- c1, l2 <- c2, areComplementary l1 l2 ] of
     [] -> Nothing
     (x:_) -> Just x
@@ -752,27 +752,27 @@ areComplementary _ _ = False
 
 -- 归结证明
 resolution :: [Clause] -> Bool
-resolution clauses = 
+resolution clauses =
   let allClauses = clauses
       newClauses = generateResolvents allClauses
   in [] `elem` newClauses
 
 generateResolvents :: [Clause] -> [Clause]
-generateResolvents clauses = 
-  let resolvents = [ r | c1 <- clauses, c2 <- clauses, 
+generateResolvents clauses =
+  let resolvents = [ r | c1 <- clauses, c2 <- clauses,
                         c1 /= c2, Just r <- [resolve c1 c2] ]
-  in if null resolvents 
-     then clauses 
+  in if null resolvents
+     then clauses
      else generateResolvents (clauses ++ resolvents)
 
 -- 模型检查
-data Model = Model 
+data Model = Model
   { domain :: [String]
   , interpretations :: [(String, [String])]
   }
 
 satisfies :: Model -> Formula -> Bool
-satisfies model (Atom p) = 
+satisfies model (Atom p) =
   case lookup p (interpretations model) of
     Just [] -> True
     _ -> False
@@ -792,10 +792,10 @@ main = do
   let a = Atom "A"
   let b = Atom "B"
   let proof = AndIntro (Assumption a) (Assumption b)
-  
+
   print "Natural deduction proof:"
   print proof
-  
+
   let clauses = [[Pos "A", Pos "B"], [Neg "A", Pos "C"], [Neg "B", Pos "C"], [Neg "C"]]
   let result = resolution clauses
   print $ "Resolution result: " ++ show result
@@ -803,23 +803,23 @@ main = do
 
 ## 参考文献 / References / Literatur / Références
 
-1. **Gentzen, G.** (1935). *Untersuchungen über das logische Schließen*. Mathematische Zeitschrift.
-2. **Prawitz, D.** (1965). *Natural Deduction: A Proof-Theoretical Study*. Almqvist & Wiksell.
-3. **Troelstra, A. S. & Schwichtenberg, H.** (2000). *Basic Proof Theory*. Cambridge University Press.
-4. **Chang, C. L. & Lee, R. C. T.** (1973). *Symbolic Logic and Mechanical Theorem Proving*. Academic Press.
-5. **Robinson, J. A.** (1965). *A Machine-Oriented Logic Based on the Resolution Principle*. Journal of the ACM.
+1. **Gentzen, G.** (1935). _Untersuchungen über das logische Schließen_. Mathematische Zeitschrift.
+2. **Prawitz, D.** (1965). _Natural Deduction: A Proof-Theoretical Study_. Almqvist & Wiksell.
+3. **Troelstra, A. S. & Schwichtenberg, H.** (2000). _Basic Proof Theory_. Cambridge University Press.
+4. **Chang, C. L. & Lee, R. C. T.** (1973). _Symbolic Logic and Mechanical Theorem Proving_. Academic Press.
+5. **Robinson, J. A.** (1965). _A Machine-Oriented Logic Based on the Resolution Principle_. Journal of the ACM.
 
 ---
 
-*本模块为FormalAI提供了严格的逻辑演算基础，确保AI系统的形式化推理和证明能力。*
+_本模块为 FormalAI 提供了严格的逻辑演算基础，确保 AI 系统的形式化推理和证明能力。_
 
-*This module provides FormalAI with rigorous logical calculus foundations, ensuring formal reasoning and proof capabilities of AI systems.*
+_This module provides FormalAI with rigorous logical calculus foundations, ensuring formal reasoning and proof capabilities of AI systems._
 
 ## 相关章节 / Related Chapters
 
 **前置依赖 / Prerequisites:**
 
-- [0.0 ZFC公理系统](00-set-theory-zfc.md)
+- [0.0 ZFC 公理系统](00-set-theory-zfc.md)
 - [0.2 类型理论](02-type-theory.md)
 
 **后续依赖 / Follow-ups:**
@@ -830,7 +830,7 @@ main = do
 ## 2024/2025 最新进展 / Latest Updates
 
 - 表算法与神经符号混合推理的接口（占位）。
-- 一阶模型检验在LLM事实校验中的应用（占位）。
+- 一阶模型检验在 LLM 事实校验中的应用（占位）。
 
 ## Lean 占位模板 / Lean Placeholder
 

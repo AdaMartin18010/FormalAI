@@ -34,6 +34,7 @@ fn pgd_step(x: f32, grad: f32, x0: f32, eps: f32, alpha: f32) -> f32 {
 
 - [6.3 鲁棒性理论 / Robustness Theory / Robustheitstheorie / Théorie de la robustesse](#63-鲁棒性理论--robustness-theory--robustheitstheorie--théorie-de-la-robustesse)
   - [概述 / Overview](#概述--overview)
+    - [示例卡片 / Example Cards](#示例卡片--example-cards)
     - [0. PGD对抗攻击 / PGD Adversarial Attack / PGD-Angriff / Attaque PGD](#0-pgd对抗攻击--pgd-adversarial-attack--pgd-angriff--attaque-pgd)
       - [Rust示例：标量损失的PGD一轮](#rust示例标量损失的pgd一轮)
   - [目录 / Table of Contents](#目录--table-of-contents)
@@ -171,12 +172,12 @@ impl AdversarialAttacker {
             AttackType::CWL2 => self.cw_l2_attack(model, input, target),
         }
     }
-    
+
     fn fgsm_attack(&self, model: &Model, input: &Input, target: &Label) -> AdversarialExample {
         let gradient = model.compute_gradient(input, target);
         let perturbation = self.perturbation_bound * gradient.sign();
         let adversarial_input = input + perturbation;
-        
+
         AdversarialExample {
             original_input: input.clone(),
             adversarial_input,
@@ -184,17 +185,17 @@ impl AdversarialAttacker {
             attack_type: AttackType::FGSM,
         }
     }
-    
+
     fn pgd_attack(&self, model: &Model, input: &Input, target: &Label) -> AdversarialExample {
         let mut current_input = input.clone();
-        
+
         for _ in 0..self.max_iterations {
             let gradient = model.compute_gradient(&current_input, target);
             let step = self.perturbation_bound / self.max_iterations as f32 * gradient.sign();
             current_input = current_input + step;
             current_input = self.project_to_boundary(&current_input, input);
         }
-        
+
         AdversarialExample {
             original_input: input.clone(),
             adversarial_input: current_input,
@@ -202,11 +203,11 @@ impl AdversarialAttacker {
             attack_type: AttackType::PGD,
         }
     }
-    
+
     fn project_to_boundary(&self, current: &Input, original: &Input) -> Input {
         let difference = current - original;
         let norm = difference.norm();
-        
+
         if norm > self.perturbation_bound {
             original + (self.perturbation_bound / norm) * difference
         } else {
@@ -243,36 +244,36 @@ impl AdversarialTrainer {
     fn train_adversarially(&mut self, model: &mut Model, dataset: &Dataset) -> TrainingResult {
         let mut total_loss = 0.0;
         let mut total_robust_accuracy = 0.0;
-        
+
         for (input, target) in dataset.iter() {
             // 生成对抗样本
             let adversarial_example = self.attacker.generate_attack(model, &input, &target);
-            
+
             // 计算对抗损失
             let clean_loss = model.compute_loss(&input, &target);
             let adversarial_loss = model.compute_loss(&adversarial_example.adversarial_input, &target);
             let total_loss_batch = (clean_loss + adversarial_loss) / 2.0;
-            
+
             // 更新模型
             self.optimizer.update(model, total_loss_batch);
-            
+
             total_loss += total_loss_batch;
-            
+
             // 评估鲁棒性
             let robust_accuracy = self.evaluate_robustness(model, &adversarial_example);
             total_robust_accuracy += robust_accuracy;
         }
-        
+
         TrainingResult {
             average_loss: total_loss / dataset.len() as f32,
             robust_accuracy: total_robust_accuracy / dataset.len() as f32,
         }
     }
-    
+
     fn evaluate_robustness(&self, model: &Model, adversarial_example: &AdversarialExample) -> f32 {
         let original_prediction = model.predict(&adversarial_example.original_input);
         let adversarial_prediction = model.predict(&adversarial_example.adversarial_input);
-        
+
         if original_prediction == adversarial_prediction {
             1.0
         } else {
@@ -342,22 +343,22 @@ struct BayesianNeuralNetwork {
 impl BayesianNeuralNetwork {
     fn predict_with_uncertainty(&self, input: &Input) -> (Prediction, f32) {
         let mut predictions = Vec::new();
-        
+
         // 多次前向传播
         for _ in 0..100 {
             let weights = self.sample_weights();
             let prediction = self.forward_with_weights(input, &weights);
             predictions.push(prediction);
         }
-        
+
         let mean = predictions.iter().sum::<f32>() / predictions.len() as f32;
         let variance = predictions.iter()
             .map(|p| (p - mean).powi(2))
             .sum::<f32>() / predictions.len() as f32;
-        
+
         (mean, variance.sqrt())
     }
-    
+
     fn sample_weights(&self) -> Vec<f32> {
         // 从权重分布中采样
         self.weight_distributions.iter()
@@ -417,16 +418,16 @@ struct RobustnessEvaluator {
 impl RobustnessEvaluator {
     fn evaluate_robustness(&self, model: &Model, dataset: &Dataset) -> RobustnessReport {
         let mut perturbation_results = Vec::new();
-        
+
         for generator in &self.perturbation_generators {
             let perturbations = generator.generate_perturbations(dataset);
             let results = self.evaluate_perturbations(model, &perturbations);
             perturbation_results.push(results);
         }
-        
+
         let metrics = self.calculate_metrics(&perturbation_results);
         let benchmark_comparison = self.benchmark_comparator.compare(&metrics);
-        
+
         RobustnessReport {
             perturbation_results,
             metrics,
@@ -434,19 +435,19 @@ impl RobustnessEvaluator {
             overall_robustness: self.compute_overall_robustness(&metrics),
         }
     }
-    
+
     fn evaluate_perturbations(&self, model: &Model, perturbations: &[Perturbation]) -> PerturbationResult {
         let mut total_accuracy = 0.0;
         let mut total_confidence = 0.0;
-        
+
         for perturbation in perturbations {
             let accuracy = self.evaluate_perturbation(model, perturbation);
             let confidence = self.calculate_confidence(model, perturbation);
-            
+
             total_accuracy += accuracy;
             total_confidence += confidence;
         }
-        
+
         PerturbationResult {
             average_accuracy: total_accuracy / perturbations.len() as f32,
             average_confidence: total_confidence / perturbations.len() as f32,
@@ -491,15 +492,15 @@ struct DataAugmenter {
 impl DataAugmenter {
     fn augment_data(&self, dataset: &Dataset) -> Dataset {
         let mut augmented_dataset = dataset.clone();
-        
+
         for method in &self.augmentation_methods {
             let augmented_samples = method.augment(dataset, self.augmentation_strength);
             augmented_dataset.extend(augmented_samples);
         }
-        
+
         augmented_dataset
     }
-    
+
     fn apply_augmentation(&self, input: &Input, method: &AugmentationMethod) -> Input {
         match method {
             AugmentationMethod::Rotation => self.rotate(input),
@@ -571,17 +572,17 @@ impl RobustnessEvaluationSystem {
             uncertaintyAnalyzer: UncertaintyAnalyzer::new(),
         }
     }
-    
+
     fn evaluate_robustness(&self, model: &Model, dataset: &Dataset) -> RobustnessReport {
         // 对抗鲁棒性评估
         let adversarialRobustness = self.evaluate_adversarial_robustness(model, dataset);
-        
+
         // 分布偏移鲁棒性评估
         let distributionRobustness = self.evaluate_distribution_robustness(model, dataset);
-        
+
         // 不确定性鲁棒性评估
         let uncertaintyRobustness = self.evaluate_uncertainty_robustness(model, dataset);
-        
+
         RobustnessReport {
             adversarialRobustness: adversarialRobustness,
             distributionRobustness: distributionRobustness,
@@ -589,79 +590,79 @@ impl RobustnessEvaluationSystem {
             overallRobustness: self.compute_overall_robustness(&adversarialRobustness, &distributionRobustness, &uncertaintyRobustness),
         }
     }
-    
+
     fn evaluate_adversarial_robustness(&self, model: &Model, dataset: &Dataset) -> AdversarialRobustness {
         let mut attackSuccessRates = HashMap::new();
-        
+
         for attackType in vec![AttackType::FGSM, AttackType::PGD, AttackType::CWL2] {
             let mut successfulAttacks = 0;
             let mut totalAttacks = 0;
-            
+
             for (input, target) in dataset.iter() {
                 let adversarialExample = self.attacker.generate_attack(model, &input, &target, attackType);
                 let originalPrediction = model.predict(&input);
                 let adversarialPrediction = model.predict(&adversarialExample.adversarialInput);
-                
+
                 if originalPrediction != adversarialPrediction {
                     successfulAttacks += 1;
                 }
                 totalAttacks += 1;
             }
-            
+
             let successRate = successfulAttacks as f32 / totalAttacks as f32;
             attackSuccessRates.insert(attackType, successRate);
         }
-        
+
         AdversarialRobustness {
             attackSuccessRates: attackSuccessRates,
             averageSuccessRate: attackSuccessRates.values().sum::<f32>() / attackSuccessRates.len() as f32,
         }
     }
-    
+
     fn evaluate_distribution_robustness(&self, model: &Model, dataset: &Dataset) -> DistributionRobustness {
         let sourcePerformance = self.evaluate_performance(model, dataset);
-        
+
         // 模拟分布偏移
         let shiftedDataset = self.generate_shifted_dataset(dataset);
         let shiftedPerformance = self.evaluate_performance(model, &shiftedDataset);
-        
+
         DistributionRobustness {
             sourcePerformance: sourcePerformance,
             shiftedPerformance: shiftedPerformance,
             performanceDrop: sourcePerformance - shiftedPerformance,
         }
     }
-    
+
     fn evaluate_uncertainty_robustness(&self, model: &Model, dataset: &Dataset) -> UncertaintyRobustness {
         let mut calibrationErrors = Vec::new();
         let mut uncertaintyScores = Vec::new();
-        
+
         for (input, target) in dataset.iter() {
             let (prediction, uncertainty) = model.predict_with_uncertainty(&input);
             let confidence = 1.0 - uncertainty;
-            
+
             calibrationErrors.push((confidence - (prediction == target) as f32).abs());
             uncertaintyScores.push(uncertainty);
         }
-        
+
         UncertaintyRobustness {
             averageCalibrationError: calibrationErrors.iter().sum::<f32>() / calibrationErrors.len() as f32,
             averageUncertainty: uncertaintyScores.iter().sum::<f32>() / uncertaintyScores.len() as f32,
         }
     }
-    
+
     fn compute_overall_robustness(&self, adversarial: &AdversarialRobustness, distribution: &DistributionRobustness, uncertainty: &UncertaintyRobustness) -> f32 {
         let adversarialScore = 1.0 - adversarial.averageSuccessRate;
         let distributionScore = 1.0 - distribution.performanceDrop.min(1.0);
         let uncertaintyScore = 1.0 - uncertainty.averageCalibrationError;
-        
+
         (adversarialScore + distributionScore + uncertaintyScore) / 3.0
     }
-    
+
     fn evaluate_performance(&self, model: &Model, dataset: &Dataset) -> f32 {
         let mut correctPredictions = 0;
         let mut totalPredictions = 0;
-        
+
         for (input, target) in dataset.iter() {
             let prediction = model.predict(&input);
             if prediction == target {
@@ -669,10 +670,10 @@ impl RobustnessEvaluationSystem {
             }
             totalPredictions += 1;
         }
-        
+
         correctPredictions as f32 / totalPredictions as f32
     }
-    
+
     fn generate_shifted_dataset(&self, dataset: &Dataset) -> Dataset {
         // 简化的分布偏移生成
         dataset.clone()
@@ -696,7 +697,7 @@ impl AdversarialAttacker {
     fn new() -> Self {
         AdversarialAttacker
     }
-    
+
     fn generate_attack(&self, _model: &Model, _input: &Input, _target: &Label, _attackType: AttackType) -> AdversarialExample {
         AdversarialExample {
             originalInput: Input,
@@ -763,7 +764,7 @@ impl Model {
     fn predict(&self, _input: &Input) -> Label {
         Label
     }
-    
+
     fn predict_with_uncertainty(&self, _input: &Input) -> (Label, f32) {
         (Label, 0.1)
     }
@@ -779,7 +780,7 @@ fn main() {
     let robustnessSystem = RobustnessEvaluationSystem::new();
     let model = Model;
     let dataset = Dataset;
-    
+
     let report = robustnessSystem.evaluate_robustness(&model, &dataset);
     println!("鲁棒性评估报告: {:?}", report);
 }
@@ -801,7 +802,7 @@ data UncertaintyAnalyzer = UncertaintyAnalyzer deriving (Show)
 
 -- 鲁棒性评估
 evaluateRobustness :: RobustnessEvaluationSystem -> Model -> Dataset -> RobustnessReport
-evaluateRobustness system model dataset = 
+evaluateRobustness system model dataset =
     let adversarialRobustness = evaluateAdversarialRobustness system model dataset
         distributionRobustness = evaluateDistributionRobustness system model dataset
         uncertaintyRobustness = evaluateUncertaintyRobustness system model dataset
@@ -815,7 +816,7 @@ evaluateRobustness system model dataset =
 
 -- 对抗鲁棒性评估
 evaluateAdversarialRobustness :: RobustnessEvaluationSystem -> Model -> Dataset -> AdversarialRobustness
-evaluateAdversarialRobustness system model dataset = 
+evaluateAdversarialRobustness system model dataset =
     let attackTypes = [FGSM, PGD, CWL2]
         attackResults = map (\attackType -> evaluateAttackType system model dataset attackType) attackTypes
         successRates = map snd attackResults
@@ -827,7 +828,7 @@ evaluateAdversarialRobustness system model dataset =
 
 -- 分布鲁棒性评估
 evaluateDistributionRobustness :: RobustnessEvaluationSystem -> Model -> Dataset -> DistributionRobustness
-evaluateDistributionRobustness system model dataset = 
+evaluateDistributionRobustness system model dataset =
     let sourcePerformance = evaluatePerformance system model dataset
         shiftedDataset = generateShiftedDataset dataset
         shiftedPerformance = evaluatePerformance system model shiftedDataset
@@ -840,7 +841,7 @@ evaluateDistributionRobustness system model dataset =
 
 -- 不确定性鲁棒性评估
 evaluateUncertaintyRobustness :: RobustnessEvaluationSystem -> Model -> Dataset -> UncertaintyRobustness
-evaluateUncertaintyRobustness system model dataset = 
+evaluateUncertaintyRobustness system model dataset =
     let predictions = map (\sample -> predictWithUncertainty model sample) (getSamples dataset)
         calibrationErrors = map calculateCalibrationError predictions
         uncertaintyScores = map snd predictions
@@ -853,7 +854,7 @@ evaluateUncertaintyRobustness system model dataset =
 
 -- 计算整体鲁棒性
 computeOverallRobustness :: AdversarialRobustness -> DistributionRobustness -> UncertaintyRobustness -> Double
-computeOverallRobustness adversarial distribution uncertainty = 
+computeOverallRobustness adversarial distribution uncertainty =
     let adversarialScore = 1.0 - averageSuccessRate adversarial
         distributionScore = 1.0 - min 1.0 (performanceDrop distribution)
         uncertaintyScore = 1.0 - averageCalibrationError uncertainty
@@ -915,7 +916,7 @@ main = do
     let system = RobustnessEvaluationSystem RobustnessEvaluator AdversarialAttacker UncertaintyAnalyzer
     let model = Model
     let dataset = Dataset
-    
+
     let report = evaluateRobustness system model dataset
     putStrLn $ "鲁棒性评估报告: " ++ show report
 ```

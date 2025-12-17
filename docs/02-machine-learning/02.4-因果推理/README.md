@@ -332,86 +332,86 @@ impl CausalGraph {
         let n = nodes.len();
         let mut edges = HashMap::new();
         let adj_matrix = vec![vec![false; n]; n];
-        
+
         CausalGraph {
             nodes,
             edges,
             adj_matrix,
         }
     }
-    
+
     fn add_edge(&mut self, from: &str, to: &str) {
         let from_idx = self.get_node_index(from);
         let to_idx = self.get_node_index(to);
-        
+
         if from_idx.is_some() && to_idx.is_some() {
             let from_idx = from_idx.unwrap();
             let to_idx = to_idx.unwrap();
-            
+
             self.edges.insert((from.to_string(), to.to_string()), true);
             self.adj_matrix[from_idx][to_idx] = true;
         }
     }
-    
+
     fn get_node_index(&self, node: &str) -> Option<usize> {
         self.nodes.iter().position(|n| n == node)
     }
-    
+
     fn get_parents(&self, node: &str) -> Vec<String> {
         let node_idx = self.get_node_index(node);
         if node_idx.is_none() {
             return Vec::new();
         }
-        
+
         let node_idx = node_idx.unwrap();
         let mut parents = Vec::new();
-        
+
         for (i, _) in self.nodes.iter().enumerate() {
             if self.adj_matrix[i][node_idx] {
                 parents.push(self.nodes[i].clone());
             }
         }
-        
+
         parents
     }
-    
+
     fn get_children(&self, node: &str) -> Vec<String> {
         let node_idx = self.get_node_index(node);
         if node_idx.is_none() {
             return Vec::new();
         }
-        
+
         let node_idx = node_idx.unwrap();
         let mut children = Vec::new();
-        
+
         for (i, _) in self.nodes.iter().enumerate() {
             if self.adj_matrix[node_idx][i] {
                 children.push(self.nodes[i].clone());
             }
         }
-        
+
         children
     }
-    
+
     fn is_d_separated(&self, x: &str, y: &str, z: &[String]) -> bool {
         // 简化的d-分离检查
         // 检查是否存在从x到y的路径，该路径在给定z时被阻塞
         let x_idx = self.get_node_index(x);
         let y_idx = self.get_node_index(y);
-        
+
         if x_idx.is_none() || y_idx.is_none() {
             return true;
         }
-        
+
         let x_idx = x_idx.unwrap();
         let y_idx = y_idx.unwrap();
-        
+
         // 检查直接连接
         if self.adj_matrix[x_idx][y_idx] || self.adj_matrix[y_idx][x_idx] {
             // 如果z包含中间节点，则路径被阻塞
             return z.contains(&x.to_string()) || z.contains(&y.to_string());
         }
-        
+
         // 检查间接路径（简化版本）
         for (i, _) in self.nodes.iter().enumerate() {
             if i != x_idx && i != y_idx {
@@ -422,7 +422,7 @@ impl CausalGraph {
                 }
             }
         }
-        
+
         true
     }
 }
@@ -437,24 +437,24 @@ impl PCAlgorithm {
     fn new(nodes: Vec<String>) -> Self {
         let graph = CausalGraph::new(nodes);
         let independence_tests = HashMap::new();
-        
+
         PCAlgorithm {
             graph,
             independence_tests,
         }
     }
-    
+
     fn run(&mut self, data: &[Vec<f64>]) {
         // 步骤1：学习骨架（无向图）
         self.learn_skeleton(data);
-        
+
         // 步骤2：学习方向
         self.orient_edges();
     }
-    
+
     fn learn_skeleton(&mut self, data: &[Vec<f64>]) {
         let n_nodes = self.graph.nodes.len();
-        
+
         // 从完全图开始
         for i in 0..n_nodes {
             for j in 0..n_nodes {
@@ -463,7 +463,7 @@ impl PCAlgorithm {
                 }
             }
         }
-        
+
         // 逐步删除边
         for i in 0..n_nodes {
             for j in (i+1)..n_nodes {
@@ -477,48 +477,48 @@ impl PCAlgorithm {
             }
         }
     }
-    
+
     fn test_independence(&mut self, x: &str, y: &str, z: &[String], data: &[Vec<f64>]) -> bool {
         // 简化的独立性测试（基于相关系数）
         let x_idx = self.graph.get_node_index(x);
         let y_idx = self.graph.get_node_index(y);
-        
+
         if x_idx.is_none() || y_idx.is_none() {
             return true;
         }
-        
+
         let x_idx = x_idx.unwrap();
         let y_idx = y_idx.unwrap();
-        
+
         // 计算相关系数
         let correlation = self.calculate_correlation(data, x_idx, y_idx);
-        
+
         // 如果相关系数接近0，则认为独立
         correlation.abs() < 0.1
     }
-    
+
     fn calculate_correlation(&self, data: &[Vec<f64>], x_idx: usize, y_idx: usize) -> f64 {
         let n = data.len() as f64;
-        
+
         let x_mean: f64 = data.iter().map(|row| row[x_idx]).sum::<f64>() / n;
         let y_mean: f64 = data.iter().map(|row| row[y_idx]).sum::<f64>() / n;
-        
+
         let numerator: f64 = data.iter()
             .map(|row| (row[x_idx] - x_mean) * (row[y_idx] - y_mean))
             .sum();
-        
+
         let x_var: f64 = data.iter().map(|row| (row[x_idx] - x_mean).powi(2)).sum();
         let y_var: f64 = data.iter().map(|row| (row[y_idx] - y_mean).powi(2)).sum();
-        
+
         let denominator = (x_var * y_var).sqrt();
-        
+
         if denominator == 0.0 {
             0.0
         } else {
             numerator / denominator
         }
     }
-    
+
     fn orient_edges(&mut self) {
         // 简化的方向学习
         // 在实际应用中，这里会使用更复杂的规则
@@ -530,21 +530,21 @@ fn main() {
     // 创建示例数据
     let nodes = vec!["X".to_string(), "Y".to_string(), "Z".to_string()];
     let mut pc = PCAlgorithm::new(nodes);
-    
+
     // 生成示例数据
     let mut rng = rand::thread_rng();
     let mut data = Vec::new();
-    
+
     for _ in 0..100 {
         let x = rng.gen::<f64>();
         let z = x + rng.gen::<f64>() * 0.1;
         let y = z + rng.gen::<f64>() * 0.1;
         data.push(vec![x, y, z]);
     }
-    
+
     // 运行PC算法
     pc.run(&data);
-    
+
     println!("PC Algorithm completed!");
     println!("Graph nodes: {:?}", pc.graph.nodes);
     println!("Graph edges: {:?}", pc.graph.edges);
@@ -598,12 +598,12 @@ estimatePropensityModel observations =
     let n = length observations
         treated = filter (\obs -> treatment obs == Treatment) observations
         control = filter (\obs -> treatment obs == Control) observations
-        
+
         -- 简化的逻辑回归估计
         -- 在实际应用中，这里会使用更复杂的优化算法
         avgTreated = map mean (transpose (map covariates treated))
         avgControl = map mean (map covariates control)
-        
+
         coeffs = zipWith (-) avgTreated avgControl
     in createPropensityModel coeffs
   where
@@ -615,10 +615,10 @@ calculateATE :: [Observation] -> Double
 calculateATE observations =
     let treated = filter (\obs -> treatment obs == Treatment) observations
         control = filter (\obs -> treatment obs == Control) observations
-        
+
         treatedOutcomes = map outcome treated
         controlOutcomes = map outcome control
-        
+
         avgTreated = sum treatedOutcomes / fromIntegral (length treatedOutcomes)
         avgControl = sum controlOutcomes / fromIntegral (length controlOutcomes)
     in avgTreated - avgControl
@@ -627,28 +627,28 @@ calculateATE observations =
 estimateCausalEffectWithPropensity :: [Observation] -> CausalEffect
 estimateCausalEffectWithPropensity observations =
     let propensityModel = estimatePropensityModel observations
-        
+
         -- 计算每个观测的倾向得分
-        observationsWithScore = map (\obs -> 
+        observationsWithScore = map (\obs ->
             (obs, calculatePropensityScore propensityModel (covariates obs))) observations
-        
+
         -- 逆概率加权估计
-        (weightedTreated, totalTreatedWeight) = foldl' 
-            (\(sum, weight) (obs, score) -> 
+        (weightedTreated, totalTreatedWeight) = foldl'
+            (\(sum, weight) (obs, score) ->
                 if treatment obs == Treatment
                 then (sum + outcome obs / score, weight + 1.0 / score)
                 else (sum, weight))
             (0.0, 0.0) observationsWithScore
-        
-        (weightedControl, totalControlWeight) = foldl' 
-            (\(sum, weight) (obs, score) -> 
+
+        (weightedControl, totalControlWeight) = foldl'
+            (\(sum, weight) (obs, score) ->
                 if treatment obs == Control
                 then (sum + outcome obs / (1.0 - score), weight + 1.0 / (1.0 - score))
                 else (sum, weight))
             (0.0, 0.0) observationsWithScore
-        
+
         ate = (weightedTreated / totalTreatedWeight) - (weightedControl / totalControlWeight)
-        
+
         -- 简化的ATT和ATC计算
         att = ate  -- 简化假设
         atc = ate  -- 简化假设
@@ -659,15 +659,15 @@ matchingEstimate :: [Observation] -> Double
 matchingEstimate observations =
     let treated = filter (\obs -> treatment obs == Treatment) observations
         control = filter (\obs -> treatment obs == Control) observations
-        
+
         -- 简化的最近邻匹配
-        matchEffects = map (\treatedObs -> 
-            let distances = map (\controlObs -> 
+        matchEffects = map (\treatedObs ->
+            let distances = map (\controlObs ->
                     euclideanDistance (covariates treatedObs) (covariates controlObs)) control
                 minDistance = minimum distances
                 matchedControl = control !! (fromJust (elemIndex minDistance distances))
             in outcome treatedObs - outcome matchedControl) treated
-        
+
         avgEffect = sum matchEffects / fromIntegral (length matchEffects)
     in avgEffect
   where
@@ -681,7 +681,7 @@ instrumentalVariableEstimate observations instruments =
     let -- 第一阶段：回归X对Z
         xValues = map (\obs -> head (covariates obs)) observations  -- 假设第一个协变量是X
         stage1Slope = calculateSlope instruments xValues
-        
+
         -- 第二阶段：回归Y对预测的X
         yValues = map outcome observations
         predictedX = map (* stage1Slope) instruments
@@ -702,27 +702,27 @@ instrumentalVariableEstimate observations instruments =
 generateObservationalData :: Int -> IO [Observation]
 generateObservationalData n = do
     gen <- getStdGen
-    let (observations, _) = foldl' 
-            (\(obs, g) i -> 
+    let (observations, _) = foldl'
+            (\(obs, g) i ->
                 let (g1, g2) = split g
                     (x, g3) = randomR (-1.0, 1.0) g1
                     (z, g4) = randomR (-1.0, 1.0) g2
                     (u, g5) = randomR (-0.5, 0.5) g3
-                    
+
                     -- 生成处理分配（基于协变量）
                     propensity = 1.0 / (1.0 + exp (-(x + z)))
                     (treatmentRandom, g6) = randomR (0.0, 1.0) g4
                     treatment = if treatmentRandom < propensity then Treatment else Control
-                    
+
                     -- 生成结果
                     outcome = x + 2.0 * z + (if treatment == Treatment then 1.5 else 0.0) + u
-                    
+
                     observation = Observation {
                         covariates = [x, z],
                         treatment = treatment,
                         outcome = outcome
                     }
-                in (obs ++ [observation], g5)) 
+                in (obs ++ [observation], g5))
             ([], gen) [1..n]
     return observations
 
@@ -731,26 +731,26 @@ main :: IO ()
 main = do
     putStrLn "生成观测数据..."
     observations <- generateObservationalData 1000
-    
+
     putStrLn "计算因果效应..."
-    
+
     -- 简单ATE
     let simpleATE = calculateATE observations
     putStrLn $ "简单ATE: " ++ show simpleATE
-    
+
     -- 倾向得分估计
     let propensityATE = ate (estimateCausalEffectWithPropensity observations)
     putStrLn $ "倾向得分ATE: " ++ show propensityATE
-    
+
     -- 匹配估计
     let matchingATE = matchingEstimate observations
     putStrLn $ "匹配ATE: " ++ show matchingATE
-    
+
     -- 工具变量估计（使用第一个协变量作为工具）
     let instruments = map (\obs -> head (covariates obs)) observations
     let ivATE = instrumentalVariableEstimate observations instruments
     putStrLn $ "工具变量ATE: " ++ show ivATE
-    
+
     putStrLn "\n因果效应估计完成！"
 ```
 

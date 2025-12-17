@@ -4,7 +4,7 @@
 
 ## 概述 / Overview
 
-强化学习理论研究智能体如何通过与环境交互来学习最优策略，为自主AI系统提供理论基础。
+强化学习理论研究智能体如何通过与环境交互来学习最优策略，为自主 AI 系统提供理论基础。
 
 Reinforcement learning theory studies how agents learn optimal policies through interaction with environments, providing theoretical foundations for autonomous AI systems.
 
@@ -15,7 +15,7 @@ Reinforcement learning theory studies how agents learn optimal policies through 
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 马尔可夫决策过程 / Markov Decision Processes](#1-马尔可夫决策过程--markov-decision-processes)
-    - [1.1 MDP形式化 / MDP Formulation](#11-mdp形式化--mdp-formulation)
+    - [1.1 MDP 形式化 / MDP Formulation](#11-mdp-形式化--mdp-formulation)
     - [1.2 策略与价值函数 / Policy and Value Functions](#12-策略与价值函数--policy-and-value-functions)
     - [1.3 贝尔曼方程 / Bellman Equations](#13-贝尔曼方程--bellman-equations)
   - [2. 动态规划 / Dynamic Programming](#2-动态规划--dynamic-programming)
@@ -23,29 +23,29 @@ Reinforcement learning theory studies how agents learn optimal policies through 
     - [2.2 价值迭代 / Value Iteration](#22-价值迭代--value-iteration)
     - [2.3 策略评估 / Policy Evaluation](#23-策略评估--policy-evaluation)
   - [3. 蒙特卡洛方法 / Monte Carlo Methods](#3-蒙特卡洛方法--monte-carlo-methods)
-    - [3.1 首次访问MC / First-Visit MC](#31-首次访问mc--first-visit-mc)
-    - [3.2 每次访问MC / Every-Visit MC](#32-每次访问mc--every-visit-mc)
+    - [3.1 首次访问 MC / First-Visit MC](#31-首次访问-mc--first-visit-mc)
+    - [3.2 每次访问 MC / Every-Visit MC](#32-每次访问-mc--every-visit-mc)
     - [3.3 探索策略 / Exploration Policies](#33-探索策略--exploration-policies)
   - [4. 时序差分学习 / Temporal Difference Learning](#4-时序差分学习--temporal-difference-learning)
     - [4.1 TD(0)算法 / TD(0) Algorithm](#41-td0算法--td0-algorithm)
     - [4.2 TD(λ)算法 / TD(λ) Algorithm](#42-tdλ算法--tdλ-algorithm)
-    - [4.3 SARSA算法 / SARSA Algorithm](#43-sarsa算法--sarsa-algorithm)
-  - [5. Q学习 / Q-Learning](#5-q学习--q-learning)
-    - [5.1 Q学习算法 / Q-Learning Algorithm](#51-q学习算法--q-learning-algorithm)
+    - [4.3 SARSA 算法 / SARSA Algorithm](#43-sarsa-算法--sarsa-algorithm)
+  - [5. Q 学习 / Q-Learning](#5-q-学习--q-learning)
+    - [5.1 Q 学习算法 / Q-Learning Algorithm](#51-q-学习算法--q-learning-algorithm)
     - [5.2 收敛性分析 / Convergence Analysis](#52-收敛性分析--convergence-analysis)
-    - [5.3 双Q学习 / Double Q-Learning](#53-双q学习--double-q-learning)
+    - [5.3 双 Q 学习 / Double Q-Learning](#53-双-q-学习--double-q-learning)
   - [6. 策略梯度方法 / Policy Gradient Methods](#6-策略梯度方法--policy-gradient-methods)
     - [6.1 策略梯度定理 / Policy Gradient Theorem](#61-策略梯度定理--policy-gradient-theorem)
-    - [6.2 REINFORCE算法 / REINFORCE Algorithm](#62-reinforce算法--reinforce-algorithm)
+    - [6.2 REINFORCE 算法 / REINFORCE Algorithm](#62-reinforce-算法--reinforce-algorithm)
     - [6.3 自然策略梯度 / Natural Policy Gradient](#63-自然策略梯度--natural-policy-gradient)
-  - [7. Actor-Critic方法 / Actor-Critic Methods](#7-actor-critic方法--actor-critic-methods)
-    - [7.1 Actor-Critic框架 / Actor-Critic Framework](#71-actor-critic框架--actor-critic-framework)
-    - [7.2 A3C算法 / A3C Algorithm](#72-a3c算法--a3c-algorithm)
-    - [7.3 A2C算法 / A2C Algorithm](#73-a2c算法--a2c-algorithm)
+  - [7. Actor-Critic 方法 / Actor-Critic Methods](#7-actor-critic-方法--actor-critic-methods)
+    - [7.1 Actor-Critic 框架 / Actor-Critic Framework](#71-actor-critic-框架--actor-critic-framework)
+    - [7.2 A3C 算法 / A3C Algorithm](#72-a3c-算法--a3c-algorithm)
+    - [7.3 A2C 算法 / A2C Algorithm](#73-a2c-算法--a2c-algorithm)
   - [8. 深度强化学习 / Deep Reinforcement Learning](#8-深度强化学习--deep-reinforcement-learning)
-    - [8.1 DQN算法 / DQN Algorithm](#81-dqn算法--dqn-algorithm)
-    - [8.2 DDPG算法 / DDPG Algorithm](#82-ddpg算法--ddpg-algorithm)
-    - [8.3 PPO算法 / PPO Algorithm](#83-ppo算法--ppo-algorithm)
+    - [8.1 DQN 算法 / DQN Algorithm](#81-dqn-算法--dqn-algorithm)
+    - [8.2 DDPG 算法 / DDPG Algorithm](#82-ddpg-算法--ddpg-algorithm)
+    - [8.3 PPO 算法 / PPO Algorithm](#83-ppo-算法--ppo-algorithm)
   - [9. 多智能体强化学习 / Multi-Agent Reinforcement Learning](#9-多智能体强化学习--multi-agent-reinforcement-learning)
     - [9.1 博弈论基础 / Game Theory Foundations](#91-博弈论基础--game-theory-foundations)
     - [9.2 纳什均衡 / Nash Equilibrium](#92-纳什均衡--nash-equilibrium)
@@ -55,8 +55,8 @@ Reinforcement learning theory studies how agents learn optimal policies through 
     - [10.2 元学习算法 / Meta-Learning Algorithms](#102-元学习算法--meta-learning-algorithms)
     - [10.3 迁移学习 / Transfer Learning](#103-迁移学习--transfer-learning)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：Q学习算法](#rust实现q学习算法)
-    - [Haskell实现：策略梯度](#haskell实现策略梯度)
+    - [Rust 实现：Q 学习算法](#rust-实现q-学习算法)
+    - [Haskell 实现：策略梯度](#haskell-实现策略梯度)
   - [参考文献 / References](#参考文献--references)
   - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
     - [大规模强化学习 / Large-Scale Reinforcement Learning](#大规模强化学习--large-scale-reinforcement-learning)
@@ -71,7 +71,7 @@ Reinforcement learning theory studies how agents learn optimal policies through 
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
+- [0.0 ZFC 公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
 - [1.2 数学基础](../../01-foundations/01.2-数学基础/README.md) - 提供数学基础 / Provides mathematical foundation
 - [2.1 统计学习理论](../02.1-统计学习理论/README.md) - 提供学习基础 / Provides learning foundation
 
@@ -84,11 +84,11 @@ Reinforcement learning theory studies how agents learn optimal policies through 
 
 ## 1. 马尔可夫决策过程 / Markov Decision Processes
 
-### 1.1 MDP形式化 / MDP Formulation
+### 1.1 MDP 形式化 / MDP Formulation
 
 **马尔可夫决策过程 / Markov Decision Process:**
 
-MDP是一个五元组 $(\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma)$，其中：
+MDP 是一个五元组 $(\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma)$，其中：
 
 MDP is a 5-tuple $(\mathcal{S}, \mathcal{A}, \mathcal{P}, \mathcal{R}, \gamma)$ where:
 
@@ -186,9 +186,9 @@ $$V(s) \leftarrow \sum_a \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V(s')]
 
 ## 3. 蒙特卡洛方法 / Monte Carlo Methods
 
-### 3.1 首次访问MC / First-Visit MC
+### 3.1 首次访问 MC / First-Visit MC
 
-**首次访问MC / First-Visit MC:**
+**首次访问 MC / First-Visit MC:**
 
 对于每个状态，只在首次访问时更新价值：
 
@@ -204,9 +204,9 @@ where $G_t$ is the return starting from time $t$.
 
 $$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots$$
 
-### 3.2 每次访问MC / Every-Visit MC
+### 3.2 每次访问 MC / Every-Visit MC
 
-**每次访问MC / Every-Visit MC:**
+**每次访问 MC / Every-Visit MC:**
 
 对于每个状态，在每次访问时都更新价值：
 
@@ -239,7 +239,7 @@ $$\pi(a|s) = \frac{\exp(Q(s,a)/\tau)}{\sum_{a'} \exp(Q(s,a')/\tau)}$$
 
 $$V(s_t) \leftarrow V(s_t) + \alpha [R_{t+1} + \gamma V(s_{t+1}) - V(s_t)]$$
 
-**TD误差 / TD Error:**
+**TD 误差 / TD Error:**
 
 $$\delta_t = R_{t+1} + \gamma V(s_{t+1}) - V(s_t)$$
 
@@ -260,9 +260,9 @@ e_t(s) = \begin{cases}
 \end{cases}
 $$
 
-### 4.3 SARSA算法 / SARSA Algorithm
+### 4.3 SARSA 算法 / SARSA Algorithm
 
-**SARSA更新 / SARSA Update:**
+**SARSA 更新 / SARSA Update:**
 
 $$Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha [R_{t+1} + \gamma Q(s_{t+1}, a_{t+1}) - Q(s_t, a_t)]$$
 
@@ -272,18 +272,18 @@ $$Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha \delta_t e_t(s_t, a_t)$$
 
 ---
 
-## 5. Q学习 / Q-Learning
+## 5. Q 学习 / Q-Learning
 
-### 5.1 Q学习算法 / Q-Learning Algorithm
+### 5.1 Q 学习算法 / Q-Learning Algorithm
 
-**Q学习更新 / Q-Learning Update:**
+**Q 学习更新 / Q-Learning Update:**
 
 $$Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha [R_{t+1} + \gamma \max_{a'} Q(s_{t+1}, a') - Q(s_t, a_t)]$$
 
-**Q学习特点 / Q-Learning Characteristics:**
+**Q 学习特点 / Q-Learning Characteristics:**
 
 - 离策略学习 / Off-policy learning
-- 收敛到最优Q函数 / Converges to optimal Q-function
+- 收敛到最优 Q 函数 / Converges to optimal Q-function
 - 不需要策略模型 / No policy model required
 
 ### 5.2 收敛性分析 / Convergence Analysis
@@ -291,24 +291,24 @@ $$Q(s_t, a_t) \leftarrow Q(s_t, a_t) + \alpha [R_{t+1} + \gamma \max_{a'} Q(s_{t
 **收敛条件 / Convergence Conditions:**
 
 1. 所有状态-动作对被访问无限次
-2. 学习率满足Robbins-Monro条件
+2. 学习率满足 Robbins-Monro 条件
 
    1. All state-action pairs visited infinitely often
    2. Learning rates satisfy Robbins-Monro conditions
 
-**Robbins-Monro条件 / Robbins-Monro Conditions:**
+**Robbins-Monro 条件 / Robbins-Monro Conditions:**
 
 $$\sum_{t=0}^{\infty} \alpha_t = \infty, \quad \sum_{t=0}^{\infty} \alpha_t^2 < \infty$$
 
-### 5.3 双Q学习 / Double Q-Learning
+### 5.3 双 Q 学习 / Double Q-Learning
 
-**双Q学习更新 / Double Q-Learning Update:**
+**双 Q 学习更新 / Double Q-Learning Update:**
 
 $$Q_A(s_t, a_t) \leftarrow Q_A(s_t, a_t) + \alpha [R_{t+1} + \gamma Q_B(s_{t+1}, \arg\max_{a'} Q_A(s_{t+1}, a')) - Q_A(s_t, a_t)]$$
 
 **优势 / Advantages:**
 
-- 减少Q值过估计 / Reduces Q-value overestimation
+- 减少 Q 值过估计 / Reduces Q-value overestimation
 - 提高学习稳定性 / Improves learning stability
 
 ---
@@ -325,9 +325,9 @@ $$\nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}[\nabla_\theta \log \pi_\thet
 
 where $J(\theta) = \mathbb{E}_{\pi_\theta}[V^{\pi_\theta}(s_0)]$.
 
-### 6.2 REINFORCE算法 / REINFORCE Algorithm
+### 6.2 REINFORCE 算法 / REINFORCE Algorithm
 
-**REINFORCE更新 / REINFORCE Update:**
+**REINFORCE 更新 / REINFORCE Update:**
 
 $$\theta_{t+1} = \theta_t + \alpha \nabla_\theta \log \pi_\theta(a_t|s_t) G_t$$
 
@@ -345,7 +345,7 @@ $$\theta_{t+1} = \theta_t + \alpha \nabla_\theta \log \pi_\theta(a_t|s_t) (G_t -
 
 $$\nabla_\theta^{nat} J(\theta) = F(\theta)^{-1} \nabla_\theta J(\theta)$$
 
-其中 $F(\theta)$ 是Fisher信息矩阵：
+其中 $F(\theta)$ 是 Fisher 信息矩阵：
 
 where $F(\theta)$ is the Fisher information matrix:
 
@@ -353,11 +353,11 @@ $$F(\theta) = \mathbb{E}_{\pi_\theta}[\nabla_\theta \log \pi_\theta(a|s) \nabla_
 
 ---
 
-## 7. Actor-Critic方法 / Actor-Critic Methods
+## 7. Actor-Critic 方法 / Actor-Critic Methods
 
-### 7.1 Actor-Critic框架 / Actor-Critic Framework
+### 7.1 Actor-Critic 框架 / Actor-Critic Framework
 
-**Actor-Critic更新 / Actor-Critic Update:**
+**Actor-Critic 更新 / Actor-Critic Update:**
 
 **Actor (策略) / Actor (Policy):**
 $$\theta_{t+1} = \theta_t + \alpha_\theta \nabla_\theta \log \pi_\theta(a_t|s_t) \delta_t$$
@@ -369,9 +369,9 @@ $$w_{t+1} = w_t + \alpha_w \delta_t \nabla_w V_w(s_t)$$
 
 where $\delta_t = R_{t+1} + \gamma V_w(s_{t+1}) - V_w(s_t)$.
 
-### 7.2 A3C算法 / A3C Algorithm
+### 7.2 A3C 算法 / A3C Algorithm
 
-**A3C特点 / A3C Characteristics:**
+**A3C 特点 / A3C Characteristics:**
 
 - 异步更新 / Asynchronous updates
 - 全局共享参数 / Globally shared parameters
@@ -381,9 +381,9 @@ where $\delta_t = R_{t+1} + \gamma V_w(s_{t+1}) - V_w(s_t)$.
 
 $$A(s,a) = Q(s,a) - V(s)$$
 
-### 7.3 A2C算法 / A2C Algorithm
+### 7.3 A2C 算法 / A2C Algorithm
 
-**A2C特点 / A2C Characteristics:**
+**A2C 特点 / A2C Characteristics:**
 
 - 同步更新 / Synchronous updates
 - 更稳定的训练 / More stable training
@@ -393,9 +393,9 @@ $$A(s,a) = Q(s,a) - V(s)$$
 
 ## 8. 深度强化学习 / Deep Reinforcement Learning
 
-### 8.1 DQN算法 / DQN Algorithm
+### 8.1 DQN 算法 / DQN Algorithm
 
-**DQN特点 / DQN Characteristics:**
+**DQN 特点 / DQN Characteristics:**
 
 1. **经验回放 / Experience Replay:**
    $$(s_t, a_t, r_t, s_{t+1}) \rightarrow \text{Replay Buffer}$$
@@ -406,13 +406,13 @@ $$A(s,a) = Q(s,a) - V(s)$$
 3. **损失函数 / Loss Function:**
    $$L(\theta) = \mathbb{E}[(R + \gamma \max_{a'} Q(s', a'; \theta^-) - Q(s,a; \theta))^2]$$
 
-### 8.2 DDPG算法 / DDPG Algorithm
+### 8.2 DDPG 算法 / DDPG Algorithm
 
-**DDPG特点 / DDPG Characteristics:**
+**DDPG 特点 / DDPG Characteristics:**
 
 - 连续动作空间 / Continuous action spaces
 - 确定性策略 / Deterministic policy
-- Actor-Critic架构 / Actor-Critic architecture
+- Actor-Critic 架构 / Actor-Critic architecture
 
 **策略网络 / Policy Network:**
 $$\mu_\theta(s) = \arg\max_a Q(s,a)$$
@@ -420,9 +420,9 @@ $$\mu_\theta(s) = \arg\max_a Q(s,a)$$
 **价值网络 / Value Network:**
 $$Q(s,a) = \mathbb{E}[R + \gamma Q(s', \mu_\theta(s'))]$$
 
-### 8.3 PPO算法 / PPO Algorithm
+### 8.3 PPO 算法 / PPO Algorithm
 
-**PPO目标函数 / PPO Objective:**
+**PPO 目标函数 / PPO Objective:**
 
 $$L(\theta) = \mathbb{E}[\min(r_t(\theta) A_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon) A_t)]$$
 
@@ -460,8 +460,8 @@ $$u_i(s_i^*, s_{-i}^*) \geq u_i(s_i, s_{-i}^*) \quad \forall s_i \in \mathcal{S}
 
 **囚徒困境 / Prisoner's Dilemma:**
 
-| | 合作 | 背叛 |
-|---|---|---|
+|      | 合作  | 背叛  |
+| ---- | ----- | ----- |
 | 合作 | (3,3) | (0,5) |
 | 背叛 | (5,0) | (1,1) |
 
@@ -487,11 +487,11 @@ where $U_\theta$ is the adaptation algorithm and $\mathcal{D}^{tr}_{\mathcal{T}}
 
 ### 10.2 元学习算法 / Meta-Learning Algorithms
 
-**MAML算法 / MAML Algorithm:**
+**MAML 算法 / MAML Algorithm:**
 
 $$\theta' = \theta - \alpha \nabla_\theta L_{\mathcal{T}}(\theta)$$
 
-**Reptile算法 / Reptile Algorithm:**
+**Reptile 算法 / Reptile Algorithm:**
 
 $$\theta \leftarrow \theta + \beta(\theta' - \theta)$$
 
@@ -507,7 +507,7 @@ $$\theta \leftarrow \theta + \beta(\theta' - \theta)$$
 
 ## 代码示例 / Code Examples
 
-### Rust实现：Q学习算法
+### Rust 实现：Q 学习算法
 
 ```rust
 use std::collections::HashMap;
@@ -529,21 +529,21 @@ impl Environment {
             transitions: HashMap::new(),
             rewards: HashMap::new(),
         };
-        
+
         // 设置转移概率
-        env.transitions.insert(("s0".to_string(), "a0".to_string()), 
+        env.transitions.insert(("s0".to_string(), "a0".to_string()),
             vec![("s1".to_string(), 0.8), ("s2".to_string(), 0.2)]);
-        env.transitions.insert(("s0".to_string(), "a1".to_string()), 
+        env.transitions.insert(("s0".to_string(), "a1".to_string()),
             vec![("s1".to_string(), 0.2), ("s2".to_string(), 0.8)]);
-        env.transitions.insert(("s1".to_string(), "a0".to_string()), 
+        env.transitions.insert(("s1".to_string(), "a0".to_string()),
             vec![("s0".to_string(), 0.9), ("s2".to_string(), 0.1)]);
-        env.transitions.insert(("s1".to_string(), "a1".to_string()), 
+        env.transitions.insert(("s1".to_string(), "a1".to_string()),
             vec![("s0".to_string(), 0.1), ("s2".to_string(), 0.9)]);
-        env.transitions.insert(("s2".to_string(), "a0".to_string()), 
+        env.transitions.insert(("s2".to_string(), "a0".to_string()),
             vec![("s0".to_string(), 0.7), ("s1".to_string(), 0.3)]);
-        env.transitions.insert(("s2".to_string(), "a1".to_string()), 
+        env.transitions.insert(("s2".to_string(), "a1".to_string()),
             vec![("s0".to_string(), 0.3), ("s1".to_string(), 0.7)]);
-        
+
         // 设置奖励
         env.rewards.insert(("s0".to_string(), "a0".to_string(), "s1".to_string()), 1.0);
         env.rewards.insert(("s0".to_string(), "a0".to_string(), "s2".to_string()), -1.0);
@@ -557,17 +557,17 @@ impl Environment {
         env.rewards.insert(("s2".to_string(), "a0".to_string(), "s1".to_string()), -1.0);
         env.rewards.insert(("s2".to_string(), "a1".to_string(), "s0".to_string()), -1.0);
         env.rewards.insert(("s2".to_string(), "a1".to_string(), "s1".to_string()), 1.0);
-        
+
         env
     }
-    
+
     fn step(&self, state: &str, action: &str) -> (String, f64) {
         let mut rng = rand::thread_rng();
         let transitions = self.transitions.get(&(state.to_string(), action.to_string())).unwrap();
-        
+
         let random = rng.gen::<f64>();
         let mut cumulative_prob = 0.0;
-        
+
         for (next_state, prob) in transitions {
             cumulative_prob += prob;
             if random <= cumulative_prob {
@@ -575,7 +575,7 @@ impl Environment {
                 return (next_state.clone(), *reward);
             }
         }
-        
+
         // 默认返回第一个转移
         let (next_state, _) = &transitions[0];
         let reward = self.rewards.get(&(state.to_string(), action.to_string(), next_state.clone())).unwrap_or(&0.0);
@@ -594,13 +594,13 @@ struct QLearningAgent {
 impl QLearningAgent {
     fn new(states: &[String], actions: &[String], learning_rate: f64, discount_factor: f64, epsilon: f64) -> Self {
         let mut q_table = HashMap::new();
-        
+
         for state in states {
             for action in actions {
                 q_table.insert((state.clone(), action.clone()), 0.0);
             }
         }
-        
+
         QLearningAgent {
             q_table,
             learning_rate,
@@ -608,10 +608,10 @@ impl QLearningAgent {
             epsilon,
         }
     }
-    
+
     fn choose_action(&self, state: &str, actions: &[String]) -> String {
         let mut rng = rand::thread_rng();
-        
+
         if rng.gen::<f64>() < self.epsilon {
             // 探索：随机选择动作
             actions[rng.gen_range(0..actions.len())].clone()
@@ -619,7 +619,7 @@ impl QLearningAgent {
             // 利用：选择Q值最大的动作
             let mut best_action = &actions[0];
             let mut best_q_value = self.q_table.get(&(state.to_string(), actions[0].clone())).unwrap_or(&0.0);
-            
+
             for action in actions {
                 let q_value = self.q_table.get(&(state.to_string(), action.clone())).unwrap_or(&0.0);
                 if q_value > best_q_value {
@@ -627,14 +627,14 @@ impl QLearningAgent {
                     best_action = action;
                 }
             }
-            
+
             best_action.clone()
         }
     }
-    
+
     fn update(&mut self, state: &str, action: &str, reward: f64, next_state: &str, next_actions: &[String]) {
         let current_q = self.q_table.get(&(state.to_string(), action.to_string())).unwrap_or(&0.0);
-        
+
         // 计算下一状态的最大Q值
         let mut max_next_q = 0.0;
         for next_action in next_actions {
@@ -643,19 +643,19 @@ impl QLearningAgent {
                 max_next_q = *next_q;
             }
         }
-        
+
         // Q学习更新公式
         let new_q = current_q + self.learning_rate * (reward + self.discount_factor * max_next_q - current_q);
         self.q_table.insert((state.to_string(), action.to_string()), new_q);
     }
-    
+
     fn get_policy(&self, states: &[String], actions: &[String]) -> HashMap<String, String> {
         let mut policy = HashMap::new();
-        
+
         for state in states {
             let mut best_action = &actions[0];
             let mut best_q_value = self.q_table.get(&(state.clone(), actions[0].clone())).unwrap_or(&0.0);
-            
+
             for action in actions {
                 let q_value = self.q_table.get(&(state.clone(), action.clone())).unwrap_or(&0.0);
                 if q_value > best_q_value {
@@ -663,10 +663,10 @@ impl QLearningAgent {
                     best_action = action;
                 }
             }
-            
+
             policy.insert(state.clone(), best_action.clone());
         }
-        
+
         policy
     }
 }
@@ -674,40 +674,40 @@ impl QLearningAgent {
 fn main() {
     let env = Environment::new();
     let mut agent = QLearningAgent::new(&env.states, &env.actions, 0.1, 0.9, 0.1);
-    
+
     let episodes = 1000;
     let max_steps = 100;
-    
+
     for episode in 0..episodes {
         let mut current_state = "s0".to_string();
         let mut total_reward = 0.0;
-        
+
         for step in 0..max_steps {
             let action = agent.choose_action(&current_state, &env.actions);
             let (next_state, reward) = env.step(&current_state, &action);
-            
+
             agent.update(&current_state, &action, reward, &next_state, &env.actions);
-            
+
             total_reward += reward;
             current_state = next_state;
-            
+
             if step == max_steps - 1 {
                 break;
             }
         }
-        
+
         if episode % 100 == 0 {
             println!("Episode {}: Total Reward = {:.2}", episode, total_reward);
         }
     }
-    
+
     // 输出学习到的策略
     let policy = agent.get_policy(&env.states, &env.actions);
     println!("\n学习到的策略:");
     for (state, action) in &policy {
         println!("{} -> {}", state, action);
     }
-    
+
     // 输出Q表
     println!("\nQ表:");
     for ((state, action), q_value) in &agent.q_table {
@@ -716,7 +716,7 @@ fn main() {
 }
 ```
 
-### Haskell实现：策略梯度
+### Haskell 实现：策略梯度
 
 ```haskell
 import System.Random
@@ -774,10 +774,10 @@ step :: Environment -> String -> String -> IO (String, Double)
 step env state action = do
     let transitions = Map.findWithDefault [] (state, action) (transitions env)
     random <- randomRIO (0.0, 1.0)
-    
+
     let (nextState, _) = selectTransition transitions random
     let reward = Map.findWithDefault 0.0 (state, action, nextState) (rewards env)
-    
+
     return (nextState, reward)
   where
     selectTransition :: [(String, Double)] -> Double -> (String, Double)
@@ -799,7 +799,7 @@ createAgent lr df = Agent {
 chooseAction :: Agent -> Environment -> String -> Double -> IO String
 chooseAction agent env state epsilon = do
     random <- randomRIO (0.0, 1.0)
-    
+
     if random < epsilon
         then do
             -- 探索：随机选择
@@ -813,8 +813,8 @@ chooseAction agent env state epsilon = do
 getBestAction :: Agent -> String -> [String] -> String
 getBestAction agent state availableActions =
     let actionValues = map (\action -> (action, getPolicyValue agent state action)) availableActions
-        bestAction = foldl' (\best (action, value) -> 
-            if value > snd best then (action, value) else best) 
+        bestAction = foldl' (\best (action, value) ->
+            if value > snd best then (action, value) else best)
             (head actionValues, snd (head actionValues)) actionValues
     in fst bestAction
 
@@ -864,16 +864,16 @@ trainEpisode agent env epsilon = do
     (finalAgent, _) <- foldM (\(accAgent, currentState) step -> do
         action <- chooseAction accAgent env currentState epsilon
         (nextState, reward) <- step env currentState action
-        
+
         let advantage = calculateAdvantage accAgent currentState action nextState reward
         let updatedAgent = updatePolicy accAgent currentState action advantage
-        
+
         let targetValue = reward + discountFactor accAgent * Map.findWithDefault 0.0 nextState (valueFunction updatedAgent)
         let finalAgent = updateValueFunction updatedAgent currentState targetValue
-        
+
         return (finalAgent, nextState)
     ) (agent, initialState) [1..50]  -- 最多50步
-    
+
     return finalAgent
 
 -- 主函数
@@ -883,17 +883,17 @@ main = do
         agent = createAgent 0.01 0.9
         episodes = 1000
         epsilon = 0.1
-    
+
     putStrLn "开始训练强化学习智能体..."
     trainedAgent <- trainAgent agent env episodes epsilon
-    
+
     putStrLn "\n训练完成！"
     putStrLn "最终策略:"
     mapM_ (\state -> do
         let bestAction = getBestAction trainedAgent state (actions env)
         putStrLn $ state ++ " -> " ++ bestAction
     ) (states env)
-    
+
     putStrLn "\n价值函数:"
     mapM_ (\state -> do
         let value = Map.findWithDefault 0.0 state (valueFunction trainedAgent)
@@ -905,13 +905,13 @@ main = do
 
 ## 参考文献 / References
 
-1. Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction*. MIT Press.
-2. Puterman, M. L. (2014). *Markov Decision Processes: Discrete Stochastic Dynamic Programming*. Wiley.
-3. Watkins, C. J., & Dayan, P. (1992). Q-learning. *Machine Learning*, 8(3-4), 279-292.
-4. Williams, R. J. (1992). Simple statistical gradient-following algorithms for connectionist reinforcement learning. *Machine Learning*, 8(3-4), 229-256.
-5. Mnih, V., et al. (2015). Human-level control through deep reinforcement learning. *Nature*, 518(7540), 529-533.
-6. Schulman, J., et al. (2017). Proximal policy optimization algorithms. *arXiv preprint arXiv:1707.06347*.
-7. Silver, D., et al. (2016). Mastering the game of Go with deep neural networks and tree search. *Nature*, 529(7587), 484-489.
+1. Sutton, R. S., & Barto, A. G. (2018). _Reinforcement Learning: An Introduction_. MIT Press.
+2. Puterman, M. L. (2014). _Markov Decision Processes: Discrete Stochastic Dynamic Programming_. Wiley.
+3. Watkins, C. J., & Dayan, P. (1992). Q-learning. _Machine Learning_, 8(3-4), 279-292.
+4. Williams, R. J. (1992). Simple statistical gradient-following algorithms for connectionist reinforcement learning. _Machine Learning_, 8(3-4), 229-256.
+5. Mnih, V., et al. (2015). Human-level control through deep reinforcement learning. _Nature_, 518(7540), 529-533.
+6. Schulman, J., et al. (2017). Proximal policy optimization algorithms. _arXiv preprint arXiv:1707.06347_.
+7. Silver, D., et al. (2016). Mastering the game of Go with deep neural networks and tree search. _Nature_, 529(7587), 484-489.
 
 ---
 
@@ -919,57 +919,57 @@ main = do
 
 ### 大规模强化学习 / Large-Scale Reinforcement Learning
 
-**2024年重要发展**:
+**2024 年重要发展**:
 
-- **多智能体强化学习**: 研究大规模多智能体系统的协调与合作理论，包括MARL算法和纳什均衡求解
+- **多智能体强化学习**: 研究大规模多智能体系统的协调与合作理论，包括 MARL 算法和纳什均衡求解
 - **分布式强化学习**: 探索分布式环境下的强化学习算法和理论保证，包括异步更新和通信效率
-- **元强化学习**: 研究快速适应新任务的元学习强化学习算法，如MAML和Reptile在RL中的应用
+- **元强化学习**: 研究快速适应新任务的元学习强化学习算法，如 MAML 和 Reptile 在 RL 中的应用
 
 **理论突破**:
 
-- **样本效率**: 研究如何提高强化学习的样本效率，减少环境交互次数，包括模型基RL和模仿学习
-- **安全强化学习**: 探索在安全约束下的强化学习理论和算法，包括约束MDP和风险敏感RL
-- **可解释强化学习**: 研究强化学习决策过程的可解释性理论，包括注意力机制和决策树RL
+- **样本效率**: 研究如何提高强化学习的样本效率，减少环境交互次数，包括模型基 RL 和模仿学习
+- **安全强化学习**: 探索在安全约束下的强化学习理论和算法，包括约束 MDP 和风险敏感 RL
+- **可解释强化学习**: 研究强化学习决策过程的可解释性理论，包括注意力机制和决策树 RL
 
 **大模型强化学习**:
 
-- **LLM强化学习**: 研究大语言模型在强化学习中的应用，包括指令跟随和工具使用
-- **多模态RL**: 探索视觉-语言-动作的强化学习理论框架
-- **代码生成RL**: 研究基于强化学习的代码生成和程序合成
+- **LLM 强化学习**: 研究大语言模型在强化学习中的应用，包括指令跟随和工具使用
+- **多模态 RL**: 探索视觉-语言-动作的强化学习理论框架
+- **代码生成 RL**: 研究基于强化学习的代码生成和程序合成
 
 ### 深度强化学习前沿 / Deep Reinforcement Learning Frontiers
 
 **前沿发展**:
 
-- **Transformer强化学习**: 研究基于Transformer架构的强化学习算法，包括Decision Transformer和Trajectory Transformer
-- **世界模型**: 探索基于世界模型的强化学习理论和实践，包括Dreamer和PlaNet算法
-- **离线强化学习**: 研究从离线数据中学习的强化学习理论，包括CQL和IQL算法
+- **Transformer 强化学习**: 研究基于 Transformer 架构的强化学习算法，包括 Decision Transformer 和 Trajectory Transformer
+- **世界模型**: 探索基于世界模型的强化学习理论和实践，包括 Dreamer 和 PlaNet 算法
+- **离线强化学习**: 研究从离线数据中学习的强化学习理论，包括 CQL 和 IQL 算法
 
 **新兴架构**:
 
-- **扩散模型RL**: 研究扩散模型在强化学习中的应用，包括扩散策略和扩散价值函数
-- **图神经网络RL**: 探索图神经网络在强化学习中的应用，包括图注意力机制
-- **神经符号RL**: 研究结合神经网络和符号推理的强化学习理论
+- **扩散模型 RL**: 研究扩散模型在强化学习中的应用，包括扩散策略和扩散价值函数
+- **图神经网络 RL**: 探索图神经网络在强化学习中的应用，包括图注意力机制
+- **神经符号 RL**: 研究结合神经网络和符号推理的强化学习理论
 
 ### 强化学习应用理论 / Reinforcement Learning Application Theory
 
 **新兴应用领域**:
 
 - **机器人学**: 研究强化学习在机器人控制中的理论基础，包括操作学习和导航学习
-- **游戏AI**: 探索强化学习在复杂游戏中的理论突破，包括AlphaZero和MuZero算法
+- **游戏 AI**: 探索强化学习在复杂游戏中的理论突破，包括 AlphaZero 和 MuZero 算法
 - **自动驾驶**: 研究强化学习在自动驾驶中的安全性和可靠性理论，包括安全约束和不确定性处理
 
-**AI对齐与强化学习**:
+**AI 对齐与强化学习**:
 
-- **人类反馈强化学习**: 研究RLHF的理论基础，包括偏好学习和奖励建模
-- **价值对齐**: 探索强化学习中的价值对齐理论，确保AI系统与人类价值观一致
-- **可解释性RL**: 研究强化学习决策的可解释性，包括策略可视化和决策解释
+- **人类反馈强化学习**: 研究 RLHF 的理论基础，包括偏好学习和奖励建模
+- **价值对齐**: 探索强化学习中的价值对齐理论，确保 AI 系统与人类价值观一致
+- **可解释性 RL**: 研究强化学习决策的可解释性，包括策略可视化和决策解释
 
 ### 强化学习理论创新 / Reinforcement Learning Theory Innovation
 
-**2024年理论创新**:
+**2024 年理论创新**:
 
-- **因果强化学习**: 研究因果推理在强化学习中的应用，包括因果MDP和反事实推理
+- **因果强化学习**: 研究因果推理在强化学习中的应用，包括因果 MDP 和反事实推理
 - **量子强化学习**: 探索量子计算在强化学习中的理论可能性
 - **联邦强化学习**: 研究隐私保护的分布式强化学习理论框架
 
@@ -981,7 +981,7 @@ main = do
 
 ---
 
-*本模块为FormalAI提供了强化学习的理论基础，涵盖了从基础MDP到深度强化学习的各个方面，为自主AI系统的设计和分析提供了数学工具。*
+_本模块为 FormalAI 提供了强化学习的理论基础，涵盖了从基础 MDP 到深度强化学习的各个方面，为自主 AI 系统的设计和分析提供了数学工具。_
 
 ---
 
@@ -989,9 +989,9 @@ main = do
 
 - 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
 - 来源类别锚点：
-  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（RL/DRL、MARL、离线RL、世界模型）
-  - A类会议/期刊：NeurIPS/ICML/ICLR/AAAI/IJCAI/JAIR 等
+  - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（RL/DRL、MARL、离线 RL、世界模型）
+  - A 类会议/期刊：NeurIPS/ICML/ICLR/AAAI/IJCAI/JAIR 等
   - 标准与基准：NIST、ISO/IEC、W3C；安全/风险约束评测与可复现协议
-  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+  - 长期综述：Survey/Blueprint/Position（以期刊或 arXiv 正式版为准）
 
 注：二手资料以一手论文与标准为准；引用需标注版本/日期。

@@ -96,6 +96,7 @@ fn reach_bad(init: State, max: u32) -> bool {
   - [代码示例 / Code Examples](#代码示例--code-examples)
     - [Rust实现：模型检测器](#rust实现模型检测器)
     - [Haskell实现：霍尔逻辑验证](#haskell实现霍尔逻辑验证)
+    - [Lean 4实现：形式化验证理论](#lean-4实现形式化验证理论)
   - [参考文献 / References](#参考文献--references)
   - [2024/2025 最新进展 / Latest Updates](#20242025-最新进展--latest-updates)
     - [形式化验证在AI中的前沿应用](#形式化验证在ai中的前沿应用)
@@ -104,6 +105,20 @@ fn reach_bad(init: State, max: u32) -> bool {
       - [3. 神经网络形式化验证](#3-神经网络形式化验证)
       - [4. 量子程序验证](#4-量子程序验证)
       - [5. 形式化验证工具链](#5-形式化验证工具链)
+    - [形式化验证的理论突破](#形式化验证的理论突破)
+      - [1. 大模型形式化验证理论](#1-大模型形式化验证理论)
+      - [2. 神经符号AI验证理论](#2-神经符号ai验证理论)
+      - [3. 多模态AI验证理论](#3-多模态ai验证理论)
+      - [4. 因果AI验证理论](#4-因果ai验证理论)
+      - [5. 联邦学习验证理论](#5-联邦学习验证理论)
+    - [形式化验证的工程突破](#形式化验证的工程突破)
+      - [1. 自动化验证工具链](#1-自动化验证工具链)
+      - [2. 云端验证服务](#2-云端验证服务)
+      - [3. 验证工具标准化](#3-验证工具标准化)
+    - [形式化验证的未来发展](#形式化验证的未来发展)
+      - [1. 量子验证理论](#1-量子验证理论)
+      - [2. 生物计算验证理论](#2-生物计算验证理论)
+      - [3. 脑机接口验证理论](#3-脑机接口验证理论)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -645,7 +660,7 @@ impl ModelChecker {
     fn new(model: Model) -> Self {
         ModelChecker { model }
     }
-    
+
     fn check_ltl(&self, formula: &LTLFormula) -> bool {
         // 完整的LTL模型检测实现
         match formula {
@@ -659,22 +674,22 @@ impl ModelChecker {
             LTLFormula::Until(f1, f2) => self.check_until(f1, f2),
         }
     }
-    
+
     fn check_property(&self, prop: &str) -> bool {
         // 检查属性在所有状态中是否成立
         self.model.states.values().all(|state| {
             state.properties.get(prop).unwrap_or(&false)
         })
     }
-    
+
     fn check_next(&self, formula: &LTLFormula) -> bool {
         // 检查下一个状态是否满足公式
         let mut queue = VecDeque::new();
         let mut visited = HashSet::new();
-        
+
         queue.push_back(self.model.initial_state.clone());
         visited.insert(self.model.initial_state.clone());
-        
+
         while let Some(current_state) = queue.pop_front() {
             // 检查所有后继状态
             for transition in &self.model.transitions {
@@ -687,25 +702,25 @@ impl ModelChecker {
                 }
             }
         }
-        
+
         // 简化：检查所有可达状态是否满足公式
         true
     }
-    
+
     fn check_finally(&self, formula: &LTLFormula) -> bool {
         // 检查是否存在状态满足公式
         let mut queue = VecDeque::new();
         let mut visited = HashSet::new();
-        
+
         queue.push_back(self.model.initial_state.clone());
         visited.insert(self.model.initial_state.clone());
-        
+
         while let Some(current_state) = queue.pop_front() {
             // 检查当前状态是否满足公式
             if self.check_state_satisfies(&current_state, formula) {
                 return true;
             }
-            
+
             // 继续搜索后继状态
             for transition in &self.model.transitions {
                 if transition.from == current_state {
@@ -717,10 +732,10 @@ impl ModelChecker {
                 }
             }
         }
-        
+
         false
     }
-    
+
     fn check_globally(&self, formula: &LTLFormula) -> bool {
         // 检查所有状态是否满足公式
         for (state_id, _) in &self.model.states {
@@ -730,26 +745,26 @@ impl ModelChecker {
         }
         true
     }
-    
+
     fn check_until(&self, f1: &LTLFormula, f2: &LTLFormula) -> bool {
         // 检查直到条件：f1 U f2
         let mut queue = VecDeque::new();
         let mut visited = HashSet::new();
-        
+
         queue.push_back(self.model.initial_state.clone());
         visited.insert(self.model.initial_state.clone());
-        
+
         while let Some(current_state) = queue.pop_front() {
             // 检查当前状态是否满足f2
             if self.check_state_satisfies(&current_state, f2) {
                 return true;
             }
-            
+
             // 检查当前状态是否满足f1
             if !self.check_state_satisfies(&current_state, f1) {
                 return false;
             }
-            
+
             // 继续搜索后继状态
             for transition in &self.model.transitions {
                 if transition.from == current_state {
@@ -761,10 +776,10 @@ impl ModelChecker {
                 }
             }
         }
-        
+
         false
     }
-    
+
     fn check_state_satisfies(&self, state_id: &str, formula: &LTLFormula) -> bool {
         // 检查特定状态是否满足公式
         match formula {
@@ -775,22 +790,22 @@ impl ModelChecker {
             }
             LTLFormula::Not(f) => !self.check_state_satisfies(state_id, f),
             LTLFormula::And(f1, f2) => {
-                self.check_state_satisfies(state_id, f1) && 
+                self.check_state_satisfies(state_id, f1) &&
                 self.check_state_satisfies(state_id, f2)
             }
             LTLFormula::Or(f1, f2) => {
-                self.check_state_satisfies(state_id, f1) || 
+                self.check_state_satisfies(state_id, f1) ||
                 self.check_state_satisfies(state_id, f2)
             }
             _ => true, // 简化其他操作符
         }
     }
-    
+
     fn reachability_analysis(&self) -> HashSet<String> {
         let mut reachable = HashSet::new();
         let mut to_visit = VecDeque::new();
         to_visit.push_back(self.model.initial_state.clone());
-        
+
         while let Some(state_id) = to_visit.pop_front() {
             if reachable.insert(state_id.clone()) {
                 // 添加后继状态
@@ -801,25 +816,25 @@ impl ModelChecker {
                 }
             }
         }
-        
+
         reachable
     }
-    
+
     fn deadlock_detection(&self) -> Vec<String> {
         let mut deadlocked = Vec::new();
-        
+
         for (state_id, _) in &self.model.states {
             let has_transitions = self.model.transitions.iter()
                 .any(|t| t.from == *state_id);
-            
+
             if !has_transitions {
                 deadlocked.push(state_id.clone());
             }
         }
-        
+
         deadlocked
     }
-    
+
     fn safety_property_check(&self, property: &str) -> bool {
         // 安全性属性检查：所有可达状态都满足属性
         let reachable = self.reachability_analysis();
@@ -829,7 +844,7 @@ impl ModelChecker {
                 .unwrap_or(&false)
         })
     }
-    
+
     fn liveness_property_check(&self, property: &str) -> bool {
         // 活性属性检查：存在可达状态满足属性
         let reachable = self.reachability_analysis();
@@ -846,11 +861,11 @@ fn create_sample_model() -> Model {
     let mut s0_props = HashMap::new();
     s0_props.insert("safe".to_string(), true);
     s0_props.insert("error".to_string(), false);
-    
+
     let mut s1_props = HashMap::new();
     s1_props.insert("safe".to_string(), true);
     s1_props.insert("error".to_string(), false);
-    
+
     states.insert("s0".to_string(), State {
         id: "s0".to_string(),
         properties: s0_props,
@@ -859,7 +874,7 @@ fn create_sample_model() -> Model {
         id: "s1".to_string(),
         properties: s1_props,
     });
-    
+
     let transitions = vec![
         Transition {
             from: "s0".to_string(),
@@ -872,10 +887,10 @@ fn create_sample_model() -> Model {
             condition: "b".to_string(),
         },
     ];
-    
+
     let mut accepting_states = HashSet::new();
     accepting_states.insert("s1".to_string());
-    
+
     Model {
         states,
         transitions,
@@ -887,24 +902,24 @@ fn create_sample_model() -> Model {
 fn main() {
     let model = create_sample_model();
     let checker = ModelChecker::new(model);
-    
+
     // 可达性分析
     let reachable = checker.reachability_analysis();
     println!("可达状态: {:?}", reachable);
-    
+
     // 死锁检测
     let deadlocked = checker.deadlock_detection();
     println!("死锁状态: {:?}", deadlocked);
-    
+
     // LTL公式检查
     let formula = LTLFormula::Globally(Box::new(LTLFormula::Atom("safe".to_string())));
     let result = checker.check_ltl(&formula);
     println!("LTL检查结果: {}", result);
-    
+
     // 安全性属性检查
     let safety_result = checker.safety_property_check("safe");
     println!("安全性属性检查: {}", safety_result);
-    
+
     // 活性属性检查
     let liveness_result = checker.liveness_property_check("error");
     println!("活性属性检查: {}", liveness_result);
@@ -921,7 +936,7 @@ import Data.Maybe (fromJust)
 type State = Map String Int
 
 -- 程序
-data Program = 
+data Program =
     Skip |
     Assign String Expr |
     Seq Program Program |
@@ -930,7 +945,7 @@ data Program =
     deriving Show
 
 -- 表达式
-data Expr = 
+data Expr =
     Var String |
     Const Int |
     Add Expr Expr |
@@ -963,18 +978,18 @@ execute :: Program -> State -> State
 execute Skip s = s
 execute (Assign x e) s = fromList ((x, evalExpr e s) : [(k, v) | (k, v) <- toList s])
 execute (Seq p1 p2) s = execute p2 (execute p1 s)
-execute (If b p1 p2) s = 
-    if evalExpr b s /= 0 
-    then execute p1 s 
+execute (If b p1 p2) s =
+    if evalExpr b s /= 0
+    then execute p1 s
     else execute p2 s
-execute (While b p) s = 
-    if evalExpr b s /= 0 
+execute (While b p) s =
+    if evalExpr b s /= 0
     then execute (While b p) (execute p s)
     else s
 
 -- 霍尔逻辑验证
 verifyHoare :: HoareTriple -> Bool
-verifyHoare (HoareTriple pre prog post) = 
+verifyHoare (HoareTriple pre prog post) =
     -- 简化的验证：检查所有满足前置条件的状态
     -- 执行程序后是否满足后置条件
     let testStates = generateTestStates pre
@@ -992,12 +1007,12 @@ satisfiesPostcondition _ _ = True
 -- 霍尔逻辑推理规则
 hoareRules :: Program -> String -> String -> Maybe HoareTriple
 hoareRules Skip pre post = Just (HoareTriple pre Skip post)
-hoareRules (Assign x e) pre post = 
+hoareRules (Assign x e) pre post =
     let newPre = substitute x e pre
     in Just (HoareTriple newPre (Assign x e) post)
-hoareRules (Seq p1 p2) pre post = 
+hoareRules (Seq p1 p2) pre post =
     case hoareRules p1 pre "intermediate" of
-        Just triple1 -> 
+        Just triple1 ->
             case hoareRules p2 "intermediate" post of
                 Just triple2 -> Just (HoareTriple pre (Seq p1 p2) post)
                 Nothing -> Nothing
@@ -1010,13 +1025,13 @@ substitute x e pre = pre -- 简化实现
 
 -- 示例程序
 exampleProgram :: Program
-exampleProgram = Seq 
+exampleProgram = Seq
     (Assign "x" (Const 5))
     (Assign "y" (Add (Var "x") (Const 3)))
 
 -- 霍尔三元组示例
 exampleHoareTriple :: HoareTriple
-exampleHoareTriple = HoareTriple 
+exampleHoareTriple = HoareTriple
     "true"
     exampleProgram
     "y = 8"
@@ -1025,15 +1040,15 @@ exampleHoareTriple = HoareTriple
 main :: IO ()
 main = do
     putStrLn "霍尔逻辑验证示例:"
-    
+
     let result = verifyHoare exampleHoareTriple
     putStrLn $ "验证结果: " ++ show result
-    
+
     -- 测试程序执行
     let initialState = fromList [("x", 0), ("y", 0)]
     let finalState = execute exampleProgram initialState
     putStrLn $ "程序执行结果: " ++ show finalState
-    
+
     putStrLn "\n形式化验证总结:"
     putStrLn "- 模型检测: 自动验证有限状态系统"
     putStrLn "- 定理证明: 基于逻辑推理的验证"
@@ -1084,7 +1099,7 @@ inductive LTLFormula (AP : Type) where
   | until : LTLFormula AP → LTLFormula AP → LTLFormula AP
 
 -- LTL语义
-def LTL_satisfies {State AP : Type} (ts : TransitionSystem State) 
+def LTL_satisfies {State AP : Type} (ts : TransitionSystem State)
   (path : ℕ → State) (formula : LTLFormula AP) : Prop :=
   match formula with
   | LTLFormula.atom p => p ∈ ts.properties (path 0)
@@ -1111,7 +1126,7 @@ inductive CTLFormula (AP : Type) where
   | EG : CTLFormula AP → CTLFormula AP
 
 -- CTL语义
-def CTL_satisfies {State AP : Type} (ts : TransitionSystem State) 
+def CTL_satisfies {State AP : Type} (ts : TransitionSystem State)
   (state : State) (formula : CTLFormula AP) : Prop :=
   match formula with
   | CTLFormula.atom p => p ∈ ts.properties state
@@ -1120,7 +1135,7 @@ def CTL_satisfies {State AP : Type} (ts : TransitionSystem State)
   | CTLFormula.or f1 f2 => CTL_satisfies ts state f1 ∨ CTL_satisfies ts state f2
   | CTLFormula.AX f => ∀ s' ∈ ts.transition state, CTL_satisfies ts s' f
   | CTLFormula.EX f => ∃ s' ∈ ts.transition state, CTL_satisfies ts s' f
-  | CTLFormula.AF f => ∀ path : ℕ → State, 
+  | CTLFormula.AF f => ∀ path : ℕ → State,
     path 0 = state → (∀ n, path (n + 1) ∈ ts.transition (path n)) →
     ∃ n, CTL_satisfies ts (path n) f
   | CTLFormula.EF f => ∃ path : ℕ → State,
@@ -1134,7 +1149,7 @@ def CTL_satisfies {State AP : Type} (ts : TransitionSystem State)
     ∀ n, CTL_satisfies ts (path n) f
 
 -- 模型检测算法
-def model_check {State AP : Type} (ts : TransitionSystem State) 
+def model_check {State AP : Type} (ts : TransitionSystem State)
   (formula : CTLFormula AP) : Bool :=
   CTL_satisfies ts ts.initial formula
 
@@ -1177,12 +1192,12 @@ def eval_expr (e : Expr) (s : ProgramState) : ℤ :=
 def execute (p : Program) (s : ProgramState) : ProgramState :=
   match p with
   | Program.skip => s
-  | Program.assign x e => 
+  | Program.assign x e =>
     { s with variables := fun y => if y = x then eval_expr e s else s.variables y }
   | Program.seq p1 p2 => execute p2 (execute p1 s)
-  | Program.if_then_else b p1 p2 => 
+  | Program.if_then_else b p1 p2 =>
     if eval_expr b s ≠ 0 then execute p1 s else execute p2 s
-  | Program.while b p => 
+  | Program.while b p =>
     if eval_expr b s ≠ 0 then execute (Program.while b p) (execute p s) else s
 
 -- 霍尔三元组
@@ -1206,7 +1221,7 @@ theorem assignment_rule (x : String) (e : Expr) (Q : ProgramState → Prop) :
 
 -- 序列规则
 theorem sequence_rule (P Q R : ProgramState → Prop) (p1 p2 : Program) :
-  hoare_valid ⟨P, p1, Q⟩ → hoare_valid ⟨Q, p2, R⟩ → 
+  hoare_valid ⟨P, p1, Q⟩ → hoare_valid ⟨Q, p2, R⟩ →
   hoare_valid ⟨P, Program.seq p1 p2, R⟩ := by
   intro h1 h2 s h
   apply h2
@@ -1256,7 +1271,7 @@ structure AbstractDomain (α : Type) where
 structure GaloisConnection (α β : Type) where
   abstraction : α → β
   concretization : β → α
-  connection : ∀ a : α, ∀ b : β, 
+  connection : ∀ a : α, ∀ b : β,
     abstraction a ≤ b ↔ a ≤ concretization b
 
 -- 不动点计算
@@ -1264,7 +1279,7 @@ def fixed_point {α : Type} (f : α → α) (x : α) : α :=
   sorry -- 需要更复杂的实现
 
 -- 抽象解释算法
-def abstract_interpretation {α β : Type} 
+def abstract_interpretation {α β : Type}
   (domain : AbstractDomain β) (gc : GaloisConnection α β)
   (f : α → α) : β → β :=
   fun b => domain.abstraction (f (gc.concretization b))
@@ -1323,16 +1338,16 @@ def symbolic_eval (e : Expr) (s : SymbolicState) : Expr :=
 def symbolic_execute (p : Program) (s : SymbolicState) : SymbolicState :=
   match p with
   | Program.skip => s
-  | Program.assign x e => 
+  | Program.assign x e =>
     { s with store := fun y => if y = x then symbolic_eval e s else s.store y }
   | Program.seq p1 p2 => symbolic_execute p2 (symbolic_execute p1 s)
-  | Program.if_then_else b p1 p2 => 
+  | Program.if_then_else b p1 p2 =>
     let b_sym = symbolic_eval b s
     let s1 = { s with path_condition := b_sym :: s.path_condition }
     let s2 = { s with path_condition := Expr.sub b_sym (Expr.const 1) :: s.path_condition }
     -- 需要合并两个分支的结果
     sorry
-  | Program.while b p => 
+  | Program.while b p =>
     -- 需要处理循环的符号执行
     sorry
 
@@ -1355,7 +1370,7 @@ structure ControlFlowGraph (Node : Type) where
   exit : Node
 
 -- 数据流分析算法
-def dataflow_analysis {Node α : Type} 
+def dataflow_analysis {Node α : Type}
   (cfg : ControlFlowGraph Node) (analysis : DataFlowAnalysis α) :
   Node → α :=
   sorry -- 需要更复杂的实现

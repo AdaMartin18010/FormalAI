@@ -18,19 +18,19 @@ Statistical learning theory provides mathematical foundations for machine learni
     - [1.1 基本框架 / Basic Framework](#11-基本框架--basic-framework)
     - [1.2 假设空间 / Hypothesis Space](#12-假设空间--hypothesis-space)
   - [2. 经验风险最小化 / Empirical Risk Minimization](#2-经验风险最小化--empirical-risk-minimization)
-    - [2.4 有限假设类的PAC界（形式化片段）](#24-有限假设类的pac界形式化片段)
-    - [2.1 ERM算法 / ERM Algorithm](#21-erm算法--erm-algorithm)
+    - [2.4 有限假设类的 PAC 界（形式化片段）](#24-有限假设类的-pac-界形式化片段)
+    - [2.1 ERM 算法 / ERM Algorithm](#21-erm-算法--erm-algorithm)
     - [2.2 有限假设空间 / Finite Hypothesis Space](#22-有限假设空间--finite-hypothesis-space)
     - [2.3 无限假设空间 / Infinite Hypothesis Space](#23-无限假设空间--infinite-hypothesis-space)
-  - [3. VC维与复杂度 / VC Dimension and Complexity](#3-vc维与复杂度--vc-dimension-and-complexity)
-    - [3.1 VC维定义 / VC Dimension Definition](#31-vc维定义--vc-dimension-definition)
-    - [3.2 VC维上界 / VC Dimension Upper Bounds](#32-vc维上界--vc-dimension-upper-bounds)
+  - [3. VC 维与复杂度 / VC Dimension and Complexity](#3-vc-维与复杂度--vc-dimension-and-complexity)
+    - [3.1 VC 维定义 / VC Dimension Definition](#31-vc-维定义--vc-dimension-definition)
+    - [3.2 VC 维上界 / VC Dimension Upper Bounds](#32-vc-维上界--vc-dimension-upper-bounds)
     - [3.3 结构风险最小化 / Structural Risk Minimization](#33-结构风险最小化--structural-risk-minimization)
-  - [4. Rademacher复杂度 / Rademacher Complexity](#4-rademacher复杂度--rademacher-complexity)
+  - [4. Rademacher 复杂度 / Rademacher Complexity](#4-rademacher-复杂度--rademacher-complexity)
     - [4.1 定义 / Definition](#41-定义--definition)
     - [4.2 泛化界 / Generalization Bounds](#42-泛化界--generalization-bounds)
-    - [4.3 计算Rademacher复杂度 / Computing Rademacher Complexity](#43-计算rademacher复杂度--computing-rademacher-complexity)
-    - [4.4 形式化片段：Rademacher界](#44-形式化片段rademacher界)
+    - [4.3 计算 Rademacher 复杂度 / Computing Rademacher Complexity](#43-计算-rademacher-复杂度--computing-rademacher-complexity)
+    - [4.4 形式化片段：Rademacher 界](#44-形式化片段rademacher-界)
   - [5. 稳定性理论 / Stability Theory](#5-稳定性理论--stability-theory)
     - [5.1 稳定性定义 / Stability Definition](#51-稳定性定义--stability-definition)
     - [5.2 稳定性与泛化 / Stability and Generalization](#52-稳定性与泛化--stability-and-generalization)
@@ -38,7 +38,7 @@ Statistical learning theory provides mathematical foundations for machine learni
   - [6. 信息论方法 / Information-Theoretic Methods](#6-信息论方法--information-theoretic-methods)
     - [6.1 互信息泛化界 / Mutual Information Generalization Bounds](#61-互信息泛化界--mutual-information-generalization-bounds)
     - [6.2 压缩泛化界 / Compression Generalization Bounds](#62-压缩泛化界--compression-generalization-bounds)
-    - [6.3 PAC-Bayes理论 / PAC-Bayes Theory](#63-pac-bayes理论--pac-bayes-theory)
+    - [6.3 PAC-Bayes 理论 / PAC-Bayes Theory](#63-pac-bayes-理论--pac-bayes-theory)
   - [7. 在线学习理论 / Online Learning Theory](#7-在线学习理论--online-learning-theory)
     - [7.1 在线学习框架 / Online Learning Framework](#71-在线学习框架--online-learning-framework)
     - [7.2 在线梯度下降 / Online Gradient Descent](#72-在线梯度下降--online-gradient-descent)
@@ -56,13 +56,95 @@ Statistical learning theory provides mathematical foundations for machine learni
     - [10.2 鲁棒性理论 / Robustness Theory](#102-鲁棒性理论--robustness-theory)
     - [10.3 鲁棒性保证 / Robustness Guarantees](#103-鲁棒性保证--robustness-guarantees)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：VC维计算](#rust实现vc维计算)
-    - [Haskell实现：Rademacher复杂度](#haskell实现rademacher复杂度)
+    - [Rust 实现：VC 维计算](#rust-实现vc-维计算)
+    - [Haskell 实现：Rademacher 复杂度](#haskell-实现rademacher-复杂度)
   - [参考文献 / References](#参考文献--references)
   - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
     - [大规模统计学习理论 / Large-Scale Statistical Learning Theory](#大规模统计学习理论--large-scale-statistical-learning-theory)
+      - [1. 分布式统计学习理论 / Distributed Statistical Learning Theory](#1-分布式统计学习理论--distributed-statistical-learning-theory)
+      - [2. 隐私保护统计学习 / Privacy-Preserving Statistical Learning](#2-隐私保护统计学习--privacy-preserving-statistical-learning)
+      - [3. 自适应复杂度理论 / Adaptive Complexity Theory](#3-自适应复杂度理论--adaptive-complexity-theory)
     - [量子统计学习 / Quantum Statistical Learning](#量子统计学习--quantum-statistical-learning)
+      - [1. 量子优势理论 / Quantum Advantage Theory](#1-量子优势理论--quantum-advantage-theory)
+      - [2. 量子-经典混合学习 / Quantum-Classical Hybrid Learning](#2-量子-经典混合学习--quantum-classical-hybrid-learning)
     - [神经统计学习 / Neural Statistical Learning](#神经统计学习--neural-statistical-learning)
+      - [1. 过参数化理论 / Overparameterization Theory](#1-过参数化理论--overparameterization-theory)
+      - [2. 神经切线核理论 / Neural Tangent Kernel Theory](#2-神经切线核理论--neural-tangent-kernel-theory)
+      - [3. 涌现能力理论 / Emergent Capabilities Theory](#3-涌现能力理论--emergent-capabilities-theory)
+    - [多模态统计学习 / Multimodal Statistical Learning](#多模态统计学习--multimodal-statistical-learning)
+      - [1. 跨模态泛化理论 / Cross-Modal Generalization Theory](#1-跨模态泛化理论--cross-modal-generalization-theory)
+      - [2. 多模态融合理论 / Multimodal Fusion Theory](#2-多模态融合理论--multimodal-fusion-theory)
+    - [因果统计学习 / Causal Statistical Learning](#因果统计学习--causal-statistical-learning)
+      - [1. 因果发现理论 / Causal Discovery Theory](#1-因果发现理论--causal-discovery-theory)
+      - [2. 因果泛化理论 / Causal Generalization Theory](#2-因果泛化理论--causal-generalization-theory)
+    - [强化学习统计理论 / Reinforcement Learning Statistical Theory](#强化学习统计理论--reinforcement-learning-statistical-theory)
+      - [1. 样本复杂度理论 / Sample Complexity Theory](#1-样本复杂度理论--sample-complexity-theory)
+      - [2. 在线强化学习 / Online Reinforcement Learning](#2-在线强化学习--online-reinforcement-learning)
+    - [元学习统计理论 / Meta-Learning Statistical Theory](#元学习统计理论--meta-learning-statistical-theory)
+      - [1. 少样本学习理论 / Few-Shot Learning Theory](#1-少样本学习理论--few-shot-learning-theory)
+      - [2. 终身学习理论 / Lifelong Learning Theory](#2-终身学习理论--lifelong-learning-theory)
+    - [可解释性统计理论 / Interpretability Statistical Theory](#可解释性统计理论--interpretability-statistical-theory)
+      - [1. 特征重要性理论 / Feature Importance Theory](#1-特征重要性理论--feature-importance-theory)
+      - [2. 模型透明度理论 / Model Transparency Theory](#2-模型透明度理论--model-transparency-theory)
+    - [公平性统计理论 / Fairness Statistical Theory](#公平性统计理论--fairness-statistical-theory)
+      - [1. 公平性度量理论 / Fairness Metrics Theory](#1-公平性度量理论--fairness-metrics-theory)
+      - [2. 公平性-准确性权衡 / Fairness-Accuracy Trade-off](#2-公平性-准确性权衡--fairness-accuracy-trade-off)
+    - [鲁棒性统计理论 / Robustness Statistical Theory](#鲁棒性统计理论--robustness-statistical-theory)
+      - [1. 对抗鲁棒性 / Adversarial Robustness](#1-对抗鲁棒性--adversarial-robustness)
+      - [2. 分布偏移鲁棒性 / Distribution Shift Robustness](#2-分布偏移鲁棒性--distribution-shift-robustness)
+    - [计算统计学习 / Computational Statistical Learning](#计算统计学习--computational-statistical-learning)
+      - [1. 算法复杂度理论 / Algorithmic Complexity Theory](#1-算法复杂度理论--algorithmic-complexity-theory)
+      - [2. 并行计算理论 / Parallel Computing Theory](#2-并行计算理论--parallel-computing-theory)
+    - [信息论统计学习 / Information-Theoretic Statistical Learning](#信息论统计学习--information-theoretic-statistical-learning)
+      - [1. 互信息泛化界 / Mutual Information Generalization Bounds](#1-互信息泛化界--mutual-information-generalization-bounds)
+      - [2. 信息几何学习 / Information Geometric Learning](#2-信息几何学习--information-geometric-learning)
+    - [随机矩阵理论 / Random Matrix Theory](#随机矩阵理论--random-matrix-theory)
+      - [1. 随机特征理论 / Random Features Theory](#1-随机特征理论--random-features-theory)
+      - [2. 随机投影理论 / Random Projection Theory](#2-随机投影理论--random-projection-theory)
+    - [高维统计学习 / High-Dimensional Statistical Learning](#高维统计学习--high-dimensional-statistical-learning)
+      - [1. 稀疏学习理论 / Sparse Learning Theory](#1-稀疏学习理论--sparse-learning-theory)
+      - [2. 高维协方差估计 / High-Dimensional Covariance Estimation](#2-高维协方差估计--high-dimensional-covariance-estimation)
+    - [非参数统计学习 / Nonparametric Statistical Learning](#非参数统计学习--nonparametric-statistical-learning)
+      - [1. 核方法理论 / Kernel Methods Theory](#1-核方法理论--kernel-methods-theory)
+      - [2. 局部回归理论 / Local Regression Theory](#2-局部回归理论--local-regression-theory)
+    - [贝叶斯统计学习 / Bayesian Statistical Learning](#贝叶斯统计学习--bayesian-statistical-learning)
+      - [1. 变分推理理论 / Variational Inference Theory](#1-变分推理理论--variational-inference-theory)
+      - [2. 马尔可夫链蒙特卡洛 / Markov Chain Monte Carlo](#2-马尔可夫链蒙特卡洛--markov-chain-monte-carlo)
+    - [时间序列统计学习 / Time Series Statistical Learning](#时间序列统计学习--time-series-statistical-learning)
+      - [1. 动态系统理论 / Dynamical Systems Theory](#1-动态系统理论--dynamical-systems-theory)
+      - [2. 长期依赖理论 / Long-Term Dependence Theory](#2-长期依赖理论--long-term-dependence-theory)
+    - [图统计学习 / Graph Statistical Learning](#图统计学习--graph-statistical-learning)
+      - [1. 图神经网络理论 / Graph Neural Network Theory](#1-图神经网络理论--graph-neural-network-theory)
+      - [2. 网络分析理论 / Network Analysis Theory](#2-网络分析理论--network-analysis-theory)
+    - [2025 年统计学习理论前沿问题 / 2025 Statistical Learning Theory Frontiers](#2025-年统计学习理论前沿问题--2025-statistical-learning-theory-frontiers)
+      - [1. 大模型统计理论 / Large Model Statistical Theory](#1-大模型统计理论--large-model-statistical-theory)
+      - [2. 多模态统计学习 / Multimodal Statistical Learning](#2-多模态统计学习--multimodal-statistical-learning)
+      - [3. 因果统计学习 / Causal Statistical Learning](#3-因果统计学习--causal-statistical-learning)
+      - [4. 量子统计学习 / Quantum Statistical Learning](#4-量子统计学习--quantum-statistical-learning)
+      - [5. 联邦统计学习 / Federated Statistical Learning](#5-联邦统计学习--federated-statistical-learning)
+      - [6. 元学习统计理论 / Meta-Learning Statistical Theory](#6-元学习统计理论--meta-learning-statistical-theory)
+      - [7. 可解释性统计理论 / Interpretability Statistical Theory](#7-可解释性统计理论--interpretability-statistical-theory)
+      - [8. 公平性统计理论 / Fairness Statistical Theory](#8-公平性统计理论--fairness-statistical-theory)
+      - [9. 鲁棒性统计理论 / Robustness Statistical Theory](#9-鲁棒性统计理论--robustness-statistical-theory)
+      - [10. 计算统计学习 / Computational Statistical Learning](#10-计算统计学习--computational-statistical-learning)
+    - [2025 年统计学习理论挑战 / 2025 Statistical Learning Theory Challenges](#2025-年统计学习理论挑战--2025-statistical-learning-theory-challenges)
+      - [1. 理论基础挑战 / Theoretical Foundation Challenges](#1-理论基础挑战--theoretical-foundation-challenges)
+      - [2. 计算挑战 / Computational Challenges](#2-计算挑战--computational-challenges)
+      - [3. 应用挑战 / Application Challenges](#3-应用挑战--application-challenges)
+      - [4. 伦理挑战 / Ethical Challenges](#4-伦理挑战--ethical-challenges)
+    - [2025 年统计学习理论发展方向 / 2025 Statistical Learning Theory Directions](#2025-年统计学习理论发展方向--2025-statistical-learning-theory-directions)
+      - [1. 理论发展方向 / Theoretical Development Directions](#1-理论发展方向--theoretical-development-directions)
+      - [2. 应用发展方向 / Application Development Directions](#2-应用发展方向--application-development-directions)
+      - [3. 技术发展方向 / Technical Development Directions](#3-技术发展方向--technical-development-directions)
+    - [2025 年统计学习理论资源 / 2025 Statistical Learning Theory Resources](#2025-年统计学习理论资源--2025-statistical-learning-theory-resources)
+      - [1. 学术资源 / Academic Resources](#1-学术资源--academic-resources)
+      - [2. 在线资源 / Online Resources](#2-在线资源--online-resources)
+      - [3. 软件工具 / Software Tools](#3-软件工具--software-tools)
+    - [2025 年统计学习理论未来展望 / 2025 Statistical Learning Theory Future Outlook](#2025-年统计学习理论未来展望--2025-statistical-learning-theory-future-outlook)
+      - [1. 短期展望（2025-2027）/ Short-term Outlook (2025-2027)](#1-短期展望2025-2027-short-term-outlook-2025-2027)
+      - [2. 中期展望（2027-2030）/ Medium-term Outlook (2027-2030)](#2-中期展望2027-2030-medium-term-outlook-2027-2030)
+      - [3. 长期展望（2030+）/ Long-term Outlook (2030+)](#3-长期展望2030-long-term-outlook-2030)
+    - [结论 / Conclusion](#结论--conclusion)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -71,7 +153,7 @@ Statistical learning theory provides mathematical foundations for machine learni
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
+- [0.0 ZFC 公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
 - [1.2 数学基础](../../01-foundations/01.2-数学基础/README.md) - 提供数学基础 / Provides mathematical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
@@ -140,18 +222,18 @@ where $\hat{f} = \mathcal{A}(S)$ is the learned function and $f^* = \arg\min_{f 
 
 ## 2. 经验风险最小化 / Empirical Risk Minimization
 
-### 2.4 有限假设类的PAC界（形式化片段）
+### 2.4 有限假设类的 PAC 界（形式化片段）
 
-命题：有限假设类 $\mathcal{H}$，对0-1损失，若样本数
+命题：有限假设类 $\mathcal{H}$，对 0-1 损失，若样本数
 $$ m \ge \frac{1}{2\epsilon^2}\Big(\ln |\mathcal{H}| + \ln \frac{1}{\delta}\Big), $$
 则以概率至少 $1-\delta$ 有 $\forall h\in\mathcal{H}: R(h) \le \hat R(h) + \epsilon$。
 
-证明要点：并联合取界 + Hoeffding不等式：
+证明要点：并联合取界 + Hoeffding 不等式：
 $$ \Pr\big[\exists h: R(h) - \hat R(h) > \epsilon\big] \le |\mathcal{H}| e^{-2m\epsilon^2} \le \delta. $$
 
 推论：ERM 返回的 $\hat h$ 满足 $R(\hat h) \le \min_{h\in\mathcal{H}} R(h) + 2\epsilon$（将上界分别作用于 $\hat h$ 与风险最小者）。
 
-### 2.1 ERM算法 / ERM Algorithm
+### 2.1 ERM 算法 / ERM Algorithm
 
 **经验风险最小化 / Empirical Risk Minimization:**
 
@@ -159,7 +241,7 @@ $$\hat{f} = \arg\min_{f \in \mathcal{F}} R_n(f)$$
 
 **一致性 / Consistency:**
 
-ERM是一致的，如果：
+ERM 是一致的，如果：
 
 ERM is consistent if:
 
@@ -177,7 +259,7 @@ $$R(\hat{f}) \leq R(f^*) + \sqrt{\frac{\log|\mathcal{F}| + \log(1/\delta)}{2n}}$
 
 **证明 / Proof:**
 
-使用Hoeffding不等式：
+使用 Hoeffding 不等式：
 
 Using Hoeffding's inequality:
 
@@ -197,13 +279,13 @@ $$R(\hat{f}) \leq R(f^*) + O\left(\sqrt{\frac{\log \mathcal{N}(\mathcal{F}, 1/n,
 
 ---
 
-## 3. VC维与复杂度 / VC Dimension and Complexity
+## 3. VC 维与复杂度 / VC Dimension and Complexity
 
-### 3.1 VC维定义 / VC Dimension Definition
+### 3.1 VC 维定义 / VC Dimension Definition
 
-**VC维 / VC Dimension:**
+**VC 维 / VC Dimension:**
 
-假设空间 $\mathcal{F}$ 的VC维是最大整数 $d$，使得存在大小为 $d$ 的点集被 $\mathcal{F}$ 完全打散。
+假设空间 $\mathcal{F}$ 的 VC 维是最大整数 $d$，使得存在大小为 $d$ 的点集被 $\mathcal{F}$ 完全打散。
 
 The VC dimension of hypothesis space $\mathcal{F}$ is the largest integer $d$ such that there exists a set of $d$ points that can be shattered by $\mathcal{F}$.
 
@@ -215,11 +297,11 @@ A set of points $\{x_1, \ldots, x_d\}$ is shattered by $\mathcal{F}$ if:
 
 $$\left|\{(f(x_1), \ldots, f(x_d)): f \in \mathcal{F}\}\right| = 2^d$$
 
-### 3.2 VC维上界 / VC Dimension Upper Bounds
+### 3.2 VC 维上界 / VC Dimension Upper Bounds
 
-**Sauer引理 / Sauer's Lemma:**
+**Sauer 引理 / Sauer's Lemma:**
 
-对于VC维为 $d$ 的假设空间 $\mathcal{F}$：
+对于 VC 维为 $d$ 的假设空间 $\mathcal{F}$：
 
 For hypothesis space $\mathcal{F}$ with VC dimension $d$:
 
@@ -239,7 +321,7 @@ $$R(\hat{f}) \leq R(f^*) + O\left(\sqrt{\frac{d \log(n/d) + \log(1/\delta)}{n}}\
 
 $\mathcal{F}_1 \subseteq \mathcal{F}_2 \subseteq \cdots \subseteq \mathcal{F}_k$
 
-**SRM算法 / SRM Algorithm:**
+**SRM 算法 / SRM Algorithm:**
 
 $$\hat{f} = \arg\min_{f \in \mathcal{F}_k} \left\{R_n(f) + \text{penalty}(k)\right\}$$
 
@@ -249,15 +331,15 @@ where $\text{penalty}(k)$ is a complexity penalty term.
 
 ---
 
-## 4. Rademacher复杂度 / Rademacher Complexity
+## 4. Rademacher 复杂度 / Rademacher Complexity
 
 ### 4.1 定义 / Definition
 
-**Rademacher复杂度 / Rademacher Complexity:**
+**Rademacher 复杂度 / Rademacher Complexity:**
 
 $$\mathcal{R}_n(\mathcal{F}) = \mathbb{E}_{S,\sigma} \left[\sup_{f \in \mathcal{F}} \frac{1}{n} \sum_{i=1}^n \sigma_i f(x_i)\right]$$
 
-其中 $\sigma_i$ 是独立的Rademacher随机变量（取值为 $\pm 1$）。
+其中 $\sigma_i$ 是独立的 Rademacher 随机变量（取值为 $\pm 1$）。
 
 where $\sigma_i$ are independent Rademacher random variables (taking values $\pm 1$).
 
@@ -273,18 +355,18 @@ $$\sup_{f \in \mathcal{F}} |R_n(f) - R(f)| \leq 2\mathcal{R}_n(\mathcal{F}) + \s
 
 **证明 / Proof:**
 
-使用McDiarmid不等式和对称化技巧。
+使用 McDiarmid 不等式和对称化技巧。
 
 Using McDiarmid's inequality and symmetrization technique.
 
-### 4.3 计算Rademacher复杂度 / Computing Rademacher Complexity
+### 4.3 计算 Rademacher 复杂度 / Computing Rademacher Complexity
 
-### 4.4 形式化片段：Rademacher界
+### 4.4 形式化片段：Rademacher 界
 
-命题（实值函数族，0-1截断损失）：以概率至少 \(1-\delta\) 有
-$$ \forall f \in \mathcal{F}:\; R(f) \le \hat R(f) + 2\,\mathcal{R}_m(\mathcal{F}) + \sqrt{\tfrac{\ln(1/\delta)}{2m}}. $$
+命题（实值函数族，0-1 截断损失）：以概率至少 \(1-\delta\) 有
+$$ \forall f \in \mathcal{F}:\; R(f) \le \hat R(f) + 2\,\mathcal{R}\_m(\mathcal{F}) + \sqrt{\tfrac{\ln(1/\delta)}{2m}}. $$
 
-证明要点：Ledoux-Talagrand浓缩 + 钩缝不等式（symmetrization）将经验-真风险差转化为与Rademacher复杂度有关的上界，再用McDiarmid对采样波动取界，合并即可得结论。
+证明要点：Ledoux-Talagrand 浓缩 + 钩缝不等式（symmetrization）将经验-真风险差转化为与 Rademacher 复杂度有关的上界，再用 McDiarmid 对采样波动取界，合并即可得结论。
 
 **线性函数类 / Linear Function Class:**
 
@@ -296,7 +378,7 @@ $$\mathcal{R}_n(\mathcal{F}) \leq \frac{B \max_i \|x_i\|_2}{\sqrt{n}}$$
 
 **神经网络 / Neural Networks:**
 
-对于L层神经网络：
+对于 L 层神经网络：
 
 For L-layer neural networks:
 
@@ -348,7 +430,7 @@ For strongly convex loss functions, gradient descent is stable.
 
 **正则化稳定性 / Regularization Stability:**
 
-L2正则化增加算法稳定性。
+L2 正则化增加算法稳定性。
 
 L2 regularization increases algorithm stability.
 
@@ -382,9 +464,9 @@ then:
 
 $$R(\hat{f}) \leq R(f^*) + O\left(\sqrt{\frac{|\kappa(S)| \log n}{n}}\right)$$
 
-### 6.3 PAC-Bayes理论 / PAC-Bayes Theory
+### 6.3 PAC-Bayes 理论 / PAC-Bayes Theory
 
-**PAC-Bayes界 / PAC-Bayes Bound:**
+**PAC-Bayes 界 / PAC-Bayes Bound:**
 
 对于先验分布 $P$ 和后验分布 $Q$：
 
@@ -510,7 +592,7 @@ where $\lambda^* = \min_{f \in \mathcal{F}} R_s(f) + R_t(f)$.
 
 $$\min_f \max_D \mathbb{E}_{x \sim P_s}[\log D(x)] + \mathbb{E}_{x \sim P_t}[\log(1-D(x))]$$
 
-**DANN算法 / DANN Algorithm:**
+**DANN 算法 / DANN Algorithm:**
 
 $$f^* = \arg\min_f \mathcal{L}_s(f) + \lambda \mathcal{L}_{\text{adv}}(f)$$
 
@@ -524,7 +606,7 @@ $$f^* = \arg\min_f \mathcal{L}_s(f) + \lambda \mathcal{L}_{\text{adv}}(f)$$
 
 $$\delta^* = \arg\max_{\|\delta\| \leq \epsilon} \ell(f(x + \delta), y)$$
 
-**FGSM攻击 / FGSM Attack:**
+**FGSM 攻击 / FGSM Attack:**
 
 $$\delta = \epsilon \cdot \text{sign}(\nabla_x \ell(f(x), y))$$
 
@@ -540,9 +622,9 @@ $$\min_f \mathbb{E}_{(x,y)}[\max_{\|\delta\| \leq \epsilon} \ell(f(x + \delta), 
 
 ### 10.3 鲁棒性保证 / Robustness Guarantees
 
-**Lipschitz连续性 / Lipschitz Continuity:**
+**Lipschitz 连续性 / Lipschitz Continuity:**
 
-如果 $f$ 是 $L$-Lipschitz的，那么：
+如果 $f$ 是 $L$-Lipschitz 的，那么：
 
 If $f$ is $L$-Lipschitz, then:
 
@@ -556,7 +638,7 @@ $$g(x) = \mathbb{E}_{\eta \sim \mathcal{N}(0, \sigma^2 I)}[f(x + \eta)]$$
 
 ## 代码示例 / Code Examples
 
-### Rust实现：VC维计算
+### Rust 实现：VC 维计算
 
 ```rust
 use std::collections::HashSet;
@@ -580,20 +662,20 @@ impl LinearClassifier {
             b: 0.0,
         }
     }
-    
+
     fn predict(&self, x: &[f64]) -> i32 {
         let score: f64 = self.w.iter().zip(x.iter()).map(|(w, x)| w * x).sum::<f64>() + self.b;
         if score >= 0.0 { 1 } else { -1 }
     }
-    
+
     fn train(&mut self, points: &[Point], labels: &[i32]) {
         // 简化的感知机算法
         let learning_rate = 0.1;
         let max_iterations = 1000;
-        
+
         for _ in 0..max_iterations {
             let mut misclassified = false;
-            
+
             for (point, &label) in points.iter().zip(labels.iter()) {
                 let prediction = self.predict(&[point.x, point.y]);
                 if prediction != label {
@@ -604,7 +686,7 @@ impl LinearClassifier {
                     self.b += learning_rate * label as f64;
                 }
             }
-            
+
             if !misclassified {
                 break;
             }
@@ -620,7 +702,7 @@ fn vc_dimension_linear_classifier(dim: usize) -> usize {
 fn can_shatter(points: &[Point], labels: &[i32]) -> bool {
     let mut classifier = LinearClassifier::new(2);
     classifier.train(points, labels);
-    
+
     // 检查是否能正确分类所有点
     for (point, &label) in points.iter().zip(labels.iter()) {
         if classifier.predict(&[point.x, point.y]) != label {
@@ -636,9 +718,9 @@ fn test_shattering() {
         Point { x: 1.0, y: 0.0 },
         Point { x: 0.0, y: 1.0 },
     ];
-    
+
     let labels = vec![1, -1, 1];
-    
+
     println!("VC维测试:");
     println!("线性分类器VC维: {}", vc_dimension_linear_classifier(2));
     println!("能否打散3个点: {}", can_shatter(&points, &labels));
@@ -649,7 +731,7 @@ fn main() {
 }
 ```
 
-### Haskell实现：Rademacher复杂度
+### Haskell 实现：Rademacher 复杂度
 
 ```haskell
 import System.Random
@@ -680,20 +762,20 @@ rademacherComplexity :: [[Double]] -> [LinearFunction] -> IO Double
 rademacherComplexity xs functions = do
     let n = length xs
     sigma <- generateRademacher n
-    
-    let empiricalRademacher = maximum $ map (\f -> 
+
+    let empiricalRademacher = maximum $ map (\f ->
             sum $ zipWith (*) sigma $ map (predict f) xs) functions
-    
+
     return $ empiricalRademacher / fromIntegral n
 
 -- 有界范数的线性函数类
 boundedLinearFunctions :: Int -> Double -> [LinearFunction]
-boundedLinearFunctions dim bound = 
+boundedLinearFunctions dim bound =
     [LinearFunction (replicate dim w) 0.0 | w <- [-bound, -bound/2, 0, bound/2, bound]]
 
 -- 泛化界计算
 generalizationBound :: Double -> Double -> Double -> Double
-generalizationBound rademacherComplexity delta n = 
+generalizationBound rademacherComplexity delta n =
     rademacherComplexity + sqrt (log (1/delta) / (2 * n))
 
 -- 示例
@@ -703,10 +785,10 @@ main = do
     let functions = boundedLinearFunctions 2 1.0
     let delta = 0.05
     let n = length xs
-    
+
     rad <- rademacherComplexity xs functions
     let bound = generalizationBound rad delta (fromIntegral n)
-    
+
     putStrLn "Rademacher复杂度计算:"
     putStrLn $ "Rademacher复杂度: " ++ show rad
     putStrLn $ "泛化界: " ++ show bound
@@ -717,15 +799,15 @@ main = do
 
 ## 参考文献 / References
 
-1. Vapnik, V. N. (1998). *Statistical Learning Theory*. Wiley.
-2. Shalev-Shwartz, S., & Ben-David, S. (2014). *Understanding Machine Learning*. Cambridge University Press.
-3. Mohri, M., Rostamizadeh, A., & Talwalkar, A. (2018). *Foundations of Machine Learning*. MIT Press.
-4. Bartlett, P. L., & Mendelson, S. (2002). Rademacher and Gaussian complexities. *Journal of Machine Learning Research*.
-5. Bousquet, O., & Elisseeff, A. (2002). Stability and generalization. *Journal of Machine Learning Research*.
-6. Cesa-Bianchi, N., & Lugosi, G. (2006). *Prediction, Learning, and Games*. Cambridge University Press.
-7. Finn, C., Abbeel, P., & Levine, S. (2017). Model-agnostic meta-learning. *ICML*.
-8. Ben-David, S., et al. (2010). A theory of learning from different domains. *Machine Learning*.
-9. Madry, A., et al. (2018). Towards deep learning models resistant to adversarial attacks. *ICLR*.
+1. Vapnik, V. N. (1998). _Statistical Learning Theory_. Wiley.
+2. Shalev-Shwartz, S., & Ben-David, S. (2014). _Understanding Machine Learning_. Cambridge University Press.
+3. Mohri, M., Rostamizadeh, A., & Talwalkar, A. (2018). _Foundations of Machine Learning_. MIT Press.
+4. Bartlett, P. L., & Mendelson, S. (2002). Rademacher and Gaussian complexities. _Journal of Machine Learning Research_.
+5. Bousquet, O., & Elisseeff, A. (2002). Stability and generalization. _Journal of Machine Learning Research_.
+6. Cesa-Bianchi, N., & Lugosi, G. (2006). _Prediction, Learning, and Games_. Cambridge University Press.
+7. Finn, C., Abbeel, P., & Levine, S. (2017). Model-agnostic meta-learning. _ICML_.
+8. Ben-David, S., et al. (2010). A theory of learning from different domains. _Machine Learning_.
+9. Madry, A., et al. (2018). Towards deep learning models resistant to adversarial attacks. _ICLR_.
 
 ---
 
@@ -733,15 +815,15 @@ main = do
 
 ### 大规模统计学习理论 / Large-Scale Statistical Learning Theory
 
-**2025年重大突破**:
+**2025 年重大突破**:
 
 #### 1. 分布式统计学习理论 / Distributed Statistical Learning Theory
 
 **通信复杂度理论**:
 
-- **最优通信复杂度界**: 对于分布式ERM，通信复杂度下界为 $\Omega(d \log(1/\epsilon))$，其中 $d$ 是参数维度
+- **最优通信复杂度界**: 对于分布式 ERM，通信复杂度下界为 $\Omega(d \log(1/\epsilon))$，其中 $d$ 是参数维度
 - **梯度压缩理论**: 基于随机量化的梯度压缩算法，通信复杂度为 $O(d \log(1/\epsilon))$
-- **联邦学习泛化界**: 在非IID数据分布下，泛化误差界为 $O(\sqrt{\frac{d \log n}{n}} + \text{heterogeneity\_term})$
+- **联邦学习泛化界**: 在非 IID 数据分布下，泛化误差界为 $O(\sqrt{\frac{d \log n}{n}} + \text{heterogeneity\_term})$
 
 **形式化定理**:
 $$\text{Communication\_Complexity}(\text{Distributed\_ERM}) = \Omega\left(\frac{d \log(1/\epsilon)}{\log n}\right)$$
@@ -750,7 +832,7 @@ $$\text{Communication\_Complexity}(\text{Distributed\_ERM}) = \Omega\left(\frac{
 
 **差分隐私统计学习**:
 
-- **Rényi差分隐私**: 基于Rényi散度的隐私度量，提供更紧致的隐私-效用权衡
+- **Rényi 差分隐私**: 基于 Rényi 散度的隐私度量，提供更紧致的隐私-效用权衡
 - **局部差分隐私**: 在本地隐私模型下的统计学习理论
 - **隐私泛化界**: 隐私预算 $\epsilon$ 下的泛化误差界为 $O(\sqrt{\frac{d \log(1/\delta)}{n\epsilon^2}})$
 
@@ -761,13 +843,13 @@ $$\text{Privacy\_Generalization\_Bound} = \hat{R}(h) + O\left(\sqrt{\frac{d \log
 
 **数据驱动复杂度**:
 
-- **自适应VC维**: 基于数据分布的自适应VC维估计
+- **自适应 VC 维**: 基于数据分布的自适应 VC 维估计
 - **动态复杂度调整**: 根据数据复杂度动态调整模型复杂度
 - **元学习复杂度**: 在元学习框架下的复杂度自适应
 
 ### 量子统计学习 / Quantum Statistical Learning
 
-**2025年量子机器学习理论突破**:
+**2025 年量子机器学习理论突破**:
 
 #### 1. 量子优势理论 / Quantum Advantage Theory
 
@@ -775,7 +857,7 @@ $$\text{Privacy\_Generalization\_Bound} = \hat{R}(h) + O\left(\sqrt{\frac{d \log
 
 - **量子梯度下降**: 在量子计算机上的梯度下降算法，复杂度为 $O(\text{poly}(\log d))$
 - **量子核方法**: 量子核方法的指数加速，适用于高维数据
-- **量子主成分分析**: 量子PCA的指数加速
+- **量子主成分分析**: 量子 PCA 的指数加速
 
 **形式化结果**:
 $$\text{Quantum\_Learning\_Complexity} = O(\text{poly}(\log d, \log(1/\epsilon)))$$
@@ -790,7 +872,7 @@ $$\text{Quantum\_Learning\_Complexity} = O(\text{poly}(\log d, \log(1/\epsilon))
 
 ### 神经统计学习 / Neural Statistical Learning
 
-**2025年深度网络理论前沿**:
+**2025 年深度网络理论前沿**:
 
 #### 1. 过参数化理论 / Overparameterization Theory
 
@@ -807,9 +889,9 @@ $$\text{Generalization\_Error} = O\left(\frac{\log n}{n^{1/3}}\right) \text{ for
 
 **无限宽度极限**:
 
-- **NTK收敛性**: 在无限宽度极限下，神经网络收敛到神经切线核
-- **有限宽度修正**: 有限宽度网络的NTK修正项
-- **深度NTK**: 深度网络的神经切线核理论
+- **NTK 收敛性**: 在无限宽度极限下，神经网络收敛到神经切线核
+- **有限宽度修正**: 有限宽度网络的 NTK 修正项
+- **深度 NTK**: 深度网络的神经切线核理论
 
 #### 3. 涌现能力理论 / Emergent Capabilities Theory
 
@@ -821,7 +903,7 @@ $$\text{Generalization\_Error} = O\left(\frac{\log n}{n^{1/3}}\right) \text{ for
 
 ### 多模态统计学习 / Multimodal Statistical Learning
 
-**2025年多模态理论发展**:
+**2025 年多模态理论发展**:
 
 #### 1. 跨模态泛化理论 / Cross-Modal Generalization Theory
 
@@ -841,7 +923,7 @@ $$\text{Generalization\_Error} = O\left(\frac{\log n}{n^{1/3}}\right) \text{ for
 
 ### 因果统计学习 / Causal Statistical Learning
 
-**2025年因果学习理论**:
+**2025 年因果学习理论**:
 
 #### 1. 因果发现理论 / Causal Discovery Theory
 
@@ -861,13 +943,13 @@ $$\text{Generalization\_Error} = O\left(\frac{\log n}{n^{1/3}}\right) \text{ for
 
 ### 强化学习统计理论 / Reinforcement Learning Statistical Theory
 
-**2025年强化学习理论突破**:
+**2025 年强化学习理论突破**:
 
 #### 1. 样本复杂度理论 / Sample Complexity Theory
 
 **最优样本复杂度**:
 
-- **PAC-RL**: 强化学习的PAC学习理论
+- **PAC-RL**: 强化学习的 PAC 学习理论
 - **样本复杂度下界**: 强化学习的最优样本复杂度下界
 - **函数逼近**: 在函数逼近下的样本复杂度
 
@@ -887,7 +969,7 @@ $$\text{Regret}_T = O\left(\sqrt{T \log|\mathcal{A}|}\right)$$
 
 ### 元学习统计理论 / Meta-Learning Statistical Theory
 
-**2025年元学习理论发展**:
+**2025 年元学习理论发展**:
 
 #### 1. 少样本学习理论 / Few-Shot Learning Theory
 
@@ -912,17 +994,17 @@ $$\text{Meta\_Generalization\_Error} = O\left(\sqrt{\frac{d \log n}{n}} + \frac{
 
 ### 可解释性统计理论 / Interpretability Statistical Theory
 
-**2025年可解释性理论**:
+**2025 年可解释性理论**:
 
 #### 1. 特征重要性理论 / Feature Importance Theory
 
-**SHAP理论**:
+**SHAP 理论**:
 
-- **Shapley值**: 基于博弈论的特征重要性
+- **Shapley 值**: 基于博弈论的特征重要性
 - **局部解释**: 局部可解释性的统计理论
 - **全局解释**: 全局可解释性的统计理论
 
-**Shapley值形式化**:
+**Shapley 值形式化**:
 $$\phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F|-|S|-1)!}{|F|!}[v(S \cup \{i\}) - v(S)]$$
 
 #### 2. 模型透明度理论 / Model Transparency Theory
@@ -935,7 +1017,7 @@ $$\phi_i = \sum_{S \subseteq F \setminus \{i\}} \frac{|S|!(|F|-|S|-1)!}{|F|!}[v(
 
 ### 公平性统计理论 / Fairness Statistical Theory
 
-**2025年公平性理论**:
+**2025 年公平性理论**:
 
 #### 1. 公平性度量理论 / Fairness Metrics Theory
 
@@ -958,7 +1040,7 @@ $$\text{Demographic\_Parity}: P(\hat{Y} = 1 | A = a) = P(\hat{Y} = 1 | A = b)$$
 
 ### 鲁棒性统计理论 / Robustness Statistical Theory
 
-**2025年鲁棒性理论**:
+**2025 年鲁棒性理论**:
 
 #### 1. 对抗鲁棒性 / Adversarial Robustness
 
@@ -983,7 +1065,7 @@ $$\text{Robust\_Generalization\_Error} = O\left(\sqrt{\frac{d \log n}{n}} + \eps
 
 ### 计算统计学习 / Computational Statistical Learning
 
-**2025年计算理论**:
+**2025 年计算理论**:
 
 #### 1. 算法复杂度理论 / Algorithmic Complexity Theory
 
@@ -1006,7 +1088,7 @@ $$\text{Learning\_Complexity} = \Omega\left(\frac{d \log(1/\epsilon)}{\log n}\ri
 
 ### 信息论统计学习 / Information-Theoretic Statistical Learning
 
-**2025年信息论发展**:
+**2025 年信息论发展**:
 
 #### 1. 互信息泛化界 / Mutual Information Generalization Bounds
 
@@ -1029,7 +1111,7 @@ $$\text{Generalization\_Error} \leq \sqrt{\frac{I(\hat{f}; S)}{2n}}$$
 
 ### 随机矩阵理论 / Random Matrix Theory
 
-**2025年随机矩阵发展**:
+**2025 年随机矩阵发展**:
 
 #### 1. 随机特征理论 / Random Features Theory
 
@@ -1048,23 +1130,23 @@ $$\text{Approximation\_Error} = O\left(\frac{1}{\sqrt{m}}\right)$$
 
 **降维理论**:
 
-- **Johnson-Lindenstrauss**: JL引理的统计学习应用
+- **Johnson-Lindenstrauss**: JL 引理的统计学习应用
 - **随机投影**: 随机投影的统计性质
 - **保距性**: 随机投影的保距性质
 
 ### 高维统计学习 / High-Dimensional Statistical Learning
 
-**2025年高维理论**:
+**2025 年高维理论**:
 
 #### 1. 稀疏学习理论 / Sparse Learning Theory
 
 **稀疏性**:
 
-- **Lasso理论**: Lasso的统计理论
+- **Lasso 理论**: Lasso 的统计理论
 - **稀疏恢复**: 稀疏恢复的统计理论
 - **压缩感知**: 压缩感知的统计学习应用
 
-**Lasso收敛率**:
+**Lasso 收敛率**:
 $$\|\hat{\beta} - \beta^*\|_2 = O\left(\sqrt{\frac{s \log p}{n}}\right)$$
 
 其中 $s$ 是稀疏度，$p$ 是特征维度。
@@ -1079,7 +1161,7 @@ $$\|\hat{\beta} - \beta^*\|_2 = O\left(\sqrt{\frac{s \log p}{n}}\right)$$
 
 ### 非参数统计学习 / Nonparametric Statistical Learning
 
-**2025年非参数理论**:
+**2025 年非参数理论**:
 
 #### 1. 核方法理论 / Kernel Methods Theory
 
@@ -1104,7 +1186,7 @@ $$\text{Convergence\_Rate} = O(n^{-\frac{2\alpha}{2\alpha+d}})$$
 
 ### 贝叶斯统计学习 / Bayesian Statistical Learning
 
-**2025年贝叶斯理论**:
+**2025 年贝叶斯理论**:
 
 #### 1. 变分推理理论 / Variational Inference Theory
 
@@ -1119,15 +1201,15 @@ $$\text{KL}(q(\theta) \| p(\theta|D)) \leq \text{ELBO}(q) - \log p(D)$$
 
 #### 2. 马尔可夫链蒙特卡洛 / Markov Chain Monte Carlo
 
-**MCMC理论**:
+**MCMC 理论**:
 
-- **收敛性**: MCMC的收敛性理论
+- **收敛性**: MCMC 的收敛性理论
 - **混合时间**: 马尔可夫链的混合时间
-- **采样效率**: MCMC的采样效率分析
+- **采样效率**: MCMC 的采样效率分析
 
 ### 时间序列统计学习 / Time Series Statistical Learning
 
-**2025年时间序列理论**:
+**2025 年时间序列理论**:
 
 #### 1. 动态系统理论 / Dynamical Systems Theory
 
@@ -1141,23 +1223,23 @@ $$\text{KL}(q(\theta) \| p(\theta|D)) \leq \text{ELBO}(q) - \log p(D)$$
 
 **长期记忆**:
 
-- **长短期记忆**: LSTM的统计理论
+- **长短期记忆**: LSTM 的统计理论
 - **注意力机制**: 注意力机制的统计理论
-- **Transformer**: Transformer的统计学习理论
+- **Transformer**: Transformer 的统计学习理论
 
 ### 图统计学习 / Graph Statistical Learning
 
-**2025年图学习理论**:
+**2025 年图学习理论**:
 
 #### 1. 图神经网络理论 / Graph Neural Network Theory
 
-**GNN理论**:
+**GNN 理论**:
 
 - **消息传递**: 消息传递的统计理论
 - **图卷积**: 图卷积的统计性质
 - **图注意力**: 图注意力机制的统计理论
 
-**GNN收敛性**:
+**GNN 收敛性**:
 $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 
 #### 2. 网络分析理论 / Network Analysis Theory
@@ -1168,7 +1250,7 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 - **社区检测**: 社区检测的统计方法
 - **网络演化**: 网络演化的统计模型
 
-### 2025年统计学习理论前沿问题 / 2025 Statistical Learning Theory Frontiers
+### 2025 年统计学习理论前沿问题 / 2025 Statistical Learning Theory Frontiers
 
 #### 1. 大模型统计理论 / Large Model Statistical Theory
 
@@ -1208,7 +1290,7 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 
 - **差分隐私**: 联邦学习中的差分隐私
 - **安全聚合**: 安全聚合的统计理论
-- **非IID数据**: 非IID数据的联邦学习理论
+- **非 IID 数据**: 非 IID 数据的联邦学习理论
 
 #### 6. 元学习统计理论 / Meta-Learning Statistical Theory
 
@@ -1250,7 +1332,7 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 - **优化复杂度**: 优化算法的复杂度分析
 - **并行计算**: 并行学习的统计理论
 
-### 2025年统计学习理论挑战 / 2025 Statistical Learning Theory Challenges
+### 2025 年统计学习理论挑战 / 2025 Statistical Learning Theory Challenges
 
 #### 1. 理论基础挑战 / Theoretical Foundation Challenges
 
@@ -1272,9 +1354,9 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 
 **实际应用**:
 
-- **医疗AI**: 医疗AI的统计学习理论
+- **医疗 AI**: 医疗 AI 的统计学习理论
 - **自动驾驶**: 自动驾驶的统计学习理论
-- **金融AI**: 金融AI的统计学习理论
+- **金融 AI**: 金融 AI 的统计学习理论
 
 #### 4. 伦理挑战 / Ethical Challenges
 
@@ -1284,7 +1366,7 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 - **隐私保护**: 隐私保护的统计学习理论
 - **可解释性**: 可解释性的统计理论
 
-### 2025年统计学习理论发展方向 / 2025 Statistical Learning Theory Directions
+### 2025 年统计学习理论发展方向 / 2025 Statistical Learning Theory Directions
 
 #### 1. 理论发展方向 / Theoretical Development Directions
 
@@ -1310,7 +1392,7 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 - **神经架构搜索**: 神经架构搜索的统计理论
 - **模型压缩**: 模型压缩的统计理论
 
-### 2025年统计学习理论资源 / 2025 Statistical Learning Theory Resources
+### 2025 年统计学习理论资源 / 2025 Statistical Learning Theory Resources
 
 #### 1. 学术资源 / Academic Resources
 
@@ -1348,7 +1430,7 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 
 **统计学习库**:
 
-- **scikit-learn**: Python机器学习库
+- **scikit-learn**: Python 机器学习库
 - **R**: 统计计算环境
 - **MATLAB**: 数值计算环境
 - **Julia**: 高性能计算语言
@@ -1360,7 +1442,7 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 - **JAX**: 机器学习库
 - **Flax**: 神经网络库
 
-### 2025年统计学习理论未来展望 / 2025 Statistical Learning Theory Future Outlook
+### 2025 年统计学习理论未来展望 / 2025 Statistical Learning Theory Future Outlook
 
 #### 1. 短期展望（2025-2027）/ Short-term Outlook (2025-2027)
 
@@ -1388,7 +1470,7 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 
 ### 结论 / Conclusion
 
-统计学习理论在2025年迎来了前所未有的发展机遇。从大规模分布式学习到量子机器学习，从因果学习到多模态学习，统计学习理论正在向更深层次、更广领域发展。
+统计学习理论在 2025 年迎来了前所未有的发展机遇。从大规模分布式学习到量子机器学习，从因果学习到多模态学习，统计学习理论正在向更深层次、更广领域发展。
 
 **关键趋势**:
 
@@ -1408,7 +1490,7 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 
 ---
 
-*本模块为FormalAI提供了坚实的统计学习理论基础，为机器学习算法的设计和分析提供了数学保证。*
+_本模块为 FormalAI 提供了坚实的统计学习理论基础，为机器学习算法的设计和分析提供了数学保证。_
 
 ---
 
@@ -1417,8 +1499,8 @@ $$\text{GNN\_Convergence} = O\left(\frac{1}{\sqrt{n}}\right)$$
 - 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
 - 来源类别锚点：
   - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（统计学习、泛化界、PAC-Bayes、在线学习）
-  - A类会议/期刊：NeurIPS/ICML/ALT/JMLR/Annals of Statistics 等
+  - A 类会议/期刊：NeurIPS/ICML/ALT/JMLR/Annals of Statistics 等
   - 标准与基准：NIST、ISO/IEC、W3C；评测与显著性、可复现协议
-  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+  - 长期综述：Survey/Blueprint/Position（以期刊或 arXiv 正式版为准）
 
 注：二手资料以一手论文与标准为准；引用需标注版本/日期。

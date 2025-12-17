@@ -4,7 +4,7 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-深度学习理论研究深度神经网络的表达能力、优化理论、损失景观和理论基础，为现代AI系统提供数学基础。
+深度学习理论研究深度神经网络的表达能力、优化理论、损失景观和理论基础，为现代 AI 系统提供数学基础。
 
 Deep learning theory studies the expressive power, optimization theory, loss landscapes, and theoretical foundations of deep neural networks, providing mathematical foundations for modern AI systems.
 
@@ -38,7 +38,7 @@ L'apprentissage profond est une branche de l'apprentissage automatique qui utili
 - 卷积神经网络 / Convolutional neural networks / Faltungsneuronale Netze / Réseaux de neurones convolutifs
 - 循环神经网络 / Recurrent neural networks / Rekurrente neuronale Netze / Réseaux de neurones récurrents
 - 生成对抗网络 / Generative adversarial networks / Generative adversarische Netze / Réseaux antagonistes génératifs
-- Transformer架构 / Transformer architecture / Transformer-Architektur / Architecture Transformer
+- Transformer 架构 / Transformer architecture / Transformer-Architektur / Architecture Transformer
 
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
@@ -61,22 +61,39 @@ L'apprentissage profond est une branche de l'apprentissage automatique qui utili
     - [3.2 局部最优 / Local Optima / Lokale Optima / Optima locaux](#32-局部最优--local-optima--lokale-optima--optima-locaux)
     - [3.3 鞍点 / Saddle Points / Sattelpunkte / Points de selle](#33-鞍点--saddle-points--sattelpunkte--points-de-selle)
   - [4. 初始化理论 / Initialization Theory / Initialisierungstheorie / Théorie de l'initialisation](#4-初始化理论--initialization-theory--initialisierungstheorie--théorie-de-linitialisation)
-    - [4.1 Xavier初始化 / Xavier Initialization / Xavier-Initialisierung / Initialisation Xavier](#41-xavier初始化--xavier-initialization--xavier-initialisierung--initialisation-xavier)
-    - [4.2 He初始化 / He Initialization / He-Initialisierung / Initialisation He](#42-he初始化--he-initialization--he-initialisierung--initialisation-he)
+    - [4.1 Xavier 初始化 / Xavier Initialization / Xavier-Initialisierung / Initialisation Xavier](#41-xavier-初始化--xavier-initialization--xavier-initialisierung--initialisation-xavier)
+    - [4.2 He 初始化 / He Initialization / He-Initialisierung / Initialisation He](#42-he-初始化--he-initialization--he-initialisierung--initialisation-he)
     - [4.3 正交初始化 / Orthogonal Initialization / Orthogonale Initialisierung / Initialisation orthogonale](#43-正交初始化--orthogonal-initialization--orthogonale-initialisierung--initialisation-orthogonale)
   - [5. 正则化理论 / Regularization Theory / Regularisierungstheorie / Théorie de la régularisation](#5-正则化理论--regularization-theory--regularisierungstheorie--théorie-de-la-régularisation)
     - [5.1 权重衰减 / Weight Decay / Gewichtsabnahme / Décroissance de poids](#51-权重衰减--weight-decay--gewichtsabnahme--décroissance-de-poids)
     - [5.2 Dropout / Dropout / Dropout / Dropout](#52-dropout--dropout--dropout--dropout)
     - [5.3 批归一化 / Batch Normalization / Batch-Normalisierung / Normalisation par lots](#53-批归一化--batch-normalization--batch-normalisierung--normalisation-par-lots)
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
-    - [Rust实现：神经网络框架](#rust实现神经网络框架)
-    - [Haskell实现：优化算法](#haskell实现优化算法)
+    - [Rust 实现：神经网络框架](#rust-实现神经网络框架)
+    - [Haskell 实现：优化算法](#haskell-实现优化算法)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
   - [2024/2025 最新进展 / Latest Updates / Neueste Entwicklungen / Derniers développements](#20242025-最新进展--latest-updates--neueste-entwicklungen--derniers-développements)
     - [大规模深度学习理论 / Large-Scale Deep Learning Theory](#大规模深度学习理论--large-scale-deep-learning-theory)
     - [高效深度学习 / Efficient Deep Learning](#高效深度学习--efficient-deep-learning)
     - [鲁棒深度学习 / Robust Deep Learning](#鲁棒深度学习--robust-deep-learning)
     - [新兴架构理论 / Emerging Architecture Theory](#新兴架构理论--emerging-architecture-theory)
+    - [2025 年最新理论突破](#2025-年最新理论突破)
+      - [1. 大模型理论的新发展](#1-大模型理论的新发展)
+      - [2. 神经符号深度学习](#2-神经符号深度学习)
+      - [3. 量子深度学习理论](#3-量子深度学习理论)
+      - [4. 因果深度学习](#4-因果深度学习)
+      - [5. 多模态深度学习理论](#5-多模态深度学习理论)
+      - [6. 联邦深度学习理论](#6-联邦深度学习理论)
+    - [2025 年工程应用突破](#2025-年工程应用突破)
+      - [1. GPT-4o 的多模态理论](#1-gpt-4o-的多模态理论)
+      - [2. 神经符号 AI 系统](#2-神经符号-ai-系统)
+      - [3. 量子机器学习](#3-量子机器学习)
+      - [4. 因果推理系统](#4-因果推理系统)
+      - [5. 大模型对齐理论](#5-大模型对齐理论)
+    - [2025 年形式化验证突破](#2025-年形式化验证突破)
+      - [1. 神经网络形式化验证](#1-神经网络形式化验证)
+      - [2. 大模型对齐验证](#2-大模型对齐验证)
+      - [3. 多智能体系统验证](#3-多智能体系统验证)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -85,7 +102,7 @@ L'apprentissage profond est une branche de l'apprentissage automatique qui utili
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
+- [0.0 ZFC 公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
 - [1.2 数学基础](../../01-foundations/01.2-数学基础/README.md) - 提供数学基础 / Provides mathematical foundation
 - [2.1 统计学习理论](../02.1-统计学习理论/README.md) - 提供理论基础 / Provides theoretical foundation
 
@@ -115,7 +132,7 @@ $$\sup_{x \in [0,1]^n} |f(x) - N(x)| < \epsilon$$
 
 **证明思路 / Proof Idea:**
 
-使用Stone-Weierstrass定理和sigmoid函数的性质。
+使用 Stone-Weierstrass 定理和 sigmoid 函数的性质。
 
 Using Stone-Weierstrass theorem and properties of sigmoid function.
 
@@ -191,7 +208,7 @@ $$f(w_t) - f(w^*) \leq (1 - \frac{\mu}{L})^t (f(w_0) - f(w^*))$$
 
 ### 2.2 随机梯度下降 / Stochastic Gradient Descent / Stochastischer Gradientenabstieg / Descente de gradient stochastique
 
-**SGD算法 / SGD Algorithm:**
+**SGD 算法 / SGD Algorithm:**
 
 $$w_{t+1} = w_t - \eta_t \nabla f_i(w_t)$$
 
@@ -209,7 +226,7 @@ $$\mathbb{E}[f(w_t) - f(w^*)] \leq \frac{R^2}{2\eta_t} + \frac{\eta_t \sigma^2}{
 
 ### 2.3 自适应优化 / Adaptive Optimization / Adaptive Optimierung / Optimisation adaptative
 
-**Adam算法 / Adam Algorithm:**
+**Adam 算法 / Adam Algorithm:**
 
 $$m_t = \beta_1 m_{t-1} + (1-\beta_1) \nabla f(w_t)$$
 $$v_t = \beta_2 v_{t-1} + (1-\beta_2) (\nabla f(w_t))^2$$
@@ -261,9 +278,9 @@ $$\nabla f(w^*) = 0 \text{ and } \lambda_{\min}(\nabla^2 f(w^*)) < 0 < \lambda_{
 
 ## 4. 初始化理论 / Initialization Theory / Initialisierungstheorie / Théorie de l'initialisation
 
-### 4.1 Xavier初始化 / Xavier Initialization / Xavier-Initialisierung / Initialisation Xavier
+### 4.1 Xavier 初始化 / Xavier Initialization / Xavier-Initialisierung / Initialisation Xavier
 
-**Xavier初始化 / Xavier Initialization:**
+**Xavier 初始化 / Xavier Initialization:**
 
 $$W_{ij} \sim \mathcal{N}(0, \frac{2}{n_{in} + n_{out}})$$
 
@@ -275,13 +292,13 @@ wobei $n_{in}$ und $n_{out}$ Eingabe- und Ausgabedimensionen sind.
 
 où $n_{in}$ et $n_{out}$ sont les dimensions d'entrée et de sortie.
 
-### 4.2 He初始化 / He Initialization / He-Initialisierung / Initialisation He
+### 4.2 He 初始化 / He Initialization / He-Initialisierung / Initialisation He
 
-**He初始化 / He Initialization:**
+**He 初始化 / He Initialization:**
 
 $$W_{ij} \sim \mathcal{N}(0, \frac{2}{n_{in}})$$
 
-适用于ReLU激活函数。
+适用于 ReLU 激活函数。
 
 Suitable for ReLU activation function.
 
@@ -309,7 +326,7 @@ où $U$ et $V$ sont des matrices orthogonales.
 
 ### 5.1 权重衰减 / Weight Decay / Gewichtsabnahme / Décroissance de poids
 
-**L2正则化 / L2 Regularization:**
+**L2 正则化 / L2 Regularization:**
 
 $$\mathcal{L}_{reg} = \mathcal{L} + \lambda \sum_{i} w_i^2$$
 
@@ -323,11 +340,11 @@ où $\lambda$ est le coefficient de régularisation.
 
 ### 5.2 Dropout / Dropout / Dropout / Dropout
 
-**Dropout机制 / Dropout Mechanism:**
+**Dropout 机制 / Dropout Mechanism:**
 
 $$y = \frac{1}{1-p} \cdot \text{mask} \odot x$$
 
-其中 $p$ 是dropout率，mask是随机掩码。
+其中 $p$ 是 dropout 率，mask 是随机掩码。
 
 where $p$ is the dropout rate and mask is a random mask.
 
@@ -353,7 +370,7 @@ où $\mu$ et $\sigma^2$ sont les statistiques du lot.
 
 ## 代码示例 / Code Examples / Codebeispiele / Exemples de code
 
-### Rust实现：神经网络框架
+### Rust 实现：神经网络框架
 
 ```rust
 use std::collections::HashMap;
@@ -381,21 +398,21 @@ impl Layer {
                 .map(|_| rng.gen_range(-0.1..0.1))
                 .collect())
             .collect();
-        
+
         let biases = (0..output_size)
             .map(|_| rng.gen_range(-0.1..0.1))
             .collect();
-        
+
         Layer {
             weights,
             biases,
             activation,
         }
     }
-    
+
     fn forward(&self, input: &[f32]) -> Vec<f32> {
         let mut output = vec![0.0; self.biases.len()];
-        
+
         // 线性变换 / Linear transformation / Lineare Transformation / Transformation linéaire
         for i in 0..self.weights.len() {
             for j in 0..self.weights[i].len() {
@@ -403,15 +420,15 @@ impl Layer {
             }
             output[i] += self.biases[i];
         }
-        
+
         // 激活函数 / Activation function / Aktivierungsfunktion / Fonction d'activation
         for i in 0..output.len() {
             output[i] = self.apply_activation(output[i]);
         }
-        
+
         output
     }
-    
+
     fn apply_activation(&self, x: f32) -> f32 {
         match self.activation {
             ActivationFunction::ReLU => x.max(0.0),
@@ -420,7 +437,7 @@ impl Layer {
             ActivationFunction::Linear => x,
         }
     }
-    
+
     fn apply_activation_derivative(&self, x: f32) -> f32 {
         match self.activation {
             ActivationFunction::ReLU => if x > 0.0 { 1.0 } else { 0.0 },
@@ -443,79 +460,79 @@ struct NeuralNetwork {
 impl NeuralNetwork {
     fn new(layer_sizes: Vec<usize>, learning_rate: f32) -> Self {
         let mut layers = Vec::new();
-        
+
         for i in 0..layer_sizes.len() - 1 {
             let activation = if i == layer_sizes.len() - 2 {
                 ActivationFunction::Sigmoid
             } else {
                 ActivationFunction::ReLU
             };
-            
+
             layers.push(Layer::new(layer_sizes[i], layer_sizes[i + 1], activation));
         }
-        
+
         NeuralNetwork {
             layers,
             learning_rate,
         }
     }
-    
+
     fn forward(&self, input: &[f32]) -> Vec<f32> {
         let mut current_input = input.to_vec();
-        
+
         for layer in &self.layers {
             current_input = layer.forward(&current_input);
         }
-        
+
         current_input
     }
-    
+
     fn backward(&mut self, input: &[f32], target: &[f32]) -> f32 {
         // 前向传播 / Forward pass / Vorwärtsdurchlauf / Passe avant
         let mut activations = vec![input.to_vec()];
         let mut z_values = Vec::new();
-        
+
         for layer in &self.layers {
             let z = self.compute_z(&activations.last().unwrap(), layer);
             z_values.push(z.clone());
             let activation = z.iter().map(|&x| layer.apply_activation(x)).collect();
             activations.push(activation);
         }
-        
+
         // 计算损失 / Compute loss / Verlust berechnen / Calculer la perte
         let loss = self.compute_loss(&activations.last().unwrap(), target);
-        
+
         // 反向传播 / Backward pass / Rückwärtsdurchlauf / Passe arrière
         let mut deltas = self.compute_output_delta(&activations.last().unwrap(), target);
-        
+
         for i in (0..self.layers.len()).rev() {
             let layer = &mut self.layers[i];
             let layer_input = if i == 0 { input } else { &activations[i] };
-            
+
             // 更新权重和偏置 / Update weights and biases / Gewichte und Bias aktualisieren / Mettre à jour les poids et biais
             self.update_layer(layer, layer_input, &deltas);
-            
+
             if i > 0 {
                 deltas = self.compute_hidden_delta(layer, &deltas, &z_values[i - 1]);
             }
         }
-        
+
         loss
     }
-    
+
     fn compute_z(&self, input: &[f32], layer: &Layer) -> Vec<f32> {
         let mut z = vec![0.0; layer.biases.len()];
-        
+
         for i in 0..layer.weights.len() {
             for j in 0..layer.weights[i].len() {
                 z[i] += layer.weights[i][j] * input[j];
             }
             z[i] += layer.biases[i];
         }
-        
+
         z
     }
-    
+
     fn compute_loss(&self, output: &[f32], target: &[f32]) -> f32 {
         // 交叉熵损失 / Cross-entropy loss / Kreuzentropieverlust / Perte d'entropie croisée
         let mut loss = 0.0;
@@ -526,26 +543,26 @@ impl NeuralNetwork {
         }
         loss
     }
-    
+
     fn compute_output_delta(&self, output: &[f32], target: &[f32]) -> Vec<f32> {
         // 输出层误差 / Output layer error / Ausgabeschichtfehler / Erreur de la couche de sortie
         output.iter().zip(target.iter()).map(|(o, t)| o - t).collect()
     }
-    
+
     fn compute_hidden_delta(&self, layer: &Layer, next_delta: &[f32], z: &[f32]) -> Vec<f32> {
         // 隐藏层误差 / Hidden layer error / Versteckte Schichtfehler / Erreur de la couche cachée
         let mut delta = vec![0.0; layer.weights[0].len()];
-        
+
         for i in 0..next_delta.len() {
             let activation_derivative = layer.apply_activation_derivative(z[i]);
             for j in 0..layer.weights[i].len() {
                 delta[j] += next_delta[i] * activation_derivative * layer.weights[i][j];
             }
         }
-        
+
         delta
     }
-    
+
     fn update_layer(&mut self, layer: &mut Layer, input: &[f32], delta: &[f32]) {
         // 更新权重和偏置 / Update weights and biases / Gewichte und Bias aktualisieren / Mettre à jour les poids et biais
         for i in 0..layer.weights.len() {
@@ -555,40 +572,40 @@ impl NeuralNetwork {
             layer.biases[i] -= self.learning_rate * delta[i];
         }
     }
-    
+
     fn train(&mut self, training_data: &[(Vec<f32>, Vec<f32>)], epochs: usize) -> Vec<f32> {
         // 训练网络 / Train network / Netzwerk trainieren / Entraîner le réseau
         let mut losses = Vec::new();
-        
+
         for epoch in 0..epochs {
             let mut epoch_loss = 0.0;
-            
+
             for (input, target) in training_data {
                 let loss = self.backward(input, target);
                 epoch_loss += loss;
             }
-            
+
             epoch_loss /= training_data.len() as f32;
             losses.push(epoch_loss);
-            
+
             if epoch % 100 == 0 {
                 println!("Epoch {}, Loss: {:.6}", epoch, epoch_loss);
             }
         }
-        
+
         losses
     }
-    
+
     fn predict(&self, input: &[f32]) -> Vec<f32> {
         // 预测 / Prediction / Vorhersage / Prédiction
         self.forward(input)
     }
-    
+
     fn evaluate(&self, test_data: &[(Vec<f32>, Vec<f32>)]) -> f32 {
         // 评估模型 / Evaluate model / Modell bewerten / Évaluer le modèle
         let mut correct = 0;
         let mut total = 0;
-        
+
         for (input, target) in test_data {
             let prediction = self.predict(input);
             let predicted_class = prediction.iter().enumerate()
@@ -599,46 +616,46 @@ impl NeuralNetwork {
                 .max_by(|(_, a), (_, b)| a.partial_cmp(b).unwrap())
                 .map(|(i, _)| i)
                 .unwrap();
-            
+
             if predicted_class == true_class {
                 correct += 1;
             }
             total += 1;
         }
-        
+
         correct as f32 / total as f32
     }
         }
-        
+
         z
     }
-    
+
     fn compute_loss(&self, output: &[f32], target: &[f32]) -> f32 {
         output.iter().zip(target.iter())
             .map(|(o, t)| 0.5 * (o - t).powi(2))
             .sum()
     }
-    
+
     fn compute_output_delta(&self, output: &[f32], target: &[f32]) -> Vec<f32> {
         output.iter().zip(target.iter())
             .map(|(o, t)| (o - t) * o * (1.0 - o))
             .collect()
     }
-    
+
     fn compute_hidden_delta(&self, layer: &Layer, next_delta: &[f32], z: &[f32]) -> Vec<f32> {
         let mut delta = vec![0.0; layer.weights[0].len()];
-        
+
         for i in 0..layer.weights.len() {
             for j in 0..layer.weights[i].len() {
                 delta[j] += next_delta[i] * layer.weights[i][j];
             }
         }
-        
+
         delta.iter().zip(z.iter())
             .map(|(d, z_val)| d * layer.apply_activation_derivative(*z_val))
             .collect()
     }
-    
+
     fn update_layer(&mut self, layer: &mut Layer, input: &[f32], delta: &[f32]) {
         for i in 0..layer.weights.len() {
             for j in 0..layer.weights[i].len() {
@@ -652,7 +669,7 @@ impl NeuralNetwork {
 fn main() {
     // 创建神经网络 / Create neural network / Neuronales Netz erstellen / Créer le réseau de neurones
     let mut network = NeuralNetwork::new(vec![2, 3, 1], 0.1);
-    
+
     // 训练数据 / Training data / Trainingsdaten / Données d'entraînement
     let training_data = vec![
         (vec![0.0, 0.0], vec![0.0]),
@@ -660,21 +677,21 @@ fn main() {
         (vec![1.0, 0.0], vec![1.0]),
         (vec![1.0, 1.0], vec![0.0]),
     ];
-    
+
     // 训练网络 / Train network / Netz trainieren / Entraîner le réseau
     for epoch in 0..1000 {
         let mut total_loss = 0.0;
-        
+
         for (input, target) in &training_data {
             let loss = network.backward(input, target);
             total_loss += loss;
         }
-        
+
         if epoch % 100 == 0 {
             println!("Epoch {}, Loss: {:.4}", epoch, total_loss);
         }
     }
-    
+
     // 测试网络 / Test network / Netz testen / Tester le réseau
     println!("\n=== 测试结果 / Test Results ===");
     for (input, _) in &training_data {
@@ -684,11 +701,11 @@ fn main() {
 }
 ```
 
-### Haskell实现：优化算法
+### Haskell 实现：优化算法
 
 ```haskell
 -- 优化算法类型 / Optimization algorithm types / Optimierungsalgorithmustypen / Types d'algorithmes d'optimisation
-data Optimizer = 
+data Optimizer =
     SGD Double  -- 学习率 / Learning rate / Lernrate / Taux d'apprentissage
   | Adam Double Double Double  -- 学习率, beta1, beta2 / Learning rate, beta1, beta2
   | RMSprop Double Double  -- 学习率, decay / Learning rate, decay
@@ -696,7 +713,7 @@ data Optimizer =
 
 -- 梯度下降 / Gradient descent / Gradientenabstieg / Descente de gradient
 gradientDescent :: [Double] -> [Double] -> Double -> [Double]
-gradientDescent params gradients learningRate = 
+gradientDescent params gradients learningRate =
     zipWith (\p g -> p - learningRate * g) params gradients
 
 -- 随机梯度下降 / Stochastic gradient descent / Stochastischer Gradientenabstieg / Descente de gradient stochastique
@@ -705,7 +722,7 @@ sgd (SGD lr) params gradients = gradientDescent params gradients lr
 
 -- Adam优化器 / Adam optimizer / Adam-Optimierer / Optimiseur Adam
 adam :: Optimizer -> [Double] -> [Double] -> Int -> ([Double], [Double], [Double])
-adam (Adam lr beta1 beta2) params gradients t = 
+adam (Adam lr beta1 beta2) params gradients t =
     let m = replicate (length params) 0.0  -- 一阶矩估计 / First moment estimate / Erste Momentenschätzung / Estimation du premier moment
         v = replicate (length params) 0.0  -- 二阶矩估计 / Second moment estimate / Zweite Momentenschätzung / Estimation du second moment
         m_hat = zipWith (\m_i g_i -> beta1 * m_i + (1 - beta1) * g_i) m gradients
@@ -717,12 +734,12 @@ adam (Adam lr beta1 beta2) params gradients t =
 
 -- 损失函数 / Loss functions / Verlustfunktionen / Fonctions de perte
 mseLoss :: [Double] -> [Double] -> Double
-mseLoss predictions targets = 
+mseLoss predictions targets =
     let squaredErrors = zipWith (\p t -> (p - t) ^ 2) predictions targets
     in sum squaredErrors / fromIntegral (length squaredErrors)
 
 crossEntropyLoss :: [Double] -> [Double] -> Double
-crossEntropyLoss predictions targets = 
+crossEntropyLoss predictions targets =
     let logProbs = zipWith (\p t -> t * log (max p 1e-15)) predictions targets
     in -sum logProbs
 
@@ -756,16 +773,16 @@ data Layer = Layer {
 
 -- 前向传播 / Forward propagation / Vorwärtspropagierung / Propagation avant
 forward :: Layer -> [Double] -> [Double]
-forward layer input = 
-    let linearOutput = zipWith (\bias weightRow -> 
-            bias + sum (zipWith (*) input weightRow)) 
+forward layer input =
+    let linearOutput = zipWith (\bias weightRow ->
+            bias + sum (zipWith (*) input weightRow))
             (biases layer) (weights layer)
         activatedOutput = map (activation layer) linearOutput
     in activatedOutput
 
 -- 反向传播 / Backward propagation / Rückwärtspropagierung / Propagation arrière
 backward :: Layer -> [Double] -> [Double] -> (Layer, [Double])
-backward layer input outputGradients = 
+backward layer input outputGradients =
     let inputGradients = zipWith (*) outputGradients (map (activationDerivative layer) input)
         weightGradients = map (\og -> map (* og) input) outputGradients
         biasGradients = outputGradients
@@ -782,31 +799,31 @@ data NeuralNetwork = NeuralNetwork {
 
 -- 前向传播 / Forward pass / Vorwärtsdurchlauf / Passe avant
 forwardPass :: NeuralNetwork -> [Double] -> [Double]
-forwardPass network input = 
+forwardPass network input =
     foldl (\currentInput layer -> forward layer currentInput) input (layers network)
 
 -- 训练步骤 / Training step / Trainingsschritt / Étape d'entraînement
 trainStep :: NeuralNetwork -> [Double] -> [Double] -> NeuralNetwork
-trainStep network input target = 
+trainStep network input target =
     let -- 前向传播 / Forward pass / Vorwärtsdurchlauf / Passe avant
         forwardOutputs = scanl (\currentInput layer -> forward layer currentInput) input (layers network)
-        
+
         -- 计算损失梯度 / Compute loss gradient / Verlustgradient berechnen / Calculer le gradient de perte
         finalOutput = last forwardOutputs
         outputGradients = zipWith (\o t -> 2 * (o - t)) finalOutput target
-        
+
         -- 反向传播 / Backward pass / Rückwärtsdurchlauf / Passe arrière
-        (updatedLayers, _) = foldr (\layer (accLayers, accGradients) -> 
+        (updatedLayers, _) = foldr (\layer (accLayers, accGradients) ->
             let (updatedLayer, newGradients) = backward layer (head accLayers) accGradients
-            in (updatedLayer : accLayers, newGradients)) 
+            in (updatedLayer : accLayers, newGradients))
             ([], outputGradients) (layers network)
-        
+
         updatedNetwork = network { layers = updatedLayers }
     in updatedNetwork
 
 -- 创建网络 / Create network / Netz erstellen / Créer le réseau
 createNetwork :: [Int] -> Optimizer -> NeuralNetwork
-createNetwork layerSizes optimizer = 
+createNetwork layerSizes optimizer =
     let createLayer inputSize outputSize = Layer {
             weights = replicate outputSize (replicate inputSize 0.1),
             biases = replicate outputSize 0.0,
@@ -820,10 +837,10 @@ createNetwork layerSizes optimizer =
 main :: IO ()
 main = do
     putStrLn "=== 深度学习优化算法 / Deep Learning Optimization Algorithms ==="
-    
+
     -- 创建网络 / Create network / Netz erstellen / Créer le réseau
     let network = createNetwork [2, 3, 1] (SGD 0.01)
-    
+
     -- 训练数据 / Training data / Trainingsdaten / Données d'entraînement
     let trainingData = [
             ([0.0, 0.0], [0.0]),
@@ -831,12 +848,12 @@ main = do
             ([1.0, 0.0], [1.0]),
             ([1.0, 1.0], [0.0])
         ]
-    
+
     -- 训练循环 / Training loop / Trainingsschleife / Boucle d'entraînement
     let trainedNetwork = foldl (\net (input, target) -> trainStep net input target) network trainingData
-    
+
     putStrLn "训练完成 / Training completed / Training abgeschlossen / Entraînement terminé"
-    
+
     -- 测试网络 / Test network / Netz testen / Tester le réseau
     putStrLn "\n=== 测试结果 / Test Results ==="
     mapM_ (\(input, target) -> do
@@ -850,24 +867,27 @@ main = do
 ## 参考文献 / References / Literatur / Références
 
 1. **中文 / Chinese:**
-   - 李航 (2012). *统计学习方法*. 清华大学出版社.
-   - 周志华 (2016). *机器学习*. 清华大学出版社.
-   - 邱锡鹏 (2020). *神经网络与深度学习*. 机械工业出版社.
+
+   - 李航 (2012). _统计学习方法_. 清华大学出版社.
+   - 周志华 (2016). _机器学习_. 清华大学出版社.
+   - 邱锡鹏 (2020). _神经网络与深度学习_. 机械工业出版社.
 
 2. **English:**
-   - Goodfellow, I., Bengio, Y., & Courville, A. (2016). *Deep Learning*. MIT Press.
-   - Bishop, C. M. (2006). *Pattern Recognition and Machine Learning*. Springer.
-   - Murphy, K. P. (2012). *Machine Learning: A Probabilistic Perspective*. MIT Press.
+
+   - Goodfellow, I., Bengio, Y., & Courville, A. (2016). _Deep Learning_. MIT Press.
+   - Bishop, C. M. (2006). _Pattern Recognition and Machine Learning_. Springer.
+   - Murphy, K. P. (2012). _Machine Learning: A Probabilistic Perspective_. MIT Press.
 
 3. **Deutsch / German:**
-   - Bishop, C. M. (2008). *Pattern Recognition and Machine Learning*. Springer.
-   - Murphy, K. P. (2012). *Maschinelles Lernen: Eine probabilistische Perspektive*. MIT Press.
-   - Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning*. Springer.
+
+   - Bishop, C. M. (2008). _Pattern Recognition and Machine Learning_. Springer.
+   - Murphy, K. P. (2012). _Maschinelles Lernen: Eine probabilistische Perspektive_. MIT Press.
+   - Hastie, T., Tibshirani, R., & Friedman, J. (2009). _The Elements of Statistical Learning_. Springer.
 
 4. **Français / French:**
-   - Bishop, C. M. (2007). *Reconnaissance de formes et apprentissage automatique*. Springer.
-   - Murphy, K. P. (2012). *Machine Learning: Une perspective probabiliste*. MIT Press.
-   - Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning*. Springer.
+   - Bishop, C. M. (2007). _Reconnaissance de formes et apprentissage automatique_. Springer.
+   - Murphy, K. P. (2012). _Machine Learning: Une perspective probabiliste_. MIT Press.
+   - Hastie, T., Tibshirani, R., & Friedman, J. (2009). _The Elements of Statistical Learning_. Springer.
 
 ---
 
@@ -875,15 +895,15 @@ main = do
 
 ### 大规模深度学习理论 / Large-Scale Deep Learning Theory
 
-**2024年重要发展**:
+**2024 年重要发展**:
 
-- **Transformer理论**: 深入研究Transformer架构的理论性质，包括注意力机制的理论分析、位置编码和层归一化
+- **Transformer 理论**: 深入研究 Transformer 架构的理论性质，包括注意力机制的理论分析、位置编码和层归一化
 - **扩散模型理论**: 研究扩散模型的数学基础，包括去噪过程的收敛性分析和随机微分方程
-- **多模态大模型**: 探索视觉-语言大模型的理论框架和统一架构，如CLIP、DALL-E的理论基础
+- **多模态大模型**: 探索视觉-语言大模型的理论框架和统一架构，如 CLIP、DALL-E 的理论基础
 
 **理论突破**:
 
-- **缩放定律**: 扩展神经缩放定律，研究模型规模、数据规模和计算资源的理论关系，包括Chinchilla定律
+- **缩放定律**: 扩展神经缩放定律，研究模型规模、数据规模和计算资源的理论关系，包括 Chinchilla 定律
 - **涌现能力**: 深入研究大模型的涌现能力，包括思维链推理、工具使用、代码生成等
 - **对齐理论**: 研究人类反馈强化学习(RLHF)和直接偏好优化(DPO)的理论基础
 
@@ -911,7 +931,7 @@ main = do
 
 **安全与可靠性**:
 
-- **对抗鲁棒性**: 研究对抗攻击和防御的理论基础，包括PGD攻击和对抗训练
+- **对抗鲁棒性**: 研究对抗攻击和防御的理论基础，包括 PGD 攻击和对抗训练
 - **分布偏移**: 探索域适应和泛化的理论保证，包括域泛化和无监督域适应
 - **不确定性量化**: 研究深度学习中的不确定性估计理论，包括贝叶斯神经网络
 
@@ -923,10 +943,10 @@ main = do
 
 ### 新兴架构理论 / Emerging Architecture Theory
 
-**2024年新架构**:
+**2024 年新架构**:
 
-- **状态空间模型**: 研究Mamba和S4等状态空间模型的理论基础
-- **混合专家模型**: 探索MoE(Mixture of Experts)架构的理论分析
+- **状态空间模型**: 研究 Mamba 和 S4 等状态空间模型的理论基础
+- **混合专家模型**: 探索 MoE(Mixture of Experts)架构的理论分析
 - **Retrieval-Augmented**: 研究检索增强生成(RAG)的理论框架
 
 **理论创新**:
@@ -935,7 +955,7 @@ main = do
 - **多尺度架构**: 探索多尺度特征提取和融合的理论基础
 - **动态架构**: 研究自适应网络架构的理论框架
 
-### 2025年最新理论突破
+### 2025 年最新理论突破
 
 #### 1. 大模型理论的新发展
 
@@ -1027,17 +1047,17 @@ $$\text{ConvergenceRate} = O(\frac{1}{\sqrt{K}} + \frac{1}{\sqrt{T}})$$
 
 其中 $K$ 是客户端数，$T$ 是通信轮数。
 
-### 2025年工程应用突破
+### 2025 年工程应用突破
 
-#### 1. GPT-4o的多模态理论
+#### 1. GPT-4o 的多模态理论
 
-**GPT-4o的架构分析**：
+**GPT-4o 的架构分析**：
 
 - 统一多模态编码：$\text{GPT4o} : \text{MultiModal} \to \text{Text}$
 - 跨模态注意力：$\text{CrossModalAttention} : \text{Vision} \times \text{Text} \to \text{Attention}$
 - 模态对齐损失：$\text{AlignmentLoss} = \text{ContrastiveLoss}(\text{Vision}, \text{Text})$
 
-#### 2. 神经符号AI系统
+#### 2. 神经符号 AI 系统
 
 **神经符号推理**：
 
@@ -1055,7 +1075,7 @@ $$\text{ConvergenceRate} = O(\frac{1}{\sqrt{K}} + \frac{1}{\sqrt{T}})$$
 
 #### 4. 因果推理系统
 
-**因果AI系统**：
+**因果 AI 系统**：
 
 - 因果图构建：$G = \text{BuildCausalGraph}(\text{Data})$
 - 干预操作：$\text{Intervention} = \text{Do}(X = x)$
@@ -1069,7 +1089,7 @@ $$\text{ConvergenceRate} = O(\frac{1}{\sqrt{K}} + \frac{1}{\sqrt{T}})$$
 - 偏好优化：$\text{PreferenceOptimization} = \text{DPO}(\text{Model})$
 - 价值对齐：$\text{ValueAlignment} = \text{Align}(\text{Model}, \text{HumanValues})$
 
-### 2025年形式化验证突破
+### 2025 年形式化验证突破
 
 #### 1. 神经网络形式化验证
 
@@ -1102,7 +1122,7 @@ $$\text{ConsistencyVerify}(S) = \forall i,j \in \text{Agents} : \text{Consistent
 
 ---
 
-*本模块为FormalAI提供了完整的深度学习理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为现代AI系统的设计和优化提供了严格的数学基础。*
+_本模块为 FormalAI 提供了完整的深度学习理论基础，结合国际标准 Wiki 的概念定义，使用中英德法四语言诠释核心概念，为现代 AI 系统的设计和优化提供了严格的数学基础。_
 
 ---
 
@@ -1111,8 +1131,8 @@ $$\text{ConsistencyVerify}(S) = \forall i,j \in \text{Agents} : \text{Consistent
 - 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
 - 来源类别锚点：
   - 顶尖大学课程：MIT/Stanford/CMU/Berkeley/Harvard（深度学习理论、优化、缩放定律、扩散/状态空间模型）
-  - A类会议/期刊：NeurIPS/ICML/ICLR/JMLR/TPAMI 等
+  - A 类会议/期刊：NeurIPS/ICML/ICLR/JMLR/TPAMI 等
   - 标准与基准：NIST、ISO/IEC、W3C；可复现评测、统计显著性与模型/数据卡
-  - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
+  - 长期综述：Survey/Blueprint/Position（以期刊或 arXiv 正式版为准）
 
 注：二手资料以一手论文与标准为准；引用需标注版本/日期。

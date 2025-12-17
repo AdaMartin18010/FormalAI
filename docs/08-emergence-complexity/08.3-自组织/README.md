@@ -114,11 +114,11 @@ impl SelfOrganizationAnalyzer {
         let non_equilibrium = self.assess_non_equilibrium(system);
         let nonlinear = self.assess_nonlinearity(system);
         let positive_feedback = self.assess_positive_feedback(system);
-        
+
         let self_organization_level = self.calculate_self_organization_level(
             openness, non_equilibrium, nonlinear, positive_feedback
         );
-        
+
         SelfOrganizationResult {
             openness,
             non_equilibrium,
@@ -127,33 +127,33 @@ impl SelfOrganizationAnalyzer {
             self_organization_level,
         }
     }
-    
+
     fn assess_openness(&self, system: &System) -> f32 {
         let energy_flow = system.get_energy_flow_rate();
         let matter_flow = system.get_matter_flow_rate();
         let information_flow = system.get_information_flow_rate();
-        
+
         (energy_flow + matter_flow + information_flow) / 3.0
     }
-    
+
     fn assess_non_equilibrium(&self, system: &System) -> f32 {
         let entropy_production = system.get_entropy_production_rate();
         let gradient_magnitude = system.get_gradient_magnitude();
-        
+
         (entropy_production + gradient_magnitude) / 2.0
     }
-    
+
     fn assess_nonlinearity(&self, system: &System) -> f32 {
         let nonlinear_terms = system.get_nonlinear_terms();
         let coupling_strength = system.get_coupling_strength();
-        
+
         (nonlinear_terms + coupling_strength) / 2.0
     }
-    
+
     fn assess_positive_feedback(&self, system: &System) -> f32 {
         let amplification_factor = system.get_amplification_factor();
         let instability_measure = system.get_instability_measure();
-        
+
         (amplification_factor + instability_measure) / 2.0
     }
 }
@@ -194,7 +194,7 @@ impl PositiveFeedback {
             saturation_limit,
         }
     }
-    
+
     fn apply(&self, current_value: f32) -> f32 {
         if current_value > self.threshold {
             let amplification = self.amplification_factor * current_value;
@@ -203,7 +203,7 @@ impl PositiveFeedback {
             current_value
         }
     }
-    
+
     fn is_active(&self, current_value: f32) -> bool {
         current_value > self.threshold
     }
@@ -270,16 +270,16 @@ struct OrderParameterAnalyzer {
 impl OrderParameterAnalyzer {
     fn identify_order_parameters(&self, system: &System) -> Vec<OrderParameter> {
         let mut order_parameters = Vec::new();
-        
+
         // 识别慢变量
         let slow_variables = self.slow_variable_detector.detect(system);
-        
+
         // 分析集体行为
         let collective_behaviors = self.collective_behavior_analyzer.analyze(system);
-        
+
         // 识别控制变量
         let control_variables = self.control_variable_analyzer.identify(system);
-        
+
         // 组合分析
         for slow_var in slow_variables {
             for collective_behavior in &collective_behaviors {
@@ -293,21 +293,21 @@ impl OrderParameterAnalyzer {
                 }
             }
         }
-        
+
         order_parameters
     }
-    
+
     fn is_related(&self, slow_var: &Variable, collective_behavior: &CollectiveBehavior) -> bool {
         // 检查慢变量与集体行为的关系
         let correlation = self.calculate_correlation(slow_var, collective_behavior);
         correlation > 0.7
     }
-    
+
     fn calculate_correlation(&self, variable: &Variable, behavior: &CollectiveBehavior) -> f32 {
         // 计算相关性
         let var_values = variable.get_time_series();
         let behavior_values = behavior.get_time_series();
-        
+
         self.pearson_correlation(&var_values, &behavior_values)
     }
 }
@@ -367,7 +367,7 @@ impl SymmetryBreakingAnalyzer {
         let initial_symmetry = self.symmetry_detector.detect_initial_symmetry(system);
         let instability = self.instability_analyzer.analyze_instability(system);
         let asymmetric_state = self.asymmetric_state_detector.detect_asymmetric_state(system);
-        
+
         SymmetryBreakingResult {
             initial_symmetry,
             instability,
@@ -375,7 +375,7 @@ impl SymmetryBreakingAnalyzer {
             breaking_strength: self.calculate_breaking_strength(initial_symmetry, asymmetric_state),
         }
     }
-    
+
     fn calculate_breaking_strength(&self, initial_symmetry: f32, asymmetric_state: f32) -> f32 {
         // 计算对称性破缺强度
         (initial_symmetry - asymmetric_state).abs()
@@ -438,7 +438,7 @@ struct ReactionDiffusionSystem {
 }
 
 impl ReactionDiffusionSystem {
-    fn new(diffusion_coefficients: Vec<f32>, 
+    fn new(diffusion_coefficients: Vec<f32>,
            reaction_functions: Vec<Box<dyn Fn(f32, f32) -> f32>>,
            grid_size: usize) -> Self {
         ReactionDiffusionSystem {
@@ -449,44 +449,44 @@ impl ReactionDiffusionSystem {
             spatial_step: 1.0,
         }
     }
-    
+
     fn evolve(&mut self, time_steps: usize) {
         for _ in 0..time_steps {
             self.update_concentration();
         }
     }
-    
+
     fn update_concentration(&mut self) {
         let mut new_grid = self.spatial_grid.clone();
-        
+
         for i in 1..self.spatial_grid.len()-1 {
             for j in 1..self.spatial_grid[0].len()-1 {
                 // 扩散项
                 let diffusion = self.calculate_diffusion(i, j);
-                
+
                 // 反应项
                 let reaction = self.calculate_reaction(i, j);
-                
-                new_grid[i][j] = self.spatial_grid[i][j] + 
+
+                new_grid[i][j] = self.spatial_grid[i][j] +
                                 self.time_step * (diffusion + reaction);
             }
         }
-        
+
         self.spatial_grid = new_grid;
     }
-    
+
     fn calculate_diffusion(&self, i: usize, j: usize) -> f32 {
         let laplacian = (self.spatial_grid[i+1][j] + self.spatial_grid[i-1][j] +
                         self.spatial_grid[i][j+1] + self.spatial_grid[i][j-1] -
                         4.0 * self.spatial_grid[i][j]) / (self.spatial_step * self.spatial_step);
-        
+
         self.diffusion_coefficients[0] * laplacian
     }
-    
+
     fn calculate_reaction(&self, i: usize, j: usize) -> f32 {
         let u = self.spatial_grid[i][j];
         let v = self.spatial_grid[i][j]; // 简化，实际应该有多个变量
-        
+
         (self.reaction_functions[0])(u, v)
     }
 }
@@ -525,18 +525,18 @@ impl SandpileModel {
             threshold,
         }
     }
-    
+
     fn add_grain(&mut self, x: usize, y: usize) {
         self.grid[x][y] += 1;
         self.topple_if_needed();
     }
-    
+
     fn topple_if_needed(&mut self) {
         let mut toppling_occurred = true;
-        
+
         while toppling_occurred {
             toppling_occurred = false;
-            
+
             for i in 0..self.size {
                 for j in 0..self.size {
                     if self.grid[i][j] >= self.threshold {
@@ -547,17 +547,17 @@ impl SandpileModel {
             }
         }
     }
-    
+
     fn topple(&mut self, x: usize, y: usize) {
         self.grid[x][y] -= self.threshold;
-        
+
         // 向邻居分配沙粒
         if x > 0 { self.grid[x-1][y] += 1; }
         if x < self.size-1 { self.grid[x+1][y] += 1; }
         if y > 0 { self.grid[x][y-1] += 1; }
         if y < self.size-1 { self.grid[x][y+1] += 1; }
     }
-    
+
     fn get_avalanche_size(&self) -> usize {
         // 计算雪崩大小
         self.grid.iter().flatten().filter(|&&x| x >= self.threshold).count()
@@ -610,7 +610,7 @@ impl ParameterController {
             control_strength,
         }
     }
-    
+
     fn control(&mut self, current_state: f32) -> f32 {
         let error = self.target_state - current_state;
         self.control_parameter += self.control_strength * error;
@@ -648,20 +648,20 @@ impl SelfOrganizingMap {
     fn train(&mut self, input: &Vec<f32>) {
         // 找到获胜神经元
         let winner = self.find_winner(input);
-        
+
         // 更新获胜神经元及其邻居
         for neuron in &mut self.neurons {
             let distance = self.calculate_distance(&winner.position, &neuron.position);
             let neighborhood_function = self.calculate_neighborhood_function(distance);
-            
+
             for i in 0..neuron.weights.len() {
-                neuron.weights[i] += self.learning_rate * 
-                                   neighborhood_function * 
+                neuron.weights[i] += self.learning_rate *
+                                   neighborhood_function *
                                    (input[i] - neuron.weights[i]);
             }
         }
     }
-    
+
     fn find_winner(&self, input: &Vec<f32>) -> &Neuron {
         self.neurons.iter()
             .min_by(|a, b| {
@@ -713,68 +713,68 @@ impl SelfOrganizingSystem {
             time_step: 0.01,
         }
     }
-    
+
     fn add_component(&mut self, component: Component) {
         self.components.push(component);
     }
-    
+
     fn add_interaction(&mut self, interaction: Interaction) {
         self.interactions.push(interaction);
     }
-    
+
     fn evolve(&mut self, time_steps: usize) -> EvolutionResult {
         let mut evolution_history = Vec::new();
         let mut order_parameter_history = Vec::new();
-        
+
         for step in 0..time_steps {
             // 更新组件状态
             self.update_components();
-            
+
             // 应用相互作用
             self.apply_interactions();
-            
+
             // 计算序参量
             let order_parameters = self.calculate_order_parameters();
             self.order_parameters = order_parameters.clone();
-            
+
             // 记录历史
             evolution_history.push(self.get_system_state());
             order_parameter_history.push(order_parameters);
-            
+
             // 检测自组织
             if self.detect_self_organization() {
                 println!("自组织在步骤 {} 检测到", step);
             }
         }
-        
+
         EvolutionResult {
             evolution_history,
             order_parameter_history,
             final_self_organization_level: self.calculate_self_organization_level(),
         }
     }
-    
+
     fn update_components(&mut self) {
         for component in &mut self.components {
             component.update_state(self.time_step);
         }
     }
-    
+
     fn apply_interactions(&mut self) {
         for interaction in &self.interactions {
             interaction.apply(&mut self.components);
         }
     }
-    
+
     fn calculate_order_parameters(&self) -> Vec<OrderParameter> {
         let mut order_parameters = Vec::new();
-        
+
         // 计算集体行为
         let collective_behavior = self.calculate_collective_behavior();
-        
+
         // 识别慢变量
         let slow_variables = self.identify_slow_variables();
-        
+
         // 组合成序参量
         for (i, slow_var) in slow_variables.iter().enumerate() {
             order_parameters.push(OrderParameter {
@@ -783,79 +783,79 @@ impl SelfOrganizingSystem {
                 collective_behavior: collective_behavior.clone(),
             });
         }
-        
+
         order_parameters
     }
-    
+
     fn calculate_collective_behavior(&self) -> f32 {
         // 计算平均状态
         let total_state: f32 = self.components.iter().map(|c| c.get_state()).sum();
         total_state / self.components.len() as f32
     }
-    
+
     fn identify_slow_variables(&self) -> Vec<f32> {
         // 简化的慢变量识别
         let states: Vec<f32> = self.components.iter().map(|c| c.get_state()).collect();
-        
+
         // 计算低频成分（简化）
         vec![states.iter().sum::<f32>() / states.len() as f32]
     }
-    
+
     fn detect_self_organization(&self) -> bool {
         // 检测自组织
         let order_level = self.calculate_order_level();
         let symmetry_breaking = self.detect_symmetry_breaking();
         let pattern_formation = self.detect_pattern_formation();
-        
+
         order_level > 0.7 && (symmetry_breaking || pattern_formation)
     }
-    
+
     fn calculate_order_level(&self) -> f32 {
         // 计算有序度
         let states: Vec<f32> = self.components.iter().map(|c| c.get_state()).collect();
         let variance = self.calculate_variance(&states);
         1.0 - variance.min(1.0)
     }
-    
+
     fn calculate_variance(&self, values: &[f32]) -> f32 {
         let mean = values.iter().sum::<f32>() / values.len() as f32;
         let variance = values.iter().map(|x| (x - mean).powi(2)).sum::<f32>() / values.len() as f32;
         variance
     }
-    
+
     fn detect_symmetry_breaking(&self) -> bool {
         // 检测对称性破缺
         let states: Vec<f32> = self.components.iter().map(|c| c.get_state()).collect();
         let left_half: f32 = states[..states.len()/2].iter().sum();
         let right_half: f32 = states[states.len()/2..].iter().sum();
-        
+
         (left_half - right_half).abs() > 0.5
     }
-    
+
     fn detect_pattern_formation(&self) -> bool {
         // 检测模式形成
         let states: Vec<f32> = self.components.iter().map(|c| c.get_state()).collect();
-        
+
         // 检查是否有明显的空间模式
         let positive_count = states.iter().filter(|&&x| x > 0.0).count();
         let negative_count = states.iter().filter(|&&x| x < 0.0).count();
-        
+
         let ratio = positive_count as f32 / states.len() as f32;
         (ratio - 0.5).abs() > 0.3
     }
-    
+
     fn get_system_state(&self) -> SystemState {
         SystemState {
             component_states: self.components.iter().map(|c| c.get_state()).collect(),
             order_parameters: self.order_parameters.clone(),
         }
     }
-    
+
     fn calculate_self_organization_level(&self) -> f32 {
         let order_level = self.calculate_order_level();
         let symmetry_breaking = if self.detect_symmetry_breaking() { 1.0 } else { 0.0 };
         let pattern_formation = if self.detect_pattern_formation() { 1.0 } else { 0.0 };
-        
+
         (order_level + symmetry_breaking + pattern_formation) / 3.0
     }
 }
@@ -875,14 +875,14 @@ impl Component {
             parameters: HashMap::new(),
         }
     }
-    
+
     fn update_state(&mut self, dt: f32) {
         // 简单的状态更新
         let noise = rand::thread_rng().gen_range(-0.1..0.1);
         self.state += noise * dt;
         self.state = self.state.max(-1.0).min(1.0);
     }
-    
+
     fn get_state(&self) -> f32 {
         self.state
     }
@@ -905,7 +905,7 @@ impl Interaction {
             interaction_type,
         }
     }
-    
+
     fn apply(&self, components: &mut Vec<Component>) {
         if let (Some(source), Some(target)) = (
             components.iter().find(|c| c.id == self.source_id),
@@ -956,13 +956,13 @@ struct SystemState {
 
 fn main() {
     let mut system = SelfOrganizingSystem::new();
-    
+
     // 添加组件
     for i in 0..20 {
         let component = Component::new(format!("component_{}", i));
         system.add_component(component);
     }
-    
+
     // 添加相互作用
     for i in 0..19 {
         let interaction = Interaction::new(
@@ -973,7 +973,7 @@ fn main() {
         );
         system.add_interaction(interaction);
     }
-    
+
     // 运行模拟
     let result = system.evolve(1000);
     println!("自组织水平: {}", result.final_self_organization_level);
@@ -1025,8 +1025,8 @@ data SystemState = SystemState {
 
 -- 系统演化
 evolve :: SelfOrganizingSystem -> Int -> EvolutionResult
-evolve system timeSteps = 
-    let (finalSystem, history, orderHistory) = foldl evolveStep 
+evolve system timeSteps =
+    let (finalSystem, history, orderHistory) = foldl evolveStep
         (system, [], []) [0..timeSteps-1]
     in EvolutionResult {
         evolutionHistory = reverse history,
@@ -1034,9 +1034,9 @@ evolve system timeSteps =
         finalSelfOrganizationLevel = calculateSelfOrganizationLevel finalSystem
     }
 
-evolveStep :: (SelfOrganizingSystem, [SystemState], [[OrderParameter]]) -> Int -> 
+evolveStep :: (SelfOrganizingSystem, [SystemState], [[OrderParameter]]) -> Int ->
              (SelfOrganizingSystem, [SystemState], [[OrderParameter]])
-evolveStep (sys, hist, orderHist) step = 
+evolveStep (sys, hist, orderHist) step =
     let updatedComps = updateComponents (components sys) (timeStep sys)
         updatedComps' = applyInteractions updatedComps (interactions sys)
         orderParams = calculateOrderParameters updatedComps'
@@ -1045,75 +1045,75 @@ evolveStep (sys, hist, orderHist) step =
     in (updatedSys, systemState : hist, orderParams : orderHist)
 
 updateComponents :: [Component] -> Double -> [Component]
-updateComponents components dt = 
+updateComponents components dt =
     map (\comp -> comp { state = updateState (state comp) dt }) components
 
 updateState :: Double -> Double -> Double
-updateState currentState dt = 
+updateState currentState dt =
     let noise = randomRIO (-0.1, 0.1)
         newState = currentState + noise * dt
     in max (-1.0) (min 1.0 newState)
 
 applyInteractions :: [Component] -> [Interaction] -> [Component]
-applyInteractions components interactions = 
+applyInteractions components interactions =
     foldl applyInteraction components interactions
 
 applyInteraction :: [Component] -> Interaction -> [Component]
-applyInteraction components interaction = 
+applyInteraction components interaction =
     let source = find (\c -> componentId c == sourceId interaction) components
         target = find (\c -> componentId c == targetId interaction) components
     in case (source, target) of
-        (Just s, Just t) -> 
+        (Just s, Just t) ->
             let updatedTarget = t { state = applyInteractionType (state s) (state t) interaction }
             in map (\c -> if componentId c == targetId interaction then updatedTarget else c) components
         _ -> components
 
 applyInteractionType :: Double -> Double -> Interaction -> Double
-applyInteractionType sourceState targetState interaction = 
+applyInteractionType sourceState targetState interaction =
     case interactionType interaction of
         Cooperative -> targetState + strength interaction * sourceState
         Competitive -> targetState - strength interaction * sourceState
-        Synchronizing -> 
+        Synchronizing ->
             let diff = sourceState - targetState
             in targetState + strength interaction * diff
 
 calculateOrderParameters :: [Component] -> [OrderParameter]
-calculateOrderParameters components = 
+calculateOrderParameters components =
     let collectiveBehavior = calculateCollectiveBehavior components
         slowVariables = identifySlowVariables components
-    in zipWith (\i slowVar -> OrderParameter ("OP_" ++ show i) slowVar collectiveBehavior) 
+    in zipWith (\i slowVar -> OrderParameter ("OP_" ++ show i) slowVar collectiveBehavior)
        [0..] slowVariables
 
 calculateCollectiveBehavior :: [Component] -> Double
-calculateCollectiveBehavior components = 
+calculateCollectiveBehavior components =
     let states = map state components
     in sum states / fromIntegral (length states)
 
 identifySlowVariables :: [Component] -> [Double]
-identifySlowVariables components = 
+identifySlowVariables components =
     let states = map state components
     in [sum states / fromIntegral (length states)] -- 简化的慢变量
 
 calculateSelfOrganizationLevel :: SelfOrganizingSystem -> Double
-calculateSelfOrganizationLevel system = 
+calculateSelfOrganizationLevel system =
     let orderLevel = calculateOrderLevel (components system)
         symmetryBreaking = if detectSymmetryBreaking (components system) then 1.0 else 0.0
         patternFormation = if detectPatternFormation (components system) then 1.0 else 0.0
     in (orderLevel + symmetryBreaking + patternFormation) / 3.0
 
 calculateOrderLevel :: [Component] -> Double
-calculateOrderLevel components = 
+calculateOrderLevel components =
     let states = map state components
         variance = calculateVariance states
     in 1.0 - min 1.0 variance
 
 calculateVariance :: [Double] -> Double
-calculateVariance values = 
+calculateVariance values =
     let mean = sum values / fromIntegral (length values)
     in sum (map (\x -> (x - mean) ^ 2) values) / fromIntegral (length values)
 
 detectSymmetryBreaking :: [Component] -> Bool
-detectSymmetryBreaking components = 
+detectSymmetryBreaking components =
     let states = map state components
         midPoint = length states `div` 2
         leftHalf = sum (take midPoint states)
@@ -1121,7 +1121,7 @@ detectSymmetryBreaking components =
     in abs (leftHalf - rightHalf) > 0.5
 
 detectPatternFormation :: [Component] -> Bool
-detectPatternFormation components = 
+detectPatternFormation components =
     let states = map state components
         positiveCount = length (filter (> 0.0) states)
         totalCount = length states
@@ -1137,7 +1137,7 @@ main = do
         orderParameters = [],
         timeStep = 0.01
     }
-    
+
     let result = evolve system 1000
     putStrLn $ "自组织水平: " ++ show (finalSelfOrganizationLevel result)
 ```

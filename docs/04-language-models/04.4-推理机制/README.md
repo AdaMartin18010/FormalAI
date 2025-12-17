@@ -454,13 +454,13 @@ impl LogicalReasoner {
 
     fn apply_rules(&self) -> Vec<Proposition> {
         let mut new_conclusions = Vec::new();
-        
+
         for rule in &self.inference_rules {
             if self.all_premises_satisfied(&rule.premises) {
                 new_conclusions.push(rule.conclusion.clone());
             }
         }
-        
+
         new_conclusions
     }
 
@@ -502,7 +502,7 @@ impl ProbabilisticReasoner {
         let prior = self.probabilities.get(event)?;
         let likelihood = self.conditional_probs.get(&(evidence.to_string(), event.to_string()))?;
         let evidence_prob = self.calculate_evidence_probability(evidence)?;
-        
+
         let posterior = (likelihood * prior) / evidence_prob;
         self.probabilities.insert(event.to_string(), posterior);
         Some(posterior)
@@ -520,7 +520,7 @@ impl ProbabilisticReasoner {
 
     fn markov_chain(&self, states: &[String], transition_matrix: &Vec<Vec<f64>>, steps: usize) -> Vec<f64> {
         let mut current_state = vec![1.0 / states.len() as f64; states.len()];
-        
+
         for _ in 0..steps {
             let mut new_state = vec![0.0; states.len()];
             for i in 0..states.len() {
@@ -530,7 +530,7 @@ impl ProbabilisticReasoner {
             }
             current_state = new_state;
         }
-        
+
         current_state
     }
 }
@@ -573,7 +573,7 @@ impl CausalReasoner {
     fn counterfactual_analysis(&self, variable: &str, counterfactual_value: f64) -> HashMap<String, f64> {
         let mut counterfactual_world = HashMap::new();
         counterfactual_world.insert(variable.to_string(), counterfactual_value);
-        
+
         // 传播反事实效应 / Propagate counterfactual effects / Propagiere kontrafaktische Effekte / Propager les effets contrefactuels
         for (cause, effects) in &self.causal_graph {
             if let Some(cause_value) = counterfactual_world.get(cause) {
@@ -583,50 +583,50 @@ impl CausalReasoner {
                 }
             }
         }
-        
+
         counterfactual_world
     }
 }
 
 fn main() {
     println!("=== 推理机制示例 / Reasoning Mechanisms Example ===");
-    
+
     // 逻辑推理示例 / Logical reasoning example / Logisches Schlussfolgern Beispiel / Exemple de raisonnement logique
     let mut logical_reasoner = LogicalReasoner::new();
-    
+
     // 添加知识 / Add knowledge / Füge Wissen hinzu / Ajouter des connaissances
     logical_reasoner.add_knowledge(Proposition::Atom("rain".to_string()));
     logical_reasoner.add_knowledge(Proposition::Implies(
         Box::new(Proposition::Atom("rain".to_string())),
         Box::new(Proposition::Atom("wet_ground".to_string()))
     ));
-    
+
     // 应用推理规则 / Apply inference rules / Wende Schlussfolgerungsregeln an / Appliquer les règles d'inférence
     let goal = Proposition::Atom("wet_ground".to_string());
     let proved = logical_reasoner.prove(&goal);
     println!("Can prove wet_ground: {}", proved);
-    
+
     // 概率推理示例 / Probabilistic reasoning example / Probabilistisches Schlussfolgern Beispiel / Exemple de raisonnement probabiliste
     let mut prob_reasoner = ProbabilisticReasoner::new();
-    
+
     prob_reasoner.set_prior("disease".to_string(), 0.01);
     prob_reasoner.set_conditional("positive_test".to_string(), "disease".to_string(), 0.95);
     prob_reasoner.set_conditional("positive_test".to_string(), "no_disease".to_string(), 0.05);
-    
+
     if let Some(posterior) = prob_reasoner.bayesian_update("disease", "positive_test") {
         println!("Posterior probability of disease: {:.4}", posterior);
     }
-    
+
     // 因果推理示例 / Causal reasoning example / Kausales Schlussfolgern Beispiel / Exemple de raisonnement causal
     let mut causal_reasoner = CausalReasoner::new();
-    
+
     causal_reasoner.add_causal_relation("smoking".to_string(), "lung_cancer".to_string());
     causal_reasoner.do_intervention("smoking".to_string(), 1.0);
-    
+
     if let Some(effect) = causal_reasoner.calculate_causal_effect("smoking", "lung_cancer") {
         println!("Causal effect of smoking on lung cancer: {:.4}", effect);
     }
-    
+
     let counterfactual = causal_reasoner.counterfactual_analysis("smoking", 0.0);
     println!("Counterfactual world: {:?}", counterfactual);
 }
@@ -676,12 +676,12 @@ addRule :: LogicalReasoner -> InferenceRule -> LogicalReasoner
 addRule reasoner rule = reasoner { inferenceRules = rule : inferenceRules reasoner }
 
 modusPonens :: LogicalReasoner -> Proposition -> Proposition -> Maybe Proposition
-modusPonens reasoner p (Implies p1 q) = 
+modusPonens reasoner p (Implies p1 q) =
     if entails reasoner p1 p then Just q else Nothing
 modusPonens _ _ _ = Nothing
 
 modusTollens :: LogicalReasoner -> Proposition -> Proposition -> Maybe Proposition
-modusTollens reasoner notQ (Implies p q) = 
+modusTollens reasoner notQ (Implies p q) =
     if entails reasoner q notQ then Just (Not p) else Nothing
 modusTollens _ _ _ = Nothing
 
@@ -698,11 +698,11 @@ newProbabilisticReasoner :: ProbabilisticReasoner
 newProbabilisticReasoner = ProbabilisticReasoner [] []
 
 setPrior :: ProbabilisticReasoner -> String -> Double -> ProbabilisticReasoner
-setPrior reasoner event prob = 
+setPrior reasoner event prob =
     reasoner { priors = (event, prob) : priors reasoner }
 
 setConditional :: ProbabilisticReasoner -> String -> String -> Double -> ProbabilisticReasoner
-setConditional reasoner event condition prob = 
+setConditional reasoner event condition prob =
     reasoner { conditionals = ((event, condition), prob) : conditionals reasoner }
 
 bayesianUpdate :: ProbabilisticReasoner -> String -> String -> Maybe Double
@@ -714,17 +714,17 @@ bayesianUpdate reasoner event evidence = do
     return posterior
 
 calculateEvidenceProbability :: ProbabilisticReasoner -> String -> Maybe Double
-calculateEvidenceProbability reasoner evidence = 
-    let total = sum [likelihood * prior | 
+calculateEvidenceProbability reasoner evidence =
+    let total = sum [likelihood * prior |
                      (event, prior) <- priors reasoner,
                      Just likelihood <- [lookup (evidence, event) (conditionals reasoner)]]
     in if total > 0 then Just total else Nothing
 
 markovChain :: [String] -> [[Double]] -> Int -> [Double]
-markovChain states transitionMatrix steps = 
+markovChain states transitionMatrix steps =
     let initialState = map (\_ -> 1.0 / fromIntegral (length states)) states
-        step currentState = 
-            [sum [currentState !! j * (transitionMatrix !! j) !! i | j <- [0..length states - 1]] 
+        step currentState =
+            [sum [currentState !! j * (transitionMatrix !! j) !! i | j <- [0..length states - 1]]
              | i <- [0..length states - 1]]
     in iterate step initialState !! steps
 
@@ -733,19 +733,19 @@ newCausalReasoner :: CausalReasoner
 newCausalReasoner = CausalReasoner [] []
 
 addCausalRelation :: CausalReasoner -> String -> String -> CausalReasoner
-addCausalRelation reasoner cause effect = 
-    let updateGraph (c, effects) = 
-            if c == cause 
+addCausalRelation reasoner cause effect =
+    let updateGraph (c, effects) =
+            if c == cause
             then (c, effect : effects)
             else (c, effects)
         newGraph = map updateGraph (causalGraph reasoner)
-        finalGraph = if any (\(c, _) -> c == cause) newGraph 
-                     then newGraph 
+        finalGraph = if any (\(c, _) -> c == cause) newGraph
+                     then newGraph
                      else (cause, [effect]) : newGraph
     in reasoner { causalGraph = finalGraph }
 
 doIntervention :: CausalReasoner -> String -> Double -> CausalReasoner
-doIntervention reasoner variable value = 
+doIntervention reasoner variable value =
     reasoner { interventions = (variable, value) : interventions reasoner }
 
 calculateCausalEffect :: CausalReasoner -> String -> String -> Maybe Double
@@ -755,10 +755,10 @@ calculateCausalEffect reasoner cause effect = do
     if effect `elem` effects then Just interventionValue else Nothing
 
 counterfactualAnalysis :: CausalReasoner -> String -> Double -> [(String, Double)]
-counterfactualAnalysis reasoner variable counterfactualValue = 
+counterfactualAnalysis reasoner variable counterfactualValue =
     let initialWorld = [(variable, counterfactualValue)]
-        propagateEffects world = 
-            let newEffects = [(effect, causeValue * 0.8) | 
+        propagateEffects world =
+            let newEffects = [(effect, causeValue * 0.8) |
                               (cause, effects) <- causalGraph reasoner,
                               (causeName, causeValue) <- world,
                               causeName == cause,
@@ -774,13 +774,13 @@ data Analogy = Analogy {
 } deriving (Show)
 
 structuralMapping :: Analogy -> [(String, String)]
-structuralMapping analogy = 
+structuralMapping analogy =
     let sourceStruct = map fst (sourceDomain analogy)
         targetStruct = map fst (targetDomain analogy)
     in zip sourceStruct targetStruct
 
 similarity :: [String] -> [String] -> Double
-similarity set1 set2 = 
+similarity set1 set2 =
     let intersection = length (filter (`elem` set2) set1)
         union = length (nub (set1 ++ set2))
     in fromIntegral intersection / fromIntegral union
@@ -793,15 +793,15 @@ data Counterfactual = Counterfactual {
 } deriving (Show)
 
 counterfactualDistance :: [(String, Double)] -> [(String, Double)] -> Double
-counterfactualDistance world1 world2 = 
-    sum [abs (value1 - value2) | 
+counterfactualDistance world1 world2 =
+    sum [abs (value1 - value2) |
          (var1, value1) <- world1,
          (var2, value2) <- world2,
          var1 == var2]
 
 mostSimilarWorld :: Counterfactual -> [(String, Double)]
-mostSimilarWorld counterfactual = 
-    let distances = [(world, counterfactualDistance world (actualWorld counterfactual)) | 
+mostSimilarWorld counterfactual =
+    let distances = [(world, counterfactualDistance world (actualWorld counterfactual)) |
                      world <- possibleWorlds counterfactual]
     in fst (minimumBy (\(_, d1) (_, d2) -> compare d1 d2) distances)
 
@@ -809,35 +809,35 @@ mostSimilarWorld counterfactual =
 main :: IO ()
 main = do
     putStrLn "=== 推理机制示例 / Reasoning Mechanisms Example ==="
-    
+
     -- 逻辑推理示例 / Logical reasoning example / Logisches Schlussfolgern Beispiel / Exemple de raisonnement logique
     let reasoner = newLogicalReasoner
     let reasoner1 = addKnowledge reasoner (Atom "rain")
     let reasoner2 = addKnowledge reasoner1 (Implies (Atom "rain") (Atom "wet_ground"))
-    
+
     let goal = Atom "wet_ground"
     let proved = prove reasoner2 goal
     putStrLn $ "Can prove wet_ground: " ++ show proved
-    
+
     -- 概率推理示例 / Probabilistic reasoning example / Probabilistisches Schlussfolgern Beispiel / Exemple de raisonnement probabiliste
     let probReasoner = newProbabilisticReasoner
     let probReasoner1 = setPrior probReasoner "disease" 0.01
     let probReasoner2 = setConditional probReasoner1 "positive_test" "disease" 0.95
     let probReasoner3 = setConditional probReasoner2 "positive_test" "no_disease" 0.05
-    
+
     case bayesianUpdate probReasoner3 "disease" "positive_test" of
         Just posterior -> putStrLn $ "Posterior probability: " ++ show posterior
         Nothing -> putStrLn "Bayesian update failed"
-    
+
     -- 因果推理示例 / Causal reasoning example / Kausales Schlussfolgern Beispiel / Exemple de raisonnement causal
     let causalReasoner = newCausalReasoner
     let causalReasoner1 = addCausalRelation causalReasoner "smoking" "lung_cancer"
     let causalReasoner2 = doIntervention causalReasoner1 "smoking" 1.0
-    
+
     case calculateCausalEffect causalReasoner2 "smoking" "lung_cancer" of
         Just effect -> putStrLn $ "Causal effect: " ++ show effect
         Nothing -> putStrLn "Causal effect calculation failed"
-    
+
     let counterfactual = counterfactualAnalysis causalReasoner2 "smoking" 0.0
     putStrLn $ "Counterfactual world: " ++ show counterfactual
 ```

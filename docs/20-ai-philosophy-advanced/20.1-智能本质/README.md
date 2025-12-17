@@ -453,8 +453,8 @@ Intelligence is the ability to acquire knowledge, understand concepts, solve pro
 
 ---
 
-**最后更新**：2025-01-01  
-**版本**：v2025-01  
+**最后更新**：2025-01-01
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *智能本质研究为理解人工智能的根本属性提供了重要基础，推动AI技术的哲学思考和未来发展。*

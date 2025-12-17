@@ -4,7 +4,7 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-计算理论研究计算的本质、能力和限制，为FormalAI提供计算复杂性和算法分析的理论基础。
+计算理论研究计算的本质、能力和限制，为 FormalAI 提供计算复杂性和算法分析的理论基础。
 
 Computation theory studies the nature, capabilities, and limitations of computation, providing theoretical foundations for computational complexity and algorithm analysis in FormalAI.
 
@@ -68,9 +68,9 @@ Le calcul est le processus de traitement d'information qui transforme l'entrée 
     - [2.2 停机问题 / Halting Problem / Halteproblem / Problème de l'arrêt](#22-停机问题--halting-problem--halteproblem--problème-de-larrêt)
     - [2.3 不可判定性 / Undecidability / Unentscheidbarkeit / Indécidabilité](#23-不可判定性--undecidability--unentscheidbarkeit--indécidabilité)
   - [3. 复杂性理论 / Complexity Theory / Komplexitätstheorie / Théorie de la complexité](#3-复杂性理论--complexity-theory--komplexitätstheorie--théorie-de-la-complexité)
-    - [3.1 P类问题 / P Class / P-Klasse / Classe P](#31-p类问题--p-class--p-klasse--classe-p)
-    - [3.2 NP类问题 / NP Class / NP-Klasse / Classe NP](#32-np类问题--np-class--np-klasse--classe-np)
-    - [3.3 NP完全问题 / NP-Complete Problems / NP-vollständige Probleme / Problèmes NP-complets](#33-np完全问题--np-complete-problems--np-vollständige-probleme--problèmes-np-complets)
+    - [3.1 P 类问题 / P Class / P-Klasse / Classe P](#31-p-类问题--p-class--p-klasse--classe-p)
+    - [3.2 NP 类问题 / NP Class / NP-Klasse / Classe NP](#32-np-类问题--np-class--np-klasse--classe-np)
+    - [3.3 NP 完全问题 / NP-Complete Problems / NP-vollständige Probleme / Problèmes NP-complets](#33-np-完全问题--np-complete-problems--np-vollständige-probleme--problèmes-np-complets)
   - [4. 算法分析 / Algorithm Analysis / Algorithmusanalyse / Analyse d'algorithmes](#4-算法分析--algorithm-analysis--algorithmusanalyse--analyse-dalgorithmes)
     - [4.1 时间复杂度 / Time Complexity / Zeitkomplexität / Complexité temporelle](#41-时间复杂度--time-complexity--zeitkomplexität--complexité-temporelle)
     - [4.2 空间复杂度 / Space Complexity / Speicherkomplexität / Complexité spatiale](#42-空间复杂度--space-complexity--speicherkomplexität--complexité-spatiale)
@@ -84,9 +84,10 @@ Le calcul est le processus de traitement d'information qui transforme l'entrée 
     - [6.2 量子门 / Quantum Gates / Quantengatter / Portes quantiques](#62-量子门--quantum-gates--quantengatter--portes-quantiques)
     - [6.3 量子算法 / Quantum Algorithms / Quantenalgorithmen / Algorithmes quantiques](#63-量子算法--quantum-algorithms--quantenalgorithmen--algorithmes-quantiques)
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
-    - [Rust实现：图灵机模拟器](#rust实现图灵机模拟器)
-    - [Haskell实现：递归函数](#haskell实现递归函数)
+    - [Rust 实现：图灵机模拟器](#rust-实现图灵机模拟器)
+    - [Haskell 实现：递归函数](#haskell-实现递归函数)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [2024/2025 最新进展 / Latest Updates](#20242025-最新进展--latest-updates)
 
 ---
 
@@ -192,7 +193,7 @@ où $q$ est l'état actuel, $\alpha$ est le contenu de la bande, $i$ est la posi
 $$h(x_1, ..., x_n, 0) = f(x_1, ..., x_n)$$
 $$h(x_1, ..., x_n, y+1) = g(x_1, ..., x_n, y, h(x_1, ..., x_n, y))$$
 
-**μ递归函数 / μ-Recursive Functions:**
+**μ 递归函数 / μ-Recursive Functions:**
 
 $$\mu y[f(x_1, ..., x_n, y) = 0] = \text{least } y \text{ such that } f(x_1, ..., x_n, y) = 0$$
 
@@ -250,35 +251,35 @@ Contradiction: $D(D)$ s'arrête si et seulement si $D(D)$ ne s'arrête pas.
 
 ## 3. 复杂性理论 / Complexity Theory / Komplexitätstheorie / Théorie de la complexité
 
-### 3.1 P类问题 / P Class / P-Klasse / Classe P
+### 3.1 P 类问题 / P Class / P-Klasse / Classe P
 
-**P类定义 / P Class Definition:**
+**P 类定义 / P Class Definition:**
 
 $$P = \{L : \exists \text{ TM } M \text{ and polynomial } p \text{ such that } M \text{ decides } L \text{ in time } O(p(n))\}$$
 
-**P类问题示例 / P Class Examples:**
+**P 类问题示例 / P Class Examples:**
 
 1. **排序问题 / Sorting problem / Sortierproblem / Problème de tri**
 2. **最短路径问题 / Shortest path problem / Kürzester-Pfad-Problem / Problème du plus court chemin**
 3. **线性规划问题 / Linear programming problem / Lineares Programmierungsproblem / Problème de programmation linéaire**
 
-### 3.2 NP类问题 / NP Class / NP-Klasse / Classe NP
+### 3.2 NP 类问题 / NP Class / NP-Klasse / Classe NP
 
-**NP类定义 / NP Class Definition:**
+**NP 类定义 / NP Class Definition:**
 
 $$NP = \{L : \exists \text{ TM } M \text{ and polynomial } p \text{ such that } L = \{x : \exists y, |y| \leq p(|x|), M(x,y) = 1\}\}$$
 
-**NP类问题示例 / NP Class Examples:**
+**NP 类问题示例 / NP Class Examples:**
 
 1. **旅行商问题 / Traveling salesman problem / Problem des Handlungsreisenden / Problème du voyageur de commerce**
-2. **3-SAT问题 / 3-SAT problem / 3-SAT-Problem / Problème 3-SAT**
+2. **3-SAT 问题 / 3-SAT problem / 3-SAT-Problem / Problème 3-SAT**
 3. **子集和问题 / Subset sum problem / Teilsummenproblem / Problème de la somme de sous-ensemble**
 
-### 3.3 NP完全问题 / NP-Complete Problems / NP-vollständige Probleme / Problèmes NP-complets
+### 3.3 NP 完全问题 / NP-Complete Problems / NP-vollständige Probleme / Problèmes NP-complets
 
-**NP完全性定义 / NP-Completeness Definition:**
+**NP 完全性定义 / NP-Completeness Definition:**
 
-语言 $L$ 是NP完全的，如果：
+语言 $L$ 是 NP 完全的，如果：
 
 A language $L$ is NP-complete if:
 
@@ -291,7 +292,7 @@ Un langage $L$ est NP-complet si:
 
 **库克-列文定理 / Cook-Levin Theorem:**
 
-3-SAT是NP完全的。
+3-SAT 是 NP 完全的。
 
 3-SAT is NP-complete.
 
@@ -305,7 +306,7 @@ Un langage $L$ est NP-complet si:
 
 ### 4.1 时间复杂度 / Time Complexity / Zeitkomplexität / Complexité temporelle
 
-**大O记号 / Big O Notation:**
+**大 O 记号 / Big O Notation:**
 
 $$f(n) = O(g(n)) \Leftrightarrow \exists c, n_0 > 0: \forall n \geq n_0, f(n) \leq c \cdot g(n)$$
 
@@ -334,11 +335,11 @@ La complexité spatiale de l'algorithme $A$ est la quantité d'espace supplémen
 
 **渐近记号 / Asymptotic Notations:**
 
-1. **大O记号 / Big O:** $f(n) = O(g(n))$
-2. **大Ω记号 / Big Omega:** $f(n) = \Omega(g(n))$
-3. **大Θ记号 / Big Theta:** $f(n) = \Theta(g(n))$
-4. **小o记号 / Little o:** $f(n) = o(g(n))$
-5. **小ω记号 / Little omega:** $f(n) = \omega(g(n))$
+1. **大 O 记号 / Big O:** $f(n) = O(g(n))$
+2. **大 Ω 记号 / Big Omega:** $f(n) = \Omega(g(n))$
+3. **大 Θ 记号 / Big Theta:** $f(n) = \Theta(g(n))$
+4. **小 o 记号 / Little o:** $f(n) = o(g(n))$
+5. **小 ω 记号 / Little omega:** $f(n) = \omega(g(n))$
 
 ---
 
@@ -346,7 +347,7 @@ La complexité spatiale de l'algorithme $A$ est la quantité d'espace supplémen
 
 ### 5.1 并行模型 / Parallel Models / Parallele Modelle / Modèles parallèles
 
-**PRAM模型 / PRAM Model:**
+**PRAM 模型 / PRAM Model:**
 
 PRAM (Parallel Random Access Machine) 是一个并行计算模型，包含多个处理器共享内存。
 
@@ -356,7 +357,7 @@ PRAM (Parallele Random Access Machine) ist ein paralleles Berechnungsmodell mit 
 
 PRAM (Machine à Accès Aléatoire Parallèle) est un modèle de calcul parallèle avec plusieurs processeurs partageant la mémoire.
 
-**PRAM类型 / PRAM Types:**
+**PRAM 类型 / PRAM Types:**
 
 1. **EREW-PRAM:** Exclusive Read, Exclusive Write
 2. **CREW-PRAM:** Concurrent Read, Exclusive Write
@@ -446,19 +447,19 @@ où $|\alpha|^2 + |\beta|^2 = 1$.
 
 ### 6.2 量子门 / Quantum Gates / Quantengatter / Portes quantiques
 
-**Hadamard门 / Hadamard Gate:**
+**Hadamard 门 / Hadamard Gate:**
 
 $$H = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix}$$
 
-**CNOT门 / CNOT Gate:**
+**CNOT 门 / CNOT Gate:**
 
 $$CNOT = \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{pmatrix}$$
 
 ### 6.3 量子算法 / Quantum Algorithms / Quantenalgorithmen / Algorithmes quantiques
 
-**Shor算法 / Shor's Algorithm:**
+**Shor 算法 / Shor's Algorithm:**
 
-Shor算法用于分解大整数，时间复杂度为 $O((\log n)^3)$。
+Shor 算法用于分解大整数，时间复杂度为 $O((\log n)^3)$。
 
 Shor's algorithm is used to factor large integers with time complexity $O((\log n)^3)$.
 
@@ -466,9 +467,9 @@ Shors Algorithmus wird verwendet, um große ganze Zahlen zu faktorisieren mit Ze
 
 L'algorithme de Shor est utilisé pour factoriser de grands entiers avec une complexité temporelle $O((\log n)^3)$.
 
-**Grover算法 / Grover's Algorithm:**
+**Grover 算法 / Grover's Algorithm:**
 
-Grover算法用于非结构化搜索，提供二次加速。
+Grover 算法用于非结构化搜索，提供二次加速。
 
 Grover's algorithm is used for unstructured search, providing quadratic speedup.
 
@@ -480,7 +481,7 @@ L'algorithme de Grover est utilisé pour la recherche non structurée, fournissa
 
 ## 代码示例 / Code Examples / Codebeispiele / Exemples de code
 
-### Rust实现：图灵机模拟器
+### Rust 实现：图灵机模拟器
 
 ```rust
 use std::collections::HashMap;
@@ -630,7 +631,7 @@ fn main() {
 }
 ```
 
-### Haskell实现：递归函数
+### Haskell 实现：递归函数
 
 ```haskell
 -- 递归函数类型 / Recursive function types / Rekursive Funktionstypen / Types de fonctions récursives
@@ -744,28 +745,31 @@ main = do
 ## 参考文献 / References / Literatur / Références
 
 1. **中文 / Chinese:**
-   - 王浩 (1981). *数理逻辑*. 科学出版社.
-   - 张锦文 (1997). *集合论与连续统假设*. 科学出版社.
-   - 华罗庚 (1979). *高等数学引论*. 科学出版社.
+
+   - 王浩 (1981). _数理逻辑_. 科学出版社.
+   - 张锦文 (1997). _集合论与连续统假设_. 科学出版社.
+   - 华罗庚 (1979). _高等数学引论_. 科学出版社.
 
 2. **English:**
-   - Sipser, M. (2012). *Introduction to the Theory of Computation*. Cengage Learning.
-   - Hopcroft, J. E., & Ullman, J. D. (1979). *Introduction to Automata Theory, Languages, and Computation*. Addison-Wesley.
-   - Papadimitriou, C. H. (1994). *Computational Complexity*. Addison-Wesley.
+
+   - Sipser, M. (2012). _Introduction to the Theory of Computation_. Cengage Learning.
+   - Hopcroft, J. E., & Ullman, J. D. (1979). _Introduction to Automata Theory, Languages, and Computation_. Addison-Wesley.
+   - Papadimitriou, C. H. (1994). _Computational Complexity_. Addison-Wesley.
 
 3. **Deutsch / German:**
-   - Hopcroft, J. E., Motwani, R., & Ullman, J. D. (2001). *Einführung in die Automatentheorie, formale Sprachen und Komplexitätstheorie*. Pearson.
-   - Wegener, I. (2005). *Komplexitätstheorie*. Springer.
-   - Schöning, U. (2008). *Theoretische Informatik - kurzgefasst*. Spektrum.
+
+   - Hopcroft, J. E., Motwani, R., & Ullman, J. D. (2001). _Einführung in die Automatentheorie, formale Sprachen und Komplexitätstheorie_. Pearson.
+   - Wegener, I. (2005). _Komplexitätstheorie_. Springer.
+   - Schöning, U. (2008). _Theoretische Informatik - kurzgefasst_. Spektrum.
 
 4. **Français / French:**
-   - Aho, A. V., Hopcroft, J. E., & Ullman, J. D. (1974). *The Design and Analysis of Computer Algorithms*. Addison-Wesley.
-   - Garey, M. R., & Johnson, D. S. (1979). *Computers and Intractability: A Guide to the Theory of NP-Completeness*. W.H. Freeman.
-   - Papadimitriou, C. H. (2003). *Computational Complexity*. Addison-Wesley.
+   - Aho, A. V., Hopcroft, J. E., & Ullman, J. D. (1974). _The Design and Analysis of Computer Algorithms_. Addison-Wesley.
+   - Garey, M. R., & Johnson, D. S. (1979). _Computers and Intractability: A Guide to the Theory of NP-Completeness_. W.H. Freeman.
+   - Papadimitriou, C. H. (2003). _Computational Complexity_. Addison-Wesley.
 
 ---
 
-*本模块为FormalAI提供了完整的计算理论基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的算法设计和复杂性分析提供了严格的数学基础。*
+_本模块为 FormalAI 提供了完整的计算理论基础，结合国际标准 Wiki 的概念定义，使用中英德法四语言诠释核心概念，为 AI 系统的算法设计和复杂性分析提供了严格的数学基础。_
 
 ## 2024/2025 最新进展 / Latest Updates
 

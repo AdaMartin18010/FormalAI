@@ -552,14 +552,14 @@ impl NaturalDeductionProver {
             ],
         }
     }
-    
+
     fn prove(&self, assumptions: &[Formula], conclusion: &Formula) -> Option<NaturalDeductionProof> {
         let mut proof = NaturalDeductionProof {
             steps: Vec::new(),
             assumptions: assumptions.iter().cloned().collect(),
             conclusion: conclusion.clone(),
         };
-        
+
         // 简化的证明搜索
         if self.search_proof(&mut proof) {
             Some(proof)
@@ -567,31 +567,31 @@ impl NaturalDeductionProver {
             None
         }
     }
-    
+
     fn search_proof(&self, proof: &mut NaturalDeductionProof) -> bool {
         // 检查是否已经证明结论
         if proof.assumptions.contains(&proof.conclusion) {
             return true;
         }
-        
+
         // 尝试应用推理规则
         for rule in &self.rules {
             if let Some(step) = self.apply_rule(rule, proof) {
                 proof.steps.push(step.clone());
-                
+
                 // 递归搜索
                 if self.search_proof(proof) {
                     return true;
                 }
-                
+
                 // 回溯
                 proof.steps.pop();
             }
         }
-        
+
         false
     }
-    
+
     fn apply_rule(&self, rule: &InferenceRule, proof: &NaturalDeductionProof) -> Option<ProofStep> {
         match rule {
             InferenceRule::ConjunctionIntro => {
@@ -643,7 +643,7 @@ impl NaturalDeductionProver {
             _ => None, // 简化其他规则
         }
     }
-    
+
     fn verify_proof(&self, proof: &NaturalDeductionProof) -> bool {
         // 验证证明的正确性
         for step in &proof.steps {
@@ -653,7 +653,7 @@ impl NaturalDeductionProver {
         }
         true
     }
-    
+
     fn verify_step(&self, step: &ProofStep) -> bool {
         match &step.rule {
             InferenceRule::ConjunctionIntro => {
@@ -698,30 +698,30 @@ fn create_sample_problem() -> (Vec<Formula>, Formula) {
     let p = Formula::Atom("P".to_string());
     let q = Formula::Atom("Q".to_string());
     let p_and_q = Formula::And(Box::new(p.clone()), Box::new(q.clone()));
-    
+
     let assumptions = vec![p, q];
     let conclusion = p_and_q;
-    
+
     (assumptions, conclusion)
 }
 
 fn main() {
     let prover = NaturalDeductionProver::new();
-    
+
     // 创建证明问题
     let (assumptions, conclusion) = create_sample_problem();
-    
+
     println!("证明问题:");
     println!("假设: {:?}", assumptions);
     println!("结论: {:?}", conclusion);
-    
+
     // 尝试证明
     if let Some(proof) = prover.prove(&assumptions, &conclusion) {
         println!("\n找到证明:");
         for (i, step) in proof.steps.iter().enumerate() {
             println!("步骤 {}: {:?}", i + 1, step);
         }
-        
+
         // 验证证明
         if prover.verify_proof(&proof) {
             println!("\n证明验证成功!");
@@ -747,7 +747,7 @@ data Sequent = Sequent {
 } deriving (Show, Eq)
 
 -- 公式定义
-data Formula = 
+data Formula =
     Atom String |
     Not Formula |
     And Formula Formula |
@@ -756,7 +756,7 @@ data Formula =
     deriving (Show, Eq)
 
 -- 推理规则
-data InferenceRule = 
+data InferenceRule =
     LeftConjunction |
     RightConjunction |
     LeftDisjunction |
@@ -780,13 +780,13 @@ data SequentCalculus = SequentCalculus {
 
 -- 序列演算证明
 sequentCalculusProof :: Sequent -> Maybe [ProofStep]
-sequentCalculusProof sequent = 
+sequentCalculusProof sequent =
     let steps = searchProof sequent
     in if null steps then Nothing else Just steps
 
 -- 证明搜索
 searchProof :: Sequent -> [ProofStep]
-searchProof sequent = 
+searchProof sequent =
     -- 简化的证明搜索
     case findApplicableRule sequent of
         Just rule -> [applyRule rule sequent]
@@ -794,7 +794,7 @@ searchProof sequent =
 
 -- 查找适用规则
 findApplicableRule :: Sequent -> Maybe InferenceRule
-findApplicableRule (Sequent left right) = 
+findApplicableRule (Sequent left right) =
     -- 检查是否有合取在左边
     if any isConjunction left then Just LeftConjunction
     -- 检查是否有析取在右边
@@ -805,16 +805,16 @@ findApplicableRule (Sequent left right) =
 
 -- 应用规则
 applyRule :: InferenceRule -> Sequent -> ProofStep
-applyRule rule sequent = 
+applyRule rule sequent =
     case rule of
-        LeftConjunction -> 
+        LeftConjunction ->
             let conj = findConjunction (left sequent)
             in ProofStep {
                 rule = LeftConjunction,
                 premises = [sequent],
                 conclusion = expandConjunction sequent conj
             }
-        RightDisjunction -> 
+        RightDisjunction ->
             let disj = findDisjunction (right sequent)
             in ProofStep {
                 rule = RightDisjunction,
@@ -845,25 +845,25 @@ isImplication _ = False
 -- 查找合取公式
 findConjunction :: [Formula] -> Maybe Formula
 findConjunction [] = Nothing
-findConjunction (f:fs) = 
+findConjunction (f:fs) =
     if isConjunction f then Just f else findConjunction fs
 
 -- 查找析取公式
 findDisjunction :: [Formula] -> Maybe Formula
 findDisjunction [] = Nothing
-findDisjunction (f:fs) = 
+findDisjunction (f:fs) =
     if isDisjunction f then Just f else findDisjunction fs
 
 -- 展开合取
 expandConjunction :: Sequent -> Formula -> Sequent
-expandConjunction (Sequent left right) conj = 
+expandConjunction (Sequent left right) conj =
     case conj of
         And a b -> Sequent (a:b:filter (/= conj) left) right
         _ -> Sequent left right
 
 -- 展开析取
 expandDisjunction :: Sequent -> Formula -> Sequent
-expandDisjunction (Sequent left right) disj = 
+expandDisjunction (Sequent left right) disj =
     case disj of
         Or a b -> Sequent left (a:b:filter (/= disj) right)
         _ -> Sequent left right
@@ -876,26 +876,26 @@ data ResolutionProof = ResolutionProof {
 
 -- 归结证明
 resolutionProof :: [Formula] -> Maybe ResolutionProof
-resolutionProof clauses = 
+resolutionProof clauses =
     let steps = resolveClauses clauses
     in if null steps then Nothing else Just (ResolutionProof clauses steps)
 
 -- 归结子句
 resolveClauses :: [Formula] -> [ProofStep]
-resolveClauses clauses = 
+resolveClauses clauses =
     -- 简化的归结算法
     let resolvents = findResolvents clauses
     in map (\r -> ProofStep Cut [Sequent [] clauses] (Sequent [] [r])) resolvents
 
 -- 查找归结式
 findResolvents :: [Formula] -> [Formula]
-findResolvents clauses = 
+findResolvents clauses =
     -- 简化的归结式查找
     concatMap (\c1 -> concatMap (\c2 -> resolve c1 c2) clauses) clauses
 
 -- 归结两个子句
 resolve :: Formula -> Formula -> [Formula]
-resolve c1 c2 = 
+resolve c1 c2 =
     -- 简化的归结
     if c1 == Not c2 || c2 == Not c1 then [Atom "contradiction"]
     else []
@@ -908,25 +908,25 @@ data TableauProof = TableauProof {
 
 -- 表证明
 tableauProof :: Formula -> Maybe TableauProof
-tableauProof formula = 
+tableauProof formula =
     let branches = expandTableau [[formula]]
     in Just (TableauProof branches (allClosed branches))
 
 -- 展开表
 expandTableau :: [[Formula]] -> [[Formula]]
-expandTableau branches = 
+expandTableau branches =
     -- 简化的表展开
     concatMap expandBranch branches
 
 -- 展开分支
 expandBranch :: [Formula] -> [[Formula]]
-expandBranch branch = 
+expandBranch branch =
     -- 简化的分支展开
     [branch] -- 简化实现
 
 -- 检查分支是否闭合
 allClosed :: [[Formula]] -> Bool
-allClosed branches = 
+allClosed branches =
     -- 简化的闭合检查
     True -- 简化实现
 
@@ -934,28 +934,28 @@ allClosed branches =
 main :: IO ()
 main = do
     putStrLn "证明系统示例:"
-    
+
     -- 序列演算示例
     let sequent = Sequent [Atom "P", Atom "Q"] [And (Atom "P") (Atom "Q")]
-    
+
     case sequentCalculusProof sequent of
         Just steps -> putStrLn $ "序列演算证明: " ++ show steps
         Nothing -> putStrLn "无法找到序列演算证明"
-    
+
     -- 归结证明示例
     let clauses = [Atom "P", Not (Atom "P")]
-    
+
     case resolutionProof clauses of
         Just proof -> putStrLn $ "归结证明: " ++ show proof
         Nothing -> putStrLn "无法找到归结证明"
-    
+
     -- 表证明示例
     let formula = And (Atom "P") (Atom "Q")
-    
+
     case tableauProof formula of
         Just proof -> putStrLn $ "表证明: " ++ show proof
         Nothing -> putStrLn "无法找到表证明"
-    
+
     putStrLn "\n证明系统总结:"
     putStrLn "- 自然演绎: 基于推理规则的自然证明"
     putStrLn "- 序列演算: 基于序列的形式化证明"

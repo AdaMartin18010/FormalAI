@@ -354,7 +354,7 @@ structure AlignmentMeasure where
   intent_alignment : ℝ
 
 def alignment_score (measure : AlignmentMeasure) : ℝ :=
-  (measure.value_alignment + measure.goal_alignment + 
+  (measure.value_alignment + measure.goal_alignment +
    measure.behavior_alignment + measure.intent_alignment) / 4
 
 -- 大模型对齐
@@ -790,7 +790,7 @@ structure ConsciousnessIndicators where
 
 -- 意识检测
 def consciousness_detection (indicators : ConsciousnessIndicators) (threshold : ℝ) : Bool :=
-  let total_score := indicators.self_awareness + indicators.attention_control + 
+  let total_score := indicators.self_awareness + indicators.attention_control +
                      indicators.working_memory + indicators.metacognition
   total_score > threshold
 
@@ -1780,14 +1780,69 @@ $$\text{Cross-Cultural Alignment} = \text{Cultural Understanding} + \text{Value 
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [对齐 / Alignment / Ausrichtung / Alignement](#对齐--alignment--ausrichtung--alignement)
+  - [2024/2025 最新进展 / Latest Updates 2024/2025](#20242025-最新进展--latest-updates-20242025)
+    - [对齐理论形式化框架 / Alignment Theory Formal Framework](#对齐理论形式化框架--alignment-theory-formal-framework)
+      - [1. 对齐数学基础 / Mathematical Foundations of Alignment](#1-对齐数学基础--mathematical-foundations-of-alignment)
+      - [2. 偏好学习理论 / Preference Learning Theory](#2-偏好学习理论--preference-learning-theory)
+      - [3. 价值学习理论 / Value Learning Theory](#3-价值学习理论--value-learning-theory)
+      - [4. 强化学习对齐理论 / Reinforcement Learning Alignment Theory](#4-强化学习对齐理论--reinforcement-learning-alignment-theory)
+      - [5. 直接偏好优化理论 / Direct Preference Optimization Theory](#5-直接偏好优化理论--direct-preference-optimization-theory)
+    - [前沿对齐技术理论 / Cutting-edge Alignment Technology Theory](#前沿对齐技术理论--cutting-edge-alignment-technology-theory)
+      - [1. 多模态对齐理论 / Multimodal Alignment Theory](#1-多模态对齐理论--multimodal-alignment-theory)
+      - [2. 实时对齐理论 / Real-time Alignment Theory](#2-实时对齐理论--real-time-alignment-theory)
+      - [3. 因果对齐理论 / Causal Alignment Theory](#3-因果对齐理论--causal-alignment-theory)
+    - [对齐评估理论 / Alignment Evaluation Theory](#对齐评估理论--alignment-evaluation-theory)
+      - [1. 对齐度量理论 / Alignment Metrics Theory](#1-对齐度量理论--alignment-metrics-theory)
+      - [2. 对齐测试理论 / Alignment Testing Theory](#2-对齐测试理论--alignment-testing-theory)
+    - [对齐理论前沿技术 / Alignment Theory Frontier Technology](#对齐理论前沿技术--alignment-theory-frontier-technology)
+      - [1. 对齐涌现理论 / Alignment Emergence Theory](#1-对齐涌现理论--alignment-emergence-theory)
+      - [2. 对齐认知理论 / Alignment Cognitive Theory](#2-对齐认知理论--alignment-cognitive-theory)
+      - [3. 对齐意识理论 / Alignment Consciousness Theory](#3-对齐意识理论--alignment-consciousness-theory)
+      - [4. 对齐创造性理论 / Alignment Creativity Theory](#4-对齐创造性理论--alignment-creativity-theory)
+      - [5. 对齐通用智能理论 / Alignment General Intelligence Theory](#5-对齐通用智能理论--alignment-general-intelligence-theory)
+    - [Lean 4 形式化实现 / Lean 4 Formal Implementation](#lean-4-形式化实现--lean-4-formal-implementation)
+    - [对齐理论工程应用 / Alignment Theory Engineering Applications](#对齐理论工程应用--alignment-theory-engineering-applications)
+      - [1. 大模型对齐系统 / Large Model Alignment Systems](#1-大模型对齐系统--large-model-alignment-systems)
+      - [2. 神经符号对齐系统 / Neural-Symbolic Alignment Systems](#2-神经符号对齐系统--neural-symbolic-alignment-systems)
+      - [3. 因果对齐系统 / Causal Alignment Systems](#3-因果对齐系统--causal-alignment-systems)
+      - [4. 对抗对齐系统 / Adversarial Alignment Systems](#4-对抗对齐系统--adversarial-alignment-systems)
+    - [对齐理论未来展望 / Alignment Theory Future Prospects](#对齐理论未来展望--alignment-theory-future-prospects)
+      - [1. 技术发展趋势 / Technical Development Trends](#1-技术发展趋势--technical-development-trends)
+      - [2. 应用前景展望 / Application Prospects](#2-应用前景展望--application-prospects)
+      - [3. 挑战与机遇 / Challenges and Opportunities](#3-挑战与机遇--challenges-and-opportunities)
+      - [4. 发展建议 / Development Recommendations](#4-发展建议--development-recommendations)
     - [0. 偏好建模与对齐优化 / Preference Modeling and Alignment Optimization / Präferenzmodellierung und Ausrichtungsoptimierung / Modélisation des préférences et optimisation de l'alignement](#0-偏好建模与对齐优化--preference-modeling-and-alignment-optimization--präferenzmodellierung-und-ausrichtungsoptimierung--modélisation-des-préférences-et-optimisation-de-lalignement)
       - [Rust示例：批量成对偏好Logistic损失](#rust示例批量成对偏好logistic损失)
-  - [2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024](#2024年最新发展--latest-developments-2024--neueste-entwicklungen-2024--derniers-développements-2024)
-    - [多智能体对齐理论 / Multi-Agent Alignment Theory](#多智能体对齐理论--multi-agent-alignment-theory)
+  - [2025年最新发展 / Latest Developments 2025 / Neueste Entwicklungen 2025 / Derniers développements 2025](#2025年最新发展--latest-developments-2025--neueste-entwicklungen-2025--derniers-développements-2025)
+    - [大模型对齐理论突破 / Large Model Alignment Theory Breakthroughs](#大模型对齐理论突破--large-model-alignment-theory-breakthroughs)
     - [自主系统对齐理论 / Autonomous System Alignment Theory](#自主系统对齐理论--autonomous-system-alignment-theory)
     - [工具使用对齐理论 / Tool Use Alignment Theory](#工具使用对齐理论--tool-use-alignment-theory)
     - [动态对齐理论 / Dynamic Alignment Theory](#动态对齐理论--dynamic-alignment-theory)
     - [跨文化对齐理论 / Cross-Cultural Alignment Theory](#跨文化对齐理论--cross-cultural-alignment-theory)
+    - [2025年对齐理论前沿问题 / 2025 Alignment Theory Frontier Issues](#2025年对齐理论前沿问题--2025-alignment-theory-frontier-issues)
+    - [2025年对齐理论突破 / 2025 Alignment Theory Breakthroughs](#2025年对齐理论突破--2025-alignment-theory-breakthroughs)
+      - [1. 大模型对齐理论突破 / Large Model Alignment Theory Breakthroughs](#1-大模型对齐理论突破--large-model-alignment-theory-breakthroughs)
+      - [2. 神经符号对齐理论 / Neural-Symbolic Alignment Theory](#2-神经符号对齐理论--neural-symbolic-alignment-theory)
+      - [3. 1因果对齐理论 / Causal Alignment Theory](#3-1因果对齐理论--causal-alignment-theory)
+      - [4. 对抗对齐理论 / Adversarial Alignment Theory](#4-对抗对齐理论--adversarial-alignment-theory)
+      - [5. 多模态对齐理论 / Multimodal Alignment Theory](#5-多模态对齐理论--multimodal-alignment-theory)
+    - [1对齐理论前沿技术 / Alignment Theory Frontier Technology](#1对齐理论前沿技术--alignment-theory-frontier-technology)
+      - [1. 量子对齐理论 / Quantum Alignment Theory](#1-量子对齐理论--quantum-alignment-theory)
+      - [2. 联邦对齐理论 / Federated Alignment Theory](#2-联邦对齐理论--federated-alignment-theory)
+      - [3. 边缘对齐理论 / Edge Alignment Theory](#3-边缘对齐理论--edge-alignment-theory)
+      - [4. 具身对齐理论 / Embodied Alignment Theory](#4-具身对齐理论--embodied-alignment-theory)
+      - [5. 可持续对齐理论 / Sustainable Alignment Theory](#5-可持续对齐理论--sustainable-alignment-theory)
+    - [2025年对齐理论挑战 / 2025 Alignment Theory Challenges](#2025年对齐理论挑战--2025-alignment-theory-challenges)
+    - [2025年对齐理论发展方向 / 2025 Alignment Theory Development Directions](#2025年对齐理论发展方向--2025-alignment-theory-development-directions)
+    - [2025年对齐理论资源 / 2025 Alignment Theory Resources](#2025年对齐理论资源--2025-alignment-theory-resources)
+    - [2025年对齐理论未来展望 / 2025 Alignment Theory Future Outlook](#2025年对齐理论未来展望--2025-alignment-theory-future-outlook)
+    - [结论 / Conclusion](#结论--conclusion)
+  - [2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024](#2024年最新发展--latest-developments-2024--neueste-entwicklungen-2024--derniers-développements-2024)
+    - [多智能体对齐理论 / Multi-Agent Alignment Theory](#多智能体对齐理论--multi-agent-alignment-theory)
+    - [自主系统对齐理论1 / Autonomous System Alignment Theory](#自主系统对齐理论1--autonomous-system-alignment-theory)
+    - [工具使用对齐理论1 / Tool Use Alignment Theory](#工具使用对齐理论1--tool-use-alignment-theory)
+    - [动态对齐理论1 / Dynamic Alignment Theory](#动态对齐理论1--dynamic-alignment-theory)
+    - [跨文化对齐理论1 / Cross-Cultural Alignment Theory](#跨文化对齐理论1--cross-cultural-alignment-theory)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
   - [相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes](#相关章节--related-chapters--verwandte-kapitel--chapitres-connexes)
   - [1. 价值学习 / Value Learning / Werte-Lernen / Apprentissage des valeurs](#1-价值学习--value-learning--werte-lernen--apprentissage-des-valeurs)
@@ -2093,69 +2148,69 @@ impl PreferenceLearner {
         let model = (0..input_size)
             .map(|_| rng.gen_range(-0.1..0.1))
             .collect();
-        
+
         PreferenceLearner {
             model,
             learning_rate,
             temperature,
         }
     }
-    
+
     fn predict(&self, input: &[f32]) -> f32 {
         input.iter()
             .zip(self.model.iter())
             .map(|(x, w)| x * w)
             .sum()
     }
-    
+
     fn bradley_terry_probability(&self, preferred: &[f32], dispreferred: &[f32]) -> f32 {
         let score_preferred = self.predict(preferred);
         let score_dispreferred = self.predict(dispreferred);
-        
+
         let numerator = (score_preferred / self.temperature).exp();
         let denominator = (score_preferred / self.temperature).exp() + (score_dispreferred / self.temperature).exp();
-        
+
         numerator / denominator
     }
-    
+
     fn train(&mut self, data: &[PreferenceData]) -> f32 {
         let mut total_loss = 0.0;
-        
+
         for item in data {
             let predicted_prob = self.bradley_terry_probability(&item.preferred, &item.dispreferred);
             let target_prob = item.label;
-            
+
             // 交叉熵损失 / Cross-entropy loss / Kreuzentropieverlust / Perte d'entropie croisée
             let loss = -(target_prob * predicted_prob.ln() + (1.0 - target_prob) * (1.0 - predicted_prob).ln());
             total_loss += loss;
-            
+
             // 计算梯度 / Compute gradients / Gradienten berechnen / Calculer les gradients
             let gradient = predicted_prob - target_prob;
-            
+
             // 更新模型参数 / Update model parameters / Modellparameter aktualisieren / Mettre à jour les paramètres du modèle
             for (i, (pref, dispref)) in item.preferred.iter().zip(item.dispreferred.iter()).enumerate() {
                 let grad_w = gradient * (pref - dispref) / self.temperature;
                 self.model[i] -= self.learning_rate * grad_w;
             }
         }
-        
+
         total_loss / data.len() as f32
     }
-    
+
     fn evaluate(&self, test_data: &[PreferenceData]) -> f32 {
         let mut correct = 0;
         let mut total = 0;
-        
+
         for item in test_data {
             let predicted_prob = self.bradley_terry_probability(&item.preferred, &item.dispreferred);
             let predicted_label = if predicted_prob > 0.5 { 1.0 } else { 0.0 };
-            
+
             if (predicted_label - item.label).abs() < 0.1 {
                 correct += 1;
             }
             total += 1;
         }
-        
+
         correct as f32 / total as f32
     }
 }
@@ -2181,16 +2236,16 @@ impl RewardModel {
                     .collect())
                 .collect(),
         ];
-        
+
         RewardModel {
             network,
             learning_rate,
         }
     }
-    
+
     fn forward(&self, input: &[f32]) -> f32 {
         let mut current = input.to_vec();
-        
+
         for layer in &self.network {
             let mut next = vec![0.0; layer.len()];
             for (i, weights) in layer.iter().enumerate() {
@@ -2201,21 +2256,21 @@ impl RewardModel {
             }
             current = next;
         }
-        
+
         current[0]
     }
-    
+
     fn train(&mut self, states: &[Vec<f32>], rewards: &[f32]) -> f32 {
         let mut total_loss = 0.0;
-        
+
         for (state, target_reward) in states.iter().zip(rewards.iter()) {
             let predicted_reward = self.forward(state);
             let loss = 0.5 * (predicted_reward - target_reward).powi(2);
             total_loss += loss;
-            
+
             // 简化的反向传播 / Simplified backpropagation / Vereinfachte Rückpropagierung / Rétropropagation simplifiée
             let gradient = predicted_reward - target_reward;
-            
+
             // 更新权重 / Update weights / Gewichte aktualisieren / Mettre à jour les poids
             for layer in &mut self.network {
                 for weights in layer.iter_mut() {
@@ -2225,7 +2280,7 @@ impl RewardModel {
                 }
             }
         }
-        
+
         total_loss / states.len() as f32
     }
 }
@@ -2233,7 +2288,7 @@ impl RewardModel {
 fn main() {
     // 偏好学习示例 / Preference learning example / Präferenzlernen-Beispiel / Exemple d'apprentissage des préférences
     let mut preference_learner = PreferenceLearner::new(10, 0.01, 1.0);
-    
+
     // 生成训练数据 / Generate training data / Trainingsdaten generieren / Générer les données d'entraînement
     let mut training_data = Vec::new();
     for _ in 0..100 {
@@ -2245,7 +2300,7 @@ fn main() {
             label: 1.0,
         });
     }
-    
+
     // 训练偏好学习器 / Train preference learner / Präferenzlerner trainieren / Entraîner l'apprenant de préférences
     for epoch in 0..50 {
         let loss = preference_learner.train(&training_data);
@@ -2253,10 +2308,10 @@ fn main() {
             println!("Epoch {}, Loss: {:.4}", epoch, loss);
         }
     }
-    
+
     // 奖励建模示例 / Reward modeling example / Belohnungsmodellierungsbeispiel / Exemple de modélisation de récompense
     let mut reward_model = RewardModel::new(10, 20, 0.01);
-    
+
     // 生成奖励数据 / Generate reward data / Belohnungsdaten generieren / Générer les données de récompense
     let states: Vec<Vec<f32>> = (0..50)
         .map(|_| (0..10).map(|_| rand::random::<f32>()).collect())
@@ -2264,7 +2319,7 @@ fn main() {
     let rewards: Vec<f32> = states.iter()
         .map(|state| state.iter().sum::<f32>() / state.len() as f32)
         .collect();
-    
+
     // 训练奖励模型 / Train reward model / Belohnungsmodell trainieren / Entraîner le modèle de récompense
     for epoch in 0..100 {
         let loss = reward_model.train(&states, &rewards);
@@ -2272,7 +2327,7 @@ fn main() {
             println!("Reward Model Epoch {}, Loss: {:.4}", epoch, loss);
         }
     }
-    
+
     println!("\n=== 对齐理论应用 / Alignment Theory Applications ===");
     println!("偏好学习为AI系统提供了价值对齐的基础");
     println!("Preference learning provides the foundation for value alignment in AI systems");
@@ -2301,20 +2356,20 @@ type Reward = Double
 
 -- 创建价值函数 / Create value function / Wertfunktion erstellen / Créer la fonction de valeur
 newValueFunction :: Int -> ValueFunction
-newValueFunction stateSize = 
+newValueFunction stateSize =
     let weights = replicate stateSize 0.1
         bias = 0.0
     in ValueFunction weights bias
 
 -- 价值函数评估 / Value function evaluation / Wertfunktionsauswertung / Évaluation de fonction de valeur
 evaluateValue :: ValueFunction -> State -> Double
-evaluateValue vf state = 
+evaluateValue vf state =
     let weightedSum = sum (zipWith (*) (weights vf) state)
     in weightedSum + bias vf
 
 -- 更新价值函数 / Update value function / Wertfunktion aktualisieren / Mettre à jour la fonction de valeur
 updateValueFunction :: ValueFunction -> State -> Double -> Double -> ValueFunction
-updateValueFunction vf state targetValue learningRate = 
+updateValueFunction vf state targetValue learningRate =
     let currentValue = evaluateValue vf state
         error = targetValue - currentValue
         newWeights = zipWith (\w s -> w + learningRate * error * s) (weights vf) state
@@ -2330,7 +2385,7 @@ randomPolicy _ = floor (rand * 4)  -- 假设4个动作 / Assume 4 actions / 4 Ak
 
 -- 贪婪策略 / Greedy policy / Gierige Richtlinie / Politique gloutonne
 greedyPolicy :: ValueFunction -> Policy
-greedyPolicy vf state = 
+greedyPolicy vf state =
     let actions = [0, 1, 2, 3]  -- 假设4个动作 / Assume 4 actions / 4 Aktionen annehmen / Supposer 4 actions
         actionValues = map (\action -> evaluateValue vf (state ++ [fromIntegral action])) actions
         maxValue = maximum actionValues
@@ -2341,63 +2396,63 @@ type Environment = State -> Action -> (State, Reward)
 
 -- 简单环境 / Simple environment / Einfache Umgebung / Environnement simple
 simpleEnvironment :: Environment
-simpleEnvironment state action = 
+simpleEnvironment state action =
     let newState = map (+ 0.1) state  -- 状态稍微变化 / State changes slightly / Zustand ändert sich leicht / L'état change légèrement
         reward = sum state / fromIntegral (length state)  -- 奖励基于状态和 / Reward based on state sum / Belohnung basierend auf Zustandssumme / Récompense basée sur la somme d'état
     in (newState, reward)
 
 -- 价值迭代 / Value iteration / Wertiteration / Itération de valeur
 valueIteration :: ValueFunction -> Environment -> Policy -> Int -> ValueFunction
-valueIteration vf env policy steps = 
-    if steps <= 0 
+valueIteration vf env policy steps =
+    if steps <= 0
     then vf
-    else 
+    else
         let -- 生成样本 / Generate samples / Proben generieren / Générer des échantillons
-            samples = take 100 [(state, action, reward) | 
+            samples = take 100 [(state, action, reward) |
                 state <- [replicate 5 (rand * 2 - 1) | _ <- [1..]],  -- 随机状态 / Random states / Zufällige Zustände / États aléatoires
                 let action = policy state,
                 let (nextState, reward) = env state action]
-            
+
             -- 更新价值函数 / Update value function / Wertfunktion aktualisieren / Mettre à jour la fonction de valeur
-            updatedVf = foldl (\vf' (state, _, reward) -> 
+            updatedVf = foldl (\vf' (state, _, reward) ->
                 let targetValue = reward + 0.9 * evaluateValue vf' (map (+ 0.1) state)  -- 折扣因子0.9 / Discount factor 0.9 / Diskontierungsfaktor 0.9 / Facteur de remise 0.9
                 in updateValueFunction vf' state targetValue 0.01) vf samples
         in valueIteration updatedVf env policy (steps - 1)
 
 -- 策略迭代 / Policy iteration / Richtlinieniteration / Itération de politique
 policyIteration :: ValueFunction -> Environment -> Int -> (ValueFunction, Policy)
-policyIteration vf env steps = 
+policyIteration vf env steps =
     let -- 基于当前价值函数生成策略 / Generate policy based on current value function / Richtlinie basierend auf aktueller Wertfunktion generieren / Générer la politique basée sur la fonction de valeur actuelle
         policy = greedyPolicy vf
-        
+
         -- 价值迭代 / Value iteration / Wertiteration / Itération de valeur
         updatedVf = valueIteration vf env policy steps
-        
+
         -- 基于更新后的价值函数生成新策略 / Generate new policy based on updated value function / Neue Richtlinie basierend auf aktualisierter Wertfunktion generieren / Générer la nouvelle politique basée sur la fonction de valeur mise à jour
         newPolicy = greedyPolicy updatedVf
     in (updatedVf, newPolicy)
 
 -- 对齐评估 / Alignment evaluation / Ausrichtungsbewertung / Évaluation d'alignement
 evaluateAlignment :: ValueFunction -> Environment -> Policy -> Double
-evaluateAlignment vf env policy = 
+evaluateAlignment vf env policy =
     let -- 生成测试轨迹 / Generate test trajectories / Testtrajektorien generieren / Générer des trajectoires de test
         trajectories = take 50 [generateTrajectory env policy (replicate 5 0.0) 10 | _ <- [1..]]
-        
+
         -- 计算平均奖励 / Calculate average reward / Durchschnittsbelohnung berechnen / Calculer la récompense moyenne
         totalReward = sum [sum rewards | (_, rewards) <- trajectories]
         avgReward = totalReward / fromIntegral (length trajectories)
-        
+
         -- 计算价值函数一致性 / Calculate value function consistency / Wertfunktionskonsistenz berechnen / Calculer la cohérence de la fonction de valeur
-        valueConsistency = sum [abs (evaluateValue vf state - expectedValue) | 
+        valueConsistency = sum [abs (evaluateValue vf state - expectedValue) |
             (states, rewards) <- trajectories,
             (state, expectedValue) <- zip states (scanl1 (+) rewards)] / fromIntegral (length trajectories)
     in avgReward - 0.1 * valueConsistency  -- 对齐分数 / Alignment score / Ausrichtungsscore / Score d'alignement
 
 -- 生成轨迹 / Generate trajectory / Trajektorie generieren / Générer une trajectoire
 generateTrajectory :: Environment -> Policy -> State -> Int -> ([State], [Reward])
-generateTrajectory env policy initialState steps = 
+generateTrajectory env policy initialState steps =
     let go state 0 = ([state], [])
-        go state n = 
+        go state n =
             let action = policy state
                 (nextState, reward) = env state action
                 (states, rewards) = go nextState (n - 1)
@@ -2408,32 +2463,32 @@ generateTrajectory env policy initialState steps =
 main :: IO ()
 main = do
     putStrLn "=== 价值函数学习与对齐 / Value Function Learning and Alignment ==="
-    
+
     -- 创建初始价值函数 / Create initial value function / Initiale Wertfunktion erstellen / Créer la fonction de valeur initiale
     let initialVf = newValueFunction 5
     let env = simpleEnvironment
-    
+
     putStrLn "开始价值函数学习 / Starting value function learning / Wertfunktionslernen starten / Commencer l'apprentissage de fonction de valeur"
-    
+
     -- 策略迭代 / Policy iteration / Richtlinieniteration / Itération de politique
     let (trainedVf, trainedPolicy) = policyIteration initialVf env 100
-    
+
     putStrLn "价值函数训练完成 / Value function training completed / Wertfunktionstraining abgeschlossen / Entraînement de fonction de valeur terminé"
-    
+
     -- 评估对齐 / Evaluate alignment / Ausrichtung bewerten / Évaluer l'alignement
     let alignmentScore = evaluateAlignment trainedVf env trainedPolicy
-    
+
     putStrLn $ "对齐分数: " ++ show alignmentScore
-    
+
     -- 测试策略 / Test policy / Richtlinie testen / Tester la politique
     let testState = [0.1, 0.2, 0.3, 0.4, 0.5]
     let testAction = trainedPolicy testState
     let testValue = evaluateValue trainedVf testState
-    
+
     putStrLn $ "测试状态: " ++ show testState
     putStrLn $ "选择动作: " ++ show testAction
     putStrLn $ "状态价值: " ++ show testValue
-    
+
     putStrLn "\n=== 对齐理论总结 / Alignment Theory Summary ==="
     putStrLn "价值函数学习为AI系统提供了对齐的基础"
     putStrLn "Value function learning provides the foundation for alignment in AI systems"

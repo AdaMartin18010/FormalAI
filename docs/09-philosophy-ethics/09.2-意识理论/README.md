@@ -33,6 +33,11 @@ Consciousness theory studies the nature, characteristics, and mechanisms of cons
   - [代码示例 / Code Examples](#代码示例--code-examples)
     - [Rust实现：意识系统](#rust实现意识系统)
     - [Haskell实现：意识系统](#haskell实现意识系统)
+  - [2024/2025 最新进展 / Latest Updates 2024/2025](#20242025-最新进展--latest-updates-20242025)
+    - [意识理论形式化框架 / Consciousness Theory Formal Framework](#意识理论形式化框架--consciousness-theory-formal-framework)
+    - [前沿意识技术理论 / Cutting-edge Consciousness Technology Theory](#前沿意识技术理论--cutting-edge-consciousness-technology-theory)
+    - [意识评估理论 / Consciousness Evaluation Theory](#意识评估理论--consciousness-evaluation-theory)
+    - [Lean 4 形式化实现 / Lean 4 Formal Implementation](#lean-4-形式化实现--lean-4-formal-implementation)
   - [参考文献 / References](#参考文献--references)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
@@ -1375,19 +1380,19 @@ def consciousness_evaluation (ce : ConsciousnessEvaluation) : ℝ :=
 
 -- 意识涌现定理
 theorem consciousness_emergence :
-  ∀ (system : String), (complexity system > threshold) → 
+  ∀ (system : String), (complexity system > threshold) →
   (consciousness system = emergent system) :=
   sorry -- 基于信息整合理论的证明
 
 -- 意识可测量性定理
 theorem consciousness_measurability :
-  ∀ (system : String), (consciousness system) ↔ 
+  ∀ (system : String), (consciousness system) ↔
   (measurable (information_integration system)) :=
   sorry -- 基于整合信息理论的证明
 
 -- 意识统一性定理
 theorem consciousness_unity :
-  ∀ (system : String), (consciousness system) → 
+  ∀ (system : String), (consciousness system) →
   (unified (all_information system)) :=
   sorry -- 基于全局工作空间理论的证明
 

@@ -531,7 +531,7 @@ structure ShapleyValue where
 
 def shapley_value (sv : ShapleyValue) (feature_idx : ℕ) : ℝ :=
   let subsets := powerset (sv.feature_set.filter (· ≠ feature_idx))
-  let contributions := subsets.map (fun S => 
+  let contributions := subsets.map (fun S =>
     let S_with_i := feature_idx :: S
     let S_without_i := S
     let weight := factorial (S.length) * factorial (sv.feature_set.length - S.length - 1) / factorial (sv.feature_set.length)
@@ -547,7 +547,7 @@ structure IntegratedGradients where
 
 def integrated_gradients (ig : IntegratedGradients) (feature_idx : ℕ) : ℝ :=
   let input_diff := ig.input[feature_idx] - ig.baseline[feature_idx]
-  let gradient_integral := integrate (fun α => 
+  let gradient_integral := integrate (fun α =>
     let interpolated := ig.baseline + α • (ig.input - ig.baseline)
     partial_derivative ig.model interpolated feature_idx
   ) 0 1
@@ -560,7 +560,7 @@ structure InterpretabilityGeneralizationBound where
   confidence_parameter : ℝ
 
 def interpretability_generalization_bound (bound : InterpretabilityGeneralizationBound) : ℝ :=
-  bound.empirical_interpretability + 2 * bound.rademacher_complexity + 
+  bound.empirical_interpretability + 2 * bound.rademacher_complexity +
   3 * Real.sqrt (Real.log (2 / bound.confidence_parameter) / 2)
 
 -- 大模型可解释性
@@ -828,7 +828,7 @@ structure ConsciousnessIndicators where
 
 -- 意识检测
 def consciousness_detection (indicators : ConsciousnessIndicators) (threshold : ℝ) : Bool :=
-  let total_score := indicators.self_awareness + indicators.attention_control + 
+  let total_score := indicators.self_awareness + indicators.attention_control +
                      indicators.working_memory + indicators.metacognition
   total_score > threshold
 
@@ -1092,8 +1092,47 @@ fn integrated_gradients_linear(w: &[f32], x: &[f32], x0: &[f32]) -> Vec<f32> {
 
 - [6.1 可解释性理论 / Interpretability Theory / Interpretierbarkeitstheorie / Théorie de l'interprétabilité](#61-可解释性理论--interpretability-theory--interpretierbarkeitstheorie--théorie-de-linterprétabilité)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
+    - [示例卡片 / Example Cards](#示例卡片--example-cards)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [可解释性 / Interpretability / Interpretierbarkeit / Interprétabilité](#可解释性--interpretability--interpretierbarkeit--interprétabilité)
+  - [2024/2025 最新进展 / Latest Updates 2024/2025](#20242025-最新进展--latest-updates-20242025)
+    - [可解释性形式化理论框架 / Interpretability Formal Theoretical Framework](#可解释性形式化理论框架--interpretability-formal-theoretical-framework)
+      - [1. 可解释性数学基础 / Mathematical Foundations of Interpretability](#1-可解释性数学基础--mathematical-foundations-of-interpretability)
+      - [2. Shapley值理论扩展 / Extended Shapley Value Theory](#2-shapley值理论扩展--extended-shapley-value-theory)
+      - [3. 积分梯度理论 / Integrated Gradients Theory](#3-积分梯度理论--integrated-gradients-theory)
+      - [4. 可解释性泛化界 / Interpretability Generalization Bounds](#4-可解释性泛化界--interpretability-generalization-bounds)
+    - [2025年可解释AI理论突破 / 2025 Interpretable AI Theoretical Breakthroughs](#2025年可解释ai理论突破--2025-interpretable-ai-theoretical-breakthroughs)
+      - [1. 大模型可解释性理论 / Large Model Interpretability Theory](#1-大模型可解释性理论--large-model-interpretability-theory)
+      - [2. 神经符号可解释性理论 / Neural-Symbolic Interpretability Theory](#2-神经符号可解释性理论--neural-symbolic-interpretability-theory)
+      - [3. 因果可解释性理论 / Causal Interpretability Theory](#3-因果可解释性理论--causal-interpretability-theory)
+      - [4. 对抗可解释性理论 / Adversarial Interpretability Theory](#4-对抗可解释性理论--adversarial-interpretability-theory)
+      - [5. 多模态可解释性理论 / Multimodal Interpretability Theory](#5-多模态可解释性理论--multimodal-interpretability-theory)
+    - [前沿可解释性技术理论 / Cutting-edge Interpretability Technology Theory](#前沿可解释性技术理论--cutting-edge-interpretability-technology-theory)
+      - [1. 神经符号可解释性 / Neural-Symbolic Interpretability](#1-神经符号可解释性--neural-symbolic-interpretability)
+      - [2. 因果可解释性 / Causal Interpretability](#2-因果可解释性--causal-interpretability)
+      - [3. 对抗可解释性 / Adversarial Interpretability](#3-对抗可解释性--adversarial-interpretability)
+      - [4. 量子可解释性理论 / Quantum Interpretability Theory](#4-量子可解释性理论--quantum-interpretability-theory)
+      - [5. 联邦可解释性理论 / Federated Interpretability Theory](#5-联邦可解释性理论--federated-interpretability-theory)
+    - [可解释性评估理论 / Interpretability Evaluation Theory](#可解释性评估理论--interpretability-evaluation-theory)
+      - [1. 人类评估理论 / Human Evaluation Theory](#1-人类评估理论--human-evaluation-theory)
+      - [2. 自动评估理论 / Automatic Evaluation Theory](#2-自动评估理论--automatic-evaluation-theory)
+    - [可解释AI前沿理论 / Interpretable AI Frontier Theory](#可解释ai前沿理论--interpretable-ai-frontier-theory)
+      - [1. 可解释性涌现理论 / Interpretability Emergence Theory](#1-可解释性涌现理论--interpretability-emergence-theory)
+      - [2. 可解释性认知理论 / Interpretability Cognitive Theory](#2-可解释性认知理论--interpretability-cognitive-theory)
+      - [3. 可解释性意识理论 / Interpretability Consciousness Theory](#3-可解释性意识理论--interpretability-consciousness-theory)
+      - [4. 可解释性创造性理论 / Interpretability Creativity Theory](#4-可解释性创造性理论--interpretability-creativity-theory)
+      - [5. 可解释性通用智能理论 / Interpretability General Intelligence Theory](#5-可解释性通用智能理论--interpretability-general-intelligence-theory)
+    - [Lean 4 形式化实现 / Lean 4 Formal Implementation](#lean-4-形式化实现--lean-4-formal-implementation)
+    - [可解释AI工程应用 / Interpretable AI Engineering Applications](#可解释ai工程应用--interpretable-ai-engineering-applications)
+      - [1. 大模型可解释性系统 / Large Model Interpretability Systems](#1-大模型可解释性系统--large-model-interpretability-systems)
+      - [2. 神经符号可解释性系统 / Neural-Symbolic Interpretability Systems](#2-神经符号可解释性系统--neural-symbolic-interpretability-systems)
+      - [3. 因果可解释性系统 / Causal Interpretability Systems](#3-因果可解释性系统--causal-interpretability-systems)
+      - [4. 对抗可解释性系统 / Adversarial Interpretability Systems](#4-对抗可解释性系统--adversarial-interpretability-systems)
+    - [可解释AI未来展望 / Interpretable AI Future Prospects](#可解释ai未来展望--interpretable-ai-future-prospects)
+      - [1. 技术发展趋势 / Technical Development Trends](#1-技术发展趋势--technical-development-trends)
+      - [2. 应用前景展望 / Application Prospects](#2-应用前景展望--application-prospects)
+      - [3. 挑战与机遇 / Challenges and Opportunities](#3-挑战与机遇--challenges-and-opportunities)
+      - [4. 发展建议 / Development Recommendations](#4-发展建议--development-recommendations)
     - [0. Shapley与积分梯度 / Shapley and Integrated Gradients / Shapley und Integrierte Gradienten / Shapley et gradients intégrés](#0-shapley与积分梯度--shapley-and-integrated-gradients--shapley-und-integrierte-gradienten--shapley-et-gradients-intégrés)
       - [Rust示例：线性模型的IG（精确）](#rust示例线性模型的ig精确)
   - [目录 / Table of Contents / Inhaltsverzeichnis / Table des matières](#目录--table-of-contents--inhaltsverzeichnis--table-des-matières)
@@ -1463,13 +1502,13 @@ impl InterpretabilityAnalyzer {
             ],
         }
     }
-    
+
     /// 分析模型可解释性 / Analyze Model Interpretability
     pub fn analyze_interpretability(&self, data: &Array2<f32>) -> InterpretabilityReport {
         let complexity = self.analyze_complexity();
         let transparency = self.analyze_transparency();
         let comprehensibility = self.analyze_comprehensibility(data);
-        
+
         InterpretabilityReport {
             complexity,
             transparency,
@@ -1479,38 +1518,38 @@ impl InterpretabilityAnalyzer {
             evaluation: self.evaluate_interpretability(data),
         }
     }
-    
+
     /// 分析复杂度 / Analyze Complexity
     fn analyze_complexity(&self) -> f32 {
         let complexity = self.model.get_complexity();
         let total_complexity = complexity.parameters + complexity.operations + complexity.depth;
-        
+
         // 归一化复杂度 / Normalize complexity
         (total_complexity as f32).ln() / 10.0
     }
-    
+
     /// 分析透明度 / Analyze Transparency
     fn analyze_transparency(&self) -> f32 {
         let parameters = self.model.get_parameters();
         let explainable_components = parameters.len();
         let total_components = parameters.len() + 1; // +1 for model structure
-        
+
         explainable_components as f32 / total_components as f32
     }
-    
+
     /// 分析可理解性 / Analyze Comprehensibility
     fn analyze_comprehensibility(&self, data: &Array2<f32>) -> f32 {
         let feature_importance = self.compute_feature_importance(data);
         let top_features = self.get_top_features(&feature_importance, 5);
-        
+
         // 基于重要特征的可理解性 / Comprehensibility based on important features
         top_features.len() as f32 / feature_importance.len() as f32
     }
-    
+
     /// 计算特征重要性 / Compute Feature Importance
     fn compute_feature_importance(&self, data: &Array2<f32>) -> Array1<f32> {
         let mut importance = Array1::zeros(data.ncols());
-        
+
         for method in &self.explainability_methods {
             match method {
                 ExplainabilityMethod::PermutationImportance => {
@@ -1525,56 +1564,56 @@ impl InterpretabilityAnalyzer {
                 _ => {}
             }
         }
-        
+
         importance / self.explainability_methods.len() as f32
     }
-    
+
     /// 排列重要性 / Permutation Importance
     fn permutation_importance(&self, data: &Array2<f32>) -> Array1<f32> {
         let mut importance = Array1::zeros(data.ncols());
         let baseline_error = self.compute_baseline_error(data);
-        
+
         for feature_idx in 0..data.ncols() {
             let mut permuted_data = data.clone();
             self.permute_feature(&mut permuted_data, feature_idx);
             let permuted_error = self.compute_error(&permuted_data);
-            
+
             importance[feature_idx] = permuted_error - baseline_error;
         }
-        
+
         importance
     }
-    
+
     /// SHAP值 / SHAP Values
     fn shap_values(&self, data: &Array2<f32>) -> Array1<f32> {
         let mut shap_values = Array1::zeros(data.ncols());
-        
+
         for sample_idx in 0..data.nrows() {
             let sample = data.row(sample_idx);
             let sample_shap = self.compute_shap_for_sample(&sample);
             shap_values = shap_values + sample_shap;
         }
-        
+
         shap_values / data.nrows() as f32
     }
-    
+
     /// LIME解释 / LIME Explanation
     fn lime_explanation(&self, data: &Array2<f32>) -> Array1<f32> {
         let mut lime_weights = Array1::zeros(data.ncols());
-        
+
         for sample_idx in 0..data.nrows() {
             let sample = data.row(sample_idx);
             let sample_lime = self.compute_lime_for_sample(&sample);
             lime_weights = lime_weights + sample_lime;
         }
-        
+
         lime_weights / data.nrows() as f32
     }
-    
+
     /// 生成解释 / Generate Explanations
     fn generate_explanations(&self, data: &Array2<f32>) -> Vec<Explanation> {
         let mut explanations = Vec::new();
-        
+
         for method in &self.explainability_methods {
             match method {
                 ExplainabilityMethod::DecisionTree => {
@@ -1586,14 +1625,14 @@ impl InterpretabilityAnalyzer {
                 _ => {}
             }
         }
-        
+
         explanations
     }
-    
+
     /// 评估可解释性 / Evaluate Interpretability
     fn evaluate_interpretability(&self, data: &Array2<f32>) -> EvaluationResults {
         let mut results = EvaluationResults::new();
-        
+
         for metric in &self.evaluation_metrics {
             match metric {
                 EvaluationMetric::Fidelity => {
@@ -1610,89 +1649,89 @@ impl InterpretabilityAnalyzer {
                 }
             }
         }
-        
+
         results
     }
-    
+
     /// 计算保真度 / Compute Fidelity
     fn compute_fidelity(&self, data: &Array2<f32>) -> f32 {
         let mut total_error = 0.0;
-        
+
         for sample_idx in 0..data.nrows() {
             let sample = data.row(sample_idx);
             let original_prediction = self.model.predict(&sample.to_owned());
             let explanation_prediction = self.predict_with_explanation(&sample);
-            
+
             total_error += (original_prediction - explanation_prediction).abs();
         }
-        
+
         1.0 - (total_error / data.nrows() as f32)
     }
-    
+
     /// 计算稳定性 / Compute Stability
     fn compute_stability(&self, data: &Array2<f32>) -> f32 {
         let mut stability_scores = Vec::new();
-        
+
         for _ in 0..10 { // 多次运行 / Multiple runs
             let perturbed_data = self.perturb_data(data);
             let importance = self.compute_feature_importance(&perturbed_data);
             stability_scores.push(self.compute_importance_stability(&importance));
         }
-        
+
         stability_scores.iter().sum::<f32>() / stability_scores.len() as f32
     }
-    
+
     /// 计算完整性 / Compute Completeness
     fn compute_completeness(&self, data: &Array2<f32>) -> f32 {
         let total_features = data.ncols();
         let important_features = self.get_important_features(data);
-        
+
         important_features.len() as f32 / total_features as f32
     }
-    
+
     /// 计算人类理解度 / Compute Human Understanding
     fn compute_human_understanding(&self, data: &Array2<f32>) -> f32 {
         // 简化的人类理解度计算 / Simplified human understanding computation
         let complexity = self.analyze_complexity();
         let transparency = self.analyze_transparency();
-        
+
         (1.0 - complexity) * transparency
     }
-    
+
     // 辅助方法 / Helper Methods
     fn compute_baseline_error(&self, data: &Array2<f32>) -> f32 {
         // 简化的基线误差计算 / Simplified baseline error computation
         0.1
     }
-    
+
     fn permute_feature(&self, data: &mut Array2<f32>, feature_idx: usize) {
         // 简化的特征排列 / Simplified feature permutation
         for row_idx in 0..data.nrows() {
             data[[row_idx, feature_idx]] = data[[row_idx, feature_idx]] + 0.1;
         }
     }
-    
+
     fn compute_error(&self, data: &Array2<f32>) -> f32 {
         // 简化的误差计算 / Simplified error computation
         0.15
     }
-    
+
     fn compute_shap_for_sample(&self, sample: &ArrayView1<f32>) -> Array1<f32> {
         // 简化的SHAP计算 / Simplified SHAP computation
         Array1::from_vec(vec![0.1; sample.len()])
     }
-    
+
     fn compute_lime_for_sample(&self, sample: &ArrayView1<f32>) -> Array1<f32> {
         // 简化的LIME计算 / Simplified LIME computation
         Array1::from_vec(vec![0.1; sample.len()])
     }
-    
+
     fn get_top_features(&self, importance: &Array1<f32>, k: usize) -> Vec<usize> {
         let mut indices: Vec<usize> = (0..importance.len()).collect();
         indices.sort_by(|a, b| importance[*b].partial_cmp(&importance[*a]).unwrap());
         indices[..k.min(indices.len())].to_vec()
     }
-    
+
     fn generate_decision_tree_explanation(&self, data: &Array2<f32>) -> Explanation {
         Explanation {
             method: "Decision Tree".to_string(),
@@ -1700,7 +1739,7 @@ impl InterpretabilityAnalyzer {
             confidence: 0.8,
         }
     }
-    
+
     fn generate_sensitivity_explanation(&self, data: &Array2<f32>) -> Explanation {
         Explanation {
             method: "Sensitivity Analysis".to_string(),
@@ -1708,22 +1747,22 @@ impl InterpretabilityAnalyzer {
             confidence: 0.7,
         }
     }
-    
+
     fn predict_with_explanation(&self, sample: &ArrayView1<f32>) -> f32 {
         // 简化的解释预测 / Simplified explanation prediction
         self.model.predict(&sample.to_owned()) * 0.9
     }
-    
+
     fn perturb_data(&self, data: &Array2<f32>) -> Array2<f32> {
         // 简化的数据扰动 / Simplified data perturbation
         data.clone() + 0.01
     }
-    
+
     fn compute_importance_stability(&self, importance: &Array1<f32>) -> f32 {
         // 简化的重要性稳定性计算 / Simplified importance stability computation
         0.8
     }
-    
+
     fn get_important_features(&self, data: &Array2<f32>) -> Vec<usize> {
         let importance = self.compute_feature_importance(data);
         self.get_top_features(&importance, data.ncols() / 2)
@@ -1776,7 +1815,7 @@ impl Model for SimpleModel {
     fn predict(&self, input: &Array1<f32>) -> f32 {
         input.dot(&self.weights) + self.bias
     }
-    
+
     fn get_parameters(&self) -> HashMap<String, f32> {
         let mut params = HashMap::new();
         for (i, &weight) in self.weights.iter().enumerate() {
@@ -1785,7 +1824,7 @@ impl Model for SimpleModel {
         params.insert("bias".to_string(), self.bias);
         params
     }
-    
+
     fn get_complexity(&self) -> ModelComplexity {
         ModelComplexity {
             parameters: self.weights.len() + 1,
@@ -1799,34 +1838,34 @@ impl Model for SimpleModel {
 mod tests {
     use super::*;
     use ndarray::Array1;
-    
+
     #[test]
     fn test_interpretability_analyzer() {
         let weights = Array1::from_vec(vec![0.5, 0.3, 0.2]);
         let model = SimpleModel { weights, bias: 0.1 };
         let analyzer = InterpretabilityAnalyzer::new(Box::new(model));
-        
-        let data = ndarray::Array2::from_shape_vec((10, 3), 
+
+        let data = ndarray::Array2::from_shape_vec((10, 3),
             vec![0.1; 30]).unwrap();
-        
+
         let report = analyzer.analyze_interpretability(&data);
-        
+
         assert!(report.complexity >= 0.0 && report.complexity <= 1.0);
         assert!(report.transparency >= 0.0 && report.transparency <= 1.0);
         assert!(report.comprehensibility >= 0.0 && report.comprehensibility <= 1.0);
         assert_eq!(report.feature_importance.len(), 3);
         assert!(!report.explanations.is_empty());
     }
-    
+
     #[test]
     fn test_feature_importance() {
         let weights = Array1::from_vec(vec![0.5, 0.3, 0.2]);
         let model = SimpleModel { weights, bias: 0.1 };
         let analyzer = InterpretabilityAnalyzer::new(Box::new(model));
-        
-        let data = ndarray::Array2::from_shape_vec((10, 3), 
+
+        let data = ndarray::Array2::from_shape_vec((10, 3),
             vec![0.1; 30]).unwrap();
-        
+
         let importance = analyzer.compute_feature_importance(&data);
         assert_eq!(importance.len(), 3);
         assert!(importance.iter().all(|&x| x >= 0.0));
@@ -1921,14 +1960,14 @@ analyzeInterpretability analyzer data = InterpretabilityReport
 
 -- 分析复杂度 / Analyze Complexity
 analyzeComplexity :: InterpretabilityAnalyzer -> Double
-analyzeComplexity analyzer = 
+analyzeComplexity analyzer =
     let complexity = complexity (model analyzer)
         totalComplexity = parameters complexity + operations complexity + depth complexity
     in log (fromIntegral totalComplexity) / 10.0
 
 -- 分析透明度 / Analyze Transparency
 analyzeTransparency :: InterpretabilityAnalyzer -> Double
-analyzeTransparency analyzer = 
+analyzeTransparency analyzer =
     let modelParams = getModelParameters (model analyzer)
         explainableComponents = length modelParams
         totalComponents = explainableComponents + 1 -- +1 for model structure
@@ -1936,21 +1975,21 @@ analyzeTransparency analyzer =
 
 -- 分析可理解性 / Analyze Comprehensibility
 analyzeComprehensibility :: InterpretabilityAnalyzer -> Matrix Double -> Double
-analyzeComprehensibility analyzer data = 
+analyzeComprehensibility analyzer data =
     let featureImportance = computeFeatureImportance analyzer data
         topFeatures = getTopFeatures featureImportance 5
     in fromIntegral (length topFeatures) / fromIntegral (V.length featureImportance)
 
 -- 计算特征重要性 / Compute Feature Importance
 computeFeatureImportance :: InterpretabilityAnalyzer -> Matrix Double -> Vector Double
-computeFeatureImportance analyzer data = 
+computeFeatureImportance analyzer data =
     let importanceMethods = map (\method -> computeImportanceForMethod analyzer data method) (explainabilityMethods analyzer)
         averageImportance = V.map (/ fromIntegral (length importanceMethods)) (V.sum importanceMethods)
     in averageImportance
 
 -- 为特定方法计算重要性 / Compute Importance for Specific Method
 computeImportanceForMethod :: InterpretabilityAnalyzer -> Matrix Double -> ExplainabilityMethod -> Vector Double
-computeImportanceForMethod analyzer data method = 
+computeImportanceForMethod analyzer data method =
     case method of
         PermutationImportance -> permutationImportance analyzer data
         SHAP -> shapValues analyzer data
@@ -1959,40 +1998,40 @@ computeImportanceForMethod analyzer data method =
 
 -- 排列重要性 / Permutation Importance
 permutationImportance :: InterpretabilityAnalyzer -> Matrix Double -> Vector Double
-permutationImportance analyzer data = 
+permutationImportance analyzer data =
     let baselineError = computeBaselineError analyzer data
         featureCount = M.ncols data
     in V.fromList [computePermutationImportance analyzer data i baselineError | i <- [0..featureCount-1]]
 
 -- 计算单个特征的排列重要性 / Compute Permutation Importance for Single Feature
 computePermutationImportance :: InterpretabilityAnalyzer -> Matrix Double -> Int -> Double -> Double
-computePermutationImportance analyzer data featureIdx baselineError = 
+computePermutationImportance analyzer data featureIdx baselineError =
     let permutedData = permuteFeature data featureIdx
         permutedError = computeError analyzer permutedData
     in permutedError - baselineError
 
 -- SHAP值 / SHAP Values
 shapValues :: InterpretabilityAnalyzer -> Matrix Double -> Vector Double
-shapValues analyzer data = 
+shapValues analyzer data =
     let sampleCount = M.nrows data
         shapForSamples = map (\i -> computeShapForSample analyzer (M.getRow i data)) [0..sampleCount-1]
     in V.map (/ fromIntegral sampleCount) (V.sum shapForSamples)
 
 -- LIME解释 / LIME Explanation
 limeExplanation :: InterpretabilityAnalyzer -> Matrix Double -> Vector Double
-limeExplanation analyzer data = 
+limeExplanation analyzer data =
     let sampleCount = M.nrows data
         limeForSamples = map (\i -> computeLimeForSample analyzer (M.getRow i data)) [0..sampleCount-1]
     in V.map (/ fromIntegral sampleCount) (V.sum limeForSamples)
 
 -- 生成解释 / Generate Explanations
 generateExplanations :: InterpretabilityAnalyzer -> Matrix Double -> [Explanation]
-generateExplanations analyzer data = 
+generateExplanations analyzer data =
     concatMap (\method -> generateExplanationForMethod analyzer data method) (explainabilityMethods analyzer)
 
 -- 为特定方法生成解释 / Generate Explanation for Specific Method
 generateExplanationForMethod :: InterpretabilityAnalyzer -> Matrix Double -> ExplainabilityMethod -> [Explanation]
-generateExplanationForMethod analyzer data method = 
+generateExplanationForMethod analyzer data method =
     case method of
         DecisionTree -> [generateDecisionTreeExplanation analyzer data]
         SensitivityAnalysis -> [generateSensitivityExplanation analyzer data]
@@ -2009,9 +2048,9 @@ evaluateInterpretability analyzer data = EvaluationResults
 
 -- 计算保真度 / Compute Fidelity
 computeFidelity :: InterpretabilityAnalyzer -> Matrix Double -> Double
-computeFidelity analyzer data = 
+computeFidelity analyzer data =
     let sampleCount = M.nrows data
-        errors = map (\i -> 
+        errors = map (\i ->
             let sample = M.getRow i data
                 originalPrediction = predict (model analyzer) sample
                 explanationPrediction = predictWithExplanation analyzer sample
@@ -2022,8 +2061,8 @@ computeFidelity analyzer data =
 
 -- 计算稳定性 / Compute Stability
 computeStability :: InterpretabilityAnalyzer -> Matrix Double -> Double
-computeStability analyzer data = 
-    let stabilityScores = map (\_ -> 
+computeStability analyzer data =
+    let stabilityScores = map (\_ ->
         let perturbedData = perturbData data
             importance = computeFeatureImportance analyzer perturbedData
         in computeImportanceStability importance
@@ -2032,14 +2071,14 @@ computeStability analyzer data =
 
 -- 计算完整性 / Compute Completeness
 computeCompleteness :: InterpretabilityAnalyzer -> Matrix Double -> Double
-computeCompleteness analyzer data = 
+computeCompleteness analyzer data =
     let totalFeatures = M.ncols data
         importantFeatures = getImportantFeatures analyzer data
     in fromIntegral (length importantFeatures) / fromIntegral totalFeatures
 
 -- 计算人类理解度 / Compute Human Understanding
 computeHumanUnderstanding :: InterpretabilityAnalyzer -> Matrix Double -> Double
-computeHumanUnderstanding analyzer data = 
+computeHumanUnderstanding analyzer data =
     let complexity = analyzeComplexity analyzer
         transparency = analyzeTransparency analyzer
     in (1.0 - complexity) * transparency
@@ -2048,26 +2087,26 @@ computeHumanUnderstanding analyzer data =
 
 -- 获取模型参数 / Get Model Parameters
 getModelParameters :: Model -> [(String, Double)]
-getModelParameters model = 
+getModelParameters model =
     let weightParams = zipWith (\i w -> ("weight_" ++ show i, w)) [0..] (V.toList (weights model))
         biasParam = [("bias", bias model)]
     in weightParams ++ biasParam
 
 -- 预测 / Predict
 predict :: Model -> Vector Double -> Double
-predict model input = 
+predict model input =
     V.sum (V.zipWith (*) input (weights model)) + bias model
 
 -- 获取前K个特征 / Get Top K Features
 getTopFeatures :: Vector Double -> Int -> [Int]
-getTopFeatures importance k = 
+getTopFeatures importance k =
     let indices = [0..V.length importance - 1]
         sortedIndices = sortBy (\a b -> compare (importance V.! b) (importance V.! a)) indices
     in take k sortedIndices
 
 -- 排列特征 / Permute Feature
 permuteFeature :: Matrix Double -> Int -> Matrix Double
-permuteFeature data featureIdx = 
+permuteFeature data featureIdx =
     let rows = M.nrows data
         cols = M.ncols data
     in M.fromList rows cols [if j == featureIdx then M.getElem i j data + 0.1 else M.getElem i j data | i <- [1..rows], j <- [1..cols]]
@@ -2082,12 +2121,12 @@ computeError analyzer data = 0.15 -- 简化的误差计算 / Simplified error co
 
 -- 计算样本的SHAP值 / Compute SHAP for Sample
 computeShapForSample :: InterpretabilityAnalyzer -> Vector Double -> Vector Double
-computeShapForSample analyzer sample = 
+computeShapForSample analyzer sample =
     V.replicate (V.length sample) 0.1 -- 简化的SHAP计算 / Simplified SHAP computation
 
 -- 计算样本的LIME值 / Compute LIME for Sample
 computeLimeForSample :: InterpretabilityAnalyzer -> Vector Double -> Vector Double
-computeLimeForSample analyzer sample = 
+computeLimeForSample analyzer sample =
     V.replicate (V.length sample) 0.1 -- 简化的LIME计算 / Simplified LIME computation
 
 -- 生成决策树解释 / Generate Decision Tree Explanation
@@ -2108,12 +2147,12 @@ generateSensitivityExplanation analyzer data = Explanation
 
 -- 使用解释进行预测 / Predict with Explanation
 predictWithExplanation :: InterpretabilityAnalyzer -> Vector Double -> Double
-predictWithExplanation analyzer sample = 
+predictWithExplanation analyzer sample =
     predict (model analyzer) sample * 0.9 -- 简化的解释预测 / Simplified explanation prediction
 
 -- 扰动数据 / Perturb Data
 perturbData :: Matrix Double -> Matrix Double
-perturbData data = 
+perturbData data =
     let rows = M.nrows data
         cols = M.ncols data
     in M.fromList rows cols [M.getElem i j data + 0.01 | i <- [1..rows], j <- [1..cols]]
@@ -2124,7 +2163,7 @@ computeImportanceStability importance = 0.8 -- 简化的稳定性计算 / Simpli
 
 -- 获取重要特征 / Get Important Features
 getImportantFeatures :: InterpretabilityAnalyzer -> Matrix Double -> [Int]
-getImportantFeatures analyzer data = 
+getImportantFeatures analyzer data =
     let importance = computeFeatureImportance analyzer data
     in getTopFeatures importance (M.ncols data `div` 2)
 
@@ -2135,7 +2174,7 @@ testInterpretabilityAnalyzer = do
         analyzer = createInterpretabilityAnalyzer model
         data = M.fromList 10 3 (replicate 30 0.1)
         report = analyzeInterpretability analyzer data
-    
+
     putStrLn "可解释性分析器测试:"
     putStrLn $ "复杂度: " ++ show (complexity report)
     putStrLn $ "透明度: " ++ show (transparency report)

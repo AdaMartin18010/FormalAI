@@ -4,7 +4,7 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-形式化证明是FormalAI项目的核心，提供严格的数学证明和验证机制。本模块建立完整的证明理论体系，包括证明系统、证明策略、证明验证和自动化证明。
+形式化证明是 FormalAI 项目的核心，提供严格的数学证明和验证机制。本模块建立完整的证明理论体系，包括证明系统、证明策略、证明验证和自动化证明。
 
 Formal proofs are the core of the FormalAI project, providing rigorous mathematical proofs and verification mechanisms. This module establishes a complete proof theory system, including proof systems, proof strategies, proof verification, and automated proving.
 
@@ -19,7 +19,7 @@ Formal proofs are the core of the FormalAI project, providing rigorous mathemati
   - [4. 自动化证明](#4-自动化证明--automated-proving--automatisches-beweisen--démonstration-automatique)
   - [5. 证明验证](#5-证明验证--proof-verification--beweisverifikation--vérification-de-preuve)
   - [6. 证明策略](#6-证明策略--proof-strategies--beweisstrategien--stratégies-de-preuve)
-  - [7. AI中的证明应用](#7-ai中的证明应用--proof-applications-in-ai--beweisanwendungen-in-der-ki--applications-de-preuve-dans-lia)
+  - [7. AI 中的证明应用](#7-ai中的证明应用--proof-applications-in-ai--beweisanwendungen-in-der-ki--applications-de-preuve-dans-lia)
   - [代码实现](#代码实现--code-implementation--code-implementierung--implémentation-de-code)
   - [参考文献](#参考文献--references--literatur--références)
 
@@ -251,7 +251,7 @@ impl ResolutionProver {
     pub fn prove(&mut self) -> bool {
         let mut new_clauses = Vec::new();
         let mut changed = true;
-        
+
         while changed {
             changed = false;
             for i in 0..self.clauses.len() {
@@ -278,7 +278,7 @@ impl ResolutionProver {
 归结算法是完备的，即如果公式集合不可满足，则归结算法会生成空子句。
 
 **证明：**
-使用Herbrand定理和提升引理。□
+使用 Herbrand 定理和提升引理。□
 
 ### 4.2 表算法 / Tableau Algorithm / Tableau-Algorithmus / Algorithme de tableau
 
@@ -294,13 +294,13 @@ impl TableauProver {
         let mut branch = Branch::new();
         branch.add_formula(formula.clone());
         self.branches.push(branch);
-        
+
         while !self.branches.is_empty() {
             if let Some(branch) = self.branches.pop() {
                 if branch.is_closed() {
                     continue;
                 }
-                
+
                 if let Some(formula) = branch.next_formula() {
                     let new_branches = self.apply_rule(&branch, &formula);
                     self.branches.extend(new_branches);
@@ -404,7 +404,7 @@ impl ProofChecker {
 **启发式 6.2.3 (历史启发式)**
 记录失败的搜索路径，避免重复搜索。
 
-## 7. AI中的证明应用 / Proof Applications in AI / Beweisanwendungen in der KI / Applications de preuve dans l'IA
+## 7. AI 中的证明应用 / Proof Applications in AI / Beweisanwendungen in der KI / Applications de preuve dans l'IA
 
 ### 7.1 自动定理证明 / Automated Theorem Proving / Automatisches Theorembeweisen / Démonstration automatique de théorèmes
 
@@ -441,7 +441,7 @@ impl ProofChecker {
 
 ## 代码实现 / Code Implementation / Code-Implementierung / Implémentation de code
 
-### Rust实现：证明系统核心 / Rust Implementation: Proof System Core
+### Rust 实现：证明系统核心 / Rust Implementation: Proof System Core
 
 ```rust
 use std::collections::HashMap;
@@ -478,7 +478,7 @@ impl InferenceRule {
     pub fn new(name: String, premises_count: usize, check_fn: fn(&[Formula], &Formula) -> bool) -> Self {
         InferenceRule { name, premises_count, check_fn }
     }
-    
+
     pub fn check(&self, premises: &[Formula], conclusion: &Formula) -> bool {
         if premises.len() != self.premises_count {
             return false;
@@ -495,7 +495,7 @@ pub struct NaturalDeductionProver {
 impl NaturalDeductionProver {
     pub fn new() -> Self {
         let mut rules = HashMap::new();
-        
+
         // 合取引入
         rules.insert("∧I".to_string(), InferenceRule::new(
             "∧I".to_string(), 2, |premises, conclusion| {
@@ -506,7 +506,7 @@ impl NaturalDeductionProver {
                 }
             }
         ));
-        
+
         // 合取消除
         rules.insert("∧E1".to_string(), InferenceRule::new(
             "∧E1".to_string(), 1, |premises, conclusion| {
@@ -517,7 +517,7 @@ impl NaturalDeductionProver {
                 }
             }
         ));
-        
+
         rules.insert("∧E2".to_string(), InferenceRule::new(
             "∧E2".to_string(), 1, |premises, conclusion| {
                 if let Formula::And(_, right) = &premises[0] {
@@ -527,7 +527,7 @@ impl NaturalDeductionProver {
                 }
             }
         ));
-        
+
         // 蕴含引入
         rules.insert("→I".to_string(), InferenceRule::new(
             "→I".to_string(), 1, |premises, conclusion| {
@@ -538,7 +538,7 @@ impl NaturalDeductionProver {
                 }
             }
         ));
-        
+
         // 蕴含消除
         rules.insert("→E".to_string(), InferenceRule::new(
             "→E".to_string(), 2, |premises, conclusion| {
@@ -549,30 +549,30 @@ impl NaturalDeductionProver {
                 }
             }
         ));
-        
+
         NaturalDeductionProver { rules }
     }
-    
+
     pub fn prove(&self, goal: &Formula, assumptions: &[Formula]) -> Option<ProofTree> {
         self.prove_with_context(goal, assumptions, &mut Vec::new())
     }
-    
+
     fn prove_with_context(&self, goal: &Formula, assumptions: &[Formula], context: &mut Vec<Formula>) -> Option<ProofTree> {
         // 检查是否为假设
         if assumptions.contains(goal) {
             return Some(ProofTree::Leaf(goal.clone()));
         }
-        
+
         // 尝试各种推理规则
         for (rule_name, rule) in &self.rules {
             if let Some(proof) = self.try_rule(rule_name, rule, goal, assumptions, context) {
                 return Some(proof);
             }
         }
-        
+
         None
     }
-    
+
     fn try_rule(&self, rule_name: &str, rule: &InferenceRule, goal: &Formula, assumptions: &[Formula], context: &mut Vec<Formula>) -> Option<ProofTree> {
         match rule_name {
             "∧I" => {
@@ -641,11 +641,11 @@ impl ProofChecker {
         checker.initialize_rules();
         checker
     }
-    
+
     fn initialize_rules(&mut self) {
         // 初始化推理规则（与证明器相同）
         let mut rules = HashMap::new();
-        
+
         rules.insert("∧I".to_string(), InferenceRule::new(
             "∧I".to_string(), 2, |premises, conclusion| {
                 if let Formula::And(left, right) = conclusion {
@@ -655,7 +655,7 @@ impl ProofChecker {
                 }
             }
         ));
-        
+
         rules.insert("∧E1".to_string(), InferenceRule::new(
             "∧E1".to_string(), 1, |premises, conclusion| {
                 if let Formula::And(left, _) = &premises[0] {
@@ -665,10 +665,10 @@ impl ProofChecker {
                 }
             }
         ));
-        
+
         self.rules = rules;
     }
-    
+
     pub fn check_proof(&self, proof: &ProofTree, assumptions: &[Formula]) -> Result<(), String> {
         match proof {
             ProofTree::Leaf(formula) => {
@@ -683,7 +683,7 @@ impl ProofChecker {
                     let premise_formulas: Vec<Formula> = premises.iter()
                         .map(|p| self.extract_conclusion(p))
                         .collect();
-                    
+
                     if rule.check(&premise_formulas, conclusion) {
                         for premise in premises {
                             self.check_proof(premise, assumptions)?;
@@ -698,7 +698,7 @@ impl ProofChecker {
             }
         }
     }
-    
+
     fn extract_conclusion(&self, proof: &ProofTree) -> Formula {
         match proof {
             ProofTree::Leaf(formula) => formula.clone(),
@@ -710,36 +710,36 @@ impl ProofChecker {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_conjunction_introduction() {
         let prover = NaturalDeductionProver::new();
         let checker = ProofChecker::new();
-        
+
         let p = Formula::Atom("p".to_string());
         let q = Formula::Atom("q".to_string());
         let p_and_q = Formula::And(Box::new(p.clone()), Box::new(q.clone()));
-        
+
         let assumptions = vec![p.clone(), q.clone()];
-        
+
         if let Some(proof) = prover.prove(&p_and_q, &assumptions) {
             assert!(checker.check_proof(&proof, &assumptions).is_ok());
         } else {
             panic!("Failed to prove p ∧ q");
         }
     }
-    
+
     #[test]
     fn test_implication_introduction() {
         let prover = NaturalDeductionProver::new();
         let checker = ProofChecker::new();
-        
+
         let p = Formula::Atom("p".to_string());
         let q = Formula::Atom("q".to_string());
         let p_implies_q = Formula::Implies(Box::new(p.clone()), Box::new(q.clone()));
-        
+
         let assumptions = vec![q.clone()];
-        
+
         if let Some(proof) = prover.prove(&p_implies_q, &assumptions) {
             assert!(checker.check_proof(&proof, &assumptions).is_ok());
         } else {
@@ -749,7 +749,7 @@ mod tests {
 }
 ```
 
-### Haskell实现：高级证明系统 / Haskell Implementation: Advanced Proof System
+### Haskell 实现：高级证明系统 / Haskell Implementation: Advanced Proof System
 
 ```haskell
 {-# LANGUAGE GADTs, DataKinds, TypeFamilies #-}
@@ -784,22 +784,22 @@ data ProofTree where
 
 -- 证明检查器
 checkProof :: ProofTree -> [Formula] -> Either String ()
-checkProof (Assumption f) assumptions = 
-  if f `elem` assumptions 
-    then Right () 
+checkProof (Assumption f) assumptions =
+  if f `elem` assumptions
+    then Right ()
     else Left "Invalid assumption"
 
 checkProof (AndIntro p1 p2) assumptions = do
   checkProof p1 assumptions
   checkProof p2 assumptions
 
-checkProof (AndElim1 p) assumptions = 
+checkProof (AndElim1 p) assumptions =
   checkProof p assumptions
 
-checkProof (AndElim2 p) assumptions = 
+checkProof (AndElim2 p) assumptions =
   checkProof p assumptions
 
-checkProof (ImplIntro ant p) assumptions = 
+checkProof (ImplIntro ant p) assumptions =
   checkProof p (ant : assumptions)
 
 checkProof (ImplElim impl ant) assumptions = do
@@ -819,7 +819,7 @@ proveWithContext goal assumptions context
   | otherwise = tryRules goal assumptions context
 
 tryRules :: Formula -> [Formula] -> [Formula] -> Maybe ProofTree
-tryRules goal assumptions context = 
+tryRules goal assumptions context =
   tryAndIntro goal assumptions context `mplus`
   tryImplIntro goal assumptions context `mplus`
   tryImplElim goal assumptions context
@@ -838,7 +838,7 @@ tryImplIntro (Implies ant cons) assumptions context = do
 tryImplIntro _ _ _ = Nothing
 
 tryImplElim :: Formula -> [Formula] -> [Formula] -> Maybe ProofTree
-tryImplElim goal assumptions context = 
+tryImplElim goal assumptions context =
   case findImpl assumptions of
     Just (impl, ant) -> do
       antProof <- proveWithContext ant assumptions context
@@ -857,15 +857,15 @@ data Literal = Pos String | Neg String deriving (Eq, Show)
 type Clause = [Literal]
 
 resolve :: Clause -> Clause -> Maybe Clause
-resolve c1 c2 = 
+resolve c1 c2 =
   case findComplementary c1 c2 of
     Nothing -> Nothing
-    Just (l1, l2) -> 
+    Just (l1, l2) ->
       let newClause = filter (/= l1) c1 ++ filter (/= l2) c2
       in Just newClause
 
 findComplementary :: Clause -> Clause -> Maybe (Literal, Literal)
-findComplementary c1 c2 = 
+findComplementary c1 c2 =
   case [ (l1, l2) | l1 <- c1, l2 <- c2, areComplementary l1 l2 ] of
     [] -> Nothing
     (x:_) -> Just x
@@ -877,17 +877,17 @@ areComplementary _ _ = False
 
 -- 归结证明
 resolution :: [Clause] -> Bool
-resolution clauses = 
+resolution clauses =
   let allClauses = clauses
       newClauses = generateResolvents allClauses
   in [] `elem` newClauses
 
 generateResolvents :: [Clause] -> [Clause]
-generateResolvents clauses = 
-  let resolvents = [ r | c1 <- clauses, c2 <- clauses, 
+generateResolvents clauses =
+  let resolvents = [ r | c1 <- clauses, c2 <- clauses,
                         c1 /= c2, Just r <- [resolve c1 c2] ]
-  in if null resolvents 
-     then clauses 
+  in if null resolvents
+     then clauses
      else generateResolvents (clauses ++ resolvents)
 
 -- 测试
@@ -896,9 +896,9 @@ main = do
   let p = Atom "p"
   let q = Atom "q"
   let p_and_q = And p q
-  
+
   let assumptions = [p, q]
-  
+
   case prove p_and_q assumptions of
     Just proof -> do
       case checkProof proof assumptions of
@@ -909,17 +909,17 @@ main = do
 
 ## 参考文献 / References / Literatur / Références
 
-1. **Prawitz, D.** (1965). *Natural Deduction: A Proof-Theoretical Study*. Almqvist & Wiksell.
-2. **Gentzen, G.** (1935). *Untersuchungen über das logische Schließen*. Mathematische Zeitschrift.
-3. **Troelstra, A. S. & Schwichtenberg, H.** (2000). *Basic Proof Theory*. Cambridge University Press.
-4. **Chang, C. L. & Lee, R. C. T.** (1973). *Symbolic Logic and Mechanical Theorem Proving*. Academic Press.
-5. **Robinson, J. A.** (1965). *A Machine-Oriented Logic Based on the Resolution Principle*. Journal of the ACM.
+1. **Prawitz, D.** (1965). _Natural Deduction: A Proof-Theoretical Study_. Almqvist & Wiksell.
+2. **Gentzen, G.** (1935). _Untersuchungen über das logische Schließen_. Mathematische Zeitschrift.
+3. **Troelstra, A. S. & Schwichtenberg, H.** (2000). _Basic Proof Theory_. Cambridge University Press.
+4. **Chang, C. L. & Lee, R. C. T.** (1973). _Symbolic Logic and Mechanical Theorem Proving_. Academic Press.
+5. **Robinson, J. A.** (1965). _A Machine-Oriented Logic Based on the Resolution Principle_. Journal of the ACM.
 
 ---
 
-*本模块为FormalAI提供了严格的形式化证明体系，确保所有理论都建立在坚实的证明基础之上。*
+_本模块为 FormalAI 提供了严格的形式化证明体系，确保所有理论都建立在坚实的证明基础之上。_
 
-*This module provides FormalAI with a rigorous formal proof system, ensuring all theories are built on solid proof foundations.*
+_This module provides FormalAI with a rigorous formal proof system, ensuring all theories are built on solid proof foundations._
 
 ## 相关章节 / Related Chapters
 
@@ -935,7 +935,7 @@ main = do
 ## 2024/2025 最新进展 / Latest Updates
 
 - 证明搜索启发式与神经引导的混合策略（占位）。
-- 交互式定理证明在AI安全验证中的应用案例（占位）。
+- 交互式定理证明在 AI 安全验证中的应用案例（占位）。
 
 ## Lean 占位模板 / Lean Placeholder
 

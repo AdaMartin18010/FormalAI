@@ -154,15 +154,15 @@ class KnowledgeTriple:
         self.tail = tail
         self.confidence = confidence
         self.timestamp = time.time()
-    
+
     def __str__(self):
         return f"({self.head}, {self.relation}, {self.tail})"
-    
+
     def __eq__(self, other):
-        return (self.head == other.head and 
-                self.relation == other.relation and 
+        return (self.head == other.head and
+                self.relation == other.relation and
                 self.tail == other.tail)
-    
+
     def __hash__(self):
         return hash((self.head, self.relation, self.tail))
 ```
@@ -171,21 +171,21 @@ class KnowledgeTriple:
 
 ```python
 class ExtendedTriple(KnowledgeTriple):
-    def __init__(self, head, relation, tail, confidence=1.0, 
+    def __init__(self, head, relation, tail, confidence=1.0,
                  attributes=None, context=None):
         super().__init__(head, relation, tail, confidence)
         self.attributes = attributes or {}
         self.context = context or {}
-    
+
     def add_attribute(self, key, value):
         self.attributes[key] = value
-    
+
     def add_context(self, key, value):
         self.context[key] = value
-    
+
     def get_temporal_info(self):
         return self.context.get('temporal', {})
-    
+
     def get_spatial_info(self):
         return self.context.get('spatial', {})
 ```
@@ -201,21 +201,21 @@ class EntityEmbedding:
         self.embedding_dim = embedding_dim
         self.embedding = torch.randn(embedding_dim)
         self.normalized_embedding = None
-    
+
     def normalize(self):
         self.normalized_embedding = F.normalize(self.embedding, p=2, dim=0)
         return self.normalized_embedding
-    
+
     def similarity(self, other_embedding):
         if self.normalized_embedding is None:
             self.normalize()
-        
+
         return torch.cosine_similarity(
-            self.normalized_embedding, 
-            other_embedding.normalized_embedding, 
+            self.normalized_embedding,
+            other_embedding.normalized_embedding,
             dim=0
         )
-    
+
     def update_embedding(self, new_embedding):
         self.embedding = new_embedding
         self.normalized_embedding = None
@@ -230,18 +230,18 @@ class RelationEmbedding:
         self.embedding_dim = embedding_dim
         self.embedding = torch.randn(embedding_dim)
         self.normalized_embedding = None
-    
+
     def normalize(self):
         self.normalized_embedding = F.normalize(self.embedding, p=2, dim=0)
         return self.normalized_embedding
-    
+
     def transform(self, head_embedding):
         # 关系变换操作
         if self.normalized_embedding is None:
             self.normalize()
-        
+
         return head_embedding + self.normalized_embedding
-    
+
     def composition(self, relation1_embedding, relation2_embedding):
         # 关系组合
         return relation1_embedding + relation2_embedding
@@ -259,15 +259,15 @@ class DeductiveReasoning:
         self.knowledge_base = knowledge_base
         self.rules = []
         self.inference_engine = InferenceEngine()
-    
+
     def add_rule(self, rule):
         self.rules.append(rule)
-    
+
     def deduce(self, query):
         # 演绎推理
         facts = self.knowledge_base.get_facts()
         derived_facts = []
-        
+
         while True:
             new_facts = []
             for rule in self.rules:
@@ -275,26 +275,26 @@ class DeductiveReasoning:
                     new_fact = rule.conclude(facts + derived_facts)
                     if new_fact not in derived_facts:
                         new_facts.append(new_fact)
-            
+
             if not new_facts:
                 break
-            
+
             derived_facts.extend(new_facts)
-        
+
         # 检查查询是否被满足
         return self.check_query(query, facts + derived_facts)
-    
+
     def check_query(self, query, facts):
         # 检查查询是否被事实支持
         for fact in facts:
             if self.matches(fact, query):
                 return True
         return False
-    
+
     def matches(self, fact, query):
         # 检查事实是否匹配查询
-        return (fact.head == query.head and 
-                fact.relation == query.relation and 
+        return (fact.head == query.head and
+                fact.relation == query.relation and
                 fact.tail == query.tail)
 ```
 
@@ -306,46 +306,46 @@ class InductiveReasoning:
         self.knowledge_base = knowledge_base
         self.pattern_miner = PatternMiner()
         self.rule_generator = RuleGenerator()
-    
+
     def induce_rules(self, examples):
         # 归纳推理生成规则
         patterns = self.pattern_miner.mine_patterns(examples)
         rules = []
-        
+
         for pattern in patterns:
             rule = self.rule_generator.generate_rule(pattern)
             if self.validate_rule(rule, examples):
                 rules.append(rule)
-        
+
         return rules
-    
+
     def mine_patterns(self, examples):
         # 挖掘模式
         patterns = []
-        
+
         # 实体模式
         entity_patterns = self.mine_entity_patterns(examples)
         patterns.extend(entity_patterns)
-        
+
         # 关系模式
         relation_patterns = self.mine_relation_patterns(examples)
         patterns.extend(relation_patterns)
-        
+
         # 路径模式
         path_patterns = self.mine_path_patterns(examples)
         patterns.extend(path_patterns)
-        
+
         return patterns
-    
+
     def validate_rule(self, rule, examples):
         # 验证规则
         positive_examples = [ex for ex in examples if ex.label == 1]
         negative_examples = [ex for ex in examples if ex.label == 0]
-        
+
         # 计算支持度和置信度
         support = self.calculate_support(rule, positive_examples)
         confidence = self.calculate_confidence(rule, positive_examples, negative_examples)
-        
+
         return support > self.min_support and confidence > self.min_confidence
 ```
 
@@ -359,42 +359,42 @@ class TransEModel:
         self.entity_count = entity_count
         self.relation_count = relation_count
         self.embedding_dim = embedding_dim
-        
+
         # 初始化嵌入
         self.entity_embeddings = nn.Embedding(entity_count, embedding_dim)
         self.relation_embeddings = nn.Embedding(relation_count, embedding_dim)
-        
+
         # 初始化参数
         nn.init.xavier_uniform_(self.entity_embeddings.weight)
         nn.init.xavier_uniform_(self.relation_embeddings.weight)
-    
+
     def forward(self, head, relation, tail):
         # 前向传播
         head_emb = self.entity_embeddings(head)
         relation_emb = self.relation_embeddings(relation)
         tail_emb = self.entity_embeddings(tail)
-        
+
         # 计算得分
         score = self.calculate_score(head_emb, relation_emb, tail_emb)
         return score
-    
+
     def calculate_score(self, head_emb, relation_emb, tail_emb):
         # TransE得分函数
         predicted_tail = head_emb + relation_emb
         score = -torch.norm(predicted_tail - tail_emb, p=2, dim=-1)
         return score
-    
+
     def predict_tail(self, head, relation, top_k=10):
         # 预测尾实体
         head_emb = self.entity_embeddings(head)
         relation_emb = self.relation_embeddings(relation)
-        
+
         predicted_tail = head_emb + relation_emb
-        
+
         # 计算与所有实体的距离
         all_entity_emb = self.entity_embeddings.weight
         distances = torch.norm(predicted_tail.unsqueeze(0) - all_entity_emb, p=2, dim=1)
-        
+
         # 返回距离最小的k个实体
         _, top_indices = torch.topk(distances, top_k, largest=False)
         return top_indices
@@ -408,35 +408,35 @@ class ComplExModel:
         self.entity_count = entity_count
         self.relation_count = relation_count
         self.embedding_dim = embedding_dim
-        
+
         # 复数嵌入
         self.entity_embeddings = nn.Embedding(entity_count, embedding_dim * 2)
         self.relation_embeddings = nn.Embedding(relation_count, embedding_dim * 2)
-        
+
         # 初始化参数
         nn.init.xavier_uniform_(self.entity_embeddings.weight)
         nn.init.xavier_uniform_(self.relation_embeddings.weight)
-    
+
     def forward(self, head, relation, tail):
         # 前向传播
         head_emb = self.entity_embeddings(head)
         relation_emb = self.relation_embeddings(relation)
         tail_emb = self.entity_embeddings(tail)
-        
+
         # 计算得分
         score = self.calculate_score(head_emb, relation_emb, tail_emb)
         return score
-    
+
     def calculate_score(self, head_emb, relation_emb, tail_emb):
         # ComplEx得分函数
         head_real, head_imag = head_emb[..., :self.embedding_dim], head_emb[..., self.embedding_dim:]
         relation_real, relation_imag = relation_emb[..., :self.embedding_dim], relation_emb[..., self.embedding_dim:]
         tail_real, tail_imag = tail_emb[..., :self.embedding_dim], tail_emb[..., self.embedding_dim:]
-        
+
         # 复数乘法
         score_real = (head_real * relation_real - head_imag * relation_imag) * tail_real
         score_imag = (head_real * relation_imag + head_imag * relation_real) * tail_imag
-        
+
         score = score_real + score_imag
         return torch.sum(score, dim=-1)
 ```
@@ -453,30 +453,30 @@ class PathReasoning:
         self.knowledge_graph = knowledge_graph
         self.path_finder = PathFinder()
         self.path_scorer = PathScorer()
-    
+
     def find_reasoning_paths(self, head, tail, max_length=3):
         # 寻找推理路径
         paths = self.path_finder.find_paths(head, tail, max_length)
-        
+
         # 评分路径
         scored_paths = []
         for path in paths:
             score = self.path_scorer.score_path(path)
             scored_paths.append((path, score))
-        
+
         # 按分数排序
         scored_paths.sort(key=lambda x: x[1], reverse=True)
         return scored_paths
-    
+
     def reason_along_path(self, path):
         # 沿路径推理
         current_entity = path[0]
         reasoning_steps = []
-        
+
         for i in range(1, len(path), 2):
             relation = path[i]
             next_entity = path[i + 1]
-            
+
             # 推理步骤
             step = {
                 'from': current_entity,
@@ -486,9 +486,9 @@ class PathReasoning:
             }
             reasoning_steps.append(step)
             current_entity = next_entity
-        
+
         return reasoning_steps
-    
+
     def calculate_step_confidence(self, head, relation, tail):
         # 计算推理步骤的置信度
         # 基于知识图谱中的支持度
@@ -507,30 +507,30 @@ class PathAggregation:
             'weighted': self.weighted_aggregation,
             'attention': self.attention_aggregation
         }
-    
+
     def aggregate_paths(self, paths, method='attention'):
         # 聚合多条路径
         if method in self.aggregation_methods:
             return self.aggregation_methods[method](paths)
         else:
             raise ValueError(f"Unknown aggregation method: {method}")
-    
+
     def max_aggregation(self, paths):
         # 最大聚合
         max_score = max(paths, key=lambda x: x[1])[1]
         return max_score
-    
+
     def mean_aggregation(self, paths):
         # 平均聚合
         scores = [path[1] for path in paths]
         return sum(scores) / len(scores)
-    
+
     def weighted_aggregation(self, paths):
         # 加权聚合
         total_weight = sum(path[1] for path in paths)
         weighted_sum = sum(path[1] * path[1] for path in paths)
         return weighted_sum / total_weight if total_weight > 0 else 0
-    
+
     def attention_aggregation(self, paths):
         # 注意力聚合
         scores = [path[1] for path in paths]
@@ -550,54 +550,54 @@ class GraphAttentionReasoning:
         self.hidden_dim = hidden_dim
         self.output_dim = output_dim
         self.num_heads = num_heads
-        
+
         # 图注意力层
         self.attention_layers = nn.ModuleList([
             GraphAttentionLayer(input_dim, hidden_dim, num_heads)
             for _ in range(2)
         ])
-        
+
         # 输出层
         self.output_layer = nn.Linear(hidden_dim, output_dim)
-    
+
     def forward(self, node_features, edge_index, edge_attr):
         # 前向传播
         x = node_features
-        
+
         for layer in self.attention_layers:
             x = layer(x, edge_index, edge_attr)
             x = F.relu(x)
-        
+
         # 输出
         output = self.output_layer(x)
         return output
-    
+
     def reason(self, query_entity, target_entity, num_hops=2):
         # 多跳推理
         current_entities = [query_entity]
         reasoning_paths = []
-        
+
         for hop in range(num_hops):
             next_entities = []
             hop_paths = []
-            
+
             for entity in current_entities:
                 # 获取邻居实体
                 neighbors = self.get_neighbors(entity)
-                
+
                 # 计算注意力权重
                 attention_weights = self.calculate_attention_weights(entity, neighbors)
-                
+
                 # 选择最相关的邻居
                 top_neighbors = self.select_top_neighbors(neighbors, attention_weights)
-                
+
                 for neighbor, weight in top_neighbors:
                     next_entities.append(neighbor)
                     hop_paths.append((entity, neighbor, weight))
-            
+
             reasoning_paths.append(hop_paths)
             current_entities = next_entities
-        
+
         return reasoning_paths
 ```
 
@@ -609,58 +609,58 @@ class MessagePassingReasoning:
         self.node_dim = node_dim
         self.edge_dim = edge_dim
         self.hidden_dim = hidden_dim
-        
+
         # 消息传递层
         self.message_layers = nn.ModuleList([
             MessagePassingLayer(node_dim, edge_dim, hidden_dim)
             for _ in range(3)
         ])
-        
+
         # 更新层
         self.update_layers = nn.ModuleList([
             UpdateLayer(hidden_dim, node_dim)
             for _ in range(3)
         ])
-    
+
     def forward(self, node_features, edge_index, edge_attr):
         # 前向传播
         x = node_features
-        
+
         for message_layer, update_layer in zip(self.message_layers, self.update_layers):
             # 消息传递
             messages = message_layer(x, edge_index, edge_attr)
-            
+
             # 节点更新
             x = update_layer(x, messages)
-        
+
         return x
-    
+
     def reason(self, query_entity, target_entity, num_steps=3):
         # 多步推理
         entity_states = {query_entity: 1.0}
         reasoning_steps = []
-        
+
         for step in range(num_steps):
             new_states = {}
             step_messages = []
-            
+
             for entity, state in entity_states.items():
                 # 获取邻居
                 neighbors = self.get_neighbors(entity)
-                
+
                 # 发送消息
                 for neighbor, relation in neighbors:
                     message = self.create_message(entity, neighbor, relation, state)
                     step_messages.append(message)
-                    
+
                     # 更新邻居状态
                     if neighbor not in new_states:
                         new_states[neighbor] = 0.0
                     new_states[neighbor] += message['strength']
-            
+
             reasoning_steps.append(step_messages)
             entity_states = new_states
-        
+
         return reasoning_steps
 ```
 
@@ -675,39 +675,39 @@ class LinkPrediction:
     def __init__(self, embedding_model):
         self.embedding_model = embedding_model
         self.predictor = LinkPredictor()
-    
+
     def predict_links(self, head, relation, top_k=10):
         # 预测链接
         head_emb = self.embedding_model.get_entity_embedding(head)
         relation_emb = self.embedding_model.get_relation_embedding(relation)
-        
+
         # 计算所有实体的得分
         all_entity_emb = self.embedding_model.get_all_entity_embeddings()
         scores = self.predictor.calculate_scores(head_emb, relation_emb, all_entity_emb)
-        
+
         # 返回得分最高的k个实体
         top_scores, top_indices = torch.topk(scores, top_k)
         return list(zip(top_indices.tolist(), top_scores.tolist()))
-    
+
     def predict_relation(self, head, tail, top_k=5):
         # 预测关系
         head_emb = self.embedding_model.get_entity_embedding(head)
         tail_emb = self.embedding_model.get_entity_embedding(tail)
-        
+
         # 计算所有关系的得分
         all_relation_emb = self.embedding_model.get_all_relation_embeddings()
         scores = self.predictor.calculate_relation_scores(head_emb, tail_emb, all_relation_emb)
-        
+
         # 返回得分最高的k个关系
         top_scores, top_indices = torch.topk(scores, top_k)
         return list(zip(top_indices.tolist(), top_scores.tolist()))
-    
+
     def evaluate_prediction(self, head, relation, tail):
         # 评估预测
         head_emb = self.embedding_model.get_entity_embedding(head)
         relation_emb = self.embedding_model.get_relation_embedding(relation)
         tail_emb = self.embedding_model.get_entity_embedding(tail)
-        
+
         score = self.predictor.calculate_score(head_emb, relation_emb, tail_emb)
         return score.item()
 ```
@@ -720,47 +720,47 @@ class RuleBasedLinkPrediction:
         self.knowledge_graph = knowledge_graph
         self.rule_miner = RuleMiner()
         self.rule_applier = RuleApplier()
-    
+
     def predict_links(self, head, relation, top_k=10):
         # 基于规则预测链接
         applicable_rules = self.find_applicable_rules(head, relation)
-        
+
         predictions = []
         for rule in applicable_rules:
             predicted_tails = self.apply_rule(rule, head, relation)
             for tail in predicted_tails:
                 confidence = self.calculate_rule_confidence(rule)
                 predictions.append((tail, confidence))
-        
+
         # 按置信度排序
         predictions.sort(key=lambda x: x[1], reverse=True)
         return predictions[:top_k]
-    
+
     def find_applicable_rules(self, head, relation):
         # 寻找适用的规则
         applicable_rules = []
-        
+
         for rule in self.rule_miner.get_rules():
             if rule.matches_head_relation(head, relation):
                 applicable_rules.append(rule)
-        
+
         return applicable_rules
-    
+
     def apply_rule(self, rule, head, relation):
         # 应用规则
         predicted_tails = []
-        
+
         # 获取规则的前提条件
         premises = rule.get_premises()
-        
+
         # 检查前提条件是否满足
         if self.check_premises(premises, head, relation):
             # 应用规则的结论
             conclusion = rule.get_conclusion()
             predicted_tails = self.infer_from_conclusion(conclusion, head, relation)
-        
+
         return predicted_tails
-    
+
     def calculate_rule_confidence(self, rule):
         # 计算规则置信度
         support = rule.get_support()
@@ -973,8 +973,8 @@ class RuleBasedLinkPrediction:
 
 ---
 
-**最后更新**：2025-01-01  
-**版本**：v2025-01  
+**最后更新**：2025-01-01
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *知识图谱推理为构建可解释、可推理的智能系统提供了关键技术，推动人工智能向更高层次的认知能力发展。*

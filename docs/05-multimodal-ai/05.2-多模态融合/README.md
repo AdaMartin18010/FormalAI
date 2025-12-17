@@ -297,7 +297,7 @@ structure FusionGeneralizationBound where
   fusion_complexity : ℝ
 
 def fusion_generalization_bound (bound : FusionGeneralizationBound) : ℝ :=
-  bound.empirical_risk + 2 * bound.rademacher_complexity + 
+  bound.empirical_risk + 2 * bound.rademacher_complexity +
   bound.fusion_complexity + 3 * Real.sqrt (Real.log (2 / bound.confidence_parameter) / 2)
 
 end MultimodalFusion
@@ -382,12 +382,22 @@ stability_eval:
 
 - [5.2 多模态融合 / Multimodal Fusion / Multimodale Fusion / Fusion multimodale](#52-多模态融合--multimodal-fusion--multimodale-fusion--fusion-multimodale)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
+    - [示例卡片 / Example Cards](#示例卡片--example-cards)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
     - [多模态融合 / Multimodal Fusion / Multimodale Fusion / Fusion multimodale](#多模态融合--multimodal-fusion--multimodale-fusion--fusion-multimodale)
-  - [2024年最新发展 / Latest Developments 2024 / Neueste Entwicklungen 2024 / Derniers développements 2024](#2024年最新发展--latest-developments-2024--neueste-entwicklungen-2024--derniers-développements-2024)
-    - [统一多模态架构 / Unified Multimodal Architecture / Einheitliche multimodale Architektur / Architecture multimodale unifiée](#统一多模态架构--unified-multimodal-architecture--einheitliche-multimodale-architektur--architecture-multimodale-unifiée)
-    - [神经符号融合 / Neural-Symbolic Fusion / Neuronale-symbolische Fusion / Fusion neuro-symbolique](#神经符号融合--neural-symbolic-fusion--neuronale-symbolische-fusion--fusion-neuro-symbolique)
-    - [自适应融合机制 / Adaptive Fusion Mechanisms / Adaptive Fusionsmechanismen / Mécanismes de fusion adaptative](#自适应融合机制--adaptive-fusion-mechanisms--adaptive-fusionsmechanismen--mécanismes-de-fusion-adaptative)
+  - [2024/2025 最新进展 / Latest Updates 2024/2025](#20242025-最新进展--latest-updates-20242025)
+    - [多模态融合形式化理论框架 / Multimodal Fusion Formal Theoretical Framework](#多模态融合形式化理论框架--multimodal-fusion-formal-theoretical-framework)
+      - [1. 多模态融合代数理论 / Multimodal Fusion Algebra Theory](#1-多模态融合代数理论--multimodal-fusion-algebra-theory)
+      - [2. 融合稳定性理论 / Fusion Stability Theory](#2-融合稳定性理论--fusion-stability-theory)
+      - [3. 融合可识别性理论 / Fusion Identifiability Theory](#3-融合可识别性理论--fusion-identifiability-theory)
+      - [4. 融合泛化界 / Fusion Generalization Bounds](#4-融合泛化界--fusion-generalization-bounds)
+    - [统一多模态架构理论 / Unified Multimodal Architecture Theory](#统一多模态架构理论--unified-multimodal-architecture-theory)
+    - [神经符号融合理论 / Neural-Symbolic Fusion Theory](#神经符号融合理论--neural-symbolic-fusion-theory)
+    - [自适应融合机制理论 / Adaptive Fusion Mechanism Theory](#自适应融合机制理论--adaptive-fusion-mechanism-theory)
+    - [前沿融合技术理论 / Cutting-edge Fusion Technology Theory](#前沿融合技术理论--cutting-edge-fusion-technology-theory)
+      - [层次化融合理论 / Hierarchical Fusion Theory](#层次化融合理论--hierarchical-fusion-theory)
+      - [动态融合理论 / Dynamic Fusion Theory](#动态融合理论--dynamic-fusion-theory)
+    - [Lean 4 形式化实现 / Lean 4 Formal Implementation](#lean-4-形式化实现--lean-4-formal-implementation)
     - [0. 注意力融合与门控 / Attention Fusion and Gating / Aufmerksamkeitsfusion und Gate / Fusion par attention et portes](#0-注意力融合与门控--attention-fusion-and-gating--aufmerksamkeitsfusion-und-gate--fusion-par-attention-et-portes)
       - [Rust示例：简单门控融合](#rust示例简单门控融合)
     - [Rust实现：SMT 一致性检查（伪实现）](#rust实现smt-一致性检查伪实现)
@@ -775,23 +785,23 @@ impl MultimodalFusion {
 
     fn early_fusion(&self) -> Vec<f64> {
         let mut fused_features = Vec::new();
-        
+
         for modality in &self.modalities {
             let features = self.extract_features(modality);
             fused_features.extend(features);
         }
-        
+
         fused_features
     }
 
     fn late_fusion(&self) -> Vec<f64> {
         let mut decisions = Vec::new();
-        
+
         for modality in &self.modalities {
             let decision = self.make_decision(modality);
             decisions.push(decision);
         }
-        
+
         // 多数投票 / Majority voting / Mehrheitsabstimmung / Vote majoritaire
         self.majority_vote(&decisions)
     }
@@ -799,14 +809,14 @@ impl MultimodalFusion {
     fn attention_fusion(&self) -> Vec<f64> {
         let mut attention_weights = Vec::new();
         let mut features = Vec::new();
-        
+
         for modality in &self.modalities {
             let modality_features = self.extract_features(modality);
             let weight = self.compute_attention_weight(modality);
             attention_weights.push(weight);
             features.push(modality_features);
         }
-        
+
         // 加权融合 / Weighted fusion / Gewichtete Fusion / Fusion pondérée
         self.weighted_fusion(&features, &attention_weights)
     }
@@ -815,14 +825,14 @@ impl MultimodalFusion {
         if self.modalities.len() <= 1 {
             return self.extract_features(&self.modalities[0]);
         }
-        
+
         // 构建层次结构 / Build hierarchical structure / Baue hierarchische Struktur / Construire la structure hiérarchique
         let mut levels = Vec::new();
         let mut current_level = self.modalities.clone();
-        
+
         while current_level.len() > 1 {
             let mut next_level = Vec::new();
-            
+
             for chunk in current_level.chunks(2) {
                 if chunk.len() == 2 {
                     let fused = self.fuse_pair(&chunk[0], &chunk[1]);
@@ -831,29 +841,29 @@ impl MultimodalFusion {
                     next_level.push(chunk[0].clone());
                 }
             }
-            
+
             levels.push(current_level.clone());
             current_level = next_level;
         }
-        
+
         self.extract_features(&current_level[0])
     }
 
     fn dynamic_fusion(&self) -> Vec<f64> {
         let mut adaptive_weights = Vec::new();
-        
+
         // 计算自适应权重 / Calculate adaptive weights / Berechne adaptive Gewichte / Calculer les poids adaptatifs
         for modality in &self.modalities {
             let weight = self.compute_adaptive_weight(modality);
             adaptive_weights.push(weight);
         }
-        
+
         // 归一化权重 / Normalize weights / Normalisiere Gewichte / Normaliser les poids
         let sum: f64 = adaptive_weights.iter().sum();
         for weight in &mut adaptive_weights {
             *weight /= sum;
         }
-        
+
         // 加权融合 / Weighted fusion / Gewichtete Fusion / Fusion pondérée
         let mut fused_features = Vec::new();
         for (i, modality) in self.modalities.iter().enumerate() {
@@ -861,7 +871,7 @@ impl MultimodalFusion {
             let weighted_features: Vec<f64> = features.iter()
                 .map(|&x| x * adaptive_weights[i])
                 .collect();
-            
+
             if fused_features.is_empty() {
                 fused_features = weighted_features;
             } else {
@@ -872,7 +882,7 @@ impl MultimodalFusion {
                 }
             }
         }
-        
+
         fused_features
     }
 
@@ -929,7 +939,7 @@ impl MultimodalFusion {
     fn weighted_fusion(&self, features: &[Vec<f64>], weights: &[f64]) -> Vec<f64> {
         let max_len = features.iter().map(|f| f.len()).max().unwrap_or(0);
         let mut fused = vec![0.0; max_len];
-        
+
         for (feature_set, &weight) in features.iter().zip(weights.iter()) {
             for (i, &feature) in feature_set.iter().enumerate() {
                 if i < fused.len() {
@@ -937,14 +947,14 @@ impl MultimodalFusion {
                 }
             }
         }
-        
+
         fused
     }
 
     fn fuse_pair(&self, modality1: &Modality, modality2: &Modality) -> Vec<f64> {
         let features1 = self.extract_features(modality1);
         let features2 = self.extract_features(modality2);
-        
+
         // 简单连接 / Simple concatenation / Einfache Verkettung / Concaténation simple
         let mut fused = features1;
         fused.extend(features2);
@@ -986,20 +996,20 @@ impl HierarchicalFusion {
 
     fn fuse_hierarchically(&self) -> Vec<f64> {
         let mut current_level_results = Vec::new();
-        
+
         // 处理每一层 / Process each level / Verarbeite jede Ebene / Traiter chaque niveau
         for level in &self.levels {
             let level_fusion = MultimodalFusion::new(self.fusion_strategy.clone());
             let mut fusion = level_fusion;
-            
+
             for modality in &level.modalities {
                 fusion.add_modality(modality.clone());
             }
-            
+
             let level_result = fusion.fuse();
             current_level_results.push(level_result);
         }
-        
+
         // 融合所有层级的结果 / Fuse results from all levels / Fusiere Ergebnisse aller Ebenen / Fusionner les résultats de tous les niveaux
         self.fuse_level_results(&current_level_results)
     }
@@ -1008,15 +1018,15 @@ impl HierarchicalFusion {
         if level_results.is_empty() {
             return Vec::new();
         }
-        
+
         if level_results.len() == 1 {
             return level_results[0].clone();
         }
-        
+
         // 加权融合所有层级 / Weighted fusion of all levels / Gewichtete Fusion aller Ebenen / Fusion pondérée de tous les niveaux
         let mut fused = vec![0.0; level_results[0].len()];
         let weight = 1.0 / level_results.len() as f64;
-        
+
         for result in level_results {
             for (i, &value) in result.iter().enumerate() {
                 if i < fused.len() {
@@ -1024,20 +1034,20 @@ impl HierarchicalFusion {
                 }
             }
         }
-        
+
         fused
     }
 }
 
 fn main() {
     println!("=== 多模态融合示例 / Multimodal Fusion Example ===");
-    
+
     // 创建不同模态的数据 / Create data from different modalities / Erstelle Daten aus verschiedenen Modalitäten / Créer des données de différentes modalités
     let visual_data = Modality::Visual(vec![0.1, 0.2, 0.3, 0.4, 0.5]);
     let language_data = Modality::Language(vec!["hello".to_string(), "world".to_string()]);
     let audio_data = Modality::Audio(vec![0.6, 0.7, 0.8, 0.9, 1.0]);
     let text_data = Modality::Text(vec!["example".to_string(), "text".to_string()]);
-    
+
     // 测试不同融合策略 / Test different fusion strategies / Teste verschiedene Fusionsstrategien / Tester différentes stratégies de fusion
     let strategies = vec![
         FusionStrategy::Early,
@@ -1046,35 +1056,35 @@ fn main() {
         FusionStrategy::Hierarchical,
         FusionStrategy::Dynamic,
     ];
-    
+
     for strategy in strategies {
         let mut fusion = MultimodalFusion::new(strategy.clone());
         fusion.add_modality(visual_data.clone());
         fusion.add_modality(language_data.clone());
         fusion.add_modality(audio_data.clone());
         fusion.add_modality(text_data.clone());
-        
+
         let result = fusion.fuse();
         println!("{:?} fusion result length: {}", strategy, result.len());
         println!("First few values: {:?}", &result[..result.len().min(5)]);
     }
-    
+
     // 层次融合示例 / Hierarchical fusion example / Hierarchische Fusion Beispiel / Exemple de fusion hiérarchique
     let mut hierarchical_fusion = HierarchicalFusion::new(FusionStrategy::Attention);
-    
+
     let level1 = FusionLevel {
         modalities: vec![visual_data.clone(), language_data.clone()],
         fusion_weights: vec![0.6, 0.4],
     };
-    
+
     let level2 = FusionLevel {
         modalities: vec![audio_data.clone(), text_data.clone()],
         fusion_weights: vec![0.7, 0.3],
     };
-    
+
     hierarchical_fusion.add_level(level1);
     hierarchical_fusion.add_level(level2);
-    
+
     let hierarchical_result = hierarchical_fusion.fuse_hierarchically();
     println!("Hierarchical fusion result length: {}", hierarchical_result.len());
 }
@@ -1133,28 +1143,28 @@ fuse fusion = case strategy fusion of
     Dynamic -> dynamicFusion fusion
 
 earlyFusion :: MultimodalFusion -> [Double]
-earlyFusion fusion = 
+earlyFusion fusion =
     concatMap extractFeatures (modalities fusion)
 
 lateFusion :: MultimodalFusion -> [Double]
-lateFusion fusion = 
+lateFusion fusion =
     let decisions = map makeDecision (modalities fusion)
     in majorityVote decisions
 
 attentionFusion :: MultimodalFusion -> [Double]
-attentionFusion fusion = 
+attentionFusion fusion =
     let features = map extractFeatures (modalities fusion)
         weights = map computeAttentionWeight (modalities fusion)
     in weightedFusion features weights
 
 hierarchicalFusion :: MultimodalFusion -> [Double]
-hierarchicalFusion fusion = 
+hierarchicalFusion fusion =
     if length (modalities fusion) <= 1
     then extractFeatures (head (modalities fusion))
     else hierarchicalFusionRecursive (modalities fusion)
 
 dynamicFusion :: MultimodalFusion -> [Double]
-dynamicFusion fusion = 
+dynamicFusion fusion =
     let adaptiveWeights = map computeAdaptiveWeight (modalities fusion)
         normalizedWeights = normalizeWeights adaptiveWeights
         features = map extractFeatures (modalities fusion)
@@ -1163,19 +1173,19 @@ dynamicFusion fusion =
 -- 辅助函数 / Helper functions / Hilfsfunktionen / Fonctions auxiliaires
 extractFeatures :: Modality -> [Double]
 extractFeatures (Visual features) = features
-extractFeatures (Language text) = 
+extractFeatures (Language text) =
     concatMap (\word -> map (\b -> fromIntegral b / 255.0) (map ord word)) text
 extractFeatures (Audio features) = features
-extractFeatures (Text text) = 
+extractFeatures (Text text) =
     concatMap (\word -> map (\b -> fromIntegral b / 255.0) (map ord word)) text
 
 makeDecision :: Modality -> Double
-makeDecision modality = 
+makeDecision modality =
     let features = extractFeatures modality
     in sum features / fromIntegral (length features)
 
 majorityVote :: [Double] -> [Double]
-majorityVote decisions = 
+majorityVote decisions =
     let avgDecision = sum decisions / fromIntegral (length decisions)
     in [avgDecision]
 
@@ -1186,23 +1196,23 @@ computeAttentionWeight (Audio _) = 0.2
 computeAttentionWeight (Text _) = 0.1
 
 weightedFusion :: [[Double]] -> [Double] -> [Double]
-weightedFusion features weights = 
+weightedFusion features weights =
     let maxLen = maximum (map length features)
         paddedFeatures = map (\f -> f ++ replicate (maxLen - length f) 0.0) features
         fused = zipWith (\featureSet weight -> map (* weight) featureSet) paddedFeatures weights
     in foldl1 (zipWith (+)) fused
 
 hierarchicalFusionRecursive :: [Modality] -> [Double]
-hierarchicalFusionRecursive modalities = 
+hierarchicalFusionRecursive modalities =
     if length modalities <= 1
     then extractFeatures (head modalities)
-    else 
+    else
         let pairs = chunksOf 2 modalities
             fusedPairs = map fusePair pairs
         in hierarchicalFusionRecursive fusedPairs
 
 fusePair :: [Modality] -> Modality
-fusePair [mod1, mod2] = 
+fusePair [mod1, mod2] =
     let features1 = extractFeatures mod1
         features2 = extractFeatures mod2
     in Visual (features1 ++ features2)
@@ -1210,13 +1220,13 @@ fusePair [mod1] = mod1
 fusePair _ = Visual []
 
 computeAdaptiveWeight :: Modality -> Double
-computeAdaptiveWeight modality = 
+computeAdaptiveWeight modality =
     let features = extractFeatures modality
         quality = sum (map abs features)
     in quality / fromIntegral (length features)
 
 normalizeWeights :: [Double] -> [Double]
-normalizeWeights weights = 
+normalizeWeights weights =
     let sum = sum weights
     in map (/ sum) weights
 
@@ -1228,12 +1238,12 @@ addLevel :: HierarchicalFusion -> FusionLevel -> HierarchicalFusion
 addLevel fusion level = fusion { levels = level : levels fusion }
 
 fuseHierarchically :: HierarchicalFusion -> [Double]
-fuseHierarchically fusion = 
+fuseHierarchically fusion =
     let levelResults = map fuseLevel (levels fusion)
     in fuseLevelResults levelResults
 
 fuseLevel :: FusionLevel -> [Double]
-fuseLevel level = 
+fuseLevel level =
     let fusion = newMultimodalFusion (fusionStrategy fusion)
         fusionWithModalities = foldl addModality fusion (levelModalities level)
     in fuse fusionWithModalities
@@ -1241,7 +1251,7 @@ fuseLevel level =
 fuseLevelResults :: [[Double]] -> [Double]
 fuseLevelResults [] = []
 fuseLevelResults [result] = result
-fuseLevelResults results = 
+fuseLevelResults results =
     let maxLen = maximum (map length results)
         paddedResults = map (\r -> r ++ replicate (maxLen - length r) 0.0) results
         weight = 1.0 / fromIntegral (length results)
@@ -1259,20 +1269,20 @@ newDynamicFusion :: FusionStrategy -> DynamicFusion
 newDynamicFusion strategy = DynamicFusion [] [] strategy
 
 adaptiveFusion :: DynamicFusion -> [Modality] -> [Double]
-adaptiveFusion fusion modalities = 
+adaptiveFusion fusion modalities =
     let weights = map computeAdaptiveWeight modalities
         normalizedWeights = normalizeWeights weights
         features = map extractFeatures modalities
     in weightedFusion features normalizedWeights
 
 gatedFusion :: DynamicFusion -> [Modality] -> [Double]
-gatedFusion fusion modalities = 
+gatedFusion fusion modalities =
     let gates = map computeGate modalities
         features = map extractFeatures modalities
     in weightedFusion features gates
 
 computeGate :: Modality -> Double
-computeGate modality = 
+computeGate modality =
     let features = extractFeatures modality
         gate = sum features / fromIntegral (length features)
     in sigmoid gate
@@ -1284,47 +1294,47 @@ sigmoid x = 1.0 / (1.0 + exp (-x))
 main :: IO ()
 main = do
     putStrLn "=== 多模态融合示例 / Multimodal Fusion Example ==="
-    
+
     -- 创建测试数据 / Create test data / Erstelle Testdaten / Créer des données de test
     let visualData = Visual [0.1, 0.2, 0.3, 0.4, 0.5]
     let languageData = Language ["hello", "world"]
     let audioData = Audio [0.6, 0.7, 0.8, 0.9, 1.0]
     let textData = Text ["example", "text"]
-    
+
     -- 测试不同融合策略 / Test different fusion strategies / Teste verschiedene Fusionsstrategien / Tester différentes stratégies de fusion
     let strategies = [Early, Late, Attention, Hierarchical, Dynamic]
-    
+
     mapM_ (\strategy -> do
         let fusion = newMultimodalFusion strategy
         let fusion1 = addModality fusion visualData
         let fusion2 = addModality fusion1 languageData
         let fusion3 = addModality fusion2 audioData
         let fusion4 = addModality fusion3 textData
-        
+
         let result = fuse fusion4
         putStrLn $ show strategy ++ " fusion result length: " ++ show (length result)
         putStrLn $ "First few values: " ++ show (take 5 result)
         ) strategies
-    
+
     -- 层次融合示例 / Hierarchical fusion example / Hierarchische Fusion Beispiel / Exemple de fusion hiérarchique
     let hierarchicalFusion = newHierarchicalFusion Attention
-    
+
     let level1 = FusionLevel [visualData, languageData] [0.6, 0.4]
     let level2 = FusionLevel [audioData, textData] [0.7, 0.3]
-    
+
     let hierarchicalFusion1 = addLevel hierarchicalFusion level1
     let hierarchicalFusion2 = addLevel hierarchicalFusion1 level2
-    
+
     let hierarchicalResult = fuseHierarchically hierarchicalFusion2
     putStrLn $ "Hierarchical fusion result length: " ++ show (length hierarchicalResult)
-    
+
     -- 动态融合示例 / Dynamic fusion example / Dynamische Fusion Beispiel / Exemple de fusion dynamique
     let dynamicFusion = newDynamicFusion Attention
     let modalities = [visualData, languageData, audioData, textData]
-    
+
     let adaptiveResult = adaptiveFusion dynamicFusion modalities
     let gatedResult = gatedFusion dynamicFusion modalities
-    
+
     putStrLn $ "Adaptive fusion result length: " ++ show (length adaptiveResult)
     putStrLn $ "Gated fusion result length: " ++ show (length gatedResult)
 ```

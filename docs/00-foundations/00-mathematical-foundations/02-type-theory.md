@@ -4,7 +4,7 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-类型理论是现代数学和计算机科学的基础，为FormalAI提供严格的类型系统和证明理论。本模块建立完整的类型理论基础，包括简单类型理论、依赖类型理论和同伦类型理论。
+类型理论是现代数学和计算机科学的基础，为 FormalAI 提供严格的类型系统和证明理论。本模块建立完整的类型理论基础，包括简单类型理论、依赖类型理论和同伦类型理论。
 
 Type theory is the foundation of modern mathematics and computer science, providing FormalAI with rigorous type systems and proof theory. This module establishes a complete foundation of type theory, including simple type theory, dependent type theory, and homotopy type theory.
 
@@ -18,7 +18,7 @@ Type theory is the foundation of modern mathematics and computer science, provid
   - [3. 同伦类型理论](#3-同伦类型理论--homotopy-type-theory--homotopie-typentheorie--théorie-des-types-homotopiques)
   - [4. 类型系统设计](#4-类型系统设计--type-system-design--typsystem-design--conception-de-système-de-types)
   - [5. 类型安全](#5-类型安全--type-safety--typsicherheit--sécurité-des-types)
-  - [6. AI中的类型理论应用](#6-ai中的类型理论应用--type-theoretic-applications-in-ai--typentheoretische-anwendungen-in-der-ki--applications-théoriques-des-types-dans-lia)
+  - [6. AI 中的类型理论应用](#6-ai中的类型理论应用--type-theoretic-applications-in-ai--typentheoretische-anwendungen-in-der-ki--applications-théoriques-des-types-dans-lia)
   - [代码实现](#代码实现--code-implementation--code-implementierung--implémentation-de-code)
   - [参考文献](#参考文献--references--literatur--références)
 
@@ -207,7 +207,7 @@ $$(A \simeq B) \simeq (A \equiv B)$$
 
 ### 4.1 类型推断 / Type Inference / Typinferenz / Inférence de types
 
-**算法 4.1.1 (Hindley-Milner类型推断)**:
+**算法 4.1.1 (Hindley-Milner 类型推断)**:
 
 ```haskell
 type Infer a = State (Int, Map String Type) a
@@ -262,10 +262,10 @@ check (App f arg) (Infer) = do
 ### 5.1 类型安全定理 / Type Safety Theorems / Typsicherheitssätze / Théorèmes de sécurité des types
 
 **定理 5.1.1 (强标准化)**
-在简单类型λ演算中，每个良类型项都是强标准化的。
+在简单类型 λ 演算中，每个良类型项都是强标准化的。
 
 **证明：**
-使用Tait的饱和集合方法。定义饱和集合 $S_\tau$：
+使用 Tait 的饱和集合方法。定义饱和集合 $S_\tau$：
 
 - $S_{\text{Base}} = \{t : \text{Base} \mid t \text{ 强标准化}\}$
 - $S_{\tau \to \tau'} = \{t : \tau \to \tau' \mid \forall s \in S_\tau, t \ s \in S_{\tau'}\}$
@@ -288,7 +288,7 @@ $$\text{erase}(t_1 \ t_2) = \text{erase}(t_1) \ \text{erase}(t_2)$$
 **定理 5.2.1 (类型擦除保持语义)**
 如果 $\Gamma \vdash t : \tau$ 且 $t \to t'$，则 $\text{erase}(t) \to \text{erase}(t')$。
 
-## 6. AI中的类型理论应用 / Type-Theoretic Applications in AI / Typentheoretische Anwendungen in der KI / Applications théoriques des types dans l'IA
+## 6. AI 中的类型理论应用 / Type-Theoretic Applications in AI / Typentheoretische Anwendungen in der KI / Applications théoriques des types dans l'IA
 
 ### 6.1 机器学习类型系统 / Machine Learning Type System / Maschinelles Lernen Typsystem / Système de types d'apprentissage automatique
 
@@ -306,8 +306,8 @@ matmul : Tensor [m, k] Float -> Tensor [k, n] Float -> Tensor [m, n] Float
 
 ```haskell
 data Layer (input : Nat) (output : Nat) : Type where
-  Linear : (weights : Tensor [input, output] Float) 
-        -> (bias : Tensor [output] Float) 
+  Linear : (weights : Tensor [input, output] Float)
+        -> (bias : Tensor [output] Float)
         -> Layer input output
   ReLU : Layer n n
   Sigmoid : Layer n n
@@ -372,7 +372,7 @@ data ValueFunction (state : Type) : Type where
 
 ## 代码实现 / Code Implementation / Code-Implementierung / Implémentation de code
 
-### Rust实现：类型理论核心 / Rust Implementation: Type Theory Core
+### Rust 实现：类型理论核心 / Rust Implementation: Type Theory Core
 
 ```rust
 use std::collections::HashMap;
@@ -420,7 +420,7 @@ impl TypeChecker {
             universe_level: 0,
         }
     }
-    
+
     pub fn type_check(&mut self, term: &Term) -> Result<Type, String> {
         match term {
             Term::Var(x) => {
@@ -428,17 +428,17 @@ impl TypeChecker {
                     .ok_or_else(|| format!("Unbound variable: {}", x))
                     .map(|t| t.clone())
             }
-            
+
             Term::Lam(x, t, body) => {
                 self.context.insert(x.clone(), t.clone());
                 let body_type = self.type_check(body)?;
                 Ok(Type::Arrow(Box::new(t.clone()), Box::new(body_type)))
             }
-            
+
             Term::App(f, arg) => {
                 let f_type = self.type_check(f)?;
                 let arg_type = self.type_check(arg)?;
-                
+
                 match f_type {
                     Type::Arrow(t1, t2) => {
                         if t1.as_ref() == &arg_type {
@@ -450,13 +450,13 @@ impl TypeChecker {
                     _ => Err("Expected function type".to_string()),
                 }
             }
-            
+
             Term::Pair(t1, t2) => {
                 let type1 = self.type_check(t1)?;
                 let type2 = self.type_check(t2)?;
                 Ok(Type::Product(Box::new(type1), Box::new(type2)))
             }
-            
+
             Term::Proj1(t) => {
                 let t_type = self.type_check(t)?;
                 match t_type {
@@ -464,7 +464,7 @@ impl TypeChecker {
                     _ => Err("Expected product type".to_string()),
                 }
             }
-            
+
             Term::Proj2(t) => {
                 let t_type = self.type_check(t)?;
                 match t_type {
@@ -472,21 +472,21 @@ impl TypeChecker {
                     _ => Err("Expected product type".to_string()),
                 }
             }
-            
+
             Term::Refl(t) => {
                 let t_type = self.type_check(t)?;
                 Ok(Type::Path(Box::new(t_type), t.clone(), t.clone()))
             }
-            
+
             Term::Trans(p1, p2) => {
                 let p1_type = self.type_check(p1)?;
                 let p2_type = self.type_check(p2)?;
-                
+
                 match (p1_type, p2_type) {
                     (Type::Path(_, _, t1), Type::Path(_, t2, _)) => {
                         if t1 == t2 {
-                            Ok(Type::Path(Box::new(Type::Base("?".to_string())), 
-                                        Box::new(Term::Var("a".to_string())), 
+                            Ok(Type::Path(Box::new(Type::Base("?".to_string())),
+                                        Box::new(Term::Var("a".to_string())),
                                         Box::new(Term::Var("c".to_string()))))
                         } else {
                             Err("Path composition type mismatch".to_string())
@@ -495,7 +495,7 @@ impl TypeChecker {
                     _ => Err("Expected path types".to_string()),
                 }
             }
-            
+
             Term::Sym(p) => {
                 let p_type = self.type_check(p)?;
                 match p_type {
@@ -507,13 +507,13 @@ impl TypeChecker {
             }
         }
     }
-    
+
     pub fn normalize(&self, term: &Term) -> Term {
         match term {
             Term::App(f, arg) => {
                 let f_norm = self.normalize(f);
                 let arg_norm = self.normalize(arg);
-                
+
                 match f_norm {
                     Term::Lam(_, _, body) => {
                         self.substitute(body, &arg_norm)
@@ -521,7 +521,7 @@ impl TypeChecker {
                     _ => Term::App(Box::new(f_norm), Box::new(arg_norm)),
                 }
             }
-            
+
             Term::Proj1(t) => {
                 let t_norm = self.normalize(t);
                 match t_norm {
@@ -529,7 +529,7 @@ impl TypeChecker {
                     _ => Term::Proj1(Box::new(t_norm)),
                 }
             }
-            
+
             Term::Proj2(t) => {
                 let t_norm = self.normalize(t);
                 match t_norm {
@@ -537,11 +537,11 @@ impl TypeChecker {
                     _ => Term::Proj2(Box::new(t_norm)),
                 }
             }
-            
+
             _ => term.clone(),
         }
     }
-    
+
     fn substitute(&self, term: &Term, replacement: &Term) -> Term {
         match term {
             Term::Var(x) => {
@@ -578,33 +578,33 @@ impl DependentTypeChecker {
             universe_level: 0,
         }
     }
-    
+
     pub fn check_dependent_pi(&mut self, x: &str, a: &Type, b: &Type) -> Result<Type, String> {
         // 检查 A 是类型
         self.check_type(a)?;
-        
+
         // 在上下文中添加 x : A
         self.context.insert(x.to_string(), a.clone());
-        
+
         // 检查 B 是类型
         self.check_type(b)?;
-        
+
         Ok(Type::DependentPi(x.to_string(), Box::new(a.clone()), Box::new(b.clone())))
     }
-    
+
     pub fn check_dependent_sigma(&mut self, x: &str, a: &Type, b: &Type) -> Result<Type, String> {
         // 检查 A 是类型
         self.check_type(a)?;
-        
+
         // 在上下文中添加 x : A
         self.context.insert(x.to_string(), a.clone());
-        
+
         // 检查 B 是类型
         self.check_type(b)?;
-        
+
         Ok(Type::DependentSigma(x.to_string(), Box::new(a.clone()), Box::new(b.clone())))
     }
-    
+
     fn check_type(&self, t: &Type) -> Result<(), String> {
         match t {
             Type::Base(_) => Ok(()),
@@ -633,21 +633,21 @@ impl DependentTypeChecker {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_simple_type_checking() {
         let mut checker = TypeChecker::new();
-        
+
         // λx:Int. x
         let term = Term::Lam(
             "x".to_string(),
             Type::Base("Int".to_string()),
             Box::new(Term::Var("x".to_string()))
         );
-        
+
         let result = checker.type_check(&term);
         assert!(result.is_ok());
-        
+
         if let Ok(t) = result {
             assert_eq!(t, Type::Arrow(
                 Box::new(Type::Base("Int".to_string())),
@@ -655,11 +655,11 @@ mod tests {
             ));
         }
     }
-    
+
     #[test]
     fn test_beta_reduction() {
         let checker = TypeChecker::new();
-        
+
         // (λx:Int. x) 42
         let term = Term::App(
             Box::new(Term::Lam(
@@ -669,25 +669,25 @@ mod tests {
             )),
             Box::new(Term::Var("42".to_string()))
         );
-        
+
         let normalized = checker.normalize(&term);
         assert_eq!(normalized, Term::Var("42".to_string()));
     }
-    
+
     #[test]
     fn test_dependent_types() {
         let mut checker = DependentTypeChecker::new();
-        
+
         let a = Type::Base("Nat".to_string());
         let b = Type::Base("Vec".to_string());
-        
+
         let result = checker.check_dependent_pi("n", &a, &b);
         assert!(result.is_ok());
     }
 }
 ```
 
-### Haskell实现：高级类型理论 / Haskell Implementation: Advanced Type Theory
+### Haskell 实现：高级类型理论 / Haskell Implementation: Advanced Type Theory
 
 ```haskell
 {-# LANGUAGE GADTs, DataKinds, TypeFamilies, RankNTypes #-}
@@ -855,7 +855,7 @@ main = do
   let term = Lam "y" (BaseType "Int") (Var "y")
   let result = typeCheck ctx term
   print result
-  
+
   let app = App (Lam "x" (BaseType "Int") (Var "x")) (Var "42")
   let reduced = reduce app
   print reduced
@@ -863,23 +863,23 @@ main = do
 
 ## 参考文献 / References / Literatur / Références
 
-1. **Martin-Löf, P.** (1984). *Intuitionistic Type Theory*. Bibliopolis.
-2. **Univalent Foundations Program** (2013). *Homotopy Type Theory: Univalent Foundations of Mathematics*. Institute for Advanced Study.
-3. **Pierce, B. C.** (2002). *Types and Programming Languages*. MIT Press.
-4. **Harper, R.** (2016). *Practical Foundations for Programming Languages*. Cambridge University Press.
-5. **Coquand, T. & Huet, G.** (1988). *The Calculus of Constructions*. Information and Computation.
+1. **Martin-Löf, P.** (1984). _Intuitionistic Type Theory_. Bibliopolis.
+2. **Univalent Foundations Program** (2013). _Homotopy Type Theory: Univalent Foundations of Mathematics_. Institute for Advanced Study.
+3. **Pierce, B. C.** (2002). _Types and Programming Languages_. MIT Press.
+4. **Harper, R.** (2016). _Practical Foundations for Programming Languages_. Cambridge University Press.
+5. **Coquand, T. & Huet, G.** (1988). _The Calculus of Constructions_. Information and Computation.
 
 ---
 
-*本模块为FormalAI提供了严格的类型理论基础，确保AI系统的类型安全和形式化验证。*
+_本模块为 FormalAI 提供了严格的类型理论基础，确保 AI 系统的类型安全和形式化验证。_
 
-*This module provides FormalAI with rigorous type-theoretic foundations, ensuring type safety and formal verification of AI systems.*
+_This module provides FormalAI with rigorous type-theoretic foundations, ensuring type safety and formal verification of AI systems._
 
 ## 相关章节 / Related Chapters
 
 **前置依赖 / Prerequisites:**
 
-- [0.0 ZFC公理系统](00-set-theory-zfc.md)
+- [0.0 ZFC 公理系统](00-set-theory-zfc.md)
 - [0.1 范畴论](01-category-theory.md)
 
 **后续依赖 / Follow-ups:**
@@ -889,19 +889,19 @@ main = do
 
 ## 2024/2025 最新进展 / Latest Updates
 
-### 类型理论在AI中的前沿应用
+### 类型理论在 AI 中的前沿应用
 
 #### 1. 依赖类型在安全约束学习中的应用
 
-- **安全约束建模**: 使用依赖类型系统建模AI系统的安全约束
-- **类型安全保证**: 通过类型系统保证AI系统的行为安全性
+- **安全约束建模**: 使用依赖类型系统建模 AI 系统的安全约束
+- **类型安全保证**: 通过类型系统保证 AI 系统的行为安全性
 - **约束学习算法**: 基于依赖类型设计新的约束学习算法
 
 #### 2. 同伦类型理论与等价推理
 
 - **模型对齐理论**: 使用同伦类型理论建立模型对齐的数学基础
 - **等价推理**: 基于同伦类型理论进行等价推理，提高模型一致性
-- **路径类型应用**: 在AI系统中应用路径类型进行状态转换建模
+- **路径类型应用**: 在 AI 系统中应用路径类型进行状态转换建模
 
 #### 3. 类型理论在机器学习中的新进展
 
@@ -909,13 +909,13 @@ main = do
 - **概率类型**: 基于类型理论构建概率编程语言
 - **函数式机器学习**: 使用函数式编程和类型理论构建机器学习框架
 
-#### 4. 形式化验证与AI安全
+#### 4. 形式化验证与 AI 安全
 
 - **神经网络验证**: 使用类型理论验证神经网络的安全性
-- **程序综合**: 基于类型理论进行程序综合，生成安全的AI代码
-- **证明辅助**: 使用类型理论辅助AI系统的形式化证明
+- **程序综合**: 基于类型理论进行程序综合，生成安全的 AI 代码
+- **证明辅助**: 使用类型理论辅助 AI 系统的形式化证明
 
-### 2025年最新理论突破
+### 2025 年最新理论突破
 
 #### 1. 量子类型理论
 
@@ -994,17 +994,17 @@ $$\text{Prob}[A] = \{(a, p) : A \times [0,1] \mid \sum p = 1\}$$
 
 $$\text{ProbOp} : \text{Prob}[A] \to \text{Prob}[B] \to \text{Prob}[A \times B]$$
 
-### 2025年工程应用突破
+### 2025 年工程应用突破
 
 #### 1. 大模型类型系统
 
-**GPT-4o的类型理论分析**：
+**GPT-4o 的类型理论分析**：
 
 - 多模态类型：$\text{GPT4o} : \text{MultiModal}[\text{Text}, \text{Vision}, \text{Audio}] \to \text{Text}$
 - 类型安全保证：通过类型系统确保多模态输入的安全性
 - 动态类型推断：支持运行时类型推断和检查
 
-#### 2. 神经符号AI类型系统
+#### 2. 神经符号 AI 类型系统
 
 **神经符号推理系统**：
 
@@ -1022,7 +1022,7 @@ $$\text{ProbOp} : \text{Prob}[A] \to \text{Prob}[B] \to \text{Prob}[A \times B]$
 
 #### 4. 因果推理类型系统
 
-**因果AI系统**：
+**因果 AI 系统**：
 
 - 因果图类型：$\text{CausalGraph}[\text{Events}]$
 - 干预类型：$\text{Intervene} : \text{CausalGraph}[A] \to \text{CausalGraph}[B]$
@@ -1045,7 +1045,7 @@ $$\text{ProbOp} : \text{Prob}[A] \to \text{Prob}[B] \to \text{Prob}[A \times B]$
 - 奖励类型：$\text{Reward}[\text{Env}]$
 - 策略类型：$\text{Policy} : \text{State}[\text{Env}] \to \text{Action}[\text{Env}]$
 
-### 2025年形式化验证突破
+### 2025 年形式化验证突破
 
 #### 1. 神经网络形式化验证
 
@@ -1117,7 +1117,7 @@ def Context := List (String × Type)
 def typeCheck (ctx : Context) (term : Term) : Option Type :=
   match term with
   | Term.var x => ctx.lookup x
-  | Term.lam x ty body => 
+  | Term.lam x ty body =>
     match typeCheck ((x, ty) :: ctx) body with
     | some body_ty => some (Type.arrow ty body_ty)
     | none => none
@@ -1164,7 +1164,7 @@ def typeCheck (ctx : Context) (term : Term) : Option Type :=
 -- 求值
 def evaluate (term : Term) : Term :=
   match term with
-  | Term.app (Term.lam x _ body) arg => 
+  | Term.app (Term.lam x _ body) arg =>
     substitute body x arg
   | Term.fst (Term.pair a _) => a
   | Term.snd (Term.pair _ b) => b
@@ -1176,7 +1176,7 @@ def evaluate (term : Term) : Term :=
 def substitute (term : Term) (x : String) (replacement : Term) : Term :=
   match term with
   | Term.var y => if x = y then replacement else term
-  | Term.lam y ty body => 
+  | Term.lam y ty body =>
     if x = y then term else Term.lam y ty (substitute body x replacement)
   | Term.app f arg => Term.app (substitute f x replacement) (substitute arg x replacement)
   | Term.pair a b => Term.pair (substitute a x replacement) (substitute b x replacement)
@@ -1185,9 +1185,9 @@ def substitute (term : Term) (x : String) (replacement : Term) : Term :=
   | Term.inl t ty => Term.inl (substitute t x replacement) ty
   | Term.inr t ty => Term.inr (substitute t x replacement) ty
   | Term.case scrut x_left left x_right right =>
-    Term.case (substitute scrut x replacement) x_left 
+    Term.case (substitute scrut x replacement) x_left
               (if x = x_left then left else substitute left x replacement)
-              x_right 
+              x_right
               (if x = x_right then right else substitute right x replacement)
   | _ => term
 
@@ -1237,11 +1237,11 @@ def path_trans {A : Type} {a b c : A} : Path A a b → Path A b c → Path A a c
   | Path.refl, Path.refl => Path.refl
 
 -- 函数外延性
-axiom funext {A B : Type} {f g : A → B} : 
+axiom funext {A B : Type} {f g : A → B} :
   (∀ x : A, Path B (f x) (g x)) → Path (A → B) f g
 
 -- 单值公理
-axiom univalence {A B : Type} : 
+axiom univalence {A B : Type} :
   Equiv A B → Path Type A B
 
 -- 高阶归纳类型
@@ -1284,11 +1284,11 @@ structure Optimizer where
   learning_rate : Float
 
 -- 训练循环类型
-def train_step (network : Network layers) 
+def train_step (network : Network layers)
                (loss_fn : LossFunction input_dim output_dim)
                (optimizer : Optimizer)
                (input : Tensor [input_dim] Float)
-               (target : Tensor [output_dim] Float) : 
+               (target : Tensor [output_dim] Float) :
   Network layers :=
   -- 前向传播
   let output := forward network input

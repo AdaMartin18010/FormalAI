@@ -467,13 +467,13 @@ impl TypeEnvironment {
             bindings: HashMap::new(),
         }
     }
-    
+
     pub fn extend(&self, name: &str, ty: Type) -> Self {
         let mut new_env = self.clone();
         new_env.bindings.insert(name.to_string(), ty);
         new_env
     }
-    
+
     pub fn get(&self, name: &str) -> Option<&Type> {
         self.bindings.get(name)
     }
@@ -500,7 +500,7 @@ impl TypeChecker {
             type_vars: HashMap::new(),
         }
     }
-    
+
     /// 类型检查 / Type Check
     pub fn type_check(&self, env: &TypeEnvironment, term: &Term) -> Result<Type, TypeError> {
         match term {
@@ -515,7 +515,7 @@ impl TypeChecker {
             Term::App(f, arg) => {
                 let func_type = self.type_check(env, f)?;
                 let arg_type = self.type_check(env, arg)?;
-                
+
                 match func_type {
                     Type::Arrow(param_type, return_type) => {
                         if *param_type == arg_type {
@@ -532,7 +532,7 @@ impl TypeChecker {
             Term::Add(l, r) => {
                 let left_type = self.type_check(env, l)?;
                 let right_type = self.type_check(env, r)?;
-                
+
                 if left_type == Type::Int && right_type == Type::Int {
                     Ok(Type::Int)
                 } else {
@@ -582,7 +582,7 @@ impl TypeChecker {
                         let env2 = env.extend(x2, *right_type);
                         let type1 = self.type_check(&env1, e1)?;
                         let type2 = self.type_check(&env2, e2)?;
-                        
+
                         if type1 == type2 {
                             Ok(type1)
                         } else {
@@ -637,7 +637,7 @@ impl TypeChecker {
             }
         }
     }
-    
+
     /// 类型推导 / Type Inference
     pub fn type_infer(&self, env: &TypeEnvironment, term: &Term) -> Result<(Type, Substitution), TypeError> {
         match term {
@@ -674,7 +674,7 @@ impl TypeChecker {
             _ => Err(TypeError::TypeMismatch)
         }
     }
-    
+
     /// 类型统一 / Type Unification
     fn unify(&self, t1: Type, t2: Type) -> Result<Substitution, TypeError> {
         match (t1, t2) {
@@ -695,7 +695,7 @@ impl TypeChecker {
             _ => Err(TypeError::UnificationFailure)
         }
     }
-    
+
     /// 出现检查 / Occurs Check
     fn occurs_in(&self, var: &str, ty: &Type) -> bool {
         match ty {
@@ -723,13 +723,13 @@ impl Substitution {
             mappings: HashMap::new(),
         }
     }
-    
+
     pub fn single(var: String, ty: Type) -> Self {
         let mut mappings = HashMap::new();
         mappings.insert(var, ty);
         Self { mappings }
     }
-    
+
     pub fn compose(&self, other: Substitution) -> Substitution {
         let mut new_mappings = self.mappings.clone();
         for (var, ty) in other.mappings {
@@ -737,7 +737,7 @@ impl Substitution {
         }
         Substitution { mappings: new_mappings }
     }
-    
+
     pub fn apply(&self, ty: &Type) -> Type {
         match ty {
             Type::Var(x) => self.mappings.get(x).cloned().unwrap_or(ty.clone()),
@@ -807,52 +807,52 @@ impl Type {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_type_checking() {
         let checker = TypeChecker::new();
         let env = TypeEnvironment::new();
-        
+
         // 测试基本类型 / Test basic types
         let bool_term = Term::Bool(true);
         let result = checker.type_check(&env, &bool_term);
         assert!(result.is_ok());
         assert_eq!(result.unwrap(), Type::Bool);
-        
+
         let int_term = Term::Int(42);
         let result = checker.type_check(&env, &int_term);
         assert!(result.is_ok());
         assert_eq!(result.unwrap(), Type::Int);
-        
+
         // 测试函数类型 / Test function types
         let abs_term = Term::Abs("x".to_string(), Type::Int, Box::new(Term::Var("x".to_string())));
         let result = checker.type_check(&env, &abs_term);
         assert!(result.is_ok());
         assert_eq!(result.unwrap(), Type::Arrow(Box::new(Type::Int), Box::new(Type::Int)));
     }
-    
+
     #[test]
     fn test_type_inference() {
         let checker = TypeChecker::new();
         let env = TypeEnvironment::new();
-        
+
         // 测试类型推导 / Test type inference
         let abs_term = Term::Abs("x".to_string(), Type::Int, Box::new(Term::Var("x".to_string())));
         let result = checker.type_infer(&env, &abs_term);
         assert!(result.is_ok());
-        
+
         let (inferred_type, _) = result.unwrap();
         assert_eq!(inferred_type, Type::Arrow(Box::new(Type::Int), Box::new(Type::Int)));
     }
-    
+
     #[test]
     fn test_type_unification() {
         let checker = TypeChecker::new();
-        
+
         // 测试类型统一 / Test type unification
         let t1 = Type::Arrow(Box::new(Type::Var("α".to_string())), Box::new(Type::Int));
         let t2 = Type::Arrow(Box::new(Type::Int), Box::new(Type::Var("β".to_string())));
-        
+
         let result = checker.unify(t1, t2);
         assert!(result.is_ok());
     }
@@ -896,133 +896,133 @@ createTypeChecker = TypeChecker Map.empty
 
 -- 类型检查 / Type Check
 typeCheck :: TypeChecker -> TypeEnvironment -> Term -> Either TypeError Type
-typeCheck checker env term = 
+typeCheck checker env term =
     case term of
-        Var x -> 
+        Var x ->
             case Map.lookup x env of
                 Just t -> Right t
                 Nothing -> Left UnboundVariable
-        
-        Abs x t body -> 
+
+        Abs x t body ->
             let newEnv = Map.insert x t env
                 bodyType = typeCheck checker newEnv body
             in case bodyType of
                 Right bt -> Right (TArrow t bt)
                 Left err -> Left err
-        
-        App f arg -> 
+
+        App f arg ->
             let funcType = typeCheck checker env f
                 argType = typeCheck checker env arg
             in case (funcType, argType) of
                 (Right (TArrow paramType returnType), Right argT) ->
-                    if paramType == argT 
+                    if paramType == argT
                         then Right returnType
                         else Left TypeMismatch
                 (Right _, Right _) -> Left NotAFunction
                 (Left err, _) -> Left err
                 (_, Left err) -> Left err
-        
+
         Bool _ -> Right TBool
         Int _ -> Right TInt
-        
-        Add l r -> 
+
+        Add l r ->
             let leftType = typeCheck checker env l
                 rightType = typeCheck checker env r
             in case (leftType, rightType) of
                 (Right TInt, Right TInt) -> Right TInt
                 _ -> Left TypeMismatch
-        
-        Pair l r -> 
+
+        Pair l r ->
             let leftType = typeCheck checker env l
                 rightType = typeCheck checker env r
             in case (leftType, rightType) of
                 (Right lt, Right rt) -> Right (TProduct lt rt)
                 (Left err, _) -> Left err
                 (_, Left err) -> Left err
-        
-        Fst p -> 
+
+        Fst p ->
             let pairType = typeCheck checker env p
             in case pairType of
                 Right (TProduct leftType _) -> Right leftType
                 Right _ -> Left TypeMismatch
                 Left err -> Left err
-        
-        Snd p -> 
+
+        Snd p ->
             let pairType = typeCheck checker env p
             in case pairType of
                 Right (TProduct _ rightType) -> Right rightType
                 Right _ -> Left TypeMismatch
                 Left err -> Left err
-        
-        Inl t ty -> 
+
+        Inl t ty ->
             let termType = typeCheck checker env t
             in case termType of
-                Right tt -> 
-                    if tt == ty 
+                Right tt ->
+                    if tt == ty
                         then Right (TSum ty (TVar "_"))
                         else Left TypeMismatch
                 Left err -> Left err
-        
-        Inr t ty -> 
+
+        Inr t ty ->
             let termType = typeCheck checker env t
             in case termType of
-                Right tt -> 
-                    if tt == ty 
+                Right tt ->
+                    if tt == ty
                         then Right (TSum (TVar "_") ty)
                         else Left TypeMismatch
                 Left err -> Left err
-        
-        Case t x1 e1 x2 e2 -> 
+
+        Case t x1 e1 x2 e2 ->
             let sumType = typeCheck checker env t
             in case sumType of
-                Right (TSum leftType rightType) -> 
+                Right (TSum leftType rightType) ->
                     let env1 = Map.insert x1 leftType env
                         env2 = Map.insert x2 rightType env
                         type1 = typeCheck checker env1 e1
                         type2 = typeCheck checker env2 e2
                     in case (type1, type2) of
-                        (Right t1, Right t2) -> 
-                            if t1 == t2 
+                        (Right t1, Right t2) ->
+                            if t1 == t2
                                 then Right t1
                                 else Left TypeMismatch
                         (Left err, _) -> Left err
                         (_, Left err) -> Left err
                 Right _ -> Left TypeMismatch
                 Left err -> Left err
-        
-        Pack ty term existType -> 
+
+        Pack ty term existType ->
             let termType = typeCheck checker env term
             in case termType of
-                Right tt -> 
-                    if tt == ty 
+                Right tt ->
+                    if tt == ty
                         then Right (TExists "α" existType)
                         else Left TypeMismatch
                 Left err -> Left err
-        
-        Unpack alpha x pack body -> 
+
+        Unpack alpha x pack body ->
             let packType = typeCheck checker env pack
             in case packType of
-                Right (TExists var existType) -> 
+                Right (TExists var existType) ->
                     let newEnv = Map.insert x existType env
                         bodyType = typeCheck checker newEnv body
                     in bodyType
                 Right _ -> Left TypeMismatch
                 Left err -> Left err
-        
-        Fold term recType -> 
+
+        Fold term recType ->
             let termType = typeCheck checker env term
             in case (termType, recType) of
-                (Right tt, TRec var body) -> 
+                (Right tt, TRec var body) ->
                     let unfoldedType = substitute var recType body
-                    in if tt == unfoldedType 
+                    in if tt == unfoldedType
                         then Right recType
                         else Left TypeMismatch
                 _ -> Left TypeMismatch
-        
-        Unfold term -> 
+
+        Unfold term ->
             let recType = typeCheck checker env term
             in case recType of
-                Right (TRec var body) -> 
+                Right (TRec var body) ->
                     let unfoldedType = substitute var recType body
                     in Right unfoldedType
                 Right _ -> Left TypeMismatch
@@ -1030,14 +1030,14 @@ typeCheck checker env term =
 
 -- 类型推导 / Type Inference
 typeInfer :: TypeChecker -> TypeEnvironment -> Term -> Either TypeError (Type, Substitution)
-typeInfer checker env term = 
+typeInfer checker env term =
     case term of
-        Var x -> 
+        Var x ->
             case Map.lookup x env of
                 Just t -> Right (t, Map.empty)
                 Nothing -> Left UnboundVariable
-        
-        Abs x _ body -> 
+
+        Abs x _ body ->
             let paramType = TVar ("α_" ++ x)
                 newEnv = Map.insert x paramType env
                 (bodyType, subst) = typeInfer checker newEnv body
@@ -1045,17 +1045,17 @@ typeInfer checker env term =
                 (Right bt, Right s) -> Right (TArrow paramType bt, s)
                 (Left err, _) -> Left err
                 (_, Left err) -> Left err
-        
-        App f arg -> 
+
+        App f arg ->
             let (funcType, subst1) = typeInfer checker env f
                 (argType, subst2) = typeInfer checker env arg
             in case (funcType, argType) of
-                (Right ft, Right at) -> 
+                (Right ft, Right at) ->
                     let returnType = TVar "β"
                         arrowType = TArrow at returnType
                         subst3 = unify checker ft arrowType
                     in case (subst1, subst2, subst3) of
-                        (Right s1, Right s2, Right s3) -> 
+                        (Right s1, Right s2, Right s3) ->
                             let finalSubst = compose s1 (compose s2 s3)
                             in Right (returnType, finalSubst)
                         (Left err, _, _) -> Left err
@@ -1063,19 +1063,19 @@ typeInfer checker env term =
                         (_, _, Left err) -> Left err
                 (Left err, _) -> Left err
                 (_, Left err) -> Left err
-        
+
         Bool _ -> Right (TBool, Map.empty)
         Int _ -> Right (TInt, Map.empty)
-        
-        Add l r -> 
+
+        Add l r ->
             let (leftType, subst1) = typeInfer checker env l
                 (rightType, subst2) = typeInfer checker env r
             in case (leftType, rightType) of
-                (Right lt, Right rt) -> 
+                (Right lt, Right rt) ->
                     let subst3 = unify checker lt TInt
                         subst4 = unify checker rt TInt
                     in case (subst1, subst2, subst3, subst4) of
-                        (Right s1, Right s2, Right s3, Right s4) -> 
+                        (Right s1, Right s2, Right s3, Right s4) ->
                             let finalSubst = compose s1 (compose s2 (compose s3 s4))
                             in Right (TInt, finalSubst)
                         (Left err, _, _, _) -> Left err
@@ -1084,17 +1084,17 @@ typeInfer checker env term =
                         (_, _, _, Left err) -> Left err
                 (Left err, _) -> Left err
                 (_, Left err) -> Left err
-        
+
         _ -> Left TypeMismatch
 
 -- 类型统一 / Type Unification
 unify :: TypeChecker -> Type -> Type -> Either TypeError Substitution
-unify checker t1 t2 = 
+unify checker t1 t2 =
     case (t1, t2) of
         (TVar x, TVar y) | x == y -> Right Map.empty
         (TVar x, t) | not (occursIn checker x t) -> Right (Map.singleton x t)
         (t, TVar x) | not (occursIn checker x t) -> Right (Map.singleton x t)
-        (TArrow a1 r1, TArrow a2 r2) -> 
+        (TArrow a1 r1, TArrow a2 r2) ->
             let subst1 = unify checker a1 a2
                 subst2 = unify checker (applySubst r1 subst1) (applySubst r2 subst1)
             in case (subst1, subst2) of
@@ -1106,7 +1106,7 @@ unify checker t1 t2 =
 
 -- 出现检查 / Occurs Check
 occursIn :: TypeChecker -> String -> Type -> Bool
-occursIn checker var ty = 
+occursIn checker var ty =
     case ty of
         TVar x -> x == var
         TArrow a r -> occursIn checker var a || occursIn checker var r
@@ -1117,7 +1117,7 @@ occursIn checker var ty =
 
 -- 应用替换 / Apply Substitution
 applySubst :: Type -> Substitution -> Type
-applySubst ty subst = 
+applySubst ty subst =
     case ty of
         TVar x -> Map.findWithDefault ty x subst
         TArrow a r -> TArrow (applySubst a subst) (applySubst r subst)
@@ -1134,7 +1134,7 @@ compose s1 s2 = Map.union s1 s2
 
 -- 类型替换 / Type Substitution
 substitute :: String -> Type -> Type -> Type
-substitute var replacement ty = 
+substitute var replacement ty =
     case ty of
         TVar x | x == var -> replacement
         TVar _ -> ty
@@ -1151,17 +1151,17 @@ testTypeChecking :: IO ()
 testTypeChecking = do
     let checker = createTypeChecker
         env = Map.empty
-    
+
     -- 测试基本类型 / Test basic types
     let boolTerm = Bool True
         result = typeCheck checker env boolTerm
     putStrLn "基本类型测试:"
     putStrLn $ "Bool类型检查: " ++ show result
-    
+
     let intTerm = Int 42
         result = typeCheck checker env intTerm
     putStrLn $ "Int类型检查: " ++ show result
-    
+
     -- 测试函数类型 / Test function types
     let absTerm = Abs "x" TInt (Var "x")
         result = typeCheck checker env absTerm
@@ -1171,7 +1171,7 @@ testTypeInference :: IO ()
 testTypeInference = do
     let checker = createTypeChecker
         env = Map.empty
-    
+
     -- 测试类型推导 / Test type inference
     let absTerm = Abs "x" TInt (Var "x")
         result = typeInfer checker env absTerm
@@ -1181,7 +1181,7 @@ testTypeInference = do
 testTypeUnification :: IO ()
 testTypeUnification = do
     let checker = createTypeChecker
-    
+
     -- 测试类型统一 / Test type unification
     let t1 = TArrow (TVar "α") TInt
         t2 = TArrow TInt (TVar "β")

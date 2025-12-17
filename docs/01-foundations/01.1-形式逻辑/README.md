@@ -4,7 +4,7 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-形式逻辑是研究推理形式和有效性的数学分支，为FormalAI提供严格的逻辑基础。本模块基于严格的公理化体系，建立完整的逻辑理论框架，包括命题逻辑、谓词逻辑、模态逻辑等核心内容，并提供严格的形式化证明。
+形式逻辑是研究推理形式和有效性的数学分支，为 FormalAI 提供严格的逻辑基础。本模块基于严格的公理化体系，建立完整的逻辑理论框架，包括命题逻辑、谓词逻辑、模态逻辑等核心内容，并提供严格的形式化证明。
 
 Formal logic is the mathematical study of reasoning forms and validity, providing rigorous logical foundations for FormalAI. This module is based on a strict axiomatic system, establishing a complete logical theoretical framework including propositional logic, predicate logic, modal logic, and other core content, with rigorous formal proofs.
 
@@ -221,27 +221,27 @@ $$\frac{\exists x A(x) \quad [A(x)]}{B} \Rightarrow \frac{B}{} \quad \text{其�
 
 ### 4.3 模态系统 / Modal Systems / Modalsysteme / Systèmes modaux
 
-**定义 4.3.1 (基本模态系统K)**
-系统K由以下公理和规则组成：
+**定义 4.3.1 (基本模态系统 K)**
+系统 K 由以下公理和规则组成：
 
 - 所有命题逻辑重言式
 - 分布公理：$\Box(\phi \to \psi) \to (\Box \phi \to \Box \psi)$
 - 必然化规则：$\frac{\phi}{\Box \phi}$
 
-**定义 4.3.2 (系统T)**
-系统T在K基础上增加：
+**定义 4.3.2 (系统 T)**
+系统 T 在 K 基础上增加：
 
-- 公理T：$\Box \phi \to \phi$
+- 公理 T：$\Box \phi \to \phi$
 
-**定义 4.3.3 (系统S4)**
-系统S4在T基础上增加：
+**定义 4.3.3 (系统 S4)**
+系统 S4 在 T 基础上增加：
 
-- 公理4：$\Box \phi \to \Box \Box \phi$
+- 公理 4：$\Box \phi \to \Box \Box \phi$
 
-**定义 4.3.4 (系统S5)**
-系统S5在S4基础上增加：
+**定义 4.3.4 (系统 S5)**
+系统 S5 在 S4 基础上增加：
 
-- 公理5：$\Diamond \phi \to \Box \Diamond \phi$
+- 公理 5：$\Diamond \phi \to \Box \Diamond \phi$
 
 **定理 4.3.1 (模态完备性)**
 每个基本模态系统都有对应的克里普克语义完备性。
@@ -288,7 +288,7 @@ $$\frac{\exists x A(x) \quad [A(x)]}{B} \Rightarrow \frac{B}{} \quad \text{其�
 
 ## 6. 应用实例 / Applications / Anwendungen / Applications
 
-### 6.1 AI中的逻辑应用 / Logical Applications in AI / Logische Anwendungen in der KI / Applications logiques dans l'IA
+### 6.1 AI 中的逻辑应用 / Logical Applications in AI / Logische Anwendungen in der KI / Applications logiques dans l'IA
 
 **知识表示与推理 / Knowledge Representation and Reasoning**:
 
@@ -324,7 +324,7 @@ $$\frac{\exists x A(x) \quad [A(x)]}{B} \Rightarrow \frac{B}{} \quad \text{其�
 
 ## 代码实现 / Code Implementation / Code-Implementierung / Implémentation de code
 
-### Rust实现：形式逻辑核心 / Rust Implementation: Formal Logic Core
+### Rust 实现：形式逻辑核心 / Rust Implementation: Formal Logic Core
 
 ```rust
 use std::collections::HashMap;
@@ -359,12 +359,12 @@ impl SemanticChecker {
             _ => false, // 简化处理量词
         }
     }
-    
+
     pub fn is_tautology(&self, formula: &Formula) -> bool {
         let variables = self.collect_variables(formula);
         self.check_all_valuations(formula, &variables, &mut HashMap::new())
     }
-    
+
     fn collect_variables(&self, formula: &Formula) -> Vec<String> {
         match formula {
             Formula::Atom(p) => vec![p.clone()],
@@ -379,19 +379,19 @@ impl SemanticChecker {
             _ => vec![],
         }
     }
-    
+
     fn check_all_valuations(&self, formula: &Formula, variables: &[String], valuation: &mut Valuation) -> bool {
         if valuation.len() == variables.len() {
             return self.evaluate(formula, valuation);
         }
-        
+
         let var = &variables[valuation.len()];
         valuation.insert(var.clone(), true);
         let result_true = self.check_all_valuations(formula, variables, valuation);
         valuation.insert(var.clone(), false);
         let result_false = self.check_all_valuations(formula, variables, valuation);
         valuation.remove(var);
-        
+
         result_true && result_false
     }
 }
@@ -408,11 +408,11 @@ impl NaturalDeductionProver {
         }
         None
     }
-    
+
     pub fn and_intro(&self, left: &Formula, right: &Formula) -> Formula {
         Formula::And(Box::new(left.clone()), Box::new(right.clone()))
     }
-    
+
     pub fn and_elim_left(&self, and_formula: &Formula) -> Option<Formula> {
         if let Formula::And(left, _) = and_formula {
             Some(*left.clone())
@@ -420,7 +420,7 @@ impl NaturalDeductionProver {
             None
         }
     }
-    
+
     pub fn and_elim_right(&self, and_formula: &Formula) -> Option<Formula> {
         if let Formula::And(_, right) = and_formula {
             Some(*right.clone())
@@ -441,11 +441,11 @@ impl ResolutionProver {
             clauses: Vec::new(),
         }
     }
-    
+
     pub fn add_clause(&mut self, literals: Vec<String>) {
         self.clauses.push(literals);
     }
-    
+
     pub fn resolve(&self, clause1: &[String], clause2: &[String]) -> Option<Vec<String>> {
         for lit1 in clause1 {
             for lit2 in clause2 {
@@ -467,16 +467,16 @@ impl ResolutionProver {
         }
         None
     }
-    
+
     fn are_complementary(&self, lit1: &str, lit2: &str) -> bool {
-        (lit1.starts_with("¬") && lit2 == &lit1[1..]) || 
+        (lit1.starts_with("¬") && lit2 == &lit1[1..]) ||
         (lit2.starts_with("¬") && lit1 == &lit2[1..])
     }
-    
+
     pub fn prove(&mut self) -> bool {
         let mut new_clauses = Vec::new();
         let mut changed = true;
-        
+
         while changed {
             changed = false;
             for i in 0..self.clauses.len() {
@@ -501,7 +501,7 @@ impl ResolutionProver {
 #[cfg(test)]
 mod tests {
     use super::*;
-    
+
     #[test]
     fn test_semantic_evaluation() {
         let checker = SemanticChecker;
@@ -509,17 +509,17 @@ mod tests {
             Box::new(Formula::Atom("p".to_string())),
             Box::new(Formula::Atom("q".to_string()))
         );
-        
+
         let mut valuation = HashMap::new();
         valuation.insert("p".to_string(), true);
         valuation.insert("q".to_string(), true);
-        
+
         assert!(checker.evaluate(&formula, &valuation));
-        
+
         valuation.insert("q".to_string(), false);
         assert!(!checker.evaluate(&formula, &valuation));
     }
-    
+
     #[test]
     fn test_tautology() {
         let checker = SemanticChecker;
@@ -528,27 +528,27 @@ mod tests {
             Box::new(Formula::Atom("p".to_string())),
             Box::new(Formula::Not(Box::new(Formula::Atom("p".to_string()))))
         );
-        
+
         assert!(checker.is_tautology(&formula));
     }
-    
+
     #[test]
     fn test_resolution() {
         let mut prover = ResolutionProver::new();
-        
+
         // 添加子句: {A, B}, {¬A, C}, {¬B, C}, {¬C}
         prover.add_clause(vec!["A".to_string(), "B".to_string()]);
         prover.add_clause(vec!["¬A".to_string(), "C".to_string()]);
         prover.add_clause(vec!["¬B".to_string(), "C".to_string()]);
         prover.add_clause(vec!["¬C".to_string()]);
-        
+
         // 应该能证明矛盾
         assert!(prover.prove());
     }
 }
 ```
 
-### Haskell实现：高级逻辑系统 / Haskell Implementation: Advanced Logic System
+### Haskell 实现：高级逻辑系统 / Haskell Implementation: Advanced Logic System
 
 ```haskell
 {-# LANGUAGE GADTs, DataKinds, TypeFamilies #-}
@@ -589,20 +589,20 @@ collectVariables _ = []
 -- 生成所有可能的真值赋值
 generateValuations :: [String] -> [Valuation]
 generateValuations [] = [[]]
-generateValuations (var:vars) = 
+generateValuations (var:vars) =
   let rest = generateValuations vars
   in [(var, True) : val | val <- rest] ++ [(var, False) : val | val <- rest]
 
 -- 检查重言式
 isTautology :: Formula -> Bool
-isTautology f = 
+isTautology f =
   let vars = collectVariables f
       valuations = generateValuations vars
   in all (evaluate f) valuations
 
 -- 自然演绎规则
 modusPonens :: Formula -> Formula -> Maybe Formula
-modusPonens (Implies ant cons) premise = 
+modusPonens (Implies ant cons) premise =
   if ant == premise then Just cons else Nothing
 modusPonens _ _ = Nothing
 
@@ -622,15 +622,15 @@ data Literal = Pos String | Neg String deriving (Eq, Show)
 type Clause = [Literal]
 
 resolve :: Clause -> Clause -> Maybe Clause
-resolve c1 c2 = 
+resolve c1 c2 =
   case findComplementary c1 c2 of
     Nothing -> Nothing
-    Just (l1, l2) -> 
+    Just (l1, l2) ->
       let newClause = filter (/= l1) c1 ++ filter (/= l2) c2
       in Just newClause
 
 findComplementary :: Clause -> Clause -> Maybe (Literal, Literal)
-findComplementary c1 c2 = 
+findComplementary c1 c2 =
   case [ (l1, l2) | l1 <- c1, l2 <- c2, areComplementary l1 l2 ] of
     [] -> Nothing
     (x:_) -> Just x
@@ -642,17 +642,17 @@ areComplementary _ _ = False
 
 -- 归结证明
 resolution :: [Clause] -> Bool
-resolution clauses = 
+resolution clauses =
   let allClauses = clauses
       newClauses = generateResolvents allClauses
   in [] `elem` newClauses
 
 generateResolvents :: [Clause] -> [Clause]
-generateResolvents clauses = 
-  let resolvents = [ r | c1 <- clauses, c2 <- clauses, 
+generateResolvents clauses =
+  let resolvents = [ r | c1 <- clauses, c2 <- clauses,
                         c1 /= c2, Just r <- [resolve c1 c2] ]
-  in if null resolvents 
-     then clauses 
+  in if null resolvents
+     then clauses
      else generateResolvents (clauses ++ resolvents)
 
 -- 测试
@@ -661,30 +661,30 @@ main = do
   let p = Atom "p"
   let q = Atom "q"
   let formula = And p q
-  
+
   let valuation = [("p", True), ("q", True)]
   print $ evaluate formula valuation
-  
+
   let tautology = Or p (Not p)
   print $ isTautology tautology
-  
+
   let clauses = [[Pos "A", Pos "B"], [Neg "A", Pos "C"], [Neg "B", Pos "C"], [Neg "C"]]
   print $ resolution clauses
 ```
 
 ## 参考文献 / References / Literatur / Références
 
-1. **Enderton, H. B.** (2001). *A Mathematical Introduction to Logic*. Academic Press.
-2. **Mendelson, E.** (2015). *Introduction to Mathematical Logic*. CRC Press.
-3. **Hughes, G. E. & Cresswell, M. J.** (1996). *A New Introduction to Modal Logic*. Routledge.
-4. **Boolos, G. S., Burgess, J. P. & Jeffrey, R. C.** (2007). *Computability and Logic*. Cambridge University Press.
-5. **Troelstra, A. S. & Schwichtenberg, H.** (2000). *Basic Proof Theory*. Cambridge University Press.
+1. **Enderton, H. B.** (2001). _A Mathematical Introduction to Logic_. Academic Press.
+2. **Mendelson, E.** (2015). _Introduction to Mathematical Logic_. CRC Press.
+3. **Hughes, G. E. & Cresswell, M. J.** (1996). _A New Introduction to Modal Logic_. Routledge.
+4. **Boolos, G. S., Burgess, J. P. & Jeffrey, R. C.** (2007). _Computability and Logic_. Cambridge University Press.
+5. **Troelstra, A. S. & Schwichtenberg, H.** (2000). _Basic Proof Theory_. Cambridge University Press.
 
 ---
 
-*本模块为FormalAI提供了严格的形式逻辑基础，确保AI系统具备完整的逻辑推理和证明能力。*
+_本模块为 FormalAI 提供了严格的形式逻辑基础，确保 AI 系统具备完整的逻辑推理和证明能力。_
 
-*This module provides FormalAI with rigorous formal logic foundations, ensuring AI systems have complete logical reasoning and proof capabilities.*
+_This module provides FormalAI with rigorous formal logic foundations, ensuring AI systems have complete logical reasoning and proof capabilities._
 
 ## 目录 / Table of Contents
 
@@ -710,11 +710,11 @@ main = do
     - [5.2 证明理论 / Proof Theory / Beweistheorie / Théorie de la preuve](#52-证明理论--proof-theory--beweistheorie--théorie-de-la-preuve)
     - [5.3 自动定理证明 / Automated Theorem Proving / Automatisches Theorembeweisen / Démonstration automatique de théorèmes](#53-自动定理证明--automated-theorem-proving--automatisches-theorembeweisen--démonstration-automatique-de-théorèmes)
   - [6. 应用实例 / Applications / Anwendungen / Applications](#6-应用实例--applications--anwendungen--applications)
-    - [6.1 AI中的逻辑应用 / Logical Applications in AI / Logische Anwendungen in der KI / Applications logiques dans l'IA](#61-ai中的逻辑应用--logical-applications-in-ai--logische-anwendungen-in-der-ki--applications-logiques-dans-lia)
+    - [6.1 AI 中的逻辑应用 / Logical Applications in AI / Logische Anwendungen in der KI / Applications logiques dans l'IA](#61-ai-中的逻辑应用--logical-applications-in-ai--logische-anwendungen-in-der-ki--applications-logiques-dans-lia)
     - [6.2 计算机科学应用 / Computer Science Applications / Informatikanwendungen / Applications informatiques](#62-计算机科学应用--computer-science-applications--informatikanwendungen--applications-informatiques)
   - [代码实现 / Code Implementation / Code-Implementierung / Implémentation de code](#代码实现--code-implementation--code-implementierung--implémentation-de-code)
-    - [Rust实现：形式逻辑核心 / Rust Implementation: Formal Logic Core](#rust实现形式逻辑核心--rust-implementation-formal-logic-core)
-    - [Haskell实现：高级逻辑系统 / Haskell Implementation: Advanced Logic System](#haskell实现高级逻辑系统--haskell-implementation-advanced-logic-system)
+    - [Rust 实现：形式逻辑核心 / Rust Implementation: Formal Logic Core](#rust-实现形式逻辑核心--rust-implementation-formal-logic-core)
+    - [Haskell 实现：高级逻辑系统 / Haskell Implementation: Advanced Logic System](#haskell-实现高级逻辑系统--haskell-implementation-advanced-logic-system)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters](#相关章节--related-chapters)
@@ -736,8 +736,8 @@ main = do
     - [4.2 序列演算 / Sequent Calculus](#42-序列演算--sequent-calculus)
     - [4.3 证明复杂性 / Proof Complexity](#43-证明复杂性--proof-complexity)
   - [代码示例 / Code Examples](#代码示例--code-examples)
-    - [Rust实现：逻辑推理引擎](#rust实现逻辑推理引擎)
-    - [Haskell实现：类型化逻辑](#haskell实现类型化逻辑)
+    - [Rust 实现：逻辑推理引擎](#rust-实现逻辑推理引擎)
+    - [Haskell 实现：类型化逻辑](#haskell-实现类型化逻辑)
   - [参考文献 / References](#参考文献--references)
   - [2024/2025 最新进展 / Latest Updates](#20242025-最新进展--latest-updates)
 
@@ -747,7 +747,7 @@ main = do
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
+- [0.0 ZFC 公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
 - [0.3 逻辑演算系统](../../00-foundations/00-mathematical-foundations/03-logical-calculus.md) - 提供逻辑演算基础 / Provides logical calculus foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
@@ -795,12 +795,12 @@ $$
 真值表是显示命题在所有可能真值组合下真值的表格：
 A truth table is a table showing the truth values of propositions under all possible truth value combinations:
 
-| p | q | ¬p | p∧q | p∨q | p→q | p↔q |
-|---|---|----|-----|-----|-----|-----|
-| T | T | F  | T   | T   | T   | T   |
-| T | F | F  | F   | T   | F   | F   |
-| F | T | T  | F   | T   | T   | F   |
-| F | F | T  | F   | F   | T   | T   |
+| p   | q   | ¬p  | p∧q | p∨q | p→q | p↔q |
+| --- | --- | --- | --- | --- | --- | --- |
+| T   | T   | F   | T   | T   | T   | T   |
+| T   | F   | F   | F   | T   | F   | F   |
+| F   | T   | T   | F   | T   | T   | F   |
+| F   | F   | T   | F   | F   | T   | T   |
 
 **真值函数 / Truth Functions:**
 
@@ -937,6 +937,7 @@ $$\mathcal{T} = (\mathcal{L}, \mathcal{A}, \mathcal{R})$$
 **常见理论 / Common Theories:**
 
 1. **集合论 / Set Theory:**
+
    - 外延公理 / Axiom of Extensionality
    - 空集公理 / Axiom of Empty Set
    - 配对公理 / Axiom of Pairing
@@ -967,10 +968,10 @@ $$\Diamond \phi \equiv \neg \Box \neg \phi$$
 
 **基本模态公理 / Basic Modal Axioms:**
 
-1. **K公理 / K Axiom:** $\Box(\phi \rightarrow \psi) \rightarrow (\Box \phi \rightarrow \Box \psi)$
-2. **T公理 / T Axiom:** $\Box \phi \rightarrow \phi$
-3. **4公理 / 4 Axiom:** $\Box \phi \rightarrow \Box \Box \phi$
-4. **5公理 / 5 Axiom:** $\Diamond \phi \rightarrow \Box \Diamond \phi$
+1. **K 公理 / K Axiom:** $\Box(\phi \rightarrow \psi) \rightarrow (\Box \phi \rightarrow \Box \psi)$
+2. **T 公理 / T Axiom:** $\Box \phi \rightarrow \phi$
+3. **4 公理 / 4 Axiom:** $\Box \phi \rightarrow \Box \Box \phi$
+4. **5 公理 / 5 Axiom:** $\Diamond \phi \rightarrow \Box \Diamond \phi$
 
 ### 3.2 可能世界语义 / Possible Worlds Semantics
 
@@ -1000,16 +1001,16 @@ $$
 
 **常见模态系统 / Common Modal Systems:**
 
-1. **K系统 / System K:** 基本模态逻辑
-2. **T系统 / System T:** K + T公理
-3. **S4系统 / System S4:** T + 4公理
-4. **S5系统 / System S5:** T + 4 + 5公理
+1. **K 系统 / System K:** 基本模态逻辑
+2. **T 系统 / System T:** K + T 公理
+3. **S4 系统 / System S4:** T + 4 公理
+4. **S5 系统 / System S5:** T + 4 + 5 公理
 
 **对应关系 / Correspondence:**
 
-- T公理 ↔ 自反性 / reflexivity
-- 4公理 ↔ 传递性 / transitivity
-- 5公理 ↔ 欧几里得性 / euclidean property
+- T 公理 ↔ 自反性 / reflexivity
+- 4 公理 ↔ 传递性 / transitivity
+- 5 公理 ↔ 欧几里得性 / euclidean property
 
 ---
 
@@ -1070,7 +1071,7 @@ The length of a proof is the number of steps in the proof.
 
 ## 代码示例 / Code Examples
 
-### Rust实现：逻辑推理引擎
+### Rust 实现：逻辑推理引擎
 
 ```rust
 use std::collections::HashMap;
@@ -1392,7 +1393,7 @@ fn main() {
 }
 ```
 
-### Haskell实现：类型化逻辑
+### Haskell 实现：类型化逻辑
 
 ```haskell
 -- 形式逻辑模块
@@ -1672,33 +1673,36 @@ main = do
 ## 参考文献 / References
 
 1. **中文 / Chinese:**
-   - 王宪钧 (1982). *数理逻辑引论*. 北京大学出版社.
-   - 张清宇 (2003). *逻辑哲学九章*. 江苏人民出版社.
-   - 李小五 (2005). *模态逻辑*. 中国社会科学出版社.
+
+   - 王宪钧 (1982). _数理逻辑引论_. 北京大学出版社.
+   - 张清宇 (2003). _逻辑哲学九章_. 江苏人民出版社.
+   - 李小五 (2005). _模态逻辑_. 中国社会科学出版社.
 
 2. **English:**
-   - Enderton, H. B. (2001). *A Mathematical Introduction to Logic*. Academic Press.
-   - Mendelson, E. (2015). *Introduction to Mathematical Logic*. CRC Press.
-   - Hughes, G. E., & Cresswell, M. J. (1996). *A New Introduction to Modal Logic*. Routledge.
-   - Boolos, G. S., Burgess, J. P., & Jeffrey, R. C. (2007). *Computability and Logic*. Cambridge University Press.
+
+   - Enderton, H. B. (2001). _A Mathematical Introduction to Logic_. Academic Press.
+   - Mendelson, E. (2015). _Introduction to Mathematical Logic_. CRC Press.
+   - Hughes, G. E., & Cresswell, M. J. (1996). _A New Introduction to Modal Logic_. Routledge.
+   - Boolos, G. S., Burgess, J. P., & Jeffrey, R. C. (2007). _Computability and Logic_. Cambridge University Press.
 
 3. **Deutsch / German:**
-   - Ebbinghaus, H. D., Flum, J., & Thomas, W. (2018). *Einführung in die mathematische Logik*. Springer.
-   - Rautenberg, W. (2008). *Einführung in die mathematische Logik*. Vieweg+Teubner.
+
+   - Ebbinghaus, H. D., Flum, J., & Thomas, W. (2018). _Einführung in die mathematische Logik_. Springer.
+   - Rautenberg, W. (2008). _Einführung in die mathematische Logik_. Vieweg+Teubner.
 
 4. **Français / French:**
-   - Cori, R., & Lascar, D. (2003). *Logique mathématique*. Dunod.
-   - David, R., Nour, K., & Raffalli, C. (2004). *Introduction à la logique*. Dunod.
+   - Cori, R., & Lascar, D. (2003). _Logique mathématique_. Dunod.
+   - David, R., Nour, K., & Raffalli, C. (2004). _Introduction à la logique_. Dunod.
 
 ---
 
-*本模块为FormalAI提供了完整的形式逻辑基础，涵盖命题逻辑、谓词逻辑、模态逻辑等核心内容，为AI系统的逻辑推理能力提供了坚实的理论基础。*
+_本模块为 FormalAI 提供了完整的形式逻辑基础，涵盖命题逻辑、谓词逻辑、模态逻辑等核心内容，为 AI 系统的逻辑推理能力提供了坚实的理论基础。_
 
-*This module provides complete formal logic foundations for FormalAI, covering propositional logic, predicate logic, modal logic, and other core content, providing solid theoretical foundations for logical reasoning capabilities in AI systems.*
+_This module provides complete formal logic foundations for FormalAI, covering propositional logic, predicate logic, modal logic, and other core content, providing solid theoretical foundations for logical reasoning capabilities in AI systems._
 
 ## 2024/2025 最新进展 / Latest Updates
 
-- 神经符号推理与LLM的可验证逻辑接口（占位）。
+- 神经符号推理与 LLM 的可验证逻辑接口（占位）。
 - 表/归结/序列演算在自动证明工具链中的工程实践（占位）。
 
 [返回“最新进展”索引](../../LATEST_UPDATES_INDEX.md)

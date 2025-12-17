@@ -533,7 +533,7 @@ impl SyntaxGuidedSynthesizer {
     fn synthesize(&self, spec: &str) -> Option<Expression> {
         // 简化的合成算法 / Simplified synthesis algorithm / Vereinfachter Synthesealgorithmus / Algorithme de synthèse simplifié
         let candidates = self.generate_candidates(spec);
-        
+
         for candidate in candidates {
             if self.satisfies_constraints(&candidate, spec) {
                 return Some(candidate);
@@ -544,31 +544,31 @@ impl SyntaxGuidedSynthesizer {
 
     fn generate_candidates(&self, spec: &str) -> Vec<Expression> {
         let mut candidates = Vec::new();
-        
+
         // 生成字面量 / Generate literals / Generiere Literale / Générer des littéraux
         candidates.push(Expression::Literal(0));
         candidates.push(Expression::Literal(1));
-        
+
         // 生成变量 / Generate variables / Generiere Variablen / Générer des variables
         candidates.push(Expression::Variable("x".to_string()));
         candidates.push(Expression::Variable("y".to_string()));
-        
+
         // 生成二元操作 / Generate binary operations / Generiere binäre Operationen / Générer des opérations binaires
         let x = Expression::Variable("x".to_string());
         let y = Expression::Variable("y".to_string());
-        
+
         candidates.push(Expression::BinaryOp(
             Box::new(x.clone()),
             "+".to_string(),
             Box::new(y.clone())
         ));
-        
+
         candidates.push(Expression::BinaryOp(
             Box::new(x.clone()),
             "*".to_string(),
             Box::new(y.clone())
         ));
-        
+
         candidates
     }
 
@@ -588,7 +588,7 @@ impl SyntaxGuidedSynthesizer {
             Expression::BinaryOp(left, op, right) => {
                 let left_val = self.evaluate(left, env)?;
                 let right_val = self.evaluate(right, env)?;
-                
+
                 match op.as_str() {
                     "+" => Some(left_val + right_val),
                     "*" => Some(left_val * right_val),
@@ -692,7 +692,7 @@ impl TypeGuidedSynthesizer {
             Expression::BinaryOp(left, op, right) => {
                 let left_type = self.type_check(left)?;
                 let right_type = self.type_check(right)?;
-                
+
                 match op.as_str() {
                     "+" | "*" => {
                         if matches!(left_type, Type::Int) && matches!(right_type, Type::Int) {
@@ -718,34 +718,34 @@ impl TypeGuidedSynthesizer {
 
 fn main() {
     println!("=== 程序合成示例 / Program Synthesis Example ===");
-    
+
     // 语法引导合成示例 / Syntax-guided synthesis example / Syntaxgesteuerte Synthese Beispiel / Exemple de synthèse guidée par syntaxe
     let mut synthesizer = SyntaxGuidedSynthesizer::new();
-    
+
     // 添加语法规则 / Add syntax rules / Füge Syntaxregeln hinzu / Ajouter des règles de syntaxe
     synthesizer.add_rule(SyntaxRule {
         pattern: "add".to_string(),
         condition: "binary_operation".to_string(),
         action: "generate_plus".to_string(),
     });
-    
+
     // 添加约束 / Add constraints / Füge Constraints hinzu / Ajouter des contraintes
     synthesizer.add_constraint("result_must_be_positive".to_string());
-    
+
     // 合成程序 / Synthesize program / Synthetisiere Programm / Synthétiser un programme
     if let Some(program) = synthesizer.synthesize("add") {
         println!("合成程序: {}", program);
-        
+
         // 测试程序 / Test program / Teste Programm / Tester le programme
         let mut env = HashMap::new();
         env.insert("x".to_string(), 5);
         env.insert("y".to_string(), 3);
-        
+
         if let Some(result) = synthesizer.evaluate(&program, &env) {
             println!("执行结果: {}", result);
         }
     }
-    
+
     // 类型引导合成示例 / Type-guided synthesis example / Typgesteuerte Synthese Beispiel / Exemple de synthèse guidée par type
     let mut type_synthesizer = TypeGuidedSynthesizer::new();
     // 添加类型规则 / Add type rules
@@ -813,12 +813,12 @@ addConstraint :: SyntaxGuidedSynthesizer -> String -> SyntaxGuidedSynthesizer
 addConstraint synthesizer constraint = synthesizer { constraints = constraint : constraints synthesizer }
 
 synthesize :: SyntaxGuidedSynthesizer -> String -> Maybe Expression
-synthesize synthesizer spec = 
+synthesize synthesizer spec =
     let candidates = generateCandidates synthesizer spec
     in find (\candidate -> satisfiesConstraints synthesizer candidate spec) candidates
 
 generateCandidates :: SyntaxGuidedSynthesizer -> String -> [Expression]
-generateCandidates _ _ = 
+generateCandidates _ _ =
     [ Literal 0
     , Literal 1
     , Variable "x"
@@ -858,7 +858,7 @@ newTypeGuidedSynthesizer :: TypeGuidedSynthesizer
 newTypeGuidedSynthesizer = TypeGuidedSynthesizer [] []
 
 addTypeRule :: TypeGuidedSynthesizer -> Type -> Type -> Type -> TypeGuidedSynthesizer
-addTypeRule synthesizer input output result = 
+addTypeRule synthesizer input output result =
     synthesizer { typeRules = (input, output, result) : typeRules synthesizer }
 
 synthesizeWithType :: TypeGuidedSynthesizer -> Type -> Maybe TypedExpression
@@ -893,13 +893,13 @@ data Constraint = Equality Expression Expression
 
 satisfiesConstraint :: Expression -> Constraint -> Bool
 satisfiesConstraint expr (Equality left right) = left == right
-satisfiesConstraint expr (Inequality left right op) = 
+satisfiesConstraint expr (Inequality left right op) =
     case op of
         "<=" -> True -- 简化版本 / Simplified version / Vereinfachte Version / Version simplifiée
         _ -> False
-satisfiesConstraint expr (Logical c1 "AND" c2) = 
+satisfiesConstraint expr (Logical c1 "AND" c2) =
     satisfiesConstraint expr c1 && satisfiesConstraint expr c2
-satisfiesConstraint expr (Logical c1 "OR" c2) = 
+satisfiesConstraint expr (Logical c1 "OR" c2) =
     satisfiesConstraint expr c1 || satisfiesConstraint expr c2
 
 -- 机器学习合成 / Machine learning synthesis / Maschinelles Lernensynthese / Synthèse par apprentissage automatique
@@ -914,7 +914,7 @@ data MLBasedSynthesizer = MLBasedSynthesizer {
 } deriving (Show)
 
 trainModel :: MLBasedSynthesizer -> [TrainingExample] -> MLBasedSynthesizer
-trainModel synthesizer examples = 
+trainModel synthesizer examples =
     let newModel = map (\ex -> (input ex, output ex)) examples
     in synthesizer { model = newModel }
 
@@ -935,7 +935,7 @@ decode :: NeuralSynthesizer -> [Double] -> Expression
 decode synthesizer hidden = decoder synthesizer hidden
 
 synthesizeNeural :: NeuralSynthesizer -> String -> Expression
-synthesizeNeural synthesizer input = 
+synthesizeNeural synthesizer input =
     let encoded = encode synthesizer input
         decoded = decode synthesizer encoded
     in decoded
@@ -944,12 +944,12 @@ synthesizeNeural synthesizer input =
 main :: IO ()
 main = do
     putStrLn "=== 程序合成示例 / Program Synthesis Example ==="
-    
+
     -- 语法引导合成示例 / Syntax-guided synthesis example / Syntaxgesteuerte Synthese Beispiel / Exemple de synthèse guidée par syntaxe
     let synthesizer = newSyntaxGuidedSynthesizer
     let synthesizer1 = addRule synthesizer (SyntaxRule "add" "binary_operation" "generate_plus")
     let synthesizer2 = addConstraint synthesizer1 "result_must_be_positive"
-    
+
     case synthesize synthesizer2 "add" of
         Just program -> do
             putStrLn $ "合成程序: " ++ show program
@@ -958,24 +958,24 @@ main = do
                 Just result -> putStrLn $ "执行结果: " ++ show result
                 Nothing -> putStrLn "执行失败"
         Nothing -> putStrLn "合成失败"
-    
+
     -- 类型引导合成示例 / Type-guided synthesis example / Typgesteuerte Synthese Beispiel / Exemple de synthèse guidée par type
     let typeSynthesizer = newTypeGuidedSynthesizer
     let typeSynthesizer1 = addTypeRule typeSynthesizer TInt TInt TInt
-    
+
     case synthesizeWithType typeSynthesizer1 TInt of
         Just typedProgram -> putStrLn $ "类型化程序: " ++ show typedProgram
         Nothing -> putStrLn "类型合成失败"
-    
+
     case synthesizeWithType typeSynthesizer1 TBool of
         Just typedProgram -> putStrLn $ "布尔程序: " ++ show typedProgram
         Nothing -> putStrLn "布尔合成失败"
-    
+
     -- 机器学习合成示例 / Machine learning synthesis example / Maschinelles Lernensynthese Beispiel / Exemple de synthèse par apprentissage automatique
     let mlSynthesizer = MLBasedSynthesizer [] 0.1
     let examples = [TrainingExample "add" (BinaryOp (Variable "x") "+" (Variable "y"))]
     let trainedSynthesizer = trainModel mlSynthesizer examples
-    
+
     case predict trainedSynthesizer "add" of
         Just program -> putStrLn $ "ML预测程序: " ++ show program
         Nothing -> putStrLn "ML预测失败"

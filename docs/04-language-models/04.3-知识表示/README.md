@@ -474,17 +474,17 @@ impl SemanticNetwork {
     fn find_path(&self, start: &str, end: &str) -> Option<Vec<String>> {
         let mut visited = HashSet::new();
         let mut queue = vec![(start.to_string(), vec![start.to_string()])];
-        
+
         while let Some((current, path)) = queue.pop() {
             if current == end {
                 return Some(path);
             }
-            
+
             if visited.contains(&current) {
                 continue;
             }
             visited.insert(current.clone());
-            
+
             for edge in &self.edges {
                 if edge.source == current && !visited.contains(&edge.target) {
                     let mut new_path = path.clone();
@@ -498,12 +498,12 @@ impl SemanticNetwork {
 
     fn infer_properties(&self, node_id: &str) -> HashMap<String, String> {
         let mut properties = HashMap::new();
-        
+
         // 获取直接属性 / Get direct attributes / Hole direkte Attribute / Obtenir les attributs directs
         if let Some(node) = self.nodes.get(node_id) {
             properties.extend(node.attributes.clone());
         }
-        
+
         // 通过继承推理属性 / Infer properties through inheritance / Schlussfolgere Attribute durch Vererbung / Inférer les propriétés par héritage
         for edge in &self.edges {
             if edge.source == node_id && edge.relation == "is-a" {
@@ -515,20 +515,20 @@ impl SemanticNetwork {
                 }
             }
         }
-        
+
         properties
     }
 
     fn query(&self, query: &str) -> Vec<String> {
         let mut results = Vec::new();
-        
+
         for node in self.nodes.values() {
-            if node.concept.contains(query) || 
+            if node.concept.contains(query) ||
                node.attributes.values().any(|v| v.contains(query)) {
                 results.push(node.id.clone());
             }
         }
-        
+
         results
     }
 }
@@ -584,7 +584,7 @@ impl KnowledgeGraph {
 
     fn get_neighbors(&self, entity_id: &str) -> Vec<(String, String)> {
         let mut neighbors = Vec::new();
-        
+
         for relation in &self.relations {
             if relation.source == entity_id {
                 neighbors.push((relation.target.clone(), relation.relation_type.clone()));
@@ -593,7 +593,7 @@ impl KnowledgeGraph {
                 neighbors.push((relation.source.clone(), relation.relation_type.clone()));
             }
         }
-        
+
         neighbors
     }
 
@@ -612,56 +612,56 @@ impl KnowledgeGraph {
 
 fn main() {
     println!("=== 知识表示示例 / Knowledge Representation Example ===");
-    
+
     // 语义网络示例 / Semantic network example / Semantisches Netz Beispiel / Exemple de réseau sémantique
     let mut semantic_net = SemanticNetwork::new();
-    
+
     // 添加节点 / Add nodes / Füge Knoten hinzu / Ajouter des nœuds
     semantic_net.add_node("animal".to_string(), "Animal".to_string());
     semantic_net.add_node("mammal".to_string(), "Mammal".to_string());
     semantic_net.add_node("dog".to_string(), "Dog".to_string());
     semantic_net.add_node("cat".to_string(), "Cat".to_string());
-    
+
     // 添加边 / Add edges / Füge Kanten hinzu / Ajouter des arêtes
     semantic_net.add_edge("mammal".to_string(), "animal".to_string(), "is-a".to_string());
     semantic_net.add_edge("dog".to_string(), "mammal".to_string(), "is-a".to_string());
     semantic_net.add_edge("cat".to_string(), "mammal".to_string(), "is-a".to_string());
-    
+
     // 添加属性 / Add attributes / Füge Attribute hinzu / Ajouter des attributs
     semantic_net.add_attribute("animal", "has_legs".to_string(), "true".to_string());
     semantic_net.add_attribute("mammal", "has_fur".to_string(), "true".to_string());
     semantic_net.add_attribute("dog", "barks".to_string(), "true".to_string());
     semantic_net.add_attribute("cat", "meows".to_string(), "true".to_string());
-    
+
     // 推理属性 / Infer properties / Schlussfolgere Attribute / Inférer les propriétés
     let dog_properties = semantic_net.infer_properties("dog");
     println!("Dog properties: {:?}", dog_properties);
-    
+
     // 查找路径 / Find path / Finde Pfad / Trouver le chemin
     if let Some(path) = semantic_net.find_path("dog", "animal") {
         println!("Path from dog to animal: {:?}", path);
     }
-    
+
     // 查询 / Query / Abfrage / Requête
     let results = semantic_net.query("mammal");
     println!("Query results: {:?}", results);
-    
+
     // 知识图谱示例 / Knowledge graph example / Wissensgraph Beispiel / Exemple de graphe de connaissances
     let mut kg = KnowledgeGraph::new();
-    
+
     // 添加实体 / Add entities / Füge Entitäten hinzu / Ajouter des entités
     kg.add_entity("Einstein".to_string(), "Person".to_string());
     kg.add_entity("Theory_of_Relativity".to_string(), "Theory".to_string());
     kg.add_entity("Physics".to_string(), "Field".to_string());
-    
+
     // 添加关系 / Add relations / Füge Relationen hinzu / Ajouter des relations
     kg.add_relation("Einstein".to_string(), "Theory_of_Relativity".to_string(), "developed".to_string());
     kg.add_relation("Theory_of_Relativity".to_string(), "Physics".to_string(), "belongs_to".to_string());
-    
+
     // 查找邻居 / Find neighbors / Finde Nachbarn / Trouver les voisins
     let einstein_neighbors = kg.get_neighbors("Einstein");
     println!("Einstein's neighbors: {:?}", einstein_neighbors);
-    
+
     // 按类型查找实体 / Find entities by type / Finde Entitäten nach Typ / Trouver les entités par type
     let persons = kg.find_entities_by_type("Person");
     println!("Persons: {:?}", persons);
@@ -713,56 +713,56 @@ newSemanticNetwork :: SemanticNetwork
 newSemanticNetwork = SemanticNetwork [] []
 
 addNode :: SemanticNetwork -> String -> String -> SemanticNetwork
-addNode network id concept = 
+addNode network id concept =
     let node = Node id concept []
     in network { nodes = (id, node) : nodes network }
 
 addEdge :: SemanticNetwork -> String -> String -> String -> SemanticNetwork
-addEdge network source target relation = 
+addEdge network source target relation =
     let edge = Edge source target relation
     in network { edges = edge : edges network }
 
 addAttribute :: SemanticNetwork -> String -> String -> String -> SemanticNetwork
-addAttribute network nodeId key value = 
-    let updateNode (id, node) = 
-            if id == nodeId 
+addAttribute network nodeId key value =
+    let updateNode (id, node) =
+            if id == nodeId
             then (id, node { attributes = (key, value) : attributes node })
             else (id, node)
     in network { nodes = map updateNode (nodes network) }
 
 findPath :: SemanticNetwork -> String -> String -> Maybe [String]
-findPath network start end = 
+findPath network start end =
     let allPaths = findAllPaths network start end
     in if null allPaths then Nothing else Just (head allPaths)
 
 findAllPaths :: SemanticNetwork -> String -> String -> [[String]]
-findAllPaths network start end = 
+findAllPaths network start end =
     let edges = relations network
-        findPaths current visited = 
-            if current == end 
+        findPaths current visited =
+            if current == end
             then [reverse visited]
-            else concat [findPaths next (current:visited) | 
-                        Edge s t _ <- edges network, 
-                        s == current, 
+            else concat [findPaths next (current:visited) |
+                        Edge s t _ <- edges network,
+                        s == current,
                         not (next `elem` visited),
                         let next = t]
     in findPaths start []
 
 inferProperties :: SemanticNetwork -> String -> [(String, String)]
-inferProperties network nodeId = 
+inferProperties network nodeId =
     let directProps = case lookup nodeId (nodes network) of
                         Just node -> attributes node
                         Nothing -> []
-        inheritedProps = concat [inferProperties network target | 
+        inheritedProps = concat [inferProperties network target |
                                 Edge source target relation <- edges network,
-                                source == nodeId, 
+                                source == nodeId,
                                 relation == "is-a"]
     in directProps ++ inheritedProps
 
 query :: SemanticNetwork -> String -> [String]
-query network queryStr = 
+query network queryStr =
     [nodeId | (nodeId, node) <- nodes network,
-     queryStr `isInfixOf` concept node || 
+     queryStr `isInfixOf` concept node ||
      any (\(_, value) -> queryStr `isInfixOf` value) (attributes node)]
 
 -- 知识图谱操作 / Knowledge graph operations / Wissensgraphoperationen / Opérations de graphe de connaissances
@@ -770,31 +770,31 @@ newKnowledgeGraph :: KnowledgeGraph
 newKnowledgeGraph = KnowledgeGraph [] []
 
 addEntity :: KnowledgeGraph -> String -> String -> KnowledgeGraph
-addEntity graph id entityType = 
+addEntity graph id entityType =
     let entity = Entity id entityType []
     in graph { entities = (id, entity) : entities graph }
 
 addRelation :: KnowledgeGraph -> String -> String -> String -> KnowledgeGraph
-addRelation graph source target relationType = 
+addRelation graph source target relationType =
     let relation = Relation source target relationType []
     in graph { relations = relation : relations graph }
 
 getNeighbors :: KnowledgeGraph -> String -> [(String, String)]
-getNeighbors graph entityId = 
-    [(target, relationType) | 
-     Relation source target relationType _ <- relations graph, 
+getNeighbors graph entityId =
+    [(target, relationType) |
+     Relation source target relationType _ <- relations graph,
      source == entityId] ++
-    [(source, relationType) | 
-     Relation source target relationType _ <- relations graph, 
+    [(source, relationType) |
+     Relation source target relationType _ <- relations graph,
      target == entityId]
 
 findEntitiesByType :: KnowledgeGraph -> String -> [String]
-findEntitiesByType graph entityType = 
-    [entityId | (entityId, entity) <- entities graph, 
+findEntitiesByType graph entityType =
+    [entityId | (entityId, entity) <- entities graph,
      entityType entity == entityType]
 
 getEntityAttributes :: KnowledgeGraph -> String -> Maybe [(String, String)]
-getEntityAttributes graph entityId = 
+getEntityAttributes graph entityId =
     lookup entityId (entities graph) >>= Just . entityAttributes
 
 -- 本体论实现 / Ontology implementation / Ontologieimplementierung / Implémentation d'ontologie
@@ -849,7 +849,7 @@ data Role = AtomicRole String
 main :: IO ()
 main = do
     putStrLn "=== 知识表示示例 / Knowledge Representation Example ==="
-    
+
     -- 语义网络示例 / Semantic network example / Semantisches Netz Beispiel / Exemple de réseau sémantique
     let network = newSemanticNetwork
     let network1 = addNode network "animal" "Animal"
@@ -860,21 +860,21 @@ main = do
     let network6 = addAttribute network5 "animal" "has_legs" "true"
     let network7 = addAttribute network6 "mammal" "has_fur" "true"
     let network8 = addAttribute network7 "dog" "barks" "true"
-    
+
     putStrLn $ "Dog properties: " ++ show (inferProperties network8 "dog")
-    
+
     case findPath network8 "dog" "animal" of
         Just path -> putStrLn $ "Path from dog to animal: " ++ show path
         Nothing -> putStrLn "No path found"
-    
+
     putStrLn $ "Query results: " ++ show (query network8 "mammal")
-    
+
     -- 知识图谱示例 / Knowledge graph example / Wissensgraph Beispiel / Exemple de graphe de connaissances
     let graph = newKnowledgeGraph
     let graph1 = addEntity graph "Einstein" "Person"
     let graph2 = addEntity graph1 "Theory_of_Relativity" "Theory"
     let graph3 = addRelation graph2 "Einstein" "Theory_of_Relativity" "developed"
-    
+
     putStrLn $ "Einstein's neighbors: " ++ show (getNeighbors graph3 "Einstein")
     putStrLn $ "Persons: " ++ show (findEntitiesByType graph3 "Person")
 ```

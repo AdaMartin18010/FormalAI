@@ -33,6 +33,7 @@ pub fn safe_action(risk: f32, beta: f32, a: i32, a_safe: i32) -> i32 {
 
 - [7.3 安全机制 / Safety Mechanisms / Sicherheitsmechanismen / Mécanismes de sécurité](#73-安全机制--safety-mechanisms--sicherheitsmechanismen--mécanismes-de-sécurité)
   - [概述 / Overview](#概述--overview)
+    - [示例卡片 / Example Cards](#示例卡片--example-cards)
     - [0. 风险预算与阈值干预 / Risk Budgeting and Threshold Intervention / Risikobudgetierung und Schwellwertintervention / Budgétisation du risque et intervention par seuil](#0-风险预算与阈值干预--risk-budgeting-and-threshold-intervention--risikobudgetierung-und-schwellwertintervention--budgétisation-du-risque-et-intervention-par-seuil)
       - [Rust示例：简单风险阈值守卫](#rust示例简单风险阈值守卫)
   - [目录 / Table of Contents](#目录--table-of-contents)
@@ -280,12 +281,12 @@ impl SafetyMechanismSystem {
             evaluator: SafetyEvaluator::new(),
         }
     }
-    
+
     // 添加安全约束
     fn add_constraint(&mut self, constraint: Box<dyn SafetyConstraint>) {
         self.constraints.push(constraint);
     }
-    
+
     // 检查行动安全性
     fn check_action_safety(&self, state: &State, action: &Action) -> SafetyResult {
         // 检查所有约束
@@ -297,7 +298,7 @@ impl SafetyMechanismSystem {
                 };
             }
         }
-        
+
         // 监控风险
         let risk_level = self.monitor.assess_risk(state, action);
         if risk_level > self.monitor.get_critical_threshold() {
@@ -306,14 +307,14 @@ impl SafetyMechanismSystem {
                 risk_level,
             };
         }
-        
+
         SafetyResult::Safe { risk_level }
     }
-    
+
     // 执行安全行动
     fn execute_safe_action(&self, state: &State, proposed_action: &Action) -> Action {
         let safety_result = self.check_action_safety(state, proposed_action);
-        
+
         match safety_result {
             SafetyResult::Safe { .. } => proposed_action.clone(),
             SafetyResult::Unsafe { .. } => {
@@ -322,7 +323,7 @@ impl SafetyMechanismSystem {
             }
         }
     }
-    
+
     // 评估系统安全性
     fn evaluate_safety(&self) -> SafetyEvaluation {
         self.evaluator.evaluate(&self.constraints, &self.monitor)
@@ -346,11 +347,11 @@ impl SafetyConstraint for HardConstraint {
     fn is_satisfied(&self, state: &State, action: &Action) -> bool {
         (self.constraint_function)(state, action)
     }
-    
+
     fn get_violation_reason(&self, _state: &State, _action: &Action) -> String {
         format!("Hard constraint violated: {}", self.description)
     }
-    
+
     fn get_risk_level(&self, state: &State, action: &Action) -> f32 {
         if self.is_satisfied(state, action) {
             0.0
@@ -372,13 +373,13 @@ impl SafetyConstraint for SoftConstraint {
         let risk = (self.risk_function)(state, action);
         risk <= self.threshold
     }
-    
+
     fn get_violation_reason(&self, state: &State, action: &Action) -> String {
         let risk = (self.risk_function)(state, action);
-        format!("Soft constraint violated: {} (risk: {:.3}, threshold: {:.3})", 
+        format!("Soft constraint violated: {} (risk: {:.3}, threshold: {:.3})",
                 self.description, risk, self.threshold)
     }
-    
+
     fn get_risk_level(&self, state: &State, action: &Action) -> f32 {
         (self.risk_function)(state, action)
     }
@@ -399,29 +400,29 @@ impl SafetyMonitor {
             anomaly_detector: AnomalyDetector::new(),
         }
     }
-    
+
     // 评估风险
     fn assess_risk(&self, state: &State, action: &Action) -> f32 {
         let base_risk = self.calculate_base_risk(state, action);
         let anomaly_score = self.anomaly_detector.detect_anomaly(state, action);
-        
+
         // 组合风险分数
         base_risk * 0.7 + anomaly_score * 0.3
     }
-    
+
     // 计算基础风险
     fn calculate_base_risk(&self, state: &State, action: &Action) -> f32 {
         // 简化的风险计算
         let state_risk = state.get_risk_level();
         let action_risk = action.get_risk_level();
-        
+
         (state_risk + action_risk) / 2.0
     }
-    
+
     fn get_critical_threshold(&self) -> f32 {
         self.critical_threshold
     }
-    
+
     fn get_risk_threshold(&self) -> f32 {
         self.risk_threshold
     }
@@ -440,27 +441,27 @@ impl AnomalyDetector {
             detection_threshold: 0.8,
         }
     }
-    
+
     fn detect_anomaly(&self, state: &State, action: &Action) -> f32 {
         // 简化的异常检测
         let state_features = state.get_features();
         let action_features = action.get_features();
-        
+
         // 计算与正常模式的偏差
         let deviation = self.calculate_deviation(&state_features, &action_features);
-        
+
         if deviation > self.detection_threshold {
             deviation
         } else {
             0.0
         }
     }
-    
+
     fn calculate_deviation(&self, state_features: &[f32], action_features: &[f32]) -> f32 {
         // 简化的偏差计算
         let state_mean = state_features.iter().sum::<f32>() / state_features.len() as f32;
         let action_mean = action_features.iter().sum::<f32>() / action_features.len() as f32;
-        
+
         ((state_mean - 0.5).abs() + (action_mean - 0.5).abs()) / 2.0
     }
 }
@@ -480,7 +481,7 @@ impl SafetyIntervention {
             ],
         }
     }
-    
+
     // 寻找安全替代行动
     fn find_safe_alternative(&self, state: &State, unsafe_action: &Action) -> Action {
         for strategy in &self.intervention_strategies {
@@ -488,7 +489,7 @@ impl SafetyIntervention {
                 return safe_action;
             }
         }
-        
+
         // 默认安全行动
         Action::new_safe_action()
     }
@@ -535,26 +536,26 @@ impl SafetyEvaluator {
             ],
         }
     }
-    
+
     fn evaluate(&self, constraints: &[Box<dyn SafetyConstraint>], monitor: &SafetyMonitor) -> SafetyEvaluation {
         let mut scores = HashMap::new();
-        
+
         for metric in &self.evaluation_metrics {
             let score = metric.calculate(constraints, monitor);
             scores.insert(metric.get_name(), score);
         }
-        
+
         SafetyEvaluation {
             scores,
             overall_score: self.calculate_overall_score(&scores),
         }
     }
-    
+
     fn calculate_overall_score(&self, scores: &HashMap<String, f32>) -> f32 {
         if scores.is_empty() {
             return 0.0;
         }
-        
+
         scores.values().sum::<f32>() / scores.len() as f32
     }
 }
@@ -573,7 +574,7 @@ impl SafetyMetric for SafetyScoreMetric {
         // 简化的安全分数计算
         0.85
     }
-    
+
     fn get_name(&self) -> String {
         "Safety Score".to_string()
     }
@@ -587,7 +588,7 @@ impl SafetyMetric for RiskScoreMetric {
         // 简化的风险分数计算
         1.0 - monitor.get_risk_threshold()
     }
-    
+
     fn get_name(&self) -> String {
         "Risk Score".to_string()
     }
@@ -601,7 +602,7 @@ impl SafetyMetric for ReliabilityMetric {
         // 简化的可靠性计算
         0.92
     }
-    
+
     fn get_name(&self) -> String {
         "Reliability".to_string()
     }
@@ -633,7 +634,7 @@ impl State {
     fn get_risk_level(&self) -> f32 {
         0.3
     }
-    
+
     fn get_features(&self) -> Vec<f32> {
         vec![0.1, 0.2, 0.3, 0.4, 0.5]
     }
@@ -643,23 +644,23 @@ impl Action {
     fn new_safe_action() -> Self {
         Action
     }
-    
+
     fn new_emergency_stop() -> Self {
         Action
     }
-    
+
     fn new_safe_mode_action(_state: &State) -> Self {
         Action
     }
-    
+
     fn modify_for_safety(&self, _factor: f32) -> Self {
         Action
     }
-    
+
     fn get_risk_level(&self) -> f32 {
         0.2
     }
-    
+
     fn get_features(&self) -> Vec<f32> {
         vec![0.1, 0.2, 0.3]
     }
@@ -668,14 +669,14 @@ impl Action {
 fn main() {
     // 创建安全机制系统
     let mut safety_system = SafetyMechanismSystem::new();
-    
+
     // 添加硬约束
     let hard_constraint = Box::new(HardConstraint {
         constraint_function: Box::new(|_state, _action| true), // 简化的约束
         description: "No harmful actions".to_string(),
     });
     safety_system.add_constraint(hard_constraint);
-    
+
     // 添加软约束
     let soft_constraint = Box::new(SoftConstraint {
         risk_function: Box::new(|state, action| {
@@ -685,18 +686,18 @@ fn main() {
         description: "Risk threshold constraint".to_string(),
     });
     safety_system.add_constraint(soft_constraint);
-    
+
     // 测试安全检查
     let state = State;
     let action = Action;
-    
+
     let safety_result = safety_system.check_action_safety(&state, &action);
     println!("安全检查结果: {:?}", safety_result);
-    
+
     // 执行安全行动
     let safe_action = safety_system.execute_safe_action(&state, &action);
     println!("安全行动: {:?}", safe_action);
-    
+
     // 评估系统安全性
     let evaluation = safety_system.evaluate_safety();
     println!("安全评估: {:?}", evaluation);
@@ -822,7 +823,7 @@ addConstraint system constraint = system {
 
 -- 检查行动安全性
 checkActionSafety :: SafetyMechanismSystem -> State -> Action -> SafetyResult
-checkActionSafety system state action = 
+checkActionSafety system state action =
     let constraintResults = map (\c -> checkConstraint c state action) (constraints system)
         riskLevel = assessRisk (monitor system) state action
     in if any (== False) constraintResults
@@ -833,26 +834,26 @@ checkActionSafety system state action =
 
 -- 检查约束
 checkConstraint :: SafetyConstraint -> State -> Action -> Bool
-checkConstraint constraint state action = 
+checkConstraint constraint state action =
     constraintFunction constraint state action
 
 -- 评估风险
 assessRisk :: SafetyMonitor -> State -> Action -> Double
-assessRisk monitor state action = 
+assessRisk monitor state action =
     let baseRisk = calculateBaseRisk state action
         anomalyScore = detectAnomaly (anomalyDetector monitor) state action
     in baseRisk * 0.7 + anomalyScore * 0.3
 
 -- 计算基础风险
 calculateBaseRisk :: State -> Action -> Double
-calculateBaseRisk state action = 
+calculateBaseRisk state action =
     let stateRisk = getStateRiskLevel state
         actionRisk = getActionRiskLevel action
     in (stateRisk + actionRisk) / 2.0
 
 -- 检测异常
 detectAnomaly :: AnomalyDetector -> State -> Action -> Double
-detectAnomaly detector state action = 
+detectAnomaly detector state action =
     let deviation = calculateDeviation state action
     in if deviation > detectionThreshold detector
         then deviation
@@ -860,7 +861,7 @@ detectAnomaly detector state action =
 
 -- 计算偏差
 calculateDeviation :: State -> Action -> Double
-calculateDeviation state action = 
+calculateDeviation state action =
     let stateFeatures = getStateFeatures state
         actionFeatures = getActionFeatures action
         stateMean = sum stateFeatures / fromIntegral (length stateFeatures)
@@ -869,7 +870,7 @@ calculateDeviation state action =
 
 -- 执行安全行动
 executeSafeAction :: SafetyMechanismSystem -> State -> Action -> Action
-executeSafeAction system state proposedAction = 
+executeSafeAction system state proposedAction =
     let safetyResult = checkActionSafety system state proposedAction
     in case safetyResult of
         Safe _ -> proposedAction
@@ -877,7 +878,7 @@ executeSafeAction system state proposedAction =
 
 -- 寻找安全替代行动
 findSafeAlternative :: SafetyIntervention -> State -> Action -> Action
-findSafeAlternative intervention state unsafeAction = 
+findSafeAlternative intervention state unsafeAction =
     let strategies = strategies intervention
         safeActions = map (\s -> applyStrategy s state unsafeAction) strategies
         validActions = filter isJust safeActions
@@ -887,7 +888,7 @@ findSafeAlternative intervention state unsafeAction =
 
 -- 应用策略
 applyStrategy :: InterventionStrategy -> State -> Action -> Maybe Action
-applyStrategy strategy state unsafeAction = 
+applyStrategy strategy state unsafeAction =
     case strategy of
         EmergencyStop -> Just newEmergencyStopAction
         SafeMode -> Just (newSafeModeAction state)
@@ -895,11 +896,11 @@ applyStrategy strategy state unsafeAction =
 
 -- 评估系统安全性
 evaluateSafety :: SafetyMechanismSystem -> SafetyEvaluation
-evaluateSafety system = 
-    let scores = Map.fromList [(metricName metric, metricFunction metric (constraints system) (monitor system)) | 
+evaluateSafety system =
+    let scores = Map.fromList [(metricName metric, metricFunction metric (constraints system) (monitor system)) |
         metric <- metrics (evaluator system)]
-        overallScore = if Map.null scores 
-            then 0.0 
+        overallScore = if Map.null scores
+            then 0.0
             else sum (Map.elems scores) / fromIntegral (Map.size scores)
     in SafetyEvaluation scores overallScore
 
@@ -960,7 +961,7 @@ main :: IO ()
 main = do
     -- 创建安全机制系统
     let system = newSafetyMechanismSystem
-    
+
     -- 添加硬约束
     let hardConstraint = SafetyConstraint {
         constraintName = "No harmful actions",
@@ -969,29 +970,29 @@ main = do
         description = "Prevent harmful actions"
     }
     let system1 = addConstraint system hardConstraint
-    
+
     -- 添加软约束
     let softConstraint = SafetyConstraint {
         constraintName = "Risk threshold",
-        constraintFunction = \state action -> 
+        constraintFunction = \state action ->
             (getStateRiskLevel state + getActionRiskLevel action) / 2.0 <= 0.8,
-        riskFunction = \state action -> 
+        riskFunction = \state action ->
             (getStateRiskLevel state + getActionRiskLevel action) / 2.0,
         description = "Maintain risk below threshold"
     }
     let system2 = addConstraint system1 softConstraint
-    
+
     -- 测试安全检查
     let state = State
     let action = Action
-    
+
     let safetyResult = checkActionSafety system2 state action
     putStrLn $ "安全检查结果: " ++ show safetyResult
-    
+
     -- 执行安全行动
     let safeAction = executeSafeAction system2 state action
     putStrLn $ "安全行动: " ++ show safeAction
-    
+
     -- 评估系统安全性
     let evaluation = evaluateSafety system2
     putStrLn $ "安全评估: " ++ show evaluation

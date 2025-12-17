@@ -136,13 +136,33 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
       - [推理链理论 / Reasoning Chain Theory](#推理链理论--reasoning-chain-theory)
       - [元推理理论 / Meta-Reasoning Theory](#元推理理论--meta-reasoning-theory)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
-
-    - 参考模板：
-      - 模型卡模板：见 `docs/TEMPLATES_MODEL_CARD.md`
-      - 评测卡模板：见 `docs/TEMPLATES_EVAL_CARD.md`
-    - 示例与落地：
-      - 示例模型卡：见 `docs/04-language-models/04.1-大型语言模型/EXAMPLE_MODEL_CARD.md`
-      - 示例评测卡：见 `docs/04-language-models/04.1-大型语言模型/EXAMPLE_EVAL_CARD.md`
+  - [2024/2025 最新进展 / Latest Updates](#20242025-最新进展--latest-updates-1)
+    - [大语言模型形式化语义理论 / Large Language Model Formal Semantic Theory](#大语言模型形式化语义理论--large-language-model-formal-semantic-theory)
+      - [1. 上下文语义的形式化框架 / Formal Framework for Contextual Semantics](#1-上下文语义的形式化框架--formal-framework-for-contextual-semantics)
+      - [2. 注意力机制的形式化语义 / Formal Semantics of Attention Mechanisms](#2-注意力机制的形式化语义--formal-semantics-of-attention-mechanisms)
+      - [3. 涌现能力的数学刻画 / Mathematical Characterization of Emergent Abilities](#3-涌现能力的数学刻画--mathematical-characterization-of-emergent-abilities)
+      - [4. 缩放定律的严格数学基础 / Rigorous Mathematical Foundation of Scaling Laws](#4-缩放定律的严格数学基础--rigorous-mathematical-foundation-of-scaling-laws)
+      - [5. 位置编码的语义理论 / Semantic Theory of Positional Encoding](#5-位置编码的语义理论--semantic-theory-of-positional-encoding)
+      - [6. 大模型推理的形式化理论 / Formal Theory of Large Model Reasoning](#6-大模型推理的形式化理论--formal-theory-of-large-model-reasoning)
+      - [7. 多模态语义的形式化 / Formalization of Multimodal Semantics](#7-多模态语义的形式化--formalization-of-multimodal-semantics)
+    - [2025年大语言模型理论突破 / 2025 Large Language Model Theoretical Breakthroughs](#2025年大语言模型理论突破--2025-large-language-model-theoretical-breakthroughs)
+      - [1. 大模型对齐理论 / Large Model Alignment Theory](#1-大模型对齐理论--large-model-alignment-theory)
+      - [2. 大模型推理理论 / Large Model Reasoning Theory](#2-大模型推理理论--large-model-reasoning-theory)
+      - [3. 大模型知识表示理论 / Large Model Knowledge Representation Theory](#3-大模型知识表示理论--large-model-knowledge-representation-theory)
+      - [4. 大模型效率理论 / Large Model Efficiency Theory](#4-大模型效率理论--large-model-efficiency-theory)
+      - [5. 大模型安全理论 / Large Model Safety Theory](#5-大模型安全理论--large-model-safety-theory)
+    - [大模型前沿理论 / Large Model Frontier Theory](#大模型前沿理论--large-model-frontier-theory)
+      - [1. 大模型涌现理论 / Large Model Emergence Theory](#1-大模型涌现理论--large-model-emergence-theory)
+      - [2. 大模型认知理论 / Large Model Cognitive Theory](#2-大模型认知理论--large-model-cognitive-theory)
+      - [3. 大模型意识理论 / Large Model Consciousness Theory](#3-大模型意识理论--large-model-consciousness-theory)
+      - [4. 大模型创造性理论 / Large Model Creativity Theory](#4-大模型创造性理论--large-model-creativity-theory)
+      - [5. 大模型通用智能理论 / Large Model General Intelligence Theory](#5-大模型通用智能理论--large-model-general-intelligence-theory)
+    - [Lean 4 形式化实现 / Lean 4 Formal Implementation](#lean-4-形式化实现--lean-4-formal-implementation)
+    - [前沿模型理论分析 / Cutting-edge Model Theoretical Analysis](#前沿模型理论分析--cutting-edge-model-theoretical-analysis-1)
+      - [8. GPT-5 理论预测 / GPT-5 Theoretical Predictions](#8-gpt-5-理论预测--gpt-5-theoretical-predictions)
+      - [9. Claude 3.5 自主推理理论 / Claude 3.5 Autonomous Reasoning Theory](#9-claude-35-自主推理理论--claude-35-autonomous-reasoning-theory)
+      - [10. Gemini 2.0 多模态统一理论 / Gemini 2.0 Multimodal Unified Theory](#10-gemini-20-多模态统一理论--gemini-20-multimodal-unified-theory)
+  - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
 
@@ -413,19 +433,19 @@ struct AttentionHead {
 impl AttentionHead {
     fn new(d_model: usize, d_k: usize) -> Self {
         let mut rng = rand::thread_rng();
-        
+
         let query_weight = (0..d_model)
             .map(|_| (0..d_k).map(|_| rng.gen_range(-0.1..0.1)).collect())
             .collect();
-        
+
         let key_weight = (0..d_model)
             .map(|_| (0..d_k).map(|_| rng.gen_range(-0.1..0.1)).collect())
             .collect();
-        
+
         let value_weight = (0..d_model)
             .map(|_| (0..d_k).map(|_| rng.gen_range(-0.1..0.1)).collect())
             .collect();
-        
+
         AttentionHead {
             query_weight,
             key_weight,
@@ -433,16 +453,16 @@ impl AttentionHead {
             d_k,
         }
     }
-    
+
     fn attention(&self, input: &[Vec<f32>]) -> Vec<Vec<f32>> {
         let seq_len = input.len();
         let d_model = input[0].len();
-        
+
         // 计算Q, K, V / Compute Q, K, V / Q, K, V berechnen / Calculer Q, K, V
         let mut queries = vec![vec![0.0; self.d_k]; seq_len];
         let mut keys = vec![vec![0.0; self.d_k]; seq_len];
         let mut values = vec![vec![0.0; self.d_k]; seq_len];
-        
+
         for i in 0..seq_len {
             for j in 0..self.d_k {
                 for k in 0..d_model {
@@ -452,10 +472,10 @@ impl AttentionHead {
                 }
             }
         }
-        
+
         // 计算注意力分数 / Compute attention scores / Aufmerksamkeitsbewertungen berechnen / Calculer les scores d'attention
         let mut attention_scores = vec![vec![0.0; seq_len]; seq_len];
-        
+
         for i in 0..seq_len {
             for j in 0..seq_len {
                 for k in 0..self.d_k {
@@ -464,21 +484,21 @@ impl AttentionHead {
                 attention_scores[i][j] /= (self.d_k as f32).sqrt();
             }
         }
-        
+
         // Softmax归一化 / Softmax normalization / Softmax-Normalisierung / Normalisation Softmax
         for i in 0..seq_len {
             let max_score = attention_scores[i].iter().fold(f32::NEG_INFINITY, |a, &b| a.max(b));
             let exp_scores: Vec<f32> = attention_scores[i].iter().map(|&x| (x - max_score).exp()).collect();
             let sum_exp = exp_scores.iter().sum::<f32>();
-            
+
             for j in 0..seq_len {
                 attention_scores[i][j] = exp_scores[j] / sum_exp;
             }
         }
-        
+
         // 计算输出 / Compute output / Ausgabe berechnen / Calculer la sortie
         let mut output = vec![vec![0.0; self.d_k]; seq_len];
-        
+
         for i in 0..seq_len {
             for j in 0..seq_len {
                 for k in 0..self.d_k {
@@ -486,7 +506,7 @@ impl AttentionHead {
                 }
             }
         }
-        
+
         output
     }
 }
@@ -506,12 +526,12 @@ impl MultiHeadAttention {
         let heads = (0..num_heads)
             .map(|_| AttentionHead::new(d_model, d_k))
             .collect();
-        
+
         let mut rng = rand::thread_rng();
         let output_weight = (0..d_model)
             .map(|_| (0..d_model).map(|_| rng.gen_range(-0.1..0.1)).collect())
             .collect();
-        
+
         MultiHeadAttention {
             heads,
             output_weight,
@@ -520,21 +540,21 @@ impl MultiHeadAttention {
             d_k,
         }
     }
-    
+
     fn forward(&self, input: &[Vec<f32>]) -> Vec<Vec<f32>> {
         let seq_len = input.len();
-        
+
         // 并行计算所有注意力头 / Compute all attention heads in parallel / Alle Aufmerksamkeitsköpfe parallel berechnen / Calculer toutes les têtes d'attention en parallèle
         let mut head_outputs = Vec::new();
-        
+
         for head in &self.heads {
             let head_output = head.attention(input);
             head_outputs.push(head_output);
         }
-        
+
         // 连接所有头的输出 / Concatenate outputs from all heads / Ausgaben aller Köpfe verketten / Concaténer les sorties de toutes les têtes
         let mut concatenated = vec![vec![0.0; self.d_model]; seq_len];
-        
+
         for i in 0..seq_len {
             let mut concat_idx = 0;
             for head_output in &head_outputs {
@@ -544,10 +564,10 @@ impl MultiHeadAttention {
                 }
             }
         }
-        
+
         // 线性变换 / Linear transformation / Lineare Transformation / Transformation linéaire
         let mut output = vec![vec![0.0; self.d_model]; seq_len];
-        
+
         for i in 0..seq_len {
             for j in 0..self.d_model {
                 for k in 0..self.d_model {
@@ -555,7 +575,7 @@ impl MultiHeadAttention {
                 }
             }
         }
-        
+
         output
     }
 }
@@ -563,20 +583,20 @@ impl MultiHeadAttention {
 fn main() {
     // 创建多头注意力 / Create multi-head attention / Multi-Head-Aufmerksamkeit erstellen / Créer l'attention multi-têtes
     let attention = MultiHeadAttention::new(512, 8);
-    
+
     // 创建输入序列 / Create input sequence / Eingabesequenz erstellen / Créer la séquence d'entrée
     let input = vec![
         vec![0.1; 512],
         vec![0.2; 512],
         vec![0.3; 512],
     ];
-    
+
     // 前向传播 / Forward pass / Vorwärtsdurchlauf / Passe avant
     let output = attention.forward(&input);
-    
+
     println!("输入形状: {}x{}", input.len(), input[0].len());
     println!("输出形状: {}x{}", output.len(), output[0].len());
-    
+
     // 分析注意力模式 / Analyze attention patterns / Aufmerksamkeitsmuster analysieren / Analyser les patterns d'attention
     println!("\n=== 注意力机制分析 / Attention Mechanism Analysis ===");
     println!("多头注意力机制能够捕获序列中的长距离依赖关系");
@@ -590,14 +610,14 @@ fn main() {
 
 ```haskell
 -- 缩放定律类型 / Scaling law types / Skalierungsgesetztypen / Types de lois de mise à l'échelle
-data ScalingLaw = 
+data ScalingLaw =
     ChinchillaLaw Double Double  -- alpha, beta / alpha, beta / alpha, beta / alpha, beta
   | PowerLaw Double Double Double  -- a, b, c / a, b, c / a, b, c / a, b, c
   deriving (Show)
 
 -- Chinchilla缩放定律 / Chinchilla scaling law / Chinchilla-Skalierungsgesetz / Loi de mise à l'échelle Chinchilla
 chinchillaOptimalParams :: Double -> (Double, Double)
-chinchillaOptimalParams computeBudget = 
+chinchillaOptimalParams computeBudget =
     let optimalParams = 0.12 * computeBudget ** 0.7
         optimalTokens = 1.8 * computeBudget ** 0.3
     in (optimalParams, optimalTokens)
@@ -610,17 +630,17 @@ predictPerformance law params tokens = case law of
 
 -- 计算效率分析 / Computational efficiency analysis / Berechnungseffizienzanalyse / Analyse d'efficacité computationnelle
 analyzeEfficiency :: Double -> Double -> Double -> Double
-analyzeEfficiency performance params tokens = 
+analyzeEfficiency performance params tokens =
     performance / (params * tokens)
 
 -- 缩放曲线 / Scaling curves / Skalierungskurven / Courbes de mise à l'échelle
 generateScalingCurve :: ScalingLaw -> [Double] -> [Double]
-generateScalingCurve law params = 
+generateScalingCurve law params =
     map (\p -> predictPerformance law p 1.0) params
 
 -- 最优参数搜索 / Optimal parameter search / Optimale Parametersuche / Recherche de paramètres optimaux
 findOptimalParams :: ScalingLaw -> Double -> Double -> (Double, Double)
-findOptimalParams law targetPerformance computeBudget = 
+findOptimalParams law targetPerformance computeBudget =
     let searchSpace = [1e6, 1e7, 1e8, 1e9, 1e10, 1e11, 1e12]
         performances = map (\p -> predictPerformance law p computeBudget) searchSpace
         errors = map (\perf -> abs (perf - targetPerformance)) performances
@@ -630,7 +650,7 @@ findOptimalParams law targetPerformance computeBudget =
 
 -- 涌现阈值分析 / Emergence threshold analysis / Emergenzschwellenanalyse / Analyse de seuil d'émergence
 analyzeEmergence :: [Double] -> [Double] -> Double
-analyzeEmergence scales performances = 
+analyzeEmergence scales performances =
     let -- 寻找性能跳跃点 / Find performance jump points / Leistungssprungpunkte finden / Trouver les points de saut de performance
         performanceDiffs = zipWith (-) (tail performances) performances
         scaleDiffs = zipWith (-) (tail scales) scales
@@ -643,36 +663,36 @@ analyzeEmergence scales performances =
 main :: IO ()
 main = do
     putStrLn "=== 大语言模型缩放定律分析 / Large Language Model Scaling Law Analysis ==="
-    
+
     -- Chinchilla定律分析 / Chinchilla law analysis / Chinchilla-Gesetzanalyse / Analyse de la loi Chinchilla
     let computeBudgets = [1e18, 1e19, 1e20, 1e21, 1e22]
     let optimalConfigs = map chinchillaOptimalParams computeBudgets
-    
+
     putStrLn "\n=== Chinchilla最优配置 / Chinchilla Optimal Configurations ==="
-    mapM_ (\(budget, (params, tokens)) -> 
-        putStrLn $ "Compute: " ++ show budget ++ 
-                  ", Params: " ++ show params ++ 
-                  ", Tokens: " ++ show tokens) 
+    mapM_ (\(budget, (params, tokens)) ->
+        putStrLn $ "Compute: " ++ show budget ++
+                  ", Params: " ++ show params ++
+                  ", Tokens: " ++ show tokens)
         (zip computeBudgets optimalConfigs)
-    
+
     -- 性能预测 / Performance prediction / Leistungsvorhersage / Prédiction de performance
     let chinchillaLaw = ChinchillaLaw 0.1 0.7
     let testParams = [1e6, 1e7, 1e8, 1e9]
     let predictedPerformances = map (\p -> predictPerformance chinchillaLaw p 1e9) testParams
-    
+
     putStrLn "\n=== 性能预测 / Performance Predictions ==="
-    mapM_ (\(params, perf) -> 
-        putStrLn $ "Params: " ++ show params ++ ", Performance: " ++ show perf) 
+    mapM_ (\(params, perf) ->
+        putStrLn $ "Params: " ++ show params ++ ", Performance: " ++ show perf)
         (zip testParams predictedPerformances)
-    
+
     -- 涌现分析 / Emergence analysis / Emergenzanalyse / Analyse d'émergence
     let emergenceScales = [1e6, 1e7, 1e8, 1e9, 1e10, 1e11]
     let emergencePerformances = [0.1, 0.15, 0.2, 0.8, 0.85, 0.9]  -- 模拟涌现 / Simulated emergence / Simulierte Emergenz / Émergence simulée
     let threshold = analyzeEmergence emergenceScales emergencePerformances
-    
+
     putStrLn "\n=== 涌现阈值分析 / Emergence Threshold Analysis ==="
     putStrLn $ "Emergence threshold: " ++ show threshold
-    
+
     putStrLn "\n=== 大语言模型理论总结 / Large Language Model Theory Summary ==="
     putStrLn "缩放定律为模型设计提供了重要指导"
     putStrLn "Scaling laws provide important guidance for model design"
@@ -1442,7 +1462,7 @@ $$\lim_{s \to s_{AGI}^+} \text{AGI}(s) = \infty$$
 **定义 9.1 (自主推理系统)**：
 自主推理系统 $A = (P, R, M, E)$ 包含：
 - $P$：感知模块
-- $R$：推理模块  
+- $R$：推理模块
 - $M$：元认知模块
 - $E$：执行模块
 

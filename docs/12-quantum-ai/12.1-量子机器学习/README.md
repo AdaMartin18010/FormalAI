@@ -423,7 +423,7 @@ impl QuantumMachineLearning {
     fn apply_rotation_x(&self, state: &QuantumState, qubit: usize, angle: f64) -> Result<QuantumState, String> {
         let cos_half = angle.cos() / 2.0;
         let sin_half = angle.sin() / 2.0;
-        
+
         let rotation_x = Array2::from_shape_vec((2, 2), vec![
             Complex64::new(cos_half, 0.0), Complex64::new(0.0, -sin_half),
             Complex64::new(0.0, -sin_half), Complex64::new(cos_half, 0.0),
@@ -435,7 +435,7 @@ impl QuantumMachineLearning {
     fn apply_rotation_y(&self, state: &QuantumState, qubit: usize, angle: f64) -> Result<QuantumState, String> {
         let cos_half = angle.cos() / 2.0;
         let sin_half = angle.sin() / 2.0;
-        
+
         let rotation_y = Array2::from_shape_vec((2, 2), vec![
             Complex64::new(cos_half, 0.0), Complex64::new(-sin_half, 0.0),
             Complex64::new(sin_half, 0.0), Complex64::new(cos_half, 0.0),
@@ -447,7 +447,7 @@ impl QuantumMachineLearning {
     fn apply_rotation_z(&self, state: &QuantumState, qubit: usize, angle: f64) -> Result<QuantumState, String> {
         let exp_plus = Complex64::new(0.0, angle / 2.0).exp();
         let exp_minus = Complex64::new(0.0, -angle / 2.0).exp();
-        
+
         let rotation_z = Array2::from_shape_vec((2, 2), vec![
             exp_minus, Complex64::new(0.0, 0.0),
             Complex64::new(0.0, 0.0), exp_plus,
@@ -468,7 +468,7 @@ impl QuantumMachineLearning {
             if (i >> control) & 1 == 1 {
                 let target_bit = (i >> target) & 1;
                 let flipped_i = i ^ (1 << target);
-                
+
                 if target_bit == 0 {
                     new_state.amplitudes[flipped_i] = state.amplitudes[i];
                     new_state.amplitudes[i] = Complex64::new(0.0, 0.0);
@@ -519,7 +519,7 @@ impl QuantumMachineLearning {
         for i in 0..num_states {
             let qubit_value = (i >> qubit) & 1;
             let base_index = i & !(1 << qubit);
-            
+
             let amplitude_0 = if qubit_value == 0 { state.amplitudes[i] } else { state.amplitudes[base_index] };
             let amplitude_1 = if qubit_value == 1 { state.amplitudes[i] } else { state.amplitudes[base_index | (1 << qubit)] };
 
@@ -569,16 +569,16 @@ impl QuantumMachineLearning {
 
     fn gradient_descent_optimize(&mut self, training_data: &[(Vec<f64>, f64)]) -> Result<Vec<f64>, String> {
         let mut parameters = self.parameters.clone();
-        
+
         for iteration in 0..self.classical_optimizer.max_iterations {
             let cost = self.compute_cost(&parameters, training_data)?;
-            
+
             if cost < self.classical_optimizer.tolerance {
                 break;
             }
 
             let gradients = self.compute_gradients(&parameters, training_data)?;
-            
+
             for i in 0..parameters.len() {
                 parameters[i] -= self.classical_optimizer.learning_rate * gradients[i];
             }
@@ -598,20 +598,20 @@ impl QuantumMachineLearning {
 
         for iteration in 0..self.classical_optimizer.max_iterations {
             let cost = self.compute_cost(&parameters, training_data)?;
-            
+
             if cost < self.classical_optimizer.tolerance {
                 break;
             }
 
             let gradients = self.compute_gradients(&parameters, training_data)?;
-            
+
             for i in 0..parameters.len() {
                 m[i] = beta1 * m[i] + (1.0 - beta1) * gradients[i];
                 v[i] = beta2 * v[i] + (1.0 - beta2) * gradients[i] * gradients[i];
-                
+
                 let m_hat = m[i] / (1.0 - beta1.powi(iteration as i32 + 1));
                 let v_hat = v[i] / (1.0 - beta2.powi(iteration as i32 + 1));
-                
+
                 parameters[i] -= self.classical_optimizer.learning_rate * m_hat / (v_hat.sqrt() + epsilon);
             }
         }
@@ -630,7 +630,7 @@ impl QuantumMachineLearning {
 
         for iteration in 0..self.classical_optimizer.max_iterations {
             let cost = self.compute_cost(&parameters, training_data)?;
-            
+
             if cost < self.classical_optimizer.tolerance {
                 break;
             }
@@ -647,7 +647,7 @@ impl QuantumMachineLearning {
             // 计算梯度估计
             let mut parameters_plus = parameters.clone();
             let mut parameters_minus = parameters.clone();
-            
+
             for i in 0..parameters.len() {
                 parameters_plus[i] += ck * delta[i];
                 parameters_minus[i] -= ck * delta[i];
@@ -691,7 +691,7 @@ impl QuantumMachineLearning {
         for i in 0..parameters.len() {
             let mut parameters_plus = parameters.to_vec();
             let mut parameters_minus = parameters.to_vec();
-            
+
             parameters_plus[i] += epsilon;
             parameters_minus[i] -= epsilon;
 
@@ -708,7 +708,7 @@ impl QuantumMachineLearning {
         // 简化的预测实现
         let initial_state = QuantumState::new(self.quantum_circuit.num_qubits);
         let final_state = self.execute_circuit(&initial_state)?;
-        
+
         // 测量期望值
         if let Some(measurement) = self.quantum_circuit.measurements.first() {
             let result = self.measure(&final_state, measurement)?;
@@ -740,7 +740,7 @@ impl QuantumState {
     pub fn normalize(&mut self) {
         let norm: f64 = self.amplitudes.iter().map(|a| a.norm_sqr()).sum();
         let norm_sqrt = norm.sqrt();
-        
+
         for amplitude in &mut self.amplitudes {
             *amplitude = *amplitude / norm_sqrt;
         }
@@ -776,10 +776,10 @@ mod tests {
     fn test_hadamard_gate() {
         let mut qml = QuantumMachineLearning::new(1);
         qml.add_gate(QuantumGate::Hadamard(0));
-        
+
         let initial_state = QuantumState::new(1);
         let final_state = qml.execute_circuit(&initial_state).unwrap();
-        
+
         // 验证叠加态
         let expected_amplitude = Complex64::new(1.0/2.0_f64.sqrt(), 0.0);
         assert!((final_state.amplitudes[0] - expected_amplitude).norm() < 1e-10);
@@ -790,15 +790,15 @@ mod tests {
     fn test_cnot_gate() {
         let mut qml = QuantumMachineLearning::new(2);
         qml.add_gate(QuantumGate::CNOT(0, 1));
-        
+
         let mut initial_state = QuantumState::new(2);
         initial_state.amplitudes[0] = Complex64::new(0.0, 0.0); // |00⟩
         initial_state.amplitudes[1] = Complex64::new(1.0, 0.0); // |01⟩
         initial_state.amplitudes[2] = Complex64::new(0.0, 0.0); // |10⟩
         initial_state.amplitudes[3] = Complex64::new(0.0, 0.0); // |11⟩
-        
+
         let final_state = qml.execute_circuit(&initial_state).unwrap();
-        
+
         // |01⟩ 应该变为 |11⟩
         assert!((final_state.amplitudes[3] - Complex64::new(1.0, 0.0)).norm() < 1e-10);
     }
@@ -808,12 +808,12 @@ mod tests {
         let mut qml = QuantumMachineLearning::new(1);
         qml.add_gate(QuantumGate::ParameterizedGate(0, "RX".to_string(), 0.0));
         qml.parameters = vec![0.0];
-        
+
         let training_data = vec![
             (vec![0.0], 1.0),
             (vec![1.0], 0.0),
         ];
-        
+
         let result = qml.optimize(&training_data);
         assert!(result.is_ok());
     }

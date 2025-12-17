@@ -4,7 +4,7 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-数学基础为FormalAI提供严格的数学语言和工具，涵盖集合论、代数、拓扑学、微分几何、概率论、统计学、信息论和优化理论等核心领域。
+数学基础为 FormalAI 提供严格的数学语言和工具，涵盖集合论、代数、拓扑学、微分几何、概率论、统计学、信息论和优化理论等核心领域。
 
 Mathematical foundations provide FormalAI with rigorous mathematical language and tools, covering core areas such as set theory, algebra, topology, differential geometry, probability theory, statistics, information theory, and optimization theory.
 
@@ -49,7 +49,7 @@ La théorie des ensembles est la branche mathématique qui étudie les ensembles
 
 **前置依赖 / Prerequisites / Voraussetzungen / Prérequis:**
 
-- [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
+- [0.0 ZFC 公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
 - [0.1 范畴论](../../00-foundations/00-mathematical-foundations/01-category-theory.md) - 提供范畴论基础 / Provides category theory foundation
 - [1.1 形式化逻辑基础](../01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
 
@@ -111,8 +111,8 @@ La théorie des ensembles est la branche mathématique qui étudie les ensembles
     - [8.2 非线性优化 / Nonlinear Optimization / Nichtlineare Optimierung / Optimisation non linéaire](#82-非线性优化--nonlinear-optimization--nichtlineare-optimierung--optimisation-non-linéaire)
     - [8.3 随机优化 / Stochastic Optimization / Stochastische Optimierung / Optimisation stochastique](#83-随机优化--stochastic-optimization--stochastische-optimierung--optimisation-stochastique)
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
-    - [Rust实现：集合运算](#rust实现集合运算)
-    - [Haskell实现：代数结构](#haskell实现代数结构)
+    - [Rust 实现：集合运算](#rust-实现集合运算)
+    - [Haskell 实现：代数结构](#haskell-实现代数结构)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
   - [2024/2025 最新进展 / Latest Updates](#20242025-最新进展--latest-updates)
 
@@ -157,7 +157,7 @@ $$
 
 ### 1.2 公理系统 / Axiom System / Axiomensystem / Système d'axiomes
 
-**ZFC公理系统 / ZFC Axiom System:**
+**ZFC 公理系统 / ZFC Axiom System:**
 
 1. **外延公理 / Extensionality Axiom:**
    $$\forall x \forall y [\forall z(z \in x \leftrightarrow z \in y) \rightarrow x = y]$$
@@ -543,7 +543,7 @@ $$\min_{w} \mathbb{E}[L(w, \xi)]$$
 
 ## 代码示例 / Code Examples / Codebeispiele / Exemples de code
 
-### Rust实现：集合运算
+### Rust 实现：集合运算
 
 ```rust
 use std::collections::HashSet;
@@ -616,24 +616,24 @@ impl<T: Hash + Eq + Clone> Set<T> {
     fn add(&mut self, element: T) {
         self.elements.insert(element);
     }
-    
+
     fn remove(&mut self, element: &T) -> bool {
         self.elements.remove(element)
     }
-    
+
     fn clear(&mut self) {
         self.elements.clear();
     }
-    
+
     fn iter(&self) -> std::collections::hash_set::Iter<T> {
         self.elements.iter()
     }
-    
+
     fn power_set(&self) -> Set<Set<T>> {
         let mut power_set = Set::new();
         let elements: Vec<T> = self.elements.iter().cloned().collect();
         let n = elements.len();
-        
+
         for i in 0..(1 << n) {
             let mut subset = Set::new();
             for j in 0..n {
@@ -643,10 +643,10 @@ impl<T: Hash + Eq + Clone> Set<T> {
             }
             power_set.add(subset);
         }
-        
+
         power_set
     }
-    
+
     fn cartesian_product<U: Hash + Eq + Clone>(&self, other: &Set<U>) -> Set<(T, U)> {
         let mut product = Set::new();
         for a in &self.elements {
@@ -661,7 +661,7 @@ impl<T: Hash + Eq + Clone> Set<T> {
 // 集合代数运算 / Set Algebraic Operations / Mengenalgebraische Operationen / Opérations algébriques d'ensembles
 impl<T: Hash + Eq + Clone> std::ops::Add for Set<T> {
     type Output = Set<T>;
-    
+
     fn add(self, other: Set<T>) -> Set<T> {
         self.union(&other)
     }
@@ -669,7 +669,7 @@ impl<T: Hash + Eq + Clone> std::ops::Add for Set<T> {
 
 impl<T: Hash + Eq + Clone> std::ops::Mul for Set<T> {
     type Output = Set<T>;
-    
+
     fn mul(self, other: Set<T>) -> Set<T> {
         self.intersection(&other)
     }
@@ -677,7 +677,7 @@ impl<T: Hash + Eq + Clone> std::ops::Mul for Set<T> {
 
 impl<T: Hash + Eq + Clone> std::ops::Sub for Set<T> {
     type Output = Set<T>;
-    
+
     fn sub(self, other: Set<T>) -> Set<T> {
         self.difference(&other)
     }
@@ -792,7 +792,7 @@ fn main() {
 }
 ```
 
-### Haskell实现：代数结构
+### Haskell 实现：代数结构
 
 ```haskell
 -- 集合类型 / Set type / Mengentyp / Type ensemble
@@ -891,7 +891,7 @@ getOne ring = one ring
 -- 优化算法实现 / Optimization Algorithm Implementation / Optimierungsalgorithmus-Implementierung / Implémentation d'algorithme d'optimisation
 
 -- 梯度下降 / Gradient Descent / Gradientenabstieg / Descente de gradient
-gradientDescent :: (Floating a, Ord a) => 
+gradientDescent :: (Floating a, Ord a) =>
     (Vector a -> a) ->           -- 目标函数 / Objective function / Zielfunktion / Fonction objectif
     (Vector a -> Vector a) ->    -- 梯度函数 / Gradient function / Gradientenfunktion / Fonction gradient
     Vector a ->                  -- 初始点 / Initial point / Startpunkt / Point initial
@@ -899,7 +899,7 @@ gradientDescent :: (Floating a, Ord a) =>
     a ->                         -- 收敛阈值 / Convergence threshold / Konvergenzschwelle / Seuil de convergence
     Int ->                       -- 最大迭代次数 / Maximum iterations / Maximale Iterationen / Itérations maximales
     Vector a
-gradientDescent f grad_f x0 alpha epsilon max_iter = 
+gradientDescent f grad_f x0 alpha epsilon max_iter =
     let iterate x k
             | k >= max_iter = x
             | norm (grad_f x) < epsilon = x
@@ -907,7 +907,7 @@ gradientDescent f grad_f x0 alpha epsilon max_iter =
     in iterate x0 0
 
 -- 牛顿法 / Newton's Method / Newton-Verfahren / Méthode de Newton
-newtonMethod :: (Floating a, Ord a) => 
+newtonMethod :: (Floating a, Ord a) =>
     (Vector a -> a) ->           -- 目标函数 / Objective function / Zielfunktion / Fonction objectif
     (Vector a -> Vector a) ->    -- 梯度函数 / Gradient function / Gradientenfunktion / Fonction gradient
     (Vector a -> Matrix a) ->    -- 海森矩阵函数 / Hessian function / Hessematrixfunktion / Fonction hessienne
@@ -915,11 +915,11 @@ newtonMethod :: (Floating a, Ord a) =>
     a ->                         -- 收敛阈值 / Convergence threshold / Konvergenzschwelle / Seuil de convergence
     Int ->                       -- 最大迭代次数 / Maximum iterations / Maximale Iterationen / Itérations maximales
     Vector a
-newtonMethod f grad_f hess_f x0 epsilon max_iter = 
+newtonMethod f grad_f hess_f x0 epsilon max_iter =
     let iterate x k
             | k >= max_iter = x
             | norm (grad_f x) < epsilon = x
-            | otherwise = 
+            | otherwise =
                 let hess = hess_f x
                     grad = grad_f x
                     step = linearSolve hess grad
@@ -927,7 +927,7 @@ newtonMethod f grad_f hess_f x0 epsilon max_iter =
     in iterate x0 0
 
 -- 随机梯度下降 / Stochastic Gradient Descent / Stochastischer Gradientenabstieg / Descente de gradient stochastique
-stochasticGradientDescent :: (Floating a, Ord a) => 
+stochasticGradientDescent :: (Floating a, Ord a) =>
     (Vector a -> Vector a -> a) ->    -- 损失函数 / Loss function / Verlustfunktion / Fonction de perte
     (Vector a -> Vector a -> Vector a) -> -- 梯度函数 / Gradient function / Gradientenfunktion / Fonction gradient
     [Vector a] ->                     -- 训练数据 / Training data / Trainingsdaten / Données d'entraînement
@@ -936,10 +936,10 @@ stochasticGradientDescent :: (Floating a, Ord a) =>
     a ->                              -- 学习率衰减 / Learning rate decay / Lernratenabfall / Décroissance du taux d'apprentissage
     Int ->                            -- 最大迭代次数 / Maximum iterations / Maximale Iterationen / Itérations maximales
     Vector a
-stochasticGradientDescent loss_f grad_f data w0 alpha0 decay max_iter = 
+stochasticGradientDescent loss_f grad_f data w0 alpha0 decay max_iter =
     let iterate w alpha k
             | k >= max_iter = w
-            | otherwise = 
+            | otherwise =
                 let batch = take 32 (drop (k * 32) data)  -- 小批量 / Mini-batch / Mini-Batch / Mini-lot
                     grad = sum [grad_f w x | x <- batch] / fromIntegral (length batch)
                     new_w = w - alpha *^ grad
@@ -948,7 +948,7 @@ stochasticGradientDescent loss_f grad_f data w0 alpha0 decay max_iter =
     in iterate w0 alpha0 0
 
 -- 凸优化 / Convex Optimization / Konvexe Optimierung / Optimisation convexe
-convexOptimization :: (Floating a, Ord a) => 
+convexOptimization :: (Floating a, Ord a) =>
     (Vector a -> a) ->           -- 目标函数 / Objective function / Zielfunktion / Fonction objectif
     (Vector a -> Vector a) ->    -- 梯度函数 / Gradient function / Gradientenfunktion / Fonction gradient
     (Vector a -> Bool) ->        -- 约束函数 / Constraint function / Nebenbedingungsfunktion / Fonction de contrainte
@@ -956,11 +956,11 @@ convexOptimization :: (Floating a, Ord a) =>
     a ->                         -- 收敛阈值 / Convergence threshold / Konvergenzschwelle / Seuil de convergence
     Int ->                       -- 最大迭代次数 / Maximum iterations / Maximale Iterationen / Itérations maximales
     Vector a
-convexOptimization f grad_f constraint x0 epsilon max_iter = 
+convexOptimization f grad_f constraint x0 epsilon max_iter =
     let iterate x k
             | k >= max_iter = x
             | norm (grad_f x) < epsilon = x
-            | otherwise = 
+            | otherwise =
                 let grad = grad_f x
                     step = -grad
                     new_x = x + step
@@ -970,7 +970,7 @@ convexOptimization f grad_f constraint x0 epsilon max_iter =
 
 -- 投影到约束集 / Project to constraint set / Projektion auf Nebenbedingungsmenge / Projection sur l'ensemble de contraintes
 projectToConstraint :: Vector a -> Vector a
-projectToConstraint x = 
+projectToConstraint x =
     -- 这里实现具体的投影算法 / Implement specific projection algorithm here
     -- Hier spezifischen Projektionsalgorithmus implementieren
     -- Implémenter l'algorithme de projection spécifique ici
@@ -978,7 +978,7 @@ projectToConstraint x =
 
 -- 线性求解器 / Linear solver / Linearer Löser / Solveur linéaire
 linearSolve :: Matrix a -> Vector a -> Vector a
-linearSolve a b = 
+linearSolve a b =
     -- 这里实现线性方程组求解 / Implement linear system solving here
     -- Hier lineares Gleichungssystem lösen
     -- Résoudre le système linéaire ici
@@ -1115,31 +1115,34 @@ main = do
 ## 参考文献 / References / Literatur / Références
 
 1. **中文 / Chinese:**
-   - 张锦文 (1997). *集合论与连续统假设*. 科学出版社.
-   - 华罗庚 (1979). *高等数学引论*. 科学出版社.
-   - 江泽涵 (1980). *拓扑学引论*. 科学出版社.
+
+   - 张锦文 (1997). _集合论与连续统假设_. 科学出版社.
+   - 华罗庚 (1979). _高等数学引论_. 科学出版社.
+   - 江泽涵 (1980). _拓扑学引论_. 科学出版社.
 
 2. **English:**
-   - Bourbaki, N. (1970). *Éléments de mathématique: Théorie des ensembles*. Hermann.
-   - Lang, S. (2002). *Algebra*. Springer.
-   - Munkres, J. R. (2000). *Topology*. Prentice Hall.
-   - Rudin, W. (1976). *Principles of Mathematical Analysis*. McGraw-Hill.
+
+   - Bourbaki, N. (1970). _Éléments de mathématique: Théorie des ensembles_. Hermann.
+   - Lang, S. (2002). _Algebra_. Springer.
+   - Munkres, J. R. (2000). _Topology_. Prentice Hall.
+   - Rudin, W. (1976). _Principles of Mathematical Analysis_. McGraw-Hill.
 
 3. **Deutsch / German:**
-   - Jech, T. (2003). *Set Theory*. Springer.
-   - Hungerford, T. W. (1974). *Algebra*. Springer.
-   - Bredon, G. E. (1993). *Topology and Geometry*. Springer.
-   - Walter, R. (1983). *Differentialgeometrie*. Springer.
+
+   - Jech, T. (2003). _Set Theory_. Springer.
+   - Hungerford, T. W. (1974). _Algebra_. Springer.
+   - Bredon, G. E. (1993). _Topology and Geometry_. Springer.
+   - Walter, R. (1983). _Differentialgeometrie_. Springer.
 
 4. **Français / French:**
-   - Halmos, P. R. (1974). *Naive Set Theory*. Springer.
-   - Artin, M. (1991). *Algebra*. Prentice Hall.
-   - Dieudonné, J. (1974). *Éléments d'analyse*. Gauthier-Villars.
-   - Cartan, H. (1971). *Formes différentielles*. Hermann.
+   - Halmos, P. R. (1974). _Naive Set Theory_. Springer.
+   - Artin, M. (1991). _Algebra_. Prentice Hall.
+   - Dieudonné, J. (1974). _Éléments d'analyse_. Gauthier-Villars.
+   - Cartan, H. (1971). _Formes différentielles_. Hermann.
 
 ---
 
-*本模块为FormalAI提供了完整的数学基础，结合国际标准Wiki的概念定义，使用中英德法四语言诠释核心概念，为AI系统的数学建模和分析提供了严格的数学基础。*
+_本模块为 FormalAI 提供了完整的数学基础，结合国际标准 Wiki 的概念定义，使用中英德法四语言诠释核心概念，为 AI 系统的数学建模和分析提供了严格的数学基础。_
 
 ## 2024/2025 最新进展 / Latest Updates
 

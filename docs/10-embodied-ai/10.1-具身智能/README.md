@@ -384,7 +384,7 @@ impl EmbodiedAgent {
 
     pub fn sense(&self) -> HashMap<String, Vec<f64>> {
         let mut measurements = HashMap::new();
-        
+
         for sensor in &self.sensors {
             let measurement = match sensor.sensor_type {
                 SensorType::Camera { .. } => self.sense_visual(sensor),
@@ -394,7 +394,7 @@ impl EmbodiedAgent {
             };
             measurements.insert(sensor.id.clone(), measurement);
         }
-        
+
         measurements
     }
 
@@ -460,19 +460,19 @@ impl EmbodiedAgent {
         for _ in 0..steps {
             // 感知阶段
             let measurements = self.sense();
-            
+
             // 规划阶段
             let action = self.plan_action(goal, &measurements);
-            
+
             // 执行阶段
             self.execute_action(&action)?;
-            
+
             // 检查是否达到目标
             if self.check_goal_reached(goal) {
                 break;
             }
         }
-        
+
         Ok(())
     }
 
@@ -540,15 +540,15 @@ mod tests {
         let mut agent = EmbodiedAgent::new("test_agent".to_string());
         let camera = Sensor {
             id: "camera1".to_string(),
-            sensor_type: SensorType::Camera { 
-                resolution: (640, 480), 
-                fov: 60.0 
+            sensor_type: SensorType::Camera {
+                resolution: (640, 480),
+                fov: 60.0
             },
             position: Vector3::new(0.0, 0.0, 0.0),
             orientation: Isometry3::identity(),
             noise_model: NoiseModel { mean: 0.0, std_dev: 0.1 },
         };
-        
+
         agent.add_sensor(camera);
         assert_eq!(agent.sensors.len(), 1);
         assert_eq!(agent.sensors[0].id, "camera1");
