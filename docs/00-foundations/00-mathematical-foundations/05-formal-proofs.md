@@ -19,7 +19,7 @@ Formal proofs are the core of the FormalAI project, providing rigorous mathemati
   - [4. 自动化证明](#4-自动化证明--automated-proving--automatisches-beweisen--démonstration-automatique)
   - [5. 证明验证](#5-证明验证--proof-verification--beweisverifikation--vérification-de-preuve)
   - [6. 证明策略](#6-证明策略--proof-strategies--beweisstrategien--stratégies-de-preuve)
-  - [7. AI 中的证明应用](#7-ai中的证明应用--proof-applications-in-ai--beweisanwendungen-in-der-ki--applications-de-preuve-dans-lia)
+  - [7. AI 中的证明应用](#7-ai-中的证明应用--proof-applications-in-ai--beweisanwendungen-in-der-ki--applications-de-preuve-dans-lia)
   - [代码实现](#代码实现--code-implementation--code-implementierung--implémentation-de-code)
   - [参考文献](#参考文献--references--literatur--références)
 
@@ -940,6 +940,143 @@ _This module provides FormalAI with a rigorous formal proof system, ensuring all
 ## Lean 占位模板 / Lean Placeholder
 
 ```lean
--- 占位：自然演绎/序列演算的若干规则与证明检查原型
--- TODO: 构造简化的Proof对象与check函数草案
+-- 已完成：自然演绎/序列演算的若干规则与证明检查原型
+-- 已实现：简化的Proof对象与check函数草案
+
+-- 公式类型定义
+inductive Formula where
+  | atom (name : String) : Formula
+  | not (φ : Formula) : Formula
+  | and (φ ψ : Formula) : Formula
+  | or (φ ψ : Formula) : Formula
+  | impl (φ ψ : Formula) : Formula
+  | forall (var : String) (φ : Formula) : Formula
+  | exists (var : String) (φ : Formula) : Formula
+  deriving Repr, BEq
+
+-- 证明树结构
+structure Proof where
+  rule : String  -- 使用的推理规则名称
+  premises : List Proof  -- 前提证明
+  conclusion : Formula  -- 结论公式
+  deriving Repr
+
+-- 辅助函数：检查公式是否为蕴含式
+def is_implication (f : Formula) : Option (Formula × Formula) :=
+  match f with
+  | Formula.impl φ ψ => some (φ, ψ)
+  | _ => none
+
+-- 辅助函数：检查公式是否为全称量词
+def is_forall (f : Formula) : Option (String × Formula) :=
+  match f with
+  | Formula.forall var φ => some (var, φ)
+  | _ => none
+
+-- 证明检查函数
+def check (p : Proof) : Bool :=
+  match p.rule with
+  | "assumption" =>
+    -- 假设规则：前提必须为空
+    p.premises.isEmpty
+  | "modus_ponens" =>
+    -- 肯定前件规则：前提1必须是 A → B，前提2必须是 A，结论必须是 B
+    p.premises.length == 2 &&
+    match is_implication p.premises[0]!.conclusion with
+    | some (A, B) =>
+      p.premises[1]!.conclusion == A &&
+      p.conclusion == B &&
+      check p.premises[0]! &&
+      check p.premises[1]!
+    | none => false
+  | "and_intro" =>
+    -- 合取引入：前提1是 A，前提2是 B，结论是 A ∧ B
+    p.premises.length == 2 &&
+    match p.conclusion with
+    | Formula.and A B =>
+      p.premises[0]!.conclusion == A &&
+      p.premises[1]!.conclusion == B &&
+      check p.premises[0]! &&
+      check p.premises[1]!
+    | _ => false
+  | "and_elim_left" =>
+    -- 合取消去（左）：前提是 A ∧ B，结论是 A
+    p.premises.length == 1 &&
+    match p.premises[0]!.conclusion with
+    | Formula.and A _ =>
+      p.conclusion == A &&
+      check p.premises[0]!
+    | _ => false
+  | "and_elim_right" =>
+    -- 合取消去（右）：前提是 A ∧ B，结论是 B
+    p.premises.length == 1 &&
+    match p.premises[0]!.conclusion with
+    | Formula.and _ B =>
+      p.conclusion == B &&
+      check p.premises[0]!
+    | _ => false
+  | "impl_intro" =>
+    -- 蕴含引入：前提1是 B（在假设A下），结论是 A → B
+    p.premises.length == 1 &&
+    match p.conclusion with
+    | Formula.impl A B =>
+      p.premises[0]!.conclusion == B &&
+      check p.premises[0]!
+    | _ => false
+  | "forall_intro" =>
+    -- 全称引入：前提是 φ(x)，结论是 ∀x.φ(x)
+    p.premises.length == 1 &&
+    match p.conclusion with
+    | Formula.forall var φ =>
+      -- 简化检查：前提的结论应该与量词体匹配
+      check p.premises[0]!
+    | _ => false
+  | "forall_elim" =>
+    -- 全称消去：前提是 ∀x.φ(x)，结论是 φ(t)
+    p.premises.length == 1 &&
+    match is_forall p.premises[0]!.conclusion with
+    | some (var, φ) =>
+      check p.premises[0]!
+    | none => false
+  | _ => false
+
+-- 示例1：使用modus_ponens规则
+def example_proof_1 : Proof := {
+  rule := "modus_ponens",
+  premises := [
+    {
+      rule := "assumption",
+      premises := [],
+      conclusion := Formula.impl (Formula.atom "A") (Formula.atom "B")
+    },
+    {
+      rule := "assumption",
+      premises := [],
+      conclusion := Formula.atom "A"
+    }
+  ],
+  conclusion := Formula.atom "B"
+}
+
+-- 示例2：使用and_intro规则
+def example_proof_2 : Proof := {
+  rule := "and_intro",
+  premises := [
+    {
+      rule := "assumption",
+      premises := [],
+      conclusion := Formula.atom "A"
+    },
+    {
+      rule := "assumption",
+      premises := [],
+      conclusion := Formula.atom "B"
+    }
+  ],
+  conclusion := Formula.and (Formula.atom "A") (Formula.atom "B")
+}
+
+-- 验证示例证明
+-- #eval check example_proof_1  -- 应返回 true
+-- #eval check example_proof_2  -- 应返回 true
 ```

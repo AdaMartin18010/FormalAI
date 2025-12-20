@@ -836,5 +836,111 @@ _This module provides FormalAI with rigorous logical calculus foundations, ensur
 
 ```lean
 -- 占位：自然演绎与序列演算的最小规则集
--- TODO: 定义公式语法与若干推理规则，添加可靠性草案
+-- 已实现：公式语法与若干推理规则，可靠性草案
+
+-- 公式语法定义
+inductive Formula where
+  | atom (name : String) : Formula  -- 原子公式
+  | not (φ : Formula) : Formula     -- 否定
+  | and (φ ψ : Formula) : Formula  -- 合取
+  | or (φ ψ : Formula) : Formula   -- 析取
+  | impl (φ ψ : Formula) : Formula -- 蕴含
+  | forall (var : String) (φ : Formula) : Formula  -- 全称量词
+  | exists (var : String) (φ : Formula) : Formula  -- 存在量词
+
+-- 自然演绎规则
+inductive ND_Rule where
+  | assumption : Formula → ND_Rule  -- 假设规则
+  | modus_ponens : Formula → Formula → Formula → ND_Rule  -- 肯定前件
+  | and_intro : Formula → Formula → Formula → ND_Rule    -- 合取引入
+  | and_elim_left : Formula → Formula → ND_Rule          -- 合取消去（左）
+  | and_elim_right : Formula → Formula → ND_Rule         -- 合取消去（右）
+  | or_intro_left : Formula → Formula → ND_Rule          -- 析取引入（左）
+  | or_intro_right : Formula → Formula → ND_Rule         -- 析取引入（右）
+  | not_intro : Formula → Formula → ND_Rule              -- 否定引入
+  | not_elim : Formula → Formula → ND_Rule               -- 否定消去
+  | forall_intro : String → Formula → Formula → ND_Rule -- 全称引入
+  | forall_elim : String → Formula → Formula → Formula → ND_Rule  -- 全称消去
+
+-- 推导关系定义
+-- 表示从前提集Γ可以推导出公式φ
+inductive Derives : List Formula → Formula → List ND_Rule → Prop where
+  | assumption (φ : Formula) : Derives [φ] φ [ND_Rule.assumption φ]
+  | modus_ponens (Γ : List Formula) (A B : Formula) (r1 r2 : List ND_Rule) :
+    Derives Γ (Formula.impl A B) r1 →
+    Derives Γ A r2 →
+    Derives Γ B (r1 ++ r2 ++ [ND_Rule.modus_ponens A B (Formula.impl A B)])
+  | and_intro (Γ : List Formula) (A B : Formula) (r1 r2 : List ND_Rule) :
+    Derives Γ A r1 →
+    Derives Γ B r2 →
+    Derives Γ (Formula.and A B) (r1 ++ r2 ++ [ND_Rule.and_intro A B (Formula.and A B)])
+  | and_elim_left (Γ : List Formula) (A B : Formula) (r : List ND_Rule) :
+    Derives Γ (Formula.and A B) r →
+    Derives Γ A (r ++ [ND_Rule.and_elim_left (Formula.and A B) A])
+  | and_elim_right (Γ : List Formula) (A B : Formula) (r : List ND_Rule) :
+    Derives Γ (Formula.and A B) r →
+    Derives Γ B (r ++ [ND_Rule.and_elim_right (Formula.and A B) B])
+
+-- 模型定义（简化版）
+structure Model where
+  domain : Type
+  interpretation : String → domain → Bool  -- 谓词解释
+  atom_truth : String → Bool  -- 原子公式真值
+
+-- 满足关系定义
+inductive Satisfies : Model → Formula → Prop where
+  | atom (M : Model) (name : String) :
+    M.atom_truth name → Satisfies M (Formula.atom name)
+  | not (M : Model) (φ : Formula) :
+    ¬ Satisfies M φ → Satisfies M (Formula.not φ)
+  | and (M : Model) (φ ψ : Formula) :
+    Satisfies M φ → Satisfies M ψ → Satisfies M (Formula.and φ ψ)
+  | or_left (M : Model) (φ ψ : Formula) :
+    Satisfies M φ → Satisfies M (Formula.or φ ψ)
+  | or_right (M : Model) (φ ψ : Formula) :
+    Satisfies M ψ → Satisfies M (Formula.or φ ψ)
+  | impl (M : Model) (φ ψ : Formula) :
+    (Satisfies M φ → Satisfies M ψ) → Satisfies M (Formula.impl φ ψ)
+
+-- 可靠性定理（Soundness）草案
+-- 定理：如果公式φ可以从前提集Γ推导出，且模型M满足Γ中的所有公式，则M也满足φ
+theorem soundness (Γ : List Formula) (φ : Formula) (derivation : List ND_Rule)
+  (M : Model) (h_derives : Derives Γ φ derivation)
+  (h_models : ∀ ψ ∈ Γ, Satisfies M ψ) :
+  Satisfies M φ := by
+  -- 证明思路：
+  -- 1. 对推导结构进行归纳
+  -- 2. 对每个推理规则，证明如果前提在模型中为真，则结论也为真
+  -- 3. 基础情况：假设规则 - 如果φ在Γ中，则由h_models直接得到
+  -- 4. 归纳步骤：对每个规则类型进行分情况讨论
+  induction h_derives with
+  | assumption φ' =>
+    -- 基础情况：φ是假设
+    have h : φ' ∈ [φ'] := by simp
+    have h_satisfies : Satisfies M φ' := h_models φ' h
+    exact h_satisfies
+  | modus_ponens Γ' A B r1 r2 h1 h2 ih1 ih2 =>
+    -- 肯定前件：如果 A → B 和 A 都为真，则 B 为真
+    have h_impl : Satisfies M (Formula.impl A B) := ih1 h_models
+    have h_A : Satisfies M A := ih2 h_models
+    cases h_impl with
+    | impl _ _ h_impl_prop =>
+      exact h_impl_prop h_A
+  | and_intro Γ' A B r1 r2 h1 h2 ih1 ih2 =>
+    -- 合取引入：如果 A 和 B 都为真，则 A ∧ B 为真
+    have h_A : Satisfies M A := ih1 h_models
+    have h_B : Satisfies M B := ih2 h_models
+    exact Satisfies.and M A B h_A h_B
+  | and_elim_left Γ' A B r h ih =>
+    -- 合取消去（左）：如果 A ∧ B 为真，则 A 为真
+    have h_and : Satisfies M (Formula.and A B) := ih h_models
+    cases h_and with
+    | and _ _ h_A _ =>
+      exact h_A
+  | and_elim_right Γ' A B r h ih =>
+    -- 合取消去（右）：如果 A ∧ B 为真，则 B 为真
+    have h_and : Satisfies M (Formula.and A B) := ih h_models
+    cases h_and with
+    | and _ _ _ h_B =>
+      exact h_B
 ```

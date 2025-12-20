@@ -181,7 +181,7 @@ AI 的本质是**三层异质体的脆弱平衡**：
 ## 九、相关主题
 
 - [02-AI 炼金术转化度模型](../02-AI炼金术转化度模型/README.md)
-- [03-Scaling Law 与收敛分析](../03-Scaling Law 与收敛分析/README.md)
+- [03-Scaling Law与收敛分析](../03-Scaling Law与收敛分析/README.md)
 - [04-AI 意识与认知模拟](../04-AI意识与认知模拟/README.md)
 - [05-AI 科学理论](../05-AI科学理论/README.md)
 - [06-AI 反实践判定系统](../06-AI反实践判定系统/README.md)

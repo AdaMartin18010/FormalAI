@@ -230,9 +230,9 @@ Thanks to all researchers, developers, and users who contributed to the 2025 exp
 
 ---
 
-**最后更新**：2025-01-01  
-**版本**：v2025-01  
-**维护者**：FormalAI项目组  
+**最后更新**：2025-01-01
+**版本**：v2025-01
+**维护者**：FormalAI项目组
 **状态**：持续维护中
 
 *FormalAI项目2025年扩展为AI领域的形式化理论发展做出了重要贡献，为构建可信AI系统提供了完整的理论基础和实践指导。*

@@ -608,3 +608,11 @@ flowchart TD
 - **ROI 案例**：DeepSeek-R1, Claude 3.5, GPT-4o 的成本对比（来自企业技术报告）
 
 **工程实践的终极真相**：**AI 不是科学，是工程；工程不是艺术，是 ROI**。三层模型的炼金术，在 2025 年的工业界，就是 **"用可控的成本，制造不可控的智能，再用不可控的规则，约束不可控的智能"** ——听起来荒谬，但这就是每天创造千万美元价值的事实。
+
+**Ontology作为企业认知基础设施**：在AI Agent规模化落地的临界点（2025），Ontology已超越"数据架构"范畴，演变为企业决策知识库的**认知操作系统**。通过建立**DKB = (O, L, H)三元组**（Ontology语义内核、Logic逻辑工具层、History决策历史层），可以为AI系统的"可控制性"和"可解释性"提供企业级基础设施支撑。具体而言：
+
+- **语义一致性（Semantic Consistency）**：通过Ontology统一业务语义空间，消除AI系统的语义歧义
+- **决策因果链（Decision Causal Chain）**：通过History层记录决策历史，为AI决策提供可追溯的因果链
+- **知识复利（Knowledge Compounding）**：通过DKB三元组的协同机制，实现知识的持续积累和复用
+
+详见 `Philosophy/view01.md`（商业论证层：Ontology成为新基础设施）、`Philosophy/view02.md`（形式化证明层：不可替代性定理）、`Philosophy/model/10-DKB公理与定理索引.md`（DKB公理与定理系统）。

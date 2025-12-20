@@ -194,9 +194,88 @@
 - [类型理论](./00-foundations/00-mathematical-foundations/02-type-theory.md) ↔ [形式化验证](./03-formal-methods/03.1-形式化验证/README.md)
 - [逻辑演算系统](./00-foundations/00-mathematical-foundations/03-logical-calculus.md) ↔ [程序综合](./03-formal-methods/03.2-程序综合/README.md)
 
-## 4. 搜索与索引
+## 4. 跨模块整合导航
 
-### 4.1 关键词索引
+### 4.1 Philosophy模块导航
+
+**核心文档**:
+
+- [Philosophy/README.md](../Philosophy/README.md) - Philosophy模块总览
+- [Philosophy/00-主题总览与导航.md](../Philosophy/00-主题总览与导航.md) - 主题导航
+- [Philosophy/快速参考指南.md](../Philosophy/快速参考指南.md) - 快速参考
+
+**视角文档**:
+
+- [view01.md](../Philosophy/view01.md) - 商业论证层：Ontology成为新基础设施
+- [view02.md](../Philosophy/view02.md) - 形式化证明层：不可替代性定理
+- [view03.md](../Philosophy/view03.md) - 哲学转译层：从存在论到决策知识库
+- [view04.md](../Philosophy/view04.md) - 行业对比层：IT行业Ontology决策模型全景
+- [view05.md](../Philosophy/view05.md) - 全景论证层：从希腊神庙到认知操作系统
+- [view06.md](../Philosophy/view06.md) - 范式革命层：从软件工程到认知存在论
+
+**模型文档**:
+
+- [model/01-主题层级模型.md](../Philosophy/model/01-主题层级模型.md) - 七层主题结构模型
+- [model/10-DKB公理与定理索引.md](../Philosophy/model/10-DKB公理与定理索引.md) - 形式化公理/引理/定理
+- [model/12-风险与反证总览.md](../Philosophy/model/12-风险与反证总览.md) - 风险与反证总览
+
+**关键整合点**:
+
+- **形式化方法**: [docs/03-formal-methods/03.5-DKB案例研究.md](./03-formal-methods/03.5-DKB案例研究.md)
+- **语言模型**: [docs/04-language-models/04.6-AI评估指标.md](./04-language-models/04.6-AI评估指标.md)
+- **哲学与伦理**: [docs/09-philosophy-ethics/09.1-AI哲学/README.md](./09-philosophy-ethics/09.1-AI哲学/README.md)
+
+### 4.2 Concepts模块导航
+
+**核心主题**:
+
+- [concepts/01-AI三层模型架构/README.md](../concepts/01-AI三层模型架构/README.md) - AI三层模型架构
+- [concepts/05-AI科学理论/README.md](../concepts/05-AI科学理论/README.md) - AI科学理论（含Ontology章节）
+- [concepts/07-AI框架批判与重构/README.md](../concepts/07-AI框架批判与重构/README.md) - AI框架批判与重构（含Ontology视角）
+
+**关键整合点**:
+
+- **Ontology作为科学对象**: concepts/05-AI科学理论/README.md §9
+- **Ontology视角**: concepts/07-AI框架批判与重构/README.md §7.2、§9.2
+
+### 4.3 View模块导航
+
+**核心文档**:
+
+- [ai_科学理论_view.md](../view/ai_科学理论_view.md) - AI科学理论视角（已整合Philosophy内容）
+- [ai_models_view.md](../view/ai_models_view.md) - AI三层模型架构全景
+- [ai_意识_view.md](../view/ai_意识_view.md) - AI意识模拟分析
+- [ai_scale_view.md](../view/ai_scale_view.md) - Scaling Law视角
+- [ai_engineer_view.md](../view/ai_engineer_view.md) - AI工程视角
+
+**跨模块关联**:
+
+- view模块与Philosophy模块的关联：见 [Philosophy/model/09-跨模块映射索引.md](../Philosophy/model/09-跨模块映射索引.md)
+- view模块与concepts模块的关联：见 [concepts/VIEW_CONCEPTS_ALIGNMENT_REPORT.md](../concepts/VIEW_CONCEPTS_ALIGNMENT_REPORT.md)
+
+### 4.4 跨模块学习路径
+
+**路径1：从Philosophy到docs**
+
+1. [Philosophy/view02.md](../Philosophy/view02.md) - 形式化证明层
+2. [docs/03-formal-methods/03.5-DKB案例研究.md](./03-formal-methods/03.5-DKB案例研究.md) - DKB形式化案例
+3. [docs/03-formal-methods/03.1-形式化验证/README.md](./03-formal-methods/03.1-形式化验证/README.md) - 形式化验证
+
+**路径2：从Philosophy到concepts**
+
+1. [Philosophy/view06.md](../Philosophy/view06.md) - 范式革命层
+2. [concepts/07-AI框架批判与重构/README.md](../concepts/07-AI框架批判与重构/README.md) - AI框架批判
+3. [concepts/05-AI科学理论/README.md](../concepts/05-AI科学理论/README.md) - AI科学理论
+
+**路径3：从view到Philosophy**
+
+1. [view/ai_科学理论_view.md](../view/ai_科学理论_view.md) - AI科学理论视角
+2. [Philosophy/view02.md](../Philosophy/view02.md) - 形式化证明层
+3. [Philosophy/model/01-主题层级模型.md](../Philosophy/model/01-主题层级模型.md) - 主题层级模型
+
+## 5. 搜索与索引
+
+### 5.1 关键词索引
 
 **数学概念**:
 
@@ -206,11 +285,15 @@
 
 - 机器学习、深度学习、神经网络、强化学习
 
+**Philosophy概念**:
+
+- Ontology、DKB、ARI指数、Phronesis、上手性
+
 **形式化概念**:
 
 - 验证、综合、证明、类型安全
 
-### 4.2 主题索引
+### 5.2 主题索引
 
 **基础理论**:
 
@@ -224,21 +307,27 @@
 
 - 量子AI、神经符号AI、元学习
 
-## 5. 更新日志
+**Philosophy理论**:
 
-### 5.1 版本历史
+- Ontology作为企业认知基础设施、DKB三元组、形式化数学基础
+
+## 6. 更新日志
+
+### 6.1 版本历史
 
 - **v2025-01**: 初始版本，建立基础导航结构
 - **v2025-01.1**: 添加机器学习理论导航
 - **v2025-01.2**: 完善交叉引用系统
+- **v2025-01.3**: 整合Philosophy、concepts、view模块
 
-### 5.2 最近更新
+### 6.2 最近更新
 
 - 2025-01-01: 创建全局导航系统
 - 2025-01-01: 添加快速导航功能
 - 2025-01-01: 建立交叉引用索引
+- 2025-01-XX: 整合跨模块导航（Philosophy/concepts/view）
 
-## 6. 对齐标准与权威来源（2025）
+## 7. 对齐标准与权威来源（2025）
 
 为确保内容持续对齐至2025年国际最成熟的理论、模型与技术，并统一引用口径，项目遵循如下权威来源体系（示例性锚点，随“最近更新”滚动同步）：
 
@@ -270,6 +359,6 @@
 
 ---
 
-**最后更新**：2025-09-11  
-**版本**：v2025-09.1  
+**最后更新**：2025-09-11
+**版本**：v2025-09.1
 **维护者**：FormalAI项目组

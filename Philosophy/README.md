@@ -353,5 +353,7 @@ Philosophy/
 ---
 
 **最后更新**：2025-01-XX
-**版本**：v1.0
+**版本**：v1.0.0
 **维护者**：FormalAI项目组
+
+**变更日志**：详见项目根目录 [CHANGELOG.md](../CHANGELOG.md)
