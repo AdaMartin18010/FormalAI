@@ -15,7 +15,7 @@
 | `AI_ARGUMENTS_EXECUTIVE_SUMMARY.md` | `INDEX.md` | `INDEX.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\INDEX.md |
 | `AI_ARGUMENTS_EXECUTIVE_SUMMARY.md` | `README.md` | `01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
 | `AI_ARGUMENTS_EXECUTIVE_SUMMARY.md` | `README.md` | `02-AI炼金术转化度模型/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\README.md |
-| `AI_ARGUMENTS_EXECUTIVE_SUMMARY.md` | `README.md` | `03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `AI_ARGUMENTS_EXECUTIVE_SUMMARY.md` | `README.md` | `03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `AI_ARGUMENTS_EXECUTIVE_SUMMARY.md` | `README.md` | `04-AI意识与认知模拟/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\04-AI意识与认知模拟\README.md |
 | `AI_ARGUMENTS_EXECUTIVE_SUMMARY.md` | `README.md` | `05-AI科学理论/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\README.md |
 | `AI_ARGUMENTS_EXECUTIVE_SUMMARY.md` | `README.md` | `06-AI反实践判定系统/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\06-AI反实践判定系统\README.md |
@@ -34,7 +34,7 @@
 | `AI_ARGUMENTS_INTEGRATED_ANALYSIS.md` | `README.md` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\README.md |
 | `INDEX.md` | `README.md` | `01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
 | `INDEX.md` | `README.md` | `02-AI炼金术转化度模型/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\README.md |
-| `INDEX.md` | `README.md` | `03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `INDEX.md` | `README.md` | `03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `INDEX.md` | `README.md` | `04-AI意识与认知模拟/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\04-AI意识与认知模拟\README.md |
 | `INDEX.md` | `README.md` | `05-AI科学理论/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\README.md |
 | `INDEX.md` | `README.md` | `06-AI反实践判定系统/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\06-AI反实践判定系统\README.md |
@@ -50,11 +50,11 @@
 | `INDEX.md` | `02.2-实践成熟度阶梯` | `02-AI炼金术转化度模型/README.md#二主题结构` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\README.md |
 | `INDEX.md` | `02.3-炼金术陷阱` | `02-AI炼金术转化度模型/README.md#二主题结构` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\README.md |
 | `INDEX.md` | `02.4-改进路线图` | `02-AI炼金术转化度模型/README.md#二主题结构` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\README.md |
-| `INDEX.md` | `03-Scaling Law 与收敛分析` | `03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
-| `INDEX.md` | `03.1-收敛模型分类` | `03-Scaling Law 与收敛分析/README.md#二主题结构` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
-| `INDEX.md` | `03.2-收敛层次分析` | `03-Scaling Law 与收敛分析/README.md#二主题结构` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
-| `INDEX.md` | `03.3-收敛驱动力` | `03-Scaling Law 与收敛分析/README.md#二主题结构` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
-| `INDEX.md` | `03.4-收敛时间表` | `03-Scaling Law 与收敛分析/README.md#二主题结构` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `INDEX.md` | `03-Scaling Law与收敛分析` | `03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `INDEX.md` | `03.1-收敛模型分类` | `03-Scaling Law与收敛分析/README.md#二主题结构` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `INDEX.md` | `03.2-收敛层次分析` | `03-Scaling Law与收敛分析/README.md#二主题结构` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `INDEX.md` | `03.3-收敛驱动力` | `03-Scaling Law与收敛分析/README.md#二主题结构` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `INDEX.md` | `03.4-收敛时间表` | `03-Scaling Law与收敛分析/README.md#二主题结构` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `INDEX.md` | `04-AI 意识与认知模拟` | `04-AI意识与认知模拟/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\04-AI意识与认知模拟\README.md |
 | `INDEX.md` | `04.1-意识本质问题` | `04-AI意识与认知模拟/README.md#二主题结构` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\04-AI意识与认知模拟\README.md |
 | `INDEX.md` | `04.2-认知模拟理论化` | `04-AI意识与认知模拟/README.md#二主题结构` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\04-AI意识与认知模拟\README.md |
@@ -141,7 +141,7 @@
 | `INDEX.md` | `01.2-控制层形式语言模型` | `01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
 | `INDEX.md` | `01.3-数据层数学概率模型` | `01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
 | `INDEX.md` | `02-AI 炼金术转化度模型` | `02-AI炼金术转化度模型/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\README.md |
-| `INDEX.md` | `03-Scaling Law 与收敛分析` | `03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `INDEX.md` | `03-Scaling Law与收敛分析` | `03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `INDEX.md` | `04-AI 意识与认知模拟` | `04-AI意识与认知模拟/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\04-AI意识与认知模拟\README.md |
 | `INDEX.md` | `05-AI 科学理论` | `05-AI科学理论/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\README.md |
 | `INDEX.md` | `06-AI 反实践判定系统` | `06-AI反实践判定系统/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\06-AI反实践判定系统\README.md |
@@ -151,7 +151,7 @@
 | `INDEX.md` | `07.11-AI 能否持续进步的可度量维度分析` | `07-AI框架批判与重构/07.11-AI能否持续进步的可度量维度分析.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\07-AI框架批判与重构\07.11-AI能否持续进步的可度量维度分析.md |
 | `INDEX.md` | `01-AI 三层模型架构` | `01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
 | `INDEX.md` | `02-AI 炼金术转化度模型` | `02-AI炼金术转化度模型/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\README.md |
-| `INDEX.md` | `03-Scaling Law 与收敛分析` | `03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `INDEX.md` | `03-Scaling Law与收敛分析` | `03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `INDEX.md` | `04-AI 意识与认知模拟` | `04-AI意识与认知模拟/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\04-AI意识与认知模拟\README.md |
 | `INDEX.md` | `05-AI 科学理论` | `05-AI科学理论/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\README.md |
 | `INDEX.md` | `06-AI 反实践判定系统` | `06-AI反实践判定系统/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\06-AI反实践判定系统\README.md |
@@ -353,7 +353,7 @@
 | `02-AI炼金术转化度模型\02.3.3-涌现失控.md` | `AI 炼金术实践成熟度全景图谱` | `../../view/ai_model_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_model_view.md |
 | `02-AI炼金术转化度模型\02.3.4-基准过拟合.md` | `02.3.3-涌现失控` | `02.3.3-涌现失控.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\02.3.3-涌现失控.md |
 | `02-AI炼金术转化度模型\02.3.4-基准过拟合.md` | `02.3.5-自我改进死锁` | `02.3.5-自我改进死锁.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\02.3.5-自我改进死锁.md |
-| `02-AI炼金术转化度模型\02.3.4-基准过拟合.md` | `03.2.3-能力层收敛` | `../03-Scaling Law 与收敛分析/03.2.3-能力层收敛.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\03.2.3-能力层收敛.md |
+| `02-AI炼金术转化度模型\02.3.4-基准过拟合.md` | `03.2.3-能力层收敛` | `../03-Scaling Law与收敛分析/03.2.3-能力层收敛.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.2.3-能力层收敛.md |
 | `02-AI炼金术转化度模型\02.3.4-基准过拟合.md` | `AI 炼金术实践成熟度全景图谱` | `../../view/ai_model_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_model_view.md |
 | `02-AI炼金术转化度模型\02.3.5-自我改进死锁.md` | `02.3.4-基准过拟合` | `02.3.4-基准过拟合.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\02.3.4-基准过拟合.md |
 | `02-AI炼金术转化度模型\02.3.5-自我改进死锁.md` | `02.4.2-阶段二: 自动化提炼` | `02.4.2-阶段二: 自动化提炼.md` | 文件不存在: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\02.4.2-阶段二: 自动化提炼.md |
@@ -398,27 +398,27 @@
 | `02-AI炼金术转化度模型\README.md` | `AI 炼金术实践成熟度全景图谱` | `../../view/ai_model_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_model_view.md |
 | `03-Scaling Law与收敛分析\03.1.1-L4-完全收敛（工业标准）.md` | `03.1.2-L3: 准收敛（事实垄断）` | `03.1.2-L3-准收敛（事实垄断）.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.1.2-L3-准收敛（事实垄断）.md |
 | `03-Scaling Law与收敛分析\03.1.1-L4-完全收敛（工业标准）.md` | `03.2.1-数学层收敛` | `03.2.1-数学层收敛.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.2.1-数学层收敛.md |
-| `03-Scaling Law与收敛分析\03.1.1-L4-完全收敛（工业标准）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
-| `03-Scaling Law与收敛分析\03.1.1-L4-完全收敛（工业标准）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.1-L4-完全收敛（工业标准）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.1-L4-完全收敛（工业标准）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `03-Scaling Law与收敛分析\03.1.1-L4-完全收敛（工业标准）.md` | `AI 收敛分析全景图谱` | `../../view/ai_scale_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_scale_view.md |
 | `03-Scaling Law与收敛分析\03.1.2-L3-准收敛（事实垄断）.md` | `03.1.1-L4: 完全收敛（工业标准）` | `03.1.1-L4-完全收敛（工业标准）.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.1.1-L4-完全收敛（工业标准）.md |
 | `03-Scaling Law与收敛分析\03.1.2-L3-准收敛（事实垄断）.md` | `03.1.3-L2: 收敛进行时（双寡头竞争）` | `03.1.3-L2-收敛进行时（双寡头竞争）.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.1.3-L2-收敛进行时（双寡头竞争）.md |
-| `03-Scaling Law与收敛分析\03.1.2-L3-准收敛（事实垄断）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
-| `03-Scaling Law与收敛分析\03.1.2-L3-准收敛（事实垄断）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.2-L3-准收敛（事实垄断）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.2-L3-准收敛（事实垄断）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `03-Scaling Law与收敛分析\03.1.2-L3-准收敛（事实垄断）.md` | `AI 收敛分析全景图谱` | `../../view/ai_scale_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_scale_view.md |
 | `03-Scaling Law与收敛分析\03.1.3-L2-收敛进行时（双寡头竞争）.md` | `03.1.2-L3: 准收敛（事实垄断）` | `03.1.2-L3-准收敛（事实垄断）.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.1.2-L3-准收敛（事实垄断）.md |
 | `03-Scaling Law与收敛分析\03.1.3-L2-收敛进行时（双寡头竞争）.md` | `03.1.4-L1: 未收敛（百家争鸣）` | `03.1.4-L1-未收敛（百家争鸣）.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.1.4-L1-未收敛（百家争鸣）.md |
-| `03-Scaling Law与收敛分析\03.1.3-L2-收敛进行时（双寡头竞争）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
-| `03-Scaling Law与收敛分析\03.1.3-L2-收敛进行时（双寡头竞争）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.3-L2-收敛进行时（双寡头竞争）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.3-L2-收敛进行时（双寡头竞争）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `03-Scaling Law与收敛分析\03.1.3-L2-收敛进行时（双寡头竞争）.md` | `AI 收敛分析全景图谱` | `../../view/ai_scale_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_scale_view.md |
 | `03-Scaling Law与收敛分析\03.1.4-L1-未收敛（百家争鸣）.md` | `03.1.3-L2: 收敛进行时（双寡头竞争）` | `03.1.3-L2-收敛进行时（双寡头竞争）.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.1.3-L2-收敛进行时（双寡头竞争）.md |
 | `03-Scaling Law与收敛分析\03.1.4-L1-未收敛（百家争鸣）.md` | `03.1.5-L0: 反向分化（场景撕裂）` | `03.1.5-L0-反向分化（场景撕裂）.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.1.5-L0-反向分化（场景撕裂）.md |
-| `03-Scaling Law与收敛分析\03.1.4-L1-未收敛（百家争鸣）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
-| `03-Scaling Law与收敛分析\03.1.4-L1-未收敛（百家争鸣）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.4-L1-未收敛（百家争鸣）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.4-L1-未收敛（百家争鸣）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `03-Scaling Law与收敛分析\03.1.4-L1-未收敛（百家争鸣）.md` | `AI 收敛分析全景图谱` | `../../view/ai_scale_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_scale_view.md |
 | `03-Scaling Law与收敛分析\03.1.5-L0-反向分化（场景撕裂）.md` | `03.1.4-L1: 未收敛（百家争鸣）` | `03.1.4-L1-未收敛（百家争鸣）.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.1.4-L1-未收敛（百家争鸣）.md |
-| `03-Scaling Law与收敛分析\03.1.5-L0-反向分化（场景撕裂）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
-| `03-Scaling Law与收敛分析\03.1.5-L0-反向分化（场景撕裂）.md` | `03-Scaling Law 与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.5-L0-反向分化（场景撕裂）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
+| `03-Scaling Law与收敛分析\03.1.5-L0-反向分化（场景撕裂）.md` | `03-Scaling Law与收敛分析` | `README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `03-Scaling Law与收敛分析\03.1.5-L0-反向分化（场景撕裂）.md` | `AI 收敛分析全景图谱` | `../../view/ai_scale_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_scale_view.md |
 | `03-Scaling Law与收敛分析\03.2.1-数学层收敛.md` | `03.2.2-架构层收敛` | `03.2.2-架构层收敛.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.2.2-架构层收敛.md |
 | `03-Scaling Law与收敛分析\03.2.1-数学层收敛.md` | `03.2.3-能力层收敛` | `03.2.3-能力层收敛.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\03.2.3-能力层收敛.md |
@@ -654,7 +654,7 @@
 | `05-AI科学理论\05.4.1-Scaling Law.md` | `05.4.2-RLHF 理论` | `05.4.2-RLHF理论.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\05.4.2-RLHF理论.md |
 | `05-AI科学理论\05.4.1-Scaling Law.md` | `05.4.3-CoT 理论` | `05.4.3-CoT理论.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\05.4.3-CoT理论.md |
 | `05-AI科学理论\05.4.1-Scaling Law.md` | `05.4.4-理论边界与挑战` | `05.4.4-理论边界与挑战.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\05.4.4-理论边界与挑战.md |
-| `05-AI科学理论\05.4.1-Scaling Law.md` | `03-Scaling Law 与收敛分析` | `../../03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\03-Scaling Law 与收敛分析\README.md |
+| `05-AI科学理论\05.4.1-Scaling Law.md` | `03-Scaling Law与收敛分析` | `../../03-Scaling Law与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\03-Scaling Law与收敛分析\README.md |
 | `05-AI科学理论\05.4.1-Scaling Law.md` | `AI-非意识的"认知模拟"是否可被理论化、确定性地改进` | `../../view/ai_科学理论_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_科学理论_view.md |
 | `05-AI科学理论\05.4.1-Scaling Law.md` | `Scaling Law 驱动的"大"与追求理论可控的"收敛"之间的张力` | `../../view/ai_scale_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_scale_view.md |
 | `05-AI科学理论\05.4.2-RLHF理论.md` | `05.4.1-Scaling Law` | `05.4.1-Scaling Law.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\05.4.1-Scaling Law.md |
@@ -690,7 +690,7 @@
 | `05-AI科学理论\README.md` | `05.4.4-理论边界与挑战` | `05.4.4-理论边界与挑战.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\05.4.4-理论边界与挑战.md |
 | `05-AI科学理论\README.md` | `01-AI 三层模型架构` | `../01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
 | `05-AI科学理论\README.md` | `02-AI 炼金术转化度模型` | `../02-AI炼金术转化度模型/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\README.md |
-| `05-AI科学理论\README.md` | `03-Scaling Law 与收敛分析` | `../03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `05-AI科学理论\README.md` | `03-Scaling Law与收敛分析` | `../03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `05-AI科学理论\README.md` | `04-AI 意识与认知模拟` | `../04-AI意识与认知模拟/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\04-AI意识与认知模拟\README.md |
 | `05-AI科学理论\README.md` | `07-AI 框架批判与重构` | `../07-AI框架批判与重构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\07-AI框架批判与重构\README.md |
 | `05-AI科学理论\README.md` | `AI-非意识的"认知模拟"是否可被理论化、确定性地改进` | `../../view/ai_科学理论_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_科学理论_view.md |
@@ -860,7 +860,7 @@
 | `07-AI框架批判与重构\07.11-AI能否持续进步的可度量维度分析.md` | `07.9-AI 创造子 AI 的可判定性分析` | `07.9-AI创造子AI的可判定性分析.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\07-AI框架批判与重构\07.9-AI创造子AI的可判定性分析.md |
 | `07-AI框架批判与重构\07.11-AI能否持续进步的可度量维度分析.md` | `01-AI 三层模型架构` | `../01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
 | `07-AI框架批判与重构\07.11-AI能否持续进步的可度量维度分析.md` | `AI 框架批判性分析` | `../../view/ai_reflect_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_reflect_view.md |
-| `07-AI框架批判与重构\07.11-AI能否持续进步的可度量维度分析.md` | `03-Scaling Law 与收敛分析` | `../03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `07-AI框架批判与重构\07.11-AI能否持续进步的可度量维度分析.md` | `03-Scaling Law与收敛分析` | `../03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `07-AI框架批判与重构\07.11-AI能否持续进步的可度量维度分析.md` | `05-AI 科学理论` | `../05-AI科学理论/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\README.md |
 | `07-AI框架批判与重构\07.11-AI能否持续进步的可度量维度分析.md` | `工程实践核心逻辑下的 AI 三层模型全景解构` | `../../view/ai_engineer_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_engineer_view.md |
 | `07-AI框架批判与重构\07.11-AI能否持续进步的可度量维度分析.md` | `分层解构视角` | `../../view/ai_models_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_models_view.md |
@@ -893,7 +893,7 @@
 | `07-AI框架批判与重构\07.2.4-时间维度的缺失.md` | `07.6.2-神经算子涌现理论` | `07.6.2-神经算子涌现理论.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\07-AI框架批判与重构\07.6.2-神经算子涌现理论.md |
 | `07-AI框架批判与重构\07.2.4-时间维度的缺失.md` | `01-AI 三层模型架构` | `../01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
 | `07-AI框架批判与重构\07.2.4-时间维度的缺失.md` | `AI 框架批判性分析` | `../../view/ai_reflect_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_reflect_view.md |
-| `07-AI框架批判与重构\07.2.4-时间维度的缺失.md` | `03-Scaling Law 与收敛分析` | `../03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `07-AI框架批判与重构\07.2.4-时间维度的缺失.md` | `03-Scaling Law与收敛分析` | `../03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `07-AI框架批判与重构\07.2.4-时间维度的缺失.md` | `工程实践核心逻辑下的 AI 三层模型全景解构` | `../../view/ai_engineer_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_engineer_view.md |
 | `07-AI框架批判与重构\07.2.4-时间维度的缺失.md` | `分层解构视角` | `../../view/ai_models_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_models_view.md |
 | `07-AI框架批判与重构\07.3.1-AI本质的数学误读.md` | `01.3-数据层数学概率模型` | `../01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
@@ -1217,7 +1217,7 @@
 | `08-AI历史进程与原理演进\08.4.1-涌现现象的定义与特征.md` | `08.4.7-涌现的物理本质与计算涌现` | `08.4.7-涌现的物理本质与计算涌现.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\08-AI历史进程与原理演进\08.4.7-涌现的物理本质与计算涌现.md |
 | `08-AI历史进程与原理演进\08.4.1-涌现现象的定义与特征.md` | `02.3.3-涌现失控` | `../02-AI炼金术转化度模型/02.3.3-涌现失控.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\02.3.3-涌现失控.md |
 | `08-AI历史进程与原理演进\08.4.1-涌现现象的定义与特征.md` | `05.2.4-能力涌现半可预测性` | `../05-AI科学理论/05.2.4-能力涌现半可预测性.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\05.2.4-能力涌现半可预测性.md |
-| `08-AI历史进程与原理演进\08.4.1-涌现现象的定义与特征.md` | `03-Scaling Law 与收敛分析` | `../03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `08-AI历史进程与原理演进\08.4.1-涌现现象的定义与特征.md` | `03-Scaling Law与收敛分析` | `../03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `08-AI历史进程与原理演进\08.4.1-涌现现象的定义与特征.md` | `AI 历史进程、原理与机制全面梳理` | `../../ai_internal_view.md` | 文件不存在: E:\_src\FormalAI\ai_internal_view.md |
 | `08-AI历史进程与原理演进\08.4.1-涌现现象的定义与特征.md` | `工程实践核心逻辑下的 AI 三层模型全景解构` | `../../view/ai_engineer_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_engineer_view.md |
 | `08-AI历史进程与原理演进\08.4.1-涌现现象的定义与特征.md` | `分层解构视角` | `../../view/ai_models_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_models_view.md |
@@ -1237,7 +1237,7 @@
 | `08-AI历史进程与原理演进\08.4.3-涌现的理论解释与数学模型.md` | `08.4.5-涌现的底层机制` | `08.4.5-涌现的底层机制.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\08-AI历史进程与原理演进\08.4.5-涌现的底层机制.md |
 | `08-AI历史进程与原理演进\08.4.3-涌现的理论解释与数学模型.md` | `08.4.6-涌现的真实性与工程意义` | `08.4.6-涌现的真实性与工程意义.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\08-AI历史进程与原理演进\08.4.6-涌现的真实性与工程意义.md |
 | `08-AI历史进程与原理演进\08.4.3-涌现的理论解释与数学模型.md` | `08.4.7-涌现的物理本质与计算涌现` | `08.4.7-涌现的物理本质与计算涌现.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\08-AI历史进程与原理演进\08.4.7-涌现的物理本质与计算涌现.md |
-| `08-AI历史进程与原理演进\08.4.3-涌现的理论解释与数学模型.md` | `03-Scaling Law 与收敛分析` | `../03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `08-AI历史进程与原理演进\08.4.3-涌现的理论解释与数学模型.md` | `03-Scaling Law与收敛分析` | `../03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `08-AI历史进程与原理演进\08.4.3-涌现的理论解释与数学模型.md` | `AI 历史进程、原理与机制全面梳理` | `../../ai_internal_view.md` | 文件不存在: E:\_src\FormalAI\ai_internal_view.md |
 | `08-AI历史进程与原理演进\08.4.3-涌现的理论解释与数学模型.md` | `工程实践核心逻辑下的 AI 三层模型全景解构` | `../../view/ai_engineer_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_engineer_view.md |
 | `08-AI历史进程与原理演进\08.4.3-涌现的理论解释与数学模型.md` | `分层解构视角` | `../../view/ai_models_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_models_view.md |
@@ -1325,7 +1325,7 @@
 | `08-AI历史进程与原理演进\08.5.5-可扩展可控制可迭代的系统工程.md` | `01.1.3-执行层工程实践与工具链` | `../01-AI三层模型架构/01.1.3-执行层工程实践与工具链.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\01.1.3-执行层工程实践与工具链.md |
 | `08-AI历史进程与原理演进\08.5.5-可扩展可控制可迭代的系统工程.md` | `01.2.3-控制层工具链与框架` | `../01-AI三层模型架构/01.2.3-控制层工具链与框架.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\01.2.3-控制层工具链与框架.md |
 | `08-AI历史进程与原理演进\08.5.5-可扩展可控制可迭代的系统工程.md` | `01.3.4-数据层训练与优化` | `../01-AI三层模型架构/01.3.4-数据层训练与优化.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\01.3.4-数据层训练与优化.md |
-| `08-AI历史进程与原理演进\08.5.5-可扩展可控制可迭代的系统工程.md` | `03-Scaling Law 与收敛分析` | `../03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `08-AI历史进程与原理演进\08.5.5-可扩展可控制可迭代的系统工程.md` | `03-Scaling Law与收敛分析` | `../03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `08-AI历史进程与原理演进\08.5.5-可扩展可控制可迭代的系统工程.md` | `AI 历史进程、原理与机制全面梳理` | `../../ai_internal_view.md` | 文件不存在: E:\_src\FormalAI\ai_internal_view.md |
 | `08-AI历史进程与原理演进\08.5.5-可扩展可控制可迭代的系统工程.md` | `工程实践核心逻辑下的 AI 三层模型全景解构` | `../../view/ai_engineer_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_engineer_view.md |
 | `08-AI历史进程与原理演进\08.5.5-可扩展可控制可迭代的系统工程.md` | `分层解构视角` | `../../view/ai_models_view.md` | 文件未在扫描范围内: E:\_src\FormalAI\view\ai_models_view.md |
@@ -1356,7 +1356,7 @@
 | `08-AI历史进程与原理演进\README.md` | `08.5.5-可扩展可控制可迭代的系统工程` | `08.5.5-可扩展可控制可迭代的系统工程.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\08-AI历史进程与原理演进\08.5.5-可扩展可控制可迭代的系统工程.md |
 | `08-AI历史进程与原理演进\README.md` | `01-AI 三层模型架构` | `../01-AI三层模型架构/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\01-AI三层模型架构\README.md |
 | `08-AI历史进程与原理演进\README.md` | `02-AI 炼金术转化度模型` | `../02-AI炼金术转化度模型/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\02-AI炼金术转化度模型\README.md |
-| `08-AI历史进程与原理演进\README.md` | `03-Scaling Law 与收敛分析` | `../03-Scaling Law 与收敛分析/README.md` | 文件不存在: E:\_src\FormalAI\concepts\03-Scaling Law 与收敛分析\README.md |
+| `08-AI历史进程与原理演进\README.md` | `03-Scaling Law与收敛分析` | `../03-Scaling Law与收敛分析/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\03-Scaling Law与收敛分析\README.md |
 | `08-AI历史进程与原理演进\README.md` | `04-AI 意识与认知模拟` | `../04-AI意识与认知模拟/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\04-AI意识与认知模拟\README.md |
 | `08-AI历史进程与原理演进\README.md` | `05-AI 科学理论` | `../05-AI科学理论/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\05-AI科学理论\README.md |
 | `08-AI历史进程与原理演进\README.md` | `06-AI 反实践判定系统` | `../06-AI反实践判定系统/README.md` | 文件未在扫描范围内: E:\_src\FormalAI\concepts\06-AI反实践判定系统\README.md |

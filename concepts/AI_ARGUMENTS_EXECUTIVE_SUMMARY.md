@@ -139,7 +139,7 @@ AI 论证体系总体结构
 
 - **01-AI 三层模型架构**：[README.md](01-AI三层模型架构/README.md)
 - **02-AI 炼金术转化度模型**：[README.md](02-AI炼金术转化度模型/README.md)
-- **03-Scaling Law 与收敛分析**：[README.md](03-Scaling Law 与收敛分析/README.md)
+- **03-Scaling Law与收敛分析**：[README.md](03-Scaling Law与收敛分析/README.md)
 - **04-AI 意识与认知模拟**：[README.md](04-AI意识与认知模拟/README.md)
 - **05-AI 科学理论**：[README.md](05-AI科学理论/README.md)
 - **06-AI 反实践判定系统**：[README.md](06-AI反实践判定系统/README.md)

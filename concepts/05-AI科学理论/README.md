@@ -233,7 +233,7 @@ $$\text{DKB} = (O, L, H)$$
 
 - [01-AI 三层模型架构](../01-AI三层模型架构/README.md)
 - [02-AI 炼金术转化度模型](../02-AI炼金术转化度模型/README.md)
-- [03-Scaling Law 与收敛分析](../03-Scaling Law 与收敛分析/README.md)
+- [03-Scaling Law与收敛分析](../03-Scaling Law与收敛分析/README.md)
 - [04-AI 意识与认知模拟](../04-AI意识与认知模拟/README.md)
 - [07-AI 框架批判与重构](../07-AI框架批判与重构/README.md)：批判理论化方法，提出动力系统理论
 
