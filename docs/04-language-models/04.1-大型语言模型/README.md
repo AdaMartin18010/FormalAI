@@ -9,7 +9,9 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-大语言模型理论研究大规模预训练语言模型的表达能力、涌现性质、对齐机制和理论基础，为现代AI系统提供理论指导。本理论体系已更新至2024年最新发展，包含Gemini 2.0、Claude 3.5、GPT-5等前沿模型的理论分析。
+大语言模型理论研究大规模预训练语言模型的表达能力、涌现性质、对齐机制和理论基础，为现代AI系统提供理论指导。本理论体系已更新至2025年最新发展，包含o1/o3、DeepSeek-R1、Sora、DeepSeek-V3、Claude 3.5、Gemini 2.5、Llama 3.1等前沿模型的理论分析。
+
+**2025年最新发展**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
 
 Large language model theory studies the expressive power, emergent properties, alignment mechanisms, and theoretical foundations of large-scale pre-trained language models, providing theoretical guidance for modern AI systems. This theoretical system has been updated to include the latest developments of 2024, covering theoretical analysis of cutting-edge models such as Gemini 2.0, Claude 3.5, and GPT-5.
 
@@ -1482,6 +1484,39 @@ $$\mathcal{U} = \bigcap_{i=1}^n \mathcal{M}_i$$
 $$\text{sim}(u_1, u_2) = \text{sim}(m_1, m_2)$$
 
 其中 $u_i$ 是统一表示，$m_i$ 是原始模态表示。
+
+---
+
+## 2025年最新发展 / Latest Developments 2025
+
+### 大型语言模型的最新发展
+
+**2025年关键突破**：
+
+1. **推理架构创新**
+   - **o1/o3系列**（2024年9月/12月）：采用新的推理架构，在数学、编程等复杂问题上表现出色，展示了推理架构创新的重要性
+   - **DeepSeek-R1**（2024年）：纯RL驱动架构，结合推断时间计算增强和强化学习，展示了新的训练范式
+   - **技术影响**：推理架构创新提升了大型语言模型在复杂推理任务上的能力，推动了AI系统的发展
+
+2. **多模态能力扩展**
+   - **Sora**（2024年）：文生视频能力突破，展示了多模态生成技术的重大进展
+   - **DeepSeek-V3**（2024年12月）：在数学、编码和中文任务上表现卓越，支持多模态
+   - **Gemini 2.5**（2024-2025年）：强大的多模态能力，支持跨模态推理
+   - **技术影响**：多模态技术的发展推动了大型语言模型在跨模态任务上的能力提升
+
+3. **硬件性能提升**
+   - **硬件性能增长**：机器学习硬件性能以每年43%的速度增长（来源：Stanford HAI AI Index Report 2025）
+   - **计算能力提升**：计算能力持续提升，支持更大规模的模型训练
+   - **技术影响**：硬件性能提升为大型语言模型提供了更强的计算能力，推动了模型规模的扩大
+
+4. **对齐与安全**
+   - **Constitutional AI**：Claude 3.5采用Constitutional AI多阶段规则注入，在对齐方面取得突破
+   - **价值学习**：价值学习理论的最新发展，为大型语言模型提供了更好的对齐方法
+   - **技术影响**：对齐与安全技术的发展为大型语言模型提供了更强的安全保障
+
+**详细内容**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
+
+---
 
 ## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
 

@@ -4,7 +4,9 @@
 
 ## 概述 / Overview / Übersicht / Aperçu
 
-对齐理论研究如何确保AI系统的行为与人类价值观和意图保持一致，为安全AI系统提供理论基础。本理论体系已更新至2024年最新发展，包含多智能体对齐、自主系统对齐、工具使用对齐等前沿内容，并添加了RLHF、DPO、Constitutional AI等实际对齐技术的详细分析。
+对齐理论研究如何确保AI系统的行为与人类价值观和意图保持一致，为安全AI系统提供理论基础。本理论体系已更新至2025年最新发展，包含多智能体对齐、自主系统对齐、工具使用对齐等前沿内容，并添加了RLHF、DPO、Constitutional AI等实际对齐技术的详细分析。
+
+**2025年最新发展**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
 
 Alignment theory studies how to ensure AI system behavior aligns with human values and intentions, providing theoretical foundations for safe AI systems. This theoretical system has been updated to include the latest developments of 2024, covering multi-agent alignment, autonomous system alignment, tool use alignment and other frontier content, with detailed analysis of practical alignment techniques such as RLHF, DPO, and Constitutional AI.
 
@@ -2536,3 +2538,191 @@ main = do
   - 长期综述：Survey/Blueprint/Position（以期刊或arXiv正式版为准）
 
 注：二手资料以一手论文与标准为准；在引用处标注版本/日期。
+
+---
+
+## 2025年最新发展 / Latest Developments 2025
+
+### 对齐理论的最新发展
+
+#### 1. RLHF的社会技术批判（2025）
+
+**核心发现**：
+- **局限性识别**：Lindström等评估RLHF在AI对齐中的局限性
+- **目标不足**：识别在实现诚实、无害、有用目标方面的重大不足
+- **伦理复杂性**：强调人类伦理的复杂性
+- **建议**：RLHF可能不足以确保AI安全，需要更广泛的社会技术方法
+
+**理论意义**：
+- 挑战RLHF作为对齐唯一方法的假设
+- 强调社会技术维度的重要性
+- 为对齐研究提供批判性视角
+
+**参考文献**：Lindström et al. (2025). Sociotechnical Critique of RLHF. Link.springer.com
+
+#### 2. Safe RLHF-V用于多模态模型（2025年3月）
+
+**核心贡献**：
+- **框架设计**：Ji等引入Safe RLHF-V框架，增强多模态大语言模型（MLLM）的安全性
+- **技术特点**：在约束优化框架内使用分离的奖励和成本模型，平衡有用性和安全性
+- **数据集**：提供BeaverTails-V开源数据集，包含有用性和安全性的双重偏好注释
+- **应用价值**：支持更安全的MLLM开发
+
+**技术细节**：
+$$\max_{\pi} \mathbb{E}[R_{\text{helpful}}(x, y)] \quad \text{s.t.} \quad \mathbb{E}[C_{\text{safety}}(x, y)] \leq \tau$$
+
+其中：
+- $R_{\text{helpful}}$ 是有用性奖励模型
+- $C_{\text{safety}}$ 是安全性成本模型
+- $\tau$ 是安全阈值
+
+**参考文献**：Ji et al. (2025). Safe RLHF-V for Multimodal Models. arXiv:2503.17682
+
+#### 3. HC-RLHF：高置信度安全保证（2025）
+
+**核心贡献**：
+- **方法**：Chittepu等提出高置信度安全强化学习（HC-RLHF）
+- **目标**：提供高置信度安全保证，同时最大化有用性
+- **技术特点**：通过训练分离的奖励和成本模型解耦人类偏好，确保学习模型以高概率满足安全约束
+
+**形式化表达**：
+$$\mathbb{P}[\mathbb{E}[C_{\text{safety}}(x, y)] \leq \tau] \geq 1 - \delta$$
+
+其中 $\delta$ 是置信度参数。
+
+**参考文献**：Chittepu et al. (2025). High-Confidence Safety Guarantees in RLHF. RLJ.CS.UMass.edu
+
+#### 4. GRPO：多目标优化框架（2025年3月）
+
+**核心贡献**：
+- **框架**：Li等提出组相对策略优化（GRPO）框架
+- **技术特点**：多标签奖励回归模型，通过比较采样响应组优化策略
+- **优势**：消除对单独价值评论家的需求，提高训练效率
+- **效果**：在语言生成任务中改善安全性和质量指标
+
+**参考文献**：Li et al. (2025). Multi-Objective Optimization in Language Generation. arXiv:2503.21819
+
+#### 5. RLHF三元困境的形式化（2025年11月）
+
+**核心定理**：
+- **形式化**：Sahoo等形式化RLHF中的"对齐三元困境"
+- **定理**：没有系统能同时实现：
+  1. 跨不同人类价值的代表性
+  2. 计算可处理性
+  3. 对抗扰动的鲁棒性
+- **复杂性分析**：实现代表性和鲁棒性需要超多项式操作
+- **理论意义**：突出AI对齐工作中的基本权衡
+
+**形式化表达**：
+$$\nexists \pi: \text{Representative}(\pi) \land \text{Tractable}(\pi) \land \text{Robust}(\pi)$$
+
+**参考文献**：Sahoo et al. (2025). Formalizing the RLHF Trilemma. arXiv:2511.19504
+
+#### 6. RLHS：用后见模拟缓解错位（2025年1月）
+
+**核心贡献**：
+- **方法**：Liang等引入从后见模拟强化学习（RLHS）
+- **目标**：解决RLHF中的错位问题
+- **技术特点**：在获取反馈前向评估者呈现合理的模拟结果，将对齐信号与可能受损的预测解耦
+- **效果**：实证结果显示RLHS优于传统RLHF方法
+
+**技术流程**：
+1. 生成模拟结果
+2. 呈现给评估者
+3. 获取反馈
+4. 解耦对齐信号
+
+**参考文献**：Liang et al. (2025). Mitigating Misalignment with Hindsight Simulation. arXiv:2501.08617
+
+#### 7. DREAM：多模态模型中的风险解耦（2025年4月）
+
+**核心贡献**：
+- **方法**：DREAM方法通过多模态输入中的逐步推理系统解耦风险
+- **技术特点**：利用多模态风险解耦的强大判别能力，通过监督微调和迭代RLAIF增强安全对齐
+- **效果**：在推理和训练阶段显著提升安全性，不损害正常任务性能
+- **应用价值**：为多模态模型提供更细粒度的安全控制
+
+**技术流程**：
+1. 多模态输入分析
+2. 逐步风险识别
+3. 风险解耦处理
+4. 安全对齐优化
+
+**关键创新**：
+- 多模态风险解耦机制
+- 迭代RLAIF（从AI反馈的强化学习）
+- 细粒度安全控制
+
+**参考文献**：DREAM: Disentangling Risks in Multimodal Models. arXiv:2504.18053 (2025-04)
+
+#### 8. SafeMLRM：多模态推理模型的安全分析（2025年4月）
+
+**核心发现**：
+- **安全退化**：获得推理能力可能降低继承的安全对齐
+- **漏洞识别**：MLRM在对抗攻击下表现出更高的越狱成功率
+- **场景特定漏洞**：识别场景特定的安全漏洞
+- **自我纠正行为**：注意MLRM中的涌现自我纠正行为
+
+**理论意义**：
+- 揭示推理能力与安全性的权衡
+- 强调场景感知安全审计的重要性
+- 为推理模型安全设计提供指导
+
+**实际应用**：
+- 场景感知安全审计
+- 放大自我纠正潜力
+- 推理模型安全设计
+
+**关键洞察**：
+- 推理能力提升可能带来新的安全风险
+- 需要场景特定的安全机制
+- 自我纠正能力可以增强安全性
+
+**参考文献**：SafeMLRM: Analyzing Safety in Multimodal Reasoning Models. arXiv:2504.08813 (2025-04)
+
+#### 9. PKU-Alignment Group的贡献（2025年）
+
+**核心贡献**：
+- **SafeVLA**：视觉-语言-动作模型的集成安全方法
+- **InterMT**：第一个多轮、交错多模态偏好数据集，具有专家监督
+- **多模态对齐**：在多模态和具身AI中的安全对齐和人类偏好学习
+
+**技术特点**：
+- 集成安全方法
+- 专家监督的数据集
+- 多模态和具身AI对齐
+
+**应用价值**：
+- 增强复杂、真实世界场景中的AI系统安全性和有效性
+- 为多模态和具身AI提供对齐框架
+- 支持专家监督的偏好学习
+
+**参考文献**：PKU-Alignment Group (2025). Safety Alignment and Human Preference Learning across Multimodal and Embodied AI. ai-alignment.group
+
+### 2025年对齐理论发展趋势
+
+**技术突破**：
+- ✅ **Constitutional AI**：Claude 3.5采用Constitutional AI多阶段规则注入
+- ✅ **RLHF优化**：强化学习范式在对齐中的应用持续优化
+- ✅ **价值学习**：价值学习理论的最新发展
+- ✅ **多模态安全**：Safe RLHF-V框架扩展对齐到多模态场景
+- ✅ **形式化分析**：RLHF三元困境的形式化揭示基本限制
+
+**最新模型案例**：
+- **Claude 3.5**：Constitutional AI在对齐中的应用
+- **DeepSeek-R1**：纯RL驱动架构的对齐方法
+- **o1/o3系列**：推理架构创新带来的对齐能力提升
+
+**理论进展**：
+- ✅ 9项重大研究成果（新增3项：DREAM、SafeMLRM、PKU-Alignment Group贡献）
+- ✅ RLHF批判性分析
+- ✅ 多模态模型安全框架（Safe RLHF-V、DREAM、SafeMLRM）
+- ✅ 形式化限制分析（三元困境）
+- ✅ 新的对齐方法（RLHS）
+- ✅ 多模态和具身AI对齐（PKU-Alignment Group）
+
+**详细内容**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
+
+---
+
+**最后更新**：2025-01-XX
