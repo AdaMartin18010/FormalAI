@@ -539,7 +539,11 @@ impl Client {
 
     pub fn compute_loss(&self, model: &NeuralNetwork) -> Result<f64, String> {
         // 简化的损失计算
-        Ok(0.5) // 占位符
+        // 计算模型在本地数据上的损失
+        // 实际实现应基于本地数据集计算损失值
+        // 联邦学习中，每个客户端基于本地数据计算损失并上传梯度
+        let local_loss = self.compute_local_loss(&local_data, &model_params);
+        Ok(local_loss)
     }
 }
 

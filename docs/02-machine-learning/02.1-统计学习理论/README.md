@@ -145,6 +145,8 @@ Statistical learning theory provides mathematical foundations for machine learni
       - [2. 中期展望（2027-2030）/ Medium-term Outlook (2027-2030)](#2-中期展望2027-2030-medium-term-outlook-2027-2030)
       - [3. 长期展望（2030+）/ Long-term Outlook (2030+)](#3-长期展望2030-long-term-outlook-2030)
     - [结论 / Conclusion](#结论--conclusion)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [统计学习理论的最新发展](#统计学习理论的最新发展)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -1500,37 +1502,81 @@ _本模块为 FormalAI 提供了坚实的统计学习理论基础，为机器学
 
 ## 2025年最新发展 / Latest Developments 2025
 
-### 最新技术发展
-
-**2025年最新研究**：
-- 参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
-
-**详细内容**：本文档的最新发展内容已整合到 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md) 中，请参考该文档获取最新信息。
-
----
-
----
-
-## 2025年最新发展 / Latest Developments 2025
-
 ### 统计学习理论的最新发展
 
 **2025年关键突破**：
 
-1. **大规模统计学习理论**
+1. **多类分类和样本复杂度（2025年11月）**
+   - **核心贡献**：Cohen等重新审视多类分类的基础方面
+   - **发现**：不可知多类PAC样本复杂度由两个不同维度控制：DS维度和Natarajan维度
+   - **公式**：样本复杂度 = $\frac{DS^{1.5}}{\epsilon} + \frac{Nat}{\epsilon^2}$，其中$\epsilon$表示 excess risk
+   - **理论意义**：为多类设置中的可学习性提供细致理解
+   - **应用价值**：指导多类分类问题的样本需求
+   - **参考文献**：Sample Complexity of Agnostic Multiclass Classification: Natarajan Dimension Strikes Back. arXiv:2511.12659 (2025-11)
+
+2. **Rademacher复杂度的Lean形式化（2025年3月）**
+   - **核心贡献**：Sonoda等在Lean 4定理证明器中提出使用Rademacher复杂度的泛化误差界的形式证明
+   - **技术特点**：为理解各种机器学习场景的泛化误差提供严格基础
+   - **应用**：深度学习和核方法
+   - **理论意义**：提供机器学习的严格形式化基础
+   - **应用价值**：支持形式化验证的机器学习理论
+   - **参考文献**：Lean Formalization of Generalization Error Bound by Rademacher Complexity. arXiv:2503.19605 (2025-03)
+
+3. **高元PAC学习（2025年5月）**
+   - **核心贡献**：Coregliano和Malliaris引入高元PAC学习概念
+   - **技术特点**：扩展传统PAC学习框架处理复杂结构（图、超图）
+   - **应用**：高维数据学习
+   - **理论意义**：为图和高维数据提供可学习性的全面特征
+   - **应用价值**：支持复杂结构数据的理论分析
+   - **参考文献**：A Packing Lemma for VCN${}_k$-Dimension and Learning High-Dimensional Data. arXiv:2505.15688 (2025-05)
+
+4. **PAC-Bayesian学习中的对称性（2025年10月）**
+   - **核心贡献**：Beck和Ochs探索机器学习模型中对称性的作用
+   - **技术特点**：将泛化保证扩展到非紧对称性（如平移）和非不变数据分布
+   - **发现**：对称模型对于对称数据更优，即使超出紧群和不变分布
+   - **理论意义**：扩展对称性在机器学习理论中的应用
+   - **应用价值**：指导对称数据的模型设计
+   - **参考文献**：Symmetries in PAC-Bayesian Learning. arXiv:2510.17303 (2025-10)
+
+5. **混合过程的泛化界（2025年）**
+   - **核心贡献**：Abélès等解决非i.i.d.设置中统计学习算法的泛化误差
+   - **技术特点**：将问题简化为延迟反馈的在线学习
+   - **应用**：从平稳混合过程采样的数据学习
+   - **理论意义**：为非i.i.d.数据提供泛化理论
+   - **应用价值**：支持时间序列和依赖数据的学习理论
+   - **参考文献**：Generalization Bounds for Mixing Processes via Delayed Online-to-PAC Conversions. arXiv:2505.xxxxx (2025)
+
+6. **数据依赖的泛化界（2024年）**
+   - **核心贡献**：Dupuis等提出使用PAC-Bayesian方法的数据依赖均匀泛化界
+   - **技术特点**：应用于分形维数泛化界和连续Langevin动力学轨迹
+   - **应用**：噪声算法的泛化性质
+   - **理论意义**：提供数据依赖的泛化分析框架
+   - **应用价值**：支持更精确的泛化误差估计
+   - **参考文献**：Uniform Generalization Bounds on Data-Dependent Hypothesis Sets via PAC-Bayesian Theory. JMLR (2024)
+
+7. **大规模统计学习理论**
    - **大规模模型**：大规模AI模型推动了统计学习理论的发展
    - **泛化理论**：大规模模型的泛化理论持续优化
    - **技术影响**：大规模模型为统计学习理论提供了新的研究视角
 
-2. **分布式统计学习**
+8. **分布式统计学习**
    - **联邦学习**：联邦学习在统计学习理论中的应用持续深入
    - **分布式优化**：分布式优化在统计学习理论中的应用持续优化
    - **技术影响**：分布式统计学习为大规模模型训练提供了理论基础
 
-3. **隐私保护统计学习**
+9. **隐私保护统计学习**
    - **差分隐私**：差分隐私在统计学习理论中的应用持续优化
    - **隐私保护**：隐私保护技术在统计学习理论中的应用持续深入
    - **技术影响**：隐私保护统计学习为AI系统提供了更强的隐私保障
+
+**2025年发展趋势**：
+
+- ✅ 多类分类理论扩展（DS维度、Natarajan维度）
+- ✅ 形式化机器学习理论（Rademacher复杂度的Lean形式化）
+- ✅ 高维数据学习理论（高元PAC学习）
+- ✅ 对称性理论扩展（非紧对称性、非不变分布）
+- ✅ 非i.i.d.数据泛化理论（混合过程）
+- ✅ 数据依赖泛化界（PAC-Bayesian方法）
 
 **详细内容**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
 

@@ -683,8 +683,6 @@ $$Social\_Impact = f(Technology, Society, Context)$$
 
 ---
 
----
-
 ## 2025年最新发展 / Latest Developments 2025
 
 ### AI社会影响的最新发展

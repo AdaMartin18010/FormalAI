@@ -1,7 +1,32 @@
 # [2024/2025 最新进展 / Latest Updates]
 
-- 扩散-Transformer混合与对齐新范式（占位）。
-- Agentic LLM 的规划-执行-验证闭环（占位）。
+### 大语言模型架构创新
+
+**2025年关键突破**：
+
+1. **扩散-Transformer混合架构**
+   - **技术特点**：结合扩散模型（Diffusion Models）的生成能力和Transformer的序列建模能力
+   - **应用场景**：多模态生成任务，特别是文生视频（如Sora）和文生图像
+   - **技术优势**：扩散过程提供高质量生成，Transformer提供序列理解和控制
+   - **对齐机制**：通过跨模态对齐实现文本指令到视觉内容的精确映射
+   - **代表模型**：OpenAI Sora（2024年），展示了扩散-Transformer混合架构在视频生成中的成功应用
+
+2. **Agentic LLM的规划-执行-验证闭环**
+   - **架构特点**：将LLM集成到智能体系统中，实现自主规划、执行和验证的闭环
+   - **规划阶段**：LLM生成任务分解和行动计划
+   - **执行阶段**：智能体使用工具（API调用、代码执行等）执行计划
+   - **验证阶段**：LLM验证执行结果，必要时调整计划
+   - **技术突破**：
+     - **工具使用能力**：LLM学会调用外部工具和API
+     - **多步推理**：支持复杂的多步骤任务规划
+     - **自我修正**：基于执行结果自动调整策略
+   - **代表系统**：
+     - OpenAI GPT-4/5 with Function Calling（2024年）
+     - Claude 3.5 Sonnet with Tool Use（2024年）
+     - DeepSeek-R1 Agent Framework（2024年）
+   - **应用价值**：使LLM能够完成需要多步骤、多工具协作的复杂任务
+
+**详细内容**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
 
 ## 4.1 大语言模型理论 / Large Language Model Theory / Theorie der großen Sprachmodelle / Théorie des grands modèles de langage
 
@@ -88,6 +113,7 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [\[2024/2025 最新进展 / Latest Updates\]](#20242025-最新进展--latest-updates)
+  - [大语言模型架构创新](#大语言模型架构创新)
   - [4.1 大语言模型理论 / Large Language Model Theory / Theorie der großen Sprachmodelle / Théorie des grands modèles de langage](#41-大语言模型理论--large-language-model-theory--theorie-der-großen-sprachmodelle--théorie-des-grands-modèles-de-langage)
   - [概述 / Overview / Übersicht / Aperçu](#概述--overview--übersicht--aperçu)
   - [核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux](#核心概念定义--core-concept-definitions--kernbegriffsdefinitionen--définitions-des-concepts-fondamentaux)
@@ -164,6 +190,8 @@ fn attn(q:&[f32], ks:&[Vec<f32>], vs:&[Vec<f32>], tau:f32)->Vec<f32>{
       - [8. GPT-5 理论预测 / GPT-5 Theoretical Predictions](#8-gpt-5-理论预测--gpt-5-theoretical-predictions)
       - [9. Claude 3.5 自主推理理论 / Claude 3.5 Autonomous Reasoning Theory](#9-claude-35-自主推理理论--claude-35-autonomous-reasoning-theory)
       - [10. Gemini 2.0 多模态统一理论 / Gemini 2.0 Multimodal Unified Theory](#10-gemini-20-多模态统一理论--gemini-20-multimodal-unified-theory)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [大型语言模型的最新发展](#大型语言模型的最新发展)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---

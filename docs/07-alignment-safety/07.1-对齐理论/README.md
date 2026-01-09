@@ -1065,7 +1065,7 @@ pub fn pairwise_pref_loss(rs_pos: &[f32], rs_neg: &[f32]) -> f32 {
 
 ## 2025年最新发展 / Latest Developments 2025 / Neueste Entwicklungen 2025 / Derniers développements 2025
 
-### 大模型对齐理论突破 / Large Model Alignment Theory Breakthroughs
+### 一、大模型对齐理论突破 / Large Model Alignment Theory Breakthroughs
 
 **GPT-5 对齐架构 / GPT-5 Alignment Architecture:**
 
@@ -2541,9 +2541,7 @@ main = do
 
 ---
 
-## 2025年最新发展 / Latest Developments 2025
-
-### 对齐理论的最新发展
+### 二、对齐理论的最新研究成果 / Latest Research Results in Alignment Theory
 
 #### 1. RLHF的社会技术批判（2025）
 
@@ -2699,6 +2697,47 @@ $$\nexists \pi: \text{Representative}(\pi) \land \text{Tractable}(\pi) \land \te
 
 **参考文献**：PKU-Alignment Group (2025). Safety Alignment and Human Preference Learning across Multimodal and Embodied AI. ai-alignment.group
 
+#### 10. SafeDPO：增强安全的直接偏好优化（2025年5月）
+
+**核心贡献**：
+- **方法**：SafeDPO将安全约束直接集成到偏好优化过程
+- **技术特点**：消除对单独奖励和成本模型的需求，简化对齐过程
+- **优势**：相比传统RLHF更简单，相比DPO更安全
+- **效果**：在使LLM与人类偏好对齐的同时提升安全措施
+
+**技术流程**：
+1. 直接偏好优化
+2. 安全约束集成
+3. 联合优化有用性和安全性
+
+**关键创新**：
+- 安全约束直接集成
+- 简化对齐流程
+- 消除额外模型需求
+
+**参考文献**：SafeDPO: Direct Preference Optimization with Enhanced Safety. arXiv:2505.20065 (2025-05)
+
+#### 11. 个性化宪法对齐的代理超我（2025年6月）
+
+**核心贡献**：
+- **方法**：引入"超我"代理，通过引用用户选择的"信条宪法"监督AI行为
+- **技术特点**：封装多样化规则集，可调整遵守水平，实时合规执行器验证计划
+- **效果**：显著减少有害输出，增强代理AI系统的安全性和个性化
+- **应用价值**：支持个性化AI对齐，适应不同用户和文化的价值观
+
+**技术架构**：
+- 信条宪法选择
+- 实时合规执行器
+- 通用伦理框架
+- 计划验证机制
+
+**关键创新**：
+- 个性化对齐框架
+- 实时合规验证
+- 可调整遵守水平
+
+**参考文献**：Personalized Constitutionally-Aligned Agentic Superego. arXiv:2506.13774 (2025-06)
+
 ### 2025年对齐理论发展趋势
 
 **技术突破**：
@@ -2714,12 +2753,14 @@ $$\nexists \pi: \text{Representative}(\pi) \land \text{Tractable}(\pi) \land \te
 - **o1/o3系列**：推理架构创新带来的对齐能力提升
 
 **理论进展**：
-- ✅ 9项重大研究成果（新增3项：DREAM、SafeMLRM、PKU-Alignment Group贡献）
+- ✅ 11项重大研究成果（新增5项：DREAM、SafeMLRM、PKU-Alignment Group贡献、SafeDPO、个性化宪法对齐）
 - ✅ RLHF批判性分析
 - ✅ 多模态模型安全框架（Safe RLHF-V、DREAM、SafeMLRM）
 - ✅ 形式化限制分析（三元困境）
-- ✅ 新的对齐方法（RLHS）
+- ✅ 新的对齐方法（RLHS、SafeDPO、个性化宪法对齐）
 - ✅ 多模态和具身AI对齐（PKU-Alignment Group）
+- ✅ 简化对齐方法（SafeDPO消除额外模型需求）
+- ✅ 个性化对齐框架（个性化宪法对齐）
 
 **详细内容**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
 

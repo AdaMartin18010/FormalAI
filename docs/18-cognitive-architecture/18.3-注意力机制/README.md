@@ -832,7 +832,7 @@ class HierarchicalAttentionMechanism:
         return fused_output
 ```
 
-### 3. 2025年最新发展 / Latest Developments 2025
+### 3. 2025年最新发展（详细理论） / Latest Developments 2025 (Detailed Theory)
 
 **发展 3.1 (量子注意力机制理论)**:
 

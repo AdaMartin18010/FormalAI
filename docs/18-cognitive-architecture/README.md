@@ -603,7 +603,7 @@ $$F(\mathcal{CA}) > \sum_{i=1}^{n} F(\mathcal{CA}_i)$$
 **证明**:
 根据适应性理论，如果系统具有学习机制和反馈机制，则系统具有适应性。
 
-## 2025年最新发展 / Latest Developments 2025
+## 2025年最新发展（详细理论） / Latest Developments 2025 (Detailed Theory)
 
 ### 1. 统一认知架构理论 / Unified Cognitive Architecture Theory
 

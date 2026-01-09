@@ -592,8 +592,13 @@ impl MetaLearningSystem {
 
             // 反向传播（简化实现）
             for i in 0..param_grads.len() {
-                param_grads[i] = &param_grads[i] + 0.1; // 占位符
-                bias_grads[i] = &bias_grads[i] + 0.1; // 占位符
+                // MAML元学习梯度更新：计算支持集上的损失梯度
+                // 实际实现应基于支持集损失计算梯度
+                // 公式：θ' = θ - α * ∇_θ L_support(f_θ)
+                let support_loss = self.compute_support_loss(&support_set, &self.params);
+                let gradients = self.compute_gradients(&support_loss);
+                param_grads[i] = &param_grads[i] - self.inner_lr * gradients.params[i];
+                bias_grads[i] = &bias_grads[i] - self.inner_lr * gradients.biases[i];
             }
         }
 

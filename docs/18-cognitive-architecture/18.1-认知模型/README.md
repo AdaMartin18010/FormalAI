@@ -502,7 +502,7 @@ $$\sum_{t=1}^{\infty} \alpha_t = \infty, \quad \sum_{t=1}^{\infty} \alpha_t^2 < 
 **证明**:
 根据随机逼近理论，如果学习率满足Robbins-Monro条件，则随机梯度下降算法收敛到最优解。
 
-## 2025年最新发展1 / Latest Developments 2025
+## 2025年最新发展（详细理论） / Latest Developments 2025 (Detailed Theory)
 
 ### 1. 涌现认知架构理论 / Emergent Cognitive Architecture Theory
 

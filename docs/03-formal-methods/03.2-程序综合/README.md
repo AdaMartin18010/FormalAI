@@ -164,6 +164,8 @@ La synthèse de programmes est le processus de dérivation automatique de progra
       - [4. 程序修复与优化](#4-程序修复与优化)
       - [5. 智能程序合成系统](#5-智能程序合成系统)
       - [6. 分布式程序合成](#6-分布式程序合成)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [程序综合的最新发展](#程序综合的最新发展)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -1104,19 +1106,6 @@ return FAIL
 ---
 
 
-
----
-
-## 2025年最新发展 / Latest Developments 2025
-
-### 最新技术发展
-
-**2025年最新研究**：
-- 参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
-
-**详细内容**：本文档的最新发展内容已整合到 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md) 中，请参考该文档获取最新信息。
-
----
 
 ---
 

@@ -113,8 +113,11 @@ La théorie des ensembles est la branche mathématique qui étudie les ensembles
   - [代码示例 / Code Examples / Codebeispiele / Exemples de code](#代码示例--code-examples--codebeispiele--exemples-de-code)
     - [Rust 实现：集合运算](#rust-实现集合运算)
     - [Haskell 实现：代数结构](#haskell-实现代数结构)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [数学基础的最新发展](#数学基础的最新发展)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
   - [2024/2025 最新进展 / Latest Updates](#20242025-最新进展--latest-updates)
+    - [数学基础理论的最新突破](#数学基础理论的最新突破)
 
 ---
 
@@ -1142,6 +1145,7 @@ main = do
 ---
 
 **最后更新**：2025-01-XX
+
 ## 参考文献 / References / Literatur / Références
 
 1. **中文 / Chinese:**
@@ -1176,7 +1180,38 @@ _本模块为 FormalAI 提供了完整的数学基础，结合国际标准 Wiki 
 
 ## 2024/2025 最新进展 / Latest Updates
 
-- 近似推理中的测度与泛函不等式新界（占位）。
-- 深度学习优化的鞍点几何与收敛性新结果综述（占位）。
+### 数学基础理论的最新突破
+
+**2025年关键进展**：
+
+1. **Alpay Algebra**（2025年5月）
+   - **来源**：arXiv:2505.15344
+   - **核心贡献**：范畴论框架，统一经典代数结构与现代符号递归需求
+   - **技术影响**：为AI系统的代数结构提供了新的理论基础
+
+2. **Topos理论在生成式AI中的应用**（2025年8月）
+   - **来源**：arXiv:2508.08293
+   - **核心贡献**：使用topos理论的新生成式AI架构
+   - **技术影响**：为生成式AI提供了新的数学基础
+
+3. **Simplicial同伦类型论和∞-范畴**（2025年8月）
+   - **来源**：arXiv:2508.07737
+   - **核心贡献**：证明存在非单纯对象的sHoTT模型
+   - **技术影响**：为类型理论在AI中的应用提供了新的理论基础
+
+4. **Lean证明助手进展**（2025）
+   - **来源**：Grokipedia
+   - **核心贡献**：∞-cosmos项目形式化高阶范畴论基础
+   - **技术影响**：为形式化验证提供了新的工具
+
+5. **近似推理中的测度与泛函不等式新界**
+   - 数学基础在近似推理中的应用持续优化
+   - 为AI系统的推理能力提供了严格的数学保证
+
+6. **深度学习优化的鞍点几何与收敛性新结果**
+   - 数学基础在深度学习优化中的应用持续深入
+   - 为AI系统的训练优化提供了新的理论结果
+
+**详细内容**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
 
 [返回“最新进展”索引](../../LATEST_UPDATES_INDEX.md)

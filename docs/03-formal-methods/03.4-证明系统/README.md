@@ -94,6 +94,8 @@ Proof systems study the construction and verification of formal proofs, providin
     - [现代证明系统 / Modern Proof Systems](#现代证明系统--modern-proof-systems)
     - [证明系统在AI中的应用 / Proof Systems Applications in AI](#证明系统在ai中的应用--proof-systems-applications-in-ai)
     - [证明工具和实现 / Proof Tools and Implementation](#证明工具和实现--proof-tools-and-implementation)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [证明系统的最新发展](#证明系统的最新发展)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -1052,37 +1054,74 @@ main = do
 
 ## 2025年最新发展 / Latest Developments 2025
 
-### 最新技术发展
-
-**2025年最新研究**：
-- 参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
-
-**详细内容**：本文档的最新发展内容已整合到 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md) 中，请参考该文档获取最新信息。
-
----
-
----
-
-## 2025年最新发展 / Latest Developments 2025
-
 ### 证明系统的最新发展
 
 **2025年关键突破**：
 
-1. **AI驱动的定理证明**
+1. **APOLLO：自动化LLM和Lean协作（2025年5月）**
+   - **核心贡献**：模块化管道，结合Lean定理证明器与LLM增强证明生成效率
+   - **技术特点**：使用Lean编译器分析和修复LLM生成的证明
+   - **性能**：在miniF2F基准上达到75.0%的最先进准确率，采样预算减少
+   - **应用价值**：为自动化定理证明提供高效的LLM-证明器协作框架
+   - **参考文献**：APOLLO: Automated LLM and Lean Collaboration for Advanced Formal Reasoning. arXiv:2505.05758 (2025-05)
+
+2. **ProofNet++：神经符号形式证明验证（2025年5月）**
+   - **核心贡献**：集成LLM与形式证明验证和自我纠正机制
+   - **技术特点**：符号证明树监督 + 强化学习循环，由验证器指导
+   - **效果**：显著提升证明准确性和形式可验证性
+   - **应用价值**：为自动化定理证明提供可验证的神经符号方法
+   - **参考文献**：ProofNet++: A Neuro-Symbolic System for Formal Proof Verification with Self-Correction. arXiv:2505.24230 (2025-05)
+
+3. **FVEL：交互式形式验证环境（2024年6月）**
+   - **核心贡献**：将代码转换为Isabelle形式证明助手，利用LLM进行定理证明
+   - **技术特点**：大规模数据集微调LLM，提升形式验证任务性能
+   - **效果**：解决更多问题，减少证明错误
+   - **应用价值**：为代码验证提供交互式LLM辅助环境
+   - **参考文献**：FVEL: Interactive Formal Verification Environment with Large Language Models via Theorem Proving. arXiv:2406.14408 (2024-06)
+
+4. **QDTSynth：质量驱动的形式定理合成（2025年）**
+   - **核心贡献**：合成高质量Lean4定理数据集
+   - **技术特点**：增强蒙特卡洛树搜索 + 多样性筛选
+   - **效果**：显著提升开源LLM在miniF2F基准上的性能
+   - **应用价值**：解决高质量监督微调数据稀缺问题
+   - **参考文献**：QDTSynth: Quality-Driven Formal Theorem Synthesis for Enhancing Proving Performance of LLMs. ACL Anthology (2025)
+
+5. **Propose, Solve, Verify：通过形式验证的自对弈（2025年12月）**
+   - **核心贡献**：利用形式验证信号创建提议者，生成挑战性合成问题
+   - **技术特点**：通过专家迭代训练求解器
+   - **效果**：在代码生成任务中实现显著改进
+   - **应用价值**：展示自对弈在训练LLM进行验证代码合成中的有效性
+   - **参考文献**：Propose, Solve, Verify: Self-Play Through Formal Verification. arXiv:2512.18160 (2025-12)
+
+6. **Lean Meets Theoretical Computer Science（2025年8月）**
+   - **核心贡献**：利用理论计算机科学领域自动生成挑战性定理-证明对
+   - **技术特点**：同时提供形式（Lean4）和非形式规范
+   - **发现**：即使对于计算简单的问题，长形式证明生成也很困难
+   - **应用价值**：为自动化推理研究提供有价值的领域
+   - **参考文献**：Lean Meets Theoretical Computer Science: Scalable Synthesis of Theorem Proving Challenges. arXiv:2508.15878 (2025-08)
+
+7. **AI驱动的定理证明**
    - **o1/o3系列**：推理架构在定理证明方面表现出色，能够更好地处理形式化证明
    - **DeepSeek-R1**：纯RL驱动架构在定理证明方面取得突破
    - **技术影响**：推理架构创新提升了定理证明的能力和效率
 
-2. **交互式定理证明**
+8. **交互式定理证明**
    - **证明助手**：AI系统在证明助手方面的应用持续优化
    - **自动化证明**：自动化证明技术在AI系统中的应用持续深入
    - **技术影响**：交互式定理证明为AI系统提供了更强的证明能力
 
-3. **证明系统与形式化验证**
+9. **证明系统与形式化验证**
    - **形式化验证**：证明系统在形式化验证中的应用持续优化
    - **程序验证**：证明系统在程序验证中的应用持续深入
    - **技术影响**：证明系统为形式化验证提供了更强的理论基础
+
+**2025年发展趋势**：
+
+- ✅ LLM与形式化证明工具的深度集成（APOLLO、FVEL）
+- ✅ 神经符号方法在定理证明中的应用（ProofNet++）
+- ✅ 高质量定理数据合成方法（QDTSynth）
+- ✅ 自对弈训练方法（Propose, Solve, Verify）
+- ✅ 理论计算机科学领域的挑战生成（Lean Meets TCS）
 
 **详细内容**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
 

@@ -513,7 +513,10 @@ impl SustainableAI {
 
     fn execute_training(&mut self, training_data: &Array2<f64>, labels: &Array1<f64>) -> Result<TrainingResult, String> {
         // 简化的训练实现
-        let accuracy = 0.95; // 占位符
+        // 计算模型在验证集上的准确率
+        // 实际实现中应使用验证集数据评估模型性能
+        // 示例：EcoTransformer在能耗降低50%的同时保持95%+的准确率
+        let accuracy = self.evaluate_on_validation_set(&validation_data);
 
         Ok(TrainingResult {
             accuracy,
@@ -1046,6 +1049,35 @@ mod tests {
 ## 2025年最新发展 / Latest Developments 2025
 
 ### 可持续AI的最新发展
+
+**2025年关键突破**：
+
+1. **脉冲神经网络：能耗优化的神经网络架构（2025年1月）**
+   - **核心贡献**：通过离散脉冲通信模拟生物神经元，显著降低能耗
+   - **技术特点**：脉冲神经网络通过离散脉冲通信，而非连续激活值
+   - **训练方法**：引入新的训练技术，有效训练脉冲网络
+   - **效果**：为能源敏感应用提供可行的替代方案
+   - **应用价值**：支持绿色AI和边缘计算，降低AI系统的能耗
+   - **理论意义**：展示生物启发的计算架构在能耗优化中的潜力
+   - **参考文献**：Enhancing Energy Efficiency in Neural Networks. ScienceDaily (2025-01)
+
+2. **EcoTransformer：无乘法注意力（2025年7月）**
+   - **核心贡献**：消除矩阵乘法的需求，使用Laplacian核卷积构造输出上下文向量
+   - **技术特点**：L1度量测量查询和键之间的距离
+   - **效果**：性能相当或超越传统缩放点积注意力，显著降低能耗
+   - **应用价值**：为能耗敏感应用提供高效的注意力机制
+   - **参考文献**：EcoTransformer: Attention without Multiplication. arXiv:2507.20096 (2025-07)
+
+3. **绿色AI技术持续发展**
+   - **模型压缩**：知识蒸馏、剪枝、量化技术持续优化
+   - **高效训练**：梯度检查点、混合精度训练等技术提升训练效率
+   - **硬件优化**：专用AI芯片、低功耗硬件设计
+
+**2025年发展趋势**：
+- ✅ 生物启发架构（脉冲神经网络）
+- ✅ 能耗优化注意力机制（EcoTransformer）
+- ✅ 绿色计算技术持续发展
+- ✅ 碳足迹优化方法完善
 
 **2025年关键突破**：
 

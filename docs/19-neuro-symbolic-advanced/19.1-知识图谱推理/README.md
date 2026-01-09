@@ -973,7 +973,11 @@ class RuleBasedLinkPrediction:
 
 ---
 
-**最后更新**：2025-01-01
+**详细内容**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
+
+---
+
+**最后更新**：2025-01-XX
 **版本**：v2025-01
 **维护者**：FormalAI项目组
 

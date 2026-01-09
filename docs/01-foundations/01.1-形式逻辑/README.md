@@ -702,6 +702,7 @@ main = do
 ---
 
 **最后更新**：2025-01-XX
+
 ## 参考文献 / References / Literatur / Références
 
 1. **Enderton, H. B.** (2001). _A Mathematical Introduction to Logic_. Academic Press.
@@ -745,6 +746,8 @@ _This module provides FormalAI with rigorous formal logic foundations, ensuring 
   - [代码实现 / Code Implementation / Code-Implementierung / Implémentation de code](#代码实现--code-implementation--code-implementierung--implémentation-de-code)
     - [Rust 实现：形式逻辑核心 / Rust Implementation: Formal Logic Core](#rust-实现形式逻辑核心--rust-implementation-formal-logic-core)
     - [Haskell 实现：高级逻辑系统 / Haskell Implementation: Advanced Logic System](#haskell-实现高级逻辑系统--haskell-implementation-advanced-logic-system)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [形式逻辑的最新发展](#形式逻辑的最新发展)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
   - [目录 / Table of Contents](#目录--table-of-contents)
   - [相关章节 / Related Chapters](#相关章节--related-chapters)
@@ -770,6 +773,7 @@ _This module provides FormalAI with rigorous formal logic foundations, ensuring 
     - [Haskell 实现：类型化逻辑](#haskell-实现类型化逻辑)
   - [参考文献 / References](#参考文献--references)
   - [2024/2025 最新进展 / Latest Updates](#20242025-最新进展--latest-updates)
+    - [形式逻辑理论的最新突破](#形式逻辑理论的最新突破)
 
 ---
 
@@ -1732,7 +1736,30 @@ _This module provides complete formal logic foundations for FormalAI, covering p
 
 ## 2024/2025 最新进展 / Latest Updates
 
-- 神经符号推理与 LLM 的可验证逻辑接口（占位）。
-- 表/归结/序列演算在自动证明工具链中的工程实践（占位）。
+### 形式逻辑理论的最新突破
+
+**2025年关键进展**：
+
+1. **神经符号推理与形式逻辑**
+   - **神经符号推理**：神经符号AI在形式逻辑中的应用持续深入，为形式逻辑提供了神经符号基础
+   - **可验证逻辑接口**：LLM的可验证逻辑接口研究持续优化，为形式逻辑提供了可验证性保障
+   - **技术影响**：神经符号推理为形式逻辑提供了理论基础，推动了形式逻辑的发展
+
+2. **自动证明与形式逻辑**
+   - **自动证明工具链**：表/归结/序列演算在自动证明工具链中的工程实践持续优化，为形式逻辑提供了自动证明能力
+   - **Lean证明助手**：Lean证明助手在形式逻辑中的应用持续深入，为形式逻辑提供了形式化证明能力
+   - **技术影响**：自动证明为形式逻辑提供了理论基础，推动了形式逻辑的发展
+
+3. **推理架构与形式逻辑**
+   - **o1/o3系列**：推理架构在形式逻辑任务中表现出色，为形式逻辑提供了新的推理能力
+   - **DeepSeek-R1**：纯RL驱动架构在形式逻辑方面取得突破，展示了形式逻辑的新方向
+   - **技术影响**：推理架构创新提升了形式逻辑在复杂推理任务上的能力
+
+4. **形式化验证与形式逻辑**
+   - **形式化验证**：形式化验证在形式逻辑中的应用持续深入，为形式逻辑提供了形式化验证能力
+   - **程序综合**：程序综合在形式逻辑中的应用持续优化，为形式逻辑提供了程序综合能力
+   - **技术影响**：形式化验证为形式逻辑提供了理论基础，推动了形式逻辑的发展
+
+**详细内容**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
 
 [返回“最新进展”索引](../../LATEST_UPDATES_INDEX.md)

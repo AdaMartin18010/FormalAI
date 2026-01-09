@@ -61,6 +61,8 @@ Type theory studies the mathematical foundations of type systems, providing theo
     - [现代类型理论 / Modern Type Theory](#现代类型理论--modern-type-theory)
     - [类型理论在AI中的应用 / Type Theory Applications in AI](#类型理论在ai中的应用--type-theory-applications-in-ai)
     - [类型理论工具和实现 / Type Theory Tools and Implementation](#类型理论工具和实现--type-theory-tools-and-implementation)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [类型理论的最新发展](#类型理论的最新发展)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -1258,19 +1260,6 @@ testTypeUnification = do
 ---
 
 
-
----
-
-## 2025年最新发展 / Latest Developments 2025
-
-### 最新技术发展
-
-**2025年最新研究**：
-- 参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
-
-**详细内容**：本文档的最新发展内容已整合到 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md) 中，请参考该文档获取最新信息。
-
----
 
 ---
 

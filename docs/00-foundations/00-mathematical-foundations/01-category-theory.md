@@ -646,14 +646,14 @@ main = do
    - **混合推理**：范畴论在混合推理中的应用持续深入，为混合推理提供了严格的数学基础
    - **技术影响**：范畴论为神经符号AI和混合推理提供了严格的数学基础，推动了AI系统的发展
 
-6. **神经算子理论（2024-2025）**
+8. **神经算子理论（2024-2025）**
    - **核心贡献**：Furuya等解决Hilbert空间之间神经算子的离散化问题
    - **技术特点**：确保无限维中微分同胚的连续逼近，在有限维设置中实现神经算子的实际应用，提供严格的收敛性和稳定性保证
    - **应用领域**：偏微分方程求解、函数空间映射学习
    - **理论意义**：为神经算子提供严格的数学基础，支持复杂问题的求解
    - **参考文献**：Furuya et al. (2024). Discretization of Neural Operators between Hilbert Spaces. arXiv:2403.xxxxx
 
-7. **逻辑可验证神经架构的范畴构造（2025年8月）**
+9. **逻辑可验证神经架构的范畴构造（2025年8月）**
    - **核心贡献**：Nye开发范畴框架，系统构造具有可证明逻辑保证的神经架构
    - **技术特点**：将逻辑理论视为Lawvere理论（代数结构），使用范畴代数将逻辑理论转换为神经网络，在推理过程中确保逻辑一致性
    - **应用领域**：可验证AI系统、逻辑约束神经网络
@@ -662,25 +662,28 @@ main = do
      $$\text{NeuralArchitecture} = \text{CategoricalAlgebra}(\text{LawvereTheory}(\text{Logic}))$$
    - **参考文献**：Nye, M. (2025). Categorical Construction of Logically Verifiable Neural Architectures. arXiv:2508.11647
 
-8. **球形注意力算法：加速机器学习系统的范畴论方法（2025年5月）**
-   - **核心贡献**：Abbott等利用基于范畴论的神经电路图开发"球形注意力"算法
-   - **技术特点**：用L²范数替代传统SoftMax函数，克服计算瓶颈，达到最先进方法的性能，同时提高效率
-   - **应用领域**：基因调控网络、注意力机制优化
-   - **理论意义**：展示范畴论在优化机器学习算法中的应用潜力
-   - **算法创新**：
-     $$\text{SphericalAttention}(Q, K, V) = \text{L2Norm}(\text{NeuralCircuit}(Q, K, V))$$
-   - **参考文献**：Abbott et al. (2025). Accelerating Machine Learning Systems via Category Theory. arXiv:2505.09326
+10. **球形注意力算法：加速机器学习系统的范畴论方法（2025年5月）**
 
-9. **神经符号任务规划的范畴论方法（2025年）**
-   - **核心贡献**：Qu等引入框架，将大语言模型分解与范畴论验证集成，用于资源感知、时间一致的任务规划
-   - **技术特点**：将状态表示为对象，有效操作表示为态射，在范畴框架内通过数学拉回确保约束满足，提高规划任务的完成率和动作准确性
-   - **应用领域**：任务规划、资源管理、时序一致性
-   - **理论意义**：为任务规划提供严格的数学验证框架
-   - **形式化表达**：
+- **核心贡献**：Abbott等利用基于范畴论的神经电路图开发"球形注意力"算法
+- **技术特点**：用L²范数替代传统SoftMax函数，克服计算瓶颈，达到最先进方法的性能，同时提高效率
+- **应用领域**：基因调控网络、注意力机制优化
+- **理论意义**：展示范畴论在优化机器学习算法中的应用潜力
+- **算法创新**：
+     $$\text{SphericalAttention}(Q, K, V) = \text{L2Norm}(\text{NeuralCircuit}(Q, K, V))$$
+- **参考文献**：Abbott et al. (2025). Accelerating Machine Learning Systems via Category Theory. arXiv:2505.09326
+
+1. **神经符号任务规划的范畴论方法（2025年）**
+
+- **核心贡献**：Qu等引入框架，将大语言模型分解与范畴论验证集成，用于资源感知、时间一致的任务规划
+- **技术特点**：将状态表示为对象，有效操作表示为态射，在范畴框架内通过数学拉回确保约束满足，提高规划任务的完成率和动作准确性
+- **应用领域**：任务规划、资源管理、时序一致性
+- **理论意义**：为任务规划提供严格的数学验证框架
+- **形式化表达**：
      $$\text{TaskPlan} = \text{Pullback}(\text{StateObject}, \text{OperationMorphism}, \text{Constraint})$$
-   - **参考文献**：Qu et al. (2025). A Category-Theoretic Approach to Neural-Symbolic Task Planning. ACL Anthology (2025)
+- **参考文献**：Qu et al. (2025). A Category-Theoretic Approach to Neural-Symbolic Task Planning. ACL Anthology (2025)
 
 **2025年发展趋势**：
+
 - ✅ 范畴论在AI中的应用更加深入和具体
 - ✅ 新的范畴论框架（Alpay Algebra）为符号递归提供基础
 - ✅ Topos理论在生成式AI中的应用开辟新方向

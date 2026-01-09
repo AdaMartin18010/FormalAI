@@ -119,6 +119,8 @@ fn reach_bad(init: State, max: u32) -> bool {
       - [1. 量子验证理论](#1-量子验证理论)
       - [2. 生物计算验证理论](#2-生物计算验证理论)
       - [3. 脑机接口验证理论](#3-脑机接口验证理论)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [形式化验证的最新发展](#形式化验证的最新发展)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -1766,6 +1768,7 @@ end FormalVerification
 ---
 
 **最后更新**：2025-01-XX
+
 ## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
 
 - 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”
