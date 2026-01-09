@@ -36,6 +36,14 @@
   - [七、后续形式化验证建议](#七后续形式化验证建议)
     - [7.1 在 Lean / Coq 中的建模草案](#71-在-lean--coq-中的建模草案)
     - [7.2 在项目中的落地用法](#72-在项目中的落地用法)
+  - [八、新增定理（2025年12月）](#八新增定理2025年12月)
+    - [T10 唯一性定理（Uniqueness Theorem）](#t10-唯一性定理uniqueness-theorem)
+    - [T11 存在性定理（Existence Theorem）](#t11-存在性定理existence-theorem)
+    - [T12 完备性定理（Completeness Theorem）](#t12-完备性定理completeness-theorem)
+    - [T13 稳定性定理（Stability Theorem）](#t13-稳定性定理stability-theorem)
+    - [T14 收敛性定理（Convergence Theorem）](#t14-收敛性定理convergence-theorem)
+    - [T15 相关性定理（Correlation Theorem）](#t15-相关性定理correlation-theorem)
+    - [T16 最优性定理（Optimality Theorem）](#t16-最优性定理optimality-theorem)
 
 ## 📐 文档目的
 
@@ -353,9 +361,143 @@ structure DKB :=
 - 在架构评审文档中引用：
   - “本设计满足 A1–A4，因此可引用 T1 断言：若按实现计划执行，ARI/HR 将满足生存判据。”
 - 在学术/行业文章中引用：
-  - 使用 `A1–A6, L1–L4, T1–T9` 作为统一编号，避免不同文章重复命名相同命题。
+  - 使用 `A1–A6, L1–L4, T1–T16` 作为统一编号，避免不同文章重复命名相同命题。
 
 ---
 
-**最后更新**：2025-01-XX
+## 八、新增定理（2025年12月）
+
+### T10 唯一性定理（Uniqueness Theorem）
+
+**来源**：view02 §5.3.1
+
+**命题**：在满足公理A1-A4的条件下，DKB三元组(O, L, H)是使企业E在2025-2027年AI Agent竞争中生存的**唯一**结构。
+
+**形式化表述**：
+
+$$
+\forall E \in \mathcal{S}, \quad \text{生存}(E, 2027) \iff E \in \mathcal{DKB}
+$$
+
+**证明方法**：反证法 + 等价关系定义
+
+**对应文档**：view02 §5.3.1，model/04 证明树11
+
+---
+
+### T11 存在性定理（Existence Theorem）
+
+**来源**：view02 §5.3.2
+
+**命题**：对于任意企业E，存在DKB架构 $E' \in \mathcal{DKB}$ 使得 $E'$ 满足生存条件。
+
+**形式化表述**：
+
+$$
+\forall E \in \mathcal{S}, \quad \exists E' \in \mathcal{DKB}, \quad \text{生存}(E', 2027)
+$$
+
+**证明方法**：构造性证明（提供了具体的构造步骤）
+
+**对应文档**：view02 §5.3.2，model/04 证明树11
+
+---
+
+### T12 完备性定理（Completeness Theorem）
+
+**来源**：view02 §5.3.3
+
+**命题**：DKB三元组(O, L, H)是**完备的**，即不存在额外的层或组件是生存所必需的。
+
+**形式化表述**：
+
+$$
+\nexists X, \quad X \notin \{O, L, H\} \land X \text{ 是生存必需的}
+$$
+
+**证明方法**：反证法（假设存在额外层X，证明X不是必需的）
+
+**对应文档**：view02 §5.3.3，model/04 证明树11
+
+---
+
+### T13 稳定性定理（Stability Theorem）
+
+**来源**：view02 §5.3.4
+
+**命题**：DKB架构在演化过程中保持稳定，即不变量在系统演化下保持不变。
+
+**形式化表述**：
+
+$$
+\forall I \in \mathcal{I}, \forall e \in \mathcal{E}, \quad e(I) = I
+$$
+
+其中 $\mathcal{I}$ 为不变量集合，$\mathcal{E}$ 为演化操作集合。
+
+**证明方法**：归纳法（基例 + 归纳假设 + 归纳步骤）
+
+**对应文档**：view02 §5.3.4，model/04 证明树11
+
+---
+
+### T14 收敛性定理（Convergence Theorem）
+
+**来源**：view02 §5.3.5
+
+**命题**：DKB架构在演化过程中收敛到最优结构。
+
+**形式化表述**：
+
+$$
+\lim_{k \to \infty} DKB_k = DKB^*
+$$
+
+其中 $DKB^*$ 满足生存条件。
+
+**证明方法**：单调有界定理（证明价值函数单调递增且有上界）
+
+**对应文档**：view02 §5.3.5，model/04 证明树11
+
+---
+
+### T15 相关性定理（Correlation Theorem）
+
+**来源**：view02 §5.3.6
+
+**命题**：DKB三元组(O, L, H)的各个组件之间存在强相关性，任意组件的缺失都会导致整体性能的指数级下降。
+
+**形式化表述**：
+
+$$
+\rho(O, L) \cdot \rho(L, H) \cdot \rho(O, H) \geq \rho_{\min}
+$$
+
+其中 $\rho_{\min} = 0.85$ 为最小相关性阈值。
+
+**证明方法**：相关性分析（定义相关性度量，证明各组件间相关性）
+
+**对应文档**：view02 §5.3.6
+
+---
+
+### T16 最优性定理（Optimality Theorem）
+
+**来源**：view02 §5.3.7
+
+**命题**：DKB三元组(O, L, H)在所有可能的AI架构中是最优的。
+
+**形式化表述**：
+
+$$
+\text{DKB} = \arg\max_{S \in \mathcal{S}} \text{ARI}(S)
+$$
+
+**证明方法**：最优性证明（证明DKB是局部最优和全局最优）
+
+**对应文档**：view02 §5.3.7
+
+---
+
+**最后更新**：2025-12-XX
 **维护者**：FormalAI项目组
