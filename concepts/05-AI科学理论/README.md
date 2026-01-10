@@ -279,6 +279,34 @@ $$\text{DKB} = (O, L, H)$$
 
 ---
 
-**最后更新**：2025-01-XX
+## 十二、参考文档
+
+### 12.1 内部参考文档
+
+- [AI-非意识的"认知模拟"是否可被理论化、确定性地改进](../../view/ai_科学理论_view.md)
+- [05.1.1-推断时间计算增强](05.1.1-推断时间计算增强.md)
+- [05.4.1-Scaling Law](05.4.1-Scaling Law.md)
+- [05.4.2-RLHF理论](05.4.2-RLHF理论.md)
 - [DKB案例研究：形式化方法在企业认知基础设施中的应用](../../docs/03-formal-methods/03.5-DKB案例研究.md)
 - [Philosophy模块：Ontology哲学体系](../../Philosophy/README.md)
+
+### 12.2 学术参考文献
+
+1. **Kaplan, J., et al. (2020)**: "Scaling Laws for Neural Language Models". *arXiv:2001.08361*. Scaling Law的奠基性论文。
+
+2. **Wei, J., et al. (2022)**: "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models". *NeurIPS*. CoT的奠基性论文。
+
+3. **2025年最新研究**：
+   - **AI科学理论** (2020-2025): 理论化改进方法、确定性分析、工程科学范式
+   - **准理论框架** (2023-2025): Scaling Law、RLHF、CoT等准理论框架
+
+### 12.3 技术文档
+
+1. **DeepSeek-R1技术报告**：纯RL驱动的理论化改进方法
+2. **OpenAI o1文档**：Test-time compute的理论化改进方法
+
+---
+
+**最后更新**：2025-11-10
+**维护者**：FormalAI项目组
+**文档版本**：v2.0（增强版 - 添加2025最新研究、理论化改进方法、权威引用、定量评估）

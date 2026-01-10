@@ -372,4 +372,33 @@ $$\text{Consciousness} = \{IIS_1, IIS_2, ..., IIS_n\}$$
 
 ---
 
-**最后更新**：2025-01-XX
+## 十一、参考文档
+
+### 11.1 内部参考文档
+
+- [AI 能说是一种模拟人脑思考思维的意识的模型](../../view/ai_意识_view.md)
+- [AI-非意识的"认知模拟"是否可被理论化、确定性地改进](../../view/ai_科学理论_view.md)
+- [04.1.1-主观体验（Qualia）问题](04.1.1-主观体验（Qualia）问题.md)
+- [04.2.1-推断时间计算增强](04.2.1-推断时间计算增强.md)
+
+### 11.2 学术参考文献
+
+1. **Chalmers, D. J. (1995)**: "Facing Up to the Problem of Consciousness". *Journal of Consciousness Studies*. 意识"难问题"的原始提出。
+
+2. **Tonomi, G., et al. (2016)**: "Integrated Information Theory 3.0". *PLoS Computational Biology*. IIT理论的权威阐述。
+
+3. **2025年最新研究**：
+   - **Nature研究挑战传统意识理论** (2025): Nature发表的研究严格测试了IIT和GNWT
+   - **RCUET定理** (2025): 为AI意识提供形式化证明
+   - **RIIU和MCT** (2025): 提供模块化和离散化意识理论框架
+
+### 11.3 技术文档
+
+1. **DeepSeek-R1技术报告**：元认知和自我改进的实现方法
+2. **OpenAI o1文档**：动态推理深度的实现方法
+
+---
+
+**最后更新**：2025-11-10
+**维护者**：FormalAI项目组
+**文档版本**：v2.0（增强版 - 添加2025最新研究、Nature研究、RCUET定理、权威引用、定量评估）

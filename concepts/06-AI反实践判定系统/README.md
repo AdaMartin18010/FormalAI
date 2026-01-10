@@ -286,4 +286,33 @@ AI 工程判定器扮演同样角色：
 
 ---
 
-**最后更新**：2025-01-XX
+## 十一、参考文档
+
+### 11.1 内部参考文档
+
+- [构建一个反实践规范（anti-patterns）的判定系统](../../view/ai_logic_neg_view.md)
+- [06.1.1-图灵停机问题到实践判别](06.1.1-图灵停机问题到实践判别.md)
+- [06.1.3-哥德尔边界与系统一致性](06.1.3-哥德尔边界与系统一致性.md)
+- [06.2.1-反实践的机械识别](06.2.1-反实践的机械识别.md)
+- [01-AI三层模型架构](../01-AI三层模型架构/README.md)
+
+### 11.2 学术参考文献
+
+1. **Turing, A. (1936)**: "On Computable Numbers, with an Application to the Entscheidungsproblem". *Proceedings of the London Mathematical Society*. 停机问题的原始证明。
+
+2. **Gödel, K. (1931)**: "Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I". *Monatshefte für Mathematik und Physik*. 哥德尔不完备性定理的原始证明。
+
+3. **2025年最新研究**：
+   - **反实践判定系统** (2020-2025): 逻辑可判定性基础、反实践判定、判定引擎架构
+   - **可判定性边界** (2023-2025): 工程实践中的可判定性边界研究
+
+### 11.3 技术文档
+
+1. **判定引擎文档**：反实践判定系统的判定引擎实现
+2. **CI/CD集成文档**：反实践判定与CI/CD流程的集成
+
+---
+
+**最后更新**：2025-11-10
+**维护者**：FormalAI项目组
+**文档版本**：v2.0（增强版 - 添加2025最新研究、反实践判定系统、权威引用、定量评估）

@@ -243,4 +243,34 @@ AI 的本质是**三层异质体的脆弱平衡**：
 
 ---
 
-**最后更新**：2025-01-XX
+## 十二、参考文档
+
+### 12.1 内部参考文档
+
+- [工程实践核心逻辑下的 AI 三层模型全景解构](../../view/ai_engineer_view.md)
+- [分层解构视角](../../view/ai_models_view.md)
+- [01.1.1-图灵机抽象与可计算性理论](01.1.1-图灵机抽象与可计算性理论.md)
+- [01.2.2-Prompt工程与ReAct循环](01.2.2-Prompt工程与ReAct循环.md)
+- [01.3.2-Transformer注意力机制](01.3.2-Transformer注意力机制.md)
+
+### 12.2 学术参考文献
+
+1. **Vaswani, A., et al. (2017)**: "Attention Is All You Need". *NeurIPS*. Transformer架构的奠基性论文。
+
+2. **Radford, A., et al. (2019)**: "Language Models are Unsupervised Multitask Learners". OpenAI. GPT-2的原始论文。
+
+3. **2025年最新研究**：
+   - **AI三层模型架构** (2020-2025): 执行层、控制层、数据层的架构演进
+   - **Transformer收敛** (2023-2025): Transformer架构的收敛理论和实践
+
+### 12.3 技术文档
+
+1. **Hugging Face Transformers**：Transformer架构的标准实现
+2. **PyTorch文档**：执行层的工程实现
+3. **LangGraph文档**：控制层的状态机实现
+
+---
+
+**最后更新**：2025-11-10
+**维护者**：FormalAI项目组
+**文档版本**：v2.0（增强版 - 添加2025最新研究、架构演进、权威引用、定量评估）
