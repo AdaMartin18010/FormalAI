@@ -179,26 +179,31 @@ DATA_UPDATE_CHECKLIST.md (检查清单)
 ### 按用途查找
 
 #### 了解项目整体情况
+
 1. `PROJECT_STATUS_SNAPSHOT.md` - 快速查看项目状态
 2. `FINAL_WORK_SUMMARY.md` - 详细工作总结
 3. `CONTENT_SUBSTANCE_EVALUATION.md` - 评价与改进建议
 
 #### 查找核心内容
+
 1. `00-主题总览与导航.md` - 所有主题的索引
 2. `README.md` - 文件夹说明
 3. `快速参考指南.md` - 快速查找
 
 #### 查找特定主题
+
 1. `view01-06.md` - 六个视角的详细论证
 2. `model/01-13.md` - 十三个核心模型
 3. `model/README.md` - 模型文件夹说明
 
 #### 数据管理
+
 1. `DATA_SOURCES.md` - 数据来源清单
 2. `DATA_UPDATE_CHECKLIST.md` - 数据更新检查清单
 3. `DATA_UPDATE_GUIDE.md` - 数据更新指南
 
 #### 了解改进工作
+
 1. `PROJECT_STATUS_SNAPSHOT.md` - 项目状态快照
 2. `WORK_PROGRESS_SUMMARY.md` - 工作进展总结
 3. `FINAL_WORK_SUMMARY.md` - 最终工作总结

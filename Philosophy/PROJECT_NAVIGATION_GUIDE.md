@@ -35,12 +35,14 @@
 ### 数据更新和验证
 
 **框架文档**：
+
 - `DATA_VALIDATION_FRAMEWORK.md` - 数据验证框架和方法
 - `DATA_SOURCES.md` - 数据来源清单与管理机制
 - `DATA_UPDATE_CHECKLIST.md` - 数据更新检查清单
 - `DATA_UPDATE_GUIDE.md` - 数据更新指南
 
 **使用场景**：
+
 - 需要验证关键数据来源时 → 查看`DATA_VALIDATION_FRAMEWORK.md`
 - 需要更新案例研究数据时 → 查看`DATA_UPDATE_GUIDE.md`
 - 需要记录数据来源时 → 查看`DATA_SOURCES.md`
@@ -50,10 +52,12 @@
 ### 外部验证和评议
 
 **框架文档**：
+
 - `EXTERNAL_EXPERT_REVIEW_PREPARATION.md` - 外部专家评议准备
 - `PEER_REVIEW_PREPARATION.md` - 同行评议准备（arXiv、学术会议、行业评议）
 
 **使用场景**：
+
 - 需要邀请哲学专家评议时 → 查看`EXTERNAL_EXPERT_REVIEW_PREPARATION.md`
 - 需要发布到arXiv时 → 查看`PEER_REVIEW_PREPARATION.md` §arXiv发布计划
 - 需要邀请行业专家评议时 → 查看`PEER_REVIEW_PREPARATION.md` §行业专家评议
@@ -63,10 +67,12 @@
 ### 案例研究和扩展
 
 **框架文档**：
+
 - `PRACTICE_CASE_EXTENSION_FRAMEWORK.md` - 实践案例扩展框架
 - `model/08-案例研究索引.md` - 案例研究索引和详细数据
 
 **使用场景**：
+
 - 需要收集新案例时 → 查看`PRACTICE_CASE_EXTENSION_FRAMEWORK.md` §案例收集框架
 - 需要分析案例时 → 查看`PRACTICE_CASE_EXTENSION_FRAMEWORK.md` §案例分析方法
 - 需要更新现有案例时 → 查看`PRACTICE_CASE_EXTENSION_FRAMEWORK.md` §案例更新机制
@@ -76,10 +82,12 @@
 ### 形式化验证
 
 **框架文档**：
+
 - `FORMAL_VERIFICATION_PREPARATION.md` - 形式化验证准备（Lean 4、Coq）
 - `model/10-DKB公理与定理索引.md` - 公理和定理体系
 
 **使用场景**：
+
 - 需要形式化公理时 → 查看`FORMAL_VERIFICATION_PREPARATION.md` §公理形式化材料
 - 需要形式化定理时 → 查看`FORMAL_VERIFICATION_PREPARATION.md` §定理形式化材料
 - 需要开始Lean 4验证时 → 查看`FORMAL_VERIFICATION_PREPARATION.md` §Lean 4验证计划
@@ -89,10 +97,12 @@
 ### 工具优化和自动化
 
 **框架文档**：
+
 - `TOOL_OPTIMIZATION_FRAMEWORK.md` - 工具优化框架（CI/CD、自动化测试）
 - `CHANGE_IMPACT_ANALYSIS.md` - 变更影响分析
 
 **使用场景**：
+
 - 需要优化现有工具时 → 查看`TOOL_OPTIMIZATION_FRAMEWORK.md` §现有工具评估
 - 需要建立CI/CD流程时 → 查看`TOOL_OPTIMIZATION_FRAMEWORK.md` §CI/CD流程建立
 - 需要分析变更影响时 → 查看`CHANGE_IMPACT_ANALYSIS.md`
@@ -139,6 +149,7 @@
 ### 场景1：我需要了解项目整体情况
 
 **推荐阅读顺序**：
+
 1. `README.md` - 项目总体介绍
 2. `IMPROVEMENT_COMPLETE_SUMMARY.md` - 改进工作完整总结
 3. `00-主题总览与导航.md` - Philosophy模块主题总览
@@ -149,12 +160,14 @@
 ### 场景2：我需要验证或更新数据
 
 **推荐阅读顺序**：
+
 1. `DATA_VALIDATION_FRAMEWORK.md` - 数据验证框架
 2. `DATA_SOURCES.md` - 数据来源清单
 3. `DATA_UPDATE_GUIDE.md` - 数据更新指南
 4. `DATA_UPDATE_CHECKLIST.md` - 数据更新检查清单
 
 **执行步骤**：
+
 1. 使用`DATA_VALIDATION_FRAMEWORK.md`中的验证方法
 2. 按照`DATA_UPDATE_GUIDE.md`的流程更新数据
 3. 使用`DATA_UPDATE_CHECKLIST.md`检查更新完整性
@@ -164,11 +177,13 @@
 ### 场景3：我需要收集或分析案例
 
 **推荐阅读顺序**：
+
 1. `PRACTICE_CASE_EXTENSION_FRAMEWORK.md` - 案例扩展框架
 2. `model/08-案例研究索引.md` - 现有案例索引
 3. `view05.md` - 案例研究视角
 
 **执行步骤**：
+
 1. 使用`PRACTICE_CASE_EXTENSION_FRAMEWORK.md`中的案例收集框架
 2. 使用案例数据收集模板收集新案例
 3. 使用案例分析方法分析案例
@@ -179,10 +194,12 @@
 ### 场景4：我需要邀请专家评议
 
 **推荐阅读顺序**：
+
 1. `EXTERNAL_EXPERT_REVIEW_PREPARATION.md` - 外部专家评议准备
 2. `PEER_REVIEW_PREPARATION.md` - 同行评议准备
 
 **执行步骤**：
+
 1. 根据评议类型选择相应的准备文档
 2. 按照文档中的专家选择标准邀请专家
 3. 准备评议材料（使用文档中的材料准备清单）
@@ -194,11 +211,13 @@
 ### 场景5：我需要开始形式化验证
 
 **推荐阅读顺序**：
+
 1. `FORMAL_VERIFICATION_PREPARATION.md` - 形式化验证准备
 2. `model/10-DKB公理与定理索引.md` - 公理和定理体系
 3. `view02.md` - 唯一性证明
 
 **执行步骤**：
+
 1. 选择验证工具（Lean 4或Coq）
 2. 按照`FORMAL_VERIFICATION_PREPARATION.md`中的验证计划
 3. 使用公理、引理、定理形式化材料
@@ -209,10 +228,12 @@
 ### 场景6：我需要优化工具或建立CI/CD
 
 **推荐阅读顺序**：
+
 1. `TOOL_OPTIMIZATION_FRAMEWORK.md` - 工具优化框架
 2. `CHANGE_IMPACT_ANALYSIS.md` - 变更影响分析
 
 **执行步骤**：
+
 1. 评估现有工具（使用`TOOL_OPTIMIZATION_FRAMEWORK.md`中的评估方法）
 2. 制定优化计划（使用文档中的优化计划）
 3. 建立CI/CD流程（使用文档中的CI/CD流程建立计划）
