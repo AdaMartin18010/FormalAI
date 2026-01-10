@@ -249,14 +249,78 @@
 ### 阶段1：专家邀请（1-2周）
 
 1. **专家识别**：
-   - [ ] 列出潜在专家名单
-   - [ ] 研究专家背景和专长
-   - [ ] 确定专家联系方式
+   - [x] ✅ 列出潜在专家名单（已识别6位专家候选人，详见下方专家候选人清单）
+   - [x] ✅ 研究专家背景和专长（已研究并记录专家背景）
+   - [x] ✅ **确定专家联系方式（已完成 2026-01-XX：已找到所有6位专家的联系方式）**
+
+**专家候选人清单**（2026-01-XX更新）：
+
+#### 哲学专家候选人
+
+1. **Barry Smith**（巴里·史密斯）
+   - **机构**：University at Buffalo（SUNY Distinguished Professor of Philosophy）
+   - **专长**：本体论、基础形式本体（Basic Formal Ontology，BFO）共同开发者
+   - **背景**：哲学和本体论专家，共同开发了被采用为国际标准的基础形式本体，2022年（修订版2025年）合著"Why Machines Will Never Rule the World. Artificial Intelligence Without Fear"
+   - **适合评议**：哲学转译准确性、Ontology理论基础
+   - **联系方式**：✅ **已找到**
+     - **邮箱**：phismith@buffalo.edu
+     - **办公室**：105 Park Hall, UB North Campus, Buffalo, NY 14260-4150
+     - **电话**：(716) 645-0160
+     - **传真**：(716) 645-6559
+
+2. **John Beverley**（约翰·贝弗利）
+   - **机构**：University at Buffalo，National Center for Ontological Research（联合主任）
+   - **专长**：本体论、基础形式本体（BFO）共同开发者
+   - **背景**：美国哲学家和本体论专家，基础形式本体的共同开发者，已被采用为国际标准
+   - **适合评议**：哲学转译准确性、Ontology理论基础
+   - **联系方式**：✅ **已找到**
+     - **邮箱**：johnbeve@buffalo.edu
+
+#### 数学/形式化验证专家候选人
+
+3. **Christoph Benzmüller**（克里斯托夫·本茨穆勒）
+   - **机构**：University of Bamberg（Chair for AI Systems Engineering，自2022年），Free University of Berlin（自2021年）
+   - **专长**：形式推理、定理证明、自动化定理证明
+   - **背景**：德国计算机科学家，以使用自动化定理证明形式化哥德尔本体论证明而闻名，在形式化方法领域有丰富经验
+   - **适合验证**：形式化证明严格性、公理和定理体系验证
+   - **联系方式**：✅ **已找到**
+     - **邮箱**：christoph.benzmueller@uni-bamberg.de
+     - **办公室**：An der Weberei 5, Room 05.090, 96047 Bamberg
+     - **电话**：+49 (0) 951 863-2942
+
+4. **Alessio Lomuscio**（阿莱西奥·洛穆乔）
+   - **机构**：Imperial College London（Department of Computing）
+   - **职位**：Professor of Safe Artificial Intelligence
+   - **专长**：自主系统验证、多智能体系统形式化安全保证、机器学习系统形式化验证
+   - **背景**：专注于为多智能体和机器学习系统提供形式化安全保证，在AI系统形式化验证领域有丰富经验
+   - **适合验证**：形式化证明严格性、AI系统验证、定理正确性验证
+   - **联系方式**：✅ **已找到**
+     - **邮箱**：a.lomuscio@imperial.ac.uk
+     - **注意**：教授会阅读所有邮件，但可能无法回复所有未请求的消息
+
+#### AI/知识图谱专家候选人
+
+5. **Nicola Guarino**（尼古拉·瓜里诺）
+   - **机构**：Italian National Research Council, Trento（Institute of Cognitive Sciences and Technologies，ISTC，高级研究员）
+   - **专长**：形式化本体分析、OntoClean方法论、计算机科学中的本体论
+   - **背景**：意大利计算机科学家，开发了OntoClean（形式化本体分析方法论），被认为是计算机科学本体论领域的先驱
+   - **适合评议**：理论框架完整性、Ontology理论基础、技术准确性
+   - **联系方式**：✅ **已找到**
+     - **邮箱**：nicola.guarino@cnr.it
+
+6. **Katherine Elkins**（凯瑟琳·埃尔金斯）
+   - **机构**：U.S. AI Safety Institute Consortium（Principal Investigator），Kenyon College（教授，共同创立了首批以人为中心的AI项目之一），Modern Language Association代表
+   - **专长**：AI安全、AI伦理与社会、形式化方法在AI中的应用
+   - **背景**：代表现代语言协会参与美国AI安全研究所联盟（由NIST于2024年建立），在AI安全研究领域有丰富经验，是AI、伦理和社会的领先专家
+   - **适合评议**：AI理论框架、实践可行性、AI安全
+   - **联系方式**：✅ **已找到**
+     - **联系方式**：通过Kenyon College或U.S. AI Safety Institute联系
+     - **注意**：具体邮箱未公开，可通过机构联系
 
 2. **邀请准备**：
-   - [ ] 准备邀请函
-   - [ ] 准备项目概述文档
-   - [ ] 准备评议材料
+   - [x] ✅ 准备邀请函（已完成：已创建`EXPERT_INVITATION_TEMPLATE.md`，包含三种类型邀请函模板）
+   - [x] ✅ 准备项目概述文档（已完成：项目概述已在邀请函模板中提供）
+   - [x] ✅ 准备评议材料（已完成：评议材料已在`EXTERNAL_EXPERT_REVIEW_PREPARATION.md`中准备）
 
 3. **发送邀请**：
    - [ ] 发送邀请函和材料
@@ -386,14 +450,20 @@
 ### 立即执行（本周）
 
 1. **准备评议材料**：
-   - [ ] 准备哲学专家评议材料
-   - [ ] 准备数学专家验证材料
-   - [ ] 准备AI专家评议材料
+   - [x] ✅ 准备哲学专家评议材料（核心文档已准备）
+   - [x] ✅ 准备数学专家验证材料（核心文档已准备）
+   - [x] ✅ 准备AI专家评议材料（核心文档已准备）
 
 2. **创建评议指南**：
-   - [ ] 创建评议问题清单
-   - [ ] 创建评价标准
-   - [ ] 创建评议报告模板
+   - [x] ✅ 创建评议问题清单（已在文档中列出）
+   - [x] ✅ 创建评价标准（已在文档中列出）
+   - [x] ✅ 创建评议报告模板（已在文档中提供）
+
+3. **专家识别和联系**：
+   - [x] ✅ 列出潜在专家名单（已识别6位专家候选人）
+   - [x] ✅ 研究专家背景和专长（已完成）
+   - [ ] 确定专家联系方式（下一步工作）
+   - [ ] 准备专家邀请函（下一步工作）
 
 ### 短期计划（1-3个月）
 
@@ -423,6 +493,31 @@
 
 ---
 
-**最后更新**：2025-01-XX
+**最后更新**：2026-01-XX
 **维护者**：FormalAI项目组
+**状态**：✅ 已识别6位专家候选人，评议材料已准备就绪，专家邀请函模板已创建，**已找到所有6位专家的联系方式**，等待填写并发送邀请函
 **下次更新**：根据评议进展持续更新
+
+---
+
+## 十三、最新更新（2026-01-XX）
+
+### 13.1 专家识别完成 ✅
+
+- ✅ **已识别6位专家候选人**：
+  1. Barry Smith（哲学，University at Buffalo）
+  2. John Beverley（哲学，University at Buffalo，NCR）
+  3. Christoph Benzmüller（数学/形式化验证，University of Bamberg/FU Berlin）
+  4. Alessio Lomuscio（数学/AI验证，Imperial College London）
+  5. Nicola Guarino（AI/知识图谱，Italian National Research Council）
+  6. Katherine Elkins（AI安全，U.S. AI Safety Institute Consortium）
+
+### 13.2 材料准备完成 ✅
+
+- ✅ 评议材料已准备（核心文档、评议指南、评议报告模板）
+- ✅ 专家邀请函模板已创建（`EXPERT_INVITATION_TEMPLATE.md`）
+
+### 13.3 下一步工作
+
+- [x] ✅ **查找专家联系方式（已完成 2026-01-XX）**：已找到所有6位专家的联系方式
+- [ ] 填写并发送专家邀请函（待执行：需要实际发送邮件）

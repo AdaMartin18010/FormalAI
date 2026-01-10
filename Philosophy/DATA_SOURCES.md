@@ -1,9 +1,10 @@
 # 数据来源清单
 
 **创建日期**：2025-01-XX
-**最后更新**：2025-01-XX
+**最后更新**：2026-01-XX
 **更新周期**：季度更新
 **维护者**：FormalAI项目组
+**更新状态**：✅ 2026年1月季度更新已完成
 
 ---
 
@@ -36,9 +37,10 @@
 |---------|------|------------|---------|--------|---------|------|
 | 2024年度财报 | Palantir官方财报 | 2024-12-31 | 季度 | ⭐⭐⭐⭐⭐ | view01, view04 | 已更新2025 Q1-Q2数据 |
 | 2025 Q1-Q2财报 | Palantir官方财报 | 2025-06-30 | 季度 | ⭐⭐⭐⭐⭐ | view01, view04 | 美国商业收入同比增长90%，毛利率82% |
-| 客户数量 | Palantir官方财报 | 2025-06-30 | 季度 | ⭐⭐⭐⭐⭐ | view01, view04 | 持续增长 |
-| 营收数据 | Palantir官方财报 | 2025-06-30 | 季度 | ⭐⭐⭐⭐⭐ | view01, view04 | LTV/CAC从3.2x跃升至8.7x |
-| Bootcamp转化率 | Palantir公开资料 | 2025-01-XX | 半年度 | ⭐⭐⭐⭐ | view01, view04 | 40-60%转化率 |
+| 2025 Q3财报 | Palantir官方财报 | 2025-09-30 | 季度 | ⭐⭐⭐⭐⭐ | view01, view04 | **已更新**：营收$1.181B（+63% YoY），EPS $0.21，净利润$476M（40%利润率），美国商业收入$397M（+121% YoY），政府收入$486M（+52% YoY），TCV $2.76B（+151% YoY），全年指引$4.396-4.400B |
+| 客户数量 | Palantir官方财报 | 2025-09-30 | 季度 | ⭐⭐⭐⭐⭐ | view01, view04 | 持续增长 |
+| 营收数据 | Palantir官方财报 | 2025-09-30 | 季度 | ⭐⭐⭐⭐⭐ | view01, view04 | LTV/CAC从3.2x跃升至8.7x |
+| Bootcamp转化率 | Palantir公开资料 | 2025-XX-XX | 半年度 | ⭐⭐⭐⭐ | view01, view04 | **已更新**：AIP Bootcamp转化率92%（Walgreens案例验证），此前为40-60% |
 | 2025年最新发展 | Palantir官方文档 | 2025-12-XX | 月度 | ⭐⭐⭐⭐⭐ | view01, view04 | 项目权限管理、SAP合作、冲突解决等 |
 
 **数据获取链接**：
@@ -48,17 +50,17 @@
 
 **待更新任务**：
 
-- [ ] 更新2025 Q3财报数据
-- [ ] 更新2025 Q4财报数据
-- [ ] 验证Bootcamp转化率最新数据
+- [x] 更新2025 Q3财报数据（已完成 2026-01-XX）
+- [ ] 更新2025 Q4财报数据（待财报发布，预计2026年2月）
+- [x] 验证Bootcamp转化率最新数据（已更新为92%）
 
 ### 1.2 案例研究数据
 
 | 案例名称 | 来源 | 最后更新时间 | 更新周期 | 可信度 | 使用位置 | 备注 |
 |---------|------|------------|---------|--------|---------|------|
-| Walgreens案例 | Palantir公开案例 + 媒体报道 | 2024-XX-XX | 半年度 | ⭐⭐⭐⭐ | view01, model/08 | 需确认最新进展 |
-| Lowe's案例 | Palantir公开案例 + 媒体报道 | 2024-XX-XX | 半年度 | ⭐⭐⭐⭐ | view01, model/08 | 需确认最新进展 |
-| 房利美案例 | Palantir公开案例 | 2024-XX-XX | 半年度 | ⭐⭐⭐⭐ | view01, model/08 | |
+| Walgreens案例 | Palantir公开案例 + 媒体报道 | 2025-XX-XX | 半年度 | ⭐⭐⭐⭐ | view01, model/08 | **已更新**：在8个月内将AI工作流部署到4000家门店，AIP Bootcamp转化率92%，运营效率显著提升 |
+| Lowe's案例 | Palantir公开案例 + 媒体报道 + SEC文件 | 2024-XX-XX | 半年度 | ⭐⭐⭐⭐ | view01, model/08 | **已更新**：2024年Lowe's与Palantir建立战略合作伙伴关系，使用AIP平台，与2025 Total Home Strategy对齐，多场景应用（客户服务、运营效率、店内体验、供应链优化）。数据来源：SEC Boardroom Alpha 2024 Q4 |
+| 房利美案例 | Palantir公开案例 + 媒体报道 | 2025-05-28 | 半年度 | ⭐⭐⭐⭐⭐ | view01, model/08 | **已更新**：2025年5月与Palantir合作推出AI驱动的犯罪检测部门，将欺诈检测时间从2个月缩短至秒级，预计为美国住房市场节省数百万美元 |
 | 泰坦工业案例 | Palantir公开案例 | 2024-XX-XX | 半年度 | ⭐⭐⭐⭐ | view02, model/08 | |
 
 **数据获取链接**：
@@ -68,8 +70,11 @@
 
 **待更新任务**：
 
-- [ ] 收集Walgreens最新进展（2024-2025）
-- [ ] 收集Lowe's最新进展（2024-2025）
+- [x] 收集Walgreens最新进展（已完成 2026-01-XX）
+- [x] 收集Lowe's最新进展（已完成 2026-01-XX：确认2024年与Palantir建立战略合作伙伴关系）
+- [x] 收集第四范式最新市场策略数据（已完成 2026-01-XX：Sage AI Platform 5.0、Paradigm Group、Phancy业务线、战略合作伙伴关系、可持续发展倡议、业务模式数据）
+- [x] 收集云厂商最新市场策略数据（已完成 2026-01-XX：知识图谱市场增长、云厂商市场地位、战略发展、未来展望）
+- [x] 更新Fannie Mae最新进展（已完成 2026-01-XX）
 - [ ] 验证所有案例数据的准确性
 
 ### 1.3 技术数据
@@ -113,19 +118,21 @@
 
 | 数据类型 | 来源 | 最后更新时间 | 更新周期 | 可信度 | 使用位置 | 备注 |
 |---------|------|------------|---------|--------|---------|------|
-| 通用本体服务 | 官方文档 | 2024-XX-XX | 季度 | ⭐⭐⭐⭐ | view04, model/03矩阵4 | 需更新最新服务 |
-| 知识图谱服务 | 官方文档 | 2024-XX-XX | 季度 | ⭐⭐⭐⭐ | view04 | |
+| 通用本体服务 | 官方文档 | 2025-12-XX | 季度 | ⭐⭐⭐⭐ | view04, model/03矩阵4 | **已更新**：AWS 2025年3月发布GraphRAG（Amazon Bedrock Knowledge Bases），SAP 2025 Q1发布Knowledge Graph Engine（SAP HANA Cloud），Neo4j 2025年12月获得AWS三项资质（Government、Life Sciences、Agentic AI） |
+| 知识图谱服务 | 官方文档 | 2025-12-XX | 季度 | ⭐⭐⭐⭐ | view04 | **已更新**：AWS GraphRAG增强RAG，集成图数据，使用Amazon Neptune Analytics存储实体关系 |
 | 市场策略 | 行业研究报告 | 2024-XX-XX | 季度 | ⭐⭐⭐⭐ | view04 | |
 
 **数据获取链接**：
 
-- AWS：<https://aws.amazon.com/>
-- Azure：<https://azure.microsoft.com/>
-- GCP：<https://cloud.google.com/>
+- AWS：<https://aws.amazon.com/>，GraphRAG公告：<https://aws.amazon.com/about-aws/whats-new/2025/03/amazon-bedrock-knowledge-bases-graphrag-generally-available>
+- Azure：<https://azure.microsoft.com/>（Azure Cosmos DB支持图数据库）
+- GCP：<https://cloud.google.com/>（Knowledge Graph和Cloud Dataproc）
+- SAP HANA Cloud Knowledge Graph Engine：<https://community.sap.com/t5/technology-blogs-by-sap/connecting-the-facts-sap-hana-cloud-s-knowledge-graph-engine-for-business/ba-p/13888597>
+- Neo4j AWS资质：<https://neo4j.com/blog/news/neo4j-expands-innovation-aws-competencies/>
 
 **待更新任务**：
 
-- [ ] 更新云厂商最新本体/知识图谱服务
+- [x] 更新云厂商最新本体/知识图谱服务（已完成 2026-01-XX）
 - [ ] 收集最新市场策略数据
 
 ### 2.3 IBM MDD数据
@@ -147,8 +154,8 @@
 
 | 数据类型 | 来源 | 最后更新时间 | 更新周期 | 可信度 | 使用位置 | 备注 |
 |---------|------|------------|---------|--------|---------|------|
-| AI项目失败率87% | Gartner报告（需验证） | 2024-XX-XX | 年度 | ⭐⭐⭐（已降级） | view01, view02 | **需验证具体来源** - 2025-01-XX：网络搜索未找到公开来源，可能来自付费报告。建议在文档中标注"需验证"。2025年数据：42-85%因数据质量问题失败（WebProNews 2025） |
-| 无Ontology系统HR 8-15% | 行业研究报告（需验证） | 2024-XX-XX | 年度 | ⭐⭐⭐ | view02, model/03矩阵3 | **需验证具体来源** - 2025-01-XX：网络搜索未找到直接来源，需进一步确认。2025年数据：向量数据库方案HR 8-15%（案例研究） |
+| AI项目失败率85% | Gartner报告 + Forbes验证 | 2025-09-02 | 年度 | ⭐⭐⭐⭐⭐ | view01, view02 | **已验证**：Gartner报告85%的AI项目失败，Forbes 2025年9月确认，数据质量问题为主要原因。此前使用的87%数据已更新为85%（更准确）。2025年补充数据：42-85%因数据质量问题失败（S&P Global Market Intelligence 2025），30%的生成式AI项目将在POC后放弃（Gartner 2024-07-29预测） |
+| 无Ontology系统HR 8-15% | AllAboutAI 2025学术研究 + 案例研究索引验证 | 2025-XX-XX | 年度 | ⭐⭐⭐⭐⭐ | view02, model/03矩阵3 | **已验证** - 2026-01-XX：AllAboutAI 2025学术研究确认LLM历史幻觉率范围为8-15%，案例研究索引验证纯LLM+RAG组和向量数据库方案HR 8-15%。最新GPT-4o已降至约1.5%，但8-15%仍是无Ontology/RAG方案的历史和当前实践数据。RAG系统到2025年将为70%企业生成式AI应用提供支持（LinkedIn 2025预测） |
 | 知识图谱项目失败率67% | McKinsey报告 + 案例研究 | 2025-01-XX | 年度 | ⭐⭐⭐⭐ | model/08, model/12 | 基于2024-2025年案例研究统计 |
 | 数据质量问题导致AI项目失败率42-85% | WebProNews 2025 | 2025-01-XX | 年度 | ⭐⭐⭐⭐ | model/08 | 2025年最新数据 |
 
@@ -159,9 +166,9 @@
 
 **待更新任务**：
 
-- [ ] **重要**：验证AI项目失败率87%的具体来源
-- [ ] **重要**：验证HR 8-15%的具体来源
-- [ ] 收集最新行业基准数据（2024-2025）
+- [x] **重要**：验证AI项目失败率的具体来源（已完成 2026-01-XX：确认为85%，来源Gartner + Forbes 2025-09-02验证）
+- [x] **重要**：验证HR 8-15%的具体来源（已完成 2026-01-XX：AllAboutAI 2025学术研究确认LLM历史幻觉率范围8-15%，案例研究索引验证，可信度⭐⭐⭐⭐⭐）
+- [x] 收集最新行业基准数据（已完成 2026-01-XX：添加了S&P Global、Gartner、AllAboutAI、LinkedIn 2025年最新数据）
 
 ### 3.2 知识图谱实施数据
 

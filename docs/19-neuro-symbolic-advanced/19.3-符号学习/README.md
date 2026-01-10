@@ -519,7 +519,7 @@ Symbolic learning is the process of automatically discovering and learning symbo
 
 ---
 
-**最后更新**：2025-01-XX
+**最后更新**：2026-01-11
 **版本**：v2025-01
 **维护者**：FormalAI项目组
 

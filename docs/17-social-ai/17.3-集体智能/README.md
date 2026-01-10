@@ -262,7 +262,7 @@ Collective intelligence refers to the collective wisdom capability that emerges 
 
 ---
 
-**最后更新**：2025-01-XX
+**最后更新**：2026-01-11
 **最后更新**：2025-01-01
 **版本**：v2025-01
 **维护者**：FormalAI项目组
