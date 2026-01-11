@@ -332,11 +332,13 @@ $$
 
 **2025年最新发展**（截至2025年12月）：
 
-- **项目权限管理革新**：Palantir将Ontology资源（对象类型、链接类型、共享属性）集成到Compass文件系统，实现基于项目的权限管理，简化访问控制，替代原有的Ontology角色和基于数据源的权限模型。
+- **项目权限管理革新**（2025-12）：Palantir将Ontology资源（对象类型、链接类型、动作类型、共享属性、接口）集成到Compass文件系统，实现基于项目的权限管理，简化访问控制，替代原有的Ontology角色和基于数据源的权限模型。用户可以将这些资源组织到文件夹中，应用标签，添加到项目目录，并使用Compass项目角色设置权限。
+- **增强的Ontology和AIP工作流可观测性**（2025-11）：函数、动作、自动化和语言模型的跟踪、日志记录和运行历史视图现在在Workflow Lineage中可用。用户可以访问运行历史、跟踪视图和日志视图，有效监控和调试工作流。所有平台内日志可以导出到实时流数据集，促进遥测数据的自定义分析。
+- **Ontology Peering（跨Enrollment同步）**（2025）：Ontology Peering通过peer连接实现跨不同enrollment的对象和链接类型同步，确保Ontology资源可以在各种Palantir应用中一致地引用和利用，增强互操作性和数据一致性。
 - **增强的冲突解决机制**：Ontology Manager引入改进的rebase和冲突解决功能，支持在任何时点进行rebase而无需创建提案，可同时查看Main和分支的变更，通过Conflicts标签或直接在Ontology Manager界面解决合并冲突。
-- **SAP战略合作**：2025年5月，Palantir宣布与SAP SE建立战略合作伙伴关系，将Palantir的Ontology和Foundry平台与SAP的企业数据系统集成，为合作伙伴创造显著价值。
-- **强制控制属性**：2025年4月，Palantir引入强制控制属性（Mandatory Control Properties），现已全面可用，通过标记、分类和组织实现Ontology数据的细粒度访问控制，增强数据安全和合规性。
-- **开发者工具扩展**：2024年11月，Palantir扩展开发者生态系统，发布新的beta功能、API和SDK，允许用户以编程方式与平台交互，支持通过最小代码读写Ontology，促进复杂工作流和应用的创建。
+- **SAP战略合作**（2025-05）：Palantir宣布与SAP SE建立战略合作伙伴关系，将Palantir的Ontology和Foundry平台与SAP的企业数据系统集成，为合作伙伴创造显著价值。
+- **强制控制属性**（2025-04）：Palantir引入强制控制属性（Mandatory Control Properties），现已全面可用，通过标记、分类和组织实现Ontology数据的细粒度访问控制，增强数据安全和合规性，特别有利于管理高度敏感的数据。
+- **开发者工具扩展**（2024-11）：Palantir扩展开发者生态系统，发布新的beta功能、API和SDK，允许用户以编程方式与平台交互，支持通过最小代码读写Ontology，促进复杂工作流和应用的创建。
 
 ---
 

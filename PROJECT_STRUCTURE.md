@@ -1,7 +1,7 @@
 # FormalAI项目结构说明 / Project Structure
 
-**创建日期**：2025-01-XX  
-**最后更新**：2025-01-XX  
+**创建日期**：2025-01-XX
+**最后更新**：2025-01-XX
 **状态**：✅ 已重构
 
 ---
@@ -102,6 +102,7 @@ FormalAI/
 ### 2.2 docs目录核心文档
 
 **导航文档**：
+
 - `GLOBAL_NAVIGATION.md` - 完整全局导航
 - `GLOBAL_NAVIGATION_CLEAN.md` - 精简全局导航 ⭐推荐
 - `THEME_HIERARCHY_STRUCTURE.md` - 主题层次结构 ⭐新创建
@@ -109,11 +110,13 @@ FormalAI/
 - `LEARNING_PATH_DESIGN.md` - 学习路径设计
 
 **参考文档**：
+
 - `LATEST_AI_DEVELOPMENTS_2025.md` - 2025年最新AI发展总结 ⭐核心参考
 - `DOCUMENT_INDEX_2025.md` - 文档索引
 - `QUICK_REFERENCE_2025.md` - 快速参考
 
 **标准文档**：
+
 - `TEMPLATES_MODEL_CARD.md` - 模型卡模板
 - `TEMPLATES_EVAL_CARD.md` - 评测卡模板
 - `STANDARDS_CHECKLISTS.md` - 标准检查清单
@@ -122,6 +125,7 @@ FormalAI/
 ### 2.3 主题模块文档
 
 每个主题目录包含：
+
 - `README.md` - 主题主文档（必须）
 - `EXAMPLE_MODEL_CARD.md` - 示例模型卡（如适用）
 - `EXAMPLE_EVAL_CARD.md` - 示例评测卡（如适用）
@@ -218,5 +222,5 @@ FormalAI/
 
 ---
 
-**最后更新**：2025-01-XX  
+**最后更新**：2025-01-XX
 **维护者**：FormalAI项目组

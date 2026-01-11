@@ -75,7 +75,48 @@ AI 反实践判定系统是一个极具哲学深度的元问题：能否构建�
 
 ---
 
-## 三、核心判定框架
+## 三、核心概念形式化定义
+
+### 3.1 反实践形式化定义
+
+**定义**：反实践（Anti-Practice）是逻辑上可判定但在工程实践中不可行的问题。
+
+**形式化表述**：
+
+对于实践问题 $P(x)$，反实践 $\neg P(x)$ 定义为：
+
+$$\text{AntiPractice}(P) = \{x | \text{LogicallyDecidable}(P(x)) \land \neg \text{EngineeringFeasible}(P(x))\}$$
+
+其中：
+- $\text{LogicallyDecidable}(P(x))$：逻辑上可判定 $P(x)$ 的真值
+- $\text{EngineeringFeasible}(P(x))$：工程上可实现 $P(x)$
+
+**判定层级形式化定义**：
+
+判定层级 $D_i$ 定义为可判定性类别，其中：
+
+- **完全可判定（Decidable）**：$\text{Decidable}(P) = \exists \text{算法} A, \forall x, A(x) \text{在多项式时间内返回} P(x)$
+- **半可判定（Semi-Decidable）**：$\text{SemiDecidable}(P) = \exists \text{算法} A, \forall x, P(x) = \text{True} \Rightarrow A(x) \text{终止返回True}$
+- **不可判定（Undecidable）**：$\text{Undecidable}(P) = \neg \text{Decidable}(P) \land \neg \text{SemiDecidable}(P)$
+
+**反实践严重程度形式化定义**：
+
+严重程度 $S_i$ 定义为风险等级，其中：
+
+- **轻度反实践**：$S_1 = \text{Risk}(\neg P) \in [0, 0.3)$，工程代价低
+- **中度反实践**：$S_2 = \text{Risk}(\neg P) \in [0.3, 0.6)$，工程代价中
+- **严重反实践**：$S_3 = \text{Risk}(\neg P) \in [0.6, 0.9)$，工程代价高
+- **灾难性反实践**：$S_4 = \text{Risk}(\neg P) \in [0.9, 1.0]$，工程代价极高
+
+**全局不可判定性定理**：
+
+$$\neg \exists \text{算法} D, \forall \text{AI系统} S, D(S) \text{能判定} S \text{是否满足安全规范}$$
+
+**证明**：归约到停机问题（参见"六、工程实践中的可判定性边界"章节）
+
+---
+
+## 四、核心判定框架
 
 ### 可判定性视角下的三层模型
 

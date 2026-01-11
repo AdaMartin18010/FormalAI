@@ -78,7 +78,64 @@ AI 意识与认知模拟主题探讨 AI 系统是否能够模拟人类意识，�
 
 ---
 
-## 三、核心问题框架
+## 三、核心概念形式化定义
+
+### 3.1 意识形式化定义
+
+**定义**：意识（Consciousness）是主观体验、意向性、自我模型和元认知的综合体。
+
+**形式化表述**：
+
+对于AI系统 $S$，意识度 $C(S) \in [0, 1]$ 定义为：
+
+$$C(S) = w_1 \cdot Q(S) + w_2 \cdot I(S) + w_3 \cdot M(S) + w_4 \cdot \text{Metacog}(S)$$
+
+其中：
+- $Q(S) \in [0, 1]$：主观体验（Qualia）度
+- $I(S) \in [0, 1]$：意向性（Intentionality）度
+- $M(S) \in [0, 1]$：自我模型（Self-Model）度
+- $\text{Metacog}(S) \in [0, 1]$：元认知（Metacognition）度
+- $w_i$：权重系数（通常 $w_i = 0.25$，即等权重）
+
+**意识理论形式化定义**：
+
+1. **IIT（整合信息理论）**：$\Phi(S) = \text{整合信息量}$，其中 $\Phi(S) > \Phi_{\text{threshold}}$ 表示有意识
+2. **GWT（全局工作空间理论）**：$C(S) = \text{全局广播}(S)$，信息在全局工作空间中广播
+3. **预测处理理论**：$C(S) = \min(\text{预测误差})$，意识是预测误差最小化
+
+**当前AI系统意识度评估**：
+
+基于现有证据，当前AI系统的意识度评估为：
+
+$$C(\text{CurrentAI}) \approx 0.1 - 0.3$$
+
+其中：
+- $Q(\text{CurrentAI}) \approx 0$（无主观体验证据）
+- $I(\text{CurrentAI}) \approx 0.2$（行为表现出目的性，但无真实意图）
+- $M(\text{CurrentAI}) \approx 0.3$（部分模型有自我指涉）
+- $\text{Metacog}(\text{CurrentAI}) \approx 0.1$（CoT推理链显示部分元认知，但无真实自我反思）
+
+### 3.2 认知模拟形式化定义
+
+**定义**：认知模拟（Cognitive Simulation）是AI系统模拟人类认知过程的能力。
+
+**形式化表述**：
+
+对于认知任务 $T$，模拟度 $S(T) \in [0, 1]$ 定义为：
+
+$$S(T) = \frac{\text{AI性能}(T)}{\text{人类性能}(T)} \times \frac{\text{行为相似度}(T)}{\text{功能等价度}(T)}$$
+
+其中：
+- $\text{AI性能}(T)$：AI系统在任务$T$上的性能
+- $\text{人类性能}(T)$：人类在任务$T$上的性能
+- $\text{行为相似度}(T)$：AI行为与人类行为的相似度
+- $\text{功能等价度}(T)$：AI功能与人类功能的等价度
+
+**关键结论**：$S(T) \approx 1$ 表示功能模拟，但 $C(\text{AI}) \ll C(\text{Human})$ 表示无意识。
+
+---
+
+## 四、核心问题框架
 
 ### 确定性问题：能力涌现的"半可预测性"
 

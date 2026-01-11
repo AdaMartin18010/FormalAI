@@ -57,7 +57,60 @@
 
 ---
 
-## 三、主题结构
+## 三、核心概念形式化定义
+
+### 3.1 神经算子形式化定义
+
+**定义**：神经算子（Neural Operator）是将AI系统视为单一动力系统的统一架构。
+
+**形式化表述**：
+
+设 $\mathcal{X}$ 为输入空间（Banach空间），$\mathcal{C}$ 为控制信号空间，$\Theta$ 为参数空间，则神经算子定义为：
+
+$$\mathcal{N}_\theta: \mathcal{X} \times \mathcal{C} \rightarrow \mathcal{X}$$
+
+其中 $\mathcal{N}_\theta$ 是一个有界线性算子，满足：
+
+1. **线性性**：$\mathcal{N}_\theta(\alpha x_1 + \beta x_2, c) = \alpha \mathcal{N}_\theta(x_1, c) + \beta \mathcal{N}_\theta(x_2, c)$
+2. **有界性**：$\|\mathcal{N}_\theta(x, c)\|_{\mathcal{X}} \leq M_\theta \|x\|_{\mathcal{X}}$
+3. **连续性**：$\lim_{n \to \infty} \mathcal{N}_\theta(x_n, c) = \mathcal{N}_\theta(\lim_{n \to \infty} x_n, c)$
+
+**与三层模型的映射关系**：
+
+$$\text{NeuralOperator}(x, c; \theta) = f_\theta(x, c)$$
+
+其中：
+- $x$：输入（对应执行层）
+- $c$：控制信号（对应控制层）
+- $\theta$：权重（对应数据层）
+- $f_\theta$：统一算子（计算+控制+概率合一）
+
+### 3.2 三层模型批判形式化定义
+
+**定义**：三层模型批判是对传统AI三层模型框架的批判性分析。
+
+**形式化表述**：
+
+对于三层模型 $A = (E, C, D)$，批判度 $Crit(A) \in [0, 1]$ 定义为：
+
+$$Crit(A) = w_1 \cdot Crit_{\text{method}}(A) + w_2 \cdot Crit_{\text{arch}}(A) + w_3 \cdot Crit_{\text{math}}(A) + w_4 \cdot Crit_{\text{lang}}(A)$$
+
+其中：
+- $Crit_{\text{method}}(A)$：方法论批判度
+- $Crit_{\text{arch}}(A)$：技术架构批判度
+- $Crit_{\text{math}}(A)$：数学模型批判度
+- $Crit_{\text{lang}}(A)$：形式语言批判度
+- $w_i$：权重系数
+
+**重构必要性判定**：
+
+$$\text{NeedReconstruct}(A) \Leftrightarrow Crit(A) > \epsilon_{\text{crit}}$$
+
+其中 $\epsilon_{\text{crit}} = 0.7$ 为批判阈值。
+
+---
+
+## 四、主题结构
 
 ### 07.1-方法论批判
 

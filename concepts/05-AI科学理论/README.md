@@ -75,7 +75,82 @@ AI 科学理论主题探讨 AI 系统的理论化改进方法、确定性分析�
 
 ---
 
-## 三、理论化改进方法
+## 三、核心概念形式化定义
+
+### 3.1 确定性形式化定义
+
+**定义**：确定性（Determinism）是系统在给定输入下产生确定输出的性质。
+
+**形式化表述**：
+
+对于AI系统 $S$，确定性度 $D(S) \in [0, 1]$ 定义为：
+
+$$D(S) = w_1 \cdot D_{\text{arch}}(S) + w_2 \cdot D_{\text{train}}(S) + w_3 \cdot D_{\text{infer}}(S) + w_4 \cdot D_{\text{emerge}}(S)$$
+
+其中：
+- $D_{\text{arch}}(S) \in [0, 1]$：架构层面确定性
+- $D_{\text{train}}(S) \in [0, 1]$：训练过程确定性
+- $D_{\text{infer}}(S) \in [0, 1]$：推理行为确定性
+- $D_{\text{emerge}}(S) \in [0, 1]$：能力涌现确定性
+- $w_i$：权重系数（通常 $w_i = 0.25$，即等权重）
+
+**确定性分类**：
+
+1. **架构层面确定性**：$D_{\text{arch}}(S) = 1$（Transformer注意力机制是确定性的矩阵运算）
+2. **训练过程确定性**：$D_{\text{train}}(S) \in [0.7, 0.9]$（SGD优化有明确数学形式，但数据顺序导致轨迹不可复现）
+3. **推理行为确定性**：$D_{\text{infer}}(S) \in [0.8, 0.95]$（给定固定温度参数，输出概率分布确定）
+4. **能力涌现确定性**：$D_{\text{emerge}}(S) \in [0.3, 0.6]$（Scaling Law可预测loss下降，但具体能力何时涌现无法精确预测）
+
+### 3.2 准理论框架形式化定义
+
+**定义**：准理论框架（Quasi-Theoretical Framework）是介于经验规则和严格理论之间的理论框架。
+
+**形式化表述**：
+
+对于改进方法 $M$，理论完备度 $T(M) \in [0, 1]$ 定义为：
+
+$$T(M) = \alpha \cdot \text{PredictivePower}(M) + \beta \cdot \text{ExplanatoryPower}(M) + \gamma \cdot \text{Generalizability}(M)$$
+
+其中：
+- $\text{PredictivePower}(M) \in [0, 1]$：预测能力
+- $\text{ExplanatoryPower}(M) \in [0, 1]$：解释能力
+- $\text{Generalizability}(M) \in [0, 1]$：泛化能力
+- $\alpha, \beta, \gamma$：权重系数
+
+**三大支柱方法论形式化定义**：
+
+1. **推断时间计算增强**：$T(\text{CoT}) \approx 0.4$（弱确定性，启发式策略）
+2. **强化学习范式**：$T(\text{RLHF}) \approx 0.6$（中等确定性，奖励函数清晰时优化方向确定）
+3. **元认知与自我改进**：$T(\text{Metacog}) \approx 0.7$（较高确定性，基于显式抽象的策略库）
+
+### 3.3 可改进性形式化定义
+
+**定义**：可改进性（Improvability）是AI系统通过理论化方法系统性提升能力的性质。
+
+**形式化表述**：
+
+对于AI系统 $S$ 和任务 $T$，可改进度 $I(S, T) \in [0, 1]$ 定义为：
+
+$$I(S, T) = \frac{\text{改进后性能}(S, T) - \text{改进前性能}(S, T)}{\text{理论最优性能}(T) - \text{改进前性能}(S, T)}$$
+
+其中：
+- $\text{改进后性能}(S, T)$：应用改进方法后的性能
+- $\text{改进前性能}(S, T)$：改进前的性能
+- $\text{理论最优性能}(T)$：任务$T$的理论最优性能
+
+**改进限制形式化定义**：
+
+改进限制定义为：
+
+$$\text{ImprovementLimit}(S, T) = \lim_{n \to \infty} I(S_n, T)$$
+
+其中 $S_n$ 表示经过$n$次改进后的系统。
+
+**关键结论**：$\text{ImprovementLimit}(S, T) < 1$，即无法达到理论最优。
+
+---
+
+## 四、理论化改进方法
 
 ### 经验-试错-局部抽象循环
 
