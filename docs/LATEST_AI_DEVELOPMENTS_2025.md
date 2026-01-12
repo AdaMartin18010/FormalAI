@@ -1,7 +1,7 @@
 # 2024-2025年最新AI技术发展总结
 
-**创建日期**：2025-01-XX
-**最后更新**：2025-01-XX
+**创建日期**：2025-01-10
+**最后更新**：2025-01-15
 **数据来源**：公开论文、技术报告、官方发布
 **维护者**：FormalAI项目组
 
@@ -158,7 +158,7 @@
 - **性价比提升**：硬件性价比显著提升
 - **计算能力**：计算能力持续提升，支持更大规模的模型训练
 
-**数据来源**：Stanford HAI AI Index Report 2025，更新时间：2025-01-XX
+**数据来源**：Stanford HAI AI Index Report 2025，更新时间：2025-01-15
 
 ---
 
@@ -304,7 +304,7 @@
 | Claude模型信息 | Anthropic官方发布 | 2024-XX-XX |
 | Gemini模型信息 | Google官方发布 | 2024-XX-XX |
 | Llama模型信息 | Meta官方发布 | 2024-XX-XX |
-| 硬件性能数据 | Stanford HAI AI Index Report 2025 | 2025-01-XX |
+| 硬件性能数据 | Stanford HAI AI Index Report 2025 | 2025-01-15 |
 
 ### 6.2 数据更新计划
 
@@ -382,7 +382,7 @@
    - 来源：arXiv:2505.01464
    - 核心贡献：递归收敛在认知张力下（RCUET）定理，为AI意识提供形式化证明
 
-### 7.4 对齐与安全最新研究成果（6项）
+### 7.4 对齐与安全最新研究成果（11项）
 
 1. **RLHF的社会技术批判**（2025）
    - 来源：Link.springer.com
@@ -396,7 +396,39 @@
    - 来源：RLJ.CS.UMass.edu
    - 核心贡献：提供高置信度安全保证的强化学习方法
 
-4. **GRPO框架**（2025年3月）
+4. **RepV: Safety-Separable Latent Spaces for Scalable Neurosymbolic Plan Verification**（2025年10月）
+   - 来源：arXiv:2510.26935
+   - 核心贡献：神经符号验证器，集成形式化方法与深度学习，学习安全和不安全计划线性可分的潜在空间
+   - 性能提升：合规预测准确率提升高达15%，仅增加不到20万个参数
+   - 工程意义：提供概率保证的验证正确性，无需人工标注即可促进规划器改进
+   - 与反实践判定关联：实现了控制层反实践判定的形式化验证，将半可判定问题转化为可验证的概率保证
+
+5. **CPS-Guard: Framework for Dependability Assurance of AI- and LLM-Based Cyber-Physical Systems**（2025年6月）
+   - 来源：arXiv:2506.06381
+   - 核心贡献：多角色编排框架，自动化AI驱动的网络物理系统的可靠性保证过程
+   - 工程应用：通过自动驾驶车辆案例研究，有效检测漏洞、管理性能影响并支持自适应恢复策略
+   - 与反实践判定关联：实现了三层协同反实践判定，特别是在安全关键系统中的端到端安全验证
+
+6. **GuardTrace-VL: Detecting Unsafe Multimodal Reasoning via Iterative Safety Supervision**（2025）
+   - 来源：工业AI研究博客
+   - 核心贡献：通过迭代安全监督检测不安全的多模态推理
+   - 技术特点：监控模型内部状态、注意力模式和生成输出，识别模型偏离安全推理路径的实例
+   - 与反实践判定关联：实现了数据层反实践判定，特别是针对多模态AI系统的幻觉和推理错误检测
+
+7. **From Refusal to Recovery: A Control-Theoretic Approach to Generative AI Guardrails**（2025年10月）
+   - 来源：arXiv:2510.13727
+   - 核心贡献：控制理论方法，实时监控AI系统输出并主动将风险输出纠正为安全输出
+   - 技术特点：模型无关的方法，允许将相同的防护栏应用于任何AI模型
+   - 工程应用：在模拟驾驶和电子商务场景中的实验表明，这些防护栏可以可靠地引导AI代理远离灾难性结果
+   - 与反实践判定关联：实现了控制层和数据层的实时反实践判定，提供了从拒绝到恢复的完整安全机制
+
+8. **The Alignment Trap: Complexity Barriers**（2025年6月）
+   - 来源：arXiv:2506.10304
+   - 核心发现：建立了AI安全验证的计算复杂度障碍，对于表达能力超过临界阈值的AI系统，安全验证需要指数时间，是coNP完全的
+   - 理论意义：严格证明了AI反实践的全局不可判定性，验证了"三层整体不可判定"的理论基础
+   - 工程意义：突出了AI能力增加与验证复杂度之间的紧张关系，指导工程实践中的制度保障设计
+
+9. **GRPO框架**（2025年3月）
    - 来源：arXiv:2503.21819
    - 核心贡献：组相对策略优化框架，实现安全和对齐的语言生成
 
@@ -515,6 +547,11 @@
 4. Li et al. (2025). Multi-Objective Optimization in Language Generation. arXiv:2503.21819.
 5. Sahoo et al. (2025). Formalizing the RLHF Trilemma. arXiv:2511.19504.
 6. Liang et al. (2025). Mitigating Misalignment with Hindsight Simulation. arXiv:2501.08617.
+7. RepV: Safety-Separable Latent Spaces for Scalable Neurosymbolic Plan Verification (2025). arXiv:2510.26935.
+8. CPS-Guard: Framework for Dependability Assurance of AI- and LLM-Based Cyber-Physical Systems (2025). arXiv:2506.06381.
+9. GuardTrace-VL: Detecting Unsafe Multimodal Reasoning via Iterative Safety Supervision (2025). Industrial AI Research Blog.
+10. From Refusal to Recovery: A Control-Theoretic Approach to Generative AI Guardrails (2025). arXiv:2510.13727.
+11. The Alignment Trap: Complexity Barriers (2025). arXiv:2506.10304.
 
 ### 8.6 神经符号AI
 
@@ -537,8 +574,8 @@
 
 ---
 
-**最后更新**：2025-01-XX
-**下次更新**：2025-02-XX（月度更新）
+**最后更新**：2025-01-15
+**下次更新**：2025-02-15（月度更新）
 **维护者**：FormalAI项目组
 **相关文档**：
 

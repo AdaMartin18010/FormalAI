@@ -716,5 +716,5 @@ $$
 ### **失败案例研究**
 
 - Enterprise Knowledge: "Why Graph Implementations Fail: Early Signs and Successes" (2024)
-- WebProNews: "Poor Data Quality to Cause 42-85% AI Project Failures in 2025" (2025-01-XX)
+- WebProNews: "Poor Data Quality to Cause 42-85% AI Project Failures in 2025" (2025-01-15)
 - arXiv:2509.04458 - "LLM Ontology Learning and Linking" (2024-09-XX)

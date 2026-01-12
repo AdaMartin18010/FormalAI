@@ -640,7 +640,7 @@ graph TD
 - Gartner: "AI Project Failure Rates and Best Practices" (2024-2025)
 - McKinsey: "Enterprise Knowledge Graph Implementation Challenges" (2024-2025)
 - Bloomberg: "Palantir Market Analysis" (2025)
-- WebProNews: "Poor Data Quality to Cause 42-85% AI Project Failures in 2025" (2025-01-XX)
+- WebProNews: "Poor Data Quality to Cause 42-85% AI Project Failures in 2025" (2025-01-15)
 
 ### 案例研究数据
 
