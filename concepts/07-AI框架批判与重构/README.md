@@ -11,7 +11,10 @@
 - [07-AI 框架批判与重构](#07-ai-框架批判与重构)
   - [一、主题概述](#一主题概述)
   - [二、目录](#二目录)
-  - [三、主题结构](#三主题结构)
+  - [三、核心概念形式化定义](#三核心概念形式化定义)
+    - [3.1 神经算子形式化定义](#31-神经算子形式化定义)
+    - [3.2 三层模型批判形式化定义](#32-三层模型批判形式化定义)
+  - [四、主题结构](#四主题结构)
     - [07.1-方法论批判](#071-方法论批判)
     - [07.2-技术架构批判](#072-技术架构批判)
     - [07.3-数学模型批判](#073-数学模型批判)
@@ -80,6 +83,7 @@ $$\mathcal{N}_\theta: \mathcal{X} \times \mathcal{C} \rightarrow \mathcal{X}$$
 $$\text{NeuralOperator}(x, c; \theta) = f_\theta(x, c)$$
 
 其中：
+
 - $x$：输入（对应执行层）
 - $c$：控制信号（对应控制层）
 - $\theta$：权重（对应数据层）
@@ -96,6 +100,7 @@ $$\text{NeuralOperator}(x, c; \theta) = f_\theta(x, c)$$
 $$Crit(A) = w_1 \cdot Crit_{\text{method}}(A) + w_2 \cdot Crit_{\text{arch}}(A) + w_3 \cdot Crit_{\text{math}}(A) + w_4 \cdot Crit_{\text{lang}}(A)$$
 
 其中：
+
 - $Crit_{\text{method}}(A)$：方法论批判度
 - $Crit_{\text{arch}}(A)$：技术架构批判度
 - $Crit_{\text{math}}(A)$：数学模型批判度

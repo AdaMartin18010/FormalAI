@@ -94,6 +94,8 @@ L'apprentissage profond est une branche de l'apprentissage automatique qui utili
       - [1. 神经网络形式化验证](#1-神经网络形式化验证)
       - [2. 大模型对齐验证](#2-大模型对齐验证)
       - [3. 多智能体系统验证](#3-多智能体系统验证)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [深度学习理论的最新发展](#深度学习理论的最新发展)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -1215,6 +1217,7 @@ _本模块为 FormalAI 提供了完整的深度学习理论基础，结合国际
     - **技术影响**：多模态深度学习为AI系统提供了多模态处理能力，推动了AI系统的发展
 
 **2025年发展趋势**：
+
 - ✅ 注意力机制创新（Graph-Aware、EcoTransformer、TLinFormer、Neural Attention）
 - ✅ 能耗优化架构（EcoTransformer、脉冲神经网络）
 - ✅ 大脑启发架构（Dragon Hatchling）
@@ -1227,6 +1230,7 @@ _本模块为 FormalAI 提供了完整的深度学习理论基础，结合国际
 ---
 
 **最后更新**：2026-01-11
+
 ## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
 
 - 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”

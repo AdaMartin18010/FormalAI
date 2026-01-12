@@ -16,7 +16,11 @@ AI 科学理论主题探讨 AI 系统的理论化改进方法、确定性分析�
     - [05.2-确定性分析](#052-确定性分析)
     - [05.3-工程科学范式](#053-工程科学范式)
     - [05.4-准理论框架](#054-准理论框架)
-  - [三、理论化改进方法](#三理论化改进方法)
+  - [三、核心概念形式化定义](#三核心概念形式化定义)
+    - [3.1 确定性形式化定义](#31-确定性形式化定义)
+    - [3.2 准理论框架形式化定义](#32-准理论框架形式化定义)
+    - [3.3 可改进性形式化定义](#33-可改进性形式化定义)
+  - [四、理论化改进方法](#四理论化改进方法)
     - [经验-试错-局部抽象循环](#经验-试错-局部抽象循环)
   - [四、确定性分析](#四确定性分析)
     - [能力涌现的"半可预测性"](#能力涌现的半可预测性)
@@ -88,6 +92,7 @@ AI 科学理论主题探讨 AI 系统的理论化改进方法、确定性分析�
 $$D(S) = w_1 \cdot D_{\text{arch}}(S) + w_2 \cdot D_{\text{train}}(S) + w_3 \cdot D_{\text{infer}}(S) + w_4 \cdot D_{\text{emerge}}(S)$$
 
 其中：
+
 - $D_{\text{arch}}(S) \in [0, 1]$：架构层面确定性
 - $D_{\text{train}}(S) \in [0, 1]$：训练过程确定性
 - $D_{\text{infer}}(S) \in [0, 1]$：推理行为确定性
@@ -112,6 +117,7 @@ $$D(S) = w_1 \cdot D_{\text{arch}}(S) + w_2 \cdot D_{\text{train}}(S) + w_3 \cdo
 $$T(M) = \alpha \cdot \text{PredictivePower}(M) + \beta \cdot \text{ExplanatoryPower}(M) + \gamma \cdot \text{Generalizability}(M)$$
 
 其中：
+
 - $\text{PredictivePower}(M) \in [0, 1]$：预测能力
 - $\text{ExplanatoryPower}(M) \in [0, 1]$：解释能力
 - $\text{Generalizability}(M) \in [0, 1]$：泛化能力
@@ -134,6 +140,7 @@ $$T(M) = \alpha \cdot \text{PredictivePower}(M) + \beta \cdot \text{ExplanatoryP
 $$I(S, T) = \frac{\text{改进后性能}(S, T) - \text{改进前性能}(S, T)}{\text{理论最优性能}(T) - \text{改进前性能}(S, T)}$$
 
 其中：
+
 - $\text{改进后性能}(S, T)$：应用改进方法后的性能
 - $\text{改进前性能}(S, T)$：改进前的性能
 - $\text{理论最优性能}(T)$：任务$T$的理论最优性能

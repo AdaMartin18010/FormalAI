@@ -10,6 +10,7 @@ Formal AI model.
 ## 📚 项目导航
 
 **核心文档**：
+
 - 📖 [文档体系总览](./docs/README.md) - 完整的文档体系说明
 - 🗺️ [全局导航系统](./docs/GLOBAL_NAVIGATION.md) - 完整导航
 - 🗺️ [全局导航系统（精简版）](./docs/GLOBAL_NAVIGATION_CLEAN.md) ⭐ **推荐** - 精简导航
@@ -18,28 +19,33 @@ Formal AI model.
 - 🚀 [2025年最新AI发展](./docs/LATEST_AI_DEVELOPMENTS_2025.md) ⭐ **核心参考** - 2024-2025年最新AI技术发展总结
 
 **项目结构**：
+
 - 📁 [docs/](./docs/) - 核心文档目录（20个主题模块）
 - 📁 [concepts/](./concepts/) - 核心概念目录（8个主题）
 - 📁 [Philosophy/](./Philosophy/) - 哲学模块目录
 - 📁 [archive/](./archive/) - 归档目录（进度报告、总结报告等）
 
 **项目计划**：
+
 - 📋 [项目全面计划与持续推进任务](./PROJECT_COMPREHENSIVE_PLAN.md) ⭐ **最新** - 项目全面计划，包含AI主题分类、概念体系对齐、思维表征方式规划、持续推进任务计划
 - 📚 [项目概念体系文档](./PROJECT_CONCEPT_SYSTEM.md) ⭐ **最新** - 完整概念体系，包含定义索引、关系图、属性矩阵、解释索引、论证索引、形式证明索引
 - 🎨 [项目思维表征方式索引](./PROJECT_THINKING_REPRESENTATIONS.md) ⭐ **最新** - 思维表征方式统一索引，包含思维导图、多维矩阵、证明树、决策树、时间线、层级模型索引
 - 🔗 [项目跨模块映射文档](./PROJECT_CROSS_MODULE_MAPPING.md) ⭐ **最新** - 跨模块映射关系，包含docs↔concepts、Philosophy↔concepts、docs↔Philosophy映射
 
 **概念与规范**：
+
 - 📊 [跨模块核心概念对比矩阵](./CROSS_MODULE_COMPARISON_MATRIX.md) ⭐ **最新** - 跨模块（docs、concepts、Philosophy）核心概念系统化对比矩阵
 - 📖 [概念定义统一索引](./CONCEPT_DEFINITION_INDEX.md) ⭐ **最新** - 所有核心概念定义的统一索引，按字母顺序和主题分类组织
 - 📝 [概念引用规范](./CONCEPT_REFERENCE_STANDARD.md) ⭐ **最新** - 概念引用的统一规范，包括格式、跨模块引用、版本管理
 - 🎯 [思维表征格式和规范](./THINKING_REPRESENTATION_STANDARD.md) ⭐ **最新** - 所有思维表征方式的统一格式和规范
 
 **模块索引**：
+
 - 📊 [Concepts模块对比矩阵](./concepts/CONCEPTS_COMPARISON_MATRIX.md) ⭐ **最新** - Concepts模块核心概念多维度对比矩阵
 - 🗺️ [Docs模块思维导图索引](./docs/DOCS_MIND_MAPS_INDEX.md) ⭐ **最新** - Docs模块关键主题思维导图索引
 
 **规范文档**：
+
 - 📋 [跨模块核心概念对比矩阵](./CROSS_MODULE_COMPARISON_MATRIX.md) ⭐ **最新** - 跨模块（docs、concepts、Philosophy）核心概念系统化对比矩阵
 - 📖 [概念定义统一索引](./CONCEPT_DEFINITION_INDEX.md) ⭐ **最新** - 所有核心概念定义的统一索引
 - 📝 [概念引用规范](./CONCEPT_REFERENCE_STANDARD.md) ⭐ **最新** - 概念引用的统一规范
@@ -47,6 +53,7 @@ Formal AI model.
 - 🔗 [概念依赖关系图](./CONCEPT_DEPENDENCY_GRAPH.md) ⭐ **最新** - 核心概念的完整依赖关系图
 
 **归档文档**：
+
 - 📁 [归档目录](./archive/) - 所有进度报告、重构报告、完成总结等归档文件
 - 📋 [归档索引 - 2025-11-10](./archive/reports-2025-11/ARCHIVE_INDEX.md) - 本次归档文件索引
 - 📋 [归档总索引](./archive/ARCHIVE_INDEX_2025.md) - 完整归档文件索引

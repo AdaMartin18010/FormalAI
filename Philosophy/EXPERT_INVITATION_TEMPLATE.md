@@ -5,6 +5,7 @@
 **目的**：为外部专家评议提供标准化的邀请函模板
 
 > **相关文档**：
+>
 > - `EXTERNAL_EXPERT_REVIEW_PREPARATION.md` - 外部专家评议准备文档
 > - `EXTERNAL_REVIEW_PREPARATION_START.md` - 外部验证准备工作启动文档
 
@@ -13,6 +14,7 @@
 ## 📋 邀请函模板说明
 
 本文档提供三种类型的专家邀请函模板：
+
 1. 哲学专家邀请函模板
 2. 数学专家验证邀请函模板
 3. AI专家评议邀请函模板
@@ -28,7 +30,7 @@
 
 ---
 
-### 尊敬的[专家姓名]教授/博士：
+### 尊敬的[专家姓名]教授/博士
 
 我们诚挚地邀请您参与FormalAI项目的哲学转译评议工作。
 
@@ -37,12 +39,14 @@
 FormalAI项目旨在构建一个关于"Ontology作为企业认知基础设施"的完整哲学论证体系。项目从商业价值、形式化证明、哲学转译、行业对比、全景论证到范式革命，构建了多维度的知识体系。
 
 **项目核心论点**：
+
 - Ontology成为新基础设施（商业论证层）
 - DKB三元组是唯一可验证路径（形式化证明层）
 - Palantir = 亚里士多德"第一哲学"的算法实现（哲学转译层）
 - 从软件工程到认知存在论的范式革命
 
 **项目文档**：
+
 - 核心文档约61个，包括6个view文档、13个model文档
 - 已完成89%的推进工作，所有关键数据已验证
 - 已收集13个企业案例，覆盖7个行业
@@ -82,6 +86,7 @@ FormalAI项目旨在构建一个关于"Ontology作为企业认知基础设施"�
 ### 联系方式
 
 如有任何问题，请随时与我们联系：
+
 - **项目邮箱**：[待填写]
 - **项目负责人**：[待填写]
 
@@ -102,7 +107,7 @@ FormalAI项目组
 
 ---
 
-### 尊敬的[专家姓名]教授/博士：
+### 尊敬的[专家姓名]教授/博士
 
 我们诚挚地邀请您参与FormalAI项目的形式化证明验证工作。
 
@@ -111,12 +116,14 @@ FormalAI项目组
 FormalAI项目旨在构建一个关于"Ontology作为企业认知基础设施"的完整哲学论证体系，包含严格的形式化证明和公理体系。
 
 **项目核心形式化内容**：
+
 - DKB唯一性定理的形式化证明
 - DKB公理体系（A1-A6公理）
 - DKB定理体系（T1-T8定理）
 - 神经算子理论的数学定义
 
 **项目文档**：
+
 - 核心文档约61个，包括形式化证明文档、公理和定理索引
 - 已完成89%的推进工作，所有关键数据已验证
 - 形式化证明文档已准备就绪
@@ -158,6 +165,7 @@ FormalAI项目旨在构建一个关于"Ontology作为企业认知基础设施"�
 ### 联系方式
 
 如有任何问题，请随时与我们联系：
+
 - **项目邮箱**：[待填写]
 - **项目负责人**：[待填写]
 
@@ -178,7 +186,7 @@ FormalAI项目组
 
 ---
 
-### 尊敬的[专家姓名]教授/博士：
+### 尊敬的[专家姓名]教授/博士
 
 我们诚挚地邀请您参与FormalAI项目的AI理论框架评议工作。
 
@@ -187,12 +195,14 @@ FormalAI项目组
 FormalAI项目旨在构建一个关于"Ontology作为企业认知基础设施"的完整理论框架，包含AI理论、知识表示、形式化方法等多个维度。
 
 **项目核心理论框架**：
+
 - 三层模型架构（数据层、逻辑层、历史层）
 - 神经算子理论（2025统一架构）
 - DKB公理和定理体系
 - Ontology作为认知操作系统的理论框架
 
 **项目文档**：
+
 - 核心文档约61个，包括概念体系、技术文档、形式化证明
 - 已完成89%的推进工作，所有关键数据已验证
 - 理论框架文档已准备就绪
@@ -234,6 +244,7 @@ FormalAI项目旨在构建一个关于"Ontology作为企业认知基础设施"�
 ### 联系方式
 
 如有任何问题，请随时与我们联系：
+
 - **项目邮箱**：[待填写]
 - **项目负责人**：[待填写]
 
@@ -309,11 +320,11 @@ FormalAI项目组
 
 | 专家姓名 | 机构 | 查找方法 | 预期联系方式 | 状态 |
 |---------|------|---------|------------|------|
-| Barry Smith | University at Buffalo | 机构官网 | phismith@buffalo.edu | ✅ 已找到 |
-| John Beverley | University at Buffalo, NCR | 机构官网 | johnbeve@buffalo.edu | ✅ 已找到 |
-| Christoph Benzmüller | University of Bamberg | 机构官网 | christoph.benzmueller@uni-bamberg.de | ✅ 已找到 |
-| Alessio Lomuscio | Imperial College London | 机构官网 | a.lomuscio@imperial.ac.uk | ✅ 已找到 |
-| Nicola Guarino | Italian National Research Council | 机构官网 | nicola.guarino@cnr.it | ✅ 已找到 |
+| Barry Smith | University at Buffalo | 机构官网 | <phismith@buffalo.edu> | ✅ 已找到 |
+| John Beverley | University at Buffalo, NCR | 机构官网 | <johnbeve@buffalo.edu> | ✅ 已找到 |
+| Christoph Benzmüller | University of Bamberg | 机构官网 | <christoph.benzmueller@uni-bamberg.de> | ✅ 已找到 |
+| Alessio Lomuscio | Imperial College London | 机构官网 | <a.lomuscio@imperial.ac.uk> | ✅ 已找到 |
+| Nicola Guarino | Italian National Research Council | 机构官网 | <nicola.guarino@cnr.it> | ✅ 已找到 |
 | Katherine Elkins | U.S. AI Safety Institute Consortium / Kenyon College | 机构官网 | 通过Kenyon College或U.S. AI Safety Institute联系 | ✅ 已找到 |
 
 ---

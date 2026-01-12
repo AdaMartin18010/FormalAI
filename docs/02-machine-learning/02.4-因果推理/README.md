@@ -62,6 +62,8 @@ Causal inference theory studies how to identify and estimate causal relationship
     - [大模型因果推理 / Large Model Causal Inference](#大模型因果推理--large-model-causal-inference)
     - [因果AI对齐 / Causal AI Alignment](#因果ai对齐--causal-ai-alignment)
     - [实用工具链 / Practical Toolchain](#实用工具链--practical-toolchain)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [因果推理理论的最新突破](#因果推理理论的最新突破)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
