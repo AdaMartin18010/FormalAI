@@ -19,16 +19,19 @@
 #### Walgreens（沃尔格林）
 
 **当前状态**：
+
 - 基础数据：已有（2020-2021年实施数据）
 - 最新数据：需要2024-2025年更新
 
 **需要更新的数据**：
+
 - ⏳ 2024-2025年门店扩展情况
 - ⏳ 新用例开发（新应用场景、新功能）
 - ⏳ ROI更新（3年后的实际ROI数据）
 - ⏳ 持续优化成果（决策一致性、成本节约的持续改进）
 
 **数据来源**：
+
 - Palantir官方财报（季度更新）
 - Walgreens公开报告（年度更新）
 - 行业媒体报道（TechCrunch、Forbes等）
@@ -36,6 +39,7 @@
 **更新优先级**：🔴 高（核心案例，需要定期更新）
 
 **2025年最新数据**（2025年1月15日更新）：
+
 - **Palantir 2025 Q3财报**（2025年11月3日发布）：
   - 总营收：11.81亿美元，同比增长63%
   - 美国商业收入：3.97亿美元，同比增长121%
@@ -46,16 +50,19 @@
 #### Lowe's（劳氏）
 
 **当前状态**：
+
 - 基础数据：已有（2021-2022年实施数据）
 - 最新数据：需要2024-2025年更新
 
 **需要更新的数据**：
+
 - ⏳ 2024-2025年供应链优化最新进展
 - ⏳ 新功能开发情况
 - ⏳ 决策速度提升的最新数据
 - ⏳ 持续优化成果
 
 **数据来源**：
+
 - Palantir官方财报（季度更新）
 - Lowe's公开报告（年度更新）
 - 行业媒体报道
@@ -65,16 +72,19 @@
 #### Fannie Mae（房利美）
 
 **当前状态**：
+
 - 基础数据：已有（2021-2022年实施数据）
 - 最新数据：需要2024-2025年更新
 
 **需要更新的数据**：
+
 - ⏳ 2024-2025年欺诈检测准确率更新
 - ⏳ 新应用场景（新用例、新功能）
 - ⏳ 处理量增长（交易量、处理速度）
 - ⏳ ROI更新（长期ROI数据）
 
 **数据来源**：
+
 - Palantir官方财报（季度更新）
 - Fannie Mae公开报告（年度更新）
 - 行业媒体报道（American Banker、Financial Times）
@@ -82,6 +92,7 @@
 **更新优先级**：🔴 高（核心案例，需要定期更新）
 
 **2025年最新数据**（2025年1月15日更新）：
+
 - **Fannie Mae 2025 Q3财报**：
   - 2025年第三季度债务融资量：21.41亿美元
   - 2025年前三季度债务融资总量：67.67亿美元
@@ -92,6 +103,7 @@
 #### Wendy's（温迪）
 
 **需要更新的数据**：
+
 - ⏳ 最新响应时间数据
 - ⏳ 新功能开发情况
 - ⏳ 持续优化成果
@@ -99,6 +111,7 @@
 #### Titan Industries（泰坦工业）
 
 **需要更新的数据**：
+
 - ⏳ 最新知识复用度数据
 - ⏳ 新应用场景
 - ⏳ 持续优化成果
@@ -112,12 +125,14 @@
 **目标**：收集至少3个2025年新客户案例
 
 **收集标准**：
+
 - 有公开数据支持
 - 有明确的ROI或性能指标
 - 有详细的实施过程描述
 
 **数据来源**：
-- Palantir官方案例：https://www.palantir.com/customers/
+
+- Palantir官方案例：<https://www.palantir.com/customers/>
 - 客户公开声明：新闻稿、财报电话会议
 - 行业报告：Gartner、Forrester案例研究
 
@@ -126,6 +141,7 @@
 **目标**：收集至少2个行业垂直案例
 
 **目标行业**：
+
 - 制造业
 - 能源行业
 - 医疗行业
@@ -136,6 +152,7 @@
 **目标**：收集至少3个失败案例详细分析
 
 **收集标准**：
+
 - 有明确的失败原因分析
 - 有失败后果描述
 - 有关键教训总结
@@ -179,11 +196,13 @@
 ### 3.3 数据标注
 
 **标注格式**：
+
 ```markdown
 [数据内容]（来源：数据来源名称，更新时间：YYYY-MM-DD）
 ```
 
 **示例**：
+
 - Walgreens 2024年门店扩展至4500家（来源：Walgreens年度报告，更新时间：2025-01-15）
 - Lowe's决策速度提升至95%（来源：Palantir Q4财报，更新时间：2025-01-15）
 
@@ -216,23 +235,23 @@
 
 ### 5.1 官方数据源
 
-- **Palantir官方**：https://www.palantir.com/customers/
-- **Walgreens官方**：https://www.walgreens.com/
-- **Lowe's官方**：https://www.lowes.com/
-- **Fannie Mae官方**：https://www.fanniemae.com/
+- **Palantir官方**：<https://www.palantir.com/customers/>
+- **Walgreens官方**：<https://www.walgreens.com/>
+- **Lowe's官方**：<https://www.lowes.com/>
+- **Fannie Mae官方**：<https://www.fanniemae.com/>
 
 ### 5.2 行业数据源
 
-- **Gartner**：https://www.gartner.com/
-- **Forrester**：https://www.forrester.com/
-- **IDC**：https://www.idc.com/
+- **Gartner**：<https://www.gartner.com/>
+- **Forrester**：<https://www.forrester.com/>
+- **IDC**：<https://www.idc.com/>
 
 ### 5.3 新闻和报告
 
-- **TechCrunch**：https://techcrunch.com/
-- **Forbes**：https://www.forbes.com/
-- **Wall Street Journal**：https://www.wsj.com/
-- **The Information**：https://www.theinformation.com/
+- **TechCrunch**：<https://techcrunch.com/>
+- **Forbes**：<https://www.forbes.com/>
+- **Wall Street Journal**：<https://www.wsj.com/>
+- **The Information**：<https://www.theinformation.com/>
 
 ---
 

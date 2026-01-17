@@ -556,6 +556,7 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 - 📑 [Docs模块更新日志](./UPDATE_LOG_2025.md) ⭐ **最新** - Docs模块2025年更新历史
 
 **关键更新**：
+
 - ✅ 所有8个主题模块（concepts）已添加2025年最新发展章节
 - ✅ 8个关键docs模块文档已添加2025年最新发展章节
 - ✅ 创建了完整的2025年最新AI发展总结文档

@@ -44,6 +44,8 @@
     - [T14 收敛性定理（Convergence Theorem）](#t14-收敛性定理convergence-theorem)
     - [T15 相关性定理（Correlation Theorem）](#t15-相关性定理correlation-theorem)
     - [T16 最优性定理（Optimality Theorem）](#t16-最优性定理optimality-theorem)
+  - [📚 参考文档](#-参考文档)
+    - [参考文档说明](#参考文档说明)
 
 ## 📐 文档目的
 
@@ -512,6 +514,7 @@ $$
 - **新增定理T10-T16**：来源 `model/04-证明树图总览.md` 证明树关联
 
 **关联文档**：
+
 - `view02.md` §5.3：强化形式化证明
 - `model/04-证明树图总览.md`：10个证明树图
 - `model/01-主题层级模型.md` §7：形式化数学基础层
