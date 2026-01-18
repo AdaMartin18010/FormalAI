@@ -1,9 +1,9 @@
 # 概念引用规范文档
 
-**创建日期**：2025-11-10  
-**最后更新**：2025-11-10  
-**维护者**：FormalAI项目组  
-**文档版本**：v1.0  
+**创建日期**：2025-11-10
+**最后更新**：2025-11-10
+**维护者**：FormalAI项目组
+**文档版本**：v1.0
 **状态**：🔄 持续更新中
 
 ---
@@ -27,6 +27,7 @@
 **格式**：`[概念名称](文档路径#章节锚点)`
 
 **示例**：
+
 - `[AI三层模型架构](../concepts/01-AI三层模型架构/README.md#四核心概念形式化定义)`
 - `[DKB](../docs/03-formal-methods/03.5-DKB案例研究.md#dkb定义)`
 - `[Ontology](../Philosophy/view01.md#ontology层)`
@@ -36,6 +37,7 @@
 **格式**：`[概念名称](文档路径#章节锚点) - **形式化**：$公式$`
 
 **示例**：
+
 - `[执行层](../concepts/01-AI三层模型架构/README.md#41-执行层图灵计算模型形式化定义) - **形式化**：$E = (Q_E, \Sigma_E, \Gamma_E, \delta_E, q_{0_E}, B_E, F_E)$`
 - `[Scaling Law](../concepts/03-Scaling Law与收敛分析/README.md#scaling-law定义) - **形式化**：$L(N) = a \cdot N^{-\alpha}$`
 
@@ -44,6 +46,7 @@
 **格式**：`[概念名称](../PROJECT_CONCEPT_SYSTEM.md#概念索引位置)`
 
 **示例**：
+
 - `[AI三层模型架构](../PROJECT_CONCEPT_SYSTEM.md#121-ai三层模型架构)`
 - `[DKB](../PROJECT_CONCEPT_SYSTEM.md#1111-dkb决策知识库)`
 
@@ -54,30 +57,36 @@
 ### 2.1 docs模块引用
 
 **引用格式**：
+
 - 内部引用：`[概念名](./子目录/README.md#章节)`
 - 跨模块引用：`[概念名](../../concepts/主题/README.md#章节)`
 
 **示例**：
+
 - `[形式化验证](./03-formal-methods/03.1-形式化验证/README.md#形式化验证定义)`
 - `[AI三层模型架构](../../concepts/01-AI三层模型架构/README.md#三层模型)`
 
 ### 2.2 concepts模块引用
 
 **引用格式**：
+
 - 内部引用：`[概念名](./子主题/README.md#章节)`
 - 跨模块引用：`[概念名](../../docs/主题/README.md#章节)`
 
 **示例**：
+
 - `[执行层](./01-AI三层模型架构/README.md#执行层)`
 - `[形式化验证](../../docs/03-formal-methods/03.1-形式化验证/README.md#形式化验证)`
 
 ### 2.3 Philosophy模块引用
 
 **引用格式**：
+
 - 内部引用：`[概念名](./view文件.md#章节)`
 - 跨模块引用：`[概念名](../../concepts/主题/README.md#章节)`
 
 **示例**：
+
 - `[DKB](./view01.md#dkb架构)`
 - `[AI三层模型架构](../../concepts/01-AI三层模型架构/README.md#三层模型)`
 
@@ -98,6 +107,7 @@
 ```
 
 **示例**：
+
 ```markdown
 **执行层（图灵计算模型）**：
 
@@ -175,6 +185,7 @@ $E = (Q_E, \Sigma_E, \Gamma_E, \delta_E, q_{0_E}, B_E, F_E)$
 **格式**：`[对比矩阵](../文档路径.md#矩阵编号)`
 
 **示例**：
+
 - `[AI三层模型架构对比矩阵](../concepts/CONCEPTS_COMPARISON_MATRIX.md#一ai三层模型架构对比矩阵)`
 - `[跨模块对比矩阵](../CROSS_MODULE_COMPARISON_MATRIX.md#一dkb-vs-ai三层模型架构对比矩阵)`
 
@@ -183,6 +194,7 @@ $E = (Q_E, \Sigma_E, \Gamma_E, \delta_E, q_{0_E}, B_E, F_E)$
 **格式**：`[思维导图名称](../文档路径.md#思维导图编号)`
 
 **示例**：
+
 - `[数学基础思维导图](../docs/DOCS_MIND_MAPS_INDEX.md#21-数学基础思维导图)`
 - `[DKB架构全景思维导图](../Philosophy/model/02-思维导图总览.md#思维导图1)`
 
@@ -191,6 +203,7 @@ $E = (Q_E, \Sigma_E, \Gamma_E, \delta_E, q_{0_E}, B_E, F_E)$
 **格式**：`[证明树名称](../文档路径.md#证明树编号)`
 
 **示例**：
+
 - `[DKB公理证明树](../Philosophy/model/04-证明树图总览.md#证明树1)`
 
 ---
@@ -200,6 +213,7 @@ $E = (Q_E, \Sigma_E, \Gamma_E, \delta_E, q_{0_E}, B_E, F_E)$
 ### 7.1 引用验证脚本
 
 **功能**：
+
 - 检查所有概念引用链接有效性
 - 检查章节锚点存在性
 - 检查跨模块引用路径正确性
@@ -207,6 +221,7 @@ $E = (Q_E, \Sigma_E, \Gamma_E, \delta_E, q_{0_E}, B_E, F_E)$
 ### 7.2 概念索引自动生成
 
 **功能**：
+
 - 自动提取所有概念定义
 - 生成概念索引文档
 - 更新概念引用映射
@@ -228,6 +243,6 @@ $E = (Q_E, \Sigma_E, \Gamma_E, \delta_E, q_{0_E}, B_E, F_E)$
 
 ---
 
-**最后更新**：2025-11-10  
-**维护者**：FormalAI项目组  
+**最后更新**：2025-11-10
+**维护者**：FormalAI项目组
 **文档版本**：v1.0（初始版本 - 创建概念引用规范文档）
