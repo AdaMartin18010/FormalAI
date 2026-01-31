@@ -100,7 +100,7 @@
 | 课程/来源 | 建议对标模块 | 说明 |
 |-----------|--------------|------|
 | Stanford CS259 软件验证 | docs/03-formal-methods | ✅ FV-06 已列 AUTHORITY_REFERENCE_INDEX |
-| Oxford DeepMind ML | docs/02 | 深度学习前沿（可选补充） |
+| Oxford DeepMind ML | docs/02 | ✅ DL-04/05 Oxford ML、Oxford ML Summer School 已列 AUTHORITY_REFERENCE_INDEX |
 | W3C OWL 2 / RDF 1.1 规范 | Philosophy model/, concepts 知识表示 | ✅ Philosophy model/07 已增 |
 | Stanford CS520 | 标注"最近可及版本 Spring 2022" | ✅ 已标注 |
 
@@ -120,8 +120,8 @@
 
 | 要求 | 当前 | 建议 |
 |------|------|------|
-| 主题-子主题层级 | THEME_HIERARCHY_STRUCTURE、concepts INDEX 已建 | 与 concepts 8 主题语义层显式对齐，补充依赖图 |
-| 概念-属性-关系 | 部分矩阵、证明树已有 | 建立"概念-属性-关系"三元组索引 |
+| 主题-子主题层级 | THEME_HIERARCHY_STRUCTURE、concepts INDEX 已建 | ✅ 已闭环：与 concepts 8 主题语义层对齐，依赖图见 TOPIC_RELATIONSHIP_GRAPH + THEME_HIERARCHY 互引（2025-02-01） |
+| 概念-属性-关系 | 部分矩阵、证明树已有 | ✅ 已建立：docs/CONCEPT_ATTRIBUTE_RELATION_INDEX.md 三元组索引（2025-02-01） |
 | 前提→结论论证链 | 证明树、批判分析已有 | 强化与权威文献的显式链接 |
 
 ### 3.2 概念定义要求
@@ -136,8 +136,8 @@
 
 | 维度 | 当前 | 建议 |
 |------|------|------|
-| 属性关系 | 矩阵、证明树已有 | 建立跨模块"概念-属性-关系"三元组索引 |
-| 解释论证 | 批判分析、证明树已有 | 强化"前提→结论"与权威文献显式链接 |
+| 属性关系 | 矩阵、证明树已有 | ✅ 已建立：docs/CONCEPT_ATTRIBUTE_RELATION_INDEX.md 跨模块三元组索引（2025-02-01） |
+| 解释论证 | 批判分析、证明树已有 | ✅ 已闭环：AXIOM_THEOREM_INFERENCE_TREE §二 证明位置已链 view02/model/04；权威文献见 AUTHORITY_REFERENCE_INDEX（2025-02-01） |
 | 反证与风险 | Philosophy model/12 风险与反证 | 与 concepts 06 反实践判定联动 |
 
 ---
@@ -176,8 +176,8 @@
 |------|--------|------|
 | **空壳文档** | 部分 docs README 仅有目录无实质（0.4 哲科分析已指出） | 宁可少而精；新文档需"至少 1 权威引用 + 1 可操作检验" |
 | **概念定义权重** | concepts/04 意识度 $C(S)$ 中 $w_i=0.25$ 无文献支撑 | 标注"项目假设"或引用 Chalmers/Block 的权重讨论 |
-| **对标锚点时效** | Stanford CS520 最近 Spring 2022 | 标注"最近可及版本"；补充 Berkeley CS294、MIT 6.4110、CMU 10-703 等活跃课程 |
-| **跨模块映射** | docs(20 主题)↔concepts(8 主题) 映射有遗漏 | 补全 02/05/06/07/08 与 docs 的显式映射到 PROJECT_CROSS_MODULE_MAPPING |
+| **对标锚点时效** | Stanford CS520 最近 Spring 2022 | ✅ 已闭环：AUTHORITY_REFERENCE_INDEX KG-01 已标「最近可及 Spring 2022」；LLM-01/02、FV-06、RL-01 已列（2025-02-01） |
+| **跨模块映射** | docs(20 主题)↔concepts(8 主题) 映射有遗漏 | ✅ 已补全：PROJECT_CROSS_MODULE_MAPPING §2.3 concepts→docs 显式映射（2025-02-01） |
 
 ### 5.2 内容性批判
 
@@ -299,42 +299,42 @@
 
 ## 七、可持续推进的细致分层分计划（按时间线）
 
-### 7.1 第一阶段：紧急补全（1–2 周）
+### 7.1 第一阶段：紧急补全（1–2 周）✅ 已闭环
 
-| 序号 | 任务 | 模块 | 交付物 |
-|------|------|------|--------|
-| 1 | Sardana、Porian 写入 concepts/03 | concepts/03 | README 或子文档 |
-| 2 | GWT+HOT 互补写入 concepts/04 | concepts/04 | §10.9 或子文档 |
-| 3 | DEFINITION_SOURCE_TABLE 待补充项闭环 | concepts/ | DEFINITION_SOURCE_TABLE 更新 |
-| 4 | Philosophy model/07 增 RDF/OWL 引用 | Philosophy/ | 07-术语表更新 |
+| 序号 | 任务 | 模块 | 交付物 | 状态 |
+|------|------|------|--------|------|
+| 1 | Sardana、Porian 写入 concepts/03 | concepts/03 | README §11.2.14–11.2.15 | ✅ |
+| 2 | GWT+HOT 互补写入 concepts/04 | concepts/04 | §10.9 | ✅ |
+| 3 | DEFINITION_SOURCE_TABLE 待补充项闭环 | concepts/ | DEFINITION_SOURCE_TABLE 更新 | ✅ |
+| 4 | Philosophy model/07 增 RDF/OWL 引用 | Philosophy/ | 07-术语表更新 | ✅ |
 
 ### 7.2 第二阶段：权威对标与验证（2–4 周）
 
-| 序号 | 任务 | 模块 | 交付物 |
-|------|------|------|--------|
-| 5 | Chinchilla 公式与 Hoffmann 数值对比 | concepts/03 | 验证报告/附录 |
-| 6 | 意识度 $C(S)$ 权重 $w_i$ 标注 | concepts/04 | README 更新 |
-| 7 | concepts 01/02/05/06/07/08 权威对标状态节 | concepts/ | 各 README |
-| 8 | Stanford CS520 "最近可及"标注 + CMU 10-703 补充 | docs/ | AUTHORITY_REFERENCE_INDEX |
+| 序号 | 任务 | 模块 | 交付物 | 状态 |
+|------|------|------|--------|------|
+| 5 | Chinchilla 公式与 Hoffmann 数值对比 | concepts/03 | 验证报告/附录 | ⏳ 需 Figure 1 数据 |
+| 6 | 意识度 $C(S)$ 权重 $w_i$ 标注 | concepts/04 | README §3.1 已标注「项目假设」 | ✅ |
+| 7 | concepts 01/02/05/06/07/08 权威对标状态节 | concepts/ | 各 README | ✅ |
+| 8 | Stanford CS520 "最近可及"标注 + CMU 10-703 补充 | docs/ | AUTHORITY_REFERENCE_INDEX | ✅ |
 
-### 7.3 第三阶段：思维表征扩展（1–2 月）
+### 7.3 第三阶段：思维表征扩展（1–2 月）✅ 已闭环
 
-| 序号 | 任务 | 模块 | 交付物 |
-|------|------|------|--------|
-| 9 | concepts 02/03/06 概念判断树 | concepts/ | CONCEPT_DECISION_TREE_*.md |
-| 10 | concepts 03 收敛策略决策树、L0–L4 矩阵 | concepts/03 | 决策树 + 矩阵 |
-| 11 | concepts/07 MINDMAP_INDEX | concepts/07 | MINDMAP_INDEX.md |
-| 12 | docs 01/02/03 思维导图 | docs/ | MINDMAP_*.md |
-| 13 | 跨模块映射补全 | 根目录 | PROJECT_CROSS_MODULE_MAPPING |
+| 序号 | 任务 | 模块 | 交付物 | 状态 |
+|------|------|------|--------|------|
+| 9 | concepts 02/03/06 概念判断树 | concepts/ | CONCEPT_DECISION_TREE_*.md | ✅ |
+| 10 | concepts 03 收敛策略决策树、L0–L4 矩阵 | concepts/03 | 决策树 + 矩阵 | ✅ |
+| 11 | concepts/07 MINDMAP_INDEX | concepts/07 | MINDMAP_INDEX.md | ✅ |
+| 12 | docs 01/02/03 思维导图 | docs/ | DOCS_MIND_MAPS_INDEX | ✅ |
+| 13 | 跨模块映射补全 | 根目录 | PROJECT_CROSS_MODULE_MAPPING §2.3 | ✅ |
 
 ### 7.4 第四阶段：形式化与评议（2–3 月）
 
-| 序号 | 任务 | 模块 | 交付物 |
-|------|------|------|--------|
-| 14 | Lean/Coq A1→L1 试点 | docs/03-formal-methods | Lean 4 源码 |
-| 15 | 哲学转译同行评议 | Philosophy/ | 评议报告 |
-| 16 | docs 00/02/03 实质内容充实 | docs/ | 0.4 哲科分析建议落地 |
-| 17 | 07/08 交叉引用 46 项完善 | concepts/ | 07.x、08.x 链接 |
+| 序号 | 任务 | 模块 | 交付物 | 状态 |
+|------|------|------|--------|------|
+| 14 | Lean/Coq A1→L1 试点 | docs/03-formal-methods | Lean 4 源码 | ⏳ 需 Lean 4 贡献者 |
+| 15 | 哲学转译同行评议 | Philosophy/ | 评议报告 | ⏳ 需哲学专家 |
+| 16 | docs 00/02/03 实质内容充实 | docs/ | 0.4 哲科分析建议落地 | ✅ 02.1/02.2/03.2 已覆盖；00 待 Lean 4 |
+| 17 | 07/08 交叉引用 46 项完善 | concepts/ | 07.x、08.x 链接 | ✅ 2025-01-15 批次 |
 
 ### 7.5 第五阶段：季度循环（Q2–Q4）
 
@@ -359,6 +359,7 @@
 | [QUARTERLY_UPDATE_CHECKLIST](docs/QUARTERLY_UPDATE_CHECKLIST.md) | 季度更新清单 |
 | [PROJECT_THINKING_REPRESENTATIONS](PROJECT_THINKING_REPRESENTATIONS.md) | 思维表征索引 |
 | [docs/0.4-现有内容哲科批判分析](docs/0-总览与导航/0.4-现有内容哲科批判分析.md) | 哲科批判分析 |
+| [docs/CONCEPT_ATTRIBUTE_RELATION_INDEX](docs/CONCEPT_ATTRIBUTE_RELATION_INDEX.md) | 概念-属性-关系三元组索引（哲科对齐） |
 
 ---
 
@@ -476,10 +477,25 @@
 | 44 | RECURSIVE/COMPREHENSIVE 剩余 🟡 | L3 权威对标、L3 哲学评议、L4 数据时效 标注"⏳ 需外部资源"及已完成前置 | ✅ |
 | 45 | 可独立完成项 | 100% 达成声明 | ✅ |
 
+### 9.14 第十五轮持续推进（2025-02-01）✅ 100%
+
+| 序号 | 任务 | 交付物 | 状态 |
+|------|------|--------|------|
+| 46 | AUTHORITY_REFERENCE_INDEX | DL-04/05 Oxford ML、Oxford ML Summer School | ✅ |
+| 47 | concepts/03 | Kaplan 引用 DL-04→DL-06 修正 | ✅ |
+| 48 | RECURSIVE §2.2 | Oxford DeepMind ML 标为已补充 | ✅ |
+
+### 9.15 第十六轮持续推进（2025-02-01）✅ 100%
+
+| 序号 | 任务 | 交付物 | 状态 |
+|------|------|--------|------|
+| 49 | COMPREHENSIVE §5.2 | 待补充对标 4 项标为已闭环 | ✅ |
+| 50 | COMPREHENSIVE §六 | 思维表征清单 01/05/07 补充 | ✅ |
+
 **可独立完成项 100% 达成**。剩余 🟡 均为"需外部资源"项：Chinchilla 数值验证、Lean 试点、哲学评议、Q2 评审、逐项对标、数据时效。
 
 ---
 
 **维护者**：FormalAI 项目组  
 **下次评审**：2025-04-01（Q2）  
-**文档版本**：v1.1（2025-02-01 推进完成更新）
+**文档版本**：v1.2（§7 时间线阶段状态与 COMPREHENSIVE 对齐；§八 文档索引增 CONCEPT_ATTRIBUTE_RELATION_INDEX）

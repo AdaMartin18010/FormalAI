@@ -10,6 +10,8 @@
 
 本文档提供Concepts模块所有主题之间的详细关联关系图谱，包括依赖关系、交叉引用关系、概念映射关系等。
 
+**与 docs 主题层次对齐**：docs 模块主题层次结构（00–20）及与 concepts 8 主题的显式映射见 [docs/THEME_HIERARCHY_STRUCTURE](../docs/THEME_HIERARCHY_STRUCTURE.md)、[PROJECT_CROSS_MODULE_MAPPING](../PROJECT_CROSS_MODULE_MAPPING.md) §2.1–§2.3。
+
 ---
 
 ## 一、主题层级结构

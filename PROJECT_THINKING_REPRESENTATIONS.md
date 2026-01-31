@@ -479,6 +479,7 @@ graph LR
 - [Philosophy/model/05-决策树图总览.md](./Philosophy/model/05-决策树图总览.md) - 决策树索引
 - [Philosophy/model/06-时间线演进模型.md](./Philosophy/model/06-时间线演进模型.md) - 时间线索引
 - [Philosophy/model/01-主题层级模型.md](./Philosophy/model/01-主题层级模型.md) - 层级模型索引
+- [docs/CONCEPT_ATTRIBUTE_RELATION_INDEX.md](./docs/CONCEPT_ATTRIBUTE_RELATION_INDEX.md) - 概念-属性-关系三元组索引（哲科对齐）
 
 ### 10.2 项目计划文档
 

@@ -1,14 +1,16 @@
 # FormalAI主题层次结构 / Theme Hierarchy Structure
 
 **创建日期**：2025-01-10
-**最后更新**：2025-01-15
-**状态**：✅ 已建立
+**最后更新**：2025-02-01
+**状态**：✅ 已建立（与 concepts 8 主题语义层对齐及依赖图互引已补充）
 
 ---
 
 ## 📋 概述
 
 本文档定义了FormalAI项目的完整主题层次结构，确保所有文档按照严格的语义层次组织，便于导航、维护和扩展。
+
+**与 concepts 8 主题语义层对齐**：本结构（docs 00–20 主题）与 [concepts 八大主题](../concepts/TOPIC_RELATIONSHIP_GRAPH.md) 语义层对应关系及 **concepts 主题依赖图** 见 [concepts/TOPIC_RELATIONSHIP_GRAPH.md](../concepts/TOPIC_RELATIONSHIP_GRAPH.md) §一（主题层级）、§五（主题依赖图 DAG）；双向映射见 [PROJECT_CROSS_MODULE_MAPPING](../PROJECT_CROSS_MODULE_MAPPING.md) §2.1、§2.3。
 
 ---
 

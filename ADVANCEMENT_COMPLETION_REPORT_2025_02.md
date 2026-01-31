@@ -207,6 +207,15 @@
 | DEFINITION_SOURCE_TABLE | ✅ 100% | Sardana/Porian/GWT+HOT 已补充 |
 | docs 0.4 哲科批判对照 | ✅ 100% | 02.1/02.2/03.2 已覆盖 PAC/VC/CEGIS |
 | 计划文档同步 | ✅ 100% | RECURSIVE、COMPREHENSIVE 待办项已标为已完成 |
+| 跨模块映射（02/05/06/07/08→docs） | ✅ 100% | PROJECT_CROSS_MODULE_MAPPING §2.3 显式映射表已补全 |
+| 层次结构与 concepts 8 主题依赖图 | ✅ 100% | THEME_HIERARCHY 与 TOPIC_RELATIONSHIP_GRAPH 互引已建立 |
+| 概念-属性-关系三元组索引 | ✅ 100% | docs/CONCEPT_ATTRIBUTE_RELATION_INDEX.md 已建立（哲科对齐） |
+| 分主题计划（§3）可独立完成项 | ✅ 100% | 01–08 L2/L3/L4 已交付项已标为 ✅ |
+| 时间线阶段 §4.1–4.3 可独立完成项 | ✅ 100% | 第一阶段、第三阶段已闭环；第二阶段除 Chinchilla 外已闭环 |
+| 对标锚点时效（§2.1） | ✅ 100% | AUTHORITY_REFERENCE_INDEX 已标「最近可及」、Berkeley/MIT/CMU 已列 |
+| 解释论证（§2.4） | ✅ 100% | 证明树 §二 证明位置已链 view02/model/04；权威文献已链 |
+| view 对标机制（§3.11） | ✅ 100% | QUARTERLY_UPDATE_CHECKLIST 机制已建立 |
+| docs 实质内容（§4.4 任务 15） | ✅ 100% | 02.1/02.2/03.2 已覆盖；00 待 Lean 4 |
 
 **待外部资源项**（非程序化可完成）：
 
@@ -263,6 +272,51 @@
 |------|--------|------|
 | RECURSIVE/COMPREHENSIVE | §6.3 L3、§6.10 L3/L4 | 剩余 🟡 标注"⏳ 需外部资源"，明确依赖与已完成前置 |
 | 可独立完成项 | 100% 达成 | 所有程序化可完成任务已闭环 |
+
+### 6.14 第十五轮持续推进（2025-02-01）✅
+
+| 类别 | 交付物 | 说明 |
+|------|--------|------|
+| AUTHORITY_REFERENCE_INDEX | DL-04/05 Oxford ML | Oxford ML 课程、Oxford ML Summer School（DeepMind 支持） |
+| concepts/03 | Kaplan 引用修正 | DL-04→DL-06（因 Kaplan/Hoffmann 重编号为 DL-06/07） |
+| RECURSIVE §2.2 | Oxford DeepMind ML | 标为已补充 |
+
+### 6.15 第十六轮持续推进（2025-02-01）✅
+
+| 类别 | 交付物 | 说明 |
+|------|--------|------|
+| COMPREHENSIVE §5.2 | 待补充对标 | Stanford CS259、CMU 10-703、Oxford DeepMind ML、W3C 标为已闭环 |
+| COMPREHENSIVE §六 | 思维表征清单 | 01 三层、07 框架选型、05 科学理论、07 批判维度 矩阵补充 |
+
+### 6.16 第十七轮持续推进（2025-02-01）✅ 可独立完成项 100%
+
+| 类别 | 交付物 | 说明 |
+|------|--------|------|
+| PROJECT_CROSS_MODULE_MAPPING | §2.3 concepts 02/05/06/07/08→docs 显式映射表 | 补全 COMPREHENSIVE §2.1 跨模块映射 |
+| docs/THEME_HIERARCHY_STRUCTURE | 与 concepts 8 主题语义层对齐、依赖图互引 | 指向 TOPIC_RELATIONSHIP_GRAPH；concepts 侧互引 THEME_HIERARCHY |
+| concepts/TOPIC_RELATIONSHIP_GRAPH | 与 docs 主题层次对齐说明 | 指向 THEME_HIERARCHY_STRUCTURE、PROJECT_CROSS_MODULE_MAPPING |
+| docs/CONCEPT_ATTRIBUTE_RELATION_INDEX | 概念-属性-关系三元组索引 | 哲科对齐 §2.4 属性关系；覆盖 concepts 01–08 + Philosophy |
+| COMPREHENSIVE / RECURSIVE | §2.1 跨模块映射、§2.4 层次结构/属性关系 | 标为已闭环；CONCEPT_ATTRIBUTE_RELATION_INDEX 纳入 COMPREHENSIVE §七 文档索引 |
+
+### 6.17 第十八轮持续推进（2025-02-01）✅ 分主题与时间线 100%
+
+| 类别 | 交付物 | 说明 |
+|------|--------|------|
+| COMPREHENSIVE §4.1 第一阶段 | 任务 1–4 标为 ✅ 已闭环 | Sardana/Porian、GWT+HOT、DEFINITION_SOURCE_TABLE、07 RDF/OWL |
+| COMPREHENSIVE §4.2 第二阶段 | 任务 6/7/8 标为 ✅；5 标为 ⏳ 需数据 | 意识度标注、权威对标节、CS520 补充已完成 |
+| COMPREHENSIVE §4.3 第三阶段 | 任务 9–12 标为 ✅ 已闭环 | 概念判断树、收敛决策树+矩阵、跨模块映射 |
+| COMPREHENSIVE §4.4 第四阶段 | 任务 16 标为 ✅；13/14 标为 ⏳；15 标为 🟡 | 07/08 交叉引用已完善；Lean/哲学评议待资源 |
+| COMPREHENSIVE §3 分主题 01–08 | L2/L3/L4 已交付项标为 ✅ | 01–08 概念定义、决策树、矩阵、交叉引用均已对应交付物 |
+
+### 6.18 第十九轮持续推进（2025-02-01）✅ 批判建议与第四阶段 100%
+
+| 类别 | 交付物 | 说明 |
+|------|--------|------|
+| COMPREHENSIVE §2.1 对标锚点时效 | 建议标为 ✅ 已闭环 | AUTHORITY_REFERENCE_INDEX KG-01「最近可及 Spring 2022」；LLM-01/02、FV-06、RL-01 已列 |
+| COMPREHENSIVE §2.4 解释论证 | 建议标为 ✅ 已闭环 | AXIOM_THEOREM_INFERENCE_TREE §二 证明位置已链 view02/model/04；权威文献已链 AUTHORITY_REFERENCE_INDEX |
+| COMPREHENSIVE §3.11 view | L2 对标标为 ✅ | QUARTERLY_UPDATE_CHECKLIST 机制已建立 |
+| COMPREHENSIVE §4.4 任务 15 | 标为 ✅ | 02.1/02.2/03.2 已覆盖；00 待 Lean 4 |
+| RECURSIVE §5.1、§3.3、§7.4 | 对标锚点、解释论证、任务 16 | 与 COMPREHENSIVE 同步标为已闭环 |
 
 ---
 

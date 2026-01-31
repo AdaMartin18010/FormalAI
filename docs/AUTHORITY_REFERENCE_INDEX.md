@@ -43,8 +43,10 @@
 | DL-01 | 教材 | Goodfellow, Bengio, Courville, Deep Learning, MIT Press 2016, 版次1 | Part I 基础(Ch2-3)、Part II 深度网络(Ch6-9)、Part III 优化(Ch8)、Part IV 应用(Ch12-15)；深度学习的数学基础 |
 | DL-02 | 课程 | Stanford CS230, CS221 | 深度学习、AI 原理；CS230 讲义可参考 course.stanford.edu |
 | DL-03 | 课程 | MIT 6.S965 TinyML and Efficient Deep Learning | 高效深度学习 |
-| DL-04 | 论文 | Kaplan et al., Scaling Laws for Neural Language Models, 2020 | 原始 Scaling Law |
-| DL-05 | 论文 | Hoffmann et al. (2022), Training Compute-Optimal Large Language Models | Chinchilla |
+| DL-04 | 课程 | Oxford ML (cs.ox.ac.uk/teaching/courses/ml) | **2025-2026 活跃**；Seth Flaxman 主讲；监督/无监督学习、神经网络 |
+| DL-05 | 课程/暑期 | Oxford ML Summer School (oxfordml.school) | DeepMind 支持；MLx Fundamentals/GenAI/Health 等专题 |
+| DL-06 | 论文 | Kaplan et al., Scaling Laws for Neural Language Models, 2020 | 原始 Scaling Law |
+| DL-07 | 论文 | Hoffmann et al. (2022), Training Compute-Optimal Large Language Models | Chinchilla |
 
 ### 2.4 Scaling Law
 
@@ -105,6 +107,7 @@
 | 2025-02-01 | 补充 Goodfellow 章节、Stanford CS520/Berkeley CS294 课程大纲要点（BENCHMARKING_REPORT Q1 待办闭环） |
 | 2025-02-01 | Stanford CS520 标注"最近可及 Spring 2022"；新增 CMU 10-703 Deep RL (RL-01) |
 | 2025-02-01 | 新增 Stanford CS259 软件验证 (FV-06) |
+| 2025-02-01 | 新增 Oxford ML (DL-04)、Oxford ML Summer School (DL-05)；Kaplan/Hoffmann 重编号为 DL-06/07 |
 
 ---
 

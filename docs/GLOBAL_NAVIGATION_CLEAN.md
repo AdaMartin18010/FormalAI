@@ -133,6 +133,7 @@
 
 - [全局导航系统](./GLOBAL_NAVIGATION.md)（完整版）
 - [主题层次结构](./THEME_HIERARCHY_STRUCTURE.md) ⭐ **新创建**
+- [概念-属性-关系三元组索引](./CONCEPT_ATTRIBUTE_RELATION_INDEX.md)（哲科对齐）
 - [学习路径设计](./LEARNING_PATH_DESIGN.md)
 - [文档索引](./DOCUMENT_INDEX_2025.md)
 

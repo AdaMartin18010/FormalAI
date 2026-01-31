@@ -99,7 +99,7 @@ Scaling Law 驱动的"大"与追求理论可控的"收敛"之间的张力是当�
 
 **权威溯源**（见 [DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md)）：
 
-- **Kaplan et al. (2020)**：$L(N) \propto N^{-\alpha}$，损失与参数量的幂律 [DL-04]
+- **Kaplan et al. (2020)**：$L(N) \propto N^{-\alpha}$，损失与参数量的幂律 [DL-06]
 - **Hoffmann et al. (2022, Chinchilla)**：计算最优时 $D_{opt} \propto N^{0.74}$，约 20 tokens/param [SL-01]
 - **Sardana et al. (2024)**：考虑推理成本时，应训练更小模型、更长 token [SL-02]
 - **Porian et al. (2024 NeurIPS)**：Kaplan 与 Hoffmann 差异源于 last layer cost、warmup、optimizer [SL-03]

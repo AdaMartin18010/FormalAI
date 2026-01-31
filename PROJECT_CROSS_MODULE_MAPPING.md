@@ -89,6 +89,21 @@ graph TB
 | **推理机制** | **控制层（形式语言模型）** | 架构对应 |
 | **认知科学** | **AI意识与认知模拟** | 理论支撑 |
 
+### 2.3 concepts 主题 → docs 显式映射（02/05/06/07/08 补全）
+
+| concepts 主题 | 对应 docs 主题/路径 | 映射类型 | 说明 |
+|---------------|---------------------|----------|------|
+| **01-AI 三层模型架构** | 01-foundations, 02-machine-learning, 04-language-models, 05-multimodal-ai | 理论支撑、架构映射 | 基础与数据层对应 ML/LLM/多模态 |
+| **02-AI 炼金术转化度模型** | 02-machine-learning | 理论映射 | 转化度评估 ML 成熟度 |
+| **03-Scaling Law 与收敛分析** | 02-machine-learning, 04-language-models | 理论映射 | 收敛与 Scaling Law 对应 ML/LLM |
+| **04-AI 意识与认知模拟** | 09-philosophy-ethics, 16-agi-theory, 18-cognitive-architecture | 理论映射 | 意识理论与哲学/AGI/认知架构 |
+| **05-AI 科学理论** | 02-machine-learning/02.3, 08-emergence-complexity | 理论映射、方法映射 | RLHF、涌现对应强化学习与涌现 |
+| **06-AI 反实践判定系统** | 03-formal-methods | 方法映射 | 形式化验证、可判定性用于反实践判定 |
+| **07-AI 框架批判与重构** | 03-formal-methods, 04-language-models | 理论映射、架构映射 | 形式化边界批判、LLM 架构批判 |
+| **08-AI 历史进程与原理演进** | 08-emergence-complexity | 理论映射 | 涌现与历史演进 §08.4 |
+
+**依据**：COMPREHENSIVE_CRITICAL_ANALYSIS_AND_ADVANCEMENT_PLAN_2025 §2.1 跨模块映射补全（2025-02-01 闭环）。
+
 ---
 
 ## 三、Philosophy ↔ concepts 映射
@@ -432,6 +447,6 @@ graph TB
 
 ---
 
-**最后更新**：2025-11-10
+**最后更新**：2025-02-01
 **维护者**：FormalAI项目组
-**文档版本**：v1.0（初始版本 - 跨模块映射文档，包含docs↔concepts、Philosophy↔concepts、docs↔Philosophy映射）
+**文档版本**：v1.1（§2.3 concepts 02/05/06/07/08→docs 显式映射已补全）
