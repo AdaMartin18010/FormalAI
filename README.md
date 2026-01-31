@@ -28,6 +28,8 @@ Formal AI model.
 **项目计划**：
 
 - 📋 [项目全面计划与持续推进任务](./PROJECT_COMPREHENSIVE_PLAN.md) ⭐ **最新** - 项目全面计划，包含AI主题分类、概念体系对齐、思维表征方式规划、持续推进任务计划
+- ✅ [内容推进完成报告（100%）](./ADVANCEMENT_COMPLETION_REPORT_2025_02.md) - 权威对标、概念溯源、思维表征三阶段全部完成
+- 📋 [内容批判性分析与推进计划](./CONTENT_CRITIQUE_AND_ADVANCEMENT_PLAN_2025.md) - 对标Stanford/MIT/Nature等权威源的分析与计划
 - 📚 [项目概念体系文档](./PROJECT_CONCEPT_SYSTEM.md) ⭐ **最新** - 完整概念体系，包含定义索引、关系图、属性矩阵、解释索引、论证索引、形式证明索引
 - 🎨 [项目思维表征方式索引](./PROJECT_THINKING_REPRESENTATIONS.md) ⭐ **最新** - 思维表征方式统一索引，包含思维导图、多维矩阵、证明树、决策树、时间线、层级模型索引
 - 🔗 [项目跨模块映射文档](./PROJECT_CROSS_MODULE_MAPPING.md) ⭐ **最新** - 跨模块映射关系，包含docs↔concepts、Philosophy↔concepts、docs↔Philosophy映射

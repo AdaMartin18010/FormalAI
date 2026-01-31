@@ -64,6 +64,14 @@ graph TB
 | **03-formal-methods** | **05-AI科学理论** | 理论映射 | 形式化方法支撑科学理论 |
 | **04-language-models** | **01-AI三层模型架构（数据层）** | 架构映射 | 语言模型对应数据层 |
 | **04-language-models** | **03-Scaling Law与收敛分析** | 理论映射 | 语言模型支撑收敛分析 |
+| **02-machine-learning** | **05-AI科学理论** | 理论映射 | RLHF、CoT、涌现与强化学习/深度学习理论 |
+| **02-machine-learning/02.3** | **05-AI科学理论** | 方法映射 | 强化学习范式（RLHF、DPO、GRPO） |
+| **03-formal-methods** | **06-AI反实践判定系统** | 方法映射 | 形式化验证、可判定性用于反实践判定 |
+| **03-formal-methods** | **07-AI框架批判与重构** | 理论映射 | 形式化方法支撑可判定性边界批判 |
+| **04-language-models** | **07-AI框架批判与重构** | 架构映射 | LLM 架构批判、神经算子替代 |
+| **05-multimodal-ai** | **01-AI三层模型架构** | 架构映射 | 多模态对应数据层扩展 |
+| **08-emergence-complexity** | **05-AI科学理论** | 理论映射 | 涌现理论、工程科学范式 |
+| **08-emergence-complexity** | **08-AI历史进程与原理演进** | 理论映射 | 涌现现象 §08.4 |
 | **09-philosophy-ethics** | **04-AI意识与认知模拟** | 理论映射 | 哲学与伦理支撑意识研究 |
 | **16-agi-theory** | **04-AI意识与认知模拟** | 理论映射 | AGI理论支撑意识研究 |
 | **18-cognitive-architecture** | **04-AI意识与认知模拟** | 理论映射 | 认知架构支撑意识研究 |

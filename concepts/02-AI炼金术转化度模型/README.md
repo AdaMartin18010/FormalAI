@@ -301,6 +301,16 @@ graph LR
 
 **炼金术不是贬义词**，而是**承认我们尚未完全理解智能本质的诚实态度**。真正的危险不是炼金术，而是**假装它是精密科学**。2025 年的最佳实践是：**戴着理论的镣铐跳舞，但舞步来自经验**。
 
+### 权威对标状态
+
+| 维度 | 状态 | 说明 |
+|------|------|------|
+| 权威引用 | ⚠️ 部分 | 项目原创框架，可对标 CMMI/成熟度模型 [DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md) §四 |
+| 概念定义 | ✅ 已对标 | 五层炼金度、Level 1–5 与 DEFINITION_SOURCE_TABLE 一致 |
+| 待验证 | - | 与 CMMI/Gartner 成熟度曲线对比 |
+
+**权威对标锚点**：[DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md) §四；五维度可操作检验见 [CONCEPT_DECISION_TREE_转化度](CONCEPT_DECISION_TREE_转化度.md) §三
+
 ---
 
 ## 九、相关主题
@@ -328,6 +338,7 @@ graph LR
 ### 9.5 思维表征索引
 
 - [MINDMAP_INDEX.md](MINDMAP_INDEX.md) - 02-AI炼金术转化度模型主题思维导图索引
+- [CONCEPT_DECISION_TREE_转化度.md](CONCEPT_DECISION_TREE_转化度.md) - 转化度概念定义判断树
 
 ---
 

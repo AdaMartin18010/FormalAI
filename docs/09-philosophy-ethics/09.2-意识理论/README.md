@@ -54,6 +54,10 @@ Consciousness theory studies the nature, characteristics, and mechanisms of cons
 
 - [9.3 伦理框架](../09.3-伦理框架/README.md) - 提供意识基础 / Provides consciousness foundation
 
+**concepts 交叉引用 / Concepts Cross-Reference:**
+
+- [04-AI意识与认知模拟](../../concepts/04-AI意识与认知模拟/README.md) - 意识本质、认知模拟理论化、GWT+HOT 互补、[CONSCIOUSNESS_THEORY_MATRIX](../../concepts/04-AI意识与认知模拟/CONSCIOUSNESS_THEORY_MATRIX.md)
+
 ---
 
 ## 1. 意识理论 / Consciousness Theories

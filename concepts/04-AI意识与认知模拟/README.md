@@ -104,7 +104,7 @@ $$C(S) = w_1 \cdot Q(S) + w_2 \cdot I(S) + w_3 \cdot M(S) + w_4 \cdot \text{Meta
 - $I(S) \in [0, 1]$：意向性（Intentionality）度
 - $M(S) \in [0, 1]$：自我模型（Self-Model）度
 - $\text{Metacog}(S) \in [0, 1]$：元认知（Metacognition）度
-- $w_i$：权重系数（通常 $w_i = 0.25$，即等权重）
+- $w_i$：权重系数（**项目假设**：等权重 $w_i = 0.25$，无文献直接支撑；Chalmers/Block 等讨论过意识各维度相对重要性，但未给出量化权重）
 
 **意识理论形式化定义**：
 
@@ -241,6 +241,16 @@ $$S(T) = \frac{\text{AI性能}(T)}{\text{人类性能}(T)} \times \frac{\text{�
 
 ---
 
+### 权威对标状态
+
+| 维度 | 状态 | 说明 |
+|------|------|------|
+| 权威引用 | ✅ 已对标 | Nature 2025, arXiv 2512.19155, IIT/GWT 原始文献见 [AUTHORITY_REFERENCE_INDEX](../../docs/AUTHORITY_REFERENCE_INDEX.md) |
+| 概念定义 | ✅ 已对标 | [DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md)、[CONSCIOUSNESS_THEORY_MATRIX](CONSCIOUSNESS_THEORY_MATRIX.md) |
+| 待验证 | ⚠️ | 意识度 $C(S)$ 权重 $w_i$ 的文献依据 |
+
+---
+
 ## 七、核心结论
 
 **AI 不是"意识的模拟"，而是"人类认知能力的功能性外骨骼"。**
@@ -275,6 +285,14 @@ $$S(T) = \frac{\text{AI性能}(T)}{\text{人类性能}(T)} \times \frac{\text{�
 ### 8.4 思维表征索引
 
 - [MINDMAP_INDEX.md](MINDMAP_INDEX.md) - 04-AI意识与认知模拟主题思维导图索引
+- [CONCEPT_DECISION_TREE_意识.md](CONCEPT_DECISION_TREE_意识.md) - 意识概念定义判断树
+- [CONSCIOUSNESS_THEORY_MATRIX.md](CONSCIOUSNESS_THEORY_MATRIX.md) - 意识理论多维矩阵
+
+### 8.5 docs 交叉引用
+
+- [docs/09-philosophy-ethics/09.2-意识理论](../../docs/09-philosophy-ethics/09.2-意识理论/README.md) - 意识理论综述与哲学伦理视角
+- [docs/16-agi-theory/16.2-意识与自我](../../docs/16-agi-theory/16.2-意识与自我/README.md) - AGI 意识与自我理论
+- [docs/18-cognitive-architecture](../../docs/18-cognitive-architecture/README.md) - 认知架构与意识建模
 
 ---
 
@@ -288,6 +306,8 @@ $$S(T) = \frac{\text{AI性能}(T)}{\text{人类性能}(T)} \times \frac{\text{�
 ## 十、2025年最新发展
 
 ### 10.1 Nature研究对意识理论的挑战（2025年4月）
+
+**权威引用**：Nature (2025), PubMed 40307561；[AUTHORITY_REFERENCE_INDEX](../../docs/AUTHORITY_REFERENCE_INDEX.md) CO-04
 
 **核心发现**：
 
@@ -485,6 +505,10 @@ $$\text{Consciousness} = \{IIS_1, IIS_2, ..., IIS_n\}$$
 - 指导AI意识系统设计
 - 整合多种意识理论
 - 实现分层意识架构
+
+**权威引用**：Phua et al. (2025), arXiv 2512.19155；[AUTHORITY_REFERENCE_INDEX](../../docs/AUTHORITY_REFERENCE_INDEX.md) CO-05
+
+**关键结论**：GWT 与 HOT 描述**互补功能层**而非竞争解释——GWT 提供广播容量，HOT 提供质量控制；AI 意识研究宜采用**分层设计原则**。
 
 **参考文献**：Testing Consciousness Theories on Artificial Agents. arXiv:2512.19155 (2025-12)
 

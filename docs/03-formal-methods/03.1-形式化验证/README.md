@@ -8,6 +8,12 @@
 
 Formal verification studies how to prove that systems satisfy their specifications through mathematical methods, providing theoretical foundations for rigorous correctness guarantees in FormalAI.
 
+**权威对标**（见 [AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.2）：
+- **Clarke et al., Model Checking, MIT Press 2018** [FV-01]：模型检测经典
+- **Baier & Katoen, Principles of Model Checking, MIT Press 2008** [FV-02]：时序逻辑、自动机
+- **Cousot & Cousot (1977), Abstract Interpretation, POPL** [FV-03]：抽象解释奠基
+- **MIT Grove, Perennial (Coq/Iris)** [FV-05]：分布式系统形式化验证标杆——基于 Coq/Iris 的 Grove 验证 vKV 多线程键值存储；Perennial 扩展 Iris 用于并发崩溃安全系统
+
 ### 0. 验证核心图景 / Core Picture of Verification / Kernbild der Verifikation / Vue d’ensemble de la vérification
 
 - 系统模型：有穷或可数状态转移系统 \(\mathcal{M} = (S, s_0, \to)\)

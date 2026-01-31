@@ -29,6 +29,7 @@ Scaling Law 驱动的"大"与追求理论可控的"收敛"之间的张力是当�
   - [七、收敛时间表](#七收敛时间表)
     - [2025-2027 预测](#2025-2027-预测)
   - [八、核心结论](#八核心结论)
+    - [权威对标状态](#权威对标状态)
   - [九、相关主题](#九相关主题)
     - [9.1 三层模型相关主题](#91-三层模型相关主题)
     - [9.2 评估与分析相关主题](#92-评估与分析相关主题)
@@ -96,6 +97,13 @@ Scaling Law 驱动的"大"与追求理论可控的"收敛"之间的张力是当�
 
 **定义**：Scaling Law描述了模型性能（损失或能力）与模型规模（参数数量、数据规模、计算量）之间的幂律关系。
 
+**权威溯源**（见 [DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md)）：
+
+- **Kaplan et al. (2020)**：$L(N) \propto N^{-\alpha}$，损失与参数量的幂律 [DL-04]
+- **Hoffmann et al. (2022, Chinchilla)**：计算最优时 $D_{opt} \propto N^{0.74}$，约 20 tokens/param [SL-01]
+- **Sardana et al. (2024)**：考虑推理成本时，应训练更小模型、更长 token [SL-02]
+- **Porian et al. (2024 NeurIPS)**：Kaplan 与 Hoffmann 差异源于 last layer cost、warmup、optimizer [SL-03]
+
 **形式化表述**：
 
 对于模型规模 $N$（参数数量）和性能指标 $L$（损失），Scaling Law定义为：
@@ -107,6 +115,8 @@ $$L(N) = a \cdot N^{-\alpha} + b$$
 - $a > 0$：缩放系数
 - $\alpha > 0$：缩放指数（通常 $\alpha \in (0.05, 0.5)$）
 - $b \geq 0$：不可约损失（irreducible loss）
+
+**Chinchilla 扩展**（Hoffmann 2022）：$D_{opt} \propto N^{0.74}$，$N_{opt} \propto D^{1.35}$。
 
 **多变量扩展**：
 
@@ -278,6 +288,14 @@ gantt
 
 正如**Grok**所言，大模型收敛是"**数学原理、工程巧思和海量数据巧妙结合的结果**"——但 2025 年的我们，更擅长工程和数据，**数学原理仍不完整**。这种"**知其然不知其所以然**"的状态，正是当前 AI 收敛模型的核心特征：它**能用、好用、管用**，但还**说不清为什么**。
 
+### 权威对标状态
+
+| 维度 | 状态 | 说明 |
+|------|------|------|
+| 权威引用 | ✅ 已对标 | Hoffmann, Sardana, Porian 已纳入 [DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md) |
+| 概念定义 | ✅ 已对标 | Chinchilla 公式、计算最优与 [AUTHORITY_REFERENCE_INDEX](../../docs/AUTHORITY_REFERENCE_INDEX.md) SL-01~03 一致 |
+| 待验证 | ⚠️ | 与 Hoffmann 论文 Figure 1 数值对比、Porian 三因素验证 |
+
 ---
 
 ## 九、相关主题
@@ -307,6 +325,9 @@ gantt
 ### 9.5 思维表征索引
 
 - [MINDMAP_INDEX.md](MINDMAP_INDEX.md) - 03-Scaling Law与收敛分析主题思维导图索引
+- [CONCEPT_DECISION_TREE_收敛策略.md](CONCEPT_DECISION_TREE_收敛策略.md) - 收敛策略选择决策树
+- [CONVERGENCE_L0_L4_MATRIX.md](CONVERGENCE_L0_L4_MATRIX.md) - L0–L4 收敛模型多维矩阵
+- [CHINCHILLA_VERIFICATION_APPENDIX.md](CHINCHILLA_VERIFICATION_APPENDIX.md) - Chinchilla 公式验证框架
 
 ---
 
@@ -595,6 +616,39 @@ gantt
 - 实现大规模模型的商业化应用
 
 **参考文献**：腾讯混元TurboS模型（2025年）
+
+#### 11.2.14 Sardana 推理成本扩展（2024年）
+
+**核心发现**（Sardana et al., arXiv 2401.00448）：
+
+- **超越 Chinchilla 最优**：考虑推理成本时，Chinchilla 的"训练最优"不再成立
+- **关键结论**：应训练**更小模型**、**更长 token**——推理阶段成本主导时，小模型+长上下文优于大模型
+- **多阶段优化**：训练阶段与推理阶段需联合优化，而非仅训练阶段最优
+
+**理论意义**：
+
+- 挑战 Hoffmann Chinchilla 的单一训练阶段假设
+- 为推理高效模型设计提供理论指导
+- 解释为何 MoE、稀疏模型在推理场景更优
+
+**可操作检验**：固定推理预算下，对比小模型长上下文 vs 大模型短上下文的端到端成本-性能比。
+
+**权威引用**：[SL-02](../../docs/AUTHORITY_REFERENCE_INDEX.md)、[DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md) §一
+
+#### 11.2.15 Porian Kaplan-Hoffmann 差异解释（2024 NeurIPS）
+
+**核心发现**（Porian et al., NeurIPS 2024）：
+
+- **问题**：Kaplan et al. (2020) 与 Hoffmann et al. (2022 Chinchilla) 的最优缩放结论存在差异
+- **三因素解释**：
+  1. **Last layer cost**：最后一层成本计入方式不同
+  2. **Warmup**：预热策略影响训练动态
+  3. **Optimizer**：优化器选择（AdamW vs 其他）影响收敛路径
+- **调和结论**：在统一实验设置下，两者可对齐
+
+**可操作检验**：复现论文消融实验，验证三因素对 $D_{opt}/N$ 比的影响。
+
+**权威引用**：[SL-03](../../docs/AUTHORITY_REFERENCE_INDEX.md)、[DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md) §一
 
 ### 11.3 收敛趋势分析
 

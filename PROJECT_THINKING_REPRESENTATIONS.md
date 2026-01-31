@@ -106,16 +106,19 @@ graph LR
 6. **16-agi-theory** → AGI理论思维导图
 7. **18-cognitive-architecture** → 认知架构思维导图
 
-### 2.3 concepts模块思维导图（规划中）
+### 2.3 concepts模块思维导图
 
-**当前状态**：部分文档包含图表，但未系统化
+**当前状态**：01/02/03/04/05/06/07/08 均有 MINDMAP_INDEX ✅
 
-**扩展计划**：
+**概念判断树**（已扩展）：
 
-1. **01-AI三层模型架构** → 三层架构思维导图
-2. **03-Scaling Law与收敛分析** → 收敛模型思维导图
-3. **04-AI意识与认知模拟** → 意识理论思维导图
-4. **07-AI框架批判与重构** → 批判重构思维导图
+1. **01-AI三层模型架构** → [CONCEPT_DECISION_TREE_三层模型](concepts/01-AI三层模型架构/CONCEPT_DECISION_TREE_三层模型.md) ✅
+2. **04-AI意识与认知模拟** → [CONCEPT_DECISION_TREE_意识](concepts/04-AI意识与认知模拟/CONCEPT_DECISION_TREE_意识.md) ✅
+3. **02-AI炼金术转化度模型** → [CONCEPT_DECISION_TREE_转化度](concepts/02-AI炼金术转化度模型/CONCEPT_DECISION_TREE_转化度.md) ✅
+4. **03-Scaling Law与收敛分析** → [CONCEPT_DECISION_TREE_收敛策略](concepts/03-Scaling Law与收敛分析/CONCEPT_DECISION_TREE_收敛策略.md) ✅
+5. **06-AI反实践判定系统** → [CONCEPT_DECISION_TREE_反实践](concepts/06-AI反实践判定系统/CONCEPT_DECISION_TREE_反实践.md) ✅
+6. **07-AI框架批判与重构** → [FRAMEWORK_SELECTION_DECISION_TREE](concepts/07-AI框架批判与重构/FRAMEWORK_SELECTION_DECISION_TREE.md) ✅
+7. **Philosophy Ontology/DKB** → [CONCEPT_DECISION_TREE_Ontology](Philosophy/model/CONCEPT_DECISION_TREE_Ontology.md)、[CONCEPT_DECISION_TREE_DKB](Philosophy/model/CONCEPT_DECISION_TREE_DKB.md) ✅
 
 ---
 
@@ -179,13 +182,15 @@ graph LR
 2. **形式化方法对比矩阵**：形式化验证 vs 程序综合 vs 类型理论
 3. **AI理论层次对比矩阵**：基础理论 vs 方法理论 vs 应用理论
 
-### 3.3 concepts模块多维矩阵（规划中）
+### 3.3 concepts模块多维矩阵（已扩展 ✅）
 
-**扩展计划**：
+**已有矩阵**：
 
-1. **三层模型 vs DKB对比矩阵**：架构对比
-2. **收敛模型对比矩阵**：L0-L4收敛模型对比
-3. **意识理论对比矩阵**：IIT vs GWT vs 预测处理理论
+1. **03-Scaling Law** → [CONVERGENCE_L0_L4_MATRIX](concepts/03-Scaling Law与收敛分析/CONVERGENCE_L0_L4_MATRIX.md) L0-L4 收敛模型对比 ✅
+2. **04-AI意识** → [CONSCIOUSNESS_THEORY_MATRIX](concepts/04-AI意识与认知模拟/CONSCIOUSNESS_THEORY_MATRIX.md) IIT/GWT/HOT/RCUET 等 ✅
+3. **05-AI科学理论** → [CONCEPT_MATRIX_科学理论](concepts/05-AI科学理论/CONCEPT_MATRIX_科学理论.md) 涌现/RLHF/CoT 准理论框架 ✅
+4. **07-AI框架批判与重构** → [CRITIQUE_DIMENSION_MATRIX](concepts/07-AI框架批判与重构/CRITIQUE_DIMENSION_MATRIX.md) 批判四维度、重构方案选型 ✅
+5. **[CONCEPTS_COMPARISON_MATRIX](concepts/CONCEPTS_COMPARISON_MATRIX.md)**：跨主题概念对比 ✅
 
 ---
 
@@ -242,13 +247,14 @@ graph LR
 2. **程序综合模块** → 程序综合证明树
 3. **类型理论模块** → 类型理论证明树
 
-### 4.3 concepts模块证明树（规划中）
+### 4.3 concepts模块证明树
+
+**概念判断树**（含可判定性判定）：[CONCEPT_DECISION_TREE_反实践](concepts/06-AI反实践判定系统/CONCEPT_DECISION_TREE_反实践.md) §四 可判定性层级判定树
 
 **扩展计划**：
 
 1. **AI科学理论** → 理论化改进方法证明树
-2. **AI反实践判定系统** → 可判定性证明树
-3. **Scaling Law与收敛分析** → 收敛性证明树
+2. **Scaling Law与收敛分析** → 收敛性证明树（L0–L4 收敛性形式化）
 
 ---
 
@@ -297,13 +303,14 @@ graph LR
 2. **方法选择决策树**：选择机器学习方法的决策流程
 3. **理论选择决策树**：选择理论框架的决策流程
 
-### 5.3 concepts模块决策树（规划中）
+### 5.3 concepts模块决策树 ✅
 
-**扩展计划**：
+**已创建**：
 
-1. **架构选择决策树**：三层模型 vs 神经算子理论
-2. **方法论选择决策树**：经验试错 vs 理论驱动
-3. **收敛模型选择决策树**：L0-L4收敛模型选择
+1. **转化度判定决策树**：[CONCEPT_DECISION_TREE_转化度](concepts/02-AI炼金术转化度模型/CONCEPT_DECISION_TREE_转化度.md)（转化度 Level 1–5、炼金术陷阱）
+2. **收敛策略选择决策树**：[CONCEPT_DECISION_TREE_收敛策略](concepts/03-Scaling Law与收敛分析/CONCEPT_DECISION_TREE_收敛策略.md)（L0–L4、Scaling Law 策略、收敛驱动力）
+3. **反实践判定决策树**：[CONCEPT_DECISION_TREE_反实践](concepts/06-AI反实践判定系统/CONCEPT_DECISION_TREE_反实践.md)（反实践归属、严重程度、可判定性层级）
+4. **技术选型决策树**：[TECHNICAL_SELECTION_DECISION_TREE](Philosophy/model/TECHNICAL_SELECTION_DECISION_TREE.md)（验证/测试、Ontology/RAG、意识检验）
 
 ---
 

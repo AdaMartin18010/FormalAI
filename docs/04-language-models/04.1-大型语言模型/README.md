@@ -1546,6 +1546,23 @@ $$\text{sim}(u_1, u_2) = \text{sim}(m_1, m_2)$$
 
 ---
 
+## concepts 交叉引用 / Concepts Cross-Reference
+
+- [01-AI三层模型架构（数据层）](../../concepts/01-AI三层模型架构/README.md) - LLM 对应数据层数学概率模型
+- [03-Scaling Law与收敛分析](../../concepts/03-Scaling Law与收敛分析/README.md) - Scaling Law、收敛层级、Chinchilla
+- [05-AI科学理论](../../concepts/05-AI科学理论/README.md) - RLHF、CoT、涌现理论
+- [07-AI框架批判与重构](../../concepts/07-AI框架批判与重构/README.md) - LLM 架构批判、神经算子替代
+
+### 权威对标状态 / Authority Alignment
+
+| 课程/来源 | 编号 | 对标模块 | 状态 |
+|-----------|------|----------|------|
+| Berkeley CS294 Advanced LLM Agents | LLM-01 | LLM 推理、搜索与规划、定理证明 | Spring 2025 活跃 |
+| MIT 6.4110 Representation & Reasoning | LLM-02 | 表示与推理 | airr.mit.edu |
+| [AUTHORITY_REFERENCE_INDEX](../AUTHORITY_REFERENCE_INDEX.md) | LLM-01~02 | 权威引用锚点 | 已列 |
+
+---
+
 ## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
 
 - 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的"权威索引（2025 持续滚动）"

@@ -460,6 +460,16 @@ graph TB
 ### 9.5 思维表征索引
 
 - [MINDMAP_INDEX.md](MINDMAP_INDEX.md) - 07-AI框架批判与重构主题思维导图索引
+- [CRITIQUE_DIMENSION_MATRIX.md](CRITIQUE_DIMENSION_MATRIX.md) - 批判四维度 vs 严重性、重构方案选型矩阵
+- [FRAMEWORK_SELECTION_DECISION_TREE.md](FRAMEWORK_SELECTION_DECISION_TREE.md) - 三层 vs 神经算子 vs 双视图架构选型决策树
+
+### 权威对标状态
+
+| 维度 | 状态 | 说明 |
+|------|------|------|
+| 权威引用 | ⚠️ 部分 | 项目原创批判框架；神经算子见 [DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md) §七 |
+| 概念定义 | ✅ 已对标 | 与 Lu et al. FNO/DeepONet 算子学习可对标 |
+| 待验证 | - | 07.8 科学完备性对标清单执行 |
 
 ---
 

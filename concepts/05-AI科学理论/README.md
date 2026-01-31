@@ -265,6 +265,16 @@ graph TD
 
 **实用建议**：把 AI 当作**概率性认知引擎**——知道它大概能工作，但永远准备 Plan B；用**混合方法**（训练+规则+验证）而非单一理论指导实践；关注**可观测的行为约束**，而非内在的意识模拟。
 
+### 权威对标状态
+
+| 维度 | 状态 | 说明 |
+|------|------|------|
+| 权威引用 | ✅ 已对标 | RLHF/CoT 见 [DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md) §五；InstructGPT、Chain-of-Thought 原始论文 |
+| 概念定义 | ✅ 已对标 | 三大支柱方法论与 concepts/04 准理论框架一致 |
+| 待验证 | ⚠️ | 涌现临界点公式 $W_{critical}$ 的文献依据 |
+
+**权威对标锚点**：[AUTHORITY_REFERENCE_INDEX](../../docs/AUTHORITY_REFERENCE_INDEX.md) LLM-01/02、RL-01（CMU 10-703）；[CONCEPT_MATRIX_科学理论](CONCEPT_MATRIX_科学理论.md) RLHF/CoT/涌现 多维矩阵
+
 ---
 
 ## 九、Ontology作为科学对象
@@ -351,6 +361,7 @@ $$\text{DKB} = (O, L, H)$$
 ### 10.5 思维表征索引
 
 - [MINDMAP_INDEX.md](MINDMAP_INDEX.md) - 05-AI科学理论主题思维导图索引
+- [CONCEPT_MATRIX_科学理论.md](CONCEPT_MATRIX_科学理论.md) - 涌现/RLHF/CoT 准理论框架多维矩阵
 
 ---
 

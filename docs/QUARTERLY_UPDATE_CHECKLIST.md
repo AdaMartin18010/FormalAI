@@ -288,6 +288,16 @@
 - [ ] 图表清晰准确
 - [ ] 链接有效
 
+### 5.4 数据时效性检查（每季度）
+
+**依据**：CONTENT_CRITIQUE_AND_ADVANCEMENT_PLAN §4.4 阶段三
+
+- [ ] Palantir 财报数据（若 Philosophy 模块引用）更新至最新季报
+- [ ] 案例研究数据（Walgreens、房利美等）验证日期标注
+- [ ] 模型参数量/基准分数（LATEST_AI_DEVELOPMENTS）更新至最新发布
+- [ ] AUTHORITY_REFERENCE_INDEX 新增权威源扫描
+- [ ] BENCHMARKING_REPORT 季度报告生成（见 docs/BENCHMARKING_REPORT_Q1_2025.md）
+
 ---
 
 ## 六、更新记录

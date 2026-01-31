@@ -266,6 +266,16 @@ AI 的本质是**三层异质体的脆弱平衡**：
 
 **三者关系**：控制层是**缰绳**，数据层是**马**，执行层是**肌肉**。缰绳无法精确控制马的方向（概率性），肌肉也无法理解缰绳的意图（无自我性）。
 
+### 权威对标状态
+
+| 维度 | 状态 | 说明 |
+|------|------|------|
+| 权威引用 | ✅ 已对标 | 图灵机、可计算性见 [DEFINITION_SOURCE_TABLE](../DEFINITION_SOURCE_TABLE.md) §三；Goodfellow DL [AUTHORITY_REFERENCE_INDEX](../../docs/AUTHORITY_REFERENCE_INDEX.md) |
+| 概念定义 | ✅ 已对标 | 执行/控制/数据层与 01.1.1 图灵机形式化一致 |
+| 待验证 | ⚠️ | 与 Stanford CS230/CS221 课程大纲逐项对比 |
+
+**权威对标锚点**：[AUTHORITY_REFERENCE_INDEX](../../docs/AUTHORITY_REFERENCE_INDEX.md) DL-02（Stanford CS230/CS221）、DL-03（MIT 6.S965 TinyML）
+
 ---
 
 ## 九、相关主题
@@ -289,6 +299,7 @@ AI 的本质是**三层异质体的脆弱平衡**：
 ### 9.4 思维表征索引
 
 - [MINDMAP_INDEX.md](MINDMAP_INDEX.md) - 01-AI三层模型架构主题思维导图索引
+- [CONCEPT_DECISION_TREE_三层模型.md](CONCEPT_DECISION_TREE_三层模型.md) - 三层模型选型与层间冲突判定树
 
 ---
 
