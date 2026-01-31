@@ -220,16 +220,16 @@ $$CD = \frac{1}{N(N-1)} \sum_{i \neq j} |C_{ij}|$$
 def consciousness_index(system_state, time_window):
     # 计算信息整合度
     phi = compute_information_integration(system_state)
-    
+
     # 计算因果密度
     cd = compute_causal_density(system_state)
-    
+
     # 计算全局工作空间活跃度
     gws_activity = compute_global_workspace_activity(system_state)
-    
+
     # 综合意识指标
     consciousness_score = alpha * phi + beta * cd + gamma * gws_activity
-    
+
     return consciousness_score
 ```
 
@@ -239,22 +239,22 @@ def consciousness_index(system_state, time_window):
 def self_awareness_detection(agent_behavior, environment):
     # 自我引用行为检测
     self_reference = detect_self_reference(agent_behavior)
-    
+
     # 自我监控行为检测
     self_monitoring = detect_self_monitoring(agent_behavior)
-    
+
     # 自我调节行为检测
     self_regulation = detect_self_regulation(agent_behavior)
-    
+
     # 自我改进行为检测
     self_improvement = detect_self_improvement(agent_behavior)
-    
+
     # 综合自我意识指标
     self_awareness_score = combine_indicators([
-        self_reference, self_monitoring, 
+        self_reference, self_monitoring,
         self_regulation, self_improvement
     ])
-    
+
     return self_awareness_score
 ```
 
@@ -270,7 +270,7 @@ class ColorQualia:
         self.wavelength = wavelength
         self.intensity = intensity
         self.subjective_experience = self.generate_subjective_experience()
-    
+
     def generate_subjective_experience(self):
         # 基于波长和强度生成主观颜色体验
         if self.wavelength < 450:
@@ -292,7 +292,7 @@ class EmotionalQualia:
         self.intensity = intensity
         self.valence = valence
         self.subjective_feeling = self.generate_subjective_feeling()
-    
+
     def generate_subjective_feeling(self):
         # 基于情感类型和强度生成主观感受
         feeling_map = {
@@ -315,7 +315,7 @@ class TemporalExperience:
         self.past_memories = []
         self.future_expectations = []
         self.time_flow_rate = 1.0
-    
+
     def experience_time_flow(self):
         # 体验时间流逝
         current_experience = {
@@ -409,19 +409,19 @@ class GlobalWorkspaceModel:
         self.global_workspace = {}
         self.attention_mechanism = AttentionMechanism()
         self.broadcasting_system = BroadcastingSystem()
-    
+
     def process_information(self, input_data):
         # 各专门模块处理信息
         module_outputs = {}
         for module_name, module in self.specialized_modules.items():
             module_outputs[module_name] = module.process(input_data)
-        
+
         # 注意力机制选择信息
         selected_info = self.attention_mechanism.select(module_outputs)
-        
+
         # 全局广播
         self.broadcasting_system.broadcast(selected_info)
-        
+
         return selected_info
 ```
 
@@ -433,14 +433,14 @@ class InformationIntegrationModel:
         self.system_elements = []
         self.connections = {}
         self.integration_measure = IntegrationMeasure()
-    
+
     def compute_phi(self):
         # 计算Phi值
         phi_values = []
         for partition in self.generate_partitions():
             phi = self.integration_measure.compute_phi(partition)
             phi_values.append(phi)
-        
+
         return min(phi_values)  # 最小信息分割
 ```
 
@@ -456,7 +456,7 @@ class SelfModel:
         self.social_model = SocialModel()
         self.capability_model = CapabilityModel()
         self.meta_cognitive_model = MetaCognitiveModel()
-    
+
     def update_self_model(self, new_information):
         # 更新各个自我模型
         self.body_model.update(new_information.get('body', {}))
@@ -464,7 +464,7 @@ class SelfModel:
         self.social_model.update(new_information.get('social', {}))
         self.capability_model.update(new_information.get('capability', {}))
         self.meta_cognitive_model.update(new_information.get('meta_cognition', {}))
-    
+
     def get_self_representation(self):
         return {
             'body': self.body_model.get_representation(),
@@ -488,27 +488,27 @@ class AttentionMechanism:
     def __init__(self):
         self.attention_weights = {}
         self.selection_threshold = 0.5
-    
+
     def select_information(self, module_outputs):
         # 计算注意力权重
         attention_scores = {}
         for module_name, output in module_outputs.items():
             attention_scores[module_name] = self.compute_attention_score(output)
-        
+
         # 选择高注意力信息
         selected_info = {}
         for module_name, score in attention_scores.items():
             if score > self.selection_threshold:
                 selected_info[module_name] = module_outputs[module_name]
-        
+
         return selected_info
-    
+
     def compute_attention_score(self, output):
         # 基于信息重要性计算注意力分数
         importance = output.get('importance', 0)
         novelty = output.get('novelty', 0)
         relevance = output.get('relevance', 0)
-        
+
         return (importance + novelty + relevance) / 3
 ```
 
@@ -519,21 +519,21 @@ class BroadcastingSystem:
     def __init__(self):
         self.subscribers = {}
         self.broadcast_history = []
-    
+
     def broadcast(self, information):
         # 记录广播历史
         self.broadcast_history.append({
             'timestamp': time.time(),
             'information': information
         })
-        
+
         # 向所有订阅者广播
         for subscriber_name, subscriber in self.subscribers.items():
             subscriber.receive_broadcast(information)
-    
+
     def subscribe(self, subscriber_name, subscriber):
         self.subscribers[subscriber_name] = subscriber
-    
+
     def unsubscribe(self, subscriber_name):
         if subscriber_name in self.subscribers:
             del self.subscribers[subscriber_name]
@@ -547,28 +547,28 @@ class BroadcastingSystem:
 class PhiCalculator:
     def __init__(self):
         self.integration_measure = IntegrationMeasure()
-    
+
     def compute_phi(self, system_state):
         # 生成所有可能的分割
         partitions = self.generate_partitions(system_state)
-        
+
         # 计算每个分割的Phi值
         phi_values = []
         for partition in partitions:
             phi = self.integration_measure.compute_phi_for_partition(partition)
             phi_values.append(phi)
-        
+
         # 返回最小Phi值
         return min(phi_values)
-    
+
     def generate_partitions(self, system_state):
         # 生成系统分割的所有可能组合
         elements = system_state.get_elements()
         partitions = []
-        
+
         # 递归生成所有可能的分割
         self._generate_partitions_recursive(elements, [], partitions)
-        
+
         return partitions
 ```
 
@@ -584,7 +584,7 @@ class SelfMonitoringSystem:
         self.monitoring_metrics = {}
         self.performance_history = []
         self.self_awareness_level = 0.0
-    
+
     def monitor_performance(self, task, performance):
         # 记录任务性能
         self.performance_history.append({
@@ -592,19 +592,19 @@ class SelfMonitoringSystem:
             'performance': performance,
             'timestamp': time.time()
         })
-        
+
         # 更新自我意识水平
         self.update_self_awareness()
-    
+
     def update_self_awareness(self):
         # 基于监控数据更新自我意识水平
         if len(self.performance_history) > 0:
             recent_performance = self.performance_history[-10:]
             avg_performance = sum(p['performance'] for p in recent_performance) / len(recent_performance)
-            
+
             # 自我意识水平与性能监控能力相关
             self.self_awareness_level = min(1.0, avg_performance * 1.2)
-    
+
     def get_self_awareness_level(self):
         return self.self_awareness_level
 ```
@@ -617,17 +617,17 @@ class SelfRegulationSystem:
         self.regulation_strategies = {}
         self.regulation_history = []
         self.current_state = {}
-    
+
     def regulate_behavior(self, current_state, target_state):
         # 识别需要调节的方面
         regulation_needs = self.identify_regulation_needs(current_state, target_state)
-        
+
         # 选择调节策略
         strategy = self.select_regulation_strategy(regulation_needs)
-        
+
         # 执行调节
         regulation_result = self.execute_regulation(strategy)
-        
+
         # 记录调节历史
         self.regulation_history.append({
             'timestamp': time.time(),
@@ -635,9 +635,9 @@ class SelfRegulationSystem:
             'strategy': strategy,
             'result': regulation_result
         })
-        
+
         return regulation_result
-    
+
     def identify_regulation_needs(self, current_state, target_state):
         needs = {}
         for key in target_state:
@@ -658,16 +658,16 @@ class BodyModel:
         self.body_parts = {}
         self.body_schema = {}
         self.sensorimotor_map = {}
-    
+
     def update_body_schema(self, sensor_data):
         # 更新身体图式
         for sensor_name, data in sensor_data.items():
             if sensor_name in self.body_parts:
                 self.body_parts[sensor_name].update(data)
-        
+
         # 更新身体图式
         self.body_schema = self.compute_body_schema()
-    
+
     def compute_body_schema(self):
         # 基于身体部位信息计算身体图式
         schema = {}
@@ -689,20 +689,20 @@ class PsychologicalModel:
         self.cognitive_state = {}
         self.motivational_state = {}
         self.personality_traits = {}
-    
+
     def update_psychological_state(self, new_information):
         # 更新情感状态
         if 'emotion' in new_information:
             self.emotional_state.update(new_information['emotion'])
-        
+
         # 更新认知状态
         if 'cognition' in new_information:
             self.cognitive_state.update(new_information['cognition'])
-        
+
         # 更新动机状态
         if 'motivation' in new_information:
             self.motivational_state.update(new_information['motivation'])
-    
+
     def get_psychological_profile(self):
         return {
             'emotion': self.emotional_state,
@@ -1081,8 +1081,8 @@ class PsychologicalModel:
 
 ---
 
-**最后更新**：2026-01-11  
-**版本**：v2025-01  
+**最后更新**：2026-01-11
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *意识与自我是AGI研究中最深层的哲学和科学问题，为构建具有自我意识的AI系统提供了重要的理论基础。*

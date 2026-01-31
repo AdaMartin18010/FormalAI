@@ -368,11 +368,11 @@ def maml_update(model, tasks, alpha, beta):
         for step in range(inner_steps):
             loss = compute_loss(model, task)
             model = model - alpha * grad(loss)
-        
+
         # 外循环更新
         meta_loss = compute_meta_loss(model, task)
         model = model - beta * grad(meta_loss)
-    
+
     return model
 ```
 
@@ -386,13 +386,13 @@ def prototypical_network(support_set, query_set, n_way, k_shot):
         class_samples = support_set[class_id]
         prototype = mean(class_samples)
         prototypes.append(prototype)
-    
+
     # 计算距离
     distances = []
     for query in query_set:
         query_distances = [distance(query, proto) for proto in prototypes]
         distances.append(query_distances)
-    
+
     return softmax(-distances)
 ```
 
@@ -404,12 +404,12 @@ def prototypical_network(support_set, query_set, n_way, k_shot):
 def elastic_weight_consolidation(model, new_task, lambda_reg):
     # 计算Fisher信息矩阵
     fisher_info = compute_fisher_information(model, new_task)
-    
+
     # 计算正则化项
     regularization = 0
     for param, fisher in zip(model.parameters(), fisher_info):
         regularization += fisher * (param - param_old) ** 2
-    
+
     # 总损失
     total_loss = task_loss + lambda_reg * regularization
     return total_loss
@@ -421,14 +421,14 @@ def elastic_weight_consolidation(model, new_task, lambda_reg):
 def progressive_neural_network(new_task, existing_columns):
     # 创建新列
     new_column = create_new_column(new_task)
-    
+
     # 添加横向连接
     for existing_column in existing_columns:
         lateral_connection = create_lateral_connection(
             existing_column, new_column
         )
         new_column.add_lateral_connection(lateral_connection)
-    
+
     return new_column
 ```
 
@@ -813,8 +813,8 @@ $$\log p(x) \geq \mathbb{E}_{q(z|x)}[\log p(x,z)] - \mathbb{E}_{q(z|x)}[\log q(z
 
 ---
 
-**最后更新**：2026-01-11  
-**版本**：v2025-01  
+**最后更新**：2026-01-11
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *通用智能理论为理解智能的本质和实现AGI提供了重要的理论基础，是人工智能领域最核心的研究方向之一。*

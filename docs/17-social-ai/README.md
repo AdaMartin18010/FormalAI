@@ -451,8 +451,8 @@ A multi-agent system is a distributed system composed of multiple agents that co
 
 ---
 
-**最后更新**：2025-01-01  
-**版本**：v2025-01  
+**最后更新**：2025-01-01
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *社会AI为构建智能化的社会系统提供了理论基础，推动人机协作和社会智能化的发展。*

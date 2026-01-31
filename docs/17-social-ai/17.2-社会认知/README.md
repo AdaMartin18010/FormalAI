@@ -154,7 +154,7 @@ class BeliefModel:
         self.beliefs = {}
         self.belief_network = BeliefNetwork()
         self.uncertainty = {}
-    
+
     def add_belief(self, proposition, confidence, source):
         belief = {
             'proposition': proposition,
@@ -164,7 +164,7 @@ class BeliefModel:
         }
         self.beliefs[proposition] = belief
         self.belief_network.add_node(proposition, belief)
-    
+
     def update_belief(self, proposition, new_confidence, new_source):
         if proposition in self.beliefs:
             old_belief = self.beliefs[proposition]
@@ -175,7 +175,7 @@ class BeliefModel:
             self.beliefs[proposition]['confidence'] = new_confidence
             self.beliefs[proposition]['source'] = new_source
             self.beliefs[proposition]['timestamp'] = time.time()
-    
+
     def infer_belief(self, proposition):
         # 基于信念网络推理
         if proposition in self.beliefs:
@@ -186,7 +186,7 @@ class BeliefModel:
             if related_beliefs:
                 return self.probabilistic_inference(proposition, related_beliefs)
             return 0.5  # 默认不确定性
-    
+
     def bayesian_update(self, prior, likelihood):
         # 简化的贝叶斯更新
         posterior = (likelihood * prior) / (likelihood * prior + (1 - likelihood) * (1 - prior))
@@ -203,7 +203,7 @@ class IntentionModel:
         self.goals = {}
         self.plans = {}
         self.commitments = {}
-    
+
     def add_intention(self, goal, priority, deadline=None):
         intention = {
             'goal': goal,
@@ -214,13 +214,13 @@ class IntentionModel:
         }
         self.intentions.append(intention)
         self.intentions.sort(key=lambda x: x['priority'], reverse=True)
-    
+
     def create_plan(self, goal):
         # 基于目标创建计划
         plan = self.planning_algorithm(goal)
         self.plans[goal] = plan
         return plan
-    
+
     def execute_plan(self, goal):
         if goal in self.plans:
             plan = self.plans[goal]
@@ -231,11 +231,11 @@ class IntentionModel:
                     # 重新规划
                     self.replan(goal)
                     break
-    
+
     def predict_behavior(self, other_agent, time_horizon):
         # 预测其他智能体的行为
         predicted_actions = []
-        
+
         # 基于已知的意图和计划
         if other_agent in self.other_agents_intentions:
             intentions = self.other_agents_intentions[other_agent]
@@ -243,7 +243,7 @@ class IntentionModel:
                 if intention['status'] == 'active':
                     actions = self.infer_actions_from_intention(intention)
                     predicted_actions.extend(actions)
-        
+
         return predicted_actions[:time_horizon]
 ```
 
@@ -256,31 +256,31 @@ class BeliefReasoning:
     def __init__(self):
         self.reasoning_rules = {}
         self.inference_engine = InferenceEngine()
-    
+
     def reason_about_beliefs(self, agent, situation):
         # 推理智能体在特定情况下的信念
         beliefs = {}
-        
+
         # 基于观察推理信念
         observations = self.get_observations(agent, situation)
         for observation in observations:
             belief = self.infer_belief_from_observation(observation)
             beliefs[belief['proposition']] = belief
-        
+
         # 基于行为推理信念
         behaviors = self.get_behaviors(agent, situation)
         for behavior in behaviors:
             belief = self.infer_belief_from_behavior(behavior)
             beliefs[belief['proposition']] = belief
-        
+
         # 基于社会关系推理信念
         social_context = self.get_social_context(agent, situation)
         for context in social_context:
             belief = self.infer_belief_from_context(context)
             beliefs[belief['proposition']] = belief
-        
+
         return beliefs
-    
+
     def infer_belief_from_observation(self, observation):
         # 从观察推理信念
         if observation['type'] == 'visual':
@@ -289,7 +289,7 @@ class BeliefReasoning:
             return self.auditory_belief_inference(observation)
         elif observation['type'] == 'textual':
             return self.textual_belief_inference(observation)
-    
+
     def infer_belief_from_behavior(self, behavior):
         # 从行为推理信念
         behavior_pattern = self.analyze_behavior_pattern(behavior)
@@ -304,47 +304,47 @@ class IntentionReasoning:
     def __init__(self):
         self.intention_patterns = {}
         self.goal_hierarchy = {}
-    
+
     def reason_about_intentions(self, agent, behavior_sequence):
         # 从行为序列推理意图
         intentions = []
-        
+
         # 分析行为模式
         behavior_patterns = self.analyze_behavior_patterns(behavior_sequence)
-        
+
         # 匹配已知的意图模式
         for pattern in behavior_patterns:
             matched_intentions = self.match_intention_patterns(pattern)
             intentions.extend(matched_intentions)
-        
+
         # 基于目标层次推理
         goal_hierarchy = self.infer_goal_hierarchy(behavior_sequence)
         for goal in goal_hierarchy:
             intention = self.create_intention_from_goal(goal)
             intentions.append(intention)
-        
+
         return intentions
-    
+
     def analyze_behavior_patterns(self, behavior_sequence):
         patterns = []
-        
+
         # 时间模式分析
         temporal_patterns = self.analyze_temporal_patterns(behavior_sequence)
         patterns.extend(temporal_patterns)
-        
+
         # 空间模式分析
         spatial_patterns = self.analyze_spatial_patterns(behavior_sequence)
         patterns.extend(spatial_patterns)
-        
+
         # 功能模式分析
         functional_patterns = self.analyze_functional_patterns(behavior_sequence)
         patterns.extend(functional_patterns)
-        
+
         return patterns
-    
+
     def match_intention_patterns(self, pattern):
         matched_intentions = []
-        
+
         for intention_type, intention_pattern in self.intention_patterns.items():
             similarity = self.calculate_pattern_similarity(pattern, intention_pattern)
             if similarity > self.similarity_threshold:
@@ -354,7 +354,7 @@ class IntentionReasoning:
                     'pattern': pattern
                 }
                 matched_intentions.append(intention)
-        
+
         return matched_intentions
 ```
 
@@ -370,7 +370,7 @@ class ObservationalLearning:
         self.observed_behaviors = []
         self.behavior_models = {}
         self.imitation_network = ImitationNetwork()
-    
+
     def observe_behavior(self, demonstrator, behavior, context):
         observation = {
             'demonstrator': demonstrator,
@@ -380,14 +380,14 @@ class ObservationalLearning:
             'outcome': None  # 稍后更新
         }
         self.observed_behaviors.append(observation)
-        
+
         # 更新行为模型
         self.update_behavior_model(demonstrator, behavior, context)
-    
+
     def imitate_behavior(self, target_behavior, context):
         # 寻找相似的观察经验
         similar_observations = self.find_similar_observations(target_behavior, context)
-        
+
         if similar_observations:
             # 选择最佳模仿策略
             best_observation = self.select_best_observation(similar_observations)
@@ -396,17 +396,17 @@ class ObservationalLearning:
         else:
             # 基于行为模型生成新行为
             return self.generate_behavior_from_model(target_behavior, context)
-    
+
     def update_behavior_model(self, demonstrator, behavior, context):
         if demonstrator not in self.behavior_models:
             self.behavior_models[demonstrator] = BehaviorModel()
-        
+
         model = self.behavior_models[demonstrator]
         model.add_behavior(behavior, context)
-    
+
     def find_similar_observations(self, target_behavior, context):
         similar_observations = []
-        
+
         for observation in self.observed_behaviors:
             behavior_similarity = self.calculate_behavior_similarity(
                 target_behavior, observation['behavior']
@@ -414,13 +414,13 @@ class ObservationalLearning:
             context_similarity = self.calculate_context_similarity(
                 context, observation['context']
             )
-            
+
             overall_similarity = (behavior_similarity + context_similarity) / 2
-            
+
             if overall_similarity > self.similarity_threshold:
                 observation['similarity'] = overall_similarity
                 similar_observations.append(observation)
-        
+
         return sorted(similar_observations, key=lambda x: x['similarity'], reverse=True)
 ```
 
@@ -432,7 +432,7 @@ class OutcomeLearning:
         self.outcome_models = {}
         self.causal_models = {}
         self.reward_models = {}
-    
+
     def observe_outcome(self, behavior, context, outcome):
         observation = {
             'behavior': behavior,
@@ -440,46 +440,46 @@ class OutcomeLearning:
             'outcome': outcome,
             'timestamp': time.time()
         }
-        
+
         # 更新结果模型
         self.update_outcome_model(behavior, context, outcome)
-        
+
         # 更新因果模型
         self.update_causal_model(behavior, outcome)
-        
+
         # 更新奖励模型
         self.update_reward_model(behavior, context, outcome)
-    
+
     def predict_outcome(self, behavior, context):
         # 基于结果模型预测
         outcome_prediction = self.outcome_models.get(behavior, {}).get(context, None)
-        
+
         if outcome_prediction is None:
             # 基于因果模型预测
             outcome_prediction = self.predict_from_causal_model(behavior, context)
-        
+
         return outcome_prediction
-    
+
     def select_behavior(self, context, available_behaviors):
         # 基于奖励模型选择行为
         behavior_rewards = {}
-        
+
         for behavior in available_behaviors:
             predicted_outcome = self.predict_outcome(behavior, context)
             reward = self.calculate_reward(predicted_outcome)
             behavior_rewards[behavior] = reward
-        
+
         # 选择奖励最高的行为
         best_behavior = max(behavior_rewards, key=behavior_rewards.get)
         return best_behavior
-    
+
     def update_outcome_model(self, behavior, context, outcome):
         if behavior not in self.outcome_models:
             self.outcome_models[behavior] = {}
-        
+
         if context not in self.outcome_models[behavior]:
             self.outcome_models[behavior][context] = []
-        
+
         self.outcome_models[behavior][context].append(outcome)
 ```
 
@@ -493,55 +493,55 @@ class SocialReinforcementLearning:
         self.social_rewards = {}
         self.reputation_system = ReputationSystem()
         self.social_norms = SocialNorms()
-    
+
     def calculate_social_reward(self, behavior, context, social_feedback):
         reward = 0
-        
+
         # 基于社会反馈计算奖励
         for feedback in social_feedback:
             if feedback['type'] == 'approval':
                 reward += feedback['intensity']
             elif feedback['type'] == 'disapproval':
                 reward -= feedback['intensity']
-        
+
         # 基于声誉计算奖励
         reputation_reward = self.reputation_system.calculate_reward(behavior, context)
         reward += reputation_reward
-        
+
         # 基于社会规范计算奖励
         norm_reward = self.social_norms.evaluate_behavior(behavior, context)
         reward += norm_reward
-        
+
         return reward
-    
+
     def update_social_policy(self, experience):
         # 更新社会策略
         state, action, reward, next_state = experience
-        
+
         # 计算社会奖励
         social_reward = self.calculate_social_reward(action, state, reward['social_feedback'])
-        
+
         # 更新Q值
         self.update_q_value(state, action, social_reward, next_state)
-        
+
         # 更新声誉
         self.reputation_system.update_reputation(action, state, reward['social_feedback'])
-    
+
     def select_social_action(self, state, available_actions):
         # 考虑社会因素选择行动
         action_values = {}
-        
+
         for action in available_actions:
             # 基础Q值
             base_value = self.get_q_value(state, action)
-            
+
             # 社会价值
             social_value = self.calculate_social_value(action, state)
-            
+
             # 综合价值
             total_value = base_value + self.social_weight * social_value
             action_values[action] = total_value
-        
+
         # 选择价值最高的行动
         best_action = max(action_values, key=action_values.get)
         return best_action
@@ -560,48 +560,48 @@ class MultimodalEmotionRecognition:
         self.audio_recognizer = AudioEmotionRecognizer()
         self.text_recognizer = TextEmotionRecognizer()
         self.fusion_network = EmotionFusionNetwork()
-    
+
     def recognize_emotion(self, visual_data, audio_data, text_data):
         emotions = {}
-        
+
         # 视觉情感识别
         if visual_data is not None:
             visual_emotions = self.visual_recognizer.recognize(visual_data)
             emotions['visual'] = visual_emotions
-        
+
         # 音频情感识别
         if audio_data is not None:
             audio_emotions = self.audio_recognizer.recognize(audio_data)
             emotions['audio'] = audio_emotions
-        
+
         # 文本情感识别
         if text_data is not None:
             text_emotions = self.text_recognizer.recognize(text_data)
             emotions['text'] = text_emotions
-        
+
         # 多模态融合
         fused_emotion = self.fusion_network.fuse(emotions)
-        
+
         return fused_emotion
-    
+
     def recognize_emotion_from_behavior(self, behavior_data):
         # 从行为数据识别情感
         behavior_features = self.extract_behavior_features(behavior_data)
         emotion = self.behavior_emotion_classifier.predict(behavior_features)
         return emotion
-    
+
     def extract_behavior_features(self, behavior_data):
         features = {}
-        
+
         # 提取时间特征
         features['temporal'] = self.extract_temporal_features(behavior_data)
-        
+
         # 提取空间特征
         features['spatial'] = self.extract_spatial_features(behavior_data)
-        
+
         # 提取功能特征
         features['functional'] = self.extract_functional_features(behavior_data)
-        
+
         return features
 ```
 
@@ -614,49 +614,49 @@ class EmotionStateModel:
         self.emotion_transitions = {}
         self.emotion_intensities = {}
         self.emotion_duration = {}
-    
+
     def update_emotion_state(self, agent_id, emotion, intensity, duration):
         if agent_id not in self.emotion_states:
             self.emotion_states[agent_id] = {}
             self.emotion_intensities[agent_id] = {}
             self.emotion_duration[agent_id] = {}
-        
+
         # 更新情感状态
         self.emotion_states[agent_id][emotion] = True
         self.emotion_intensities[agent_id][emotion] = intensity
         self.emotion_duration[agent_id][emotion] = duration
-        
+
         # 更新情感转换
         self.update_emotion_transitions(agent_id, emotion)
-    
+
     def predict_emotion_transition(self, agent_id, current_emotion, context):
         # 预测情感转换
         if agent_id in self.emotion_transitions:
             transitions = self.emotion_transitions[agent_id]
-            
+
             if current_emotion in transitions:
                 possible_transitions = transitions[current_emotion]
-                
+
                 # 基于上下文选择最可能的转换
                 best_transition = self.select_best_transition(
                     possible_transitions, context
                 )
-                
+
                 return best_transition
-        
+
         return None
-    
+
     def calculate_emotion_influence(self, agent_id, emotion, target_agent):
         # 计算情感影响
         if agent_id in self.emotion_states and emotion in self.emotion_states[agent_id]:
             intensity = self.emotion_intensities[agent_id][emotion]
-            
+
             # 基于社会关系计算影响强度
             social_relationship = self.get_social_relationship(agent_id, target_agent)
             influence_strength = intensity * social_relationship['influence_factor']
-            
+
             return influence_strength
-        
+
         return 0
 ```
 
@@ -670,43 +670,43 @@ class EmotionExpressionGenerator:
         self.expression_models = {}
         self.expression_rules = {}
         self.cultural_context = CulturalContext()
-    
+
     def generate_expression(self, emotion, intensity, context):
         # 基于情感和强度生成表达
         expression = {}
-        
+
         # 面部表情
         facial_expression = self.generate_facial_expression(emotion, intensity)
         expression['facial'] = facial_expression
-        
+
         # 语音表达
         vocal_expression = self.generate_vocal_expression(emotion, intensity)
         expression['vocal'] = vocal_expression
-        
+
         # 身体姿态
         body_expression = self.generate_body_expression(emotion, intensity)
         expression['body'] = body_expression
-        
+
         # 文本表达
         text_expression = self.generate_text_expression(emotion, intensity, context)
         expression['text'] = text_expression
-        
+
         # 考虑文化背景
         expression = self.adapt_to_cultural_context(expression, context)
-        
+
         return expression
-    
+
     def generate_facial_expression(self, emotion, intensity):
         # 基于情感类型和强度生成面部表情
         expression_params = self.emotion_expression_mapping[emotion]
-        
+
         # 根据强度调整参数
         adjusted_params = {}
         for param, value in expression_params.items():
             adjusted_params[param] = value * intensity
-        
+
         return adjusted_params
-    
+
     def generate_vocal_expression(self, emotion, intensity):
         # 生成语音表达参数
         vocal_params = {
@@ -715,20 +715,20 @@ class EmotionExpressionGenerator:
             'rate': self.calculate_rate(emotion, intensity),
             'tone': self.calculate_tone(emotion, intensity)
         }
-        
+
         return vocal_params
-    
+
     def adapt_to_cultural_context(self, expression, context):
         # 根据文化背景调整表达
         cultural_rules = self.cultural_context.get_rules(context['culture'])
-        
+
         adapted_expression = expression.copy()
         for modality, rules in cultural_rules.items():
             if modality in adapted_expression:
                 adapted_expression[modality] = self.apply_cultural_rules(
                     adapted_expression[modality], rules
                 )
-        
+
         return adapted_expression
 ```
 
@@ -744,75 +744,75 @@ class SocialReasoningEngine:
         self.reasoning_rules = {}
         self.social_knowledge = SocialKnowledgeBase()
         self.inference_engine = InferenceEngine()
-    
+
     def reason_about_social_situation(self, situation):
         # 分析社会情境
         analysis = {}
-        
+
         # 识别参与者
         participants = self.identify_participants(situation)
         analysis['participants'] = participants
-        
+
         # 分析社会关系
         social_relationships = self.analyze_social_relationships(participants)
         analysis['relationships'] = social_relationships
-        
+
         # 推理社会规范
         social_norms = self.infer_social_norms(situation)
         analysis['norms'] = social_norms
-        
+
         # 预测行为
         predicted_behaviors = self.predict_behaviors(participants, situation)
         analysis['predicted_behaviors'] = predicted_behaviors
-        
+
         # 推理意图
         inferred_intentions = self.infer_intentions(participants, situation)
         analysis['intentions'] = inferred_intentions
-        
+
         return analysis
-    
+
     def identify_participants(self, situation):
         participants = []
-        
+
         # 从情境中识别智能体
         for entity in situation['entities']:
             if self.is_agent(entity):
                 participants.append(entity)
-        
+
         return participants
-    
+
     def analyze_social_relationships(self, participants):
         relationships = {}
-        
+
         for i, participant1 in enumerate(participants):
             for j, participant2 in enumerate(participants[i+1:], i+1):
                 relationship = self.determine_relationship(participant1, participant2)
                 relationships[(participant1, participant2)] = relationship
-        
+
         return relationships
-    
+
     def infer_social_norms(self, situation):
         norms = []
-        
+
         # 基于情境类型推理规范
         situation_type = self.classify_situation_type(situation)
         applicable_norms = self.social_knowledge.get_norms(situation_type)
-        
+
         for norm in applicable_norms:
             if self.is_norm_applicable(norm, situation):
                 norms.append(norm)
-        
+
         return norms
-    
+
     def predict_behaviors(self, participants, situation):
         predicted_behaviors = {}
-        
+
         for participant in participants:
             # 基于心理状态预测行为
             mental_state = self.infer_mental_state(participant, situation)
             behaviors = self.predict_behaviors_from_mental_state(mental_state)
             predicted_behaviors[participant] = behaviors
-        
+
         return predicted_behaviors
 ```
 
@@ -824,44 +824,44 @@ class SocialDecisionMaking:
         self.decision_models = {}
         self.social_preferences = {}
         self.fairness_models = {}
-    
+
     def make_social_decision(self, decision_context):
         # 分析决策情境
         context_analysis = self.analyze_decision_context(decision_context)
-        
+
         # 识别决策选项
         options = self.identify_decision_options(decision_context)
-        
+
         # 评估每个选项
         option_evaluations = {}
         for option in options:
             evaluation = self.evaluate_option(option, context_analysis)
             option_evaluations[option] = evaluation
-        
+
         # 选择最佳选项
         best_option = self.select_best_option(option_evaluations)
-        
+
         return best_option
-    
+
     def evaluate_option(self, option, context_analysis):
         evaluation = {}
-        
+
         # 个人效用
         personal_utility = self.calculate_personal_utility(option, context_analysis)
         evaluation['personal_utility'] = personal_utility
-        
+
         # 社会效用
         social_utility = self.calculate_social_utility(option, context_analysis)
         evaluation['social_utility'] = social_utility
-        
+
         # 公平性
         fairness = self.calculate_fairness(option, context_analysis)
         evaluation['fairness'] = fairness
-        
+
         # 社会规范符合度
         norm_compliance = self.calculate_norm_compliance(option, context_analysis)
         evaluation['norm_compliance'] = norm_compliance
-        
+
         # 综合评分
         total_score = (
             personal_utility * context_analysis['personal_weight'] +
@@ -870,22 +870,22 @@ class SocialDecisionMaking:
             norm_compliance * context_analysis['norm_weight']
         )
         evaluation['total_score'] = total_score
-        
+
         return evaluation
-    
+
     def calculate_social_utility(self, option, context_analysis):
         social_utility = 0
-        
+
         # 考虑对其他人的影响
         for other_agent in context_analysis['other_agents']:
             impact = self.calculate_impact_on_agent(option, other_agent)
             social_utility += impact * context_analysis['social_weights'][other_agent]
-        
+
         return social_utility
-    
+
     def calculate_fairness(self, option, context_analysis):
         fairness_score = 0
-        
+
         # 基于公平性理论计算
         if context_analysis['fairness_type'] == 'equality':
             fairness_score = self.calculate_equality_fairness(option, context_analysis)
@@ -893,7 +893,7 @@ class SocialDecisionMaking:
             fairness_score = self.calculate_equity_fairness(option, context_analysis)
         elif context_analysis['fairness_type'] == 'need':
             fairness_score = self.calculate_need_fairness(option, context_analysis)
-        
+
         return fairness_score
 ```
 
@@ -1102,8 +1102,8 @@ class SocialDecisionMaking:
 
 ---
 
-**最后更新**：2025-01-01  
-**版本**：v2025-01  
+**最后更新**：2025-01-01
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *社会认知为构建具有社会智能的AI系统提供了理论基础，推动人机交互和社会智能化的发展。*

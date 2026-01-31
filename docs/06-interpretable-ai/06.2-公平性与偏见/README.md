@@ -375,6 +375,8 @@ fn eopp(group: &HashMap<String, Stat>) -> Vec<(String, f32)> { // TPR
     - [Rust实现：公平性检测系统](#rust实现公平性检测系统)
     - [Haskell实现：偏见缓解算法](#haskell实现偏见缓解算法)
   - [参考文献 / References](#参考文献--references)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [公平性与偏见理论的最新突破](#公平性与偏见理论的最新突破)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---

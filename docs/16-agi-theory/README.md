@@ -398,8 +398,8 @@ General intelligence refers to the ability to understand, learn, and apply knowl
 
 ---
 
-**最后更新**：2025-01-01  
-**版本**：v2025-01  
+**最后更新**：2025-01-01
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *AGI通用人工智能理论代表了人工智能领域的终极目标，为构建真正智能的AI系统提供了理论基础和实践指导。*

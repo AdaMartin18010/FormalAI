@@ -174,6 +174,8 @@ fn msg_passing(h: &Vec<Vec<f32>>, adj: &Vec<Vec<usize>>, w: f32) -> Vec<Vec<f32>
     - [评测配置：一致性与显著性（YAML）](#评测配置一致性与显著性yaml)
     - [Rust实现：SMT 一致性检查（伪实现）](#rust实现smt-一致性检查伪实现)
   - [参考文献 / References / Literatur / Références](#参考文献--references--literatur--références)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [跨模态推理理论的最新突破](#跨模态推理理论的最新突破)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---
@@ -1222,7 +1224,7 @@ fn main() {
      - **推理能力**：在保持语言能力的同时实现跨模态推理
    - **技术影响**：多模态技术的发展推动了跨模态推理的研究
 
-3. **跨模态推理与知识表示**
+4. **跨模态推理与知识表示**
    - **知识图谱推理**：跨模态推理在知识图谱推理中的应用持续优化
    - **符号推理**：跨模态推理与符号推理的结合取得新进展
    - **技术影响**：跨模态推理为知识表示和推理提供了新的能力

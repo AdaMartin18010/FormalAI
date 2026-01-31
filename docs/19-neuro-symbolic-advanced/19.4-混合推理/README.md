@@ -534,7 +534,7 @@ Hybrid reasoning is a reasoning method that combines neural networks and symboli
    - **Gemini 2.5**：多模态模型在混合推理方面的应用持续优化
    - **技术影响**：多模态技术的发展推动了混合推理的创新
 
-3. **神经符号混合推理**
+6. **神经符号混合推理**
    - **神经符号AI**：神经符号AI在混合推理中的应用持续深入
    - **符号学习**：符号学习在混合推理中的应用持续优化
    - **技术影响**：神经符号AI为混合推理提供了新的方法

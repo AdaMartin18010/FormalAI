@@ -75,6 +75,8 @@ fn pgd_step(x: f32, grad: f32, x0: f32, eps: f32, alpha: f32) -> f32 {
     - [Rust实现：鲁棒性评估系统](#rust实现鲁棒性评估系统)
     - [Haskell实现：对抗训练算法](#haskell实现对抗训练算法)
   - [参考文献 / References](#参考文献--references)
+  - [2025年最新发展 / Latest Developments 2025](#2025年最新发展--latest-developments-2025)
+    - [鲁棒性理论的最新突破](#鲁棒性理论的最新突破)
   - [进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)](#进一步阅读2025-持续滚动--further-reading-rolling-2025)
 
 ---

@@ -18,7 +18,7 @@ Creative AI studies artificial intelligence's creative thinking, artistic genera
 创造性是指产生新颖、有用、有价值的想法、产品或解决方案的能力，具有以下特征：
 
 - 新颖性 (Novelty)
-- 有用性 (Usefulness)  
+- 有用性 (Usefulness)
 - 价值性 (Value)
 - 原创性 (Originality)
 
@@ -318,14 +318,14 @@ class CreativeVAE(nn.Module):
             nn.ReLU(),
             nn.Linear(512, output_dim)
         )
-    
+
     def encode(self, x):
         h = self.encoder(x)
         return self.mu(h), self.logvar(h)
-    
+
     def decode(self, z):
         return self.decoder(z)
-    
+
     def reparameterize(self, mu, logvar):
         std = torch.exp(0.5 * logvar)
         eps = torch.randn_like(std)
@@ -367,7 +367,7 @@ class CreativeRL:
         self.target_network = QNetwork(state_dim, action_dim)
         self.replay_buffer = ReplayBuffer()
         self.optimizer = torch.optim.Adam(self.q_network.parameters())
-    
+
     def select_action(self, state, epsilon):
         if random.random() < epsilon:
             return random.randint(0, self.action_dim - 1)
@@ -375,15 +375,15 @@ class CreativeRL:
             with torch.no_grad():
                 q_values = self.q_network(state)
                 return q_values.argmax().item()
-    
+
     def train(self, batch_size):
         batch = self.replay_buffer.sample(batch_size)
         states, actions, rewards, next_states, dones = batch
-        
+
         current_q_values = self.q_network(states).gather(1, actions)
         next_q_values = self.target_network(next_states).max(1)[0].detach()
         target_q_values = rewards + (0.99 * next_q_values * (1 - dones))
-        
+
         loss = F.mse_loss(current_q_values.squeeze(), target_q_values)
         self.optimizer.zero_grad()
         loss.backward()
@@ -401,23 +401,23 @@ class CreativeGA:
         self.mutation_rate = mutation_rate
         self.crossover_rate = crossover_rate
         self.population = self.initialize_population()
-    
+
     def initialize_population(self):
         return [self.create_individual() for _ in range(self.population_size)]
-    
+
     def evaluate_fitness(self, individual):
         # 评估个体的创造性质量
         novelty_score = self.calculate_novelty(individual)
         quality_score = self.calculate_quality(individual)
         usefulness_score = self.calculate_usefulness(individual)
         return novelty_score + quality_score + usefulness_score
-    
+
     def selection(self, fitness_scores):
         # 轮盘赌选择
         total_fitness = sum(fitness_scores)
         probabilities = [f / total_fitness for f in fitness_scores]
         return np.random.choice(self.population, size=2, p=probabilities)
-    
+
     def crossover(self, parent1, parent2):
         if random.random() < self.crossover_rate:
             # 单点交叉
@@ -426,7 +426,7 @@ class CreativeGA:
             child2 = parent2[:crossover_point] + parent1[crossover_point:]
             return child1, child2
         return parent1, parent2
-    
+
     def mutation(self, individual):
         if random.random() < self.mutation_rate:
             # 随机变异
@@ -640,8 +640,8 @@ class CreativeGA:
 
 ---
 
-**最后更新**：2026-01-11  
-**版本**：v2025-01  
+**最后更新**：2026-01-11
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *创造性AI为人工智能系统赋予了创新和艺术创作的能力，推动AI向更高层次的智能发展。*

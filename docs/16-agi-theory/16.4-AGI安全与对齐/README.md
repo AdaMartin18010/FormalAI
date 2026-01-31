@@ -299,20 +299,20 @@ class RLHF:
         self.model = model
         self.reward_model = reward_model
         self.optimizer = torch.optim.Adam(model.parameters())
-    
+
     def train_step(self, prompts, responses, human_feedback):
         # 计算奖励
         rewards = self.reward_model(responses, human_feedback)
-        
+
         # 计算策略梯度
         log_probs = self.model.get_log_probs(prompts, responses)
         loss = -torch.mean(log_probs * rewards)
-        
+
         # 反向传播
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
-        
+
         return loss.item()
 ```
 
@@ -324,18 +324,18 @@ class ConstitutionalAI:
         self.model = model
         self.constitution = constitution
         self.constitutional_critic = ConstitutionalCritic(constitution)
-    
+
     def generate_response(self, prompt):
         # 生成初始响应
         response = self.model.generate(prompt)
-        
+
         # 宪法检查
         constitutional_score = self.constitutional_critic.evaluate(response)
-        
+
         # 如果不满足宪法要求，重新生成
         if constitutional_score < self.threshold:
             response = self.model.generate(prompt, constraints=self.constitution)
-        
+
         return response
 ```
 
@@ -349,39 +349,39 @@ class FormalVerifier:
         self.model = model
         self.safety_properties = safety_properties
         self.verifier = Z3Solver()
-    
+
     def verify_safety(self, input_data):
         # 构建模型约束
         model_constraints = self.model.get_constraints(input_data)
-        
+
         # 构建安全属性约束
         safety_constraints = []
         for property in self.safety_properties:
             safety_constraints.append(property.get_constraint())
-        
+
         # 验证安全性
         self.verifier.add(model_constraints)
         self.verifier.add(safety_constraints)
-        
+
         result = self.verifier.check()
         return result == sat
-    
+
     def find_counterexample(self, input_data):
         # 寻找反例
         model_constraints = self.model.get_constraints(input_data)
         self.verifier.add(model_constraints)
-        
+
         for property in self.safety_properties:
             self.verifier.push()
             self.verifier.add(Not(property.get_constraint()))
-            
+
             if self.verifier.check() == sat:
                 counterexample = self.verifier.model()
                 self.verifier.pop()
                 return counterexample
-            
+
             self.verifier.pop()
-        
+
         return None
 ```
 
@@ -396,30 +396,30 @@ class SafetyMonitor:
         self.baseline_behavior = baseline_behavior
         self.anomaly_detector = IsolationForest()
         self.risk_threshold = 0.8
-    
+
     def monitor_behavior(self, input_data, output_data):
         # 提取行为特征
         features = self.extract_behavior_features(input_data, output_data)
-        
+
         # 异常检测
         anomaly_score = self.anomaly_detector.decision_function([features])[0]
-        
+
         # 风险评估
         risk_score = self.calculate_risk_score(features, anomaly_score)
-        
+
         # 触发安全机制
         if risk_score > self.risk_threshold:
             self.trigger_safety_mechanism(input_data, output_data, risk_score)
-        
+
         return risk_score
-    
+
     def trigger_safety_mechanism(self, input_data, output_data, risk_score):
         # 记录高风险行为
         self.log_high_risk_behavior(input_data, output_data, risk_score)
-        
+
         # 限制模型行为
         self.model.enable_safety_mode()
-        
+
         # 通知安全团队
         self.notify_safety_team(risk_score)
 ```
@@ -633,8 +633,8 @@ class SafetyMonitor:
 
 ---
 
-**最后更新**：2026-01-11  
-**版本**：v2025-01  
+**最后更新**：2026-01-11
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *AGI安全与对齐是确保通用人工智能系统安全可控发展的关键，为构建可信赖的AGI系统提供重要保障。*

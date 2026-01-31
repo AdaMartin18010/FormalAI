@@ -168,12 +168,12 @@ class BeliefSystem:
         self.beliefs = {}
         self.belief_strength = {}
         self.belief_sources = {}
-    
+
     def add_belief(self, belief, strength, source):
         self.beliefs[belief] = True
         self.belief_strength[belief] = strength
         self.belief_sources[belief] = source
-    
+
     def update_belief(self, belief, new_strength, new_source):
         if belief in self.beliefs:
             # 信念更新规则
@@ -182,10 +182,10 @@ class BeliefSystem:
                 old_strength, new_strength
             )
             self.belief_sources[belief] = new_source
-    
+
     def get_belief(self, belief):
         return self.beliefs.get(belief, False)
-    
+
     def get_belief_strength(self, belief):
         return self.belief_strength.get(belief, 0.0)
 ```
@@ -198,7 +198,7 @@ class IntentionSystem:
         self.intentions = []
         self.plans = {}
         self.commitments = {}
-    
+
     def add_intention(self, goal, priority):
         intention = {
             'goal': goal,
@@ -208,13 +208,13 @@ class IntentionSystem:
         }
         self.intentions.append(intention)
         self.intentions.sort(key=lambda x: x['priority'], reverse=True)
-    
+
     def create_plan(self, goal):
         # 规划算法
         plan = self.planning_algorithm(goal)
         self.plans[goal] = plan
         return plan
-    
+
     def execute_plan(self, goal):
         if goal in self.plans:
             plan = self.plans[goal]
@@ -237,21 +237,21 @@ class PerceptionLayer:
         self.sensors = {}
         self.perception_buffer = []
         self.fusion_algorithm = SensorFusion()
-    
+
     def add_sensor(self, sensor_type, sensor):
         self.sensors[sensor_type] = sensor
-    
+
     def perceive(self):
         perceptions = {}
         for sensor_type, sensor in self.sensors.items():
             perceptions[sensor_type] = sensor.read()
-        
+
         # 感知融合
         fused_perception = self.fusion_algorithm.fuse(perceptions)
         self.perception_buffer.append(fused_perception)
-        
+
         return fused_perception
-    
+
     def get_perception_history(self, time_window):
         current_time = time.time()
         return [
@@ -268,19 +268,19 @@ class DecisionLayer:
         self.decision_engine = DecisionEngine()
         self.policy = Policy()
         self.value_function = ValueFunction()
-    
+
     def make_decision(self, state, available_actions):
         # 价值评估
         action_values = {}
         for action in available_actions:
             value = self.value_function.evaluate(state, action)
             action_values[action] = value
-        
+
         # 策略选择
         selected_action = self.policy.select_action(action_values)
-        
+
         return selected_action
-    
+
     def update_policy(self, experience):
         # 策略更新
         self.policy.update(experience)
@@ -297,12 +297,12 @@ class WorkingMemory:
         self.capacity = capacity
         self.memory = []
         self.attention_weights = {}
-    
+
     def add_item(self, item, importance):
         if len(self.memory) >= self.capacity:
             # 移除最不重要的项目
             self.remove_least_important()
-        
+
         memory_item = {
             'content': item,
             'importance': importance,
@@ -311,7 +311,7 @@ class WorkingMemory:
         }
         self.memory.append(memory_item)
         self.update_attention_weights()
-    
+
     def retrieve_item(self, query):
         # 基于查询检索相关项目
         relevant_items = []
@@ -320,18 +320,18 @@ class WorkingMemory:
             if relevance > self.threshold:
                 relevant_items.append((item, relevance))
                 item['access_count'] += 1
-        
+
         # 按相关性排序
         relevant_items.sort(key=lambda x: x[1], reverse=True)
         return relevant_items
-    
+
     def update_attention_weights(self):
         # 更新注意力权重
         for item in self.memory:
             age_factor = 1.0 / (time.time() - item['timestamp'] + 1)
             access_factor = item['access_count'] + 1
             importance_factor = item['importance']
-            
+
             self.attention_weights[item] = (
                 age_factor * access_factor * importance_factor
             )
@@ -357,7 +357,7 @@ class FIPAACLMessage:
         self.reply_with = None    # 回复标识
         self.in_reply_to = None   # 回复消息标识
         self.reply_by = None      # 回复截止时间
-    
+
     def create_message(self, performative, sender, receiver, content):
         self.performative = performative
         self.sender = sender
@@ -365,14 +365,14 @@ class FIPAACLMessage:
         self.content = content
         self.conversation_id = self.generate_conversation_id()
         return self
-    
+
     def send_message(self, message):
         # 消息发送逻辑
         if self.validate_message(message):
             self.transport_layer.send(message)
             return True
         return False
-    
+
     def receive_message(self):
         # 消息接收逻辑
         message = self.transport_layer.receive()
@@ -394,21 +394,21 @@ class KQMLMessage:
         self.ontology = None      # 本体
         self.reply_with = None    # 回复标识
         self.in_reply_to = None   # 回复消息标识
-    
+
     def create_query(self, sender, receiver, query):
         self.verb = "ask-one"
         self.sender = sender
         self.receiver = receiver
         self.content = query
         return self
-    
+
     def create_tell(self, sender, receiver, fact):
         self.verb = "tell"
         self.sender = sender
         self.receiver = receiver
         self.content = fact
         return self
-    
+
     def create_request(self, sender, receiver, action):
         self.verb = "achieve"
         self.sender = sender
@@ -427,7 +427,7 @@ class ContractNetProtocol:
         self.agent_id = agent_id
         self.active_contracts = {}
         self.pending_proposals = {}
-    
+
     def initiate_task(self, task, participants):
         # 发起任务
         cfp = CallForProposal(
@@ -436,12 +436,12 @@ class ContractNetProtocol:
             participants=participants,
             deadline=time.time() + 30
         )
-        
+
         for participant in participants:
             self.send_message(participant, cfp)
-        
+
         return cfp
-    
+
     def handle_cfp(self, cfp):
         # 处理任务请求
         if self.can_perform_task(cfp.task):
@@ -455,19 +455,19 @@ class ContractNetProtocol:
             self.send_message(cfp.initiator, proposal)
             return proposal
         return None
-    
+
     def handle_proposal(self, proposal):
         # 处理提案
         if proposal.task not in self.pending_proposals:
             self.pending_proposals[proposal.task] = []
-        
+
         self.pending_proposals[proposal.task].append(proposal)
-        
+
         # 等待更多提案或截止时间
         if self.should_accept_proposal(proposal.task):
             best_proposal = self.select_best_proposal(proposal.task)
             self.accept_proposal(best_proposal)
-    
+
     def accept_proposal(self, proposal):
         # 接受提案
         acceptance = Acceptance(
@@ -476,10 +476,10 @@ class ContractNetProtocol:
             contractor=proposal.proposer,
             contract_id=self.generate_contract_id()
         )
-        
+
         self.send_message(proposal.proposer, acceptance)
         self.active_contracts[acceptance.contract_id] = acceptance
-        
+
         return acceptance
 ```
 
@@ -491,7 +491,7 @@ class AuctionProtocol:
         self.agent_id = agent_id
         self.active_auctions = {}
         self.bids = {}
-    
+
     def initiate_auction(self, item, auction_type, participants):
         # 发起拍卖
         auction = Auction(
@@ -502,19 +502,19 @@ class AuctionProtocol:
             start_time=time.time(),
             end_time=time.time() + 60
         )
-        
+
         self.active_auctions[auction.auction_id] = auction
-        
+
         for participant in participants:
             self.send_message(participant, auction)
-        
+
         return auction
-    
+
     def submit_bid(self, auction_id, bid_amount):
         # 提交出价
         if auction_id in self.active_auctions:
             auction = self.active_auctions[auction_id]
-            
+
             if self.is_valid_bid(auction, bid_amount):
                 bid = Bid(
                     auction_id=auction_id,
@@ -522,45 +522,45 @@ class AuctionProtocol:
                     amount=bid_amount,
                     timestamp=time.time()
                 )
-                
+
                 self.bids[auction_id] = bid
                 self.send_message(auction.initiator, bid)
-                
+
                 return bid
         return None
-    
+
     def handle_bid(self, bid):
         # 处理出价
         if bid.auction_id in self.active_auctions:
             auction = self.active_auctions[bid.auction_id]
-            
+
             if self.is_valid_bid(auction, bid.amount):
                 # 更新最高出价
-                if (auction.auction_id not in auction.bids or 
+                if (auction.auction_id not in auction.bids or
                     bid.amount > auction.bids[auction.auction_id].amount):
                     auction.bids[auction.auction_id] = bid
-                    
+
                     # 通知其他参与者
                     self.broadcast_bid_update(auction, bid)
-    
+
     def close_auction(self, auction_id):
         # 结束拍卖
         if auction_id in self.active_auctions:
             auction = self.active_auctions[auction_id]
-            
+
             if auction.bids:
                 winner_bid = max(auction.bids.values(), key=lambda x: x.amount)
-                
+
                 result = AuctionResult(
                     auction_id=auction_id,
                     winner=winner_bid.bidder,
                     winning_amount=winner_bid.amount,
                     item=auction.item
                 )
-                
+
                 self.broadcast_auction_result(result)
                 del self.active_auctions[auction_id]
-                
+
                 return result
         return None
 ```
@@ -577,7 +577,7 @@ class MarketBasedAllocation:
         self.market = Market()
         self.agents = {}
         self.tasks = {}
-    
+
     def register_agent(self, agent_id, capabilities, cost_function):
         agent = Agent(
             id=agent_id,
@@ -587,7 +587,7 @@ class MarketBasedAllocation:
         )
         self.agents[agent_id] = agent
         self.market.register_agent(agent)
-    
+
     def submit_task(self, task_id, requirements, deadline, budget):
         task = Task(
             id=task_id,
@@ -597,27 +597,27 @@ class MarketBasedAllocation:
             status='pending'
         )
         self.tasks[task_id] = task
-        
+
         # 寻找合适的智能体
         suitable_agents = self.find_suitable_agents(task)
-        
+
         # 发起拍卖
         auction = self.market.create_auction(task, suitable_agents)
         return auction
-    
+
     def find_suitable_agents(self, task):
         suitable_agents = []
         for agent_id, agent in self.agents.items():
-            if (agent.available and 
+            if (agent.available and
                 self.can_fulfill_requirements(agent.capabilities, task.requirements)):
                 suitable_agents.append(agent_id)
         return suitable_agents
-    
+
     def allocate_task(self, task_id, agent_id, cost):
         if task_id in self.tasks and agent_id in self.agents:
             task = self.tasks[task_id]
             agent = self.agents[agent_id]
-            
+
             if cost <= task.budget:
                 # 分配任务
                 allocation = TaskAllocation(
@@ -626,10 +626,10 @@ class MarketBasedAllocation:
                     cost=cost,
                     allocation_time=time.time()
                 )
-                
+
                 task.status = 'allocated'
                 agent.available = False
-                
+
                 return allocation
         return None
 ```
@@ -642,44 +642,44 @@ class CapabilityBasedAllocation:
         self.capability_matrix = {}
         self.task_requirements = {}
         self.agent_capabilities = {}
-    
+
     def update_capability_matrix(self, agent_id, capabilities):
         self.agent_capabilities[agent_id] = capabilities
-        
+
         # 更新能力矩阵
         for capability, level in capabilities.items():
             if capability not in self.capability_matrix:
                 self.capability_matrix[capability] = {}
             self.capability_matrix[capability][agent_id] = level
-    
+
     def allocate_task(self, task_id, requirements):
         self.task_requirements[task_id] = requirements
-        
+
         # 计算每个智能体的适合度
         agent_scores = {}
         for agent_id, capabilities in self.agent_capabilities.items():
             score = self.calculate_fitness(capabilities, requirements)
             agent_scores[agent_id] = score
-        
+
         # 选择最适合的智能体
         if agent_scores:
             best_agent = max(agent_scores, key=agent_scores.get)
             if agent_scores[best_agent] > self.threshold:
                 return self.create_allocation(task_id, best_agent)
-        
+
         return None
-    
+
     def calculate_fitness(self, capabilities, requirements):
         total_score = 0
         total_weight = 0
-        
+
         for requirement, weight in requirements.items():
             if requirement in capabilities:
                 # 能力匹配度
                 match_score = min(capabilities[requirement] / weight, 1.0)
                 total_score += match_score * weight
                 total_weight += weight
-        
+
         return total_score / total_weight if total_weight > 0 else 0
 ```
 
@@ -692,7 +692,7 @@ class NegotiationResolution:
     def __init__(self):
         self.negotiation_sessions = {}
         self.mediators = {}
-    
+
     def initiate_negotiation(self, conflict_id, parties, mediator_id=None):
         session = NegotiationSession(
             conflict_id=conflict_id,
@@ -701,39 +701,39 @@ class NegotiationResolution:
             start_time=time.time(),
             status='active'
         )
-        
+
         self.negotiation_sessions[conflict_id] = session
-        
+
         # 通知各方开始协商
         for party in parties:
             self.send_negotiation_invitation(party, session)
-        
+
         return session
-    
+
     def submit_proposal(self, conflict_id, proposer, proposal):
         if conflict_id in self.negotiation_sessions:
             session = self.negotiation_sessions[conflict_id]
-            
+
             proposal_obj = Proposal(
                 conflict_id=conflict_id,
                 proposer=proposer,
                 proposal=proposal,
                 timestamp=time.time()
             )
-            
+
             session.proposals.append(proposal_obj)
-            
+
             # 评估提案
             evaluation = self.evaluate_proposal(session, proposal_obj)
-            
+
             # 通知其他方
             for party in session.parties:
                 if party != proposer:
                     self.send_proposal_evaluation(party, proposal_obj, evaluation)
-            
+
             return proposal_obj
         return None
-    
+
     def evaluate_proposal(self, session, proposal):
         evaluation = {
             'feasibility': self.assess_feasibility(proposal),
@@ -741,28 +741,28 @@ class NegotiationResolution:
             'acceptability': self.assess_acceptability(session, proposal),
             'overall_score': 0
         }
-        
+
         # 计算综合评分
         evaluation['overall_score'] = (
             evaluation['feasibility'] * 0.4 +
             evaluation['fairness'] * 0.3 +
             evaluation['acceptability'] * 0.3
         )
-        
+
         return evaluation
-    
+
     def reach_agreement(self, conflict_id, agreement):
         if conflict_id in self.negotiation_sessions:
             session = self.negotiation_sessions[conflict_id]
-            
+
             session.status = 'resolved'
             session.agreement = agreement
             session.end_time = time.time()
-            
+
             # 通知各方达成协议
             for party in session.parties:
                 self.send_agreement_notification(party, agreement)
-            
+
             return agreement
         return None
 ```
@@ -782,14 +782,14 @@ class IndependentQLearning:
         self.discount = discount
         self.q_table = {}
         self.epsilon = 0.1
-    
+
     def get_state_key(self, state):
         return tuple(state) if isinstance(state, (list, np.ndarray)) else state
-    
+
     def get_q_value(self, state, action):
         state_key = self.get_state_key(state)
         return self.q_table.get((state_key, action), 0.0)
-    
+
     def select_action(self, state, available_actions):
         if random.random() < self.epsilon:
             return random.choice(available_actions)
@@ -798,23 +798,23 @@ class IndependentQLearning:
             max_q = max(q_values)
             best_actions = [action for action, q in zip(available_actions, q_values) if q == max_q]
             return random.choice(best_actions)
-    
+
     def update_q_value(self, state, action, reward, next_state):
         state_key = self.get_state_key(state)
         next_state_key = self.get_state_key(next_state)
-        
+
         current_q = self.get_q_value(state, action)
-        
+
         # 计算最大Q值
         max_next_q = 0
         if next_state_key in [self.get_state_key(s) for s in self.get_all_states()]:
             for a in range(self.action_dim):
                 max_next_q = max(max_next_q, self.get_q_value(next_state, a))
-        
+
         # Q值更新
         new_q = current_q + self.learning_rate * (reward + self.discount * max_next_q - current_q)
         self.q_table[(state_key, action)] = new_q
-    
+
     def decay_epsilon(self, decay_rate=0.995):
         self.epsilon = max(0.01, self.epsilon * decay_rate)
 ```
@@ -830,14 +830,14 @@ class CollaborativeQLearning:
         self.agents = [IndependentQLearning(state_dim, action_dim) for _ in range(num_agents)]
         self.shared_experience = []
         self.cooperation_threshold = 0.7
-    
+
     def select_joint_action(self, state, available_actions):
         joint_action = []
         for i, agent in enumerate(self.agents):
             action = agent.select_action(state, available_actions[i])
             joint_action.append(action)
         return joint_action
-    
+
     def update_agents(self, state, joint_action, joint_reward, next_state):
         # 更新每个智能体
         for i, agent in enumerate(self.agents):
@@ -845,7 +845,7 @@ class CollaborativeQLearning:
                 joint_reward, joint_action, i
             )
             agent.update_q_value(state, joint_action[i], individual_reward, next_state)
-        
+
         # 共享经验
         experience = {
             'state': state,
@@ -854,20 +854,20 @@ class CollaborativeQLearning:
             'next_state': next_state
         }
         self.shared_experience.append(experience)
-        
+
         # 经验共享
         if len(self.shared_experience) > 100:
             self.share_experience()
-    
+
     def calculate_individual_reward(self, joint_reward, joint_action, agent_index):
         # 基于贡献度分配奖励
         contribution = self.assess_contribution(joint_action, agent_index)
         return joint_reward * contribution
-    
+
     def share_experience(self):
         # 选择最有价值的经验进行共享
         valuable_experiences = self.select_valuable_experiences()
-        
+
         for experience in valuable_experiences:
             for agent in self.agents:
                 agent.update_q_value(
@@ -876,7 +876,7 @@ class CollaborativeQLearning:
                     experience['joint_reward'],
                     experience['next_state']
                 )
-        
+
         self.shared_experience = []
 ```
 
@@ -890,54 +890,54 @@ class NashEquilibriumSolver:
         self.players = []
         self.strategies = {}
         self.payoffs = {}
-    
+
     def add_player(self, player_id, strategies):
         self.players.append(player_id)
         self.strategies[player_id] = strategies
         self.payoffs[player_id] = {}
-    
+
     def set_payoff(self, player_id, strategy_profile, payoff):
         if player_id not in self.payoffs:
             self.payoffs[player_id] = {}
         self.payoffs[player_id][strategy_profile] = payoff
-    
+
     def find_nash_equilibrium(self):
         equilibria = []
-        
+
         # 生成所有可能的策略组合
         strategy_combinations = self.generate_strategy_combinations()
-        
+
         for combination in strategy_combinations:
             if self.is_nash_equilibrium(combination):
                 equilibria.append(combination)
-        
+
         return equilibria
-    
+
     def generate_strategy_combinations(self):
         from itertools import product
-        
+
         strategy_lists = [self.strategies[player] for player in self.players]
         combinations = list(product(*strategy_lists))
-        
+
         return combinations
-    
+
     def is_nash_equilibrium(self, strategy_profile):
         for i, player in enumerate(self.players):
             current_strategy = strategy_profile[i]
             current_payoff = self.get_payoff(player, strategy_profile)
-            
+
             # 检查是否有更好的策略
             for alternative_strategy in self.strategies[player]:
                 if alternative_strategy != current_strategy:
                     alternative_profile = list(strategy_profile)
                     alternative_profile[i] = alternative_strategy
                     alternative_payoff = self.get_payoff(player, tuple(alternative_profile))
-                    
+
                     if alternative_payoff > current_payoff:
                         return False
-        
+
         return True
-    
+
     def get_payoff(self, player, strategy_profile):
         return self.payoffs[player].get(strategy_profile, 0)
 ```
@@ -1131,8 +1131,8 @@ class NashEquilibriumSolver:
 
 ---
 
-**最后更新**：2025-01-01  
-**版本**：v2025-01  
+**最后更新**：2025-01-01
+**版本**：v2025-01
 **维护者**：FormalAI项目组
 
 *多智能体系统为构建分布式智能系统提供了理论基础和技术支撑，推动社会智能化的快速发展。*
