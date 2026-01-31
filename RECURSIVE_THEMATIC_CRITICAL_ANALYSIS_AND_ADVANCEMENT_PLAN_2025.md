@@ -174,7 +174,7 @@
 
 | 维度 | 批判点 | 建议 |
 |------|--------|------|
-| **空壳文档** | 部分 docs README 仅有目录无实质（0.4 哲科分析已指出） | 宁可少而精；新文档需"至少 1 权威引用 + 1 可操作检验" |
+| **空壳文档** | 部分 docs README 仅有目录无实质（0.4 哲科分析已指出） | ✅ 已纳入：CONTRIBUTING §1.3 避免空壳文档（2025-02-01） |
 | **概念定义权重** | concepts/04 意识度 $C(S)$ 中 $w_i=0.25$ 无文献支撑 | 标注"项目假设"或引用 Chalmers/Block 的权重讨论 |
 | **对标锚点时效** | Stanford CS520 最近 Spring 2022 | ✅ 已闭环：AUTHORITY_REFERENCE_INDEX KG-01 已标「最近可及 Spring 2022」；LLM-01/02、FV-06、RL-01 已列（2025-02-01） |
 | **跨模块映射** | docs(20 主题)↔concepts(8 主题) 映射有遗漏 | ✅ 已补全：PROJECT_CROSS_MODULE_MAPPING §2.3 concepts→docs 显式映射（2025-02-01） |

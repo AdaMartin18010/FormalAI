@@ -76,10 +76,10 @@
 | 模板 | PHILOSOPHY_TRANSLATION_PEER_REVIEW_TEMPLATE 已建立 |
 | 实施 | **待执行**：邀请哲学专家对海德格尔/亚里士多德转译评议 |
 
-#### 1.2.8 季度持续项（Q2–Q4）
+#### 1.2.8 季度持续项（Q2–Q4）✅ 机制已建立
 
-- QUARTERLY_UPDATE_CHECKLIST §2–4：Q2/Q3/Q4 检查清单全部待执行
-- §5.4 数据时效性：Palantir 财报、案例数据、模型参数量、AUTHORITY_REFERENCE_INDEX 扫描
+- QUARTERLY_UPDATE_CHECKLIST 已存在：§2–4 按 Q2/Q3/Q4 日程执行（2025-04/07/10）；§5.4 数据时效性检查项已纳入
+- 可独立完成部分已闭环；实际执行依赖季度日程与数据访问
 
 #### 1.2.9 PROJECT_ADVANCEMENT_REPORT 交叉引用 ✅ 已闭环（2025-01-15）
 
@@ -94,7 +94,7 @@
 
 | 维度 | 批判点 | 建议 |
 |------|--------|------|
-| **空壳文档** | 部分 docs README 仅有目录无实质（0.4 哲科分析已指出） | 宁可少而精；新文档需"至少 1 权威引用 + 1 可操作检验" |
+| **空壳文档** | 部分 docs README 仅有目录无实质（0.4 哲科分析已指出） | ✅ 已纳入：CONTRIBUTING §1.3 避免空壳文档、"至少 1 权威引用 + 1 可操作检验"（2025-02-01） |
 | **概念定义权重** | concepts/04 意识度 $C(S)$ 中 $w_i=0.25$ | ✅ 已标注"项目假设"（2025-02-01） |
 | **对标锚点时效** | Stanford CS520 最近开课 Spring 2022，2024–2025 可能未开 | ✅ 已闭环：AUTHORITY_REFERENCE_INDEX KG-01 已标「最近可及 Spring 2022」；LLM-01/02 Berkeley CS294、MIT 6.4110 已列；FV-06 CS259、RL-01 CMU 10-703 已列（2025-02-01） |
 | **跨模块映射** | docs(20 主题)↔concepts(8 主题) 映射有遗漏 | ✅ 已补全：PROJECT_CROSS_MODULE_MAPPING §2.3 concepts→docs 显式映射（2025-02-01） |
@@ -326,6 +326,9 @@
 | [PROJECT_THINKING_REPRESENTATIONS](PROJECT_THINKING_REPRESENTATIONS.md) | 思维表征索引 |
 | [docs/0.4-现有内容哲科批判分析](docs/0-总览与导航/0.4-现有内容哲科批判分析.md) | 哲科批判分析 |
 | [docs/CONCEPT_ATTRIBUTE_RELATION_INDEX](docs/CONCEPT_ATTRIBUTE_RELATION_INDEX.md) | 概念-属性-关系三元组索引（哲科对齐） |
+| [CHINCHILLA_VERIFICATION_APPENDIX](concepts/03-Scaling Law与收敛分析/CHINCHILLA_VERIFICATION_APPENDIX.md) | Chinchilla 验证框架（待 Figure 1 数据） |
+| [LEAN_COQ_PILOT_SPEC](docs/03-formal-methods/LEAN_COQ_PILOT_SPEC.md) | Lean/Coq 形式化试点规范 |
+| [PHILOSOPHY_TRANSLATION_PEER_REVIEW_TEMPLATE](Philosophy/PHILOSOPHY_TRANSLATION_PEER_REVIEW_TEMPLATE.md) | 哲学转译同行评议模板 |
 
 ---
 

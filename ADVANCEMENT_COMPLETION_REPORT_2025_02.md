@@ -216,6 +216,9 @@
 | 解释论证（§2.4） | ✅ 100% | 证明树 §二 证明位置已链 view02/model/04；权威文献已链 |
 | view 对标机制（§3.11） | ✅ 100% | QUARTERLY_UPDATE_CHECKLIST 机制已建立 |
 | docs 实质内容（§4.4 任务 15） | ✅ 100% | 02.1/02.2/03.2 已覆盖；00 待 Lean 4 |
+| 季度持续项机制（§1.2.8） | ✅ 100% | QUARTERLY_UPDATE_CHECKLIST 已建立，§2–4/§5.4 已纳入 |
+| 空壳文档规范（§2.1） | ✅ 100% | CONTRIBUTING §1.3 已纳入 |
+| 文档索引（§七） | ✅ 100% | CHINCHILLA/LEAN/评议模板已补全 |
 
 **待外部资源项**（非程序化可完成）：
 
@@ -317,6 +320,15 @@
 | COMPREHENSIVE §3.11 view | L2 对标标为 ✅ | QUARTERLY_UPDATE_CHECKLIST 机制已建立 |
 | COMPREHENSIVE §4.4 任务 15 | 标为 ✅ | 02.1/02.2/03.2 已覆盖；00 待 Lean 4 |
 | RECURSIVE §5.1、§3.3、§7.4 | 对标锚点、解释论证、任务 16 | 与 COMPREHENSIVE 同步标为已闭环 |
+
+### 6.19 第二十轮持续推进（2025-02-01）✅ 机制与规范 100%
+
+| 类别 | 交付物 | 说明 |
+|------|--------|------|
+| COMPREHENSIVE §1.2.8 季度持续项 | 标为 ✅ 机制已建立 | QUARTERLY_UPDATE_CHECKLIST 已存在，§2–4 按 Q2/Q3/Q4 日程；§5.4 已纳入 |
+| COMPREHENSIVE §2.1 空壳文档 | 建议标为 ✅ 已纳入 | CONTRIBUTING §1.3 避免空壳文档、"至少 1 权威引用 + 1 可操作检验" |
+| COMPREHENSIVE §七 文档索引 | 补全 3 项 | CHINCHILLA_VERIFICATION_APPENDIX、LEAN_COQ_PILOT_SPEC、PHILOSOPHY_TRANSLATION_PEER_REVIEW_TEMPLATE |
+| RECURSIVE §5.1 空壳文档 | 与 COMPREHENSIVE 同步 | 标为已纳入 CONTRIBUTING §1.3 |
 
 ---
 
