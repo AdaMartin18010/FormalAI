@@ -9,6 +9,7 @@
 Formal verification studies how to prove that systems satisfy their specifications through mathematical methods, providing theoretical foundations for rigorous correctness guarantees in FormalAI.
 
 **权威对标**（见 [AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.2）：
+
 - **Clarke et al., Model Checking, MIT Press 2018** [FV-01]：模型检测经典
 - **Baier & Katoen, Principles of Model Checking, MIT Press 2008** [FV-02]：时序逻辑、自动机
 - **Cousot & Cousot (1977), Abstract Interpretation, POPL** [FV-03]：抽象解释奠基
@@ -1753,6 +1754,63 @@ end FormalVerification
 ### 形式化验证的最新发展
 
 **2025年关键突破**：
+
+#### 1. 神经符号证明验证系统
+
+**ProofNet++ (2025年5月)**：
+
+- **核心创新**：结合大语言模型与形式验证的混合系统，解决自动定理证明中的幻觉问题
+- **技术特点**：
+  - Verifier-in-the-loop强化学习
+  - 证明树上的课程学习
+  - 自校正机制确保逻辑正确性
+- **应用场景**：Lean和HOL Light等证明系统中的自动化证明
+- **权威引用**：[FV-07] ProofNet++: A Neuro-Symbolic System for Formal Proof Verification with Self-Correction. arXiv:2505.24230 (2025-05)
+- **理论意义**：首次将神经符号方法系统化应用于形式证明验证，为AI辅助定理证明开辟新路径
+
+#### 2. 神经网络验证扩展到非线性激活
+
+**GenBaB (2025)**：
+
+- **核心创新**：α,β-CROWN框架的扩展，将分支定界验证从ReLU网络扩展到一般非线性激活函数
+- **支持的激活函数**：Sigmoid、Tanh、Sine、GeLU等
+- **支持的架构**：LSTM、Vision Transformers等复杂操作
+- **性能**：VNN-COMP 2023和2024获奖者
+- **权威引用**：[FV-08] GenBaB: General Branch-and-Bound for Neural Network Verification. Part of α,β-CROWN framework
+- **实用价值**：使形式化验证能够覆盖更多实际神经网络架构
+
+#### 3. 综合神经网络形式化分析器
+
+**Marabou 2.0 (2025)**：
+
+- **核心创新**：更新的综合神经网络形式化分析器，增强架构特性
+- **应用场景**：实际验证应用中的神经网络分析
+- **权威引用**：[FV-09] Marabou 2.0: A Comprehensive Formal Analyzer for Neural Networks
+- **技术特点**：支持大规模神经网络的形式化分析，提供完整的验证工具链
+
+#### 4. 运行时监控框架
+
+**轻量级神经证书运行时验证 (2025年7月)**：
+
+- **核心创新**：轻量级运行时监控框架，用于形式化验证CPS控制中的神经证书
+- **技术特点**：
+  - 运行时按需验证（on-the-fly verification）
+  - 前瞻区域（lookahead region）验证
+  - 最小计算开销
+  - 及时检测安全违规
+- **应用场景**：网络物理系统控制中的神经证书验证
+- **权威引用**：[FV-10] Formal Verification of Neural Certificates Done Dynamically. arXiv:2507.11987 (2025-07)
+- **理论意义**：从静态验证转向动态运行时验证，为实际部署提供安全保障
+
+#### 5. 神经模型检测
+
+**联合验证安全性和活性 (2025, NeurIPS)**：
+
+- **核心创新**：扩展神经模型检测，联合验证安全性质（通过归纳不变量）和活性性质（通过排序函数）
+- **技术方法**：基于约束求解器的训练
+- **性能提升**：相比传统模型检测器，速度提升数量级
+- **权威引用**：[FV-11] Neural Model Checking for Safety and Liveness. NeurIPS 2025
+- **理论意义**：首次将神经网络方法应用于模型检测，实现安全性和活性的联合验证
 
 1. **LLM生成代码的形式化验证**
    - **o1/o3系列**：推理架构在代码生成方面表现出色，生成的代码质量更高，更适合形式化验证

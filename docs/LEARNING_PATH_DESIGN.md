@@ -6,6 +6,10 @@
 
 This document designs progressive learning paths for the FormalAI project, ensuring users of different backgrounds and levels can learn the AI theoretical system in a friendly manner. The learning paths adopt multi-level, multi-dimensional design, supporting personalized learning experiences.
 
+**认知科学优化版本**：本文档提供基础学习路径设计。基于Schema理论、认知负荷理论、间隔重复理论的优化版本请参见 [基于认知科学的优化学习路径](COGNITIVE_LEARNING_PATH_OPTIMIZED.md)。
+
+**Cognitive Science Optimized Version**: This document provides basic learning path design. For the optimized version based on Schema theory, Cognitive Load theory, and Spaced Repetition theory, please see [Cognitive Science-Based Optimized Learning Path](COGNITIVE_LEARNING_PATH_OPTIMIZED.md).
+
 ## 学习路径设计原则 / Learning Path Design Principles
 
 ### 1. 渐进式学习 / Progressive Learning
@@ -19,6 +23,13 @@ This document designs progressive learning paths for the FormalAI project, ensur
 - 符合人脑认知规律
 - 提供多种学习方式
 - 支持不同学习风格
+
+**认知科学基础**（详见 [COGNITIVE_LEARNING_PATH_OPTIMIZED.md](COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：
+
+- **Schema理论**：知识以层次化schema组织，从简单到复杂
+- **认知负荷理论**：管理内在负荷、外在负荷、相关负荷
+- **间隔重复理论**：分布式学习优于集中学习
+- **测试效应**：主动检索比被动阅读更有效
 
 ### 3. 实践导向 / Practice-Oriented
 
