@@ -8,6 +8,14 @@
 
 Type theory studies the mathematical foundations of type systems, providing theoretical foundations for type safety and program correctness in FormalAI.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.11 — [TT-01] Cambridge CAT、[TT-02] CMU B619、[TT-03] CMU 80-518/818。
+
+**与本主题相关的 concepts/Philosophy 文档**：跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：00.1 范畴论、00.2 类型理论、01.1 形式逻辑。
+
+**后续 Schema**：03.4 证明系统（Lean/Coq）、04.1 大型语言模型（类型推理）。
+
 ### 0. 基本定理速览 / Key Metatheorems / Zentrale Metatheoreme / Métathéorèmes clés
 
 - 进步定理（Progress）:

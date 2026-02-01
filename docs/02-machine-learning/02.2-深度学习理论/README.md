@@ -8,9 +8,21 @@
 
 Deep learning theory studies the expressive power, optimization theory, loss landscapes, and theoretical foundations of deep neural networks, providing mathematical foundations for modern AI systems.
 
-Die Deep-Learning-Theorie untersucht die Ausdruckskraft, Optimierungstheorie, Verlustlandschaften und theoretischen Grundlagen tiefer neuronaler Netze und liefert mathematische Grundlagen für moderne KI-Systeme.
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.3 — [DL-01] Goodfellow et al. Deep Learning；[DL-02] Stanford CS230/CS221、[DL-03] MIT 6.S965、[DL-04] Oxford ML；[DL-06][DL-07] Kaplan/Hoffmann Scaling Law；[CN-03]。
 
-La théorie de l'apprentissage profond étudie la puissance expressive, la théorie d'optimisation, les paysages de perte et les fondements théoriques des réseaux de neurones profonds, fournissant les fondements mathématiques pour les systèmes d'IA modernes.
+**前置知识**：[00-foundations](../../00-foundations/)（数学基础）、[01.2 数学基础](../../01-foundations/01.2-数学基础/README.md)、[02.1 统计学习理论](../02.1-统计学习理论/README.md)。
+
+**延伸阅读**：[02.2.1 神经网络理论](02.2.1-神经网络理论.md)；[LATEST_AI_DEVELOPMENTS_2025](../../LATEST_AI_DEVELOPMENTS_2025.md)；[THEME_AUTHORITY_ALIGNMENT_MATRIX](../../THEME_AUTHORITY_ALIGNMENT_MATRIX.md) §2.3。
+
+**与本主题相关的 concepts/Philosophy 文档**：[01-AI三层模型架构](../../../concepts/01-AI三层模型架构/README.md)、[02-AI炼金术转化度模型](../../../concepts/02-AI炼金术转化度模型/README.md)、[03-Scaling Law与收敛分析](../../../concepts/03-Scaling Law与收敛分析/README.md)、[05-AI科学理论](../../../concepts/05-AI科学理论/README.md)；跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：00 数学基础、01.2 数学基础、02.1 统计学习理论。
+
+**后续 Schema**：04 语言模型、05 多模态 AI、06 可解释 AI。
+
+**权威对标状态**：已对标 — 与 [AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) [DL-01~07]、Stanford CS230/CS221、MIT 6.S965、Oxford ML 及 [THEME_AUTHORITY_ALIGNMENT_MATRIX](../../THEME_AUTHORITY_ALIGNMENT_MATRIX.md) §2.3 一致。
+
+**概念判断树 / 决策树**：架构与优化器选型见 [TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；概念归属判断见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)。
 
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 

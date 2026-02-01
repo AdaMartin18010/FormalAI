@@ -8,6 +8,22 @@
 
 Statistical learning theory provides mathematical foundations for machine learning, studying the generalization capabilities and convergence properties of learning algorithms.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.15 — [SLT-01] MIT 9.520/6.7910、[SLT-02] MIT 6.790、[SLT-03] NYU CSCI-GA.2566；教材 Mohri et al. (2018)、[CN-01][CN-02]。
+
+**前置知识**：[00-foundations](../../00-foundations/)（数学与逻辑）、[01.2 数学基础](../../01-foundations/01.2-数学基础/README.md)、[01.3 计算理论](../../01-foundations/01.3-计算理论/README.md)。
+
+**延伸阅读**：[02.1.1 PAC学习理论](02.1.1-PAC学习理论.md)、[02.1.2 VC维理论](02.1.2-VC维理论.md)；概念溯源 [CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH](../../CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md) §一。
+
+**与本主题相关的 concepts/Philosophy 文档**：[01-AI三层模型架构](../../../concepts/01-AI三层模型架构/README.md)（数据层）、[02-AI炼金术转化度模型](../../../concepts/02-AI炼金术转化度模型/README.md)、[03-Scaling Law与收敛分析](../../../concepts/03-Scaling Law与收敛分析/README.md)；跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：00 数学与逻辑基础、01.2 数学基础、01.3 计算理论。
+
+**后续 Schema**：02.2 深度学习理论、04 语言模型、06 可解释 AI。
+
+**权威对标状态**：已对标 — 与 [AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) [SLT-01~04] Mohri et al.、MIT 9.520/6.790、NYU 2566 及 [THEME_AUTHORITY_ALIGNMENT_MATRIX](../../THEME_AUTHORITY_ALIGNMENT_MATRIX.md) §2.3 一致；公式与定理编号可对照 [SLT-04] 教材章节。
+
+**概念判断树 / 决策树**：学习算法与复杂度选型见 [TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；概念归属判断见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)。
+
 ## 目录 / Table of Contents
 
 - [2.1 统计学习理论 / Statistical Learning Theory / Statistische Lerntheorie / Théorie de l'apprentissage statistique](#21-统计学习理论--statistical-learning-theory--statistische-lerntheorie--théorie-de-lapprentissage-statistique)
@@ -341,7 +357,7 @@ where $\text{penalty}(k)$ is a complexity penalty term.
 
 $$\mathcal{R}_n(\mathcal{F}) = \mathbb{E}_{S,\sigma} \left[\sup_{f \in \mathcal{F}} \frac{1}{n} \sum_{i=1}^n \sigma_i f(x_i)\right]$$
 
-其中 $\sigma_i$ 是独立的 Rademacher 随机变量（取值为 $\pm 1$）。
+其中 $\sigma_i$ 是独立的 Rademacher 随机变量（取值为 $\pm 1$）。**权威引用**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) [SLT-03][SLT-04] — 与 Mohri et al. (2018) Ch.3 定义 3.1 一致；泛化界见 Thm 3.1。
 
 where $\sigma_i$ are independent Rademacher random variables (taking values $\pm 1$).
 

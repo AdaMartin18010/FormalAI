@@ -8,6 +8,14 @@
 
 Program synthesis is the process of automatically generating programs that satisfy given specifications, providing theoretical foundations for automated programming and code generation in FormalAI.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.2 — [FV-14] CMU 15-414、[FV-12] Stanford CS256；CEGIS 框架见 Gulwani et al.。
+
+**与本主题相关的 concepts/Philosophy 文档**：跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：01.1 形式逻辑、01.3 计算理论、03.1 形式化验证。
+
+**后续 Schema**：04.1 大型语言模型（代码生成）、04.5 AI 代理。
+
 Die Programmsynthese ist der Prozess der automatischen Generierung von Programmen, die gegebene Spezifikationen erfüllen, und liefert theoretische Grundlagen für automatisiertes Programmieren und Codegenerierung in FormalAI.
 
 La synthèse de programmes est le processus de génération automatique de programmes satisfaisant des spécifications données, fournissant les fondements théoriques pour la programmation automatisée et la génération de code dans FormalAI.

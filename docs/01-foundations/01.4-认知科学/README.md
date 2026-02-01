@@ -12,6 +12,12 @@ Die Kognitionswissenschaft untersucht die Mechanismen und Prozesse der menschlic
 
 Les sciences cognitives étudient les mécanismes et processus de l'intelligence humaine, fournissant les fondements théoriques pour la modélisation cognitive et la conception de systèmes intelligents dans FormalAI.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.10 — [COG-01~05] Schema 理论、认知负荷理论、间隔重复与检索练习。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：01.1 形式逻辑、01.2 数学基础。
+
+**后续 Schema**：02.1 统计学习理论（学习理论）、09.1 AI 哲学、09.2 意识理论。
+
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 
 ### 认知 / Cognition / Kognition / Cognition
@@ -46,6 +52,8 @@ La cognition est le processus mental de traitement d'information, d'acquisition 
 - 层次结构 / Hierarchical structure / Hierarchische Struktur / Structure hiérarchique
 - 适应性 / Adaptability / Anpassungsfähigkeit / Adaptabilité
 - 涌现性 / Emergence / Emergenz / Émergence
+
+**与本主题相关的 concepts/Philosophy 文档**：跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)；认知负荷与间隔重复见 [COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)、[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) COG-01~05。
 
 ## 相关章节 / Related Chapters / Verwandte Kapitel / Chapitres connexes
 

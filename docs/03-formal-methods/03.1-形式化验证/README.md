@@ -8,12 +8,28 @@
 
 Formal verification studies how to prove that systems satisfy their specifications through mathematical methods, providing theoretical foundations for rigorous correctness guarantees in FormalAI.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.2 — 课程 [FV-12] Stanford CS256、[FV-13] CMU 15-311、[FV-14] CMU 15-414、[FV-06] Stanford CS259；教材 [FV-01][FV-02]；论文 [FV-03][FV-04]、[FV-07~11]。
+
+**前置知识**：[00-foundations](../../00-foundations/)（逻辑演算、类型理论）、[01.1 形式逻辑](../../01-foundations/01.1-形式逻辑/README.md)、[01.3 计算理论](../../01-foundations/01.3-计算理论/README.md)。
+
+**延伸阅读**：概念溯源 [CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH](../../CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md) §二；[THEME_AUTHORITY_ALIGNMENT_MATRIX](../../THEME_AUTHORITY_ALIGNMENT_MATRIX.md) §2.4。
+
+**与本主题相关的 concepts/Philosophy 文档**：[05-AI科学理论](../../../concepts/05-AI科学理论/README.md)、[06-AI反实践判定系统](../../../concepts/06-AI反实践判定系统/README.md)、[07-AI框架批判与重构](../../../concepts/07-AI框架批判与重构/README.md)；Philosophy [model/04 证明树](../../../Philosophy/model/04-证明树图总览.md)、[view T01 DKB 形式化证明](../../../view/T01_DKB_形式化证明.md)；跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)。
+
 **权威对标**（见 [AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.2）：
 
 - **Clarke et al., Model Checking, MIT Press 2018** [FV-01]：模型检测经典
 - **Baier & Katoen, Principles of Model Checking, MIT Press 2008** [FV-02]：时序逻辑、自动机
 - **Cousot & Cousot (1977), Abstract Interpretation, POPL** [FV-03]：抽象解释奠基
 - **MIT Grove, Perennial (Coq/Iris)** [FV-05]：分布式系统形式化验证标杆——基于 Coq/Iris 的 Grove 验证 vKV 多线程键值存储；Perennial 扩展 Iris 用于并发崩溃安全系统
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：00 数学与逻辑基础、01.1 形式逻辑、01.3 计算理论。
+
+**后续 Schema**：03.2 程序综合、04 语言模型、07 对齐与安全（验证关键系统）。
+
+**权威对标状态**：已对标 — 与 [AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) [FV-01~14]、Stanford CS256/CS259、CMU 15-311/15-414 及 [THEME_AUTHORITY_ALIGNMENT_MATRIX](../../THEME_AUTHORITY_ALIGNMENT_MATRIX.md) §2.4 一致。
+
+**概念判断树 / 决策树**：形式化方法选型（验证/综合/测试）见 [TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理依赖见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)；概念归属判断见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)。
 
 ### 0. 验证核心图景 / Core Picture of Verification / Kernbild der Verifikation / Vue d’ensemble de la vérification
 

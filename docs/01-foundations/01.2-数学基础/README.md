@@ -12,6 +12,14 @@ Die mathematischen Grundlagen liefern FormalAI eine strenge mathematische Sprach
 
 Les fondements mathématiques fournissent à FormalAI un langage et des outils mathématiques rigoureux, couvrant des domaines fondamentaux tels que la théorie des ensembles, l'algèbre, la topologie, la géométrie différentielle, la théorie des probabilités, la statistique, la théorie de l'information et la théorie de l'optimisation.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.3 — [DL-01] Goodfellow Ch.2-3；§2.15 [SLT-01][SLT-03]；[CN-01][CN-02]。
+
+**与本主题相关的 concepts/Philosophy 文档**：跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：0.0 ZFC、0.1 范畴论、1.1 形式逻辑。
+
+**后续 Schema**：02.1 统计学习理论、02.2 深度学习理论、03.3 类型理论。
+
 ## 核心概念定义 / Core Concept Definitions / Kernbegriffsdefinitionen / Définitions des concepts fondamentaux
 
 ### 集合论 / Set Theory / Mengenlehre / Théorie des ensembles

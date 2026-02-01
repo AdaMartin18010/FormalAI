@@ -8,6 +8,14 @@
 
 Formal logic is the mathematical study of reasoning forms and validity, providing rigorous logical foundations for FormalAI. This module is based on a strict axiomatic system, establishing a complete logical theoretical framework including propositional logic, predicate logic, modal logic, and other core content, with rigorous formal proofs.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.2 — [FV-13] CMU 15-311、[FV-04] Hoare 1969。
+
+**与本主题相关的 concepts/Philosophy 文档**：跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：00 数学基础、0.0 ZFC。
+
+**后续 Schema**：01.3 计算理论、03.1 形式化验证、03.4 证明系统。
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [1.1 形式逻辑](#11-形式逻辑--formal-logic--formale-logik--logique-formelle)

@@ -8,6 +8,14 @@
 
 Reinforcement learning theory studies how agents learn optimal policies through interaction with environments, providing theoretical foundations for autonomous AI systems.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.7 — [RL-01] CMU 10-703 Deep RL；§2.12 [AL-01] MS&E338 RLHF。
+
+**与本主题相关的 concepts/Philosophy 文档**：[01-AI三层模型架构](../../../concepts/01-AI三层模型架构/README.md)、[05-AI科学理论](../../../concepts/05-AI科学理论/README.md)（RLHF/CoT）；跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：02.1 统计学习理论、02.2 深度学习理论、01.2 数学基础（概率论）。
+
+**后续 Schema**：04.5 AI 代理、07 对齐与安全（RLHF）、10 具身 AI。
+
 ## 目录 / Table of Contents
 
 - [2.3 强化学习理论 / Reinforcement Learning Theory / Verstärkungslern-Theorie / Théorie de l'apprentissage par renforcement](#23-强化学习理论--reinforcement-learning-theory--verstärkungslern-theorie--théorie-de-lapprentissage-par-renforcement)

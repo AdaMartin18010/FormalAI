@@ -36,6 +36,14 @@
 
 大语言模型理论研究大规模预训练语言模型的表达能力、涌现性质、对齐机制和理论基础，为现代AI系统提供理论指导。本理论体系已更新至2025年最新发展，包含o1/o3、DeepSeek-R1、Sora、DeepSeek-V3、Claude 3.5、Gemini 2.5、Llama 3.1等前沿模型的理论分析。
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.6 — [LLM-01] Berkeley CS294、[LLM-02] MIT 6.4110、[LLM-05] ESSLLI 2024、[LLM-06] MIT 24.S90、[LLM-07] Cambridge L98、[LLM-08] Purdue 592。
+
+**前置知识**：[01.2 数学基础](../../01-foundations/01.2-数学基础/README.md)、[02.1 统计学习理论](../../02-machine-learning/02.1-统计学习理论/README.md)、[02.2 深度学习理论](../../02-machine-learning/02.2-深度学习理论/README.md)。
+
+**延伸阅读**：概念溯源 [CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH](../../CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md) §三；[LATEST_AI_DEVELOPMENTS_2025](../../LATEST_AI_DEVELOPMENTS_2025.md)；[THEME_AUTHORITY_ALIGNMENT_MATRIX](../../THEME_AUTHORITY_ALIGNMENT_MATRIX.md) §2.5。
+
+**与本主题相关的 concepts/Philosophy 文档**：[01-AI三层模型架构](../../../concepts/01-AI三层模型架构/README.md)、[03-Scaling Law与收敛分析](../../../concepts/03-Scaling Law与收敛分析/README.md)、[05-AI科学理论](../../../concepts/05-AI科学理论/README.md)、[07-AI框架批判与重构](../../../concepts/07-AI框架批判与重构/README.md)；跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)。概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
 **2025年最新发展**：参见 [2024-2025年最新AI技术发展总结](../../LATEST_AI_DEVELOPMENTS_2025.md)
 
 Large language model theory studies the expressive power, emergent properties, alignment mechanisms, and theoretical foundations of large-scale pre-trained language models, providing theoretical guidance for modern AI systems. This theoretical system has been updated to include the latest developments of 2024, covering theoretical analysis of cutting-edge models such as Gemini 2.0, Claude 3.5, and GPT-5.

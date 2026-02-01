@@ -118,6 +118,7 @@
 | COG-02 | 理论 | Cognitive Load Theory (Sweller 1988) | 内在负荷、外在负荷、相关负荷；工作记忆限制 |
 | COG-03 | 理论 | Spaced Repetition Theory | 分布式学习优于集中学习；工作记忆资源恢复 |
 | COG-04 | 论文 | Nature (2022), The science of effective learning with spacing and retrieval practice | 间隔重复与检索练习的科学基础 |
+| COG-05 | 论文 | Educ Psychol Rev: Spacing vs interleaving (Rohrer et al.), discriminative-contrast hypothesis | 间隔练习与交错练习区分；间隔≈认知负荷/工作记忆恢复，交错≈区分对比 |
 
 ### 2.11 类型论与范畴论
 
@@ -134,6 +135,8 @@
 | AL-01 | 课程 | Stanford MS&E338 Aligning Superintelligence (web.stanford.edu/class/msande338) | 超智能对齐、奖励黑客/不确定性/学习、CIRL；先修研究生 ML 与智能体 |
 | AL-02 | 课程 | Stanford CS120 Introduction to AI Safety (web.stanford.edu/class/cs120) | **Fall 2025**；可靠、伦理、对齐的 AI；可解释性、鲁棒性、评估；OpenAI/Anthropic/UCB 客座 |
 | AL-03 | 课程 | Stanford CS362 Research in AI Alignment (scottviteri.com/teaching/courses/cs362) | **Fall 2024**；对齐研究研讨、哲学与技术结合；需熟悉 LLM 与强化学习 |
+| AL-04 | 课程 | Oxford AI Safety and Alignment (robots.ox.ac.uk/~fazl/aisaa/, Oct 2025) | **5 天集中**；对齐问题、前沿对齐方法、可解释性、监测、社会技术层面；Bengio、DeepMind 客座 |
+| AL-05 | 课程/机构 | BlueDot Impact / EA Cambridge Technical Alignment Curriculum (eacambridge.org/technical-alignment-curriculum) | 12 单元；RLHF、可扩展监督、机制可解释性、治理；6000+ 校友，OpenAI/Anthropic/DeepMind 等 |
 
 ### 2.13 可解释 AI (XAI)
 
@@ -159,6 +162,36 @@
 | SLT-01 | 课程 | MIT 9.520/6.7910 Statistical Learning Theory and Applications (poggio-lab.mit.edu/9-520) | **Fall 2025**；线性预测、核方法、SVM、神经网络；逼近、优化与深度网络学习理论 |
 | SLT-02 | 课程 | MIT 6.790 Machine Learning (gradml.mit.edu) | PAC、VC 维、可学习性、基本定理 |
 | SLT-03 | 课程 | NYU CSCI-GA.2566 Foundations of Machine Learning (cs.nyu.edu/~mohri/ml25) | 概率工具、集中不等式、PAC、Rademacher 复杂度、VC 维、SVM、核方法、Boosting、强化学习；教材 Mohri et al. 2018 |
+| SLT-04 | 教材 | Mohri, Rostamizadeh, Talwalkar, Foundations of Machine Learning, 2nd ed., MIT Press 2018 | PAC 模型、有限/无穷假设集学习保证、Rademacher 复杂度、增长函数、VC 维；与 [SLT-03] 课程配套 |
+| SLT-05 | 课程 | MIT 18.465 Topics in Statistics: Statistical Learning Theory | PAC、VC、Rademacher 等统计学习理论 |
+| SLT-06 | 课程 | USC CSCI 699 Advanced Topics in Machine Learning | 研究生级统计学习与可学习性；PAC、VC 维等 |
+
+### 2.16 计算理论（01.3 用）
+
+| 编号 | 类型 | 来源 | 说明 |
+|------|------|------|------|
+| COMP-01 | 教材 | Sipser, Introduction to the Theory of Computation, 3rd ed., Cengage 2013 | 自动机、可计算性、复杂度（P/NP）；标准本科/研究生教材 |
+
+### 2.17 因果推理（02.4 用）
+
+| 编号 | 类型 | 来源 | 说明 |
+|------|------|------|------|
+| CAUS-01 | 教材 | Pearl, Causality, Cambridge University Press 2000 (2nd ed. 2009) | 因果图、do-演算、识别、混淆控制 |
+| CAUS-02 | 教材 | Pearl et al., Causal Inference in Statistics: A Primer, Wiley 2016 | 因果推断入门；与 UCLA 教学材料配套 |
+
+### 2.18 涌现与复杂性（08 用）
+
+| 编号 | 类型 | 来源 | 说明 |
+|------|------|------|------|
+| EMER-01 | 课程/平台 | Santa Fe Institute Complexity Explorer (complexityexplorer.org) | Introduction to Complexity (Melanie Mitchell)、动力系统与混沌、涌现；免费在线 |
+
+### 2.19 具身/边缘/量子/元学习/社会/哲学（10~12,15~17,20 用）
+
+| 编号 | 类型 | 来源 | 说明 |
+|------|------|------|------|
+| EDGE-01 | 课程 | [DL-03] MIT 6.S965 TinyML | 边缘/嵌入式 ML，与绿色 AI 重叠 |
+| META-01 | 论文 | Finn et al., Model-Agnostic Meta-Learning (MAML), ICML 2017 | 元学习经典；少样本学习 |
+| SOC-01 | 综述/课程 | 多智能体系统、社会 AI（见 ACL/AAAI 相关 tutorial） | 社会 AI 与多智能体；可补充具体课程链接 |
 
 ---
 
@@ -202,6 +235,8 @@
 | 2025-02-02 | 新增可解释AI(XAI-01~XAI-04)：Harvard、UW CSE574、Cambridge L193、Duke Coursera |
 | 2025-02-02 | 新增神经符号AI(NS-01~NS-03)：NSSS 2024、CMU 10-747、ASU |
 | 2025-02-02 | 新增统计学习理论(SLT-01~SLT-03)：MIT 9.520/6.790、NYU CSCI-GA.2566 |
+| 2025-02-02 | 扩展统计学习：SLT-04 Mohri et al. 教材；对齐：AL-04 Oxford、AL-05 BlueDot/EA Cambridge；认知：COG-05 间隔vs交错 |
+| 2025-02-02 | 新增 SLT-05 MIT 18.465、SLT-06 USC CSCI 699 统计学习课程（权威对标与认知优化计划） |
 
 ---
 

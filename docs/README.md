@@ -9,6 +9,7 @@ FormalAI is a comprehensive AI theoretical system covering all aspects from fund
 ## 快速导航 / Quick Navigation / Schnelle Navigation / Navigation rapide
 
 - [全局导航 / Global Navigation](GLOBAL_NAVIGATION.md)
+- [按主题权威来源速查表 / Theme Authority Quick Reference](THEME_AUTHORITY_QUICK_REFERENCE.md)
 
 ## 文档结构 / Documentation Structure
 

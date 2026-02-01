@@ -44,11 +44,27 @@
 - 检查课程大纲是否有更新
 - 检查是否有新的课程视频或讲义
 
+**主题-权威对标矩阵更新**（每季度）：
+
+- [ ] 更新 [THEME_AUTHORITY_ALIGNMENT_MATRIX](THEME_AUTHORITY_ALIGNMENT_MATRIX.md)：为“待补充”主题补充课程/教材/论文列
+- [ ] 核对课程链接与学期（如 2025 Fall/Spring）
+- [ ] 新增 docs 主题时在矩阵中增加一行并填写至少一门课程或教材
+- [ ] 将对齐度从“待补充”提升为“扩展”或“完全一致”时在矩阵更新记录中注明
+
+**权威对标与认知优化**（每季度，与 [未完成任务编排与推进_2025](../未完成任务编排与推进_2025.md) §3.4 联动）：
+
+- [ ] 本季度 2~3 个主题的权威对标审计（与课程/论文逐项对比），更新矩阵或对标报告
+- [ ] 按主题缺失链接清单（§4.2）补全 README 内「相关主题」「concepts/Philosophy 交叉引用」
+- [ ] 为学习路径中 2~3 个主题增加「复习间隔+自测要点」或 README「前置 Schema」「后续 Schema」「权威对标状态」
+- [ ] 更新 [THEME_AUTHORITY_QUICK_REFERENCE](THEME_AUTHORITY_QUICK_REFERENCE.md) 与 AUTHORITY_REFERENCE_INDEX 新增条目
+
 **更新记录**：
 
 | 季度 | 检查日期 | 更新内容 | 负责人 |
 |------|---------|---------|--------|
 | Q1 2025 | 2025-01-10 | 补充MIT 6.4110、Stanford CS229/CS238V | - |
+| Q1 2025 | 2025-02-02 | 新增 THEME_AUTHORITY_ALIGNMENT_MATRIX、按主题缺失链接清单、概念溯源更新项 | - |
+| Q1 2025 | 2025-02-02 | 权威对标与认知优化计划执行：AUTHORITY_REFERENCE_INDEX 扩展 SLT-05/06；02.1 与 Mohri 对齐；02.4/01.4 链接与 Schema；LATEST_AI_DEVELOPMENTS 条目规范；未完成任务编排更新 | - |
 
 ### 2.2 Nature/Science最新研究检查
 
@@ -136,7 +152,7 @@
 
 ## 四、内容完整性检查清单
 
-### 4.1 概念定义检查
+### 4.1 概念定义与溯源检查
 
 **检查项**：
 
@@ -144,10 +160,12 @@
 - [ ] 检查概念定义是否有可操作检验方法
 - [ ] 检查概念关系是否充分说明
 - [ ] 补充缺失的概念解释
+- [ ] **概念溯源表更新**：更新 [concepts/DEFINITION_SOURCE_TABLE.md](../concepts/DEFINITION_SOURCE_TABLE.md) 与 [docs/CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md](CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md)；新增概念须填写权威定义、项目定义、对齐度、可操作检验
 
 **检查范围**：
 
 - [concepts/DEFINITION_SOURCE_TABLE.md](../concepts/DEFINITION_SOURCE_TABLE.md)
+- [docs/CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md](CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md)
 - [PROJECT_CONCEPT_SYSTEM.md](../PROJECT_CONCEPT_SYSTEM.md)
 
 ### 4.2 链接完整性检查
@@ -158,6 +176,15 @@
 - [ ] 检查跨模块链接是否完整
 - [ ] 检查"相关主题"章节是否完整
 - [ ] 补充缺失的交叉引用
+
+**按主题的缺失链接清单**（每季度按模块逐项勾选）：
+
+- [x] **00~01 基础**：00-foundations、01-foundations 各 README 前置/延伸链接（2025-02 已补范畴论、01.1/01.2/01.3/01.4 跨模块链接）
+- [x] **02 机器学习**：02.1~02.4 README 与 concepts/01、02、03、05 及 PROJECT_CROSS_MODULE_MAPPING 链接（2025-02 已补）
+- [x] **03 形式化方法**：03.1~03.4 README 与 concepts/05、06、07 及 Philosophy/model、view 链接（2025-02 已补）
+- [x] **04 语言模型**：04.1~04.5 README 与 concepts/01、03、05、07 链接（2025-02 已补）
+- [x] **07 对齐与安全**：07.1~07.3 与 concepts/05、07 链接（2025-02 已补）
+- [x] **09 哲学与伦理**：09.1~09.3 与 concepts/04 及 CONCEPT_DECISION_TREES 链接（2025-02 已补）
 
 **检查工具**：
 
@@ -328,10 +355,13 @@
 
 ## 九、参考文档
 
-### 9.1 权威引用文档
+### 9.1 权威引用与对标文档
 
 - [docs/AUTHORITY_REFERENCE_INDEX.md](AUTHORITY_REFERENCE_INDEX.md)：权威引用索引
-- [concepts/DEFINITION_SOURCE_TABLE.md](../concepts/DEFINITION_SOURCE_TABLE.md)：概念定义溯源表
+- [docs/THEME_AUTHORITY_ALIGNMENT_MATRIX.md](THEME_AUTHORITY_ALIGNMENT_MATRIX.md)：主题-权威对标矩阵
+- [concepts/DEFINITION_SOURCE_TABLE.md](../concepts/DEFINITION_SOURCE_TABLE.md)：概念定义溯源表（concepts）
+- [docs/CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md](CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md)：核心概念定义溯源表（首批 docs）
+- [docs/LATEST_AI_DEVELOPMENTS_ENTRY_SPEC.md](LATEST_AI_DEVELOPMENTS_ENTRY_SPEC.md)：LATEST_AI_DEVELOPMENTS 条目规范
 
 ### 9.2 更新计划文档
 

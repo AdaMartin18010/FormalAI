@@ -8,6 +8,16 @@
 
 Causal inference theory studies how to identify and estimate causal relationships from observational data, providing theoretical foundations for decision-making and intervention in AI systems.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.17 — [CAUS-01] Pearl 2000/2009、[CAUS-02] Pearl et al. 2016。
+
+**与本主题相关的 concepts/Philosophy 文档**：[03-Scaling Law与收敛分析](../../../concepts/03-Scaling Law与收敛分析/README.md)、[05-AI科学理论](../../../concepts/05-AI科学理论/README.md)；跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：02.1 统计学习理论、01.2 数学基础（概率论）。
+
+**后续 Schema**：06 可解释 AI（公平性、鲁棒性）、07 对齐与安全。
+
+**权威对标状态**：已对标 — 与 [AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) [CAUS-01][CAUS-02] Pearl 2000/2016 及 [THEME_AUTHORITY_ALIGNMENT_MATRIX](../../THEME_AUTHORITY_ALIGNMENT_MATRIX.md) §2.3 一致。
+
 ### do-演算与调整公式 / Do-Calculus and Adjustment / Do-Kalkül und Adjustierung / Calcul do et ajustement
 
 - 后门准则（Backdoor Criterion）: 集合 \(Z\) 阻断 \(X\to Y\) 所有后门路径且不包含 \(X\) 的后代
@@ -74,12 +84,12 @@ Causal inference theory studies how to identify and estimate causal relationship
 
 - [0.0 ZFC公理系统](../../00-foundations/00-mathematical-foundations/00-set-theory-zfc.md) - 提供集合论基础 / Provides set theory foundation
 - [1.1 形式化逻辑基础](../../01-foundations/01.1-形式逻辑/README.md) - 提供逻辑基础 / Provides logical foundation
-- [2.1 统计学习理论](02.1-统计学习理论/README.md) - 提供统计基础 / Provides statistical foundation
+- [2.1 统计学习理论](../02.1-统计学习理论/README.md) - 提供统计基础 / Provides statistical foundation
 
 **后续应用 / Applications / Anwendungen / Applications:**
 
-- [6.2 公平性与偏见理论](../06-interpretable-ai/02-fairness-bias/README.md) - 提供因果基础 / Provides causal foundation
-- [6.3 鲁棒性理论](../06-interpretable-ai/03-robustness-theory/README.md) - 提供推理基础 / Provides reasoning foundation
+- [6.2 公平性与偏见理论](../06-interpretable-ai/06.2-公平性与偏见/README.md) - 提供因果基础 / Provides causal foundation
+- [6.3 鲁棒性理论](../06-interpretable-ai/06.3-鲁棒性理论/README.md) - 提供推理基础 / Provides reasoning foundation
 
 ---
 

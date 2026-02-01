@@ -1,5 +1,19 @@
 # 8.1 涌现理论 / Emergence Theory / Emergenztheorie / Théorie de l'émergence
 
+[返回全局导航](../../GLOBAL_NAVIGATION.md) · [学习路径](../../LEARNING_PATH_DESIGN.md)
+
+## 概述 / Overview
+
+涌现理论研究从局部相互作用中产生全局模式的机制，为 AI 系统涌现能力的理解提供理论基础。
+
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.18 — [EMER-01] Santa Fe Complexity Explorer（Introduction to Complexity, Melanie Mitchell）。
+
+**与本主题相关的 concepts/Philosophy 文档**：[03-Scaling Law与收敛分析](../../../concepts/03-Scaling Law与收敛分析/README.md)、[05-AI科学理论](../../../concepts/05-AI科学理论/README.md)；跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：02.2 深度学习理论、04.1 大型语言模型（涌现能力）。
+
+**后续 Schema**：09.2 意识理论（意识涌现）、16 AGI 理论。
+
 ## 2024/2025 最新进展 / Latest Updates 2024/2025
 
 ### 涌现现象数学理论框架 / Mathematical Theoretical Framework for Emergence Phenomena

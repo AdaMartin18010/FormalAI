@@ -8,6 +8,12 @@
 
 Consciousness theory studies the nature, characteristics, and mechanisms of consciousness, providing theoretical foundations for machine consciousness and the essence of intelligence in FormalAI.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.5 — [CO-01] Chalmers 难问题、[CO-02] IIT、[CO-03] GWT、[CO-04] Nature 2025 对抗测试、[CO-05] GWT+HOT 互补、[CO-06] AI 意识形式化。
+
+**前置知识**：[01.4 认知科学](../../01-foundations/01.4-认知科学/README.md)、[09.1 AI哲学](../09.1-AI哲学/README.md)。
+
+**延伸阅读**：概念溯源 [CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH](../../CONCEPT_DEFINITION_SOURCE_TABLE_FIRST_BATCH.md) §四；concepts [04-AI意识与认知模拟](../../../concepts/04-AI意识与认知模拟/README.md)、[CONSCIOUSNESS_THEORY_MATRIX](../../../concepts/04-AI意识与认知模拟/CONSCIOUSNESS_THEORY_MATRIX.md)；[CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md) 意识判断树。跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
 ## 目录 / Table of Contents
 
 - [9.2 意识理论 / Consciousness Theory / Bewusstseinstheorie / Théorie de la conscience](#92-意识理论--consciousness-theory--bewusstseinstheorie--théorie-de-la-conscience)
@@ -1486,6 +1492,7 @@ end ConsciousnessTheory
 ---
 
 **最后更新**：2026-01-11
+
 ## 进一步阅读（2025 持续滚动） / Further Reading (Rolling 2025)
 
 - 年度权威索引：见 `docs/LATEST_UPDATES_INDEX.md` 的“权威索引（2025 持续滚动）”

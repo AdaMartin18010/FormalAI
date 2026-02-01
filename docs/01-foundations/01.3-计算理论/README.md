@@ -26,6 +26,14 @@ Berechnung ist der Prozess der Informationsverarbeitung, der Eingaben durch endl
 
 Le calcul est le processus de traitement d'information qui transforme l'entrée en sortie à travers des étapes finies.
 
+**与本主题相关的 concepts/Philosophy 文档**：跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.16 — [COMP-01] Sipser 2013。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：01.1 形式逻辑、01.2 数学基础、0.0 ZFC。
+
+**后续 Schema**：02.1 统计学习理论、03.2 程序综合、04.1 大型语言模型。
+
 **内涵 / Intension / Intension / Intension:**
 
 - 算法执行 / Algorithm execution / Algorithmusausführung / Exécution d'algorithme

@@ -8,6 +8,10 @@
 
 Category theory is the unified language of modern mathematics, providing FormalAI with an abstract mathematical framework. This module establishes a complete foundation of category theory, unifying AI theories under the categorical framework.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.11 — [TT-01] Cambridge CAT、[TT-02] CMU B619、[TT-03] CMU 80-518/818。
+
+**与本主题相关的 concepts/Philosophy 文档**：跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
 ## 目录 / Table of Contents / Inhaltsverzeichnis / Table des matières
 
 - [0.1 范畴论](#01-范畴论--category-theory--kategorientheorie--théorie-des-catégories)

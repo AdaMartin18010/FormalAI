@@ -36,6 +36,14 @@
 
 Proof systems study the construction and verification of formal proofs, providing theoretical foundations for automated theorem proving and formal reasoning in FormalAI.
 
+**权威来源**：[AUTHORITY_REFERENCE_INDEX](../../AUTHORITY_REFERENCE_INDEX.md) §2.2 — [FV-13] CMU 15-311（Lean）、[FV-07] ProofNet++；§2.11 [TT-02][TT-03] 依赖类型。
+
+**与本主题相关的 concepts/Philosophy 文档**：跨模块映射见 [PROJECT_CROSS_MODULE_MAPPING](../../../PROJECT_CROSS_MODULE_MAPPING.md)；概念判断树/决策树见 [CONCEPT_DECISION_TREES](../../CONCEPT_DECISION_TREES.md)、[TECHNICAL_SELECTION_DECISION_TREES](../../TECHNICAL_SELECTION_DECISION_TREES.md)；公理-定理推理见 [AXIOM_THEOREM_INFERENCE_TREE](../../AXIOM_THEOREM_INFERENCE_TREE.md)。
+
+**前置 Schema**（[COGNITIVE_LEARNING_PATH_OPTIMIZED](../../COGNITIVE_LEARNING_PATH_OPTIMIZED.md)）：01.1 形式逻辑、03.3 类型理论、00 数学基础。
+
+**后续 Schema**：04.1 大型语言模型（定理证明）、07 对齐与安全（形式化验证）。
+
 ## 目录 / Table of Contents
 
 - [3.4 证明系统 / Proof Systems / Beweissysteme / Systèmes de preuve](#34-证明系统--proof-systems--beweissysteme--systèmes-de-preuve)

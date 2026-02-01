@@ -5,6 +5,8 @@
 **数据来源**：公开论文、技术报告、官方发布
 **维护者**：FormalAI项目组
 
+**条目编写规范**：每条模型/技术条目须包含**数据来源、截止日期、定量指标（若可得）、[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) 编号**；详见 [LATEST_AI_DEVELOPMENTS_ENTRY_SPEC](LATEST_AI_DEVELOPMENTS_ENTRY_SPEC.md)。
+
 ---
 
 ## 📋 概述
@@ -46,8 +48,8 @@
 - 强化学习范式优化
 - 元认知能力提升
 
-**数据来源**：OpenAI官方技术报告，更新时间：2024-12-XX
-**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) LLM-01
+**数据来源**：OpenAI官方技术报告，截止日期：2024-12
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [LLM-01]
 
 #### DeepSeek-R1（2024）
 
@@ -69,8 +71,8 @@
   - 中文任务：在C-Eval等中文基准上表现优异
 - **推理成本**：推理时计算量显著增加（Test-time Compute）
 
-**数据来源**：DeepSeek官方发布，更新时间：2024-XX-XX
-**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) LLM-01
+**数据来源**：DeepSeek官方发布，截止日期：2024-12
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [LLM-01]
 
 ### 1.2 多模态大模型发展
 
@@ -94,8 +96,8 @@
   - 生成质量：在视频质量评估中表现优异
 - **技术特点**：基于Transformer架构的扩散模型
 
-**数据来源**：OpenAI官方发布，更新时间：2024-XX-XX
-**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) DL-02
+**数据来源**：OpenAI官方发布，截止日期：2024-02
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [DL-02]
 
 #### DeepSeek-V3（2024年12月）
 
@@ -117,7 +119,8 @@
   - 中文任务：在C-Eval等中文基准上表现优异
 - **上下文窗口**：支持长上下文（具体长度未公开）
 
-**数据来源**：DeepSeek官方发布，更新时间：2024-12-XX
+**数据来源**：DeepSeek官方发布，截止日期：2024-12
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [LLM-01]
 
 ### 1.3 其他重要模型
 
@@ -131,7 +134,8 @@
 - **推理能力**：在复杂推理任务上表现优秀
 - **多模态支持**：支持文本、图像等多模态输入
 
-**数据来源**：Anthropic官方发布，更新时间：2024-XX-XX
+**数据来源**：Anthropic官方发布，截止日期：2024-06
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [LLM-01]
 
 #### Gemini 2.5（2024-2025）
 
@@ -143,7 +147,8 @@
 - **性能优化**：相比Gemini 2.0有显著提升
 - **应用场景**：广泛的应用场景支持
 
-**数据来源**：Google官方发布，更新时间：2024-XX-XX
+**数据来源**：Google官方发布，截止日期：2025-02
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [DL-02]
 
 #### Llama 3.1（2024）
 
@@ -155,7 +160,8 @@
 - **性能提升**：相比Llama 3.0有显著提升
 - **社区支持**：活跃的开源社区支持
 
-**数据来源**：Meta官方发布，更新时间：2024-XX-XX
+**数据来源**：Meta官方发布，截止日期：2024-07
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [LLM-01]
 
 ---
 
@@ -175,7 +181,8 @@
 2. 强化学习范式优化
 3. 元认知与自我改进
 
-**数据来源**：OpenAI、DeepSeek技术报告，更新时间：2024-12-XX
+**数据来源**：OpenAI、DeepSeek技术报告，截止日期：2024-12
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [LLM-01]
 
 ### 2.2 多模态技术发展
 
@@ -191,7 +198,8 @@
 2. 跨模态对齐优化
 3. 多模态生成技术
 
-**数据来源**：OpenAI、Google技术报告，更新时间：2024-XX-XX
+**数据来源**：OpenAI、Google技术报告，截止日期：2024-02
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [DL-02]
 
 ### 2.3 硬件性能提升
 
@@ -201,7 +209,8 @@
 - **性价比提升**：硬件性价比显著提升
 - **计算能力**：计算能力持续提升，支持更大规模的模型训练
 
-**数据来源**：Stanford HAI AI Index Report 2025，更新时间：2025-01-15
+**数据来源**：Stanford HAI AI Index Report 2025，截止日期：2025-01-15
+**权威引用**：[AUTHORITY_REFERENCE_INDEX](AUTHORITY_REFERENCE_INDEX.md) [DL-02]
 
 ---
 
@@ -340,14 +349,14 @@
 
 ### 6.1 数据来源
 
-| 数据类型 | 来源 | 更新时间 |
-| :------- | :--- | :------- |
-| OpenAI模型信息 | OpenAI官方发布 | 2024-09-XX, 2024-12-XX |
-| DeepSeek模型信息 | DeepSeek官方发布 | 2024-XX-XX, 2024-12-XX |
-| Claude模型信息 | Anthropic官方发布 | 2024-XX-XX |
-| Gemini模型信息 | Google官方发布 | 2024-XX-XX |
-| Llama模型信息 | Meta官方发布 | 2024-XX-XX |
-| 硬件性能数据 | Stanford HAI AI Index Report 2025 | 2025-01-15 |
+| 数据类型 | 来源 | 截止日期 | 权威引用 |
+| :------- | :--- | :------- | :------- |
+| OpenAI模型信息 | OpenAI官方发布 | 2024-09, 2024-12 | [LLM-01] |
+| DeepSeek模型信息 | DeepSeek官方发布 | 2024-12 | [LLM-01] |
+| Claude模型信息 | Anthropic官方发布 | 2024-06 | [LLM-01] |
+| Gemini模型信息 | Google官方发布 | 2025-02 | [DL-02] |
+| Llama模型信息 | Meta官方发布 | 2024-07 | [LLM-01] |
+| 硬件性能数据 | Stanford HAI AI Index Report 2025 | 2025-01-15 | [DL-02] |
 
 ### 6.2 数据更新计划
 
